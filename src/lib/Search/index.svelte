@@ -125,15 +125,20 @@
 	}
 </script>
 
-<div class="w-full flex my-4 px-6">
+<div class="w-full flex-wrap flex items-center my-4 px-6">
+	<div class="w-full pl-4">
+
+		<label for="search" class="text-sm">Search</label>
+	</div>
 	<input
-		class="w-2/3 md:w-4/5 h-12 px-4 shadow-md rounded-md text-xl border border-gray-500 outline-none"
+		class="w-full md:w-4/5 h-12 px-4 shadow-md rounded-md text-xl border border-gray-500 outline-none"
 		type="text"
+		id="search"
 		bind:value={query}
 		on:keyup={search}
 	/>
 	<button
-		class="w-1/3 md:w-1/5 rounded-md border-blue-500 border-2 px-2 text-sm md:text-base py-2 hover:bg-blue-500 hover:text-white hover:border-white shadow-md"
+		class="w-1/2 md:w-1/5 rounded-md border-blue-500 border-2 px-2 text-sm md:text-base py-2 hover:bg-blue-500 hover:text-white hover:border-white shadow-md"
 		on:click={newRandom}>Random search</button
 	>
 </div>
@@ -153,10 +158,10 @@
 	</div>
 {/if}
 {#if query !== '' && stats?.hits > 0}
-	<p>
+	<p class="mt-6 mb-8">
 		{stats.hits} hits for <em>{query}</em>{filter !== ''
 			? ` in ${filter.replace('.json', '')}`
-			: ''}; results retrieved in {stats.processingTime}ms
+			: ''} - results retrieved in {stats.processingTime}ms
 	</p>
 {/if}
 {#if results}
