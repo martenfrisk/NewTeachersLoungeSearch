@@ -1,45 +1,11 @@
 <script lang="ts">
-	import Header from '$lib/Header/index.svelte';
 	import '../app.css';
+	import Sidebar from '$lib/Sidebar/index.svelte';
 </script>
 
-<Header />
-
-<main>
-	<slot />
-</main>
-
-<footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-</footer>
-
-<style>
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 1024px;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 40px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 40px 0;
-		}
-	}
-</style>
+<div class="flex flex-col w-screen md:flex-row">
+	<Sidebar />
+	<main class="w-full h-auto mt-0 px-2 md:px-10 md:mt-10 mb-10 md:w-3/4">
+		<slot />
+	</main>
+</div>
