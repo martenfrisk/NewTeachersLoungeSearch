@@ -1,31 +1,25 @@
 <script lang="ts">
 	import epList from '../../assets/episodes.json';
-	import Highlight from './Highlight.svelte';
-	export let hit: any;
-	let epClean = hit.episode.replace('.json', '');
+	import type { AlgoliaHit } from '../types'
+	export let hit: AlgoliaHit;
+	let epClean = hit.ep.replace('.json', '');
 	let epName = epList.find((x) => x.ep === epClean);
 </script>
 
-<div class="w-full px-4 pb-6 mb-6 shadow-md hover:bg-blue-100">
-	<div class="flex flex-wrap items-center justify-between w-full mb-2">
-		<div class="flex items-center">
-			<div class="pt-1 mr-2 text-xs text-gray-700 uppercase">{epName.ep}</div>
-			<div class="text-sm text-gray-800 md:text-base">{epName.title}</div>
-		</div>
-		<div class="flex items-center font-mono text-right text-gray-600">
-			<div class="mr-2 font-sans text-black">{hit.speaker}</div>
-			<div class="mr-2 font-sans text-right text-blue-600 border-b-2 border-dotted">
-				<a href={`/ep/${epName.ep}#:~:text=${hit.time}`}> go to transcript </a>
-			</div>
-			{hit.time}&nbsp;
-			{#if hit.edited}
-				<span class="text-2xl text-green-400">✔</span>
-			{:else}
-				<span class="text-2xl text-gray-400">&minus;</span>
-			{/if}
-		</div>
+<div class="w-full px-6 py-4 flex mb-4 rounded-md border border-blue-300 shadow-lg flex-wrap">
+	<div class="w-full md:w-2/3 items-center md:items-end flex">
+    <span class=" font-semibold ">
+			{@html hit._highlightResult.ep.value}
+    </span>
+		<span class="text-xl pl-4">
+      {@html hit._highlightResult.title.value}
+		</span>
 	</div>
-	<div class="py-2 pl-4 mt-4 border-l-2 border-gray-400 md:text-lg">
-		<Highlight attribute="line" {hit} />
+	<div class="flex flex-row mt-2 md:mt-0 items-end md:flex-col w-full md:w-1/3">
+		<span class="text-sm mr-3 md:mr-0 text-gray-700"> Released </span>
+		<span class="text-sm md:text-base">
+      {new Date(hit.date).toLocaleDateString()}
+		</span>
 	</div>
+	<div class="my-4 w-full">{@html hit._highlightResult.desc.value}</div>
 </div>

@@ -60,3 +60,49 @@ export interface LocalEpisode {
 		episode: string;
 		edited: boolean;
 }
+
+
+	export interface Ep {
+			value: string;
+			matchLevel: string;
+			matchedWords: any[];
+	}
+
+	export interface Title {
+			value: string;
+			matchLevel: string;
+			fullyHighlighted: boolean;
+			matchedWords: string[];
+	}
+
+	export interface Desc {
+			value: string;
+			matchLevel: string;
+			fullyHighlighted: boolean;
+			matchedWords: string[];
+	}
+
+	export interface Date {
+			value: string;
+			matchLevel: string;
+			matchedWords: any[];
+	}
+
+	export interface HighlightResult {
+			ep: Ep;
+			title: Title;
+			desc: Desc;
+			date: Date;
+	}
+
+	export interface AlgoliaHit {
+			ep: string;
+			title: string;
+			desc: string;
+			date: string;
+			objectID: string;
+			_highlightResult: HighlightResult;
+	}
+
+
+

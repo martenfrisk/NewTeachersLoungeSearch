@@ -22,40 +22,10 @@
 	$: filter = '';
 	$: results = [];
 	function addToFilter(ep: string) {
-		// if (filter.some((x) => x.ep === ep)) {
-		// 	filter = filter.filter((x) => x.ep !== ep);
-		// } else {
-		// 	filter.push({ ep, nr });
-		// }
-		// console.log({ filter });
 		filter === ep ? (filter = '') : (filter = ep);
 		search();
 	}
-	// 	filter = '',
-	// 	stats: {
-	// 		nbHits: SearchResult['nbHits'];
-	// 		processingTime: SearchResult['processingTimeMs'];
-	// 	};
-	// const client = new MeiliSearch({
-	// 	host: 'https://meili-router-ial3qgyr4bd1o9oc-gtw.qovery.io',
-	// 	apiKey: 'masterKey'
-	// });
-
-	// const index = client.index('teachers');
 	async function search() {
-		// 	const data =
-		// 		filter === ''
-		// 			? await index.search(query, { attributesToHighlight: ['line'] })
-		// 			: await index.search(query, {
-		// 					attributesToHighlight: ['line'],
-		// 					filters: `episode = "${filter}"`
-		// 			  });
-
-		// 	stats = {
-		// 		nbHits: data.nbHits,
-		// 		processingTime: data.processingTimeMs
-		// 	};
-		// 	console.log({hits})
 		const urlParams = new URLSearchParams(`s=${query}`);
 
 		if (history.pushState) {
@@ -70,7 +40,6 @@
 		}
 
 		if (filter !== '') {
-
 			searchIndex
 				.search(query, {
 					filters: 'episode:' + filter,
@@ -86,13 +55,11 @@
 					results = data.hits;
 				});
 		} else {
-
 			searchIndex
 				.search(query, {
 					facets: ['episode']
 				})
 				.then((data) => {
-
 					stats = {
 						facets: data.facets,
 						processingTime: data.processingTimeMS,
@@ -103,42 +70,30 @@
 		}
 	}
 
-	// Search the "category" facet for values matching "phone" in records
-	// searchIndex.searchForFacetValues('episode', 's01e02').then(({ facetHits }) => {
-	//   console.log(facetHits);
-	// });
-
-	// const throttledSearch = throttle(500, search);
-
 	onMount(() => {
 		if (query === '') query = randomQuery[getRandomInt(randomQuery.length)];
 		search();
 	});
-	// const findEpNr = (title: string, returnValue: string) => {
-	// 	const epNr = EpList.find((x) => x.title == title);
-	// 	if (epNr) return epNr[returnValue];
-	// 	return null;
-	// };
 	function newRandom() {
 		query = randomQuery[getRandomInt(randomQuery.length)];
 		search();
 	}
+
 </script>
 
 <div class="w-full flex-wrap flex items-center my-4 px-6">
 	<div class="w-full pl-4">
-
 		<label for="search" class="text-sm">Search</label>
 	</div>
 	<input
-		class="w-full md:w-4/5 h-12 px-4 shadow-md rounded-md text-xl border border-gray-500 outline-none"
+		class="w-full md:w-4/5 h-12 px-4 shadow-md  rounded-l-md rounded-r-md md:rounded-r-none text-xl border border-gray-500 outline-none"
 		type="text"
 		id="search"
 		bind:value={query}
 		on:keyup={search}
 	/>
 	<button
-		class="w-1/2 md:w-1/5 rounded-md border-blue-500 border-2 px-2 text-sm md:text-base py-2 hover:bg-blue-500 hover:text-white hover:border-white shadow-md"
+		class="w-1/2 md:w-1/5 h-12 rounded-l-md bg-blue-50 text-blue-800 font-semibold rounded-r-md md:rounded-l-none border-blue-500 border-2 px-2 text-sm md:text-base py-2 hover:bg-blue-500 hover:text-white hover:border-white shadow-md"
 		on:click={newRandom}>Random search</button
 	>
 </div>
