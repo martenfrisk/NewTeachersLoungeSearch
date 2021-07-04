@@ -10,7 +10,6 @@
 		if (qs === '') {
 			qs = newRandom();
 		}
-		console.log(filter);
 
 		const { hits } = await searchMeili(qs, filter, true);
 		return {

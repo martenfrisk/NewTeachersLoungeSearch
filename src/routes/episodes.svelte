@@ -30,8 +30,6 @@
 				facets: ['ep']
 			})
 			.then((data) => {
-				console.log(data);
-
 				results = data.hits;
 			});
 	}

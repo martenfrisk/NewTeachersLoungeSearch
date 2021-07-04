@@ -120,7 +120,6 @@ export async function searchMeili(query: string, filter = '', isSSR = false): Pr
 		});
 	}
 
-	console.log({ facets });
 	return {
 		stats: {
 			nbHits: data.nbHits,
