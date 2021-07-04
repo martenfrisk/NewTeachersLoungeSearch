@@ -69,7 +69,7 @@ export interface MeiliResult {
 }
 
 export const client = new MeiliSearch({
-	host: 'http://3.215.134.65/',
+	host: 'https://ts.pcast.site/',
 	apiKey: MeiliKey
 });
 
