@@ -54,23 +54,23 @@
 			if (query === '') {
 				query = newRandom();
 	
-				const urlParams = new URLSearchParams(`s=${query}`);
+				// const urlParams = new URLSearchParams(`s=${query}`);
 	
-				if (history.pushState) {
-					let newUrl =
-						window.location.protocol +
-						'//' +
-						window.location.host +
-						window.location.pathname +
-						'?' +
-						urlParams;
-					if (filter && filter.length > 0)
-						newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
-					window.history.pushState({ path: newUrl }, '', newUrl);
-				}
+				// if (history.pushState) {
+				// 	let newUrl =
+				// 		window.location.protocol +
+				// 		'//' +
+				// 		window.location.host +
+				// 		window.location.pathname +
+				// 		'?' +
+				// 		urlParams;
+				// 	if (filter && filter.length > 0)
+				// 		newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
+				// 	window.history.pushState({ path: newUrl }, '', newUrl);
+				// }
 			}
 			search();
-		}, 500);
+		}, 100);
 	});
 </script>
 
