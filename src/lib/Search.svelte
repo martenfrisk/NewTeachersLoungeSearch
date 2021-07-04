@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { SearchHit, SearchResult, Stats } from '$lib/types';
 	import { newRandom, searchMeili, throttle, timeToUrl } from './utils';
+	import {page} from '$app/stores'
 	import type { MeiliResult } from './utils';
 	import epList from '../assets/episodes.json';
 
@@ -14,14 +15,15 @@
 		};
 	}
 
-	export let query: string, filter: string[], page: any;
+	// export let query: string, filter: string[];
 	let hits: SearchHit[], stats: Stats;
 
 	function epName(episode: string) {
 		return epList.find((x) => x.ep === episode);
 	}
 	$: stats;
-	$: filter;
+	$: filter = $page.query.getAll('f') || [];
+	$: query = $page.query.get('s') || '';
 
 	async function search() {
 		await searchMeili(query, filter).then((data) => {
@@ -47,13 +49,10 @@
 		await search();
 	};
 	onMount(async () => {
-		if (!page.query.has('s')) {
+		if (!$page.query.has('s')) {
 			query = newRandom();
 
 			const urlParams = new URLSearchParams(`s=${query}`);
-			console.log(urlParams)
-			
-			console.log(window.location);
 
 			if (history.pushState) {
 				let newUrl = window.location.protocol + '//' + window.location.host.replace('/','') + '?' + `s=${query}`;

@@ -28,7 +28,6 @@
 	$: results = [];
 	async function search() {
 		results = fuse.search(query);
-		console.log(results);
 	}
 </script>
 
