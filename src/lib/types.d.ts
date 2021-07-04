@@ -33,18 +33,26 @@ export interface HighlightResult {
 	line: Line2;
 	episode: Episode;
 }
-
-export interface SearchHit {
+export interface Formatted {
+	id: string;
+	season: string;
 	time: string;
-	speaker: number;
+	speaker: string;
 	line: string;
 	episode: string;
 	edited: boolean;
-	objectID: string;
-	_snippetResult: SnippetResult;
-	_highlightResult: HighlightResult;
 }
 
+export interface SearchHit {
+	id: string;
+	season: string;
+	time: string;
+	speaker: string;
+	line: string;
+	episode: string;
+	edited: boolean;
+	_formatted: Formatted;
+}
 export interface EpisodeInfo {
 	id: string;
 	title: string;
@@ -103,6 +111,25 @@ export interface LocalEpisode {
 			objectID: string;
 			_highlightResult: HighlightResult;
 	}
-
-
+	export interface SearchResult {
+			hits: SearchHit[];
+			offset: number;
+			limit: number;
+			nbHits: number;
+			exhaustiveNbHits: boolean;
+			processingTimeMs: number;
+			query: string;
+			facetsDistribution?: {
+				episode?: {[key: string]: string},
+				season?: {[key: string]: string},
+			}
+	}
+	
+	export interface EpisodeInfo {
+		id: string;
+		title: string;
+		pubDate: string;
+		description: string;
+		isoDate: Date;
+	}
 

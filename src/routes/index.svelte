@@ -4,10 +4,20 @@
 	 * @type {import('@sveltejs/kit').Load}
 	 */
 	export async function load({ page }) {
-		const qs = page.query.get('s');
+		let qs = page.query.get('s');
+		let filter = '';
+		if (page.query.get('f')) filter = page.query.get('f').replace('=', ' = ');
+		if (qs === '') {
+			qs = newRandom();
+		}
+		console.log(filter);
+
+		const { hits } = await searchMeili(qs, filter, true);
 		return {
 			props: {
-				query: qs || ''
+				query: qs || '',
+				hits: hits || [],
+				filter
 			}
 		};
 	}
@@ -15,11 +25,9 @@
 
 <script lang="ts">
 	import Search from '$lib/Search/index.svelte';
-	export let query: string;
+	import { newRandom, searchMeili, client } from '$lib/Search/utils';
+	import type { SearchResult } from '$lib/types';
+	export let query: string, hits: SearchResult['hits'], filter: string;
 </script>
 
-<svelte:head>
-	<title>Home</title>
-</svelte:head>
-
-<Search {query} />
+<Search {query} {hits} {filter} />

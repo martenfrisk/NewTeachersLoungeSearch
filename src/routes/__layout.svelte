@@ -3,9 +3,15 @@
 	import Sidebar from '$lib/Sidebar/index.svelte';
 </script>
 
+<style>
+	div {
+		overflow-x: hidden;
+	}
+</style>
 <svelte:head>
 	<title>Seekers' Lounge ☕ The Teachers' Lounge Search Engine</title>
 </svelte:head>
+
 
 <div class="flex flex-col w-screen md:flex-row">
 	<Sidebar />

@@ -23,7 +23,9 @@ specifiers:
   prettier-plugin-svelte: ^2.3.0
   svelte: ^3.38.2
   svelte-preprocess: ^4.7.3
+  svelte-scrollto: ^0.2.0
   tailwindcss: ^2.1.2
+  text-fragments-polyfill: ^3.3.0
   tslib: ^2.2.0
   typescript: ^4.3.2
 
@@ -35,9 +37,11 @@ dependencies:
   fuse.js: 6.4.6
   instantsearch.js: 4.23.0_algoliasearch@4.9.1
   meilisearch: 0.18.2
+  svelte-scrollto: 0.2.0
+  text-fragments-polyfill: 3.3.0
 
 devDependencies:
-  '@sveltejs/adapter-vercel': 1.0.0-next.20_@sveltejs+kit@1.0.0-next.111
+  '@sveltejs/adapter-vercel': 1.0.0-next.23
   '@sveltejs/kit': 1.0.0-next.111_svelte@3.38.2
   '@typescript-eslint/eslint-plugin': 4.26.0_025fc50e542c8e957dec903a5ef525ba
   '@typescript-eslint/parser': 4.26.0_eslint@7.27.0+typescript@4.3.2
@@ -242,13 +246,10 @@ packages:
       picomatch: 2.3.0
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.20_@sveltejs+kit@1.0.0-next.111:
-    resolution: {integrity: sha512-cSGFym8Ap13p1uMBG3YQyy2Ut0eIjIjbRMtngGLUxi1guSkt1yoHytoW41O0koinrN43paKsym6Q5pO8tfX+Hg==}
-    peerDependencies:
-      '@sveltejs/kit': 1.0.0-next.110
+  /@sveltejs/adapter-vercel/1.0.0-next.23:
+    resolution: {integrity: sha512-GzHUnYwyunLkM4UFxQTHolBfxHjLC5A4E5O/P8MMjum5nlGu+qcLtnjQevFjNoabZ0ge64G/s6GlLbIHrYNbcA==}
     dependencies:
-      '@sveltejs/kit': 1.0.0-next.111_svelte@3.38.2
-      esbuild: 0.11.23
+      esbuild: 0.12.14
     dev: true
 
   /@sveltejs/kit/1.0.0-next.111_svelte@3.38.2:
@@ -1021,6 +1022,12 @@ packages:
 
   /esbuild/0.11.23:
     resolution: {integrity: sha512-iaiZZ9vUF5wJV8ob1tl+5aJTrwDczlvGP0JoMmnpC2B0ppiMCu8n8gmy5ZTGl5bcG081XBVn+U+jP+mPFm5T5Q==}
+    hasBin: true
+    requiresBuild: true
+    dev: true
+
+  /esbuild/0.12.14:
+    resolution: {integrity: sha512-z8p+6FGiplR7a3pPonXREbm+8IeXjBGvDpVidZmGB/AJMsJSfGCU+n7KOMCazA9AwvagadRWBhiKorC0w9WJvw==}
     hasBin: true
     requiresBuild: true
     dev: true
@@ -2555,10 +2562,21 @@ packages:
       typescript: 4.3.2
     dev: true
 
+  /svelte-scrollto/0.2.0:
+    resolution: {integrity: sha512-l4K2E4jr6dXCODtZDCkpp/TzknVVoq8gecHM0UOOmihvLosczdyLuyDUhZ+U2HkhLWi7nnimuOstZSFKtXSpmA==}
+    dependencies:
+      svelte: 3.38.3
+    dev: false
+
   /svelte/3.38.2:
     resolution: {integrity: sha512-q5Dq0/QHh4BLJyEVWGe7Cej5NWs040LWjMbicBGZ+3qpFWJ1YObRmUDZKbbovddLC9WW7THTj3kYbTOFmU9fbg==}
     engines: {node: '>= 8'}
     dev: true
+
+  /svelte/3.38.3:
+    resolution: {integrity: sha512-N7bBZJH0iF24wsalFZF+fVYMUOigaAUQMIcEKHO3jstK/iL8VmP9xE+P0/a76+FkNcWt+TDv2Gx1taUoUscrvw==}
+    engines: {node: '>= 8'}
+    dev: false
 
   /svgo/2.3.0:
     resolution: {integrity: sha512-fz4IKjNO6HDPgIQxu4IxwtubtbSfGEAJUq/IXyTPIkGhWck/faiiwfkvsB8LnBkKLvSoyNNIY6d13lZprJMc9Q==}
@@ -2624,6 +2642,10 @@ packages:
       reduce-css-calc: 2.1.8
       resolve: 1.20.0
     dev: true
+
+  /text-fragments-polyfill/3.3.0:
+    resolution: {integrity: sha512-JgUuoU8Sy5DmItEpz/C4Wx9psJz9KCKCUJuMcYqo//wEfE2HcrTuRp/44P9OCbuVSCLFC2ubd8bJZOUcIhFeIA==}
+    dev: false
 
   /text-table/0.2.0:
     resolution: {integrity: sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=}

@@ -38,6 +38,10 @@
 
 </script>
 
+<svelte:head>
+	<title>Episode List - Seekers' Lounge ☕ The Teachers' Lounge Search Engine - teacherslounge.pcast.site</title>
+</svelte:head>
+
 <div
 	class="flex justify-center md:justify-start flex-wrap w-full gap-2 pt-6 border-t-2 border-blue-400 md:border-none md:mt-0 mb-4"
 >
