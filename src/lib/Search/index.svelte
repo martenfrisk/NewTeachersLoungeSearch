@@ -5,16 +5,14 @@
 	import type { MeiliResult } from './utils';
 	import epList from '../../assets/episodes.json';
 	if (!String.prototype.replaceAll) {
-		String.prototype.replaceAll = function(str, newStr){
-	
+		String.prototype.replaceAll = function (str, newStr) {
 			// If a regex pattern
 			if (Object.prototype.toString.call(str).toLowerCase() === '[object regexp]') {
 				return this.replace(str, newStr);
 			}
-	
+
 			// If a string
 			return this.replace(new RegExp(str, 'g'), newStr);
-	
 		};
 	}
 	// let query = '';
@@ -37,7 +35,9 @@
 	$: stats;
 	async function addToFilter(filterName: string, filterValue: string) {
 		const combinedFilter = `${filterName} = ${filterValue}`;
-		filter.includes(combinedFilter) ? filter = filter.filter(x => x !== combinedFilter) : filter.push(combinedFilter)
+		filter.includes(combinedFilter)
+			? (filter = filter.filter((x) => x !== combinedFilter))
+			: filter.push(combinedFilter);
 		await search();
 	}
 	async function clearFilter() {
@@ -63,7 +63,8 @@
 					window.location.pathname +
 					'?' +
 					urlParams;
-		if (filter.length > 0) newUrl = `${newUrl}&f=${filter.map(x => x.replace(' = ', '=')).join(',')}`;
+				if (filter.length > 0)
+					newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
 				window.history.pushState({ path: newUrl }, '', newUrl);
 			}
 		}
@@ -93,7 +94,10 @@
 			<summary class="cursor-pointer ">
 				<span class="hover:underline"> Filter by season or episode </span>
 				{#if filter.length > 0}
-					<span class="ml-2 border-b border-gray-500 border-dotted text-sm text-gray-700" on:click={clearFilter}>(clear filters)</span>
+					<span
+						class="ml-2 border-b border-gray-500 border-dotted text-sm text-gray-700"
+						on:click={clearFilter}>(clear filters)</span
+					>
 				{/if}
 			</summary>
 
@@ -102,7 +106,9 @@
 				{#each stats.facets.find((x) => x.facetName === 'season').facetHits as facet}
 					<button
 						class={`border border-blue-500 px-2 py-px focus:outline-none focus:border-black rounded-lg ${
-							filter.includes(`season = ${facet.ep}`) ? 'bg-blue-500 text-white' : 'bg-white text-black'
+							filter.includes(`season = ${facet.ep}`)
+								? 'bg-blue-500 text-white'
+								: 'bg-white text-black'
 						}`}
 						on:click={() => addToFilter('season', facet.ep)}>{facet.ep}&nbsp;({facet.hits})</button
 					>
@@ -113,7 +119,9 @@
 				{#each stats.facets.find((x) => x.facetName === 'episode').facetHits as facet}
 					<button
 						class={`border border-blue-500 px-2 py-px rounded-lg ${
-							filter.includes(`episode = ${facet.ep}`) ? 'bg-blue-500 text-white' : 'bg-white text-black'
+							filter.includes(`episode = ${facet.ep}`)
+								? 'bg-blue-500 text-white'
+								: 'bg-white text-black'
 						}`}
 						on:click={() => addToFilter('episode', facet.ep)}>{facet.ep}&nbsp;({facet.hits})</button
 					>
@@ -125,7 +133,7 @@
 {#if query !== '' && stats?.nbHits > 0}
 	<p class="mt-6 mb-8">
 		{stats.nbHits} hits for <em>{query}</em>
-		{filter.length > 0 ? ` in ${filter.map(x => x.replace('=', '')).join(', ')}` : ''}
+		{filter.length > 0 ? ` in ${filter.map((x) => x.replace('=', '')).join(', ')}` : ''}
 
 		<span class="text-sm">(results retrieved in {stats.processingTime}ms)</span>
 	</p>

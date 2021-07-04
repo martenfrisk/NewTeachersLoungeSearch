@@ -363,7 +363,13 @@
 		"episode": "mini-54.json",
 		"edited": false
 	},
-	{ "time": "0:08:12", "speaker": "spk_3", "line": "It roast our dads.", "episode": "mini-54.json", "edited": false },
+	{
+		"time": "0:08:12",
+		"speaker": "spk_3",
+		"line": "It roast our dads.",
+		"episode": "mini-54.json",
+		"edited": false
+	},
 	{
 		"time": "0:08:14",
 		"speaker": "spk_0",
@@ -1141,8 +1147,20 @@
 		"episode": "mini-54.json",
 		"edited": false
 	},
-	{ "time": "0:21:37", "speaker": "spk_2", "line": "Oh, yeah. I mean,", "episode": "mini-54.json", "edited": false },
-	{ "time": "0:21:38", "speaker": "spk_3", "line": "Oh, yeah,", "episode": "mini-54.json", "edited": false },
+	{
+		"time": "0:21:37",
+		"speaker": "spk_2",
+		"line": "Oh, yeah. I mean,",
+		"episode": "mini-54.json",
+		"edited": false
+	},
+	{
+		"time": "0:21:38",
+		"speaker": "spk_3",
+		"line": "Oh, yeah,",
+		"episode": "mini-54.json",
+		"edited": false
+	},
 	{
 		"time": "0:21:39",
 		"speaker": "spk_1",

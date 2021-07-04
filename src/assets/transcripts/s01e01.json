@@ -328,7 +328,13 @@
 		"edited": true
 	},
 
-	{ "time": "0:04:01", "speaker": "Bill", "line": "Well, that is true.", "episode": "s01e01", "edited": true },
+	{
+		"time": "0:04:01",
+		"speaker": "Bill",
+		"line": "Well, that is true.",
+		"episode": "s01e01",
+		"edited": true
+	},
 
 	{
 		"time": "0:04:02",
@@ -515,7 +521,13 @@
 		"edited": true
 	},
 
-	{ "time": "0:07:10", "speaker": "Todd", "line": "Thank God.", "episode": "s01e01", "edited": true },
+	{
+		"time": "0:07:10",
+		"speaker": "Todd",
+		"line": "Thank God.",
+		"episode": "s01e01",
+		"edited": true
+	},
 
 	{
 		"time": "0:07:12",
@@ -632,9 +644,21 @@
 		"edited": true
 	},
 
-	{ "time": "0:09:12", "speaker": "Howard", "line": "I sure didn't.", "episode": "s01e01", "edited": true },
+	{
+		"time": "0:09:12",
+		"speaker": "Howard",
+		"line": "I sure didn't.",
+		"episode": "s01e01",
+		"edited": true
+	},
 
-	{ "time": "0:09:13", "speaker": "Todd", "line": "You didn't see that?", "episode": "s01e01", "edited": true },
+	{
+		"time": "0:09:13",
+		"speaker": "Todd",
+		"line": "You didn't see that?",
+		"episode": "s01e01",
+		"edited": true
+	},
 
 	{
 		"time": "0:09:14",
@@ -707,7 +731,13 @@
 		"edited": true
 	},
 
-	{ "time": "0:10:15", "speaker": "Bill", "line": "You tried to?", "episode": "s01e01", "edited": true },
+	{
+		"time": "0:10:15",
+		"speaker": "Bill",
+		"line": "You tried to?",
+		"episode": "s01e01",
+		"edited": true
+	},
 
 	{
 		"time": "0:10:15",
@@ -741,7 +771,13 @@
 		"edited": true
 	},
 
-	{ "time": "0:10:31", "speaker": "Sam", "line": "I beg your pardon?", "episode": "s01e01", "edited": true },
+	{
+		"time": "0:10:31",
+		"speaker": "Sam",
+		"line": "I beg your pardon?",
+		"episode": "s01e01",
+		"edited": true
+	},
 
 	{
 		"time": "0:10:32",
@@ -791,7 +827,13 @@
 		"edited": true
 	},
 
-	{ "time": "0:11:11", "speaker": "Bill", "line": "The driver's seat.", "episode": "s01e01", "edited": true },
+	{
+		"time": "0:11:11",
+		"speaker": "Bill",
+		"line": "The driver's seat.",
+		"episode": "s01e01",
+		"edited": true
+	},
 
 	{
 		"time": "0:11:11",
@@ -2075,7 +2117,13 @@
 		"edited": true
 	},
 
-	{ "time": "0:33:32", "speaker": "Bill", "line": "I know, right?", "episode": "s01e01", "edited": true },
+	{
+		"time": "0:33:32",
+		"speaker": "Bill",
+		"line": "I know, right?",
+		"episode": "s01e01",
+		"edited": true
+	},
 
 	{
 		"time": "0:33:33",
@@ -2211,7 +2259,13 @@
 		"edited": true
 	},
 
-	{ "time": "0:36:44", "speaker": "Todd", "line": "Okay. Uh, well,", "episode": "s01e01", "edited": true },
+	{
+		"time": "0:36:44",
+		"speaker": "Todd",
+		"line": "Okay. Uh, well,",
+		"episode": "s01e01",
+		"edited": true
+	},
 
 	{
 		"time": "0:36:46",
@@ -3627,7 +3681,13 @@
 		"edited": true
 	},
 
-	{ "time": "0:59:47", "speaker": "Klaus", "line": "I think I know.", "episode": "s01e01", "edited": true },
+	{
+		"time": "0:59:47",
+		"speaker": "Klaus",
+		"line": "I think I know.",
+		"episode": "s01e01",
+		"edited": true
+	},
 
 	{
 		"time": "0:59:50",
@@ -3645,7 +3705,13 @@
 		"edited": true
 	},
 
-	{ "time": "1:00:01", "speaker": "Todd", "line": "No. Sorry.", "episode": "s01e01", "edited": true },
+	{
+		"time": "1:00:01",
+		"speaker": "Todd",
+		"line": "No. Sorry.",
+		"episode": "s01e01",
+		"edited": true
+	},
 
 	{
 		"time": "1:00:02",
@@ -3719,7 +3785,13 @@
 		"edited": true
 	},
 
-	{ "time": "1:01:07", "speaker": "Klaus", "line": "So not that young.", "episode": "s01e01", "edited": true },
+	{
+		"time": "1:01:07",
+		"speaker": "Klaus",
+		"line": "So not that young.",
+		"episode": "s01e01",
+		"edited": true
+	},
 
 	{
 		"time": "1:01:08",

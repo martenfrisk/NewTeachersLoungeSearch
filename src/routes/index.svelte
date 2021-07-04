@@ -12,7 +12,7 @@
 			filter = page.query
 				.get('f')
 				.split(',')
-				.map((x) => x.replace('=', ' = '));
+				.map((x: string) => x.replace('=', ' = '));
 		console.log('filter after', filter);
 		if (qs === '') {
 			qs = newRandom();
@@ -31,7 +31,7 @@
 
 <script lang="ts">
 	import Search from '$lib/Search/index.svelte';
-	import { newRandom, searchMeili, client } from '$lib/Search/utils';
+	import { newRandom, searchMeili } from '$lib/Search/utils';
 	import type { SearchResult } from '$lib/types';
 	export let query: string, hits: SearchResult['hits'], filter: string[];
 </script>

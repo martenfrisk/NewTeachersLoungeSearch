@@ -6,7 +6,8 @@
 		"build": "svelte-kit build",
 		"preview": "svelte-kit preview",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-		"format": "prettier --write --plugin-search-dir=. ."
+		"format": "prettier --write --plugin-search-dir=. .",
+		"postbuild": "svelte-sitemap --domain https://teacherslounge.pcast.site"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "next",
@@ -24,20 +25,14 @@
 		"prettier-plugin-svelte": "^2.3.0",
 		"svelte": "^3.38.2",
 		"svelte-preprocess": "^4.7.3",
+		"svelte-sitemap": "^1.0.0",
 		"tailwindcss": "^2.1.2",
 		"tslib": "^2.2.0",
 		"typescript": "^4.3.2"
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/fira-mono": "^4.4.2",
-		"@lukeed/uuid": "^2.0.0",
-		"algoliasearch": "^4.9.1",
-		"cookie": "^0.4.1",
-		"fuse.js": "^6.4.6",
-		"instantsearch.js": "^4.23.0",
 		"meilisearch": "^0.18.2",
-		"svelte-scrollto": "^0.2.0",
-		"text-fragments-polyfill": "^3.3.0"
+		"svelte-scrollto": "^0.2.0"
 	}
 }

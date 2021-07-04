@@ -80,12 +80,11 @@
 					</p>
 					<p class="my-4">
 						Listen to the free episodes wherever you get your podcast or subscribe to Stitcher
-						Premium to unlock all seasons. 
+						Premium to unlock all seasons.
 					</p>
 					<p>
-						At <a
-							class="text-blue-800 underline"
-							href="https://www.stitcherpremium.com/teacher">stitcherpremium.com/teacher</a
+						At <a class="text-blue-800 underline" href="https://www.stitcherpremium.com/teacher"
+							>stitcherpremium.com/teacher</a
 						> you can sign up for a free trial!
 					</p>
 					<p class="my-4">

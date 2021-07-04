@@ -33,11 +33,13 @@
 				results = data.hits;
 			});
 	}
-
 </script>
 
 <svelte:head>
-	<title>Episode List - Seekers' Lounge ☕ The Teachers' Lounge Search Engine - teacherslounge.pcast.site</title>
+	<title
+		>Episode List - Seekers' Lounge ☕ The Teachers' Lounge Search Engine -
+		teacherslounge.pcast.site</title
+	>
 </svelte:head>
 
 <div

@@ -62,74 +62,72 @@ export interface EpisodeInfo {
 }
 
 export interface LocalEpisode {
-		time: string;
-		speaker: string;
-		line: string;
-		episode: string;
-		edited: boolean;
+	time: string;
+	speaker: string;
+	line: string;
+	episode: string;
+	edited: boolean;
 }
 
+export interface Ep {
+	value: string;
+	matchLevel: string;
+	matchedWords: any[];
+}
 
-	export interface Ep {
-			value: string;
-			matchLevel: string;
-			matchedWords: any[];
-	}
+export interface Title {
+	value: string;
+	matchLevel: string;
+	fullyHighlighted: boolean;
+	matchedWords: string[];
+}
 
-	export interface Title {
-			value: string;
-			matchLevel: string;
-			fullyHighlighted: boolean;
-			matchedWords: string[];
-	}
+export interface Desc {
+	value: string;
+	matchLevel: string;
+	fullyHighlighted: boolean;
+	matchedWords: string[];
+}
 
-	export interface Desc {
-			value: string;
-			matchLevel: string;
-			fullyHighlighted: boolean;
-			matchedWords: string[];
-	}
+export interface Date {
+	value: string;
+	matchLevel: string;
+	matchedWords: any[];
+}
 
-	export interface Date {
-			value: string;
-			matchLevel: string;
-			matchedWords: any[];
-	}
+export interface HighlightResult {
+	ep: Ep;
+	title: Title;
+	desc: Desc;
+	date: Date;
+}
 
-	export interface HighlightResult {
-			ep: Ep;
-			title: Title;
-			desc: Desc;
-			date: Date;
-	}
+export interface AlgoliaHit {
+	ep: string;
+	title: string;
+	desc: string;
+	date: string;
+	objectID: string;
+	_highlightResult: HighlightResult;
+}
+export interface SearchResult {
+	hits: SearchHit[];
+	offset: number;
+	limit: number;
+	nbHits: number;
+	exhaustiveNbHits: boolean;
+	processingTimeMs: number;
+	query: string;
+	facetsDistribution?: {
+		episode?: { [key: string]: string };
+		season?: { [key: string]: string };
+	};
+}
 
-	export interface AlgoliaHit {
-			ep: string;
-			title: string;
-			desc: string;
-			date: string;
-			objectID: string;
-			_highlightResult: HighlightResult;
-	}
-	export interface SearchResult {
-			hits: SearchHit[];
-			offset: number;
-			limit: number;
-			nbHits: number;
-			exhaustiveNbHits: boolean;
-			processingTimeMs: number;
-			query: string;
-			facetsDistribution?: {
-				episode?: {[key: string]: string},
-				season?: {[key: string]: string},
-			}
-	}
-	
-	export interface EpisodeInfo {
-		id: string;
-		title: string;
-		pubDate: string;
-		description: string;
-		isoDate: Date;
-	}
-
+export interface EpisodeInfo {
+	id: string;
+	title: string;
+	pubDate: string;
+	description: string;
+	isoDate: Date;
+}

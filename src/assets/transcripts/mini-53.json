@@ -69,7 +69,13 @@
 		"episode": "mini-53.json",
 		"edited": false
 	},
-	{ "time": "0:01:10", "speaker": "spk_1", "line": "Way we can't see A", "episode": "mini-53.json", "edited": false },
+	{
+		"time": "0:01:10",
+		"speaker": "spk_1",
+		"line": "Way we can't see A",
+		"episode": "mini-53.json",
+		"edited": false
+	},
 	{
 		"time": "0:01:14",
 		"speaker": "spk_2",
@@ -91,7 +97,13 @@
 		"episode": "mini-53.json",
 		"edited": false
 	},
-	{ "time": "0:01:24", "speaker": "spk_3", "line": "and you", "episode": "mini-53.json", "edited": false },
+	{
+		"time": "0:01:24",
+		"speaker": "spk_3",
+		"line": "and you",
+		"episode": "mini-53.json",
+		"edited": false
+	},
 	{
 		"time": "0:01:24",
 		"speaker": "spk_2",
@@ -183,7 +195,13 @@
 		"episode": "mini-53.json",
 		"edited": false
 	},
-	{ "time": "0:02:47", "speaker": "spk_0", "line": "put some stank,", "episode": "mini-53.json", "edited": false },
+	{
+		"time": "0:02:47",
+		"speaker": "spk_0",
+		"line": "put some stank,",
+		"episode": "mini-53.json",
+		"edited": false
+	},
 	{
 		"time": "0:02:49",
 		"speaker": "spk_2",
@@ -576,7 +594,13 @@
 		"episode": "mini-53.json",
 		"edited": false
 	},
-	{ "time": "0:10:12", "speaker": "spk_3", "line": "People will get", "episode": "mini-53.json", "edited": false },
+	{
+		"time": "0:10:12",
+		"speaker": "spk_3",
+		"line": "People will get",
+		"episode": "mini-53.json",
+		"edited": false
+	},
 	{
 		"time": "0:10:13",
 		"speaker": "spk_2",
@@ -689,7 +713,13 @@
 		"episode": "mini-53.json",
 		"edited": false
 	},
-	{ "time": "0:12:17", "speaker": "spk_1", "line": "Really? I any", "episode": "mini-53.json", "edited": false },
+	{
+		"time": "0:12:17",
+		"speaker": "spk_1",
+		"line": "Really? I any",
+		"episode": "mini-53.json",
+		"edited": false
+	},
 	{
 		"time": "0:12:19",
 		"speaker": "spk_0",
@@ -858,7 +888,13 @@
 		"episode": "mini-53.json",
 		"edited": false
 	},
-	{ "time": "0:16:48", "speaker": "spk_1", "line": "go? Yeah. I mean", "episode": "mini-53.json", "edited": false },
+	{
+		"time": "0:16:48",
+		"speaker": "spk_1",
+		"line": "go? Yeah. I mean",
+		"episode": "mini-53.json",
+		"edited": false
+	},
 	{
 		"time": "0:16:50",
 		"speaker": "spk_0",
@@ -971,7 +1007,13 @@
 		"episode": "mini-53.json",
 		"edited": false
 	},
-	{ "time": "0:18:26", "speaker": "spk_0", "line": "Are you way", "episode": "mini-53.json", "edited": false },
+	{
+		"time": "0:18:26",
+		"speaker": "spk_0",
+		"line": "Are you way",
+		"episode": "mini-53.json",
+		"edited": false
+	},
 	{
 		"time": "0:18:28",
 		"speaker": "spk_3",
@@ -979,7 +1021,13 @@
 		"episode": "mini-53.json",
 		"edited": false
 	},
-	{ "time": "0:18:30", "speaker": "spk_2", "line": "ourselves. The ad?", "episode": "mini-53.json", "edited": false },
+	{
+		"time": "0:18:30",
+		"speaker": "spk_2",
+		"line": "ourselves. The ad?",
+		"episode": "mini-53.json",
+		"edited": false
+	},
 	{
 		"time": "0:18:31",
 		"speaker": "spk_0",
@@ -1008,8 +1056,20 @@
 		"episode": "mini-53.json",
 		"edited": false
 	},
-	{ "time": "0:18:48", "speaker": "spk_0", "line": "right now or later", "episode": "mini-53.json", "edited": false },
-	{ "time": "0:18:49", "speaker": "spk_2", "line": "for where to meet?", "episode": "mini-53.json", "edited": false },
+	{
+		"time": "0:18:48",
+		"speaker": "spk_0",
+		"line": "right now or later",
+		"episode": "mini-53.json",
+		"edited": false
+	},
+	{
+		"time": "0:18:49",
+		"speaker": "spk_2",
+		"line": "for where to meet?",
+		"episode": "mini-53.json",
+		"edited": false
+	},
 	{
 		"time": "0:18:52",
 		"speaker": "spk_0",

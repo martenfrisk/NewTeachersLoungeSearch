@@ -1,5 +1,5 @@
 <script context="module">
-	export async function load({ page, fetch }) {
+	export async function load({ page }) {
 		const { id } = page.params;
 		return {
 			props: {
@@ -13,16 +13,14 @@
 <script lang="ts">
 	let animateScroll;
 	if (!String.prototype.replaceAll) {
-		String.prototype.replaceAll = function(str, newStr){
-	
+		String.prototype.replaceAll = function (str: any, newStr: any) {
 			// If a regex pattern
 			if (Object.prototype.toString.call(str).toLowerCase() === '[object regexp]') {
 				return this.replace(str, newStr);
 			}
-	
+
 			// If a string
 			return this.replace(new RegExp(str, 'g'), newStr);
-	
 		};
 	}
 	import type { LocalEpisode } from '$lib/types';
@@ -30,7 +28,7 @@
 	import { onMount } from 'svelte';
 	import epList from '../../assets/episodes.json';
 
-	function epName(episode) {
+	function epName(episode: string) {
 		return epList.find((x) => x.ep === episode.replace('.json', ''));
 	}
 	export let episode: string;
@@ -39,10 +37,10 @@
 		default: LocalEpisode[];
 	};
 	const hitIsActive = (ep: string) => {
-		if (!query.has('t')) return false 
-		if (ep.replaceAll(':', '') === query.get('t').replace('t-', '')) return true
-		return false
-	}
+		if (!query.has('t')) return false;
+		if (ep.replaceAll(':', '') === query.get('t').replace('t-', '')) return true;
+		return false;
+	};
 	onMount(async () => {
 		animateScroll = await import('svelte-scrollto');
 		hits = await import('../../assets/transcripts/' + episode + '.json');

@@ -88,7 +88,8 @@ export async function searchMeili(query: string, filter = [], isSSR = false): Pr
 			'?' +
 			urlParams;
 
-		if (filter.length > 0) newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
+		if (filter.length > 0)
+			newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
 		window.history.pushState({ path: newUrl }, '', newUrl);
 	}
 

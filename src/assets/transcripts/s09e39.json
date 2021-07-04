@@ -1,5 +1,11 @@
 [
-	{ "time": "0:00:00", "speaker": "spk_0", "line": "fuck Corona virus.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:00:00",
+		"speaker": "spk_0",
+		"line": "fuck Corona virus.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:00:02",
 		"speaker": "spk_2",
@@ -42,7 +48,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:00:36", "speaker": "spk_2", "line": "now.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:00:36",
+		"speaker": "spk_2",
+		"line": "now.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:00:37",
 		"speaker": "spk_3",
@@ -64,7 +76,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:01:03", "speaker": "spk_2", "line": "doesn't keep", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:01:03",
+		"speaker": "spk_2",
+		"line": "doesn't keep",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:01:03",
 		"speaker": "spk_0",
@@ -72,7 +90,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:01:08", "speaker": "spk_3", "line": "So it's a site", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:01:08",
+		"speaker": "spk_3",
+		"line": "So it's a site",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:01:09",
 		"speaker": "spk_4",
@@ -94,7 +118,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:01:31", "speaker": "spk_2", "line": "are you gonna", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:01:31",
+		"speaker": "spk_2",
+		"line": "are you gonna",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:01:31",
 		"speaker": "spk_3",
@@ -151,8 +181,20 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:02:10", "speaker": "spk_2", "line": "I'm tired of the", "episode": "s09e39.json", "edited": false },
-	{ "time": "0:02:12", "speaker": "spk_1", "line": "never may say it.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:02:10",
+		"speaker": "spk_2",
+		"line": "I'm tired of the",
+		"episode": "s09e39.json",
+		"edited": false
+	},
+	{
+		"time": "0:02:12",
+		"speaker": "spk_1",
+		"line": "never may say it.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:02:13",
 		"speaker": "spk_3",
@@ -258,7 +300,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:03:52", "speaker": "spk_2", "line": "was good.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:03:52",
+		"speaker": "spk_2",
+		"line": "was good.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:03:53",
 		"speaker": "spk_4",
@@ -280,7 +328,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:04:04", "speaker": "spk_1", "line": "You didn't trying", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:04:04",
+		"speaker": "spk_1",
+		"line": "You didn't trying",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:04:06",
 		"speaker": "spk_0",
@@ -386,7 +440,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:05:33", "speaker": "spk_2", "line": "I was", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:05:33",
+		"speaker": "spk_2",
+		"line": "I was",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:05:34",
 		"speaker": "spk_0",
@@ -401,7 +461,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:06:01", "speaker": "spk_2", "line": "which I thought", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:06:01",
+		"speaker": "spk_2",
+		"line": "which I thought",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:06:02",
 		"speaker": "spk_1",
@@ -465,7 +531,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:07:13", "speaker": "spk_2", "line": "find with either.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:07:13",
+		"speaker": "spk_2",
+		"line": "find with either.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:07:16",
 		"speaker": "spk_1",
@@ -494,7 +566,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:07:53", "speaker": "spk_3", "line": "I'm going to eat me", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:07:53",
+		"speaker": "spk_3",
+		"line": "I'm going to eat me",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:07:54",
 		"speaker": "spk_1",
@@ -544,7 +622,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:08:46", "speaker": "spk_2", "line": "Some damn eyes.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:08:46",
+		"speaker": "spk_2",
+		"line": "Some damn eyes.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:08:47",
 		"speaker": "spk_4",
@@ -566,8 +650,20 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:09:04", "speaker": "spk_4", "line": "By the way,", "episode": "s09e39.json", "edited": false },
-	{ "time": "0:09:05", "speaker": "spk_2", "line": "where you here", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:09:04",
+		"speaker": "spk_4",
+		"line": "By the way,",
+		"episode": "s09e39.json",
+		"edited": false
+	},
+	{
+		"time": "0:09:05",
+		"speaker": "spk_2",
+		"line": "where you here",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:09:05",
 		"speaker": "spk_0",
@@ -617,7 +713,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:10:08", "speaker": "spk_1", "line": "absolutely not.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:10:08",
+		"speaker": "spk_1",
+		"line": "absolutely not.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:10:09",
 		"speaker": "spk_3",
@@ -632,7 +734,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:10:28", "speaker": "spk_1", "line": "Try. Yeah, I'm of", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:10:28",
+		"speaker": "spk_1",
+		"line": "Try. Yeah, I'm of",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:10:29",
 		"speaker": "spk_0",
@@ -647,7 +755,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:10:43", "speaker": "spk_2", "line": "Well, let's say a", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:10:43",
+		"speaker": "spk_2",
+		"line": "Well, let's say a",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:10:44",
 		"speaker": "spk_0",
@@ -704,7 +818,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:11:38", "speaker": "spk_3", "line": "you change it up,", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:11:38",
+		"speaker": "spk_3",
+		"line": "you change it up,",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:11:39",
 		"speaker": "spk_0",
@@ -796,7 +916,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:13:02", "speaker": "spk_1", "line": "And now how did you", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:13:02",
+		"speaker": "spk_1",
+		"line": "And now how did you",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:13:04",
 		"speaker": "spk_0",
@@ -839,7 +965,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:13:37", "speaker": "spk_0", "line": "bit like Hellboy.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:13:37",
+		"speaker": "spk_0",
+		"line": "bit like Hellboy.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:13:39",
 		"speaker": "spk_3",
@@ -847,7 +979,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:13:44", "speaker": "spk_2", "line": "do look like how", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:13:44",
+		"speaker": "spk_2",
+		"line": "do look like how",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:13:45",
 		"speaker": "spk_4",
@@ -967,7 +1105,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:16:25", "speaker": "spk_4", "line": "Um, it was", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:16:25",
+		"speaker": "spk_4",
+		"line": "Um, it was",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:16:27",
 		"speaker": "spk_1",
@@ -989,7 +1133,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:16:45", "speaker": "spk_3", "line": "Jamadi s and", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:16:45",
+		"speaker": "spk_3",
+		"line": "Jamadi s and",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:16:47",
 		"speaker": "spk_4",
@@ -1025,8 +1175,20 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:17:29", "speaker": "spk_3", "line": "My best friends", "episode": "s09e39.json", "edited": false },
-	{ "time": "0:17:29", "speaker": "spk_2", "line": "cried can cry.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:17:29",
+		"speaker": "spk_3",
+		"line": "My best friends",
+		"episode": "s09e39.json",
+		"edited": false
+	},
+	{
+		"time": "0:17:29",
+		"speaker": "spk_2",
+		"line": "cried can cry.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:17:34",
 		"speaker": "spk_3",
@@ -1034,7 +1196,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:17:38", "speaker": "spk_0", "line": "Dry it up.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:17:38",
+		"speaker": "spk_0",
+		"line": "Dry it up.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:17:40",
 		"speaker": "spk_4",
@@ -1056,7 +1224,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:17:59", "speaker": "spk_1", "line": "forget. And and", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:17:59",
+		"speaker": "spk_1",
+		"line": "forget. And and",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:18:00",
 		"speaker": "spk_2",
@@ -1127,7 +1301,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:19:50", "speaker": "spk_4", "line": "you have no idea.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:19:50",
+		"speaker": "spk_4",
+		"line": "you have no idea.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:19:51",
 		"speaker": "spk_2",
@@ -1163,7 +1343,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:20:24", "speaker": "spk_1", "line": "worse. He's crying,", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:20:24",
+		"speaker": "spk_1",
+		"line": "worse. He's crying,",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:20:26",
 		"speaker": "spk_4",
@@ -1192,7 +1378,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:21:12", "speaker": "spk_4", "line": "Ok, thank you.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:21:12",
+		"speaker": "spk_4",
+		"line": "Ok, thank you.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:21:13",
 		"speaker": "spk_0",
@@ -1417,7 +1609,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:25:33", "speaker": "spk_0", "line": "It waas,", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:25:33",
+		"speaker": "spk_0",
+		"line": "It waas,",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:25:35",
 		"speaker": "spk_4",
@@ -1439,7 +1637,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:25:49", "speaker": "spk_3", "line": "100%", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:25:49",
+		"speaker": "spk_3",
+		"line": "100%",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:25:49",
 		"speaker": "spk_2",
@@ -1594,8 +1798,20 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:29:13", "speaker": "spk_1", "line": "Yeah, and a lot", "episode": "s09e39.json", "edited": false },
-	{ "time": "0:29:14", "speaker": "spk_2", "line": "of people", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:29:13",
+		"speaker": "spk_1",
+		"line": "Yeah, and a lot",
+		"episode": "s09e39.json",
+		"edited": false
+	},
+	{
+		"time": "0:29:14",
+		"speaker": "spk_2",
+		"line": "of people",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:29:14",
 		"speaker": "spk_1",
@@ -1624,7 +1840,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:29:47", "speaker": "spk_2", "line": "I don't know, Put", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:29:47",
+		"speaker": "spk_2",
+		"line": "I don't know, Put",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:29:48",
 		"speaker": "spk_1",
@@ -1765,8 +1987,20 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:32:26", "speaker": "spk_4", "line": "Yeah, e", "episode": "s09e39.json", "edited": false },
-	{ "time": "0:32:28", "speaker": "spk_2", "line": "how many's on the", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:32:26",
+		"speaker": "spk_4",
+		"line": "Yeah, e",
+		"episode": "s09e39.json",
+		"edited": false
+	},
+	{
+		"time": "0:32:28",
+		"speaker": "spk_2",
+		"line": "how many's on the",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:32:30",
 		"speaker": "spk_3",
@@ -1774,7 +2008,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:32:50", "speaker": "spk_2", "line": "Your home Isn't", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:32:50",
+		"speaker": "spk_2",
+		"line": "Your home Isn't",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:32:50",
 		"speaker": "spk_0",
@@ -2160,7 +2400,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:39:40", "speaker": "spk_2", "line": "Bold e. Tell him.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:39:40",
+		"speaker": "spk_2",
+		"line": "Bold e. Tell him.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:39:43",
 		"speaker": "spk_4",
@@ -2182,7 +2428,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:40:07", "speaker": "spk_4", "line": "It's been,", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:40:07",
+		"speaker": "spk_4",
+		"line": "It's been,",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:40:07",
 		"speaker": "spk_0",
@@ -2232,7 +2484,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:40:53", "speaker": "spk_2", "line": "hand. Do you guys", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:40:53",
+		"speaker": "spk_2",
+		"line": "hand. Do you guys",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:40:54",
 		"speaker": "spk_0",
@@ -2597,7 +2855,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:47:45", "speaker": "spk_2", "line": "It feels", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:47:45",
+		"speaker": "spk_2",
+		"line": "It feels",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:47:46",
 		"speaker": "spk_4",
@@ -2822,7 +3086,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:51:37", "speaker": "spk_2", "line": "you know,", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:51:37",
+		"speaker": "spk_2",
+		"line": "you know,",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:51:37",
 		"speaker": "spk_3",
@@ -2914,7 +3184,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:52:46", "speaker": "spk_2", "line": "You keep", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:52:46",
+		"speaker": "spk_2",
+		"line": "You keep",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:52:46",
 		"speaker": "spk_0",
@@ -2936,7 +3212,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:53:34", "speaker": "spk_2", "line": "by the school.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:53:34",
+		"speaker": "spk_2",
+		"line": "by the school.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:53:36",
 		"speaker": "spk_4",
@@ -3098,7 +3380,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:56:32", "speaker": "spk_2", "line": "other than the", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:56:32",
+		"speaker": "spk_2",
+		"line": "other than the",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:56:33",
 		"speaker": "spk_0",
@@ -3162,7 +3450,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "0:58:02", "speaker": "spk_2", "line": "you guys. This is", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "0:58:02",
+		"speaker": "spk_2",
+		"line": "you guys. This is",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "0:58:03",
 		"speaker": "spk_1",
@@ -3541,7 +3835,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:05:52", "speaker": "spk_2", "line": "If you're the", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:05:52",
+		"speaker": "spk_2",
+		"line": "If you're the",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:05:53",
 		"speaker": "spk_1",
@@ -3696,7 +3996,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:09:27", "speaker": "spk_0", "line": "on any day or more", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:09:27",
+		"speaker": "spk_0",
+		"line": "on any day or more",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:09:28",
 		"speaker": "spk_1",
@@ -3732,7 +4038,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:10:11", "speaker": "spk_4", "line": "my God. Kravitz.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:10:11",
+		"speaker": "spk_4",
+		"line": "my God. Kravitz.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:10:12",
 		"speaker": "spk_3",
@@ -3880,7 +4192,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:12:37", "speaker": "spk_2", "line": "do it", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:12:37",
+		"speaker": "spk_2",
+		"line": "do it",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:12:38",
 		"speaker": "spk_0",
@@ -3958,7 +4276,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:14:05", "speaker": "spk_2", "line": "I'm not", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:14:05",
+		"speaker": "spk_2",
+		"line": "I'm not",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:14:05",
 		"speaker": "spk_0",
@@ -3994,7 +4318,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:15:23", "speaker": "spk_2", "line": "What are", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:15:23",
+		"speaker": "spk_2",
+		"line": "What are",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:15:24",
 		"speaker": "spk_4",
@@ -4072,7 +4402,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:17:54", "speaker": "spk_2", "line": "let yourself feel", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:17:54",
+		"speaker": "spk_2",
+		"line": "let yourself feel",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:17:55",
 		"speaker": "spk_0",
@@ -4136,7 +4472,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:18:34", "speaker": "spk_2", "line": "Okay, Get Get it", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:18:34",
+		"speaker": "spk_2",
+		"line": "Okay, Get Get it",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:18:36",
 		"speaker": "spk_0",
@@ -4151,7 +4493,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:18:43", "speaker": "spk_2", "line": "road. Crear going", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:18:43",
+		"speaker": "spk_2",
+		"line": "road. Crear going",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:18:44",
 		"speaker": "spk_4",
@@ -4278,7 +4626,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:22:45", "speaker": "spk_2", "line": "like every child's", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:22:45",
+		"speaker": "spk_2",
+		"line": "like every child's",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:22:46",
 		"speaker": "spk_0",
@@ -4328,7 +4682,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:23:49", "speaker": "spk_2", "line": "How is", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:23:49",
+		"speaker": "spk_2",
+		"line": "How is",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:23:50",
 		"speaker": "spk_3",
@@ -4392,7 +4752,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:24:37", "speaker": "spk_2", "line": "You know what? I", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:24:37",
+		"speaker": "spk_2",
+		"line": "You know what? I",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:24:38",
 		"speaker": "spk_3",
@@ -4400,7 +4766,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:24:41", "speaker": "spk_2", "line": "No! Well, Podd guy,", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:24:41",
+		"speaker": "spk_2",
+		"line": "No! Well, Podd guy,",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:24:44",
 		"speaker": "spk_4",
@@ -4408,7 +4780,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:24:45", "speaker": "spk_0", "line": "way got him clean.", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:24:45",
+		"speaker": "spk_0",
+		"line": "way got him clean.",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:24:47",
 		"speaker": "spk_4",
@@ -4423,7 +4801,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:25:01", "speaker": "spk_4", "line": "OK, that your", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:25:01",
+		"speaker": "spk_4",
+		"line": "OK, that your",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:25:04",
 		"speaker": "spk_1",
@@ -4473,7 +4857,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:25:31", "speaker": "spk_2", "line": "What if", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:25:31",
+		"speaker": "spk_2",
+		"line": "What if",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:25:31",
 		"speaker": "spk_3",
@@ -4502,7 +4892,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:25:55", "speaker": "spk_1", "line": "All right, I'm", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:25:55",
+		"speaker": "spk_1",
+		"line": "All right, I'm",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:25:55",
 		"speaker": "spk_2",
@@ -4601,7 +4997,13 @@
 		"episode": "s09e39.json",
 		"edited": false
 	},
-	{ "time": "1:27:06", "speaker": "spk_2", "line": "two stay, I think", "episode": "s09e39.json", "edited": false },
+	{
+		"time": "1:27:06",
+		"speaker": "spk_2",
+		"line": "two stay, I think",
+		"episode": "s09e39.json",
+		"edited": false
+	},
 	{
 		"time": "1:27:16",
 		"speaker": "spk_4",
