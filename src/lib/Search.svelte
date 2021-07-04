@@ -50,12 +50,12 @@
 	};
 	onMount(async () => {
 		setTimeout(() => {
-			query = $page.query.get('s') || ''
+			query = $page.query.get('s') || '';
 			if (query === '') {
 				query = newRandom();
-	
+
 				// const urlParams = new URLSearchParams(`s=${query}`);
-	
+
 				// if (history.pushState) {
 				// 	let newUrl =
 				// 		window.location.protocol +
@@ -83,7 +83,7 @@
 		type="text"
 		id="search"
 		bind:value={query}
-		on:keyup={() => throttle(500, search)}
+		on:keyup={search}
 	/>
 	<button
 		class="w-1/2 md:w-1/5 h-12 rounded-l-md bg-blue-50 text-blue-800 font-semibold rounded-r-md md:rounded-l-none border-blue-500 border-2 px-2 text-sm md:text-base py-2 hover:bg-blue-500 hover:text-white hover:border-white shadow-md"
