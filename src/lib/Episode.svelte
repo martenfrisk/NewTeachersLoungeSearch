@@ -4,12 +4,12 @@
 
 <div class="w-full px-6 py-4 flex mb-4 rounded-md border border-blue-300 shadow-lg flex-wrap">
 	<div class="w-full md:w-2/3 items-center md:items-end flex">
-		<span class=" font-semibold ">
+		<a href={`/ep/${ep}`} class="text-blue-700 hover:underline font-semibold ">
 			{ep}
-		</span>
-		<span class="text-xl pl-4">
+		</a>
+		<a href={`/ep/${ep}`} class="text-blue-800 hover:underline text-xl pl-4">
 			{title}
-		</span>
+		</a>
 	</div>
 	<div class="flex flex-row mt-2 md:mt-0 items-end md:flex-col w-full md:w-1/3">
 		<span class="text-sm mr-3 md:mr-0 text-gray-700"> Released </span>
