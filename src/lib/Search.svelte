@@ -53,7 +53,7 @@
 		setTimeout(() => {
 			if (location !== undefined) {
 				query = new URLSearchParams(location.search).get('s') || ''
-				filter = new URLSearchParams(location.search).get('f').replaceAll('=', ' = ').split(',') || []
+				filter = new URLSearchParams(location.search).get('f')?.replaceAll('=', ' = ').split(',') || []
 				
 			}
 			if (query === '') {
