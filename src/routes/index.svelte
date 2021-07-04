@@ -7,7 +7,7 @@
 		const qs = page.query.get('s');
 		return {
 			props: {
-				query: qs || '',
+				query: qs,
 			}
 		};
 	}

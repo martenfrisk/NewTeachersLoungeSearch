@@ -10,6 +10,7 @@ specifiers:
   eslint: ^7.30.0
   eslint-config-prettier: ^8.3.0
   eslint-plugin-svelte3: ^3.2.0
+  fuse.js: ^6.4.6
   meilisearch: ^0.18.2
   postcss: ^8.3.5
   postcss-load-config: ^3.1.0
@@ -23,6 +24,7 @@ specifiers:
   typescript: ^4.3.5
 
 dependencies:
+  fuse.js: 6.4.6
   meilisearch: 0.18.2
   svelte-scrollto: 0.2.0
 
@@ -1110,6 +1112,11 @@ packages:
   /functional-red-black-tree/1.0.1:
     resolution: {integrity: sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=}
     dev: true
+
+  /fuse.js/6.4.6:
+    resolution: {integrity: sha512-/gYxR/0VpXmWSfZOIPS3rWwU8SHgsRTwWuXhyb2O6s7aRuVtHtxCkR33bNYu3wyLyNx/Wpv0vU7FZy8Vj53VNw==}
+    engines: {node: '>=10'}
+    dev: false
 
   /glob-parent/5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}

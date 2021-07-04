@@ -31,6 +31,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"fuse.js": "^6.4.6",
 		"meilisearch": "^0.18.2",
 		"svelte-scrollto": "^0.2.0"
 	}

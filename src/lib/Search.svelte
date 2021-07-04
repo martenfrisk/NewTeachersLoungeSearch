@@ -14,7 +14,7 @@
 		};
 	}
 
-	export let query: string
+	export let query: string;
 	let hits: SearchHit[], filter: string[], stats: Stats;
 
 	function epName(episode: string) {
@@ -154,8 +154,11 @@
 								`t-${hit.time.replaceAll(':', '')}`
 							)}`}
 						>
-							go to transcript
+							transcript
 						</a>
+					</div>
+					<div class="mr-2 font-sans text-right text-blue-600 border-b-2 border-dotted">
+						<a href={epName(hit.episode).url}> listen </a>
 					</div>
 					{hit.time}&nbsp;
 					{#if hit.edited}

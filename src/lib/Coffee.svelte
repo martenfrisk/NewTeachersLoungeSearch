@@ -80,7 +80,7 @@
 	</div>
 
 	<div class="coffee-cup-container">
-		<img src="/coffee.svg" alt="Coffee pot" />
+		<img src="/coffee.svg" alt="Coffee pot" width="40" height="40" />
 	</div>
 </div>
 
