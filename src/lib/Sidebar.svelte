@@ -68,6 +68,9 @@
 		{#if infoView}
 			<div>
 				<div>
+					<p class="my-4 text-sm text-red-800">
+						The shareable URL function is not working atm. Sorry. Working on a fix.
+					</p>
 					<p class="my-4">
 						Welcome to the new and improved Seekers' Lounge. Now at a more memorable address:
 						<a href="https://teacherslounge.pcast.site" class="text-blue-800 underline">
