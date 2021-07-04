@@ -4,7 +4,19 @@
 	import { newRandom, searchMeili, throttle, timeToUrl } from './utils';
 	import type { MeiliResult } from './utils';
 	import epList from '../../assets/episodes.json';
-
+	if (!String.prototype.replaceAll) {
+		String.prototype.replaceAll = function(str, newStr){
+	
+			// If a regex pattern
+			if (Object.prototype.toString.call(str).toLowerCase() === '[object regexp]') {
+				return this.replace(str, newStr);
+			}
+	
+			// If a string
+			return this.replace(new RegExp(str, 'g'), newStr);
+	
+		};
+	}
 	// let query = '';
 	let stats: {
 		nbHits: SearchResult['nbHits'];
