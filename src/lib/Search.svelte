@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { SearchHit, SearchResult, Stats } from '$lib/types';
 	import { newRandom, searchMeili, throttle, timeToUrl } from './utils';
-	import {page} from '$app/stores'
+	import { page } from '$app/stores';
 	import type { MeiliResult } from './utils';
 	import epList from '../assets/episodes.json';
 
@@ -49,19 +49,27 @@
 		await search();
 	};
 	onMount(async () => {
-		if (!$page.query.has('s')) {
-			query = newRandom();
-
-			const urlParams = new URLSearchParams(`s=${query}`);
-
-			if (history.pushState) {
-				let newUrl = window.location.protocol + '//' + window.location.host.replace('/','') + '?' + `s=${query}`;
-				if (filter && filter.length > 0)
-					newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
-				window.history.pushState({ path: newUrl }, '', newUrl);
+		setTimeout(() => {
+			if (!$page.query.has('s')) {
+				query = newRandom();
+	
+				const urlParams = new URLSearchParams(`s=${query}`);
+	
+				if (history.pushState) {
+					let newUrl =
+						window.location.protocol +
+						'//' +
+						window.location.host +
+						window.location.pathname +
+						'?' +
+						urlParams;
+					if (filter && filter.length > 0)
+						newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
+					window.history.pushState({ path: newUrl }, '', newUrl);
+				}
 			}
-		}
-		await search();
+			search();
+		}, 500);
 	});
 </script>
 
