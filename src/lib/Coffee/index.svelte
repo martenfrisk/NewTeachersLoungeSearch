@@ -109,10 +109,6 @@
 		display: inline-block;
 	}
 
-	.bg-enable {
-		enable-background: new 0 0 28.1 80.6;
-	}
-
 	.squiggle-container-1 {
 		-webkit-transform: translateY(10px);
 		transform: translateY(10px);

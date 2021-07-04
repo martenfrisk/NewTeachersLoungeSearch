@@ -73,8 +73,10 @@ export const client = new MeiliSearch({
 	apiKey: MeiliKey
 });
 
-export async function searchMeili(query: string, filter = '', isSSR = false): Promise<MeiliResult> {
+export async function searchMeili(query: string, filter = [], isSSR = false): Promise<MeiliResult> {
 	const index = client.index('teachers');
+	console.log({ filter });
+
 	const urlParams = new URLSearchParams(`s=${query}`);
 
 	if (!isSSR && history.pushState) {
@@ -86,19 +88,19 @@ export async function searchMeili(query: string, filter = '', isSSR = false): Pr
 			'?' +
 			urlParams;
 
-		if (filter !== '') newUrl = `${newUrl}&f=${filter.replace(' = ', '=')}`;
+		if (filter.length > 0) newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
 		window.history.pushState({ path: newUrl }, '', newUrl);
 	}
 
 	const data =
-		filter === ''
+		filter.length > 0
 			? await index.search(query, {
 					attributesToHighlight: ['line'],
+					filters: filter.length > 1 ? filter.join(' OR ') : filter.toString(),
 					facetsDistribution: ['season', 'episode']
 			  })
 			: await index.search(query, {
 					attributesToHighlight: ['line'],
-					filters: filter,
 					facetsDistribution: ['season', 'episode']
 			  });
 

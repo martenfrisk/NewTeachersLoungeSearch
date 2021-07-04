@@ -26,7 +26,7 @@
 	function epName(episode: string) {
 		return epList.find((x) => x.ep === episode);
 	}
-	export let query: string, hits: SearchHit[], filter: string;
+	export let query: string, hits: SearchHit[], filter: string[];
 
 	async function search() {
 		await searchMeili(query, filter).then((data) => {
@@ -37,16 +37,16 @@
 	$: stats;
 	async function addToFilter(filterName: string, filterValue: string) {
 		const combinedFilter = `${filterName} = ${filterValue}`;
-		filter === combinedFilter ? (filter = '') : (filter = combinedFilter);
+		filter.includes(combinedFilter) ? filter = filter.filter(x => x !== combinedFilter) : filter.push(combinedFilter)
 		await search();
 	}
 	async function clearFilter() {
-		filter = '';
+		filter = [];
 		await search();
 	}
 	const getNewRandom = async () => {
 		query = newRandom();
-		filter = '';
+		filter = [];
 		await search();
 	};
 	onMount(async () => {
@@ -63,7 +63,7 @@
 					window.location.pathname +
 					'?' +
 					urlParams;
-				if (filter !== '') newUrl = `${newUrl}&f=${filter.replace(' ', '')}`;
+		if (filter.length > 0) newUrl = `${newUrl}&f=${filter.map(x => x.replace(' = ', '=')).join(',')}`;
 				window.history.pushState({ path: newUrl }, '', newUrl);
 			}
 		}
@@ -91,29 +91,29 @@
 	<div class="w-full flex flex-col flex-wrap px-6 my-2 gap-2">
 		<details>
 			<summary class="cursor-pointer ">
-				<span class="hover:underline"> Narrow down your search </span>
-				{#if filter !== ''}
-					<span class="italic ml-2" on:click={clearFilter}>clear filter</span>
+				<span class="hover:underline"> Filter by season or episode </span>
+				{#if filter.length > 0}
+					<span class="ml-2 border-b border-gray-500 border-dotted text-sm text-gray-700" on:click={clearFilter}>(clear filters)</span>
 				{/if}
 			</summary>
 
 			<div class="flex w-full my-2 gap-2">
-				<span>by season:</span>
+				<span>season:</span>
 				{#each stats.facets.find((x) => x.facetName === 'season').facetHits as facet}
 					<button
 						class={`border border-blue-500 px-2 py-px focus:outline-none focus:border-black rounded-lg ${
-							filter === `season = ${facet.ep}` ? 'bg-blue-500 text-white' : 'bg-white text-black'
+							filter.includes(`season = ${facet.ep}`) ? 'bg-blue-500 text-white' : 'bg-white text-black'
 						}`}
 						on:click={() => addToFilter('season', facet.ep)}>{facet.ep}&nbsp;({facet.hits})</button
 					>
 				{/each}
 			</div>
 			<div class="flex w-full gap-2">
-				<span>by episode:</span>
+				<span>episode:</span>
 				{#each stats.facets.find((x) => x.facetName === 'episode').facetHits as facet}
 					<button
 						class={`border border-blue-500 px-2 py-px rounded-lg ${
-							filter === `episode = ${facet.ep}` ? 'bg-blue-500 text-white' : 'bg-white text-black'
+							filter.includes(`episode = ${facet.ep}`) ? 'bg-blue-500 text-white' : 'bg-white text-black'
 						}`}
 						on:click={() => addToFilter('episode', facet.ep)}>{facet.ep}&nbsp;({facet.hits})</button
 					>
@@ -125,7 +125,7 @@
 {#if query !== '' && stats?.nbHits > 0}
 	<p class="mt-6 mb-8">
 		{stats.nbHits} hits for <em>{query}</em>
-		{filter !== '' ? ` in ${filter.replace('=', '')}` : ''}
+		{filter.length > 0 ? ` in ${filter.map(x => x.replace('=', '')).join(', ')}` : ''}
 
 		<span class="text-sm">(results retrieved in {stats.processingTime}ms)</span>
 	</p>

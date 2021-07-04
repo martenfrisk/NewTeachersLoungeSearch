@@ -5,8 +5,15 @@
 	 */
 	export async function load({ page }) {
 		let qs = page.query.get('s');
-		let filter = '';
-		if (page.query.get('f')) filter = page.query.get('f').replace('=', ' = ');
+		let filter = [];
+
+		console.log('filter before', page.query.getAll('f'));
+		if (page.query.has('f'))
+			filter = page.query
+				.get('f')
+				.split(',')
+				.map((x) => x.replace('=', ' = '));
+		console.log('filter after', filter);
 		if (qs === '') {
 			qs = newRandom();
 		}
@@ -26,7 +33,7 @@
 	import Search from '$lib/Search/index.svelte';
 	import { newRandom, searchMeili, client } from '$lib/Search/utils';
 	import type { SearchResult } from '$lib/types';
-	export let query: string, hits: SearchResult['hits'], filter: string;
+	export let query: string, hits: SearchResult['hits'], filter: string[];
 </script>
 
 <Search {query} {hits} {filter} />

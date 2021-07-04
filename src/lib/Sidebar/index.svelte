@@ -69,6 +69,26 @@
 			<div>
 				<div>
 					<p class="my-4">
+						Welcome to the new and improved Seekers' Lounge. Now at a more memorable address:
+						<a href="https://teacherslounge.pcast.site" class="text-blue-800 underline">
+							https://teacherslounge.pcast.site
+						</a>
+					</p>
+					<p class="my-4">
+						This is an unofficial fan website where you can search through the transcripts of all
+						episodes to find your favorite bit.
+					</p>
+					<p class="my-4">
+						Listen to the free episodes wherever you get your podcast or subscribe to Stitcher
+						Premium to unlock all seasons. 
+					</p>
+					<p>
+						At <a
+							class="text-blue-800 underline"
+							href="https://www.stitcherpremium.com/teacher">stitcherpremium.com/teacher</a
+						> you can sign up for a free trial!
+					</p>
+					<p class="my-4">
 						Transcripts are unedited. Speakers not identified. Intro has been removed so add ~30
 						seconds for accurate timestamp.
 					</p>
