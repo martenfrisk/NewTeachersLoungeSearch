@@ -7,13 +7,11 @@
 		let qs = page.query.get('s');
 		let filter = [];
 
-		console.log('filter before', page.query.getAll('f'));
 		if (page.query.has('f'))
 			filter = page.query
 				.get('f')
 				.split(',')
 				.map((x: string) => x.replace('=', ' = '));
-		console.log('filter after', filter);
 		if (qs === '') {
 			qs = newRandom();
 		}

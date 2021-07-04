@@ -129,7 +129,7 @@
 							court (or message me on reddit, u/martanor)
 						</p>
 						<p>
-							Build with Svelte Kit, powered by Algolia or Elasticsearch, styled using Tailwind CSS.
+							Build with Svelte Kit, powered by MeiliSearch, styled with Tailwind CSS.
 						</p>
 					</div>
 				{/if}

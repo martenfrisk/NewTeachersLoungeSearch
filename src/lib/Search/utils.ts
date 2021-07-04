@@ -75,7 +75,6 @@ export const client = new MeiliSearch({
 
 export async function searchMeili(query: string, filter = [], isSSR = false): Promise<MeiliResult> {
 	const index = client.index('teachers');
-	console.log({ filter });
 
 	const urlParams = new URLSearchParams(`s=${query}`);
 
