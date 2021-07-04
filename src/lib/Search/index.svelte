@@ -1,30 +1,26 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { SearchHit, SearchResult } from '$lib/types';
+	import type { SearchHit, SearchResult, Stats } from '$lib/types';
 	import { newRandom, searchMeili, throttle, timeToUrl } from './utils';
 	import type { MeiliResult } from './utils';
 	import epList from '../../assets/episodes.json';
+
 	if (!String.prototype.replaceAll) {
 		String.prototype.replaceAll = function (str, newStr) {
-			// If a regex pattern
 			if (Object.prototype.toString.call(str).toLowerCase() === '[object regexp]') {
 				return this.replace(str, newStr);
 			}
-
-			// If a string
 			return this.replace(new RegExp(str, 'g'), newStr);
 		};
 	}
-	// let query = '';
-	let stats: {
-		nbHits: SearchResult['nbHits'];
-		processingTime: SearchResult['processingTimeMs'];
-		facets: MeiliResult['stats']['facets'];
-	};
+
+	export let query: string, hits: SearchHit[], filter: string[], stats: Stats;
+
 	function epName(episode: string) {
 		return epList.find((x) => x.ep === episode);
 	}
-	export let query: string, hits: SearchHit[], filter: string[];
+	$: stats;
+	$: filter;
 
 	async function search() {
 		await searchMeili(query, filter).then((data) => {
@@ -32,7 +28,7 @@
 			stats = data.stats;
 		});
 	}
-	$: stats;
+
 	async function addToFilter(filterName: string, filterValue: string) {
 		const combinedFilter = `${filterName} = ${filterValue}`;
 		filter.includes(combinedFilter)
@@ -88,19 +84,18 @@
 		on:click={getNewRandom}>Random search</button
 	>
 </div>
-{#if stats}
-	<div class="w-full flex flex-col flex-wrap px-6 my-2 gap-2">
-		<details>
-			<summary class="cursor-pointer ">
-				<span class="hover:underline"> Filter by season or episode </span>
-				{#if filter.length > 0}
-					<span
-						class="ml-2 border-b border-gray-500 border-dotted text-sm text-gray-700"
-						on:click={clearFilter}>(clear filters)</span
-					>
-				{/if}
-			</summary>
-
+<div class="w-full flex flex-col flex-wrap px-6 my-2 gap-2">
+	<details>
+		<summary class="cursor-pointer ">
+			<span class="hover:underline"> Filter by season or episode </span>
+			{#if filter.length > 0}
+				<span
+					class="ml-2 border-b border-gray-500 border-dotted text-sm text-gray-700"
+					on:click={clearFilter}>(clear filter)</span
+				>
+			{/if}
+		</summary>
+		{#if stats.facets}
 			<div class="flex w-full my-2 gap-2">
 				<span>season:</span>
 				{#each stats.facets.find((x) => x.facetName === 'season').facetHits as facet}
@@ -127,13 +122,13 @@
 					>
 				{/each}
 			</div>
-		</details>
-	</div>
-{/if}
+		{/if}
+	</details>
+</div>
 {#if query !== '' && stats?.nbHits > 0}
 	<p class="mt-6 mb-8">
 		{stats.nbHits} hits for <em>{query}</em>
-		{filter.length > 0 ? ` in ${filter.map((x) => x.replace('=', '')).join(', ')}` : ''}
+		{filter.length > 0 ? ` in ${filter.map((x) => x.replace('=', '').replace(',', ', '))}` : ''}
 
 		<span class="text-sm">(results retrieved in {stats.processingTime}ms)</span>
 	</p>

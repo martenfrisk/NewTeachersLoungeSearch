@@ -131,3 +131,15 @@ export interface EpisodeInfo {
 	description: string;
 	isoDate: Date;
 }
+
+export interface Stats {
+	nbHits: SearchResult['nbHits'];
+	processingTime: SearchResult['processingTimeMs'];
+	facets: {
+		facetName: string;
+		facetHits: {
+			ep: string;
+			hits: number;
+		}[];
+	}[];
+}

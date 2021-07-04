@@ -12,15 +12,16 @@
 				.get('f')
 				.split(',')
 				.map((x: string) => x.replace('=', ' = '));
-		if (qs === '') {
+		if (!page.query.has('s')) {
 			qs = newRandom();
 		}
 
-		const { hits } = await searchMeili(qs, filter, true);
+		const { hits, stats } = await searchMeili(qs, filter, true);
 		return {
 			props: {
 				query: qs || '',
 				hits: hits || [],
+				stats: stats || {},
 				filter
 			}
 		};
@@ -30,8 +31,8 @@
 <script lang="ts">
 	import Search from '$lib/Search/index.svelte';
 	import { newRandom, searchMeili } from '$lib/Search/utils';
-	import type { SearchResult } from '$lib/types';
-	export let query: string, hits: SearchResult['hits'], filter: string[];
+	import type { SearchResult, Stats } from '$lib/types';
+	export let query: string, hits: SearchResult['hits'], filter: string[], stats: Stats;
 </script>
 
-<Search {query} {hits} {filter} />
+<Search {query} {hits} {filter} {stats} />

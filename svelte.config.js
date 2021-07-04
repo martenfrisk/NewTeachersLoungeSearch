@@ -15,10 +15,6 @@ const config = {
 		// hydrate the <div id="svelte"> element in src/app.html
 		adapter: vercel({ out: 'build' }),
 		target: '#svelte',
-		prerender: {
-			pages: ['/', '/episodes']
-		},
-
 	}
 };
 
