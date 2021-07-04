@@ -14,7 +14,8 @@
 		};
 	}
 
-	export let query: string, hits: SearchHit[], filter: string[], stats: Stats;
+	export let query: string
+	let hits: SearchHit[], filter: string[], stats: Stats;
 
 	function epName(episode: string) {
 		return epList.find((x) => x.ep === episode);
@@ -46,24 +47,24 @@
 		await search();
 	};
 	onMount(async () => {
-		// if (query === '') {
-		// 	query = newRandom();
+		if (query === '') {
+			query = newRandom();
 
-		// 	const urlParams = new URLSearchParams(`s=${query}`);
+			const urlParams = new URLSearchParams(`s=${query}`);
 
-		// 	if (history.pushState) {
-		// 		let newUrl =
-		// 			window.location.protocol +
-		// 			'//' +
-		// 			window.location.host +
-		// 			window.location.pathname +
-		// 			'?' +
-		// 			urlParams;
-		// 		if (filter.length > 0)
-		// 			newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
-		// 		window.history.pushState({ path: newUrl }, '', newUrl);
-		// 	}
-		// }
+			if (history.pushState) {
+				let newUrl =
+					window.location.protocol +
+					'//' +
+					window.location.host +
+					window.location.pathname +
+					'?' +
+					urlParams;
+				if (filter && filter.length > 0)
+					newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
+				window.history.pushState({ path: newUrl }, '', newUrl);
+			}
+		}
 		await search();
 	});
 </script>
@@ -88,20 +89,20 @@
 	<details>
 		<summary class="cursor-pointer ">
 			<span class="hover:underline"> Filter by season or episode </span>
-			{#if filter.length > 0}
+			{#if filter?.length > 0}
 				<span
 					class="ml-2 border-b border-gray-500 border-dotted text-sm text-gray-700"
 					on:click={clearFilter}>(clear filter)</span
 				>
 			{/if}
 		</summary>
-		{#if stats.facets}
+		{#if stats?.facets}
 			<div class="flex w-full my-2 gap-2">
 				<span>season:</span>
 				{#each stats.facets.find((x) => x.facetName === 'season').facetHits as facet}
 					<button
 						class={`border border-blue-500 px-2 py-px focus:outline-none focus:border-black rounded-lg ${
-							filter.includes(`season = ${facet.ep}`)
+							filter?.includes(`season = ${facet.ep}`)
 								? 'bg-blue-500 text-white'
 								: 'bg-white text-black'
 						}`}
@@ -114,7 +115,7 @@
 				{#each stats.facets.find((x) => x.facetName === 'episode').facetHits as facet}
 					<button
 						class={`border border-blue-500 px-2 py-px rounded-lg ${
-							filter.includes(`episode = ${facet.ep}`)
+							filter?.includes(`episode = ${facet.ep}`)
 								? 'bg-blue-500 text-white'
 								: 'bg-white text-black'
 						}`}
@@ -128,7 +129,7 @@
 {#if query !== '' && stats?.nbHits > 0}
 	<p class="mt-6 mb-8">
 		{stats.nbHits} hits for <em>{query}</em>
-		{filter.length > 0 ? ` in ${filter.map((x) => x.replace('=', '').replace(',', ', '))}` : ''}
+		{filter?.length > 0 ? ` in ${filter.map((x) => x.replace('=', '').replace(',', ', '))}` : ''}
 
 		<span class="text-sm">(results retrieved in {stats.processingTime}ms)</span>
 	</p>
