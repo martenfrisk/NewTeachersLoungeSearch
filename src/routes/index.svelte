@@ -4,10 +4,16 @@
 	 * @type {import('@sveltejs/kit').Load}
 	 */
 	export async function load({ page }) {
+		console.log(page)
+		
 		const qs = page.query.get('s');
+		const filter = page.query.get('f');
+		console.log(qs)
+		
 		return {
 			props: {
-				query: qs,
+				query: qs || '',
+				filter: filter || []
 			}
 		};
 	}
@@ -15,7 +21,7 @@
 
 <script lang="ts">
 	import Search from '$lib/Search.svelte';
-	export let query: string;
+	export let query: string, filter: any[];
 </script>
 
-<Search {query} />
+<Search {query} {filter} />

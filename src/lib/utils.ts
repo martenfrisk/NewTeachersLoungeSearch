@@ -78,11 +78,13 @@ export async function searchMeili(query: string, filter = [], isSSR = false): Pr
 
 	if (!isSSR && history.pushState && query !== '') {
 		const urlParams = new URLSearchParams(`s=${query}`);
+		console.log('pathname', window.location.pathname)
+		console.log(urlParams.toString())
+		
 		let newUrl =
 			window.location.protocol +
 			'//' +
-			window.location.host +
-			window.location.pathname +
+			window.location.host.replace('/','') +
 			'?' +
 			urlParams;
 

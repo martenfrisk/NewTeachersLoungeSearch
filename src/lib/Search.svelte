@@ -14,8 +14,8 @@
 		};
 	}
 
-	export let query: string;
-	let hits: SearchHit[], filter: string[], stats: Stats;
+	export let query: string, filter: string[];
+	let hits: SearchHit[], stats: Stats;
 
 	function epName(episode: string) {
 		return epList.find((x) => x.ep === episode);
@@ -51,15 +51,12 @@
 			query = newRandom();
 
 			const urlParams = new URLSearchParams(`s=${query}`);
+			console.log(urlParams)
+			
+			console.log(window.location);
 
 			if (history.pushState) {
-				let newUrl =
-					window.location.protocol +
-					'//' +
-					window.location.host +
-					window.location.pathname +
-					'?' +
-					urlParams;
+				let newUrl = window.location.protocol + '//' + window.location.host.replace('/','') + '?' + `s=${query}`;
 				if (filter && filter.length > 0)
 					newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
 				window.history.pushState({ path: newUrl }, '', newUrl);
