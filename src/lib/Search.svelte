@@ -23,7 +23,7 @@
 	}
 	$: stats;
 	$: filter = $page.query.getAll('f') || [];
-	$: query = $page.query.get('s') || '';
+	$: query = '';
 
 	async function search() {
 		await searchMeili(query, filter).then((data) => {
@@ -50,7 +50,8 @@
 	};
 	onMount(async () => {
 		setTimeout(() => {
-			if (!$page.query.has('s')) {
+			query = $page.query.get('s') || ''
+			if (query === '') {
 				query = newRandom();
 	
 				const urlParams = new URLSearchParams(`s=${query}`);
