@@ -14,7 +14,11 @@ const config = {
 	kit: {
 		// hydrate the <div id="svelte"> element in src/app.html
 		adapter: vercel({ out: 'build' }),
-		target: '#svelte'
+		target: '#svelte',
+		prerender: {
+			pages: ['/', '/episodes']
+		},
+
 	}
 };
 
