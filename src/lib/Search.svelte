@@ -14,7 +14,7 @@
 		};
 	}
 
-	export let query: string, filter: string[];
+	export let query: string, filter: string[], page: any;
 	let hits: SearchHit[], stats: Stats;
 
 	function epName(episode: string) {
@@ -47,7 +47,7 @@
 		await search();
 	};
 	onMount(async () => {
-		if (query === '') {
+		if (!page.query.has('s')) {
 			query = newRandom();
 
 			const urlParams = new URLSearchParams(`s=${query}`);
