@@ -22,7 +22,7 @@
 		return epList.find((x) => x.ep === episode);
 	}
 	$: stats;
-	$: filter = $page.query.getAll('f') || [];
+	$: filter = [];
 	$: query = '';
 
 	async function search() {
@@ -37,6 +37,7 @@
 		filter.includes(combinedFilter)
 			? (filter = filter.filter((x) => x !== combinedFilter))
 			: filter.push(combinedFilter);
+			
 		await search();
 	}
 	async function clearFilter() {
@@ -50,7 +51,11 @@
 	};
 	onMount(async () => {
 		setTimeout(() => {
-			query = $page.query.get('s') || '';
+			if (location !== undefined) {
+				query = new URLSearchParams(location.search).get('s') || ''
+				filter = new URLSearchParams(location.search).get('f').replaceAll('=', ' = ').split(',') || []
+				
+			}
 			if (query === '') {
 				query = newRandom();
 
