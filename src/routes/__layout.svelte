@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import Sidebar from '$lib/Sidebar/index.svelte';
+	import Sidebar from '$lib/Sidebar.svelte';
 </script>
 
 <svelte:head>

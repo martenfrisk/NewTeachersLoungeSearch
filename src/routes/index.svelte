@@ -29,8 +29,8 @@
 </script>
 
 <script lang="ts">
-	import Search from '$lib/Search/index.svelte';
-	import { newRandom, searchMeili } from '$lib/Search/utils';
+	import Search from '$lib/Search.svelte';
+	import { newRandom, searchMeili } from '$lib/utils';
 	import type { SearchResult, Stats } from '$lib/types';
 	export let query: string, hits: SearchResult['hits'], filter: string[], stats: Stats;
 </script>

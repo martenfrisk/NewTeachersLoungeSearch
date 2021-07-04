@@ -3,7 +3,7 @@
 	import type { SearchHit, SearchResult, Stats } from '$lib/types';
 	import { newRandom, searchMeili, throttle, timeToUrl } from './utils';
 	import type { MeiliResult } from './utils';
-	import epList from '../../assets/episodes.json';
+	import epList from '../assets/episodes.json';
 
 	if (!String.prototype.replaceAll) {
 		String.prototype.replaceAll = function (str, newStr) {
@@ -46,24 +46,24 @@
 		await search();
 	};
 	onMount(async () => {
-		if (query === '') {
-			query = newRandom();
+		// if (query === '') {
+		// 	query = newRandom();
 
-			const urlParams = new URLSearchParams(`s=${query}`);
+		// 	const urlParams = new URLSearchParams(`s=${query}`);
 
-			if (history.pushState) {
-				let newUrl =
-					window.location.protocol +
-					'//' +
-					window.location.host +
-					window.location.pathname +
-					'?' +
-					urlParams;
-				if (filter.length > 0)
-					newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
-				window.history.pushState({ path: newUrl }, '', newUrl);
-			}
-		}
+		// 	if (history.pushState) {
+		// 		let newUrl =
+		// 			window.location.protocol +
+		// 			'//' +
+		// 			window.location.host +
+		// 			window.location.pathname +
+		// 			'?' +
+		// 			urlParams;
+		// 		if (filter.length > 0)
+		// 			newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
+		// 		window.history.pushState({ path: newUrl }, '', newUrl);
+		// 	}
+		// }
 		await search();
 	});
 </script>

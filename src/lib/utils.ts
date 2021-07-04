@@ -4,7 +4,7 @@ import { MeiliKey } from '$lib/Env';
 import type { SearchResult } from '$lib/types';
 import { MeiliSearch } from 'meilisearch';
 
-import epList from '../../assets/episodes.json';
+import epList from '../assets/episodes.json';
 type throttleFunction = (args: any) => void;
 export const throttle = (delay: number, fn: throttleFunction): throttleFunction => {
 	let inDebounce = null;
@@ -76,9 +76,8 @@ export const client = new MeiliSearch({
 export async function searchMeili(query: string, filter = [], isSSR = false): Promise<MeiliResult> {
 	const index = client.index('teachers');
 
-	const urlParams = new URLSearchParams(`s=${query}`);
-
-	if (!isSSR && history.pushState) {
+	if (!isSSR && history.pushState && query !== '') {
+		const urlParams = new URLSearchParams(`s=${query}`);
 		let newUrl =
 			window.location.protocol +
 			'//' +
