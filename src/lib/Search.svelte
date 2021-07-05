@@ -15,15 +15,15 @@
 		};
 	}
 
-	// export let query: string, filter: string[];
-	let hits: SearchHit[], stats: Stats;
+	export let query: string, filter: string[], hits: SearchHit[];
+	let stats: Stats;
 
 	function epName(episode: string) {
 		return epList.find((x) => x.ep === episode);
 	}
 	$: stats;
-	$: filter = [];
-	$: query = '';
+	$: filter = filter;
+	$: query = query;
 
 	async function search() {
 		await searchMeili(query, filter).then((data) => {
@@ -36,8 +36,8 @@
 		const combinedFilter = `${filterName} = ${filterValue}`;
 		filter.includes(combinedFilter)
 			? (filter = filter.filter((x) => x !== combinedFilter))
-			: filter.push(combinedFilter);
-			
+			: (filter = [combinedFilter, ...filter]);
+
 		await search();
 	}
 	async function clearFilter() {
@@ -52,9 +52,9 @@
 	onMount(async () => {
 		setTimeout(() => {
 			if (location !== undefined) {
-				query = new URLSearchParams(location.search).get('s') || ''
-				filter = new URLSearchParams(location.search).get('f')?.replaceAll('=', ' = ').split(',') || []
-				
+				query = new URLSearchParams(location.search).get('s') || '';
+				filter =
+					new URLSearchParams(location.search).get('f')?.replaceAll('=', ' = ').split(',') || [];
 			}
 			if (query === '') {
 				query = newRandom();
@@ -79,8 +79,8 @@
 	});
 </script>
 
-<div class="w-full flex-wrap flex items-center my-4 px-6">
-	<div class="w-full pl-4">
+<div class="w-full flex-wrap flex justify-center md:items-center my-4 px-6">
+	<div class="w-full md:pl-4">
 		<label for="search" class="text-sm">Search</label>
 	</div>
 	<input
@@ -91,7 +91,7 @@
 		on:keyup={search}
 	/>
 	<button
-		class="w-1/2 md:w-1/5 h-12 rounded-l-md bg-blue-50 text-blue-800 font-semibold rounded-r-md md:rounded-l-none border-blue-500 border-2 px-2 text-sm md:text-base py-2 hover:bg-blue-500 hover:text-white hover:border-white shadow-md"
+		class="w-1/2 md:w-1/5 md:h-12 rounded-l-md bg-blue-50 text-blue-800 font-semibold rounded-r-md md:rounded-l-none border-blue-500 border-2 px-2 text-sm md:text-base py-2 hover:bg-blue-500 hover:text-white hover:border-white shadow-md"
 		on:click={getNewRandom}>Random search</button
 	>
 </div>
@@ -107,11 +107,11 @@
 			{/if}
 		</summary>
 		{#if stats?.facets}
-			<div class="flex w-full my-2 gap-2">
-				<span>season:</span>
+			<div class="flex w-5/6 flex-wrap max-w-screen my-2 gap-2">
+				<span class="block w-full md:inline md:w-auto">season:</span>
 				{#each stats.facets.find((x) => x.facetName === 'season').facetHits as facet}
 					<button
-						class={`border border-blue-500 px-2 py-px focus:outline-none focus:border-black rounded-lg ${
+						class={`border border-blue-500 px-2 py-px focus:outline-none text-sm md:text-base  focus:border-black rounded-lg ${
 							filter?.includes(`season = ${facet.ep}`)
 								? 'bg-blue-500 text-white'
 								: 'bg-white text-black'
@@ -120,11 +120,11 @@
 					>
 				{/each}
 			</div>
-			<div class="flex w-full gap-2">
-				<span>episode:</span>
+			<div class="flex w-5/6 flex-wrap max-w-screen my-2 gap-2">
+				<span class="block w-full md:inline md:w-auto">episode:</span>
 				{#each stats.facets.find((x) => x.facetName === 'episode').facetHits as facet}
 					<button
-						class={`border border-blue-500 px-2 py-px rounded-lg ${
+						class={`border border-blue-500 px-2 py-px text-sm md:text-base rounded-lg ${
 							filter?.includes(`episode = ${facet.ep}`)
 								? 'bg-blue-500 text-white'
 								: 'bg-white text-black'
@@ -136,10 +136,15 @@
 		{/if}
 	</details>
 </div>
-{#if query !== '' && stats?.nbHits > 0}
-	<p class="mt-6 mb-8">
+{#if stats?.nbHits > 0}
+	<p class="md:mt-6 md:mb-8 text-center">
 		{stats.nbHits} hits for <em>{query}</em>
-		{filter?.length > 0 ? ` in ${filter.map((x) => x.replace('=', '').replace(',', ', '))}` : ''}
+		{#if filter?.length > 0}
+			<span class="text-sm w-full block md:inline md:w-auto">
+				&nbsp;in&nbsp;
+				{filter.map((x) => x.replace('=', '')).join(', ')}
+			</span>
+		{/if}
 
 		<span class="text-sm">(results retrieved in {stats.processingTime}ms)</span>
 	</p>
@@ -150,13 +155,13 @@
 {/if}
 {#if hits}
 	{#each hits as hit}
-		<div class="w-full px-4 pt-4 pb-6 mb-6 shadow-md hover:bg-blue-50">
+		<div class="w-full px-4 pt-4 pb-6 mb-6 shadow-xl rounded-md border border-blue-200 md:shadow-md hover:bg-blue-50">
 			<div class="flex flex-wrap items-center justify-between w-full mb-2">
-				<div class="flex items-center">
+				<div class="flex md:items-center flex-col md:flex-row">
 					<div class="mr-2 text-sm text-gray-800 uppercase">{epName(hit.episode).ep}</div>
 					<div class="text-sm text-gray-900 md:text-base">{epName(hit.episode).title}</div>
 				</div>
-				<div class="flex items-center font-mono text-right text-gray-600">
+				<div class="flex items-center justify-between w-full md:w-auto mt-2 md:mt-0 font-mono text-right text-gray-600">
 					<div class="mr-2 font-sans text-black">{hit.speaker}</div>
 					<div class="mr-2 font-sans text-right text-blue-600 border-b-2 border-dotted">
 						<a
@@ -178,7 +183,7 @@
 					{/if}
 				</div>
 			</div>
-			<div class="py-2 pl-4 mt-4 border-l-2 border-gray-400 md:text-lg">
+			<div class="py-2 pr-2 pl-2 md:pr-0 md:pl-4 mt-4 border-l-2 border-gray-400 md:text-lg">
 				<p>{@html hit._formatted.line}</p>
 			</div>
 		</div>
