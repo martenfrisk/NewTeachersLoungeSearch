@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { SearchHit, SearchResult, Stats } from '$lib/types';
+	import type { SearchHit, Stats } from '$lib/types';
 	import { newRandom, searchMeili, throttle, timeToUrl } from './utils';
-	import { page } from '$app/stores';
-	import type { MeiliResult } from './utils';
 	import epList from '../assets/episodes.json';
 
 	if (!String.prototype.replaceAll) {
@@ -88,7 +86,7 @@
 		type="text"
 		id="search"
 		bind:value={query}
-		on:keyup={search}
+		on:keyup={throttle(300, search)}
 	/>
 	<button
 		class="w-1/2 md:w-1/5 md:h-12 rounded-l-md bg-blue-50 text-blue-800 font-semibold rounded-r-md md:rounded-l-none border-blue-500 border-2 px-2 text-sm md:text-base py-2 hover:bg-blue-500 hover:text-white hover:border-white shadow-md"
@@ -137,7 +135,7 @@
 	</details>
 </div>
 {#if stats?.nbHits > 0}
-	<p class="md:mt-6 md:mb-8 text-center">
+	<p class="md:mt-6 md:mb-8">
 		{stats.nbHits} hits for <em>{query}</em>
 		{#if filter?.length > 0}
 			<span class="text-sm w-full block md:inline md:w-auto">

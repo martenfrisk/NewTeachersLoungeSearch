@@ -3,16 +3,14 @@
 	 * @type {import('@sveltejs/kit').Load}
 	 */
 	export async function load({ page }) {
-		let query = page.query.get('s') || '';
-		const filter = page.query.get('f').split(',') || [];
-		console.log(filter)
-		
+		let query = await page.query.get('s') || '';
+		let filter = await page.query.get('f')?.split(',') || [];
 		if (query === '') query = newRandom();
-		const { hits } = await searchMeili(query, filter, true);
+		const { hits } = await searchMeili(query, filter !== [] && filter, true);
 		return {
-			query,
-			filter,
-			hits
+			query: query,
+			filter: filter,
+			hits: hits
 		};
 	}
 </script>
