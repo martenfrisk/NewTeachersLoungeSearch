@@ -5,7 +5,7 @@
 		return {
 			props: {
 				episode: id,
-				query: page.query
+				query: page.query || ""
 			}
 		};
 	}
@@ -66,7 +66,7 @@
 	<p class="mb-6">Use your browser's "Find in Page" function to search here (CTRL+F or CMD+F).</p>
 	<div class="text-lg text-gray-700 uppercase">{epName(episode).ep}</div>
 	<div class="text-lg text-gray-800 md:text-xl">{epName(episode).title}</div>
-	<p class="my-8 px-4 md:mr-10">{epName(episode).desc}</p>
+	<p class="px-4 my-8 md:mr-10">{epName(episode).desc}</p>
 	{#if hits}
 		{#each hits.default as hit}
 			<div

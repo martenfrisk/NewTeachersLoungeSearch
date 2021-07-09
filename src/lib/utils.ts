@@ -1,10 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-
 import { MeiliKey } from '$lib/Env';
 import type { SearchResult } from '$lib/types';
 import { MeiliSearch } from 'meilisearch';
 
 import epList from '../assets/episodes.json';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type throttleFunction = (args: any) => void;
 export const throttle = (delay: number, fn: throttleFunction): throttleFunction => {
 	let inDebounce = null;
@@ -73,34 +72,56 @@ export const client = new MeiliSearch({
 	apiKey: MeiliKey
 });
 
-export async function searchMeili(query: string, filter: string[], isSSR = false): Promise<MeiliResult> {
+export async function searchMeili(
+	query: string,
+	filter: string[],
+	isSSR = false,
+	filterEdited = false
+): Promise<MeiliResult> {
 	const index = client.index('teachers');
 	if (!isSSR && history.pushState && query !== '') {
 		const urlParams = new URLSearchParams(`s=${query}`);
-		
+
 		let newUrl =
-			window.location.protocol +
-			'//' +
-			window.location.host.replace('/','') +
-			'?' +
-			urlParams;
+			window.location.protocol + '//' + window.location.host.replace('/', '') + '?' + urlParams;
 
 		if (filter.length > 0)
 			newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
+		if (filterEdited) newUrl = `${newUrl}&edited=true`;
 		window.history.pushState({ path: newUrl }, '', newUrl);
 	}
-
-	const data =
-		filter.length > 0
-			? await index.search(query, {
-					attributesToHighlight: ['line'],
-					filters: filter.length > 1 ? filter.join(' OR ') : filter.toString(),
-					facetsDistribution: ['season', 'episode']
-			  })
-			: await index.search(query, {
-					attributesToHighlight: ['line'],
-					facetsDistribution: ['season', 'episode']
-			  });
+	let data: SearchResult;
+	// only edited & no filters
+	if (filterEdited && filter.length == 0) {
+		data = await index.search(query, {
+			attributesToHighlight: ['line'],
+			filters: 'edited=true',
+			facetsDistribution: ['season', 'episode']
+		});
+	} else if (filterEdited && filter.length > 0) {
+		// only edited & filters
+		data = await index.search(query, {
+			attributesToHighlight: ['line'],
+			filters:
+				(filter.length > 1 ? filter.join(' OR ') : filter.toString()) +
+				(filterEdited ? ' AND edited=true' : 'edited=true'),
+			facetsDistribution: ['season', 'episode']
+		});
+	} else if (!filterEdited && filter.length > 0) {
+		// not only edited & filters
+		data = await index.search(query, {
+			attributesToHighlight: ['line'],
+			filters:
+				(filter.length > 1 ? filter.join(' OR ') : filter.toString()) +
+				(filterEdited ? 'AND edited=true' : 'edited=true'),
+			facetsDistribution: ['season', 'episode']
+		});
+	} else {
+		data = await index.search(query, {
+			attributesToHighlight: ['line'],
+			facetsDistribution: ['season', 'episode']
+		});
+	}
 
 	const facets = [];
 	interface FacetHit {

@@ -27,7 +27,7 @@
 		<Coffee />
 		<div class="flex flex-col justify-end">
 			<a href="/" class="text-gray-700"> Seekers&apos; Lounge </a>
-			<div class="text-xs text-blue-900">a Teachers' Lounge search engine</div>
+			<div class="text-xs text-blue-900">the unofficial Teachers' Lounge search engine</div>
 		</div>
 	</div>
 	<div class="flex">
@@ -64,14 +64,14 @@
 			{/if}
 		</div>
 	</div>
-	<div class="w-full h-auto px-4 py-4 font-sans leading-relaxed text-justify md:px-6">
-		{#if infoView}
+	{#if infoView}
+		<div class="w-full h-auto px-4 py-4 font-sans leading-relaxed text-justify md:px-6">
 			<div>
 				<div>
 					<p class="my-4">
 						Welcome to the new and improved Seekers' Lounge. Now at a more memorable address:
-						<a href="https://teacherslounge.pcast.site" class="text-blue-800 underline">
-							https://teacherslounge.pcast.site
+						<a href="https://seekerslounge.pcast.site" class="text-blue-800 underline">
+							https://seekerslounge.pcast.site
 						</a>
 					</p>
 					<p class="my-4">
@@ -128,12 +128,10 @@
 							holders (probably Big Grande and Earwolf). Want to contact me? I'll see your ass in
 							court (or message me on reddit, u/martanor)
 						</p>
-						<p>
-							Build with Svelte Kit, powered by MeiliSearch, styled with Tailwind CSS.
-						</p>
+						<p>Build with Svelte Kit, powered by MeiliSearch, styled with Tailwind CSS.</p>
 					</div>
 				{/if}
 			</div>
-		{/if}
-	</div>
+		</div>
+	{/if}
 </div>

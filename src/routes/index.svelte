@@ -4,9 +4,10 @@
 	 */
 	export async function load({ page }) {
 		let query = await page.query.get('s') || '';
+		let editedOnly = await page.query.has('edited') || false;
 		let filter = await page.query.get('f')?.split(',') || [];
 		if (query === '') query = newRandom();
-		const { hits } = await searchMeili(query, filter !== [] && filter, true);
+		const { hits } = await searchMeili(query, filter !== [] && filter, true, editedOnly);
 		return {
 			query: query,
 			filter: filter,
