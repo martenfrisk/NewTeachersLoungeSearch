@@ -9,23 +9,9 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!-- Privacy-friendly page view tracker -->
-		<script>
-			if (
-				!sessionStorage.getItem('_swa') &&
-				document.referrer.indexOf(location.protocol + '//' + location.host) !== 0
-			) {
-				fetch(
-					'https://counter.dev/track?' +
-						new URLSearchParams({
-							referrer: document.referrer,
-							screen: screen.width + 'x' + screen.height,
-							user: 'pcast',
-							utcoffset: '2'
-						})
-				);
-			}
-			sessionStorage.setItem('_swa', '1');
-		</script>
+		<script data-goatcounter="https://newseekerslounge.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
 		%svelte.head%
 	</head>
 	<body>
