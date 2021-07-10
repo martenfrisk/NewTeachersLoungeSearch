@@ -65,31 +65,39 @@
 		</div>
 	</div>
 	{#if infoView}
-		<div class="w-full h-auto px-4 py-4 font-sans leading-relaxed text-justify md:px-6">
+		<div class="w-full h-auto px-4 text-sm md:text-base py-2 md:py-4 font-sans leading-relaxed text-justify md:px-6">
 			<div>
-				<div>
-					<p class="my-4">
+				<div class="divide-y flex flex-col divide-blue-200">
+					<p class="py-2 md:py-4 text-left">
 						Welcome to the new and improved Seekers' Lounge. Now at a more memorable address:
 						<a href="https://seekerslounge.pcast.site" class="text-blue-800 underline">
 							https://seekerslounge.pcast.site
 						</a>
 					</p>
-					<p class="my-4">
+					<p class="py-2 md:py-4">
 						This is an unofficial fan website where you can search through the transcripts of all
 						episodes to find your favorite bit.
 					</p>
-					<p class="my-4">
+					<p class="py-2 md:py-4">
 						Listen to the free episodes wherever you get your podcast or subscribe to Stitcher
 						Premium to unlock all seasons.
 					</p>
-					<p>
+					<p class="py-2 md:py-4">
 						At <a class="text-blue-800 underline" href="https://www.stitcherpremium.com/teacher"
 							>stitcherpremium.com/teacher</a
 						> you can sign up for a free trial!
 					</p>
-					<p class="my-4">
+					<p class="py-2 md:py-4">
 						Transcripts are unedited. Speakers not identified. Intro has been removed so add ~30
 						seconds for accurate timestamp.
+					</p>
+					<p class="py-8 text-sm">
+						Seekers' Lounge is free with no ads. If you find it useful you can <a
+							class="border-b border-blue-600 text-blue-600 border-dotted hover:border-solid"
+							href="https://www.buymeacoffee.com/seekerslounge"
+						>
+							buy me a cup
+						</a>of courthouse coffee
 					</p>
 				</div>
 
