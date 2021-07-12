@@ -38,6 +38,8 @@ export const randomQuery = [
 	'bottomless piggy bank',
 	'scarecrow',
 	'south pole santa',
+	'obsessed with corn',
+	'permit crab',
 	'Wimberley',
 	'tricky dick',
 	'picasso',
@@ -47,7 +49,9 @@ export const randomQuery = [
 	'goths',
 	'famously',
 	'oj simpson',
-	"let's just say"
+	"let's just say",
+	'real hair',
+	'refrigerator'
 ];
 
 export const getRandomInt = (max: number): number => Math.floor(Math.random() * Math.floor(max));
