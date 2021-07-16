@@ -80,7 +80,8 @@ export async function searchMeili(
 	query: string,
 	filter: string[],
 	isSSR = false,
-	filterEdited = false
+	filterEdited = false,
+	offset = 0
 ): Promise<MeiliResult> {
 	const index = client.index('teachers');
 	if (!isSSR && history.pushState && query !== '') {
@@ -100,7 +101,9 @@ export async function searchMeili(
 		data = await index.search(query, {
 			attributesToHighlight: ['line'],
 			filters: 'edited=true',
-			facetsDistribution: ['season', 'episode']
+			facetsDistribution: ['season', 'episode'],
+			limit: 20,
+			offset: offset
 		});
 	} else if (filterEdited && filter.length > 0) {
 		// only edited & filters
@@ -109,7 +112,9 @@ export async function searchMeili(
 			filters:
 				(filter.length > 1 ? filter.join(' OR ') : filter.toString()) +
 				(filterEdited ? ' AND edited=true' : 'edited=true'),
-			facetsDistribution: ['season', 'episode']
+			facetsDistribution: ['season', 'episode'],
+			limit: 20,
+			offset: offset
 		});
 	} else if (!filterEdited && filter.length > 0) {
 		// not only edited & filters
@@ -118,12 +123,16 @@ export async function searchMeili(
 			filters:
 				(filter.length > 1 ? filter.join(' OR ') : filter.toString()) +
 				(filterEdited ? 'AND edited=true' : 'edited=true'),
-			facetsDistribution: ['season', 'episode']
+			facetsDistribution: ['season', 'episode'],
+			limit: 20,
+			offset: offset
 		});
 	} else {
 		data = await index.search(query, {
 			attributesToHighlight: ['line'],
-			facetsDistribution: ['season', 'episode']
+			facetsDistribution: ['season', 'episode'],
+			limit: 20,
+			offset: offset
 		});
 	}
 

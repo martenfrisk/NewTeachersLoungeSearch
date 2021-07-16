@@ -24,9 +24,10 @@
 	$: stats;
 	$: filter = filter;
 	$: query = query;
+	let offset = 0;
 
 	async function search() {
-		await searchMeili(query, filter, false, filterEdited).then((data) => {
+		await searchMeili(query, filter, false, filterEdited, offset).then((data) => {
 			hits = data.hits;
 			stats = data.stats;
 		});
@@ -271,6 +272,18 @@
 			</div>
 		</div>
 	{/each}
+	{#if stats?.nbHits > 20}
+	<div class="w-full flex justify-center">
+
+		<button
+		class="px-4 py-2 rounded-md border border-blue-600 text-blue-600 cursor-pointer"
+		on:click={() => {
+			offset = offset + 20;
+			search();
+		}}>Load more</button
+		>
+	</div>
+	{/if}
 {:else}
 	<div class="w-full px-4 pt-4 pb-6 mb-6 shadow-md">
 		<div class="flex flex-col flex-wrap items-start justify-between w-full gap-2 mb-2">
