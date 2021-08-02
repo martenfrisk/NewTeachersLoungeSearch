@@ -27,10 +27,15 @@
 	let offset = 0;
 
 	async function search() {
-		await searchMeili(query, filter, false, filterEdited, offset).then((data) => {
-			hits = data.hits;
-			stats = data.stats;
-		});
+		// await searchMeili(query, filter, false, filterEdited, offset).then((data) => {
+		// 	hits = data.hits;
+		// 	stats = data.stats;
+		// });
+		const data = await fetch(`/search/${query}`)
+		const { results } = await data.json()
+		console.log(results)
+		
+		hits = await results;	
 	}
 
 	async function addToFilter(filterName: string, filterValue: string) {
@@ -167,7 +172,8 @@
 	</p>
 {/if}
 {#if hits}
-	{#each hits as hit}
+<pre>{JSON.stringify(hits, null, 2)}</pre>
+	<!-- {#each hits as hit}
 		<div
 			class="w-full px-4 pt-4 pb-2 mb-6 border border-blue-200 rounded-md shadow-xl md:shadow-md hover:bg-blue-50"
 		>
@@ -271,7 +277,7 @@
 				</div>
 			</div>
 		</div>
-	{/each}
+	{/each} -->
 	{#if stats?.nbHits > 20}
 	<div class="w-full flex justify-center">
 

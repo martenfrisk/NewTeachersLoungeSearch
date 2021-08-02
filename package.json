@@ -11,21 +11,21 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "next",
-		"@sveltejs/kit": "^1.0.0-next.120",
-		"@typescript-eslint/eslint-plugin": "^4.28.1",
-		"@typescript-eslint/parser": "^4.28.1",
-		"autoprefixer": "^10.2.6",
-		"cssnano": "^5.0.6",
-		"eslint": "^7.30.0",
+		"@sveltejs/kit": "^1.0.0-next.140",
+		"@typescript-eslint/eslint-plugin": "^4.28.5",
+		"@typescript-eslint/parser": "^4.28.5",
+		"autoprefixer": "^10.3.1",
+		"cssnano": "^5.0.7",
+		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^3.2.0",
-		"postcss": "^8.3.5",
+		"postcss": "^8.3.6",
 		"postcss-load-config": "^3.1.0",
 		"prettier": "~2.3.2",
 		"prettier-plugin-svelte": "^2.3.1",
-		"svelte": "^3.38.3",
-		"svelte-preprocess": "^4.7.3",
-		"tailwindcss": "^2.2.4",
+		"svelte": "^3.41.0",
+		"svelte-preprocess": "^4.7.4",
+		"tailwindcss": "^2.2.7",
 		"tslib": "^2.3.0",
 		"typescript": "^4.3.5"
 	},
@@ -33,6 +33,7 @@
 	"dependencies": {
 		"fuse.js": "^6.4.6",
 		"meilisearch": "^0.18.2",
+		"mongodb": "^4.0.1",
 		"svelte-scrollto": "^0.2.0"
 	}
 }
