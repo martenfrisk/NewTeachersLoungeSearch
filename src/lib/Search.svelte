@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { SearchHit, Stats } from '$lib/types';
+	import type { MongoHighlightHit, MongoSearchHit, Stats } from '$lib/types';
 	import { newRandom, searchMeili, throttle, timeToUrl } from './utils';
 	import epList from '../assets/episodes.json';
 	import Tooltip from './Tooltip.svelte';
@@ -14,7 +14,7 @@
 		};
 	}
 
-	export let query: string, filter: string[], hits: SearchHit[];
+	export let query: string, filter: string[], hits: MongoHighlightHit[];
 	let stats: Stats,
 		filterEdited = false;
 
@@ -31,11 +31,18 @@
 		// 	hits = data.hits;
 		// 	stats = data.stats;
 		// });
-		const data = await fetch(`/search/${query}`)
-		const { results } = await data.json()
-		console.log(results)
-		
-		hits = await results;	
+		const data = await fetch('/search', {
+			method: 'POST',
+			body: JSON.stringify({
+				query,
+				offset
+			}),
+			headers: { 'content-type': 'application/json' }
+		});
+		const { results } = await data.json();
+		// // console.log(results)
+
+		hits = await results;
 	}
 
 	async function addToFilter(filterName: string, filterValue: string) {
@@ -172,8 +179,7 @@
 	</p>
 {/if}
 {#if hits}
-<pre>{JSON.stringify(hits, null, 2)}</pre>
-	<!-- {#each hits as hit}
+	{#each hits as hit}
 		<div
 			class="w-full px-4 pt-4 pb-2 mb-6 border border-blue-200 rounded-md shadow-xl md:shadow-md hover:bg-blue-50"
 		>
@@ -194,7 +200,17 @@
 				</div>
 
 				<div class="w-full px-1 my-4 border-gray-400 md:pl-6 md:border-l-2 md:text-lg">
-					<p>{@html hit._formatted.line}</p>
+					<p>
+						{#each hit.highlights as highl}
+							{#each highl.texts as text}
+								{#if text.type === 'text'}
+									{text.value}
+								{:else}
+									<em>{text.value}</em>
+								{/if}
+							{/each}
+						{/each}
+					</p>
 				</div>
 				<div
 					class="flex items-center justify-between w-full mt-2 font-mono text-sm text-right text-gray-600 md:text-base md:mt-0"
@@ -277,18 +293,17 @@
 				</div>
 			</div>
 		</div>
-	{/each} -->
+	{/each}
 	{#if stats?.nbHits > 20}
-	<div class="w-full flex justify-center">
-
-		<button
-		class="px-4 py-2 rounded-md border border-blue-600 text-blue-600 cursor-pointer"
-		on:click={() => {
-			offset = offset + 20;
-			search();
-		}}>Load more</button
-		>
-	</div>
+		<div class="w-full flex justify-center">
+			<button
+				class="px-4 py-2 rounded-md border border-blue-600 text-blue-600 cursor-pointer"
+				on:click={() => {
+					offset = offset + 20;
+					search();
+				}}>Load more</button
+			>
+		</div>
 	{/if}
 {:else}
 	<div class="w-full px-4 pt-4 pb-6 mb-6 shadow-md">

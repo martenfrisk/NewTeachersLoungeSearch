@@ -53,6 +53,37 @@ export interface SearchHit {
 	edited: boolean;
 	_formatted: Formatted;
 }
+
+export interface MongoSearchHit {
+	_id: string;
+	id: string;
+	season: string;
+	time: string;
+	speaker: string;
+	line: string;
+	episode: string;
+	edited: boolean;
+}
+
+export interface MongoHighlightHit {
+	_id: string;
+	line: string;
+	id: string;
+	season: string;
+	time: string;
+	speaker: string;
+	episode: string;
+	edited: boolean;
+	highlights: {
+		score: number;
+		path: string;
+		texts: {
+			value: string;
+			type: string;
+		}[];
+	}[];
+}
+
 export interface EpisodeInfo {
 	id: string;
 	title: string;
