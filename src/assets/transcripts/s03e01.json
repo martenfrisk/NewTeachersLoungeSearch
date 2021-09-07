@@ -1314,7 +1314,7 @@
 	{
 		"time": "00:21:55",
 		"speaker": 1,
-		"line": "elicit a response. I'm not gonna pay something that's like,",
+		"line": "elicit a response. I'm not gonna pay something that's like, beautiful.",
 		"episode": "s03e01",
 		"objectID": "301164",
 		"edited": false
@@ -1322,18 +1322,18 @@
 	{
 		"time": "00:21:59",
 		"speaker": 2,
-		"line": "beautiful. Looks good. So I commissioned my friend, um, slow blow.",
+		"line": "Looks good. So I commissioned my friend, um, Sloblo Picasso.",
 		"episode": "s03e01",
 		"objectID": "301165",
 		"edited": false
 	},
 	{
 		"time": "00:22:11",
-		"speaker": 1,
-		"line": "Loblaw was a real pro slob. Love Picasso did our bottomless biggie bacon. It's fucking disgusting. Let's be clear, no relation money. And it has no relation to Pablo Picasso. No, no, no, no. I mean, they have the same last name first.",
+		"speaker": "Sam",
+		"line": "Sloblo was a real pro. Sloblo Picasso did our bottomless piggy bank and it's fucking disgusting. Let's be clear, no relation. No relation to Pablo Picasso. No, no, no, no. I mean, they have the same last name and a similar first name.",
 		"episode": "s03e01",
 		"objectID": "301166",
-		"edited": false
+		"edited": true
 	},
 	{
 		"time": "00:22:30",
