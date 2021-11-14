@@ -12,20 +12,28 @@ export async function post({
 	const { query, offset } = body;
 	const mongo = await connectToDatabase();
 	const lines = await mongo.db.collection('pcast');
-
 	const results: MongoHighlightHit[] = await lines
 		.aggregate([
 			{
 				$search: {
-					index: 'teachers',
+					index: 'default',
 					text: {
 						query: query,
-						path: 'line'
+						path: 'line',
+						fuzzy: {
+							prefixLength: 1
+						}
 					},
 					highlight: {
 						path: 'line'
 					}
 				}
+			},
+			{
+				$skip: offset
+			},
+			{
+				$limit: 25
 			},
 			{
 				$project: {
@@ -45,7 +53,8 @@ export async function post({
 	if (results) {
 		return {
 			body: {
-				results: results.slice(offset, offset + 25)
+				// results: results.slice(offset, offset + 25)
+				results
 			}
 		};
 	}

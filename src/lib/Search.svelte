@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { MongoHighlightHit, MongoSearchHit, Stats } from '$lib/types';
-	import { newRandom, searchMeili, throttle, timeToUrl } from './utils';
+	import type { MongoHighlightHit, Stats } from '$lib/types';
+	import { newRandom, throttle, timeToUrl } from './utils';
 	import epList from '../assets/episodes.json';
 	import Tooltip from './Tooltip.svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	if (!String.prototype.replaceAll) {
 		String.prototype.replaceAll = function (str, newStr) {
@@ -14,7 +16,9 @@
 		};
 	}
 
-	export let query: string, filter: string[], hits: MongoHighlightHit[];
+	export let query: string, filter: string[];
+	let hits: MongoHighlightHit[];
+	$: hits = [];
 	let stats: Stats,
 		filterEdited = false;
 
@@ -25,6 +29,8 @@
 	$: filter = filter;
 	$: query = query;
 	let offset = 0;
+	let path: string;
+	$: path;
 
 	async function search() {
 		// await searchMeili(query, filter, false, filterEdited, offset).then((data) => {
@@ -40,9 +46,8 @@
 			headers: { 'content-type': 'application/json' }
 		});
 		const { results } = await data.json();
-		// // console.log(results)
-
 		hits = await results;
+		await goto(`${$page.path}?s=${query}`);
 	}
 
 	async function addToFilter(filterName: string, filterValue: string) {
@@ -63,34 +68,37 @@
 		await search();
 	};
 	onMount(async () => {
-		setTimeout(() => {
-			if (location !== undefined) {
-				query = new URLSearchParams(location.search).get('s') || '';
-				filter =
-					new URLSearchParams(location.search).get('f')?.replaceAll('=', ' = ').split(',') || [];
+		// setTimeout(async () => {
+		if (location !== undefined) {
+			query = new URLSearchParams(location.search).get('s') || '';
+			filter =
+				new URLSearchParams(location.search).get('f')?.replaceAll('=', ' = ').split(',') || [];
 
-				filterEdited = new URLSearchParams(location.search).has('edited') || false;
-			}
-			if (query === '') {
-				query = newRandom();
+			filterEdited = new URLSearchParams(location.search).has('edited') || false;
+		}
+		if (page) {
+			path = $page.path;
+		}
+		if (query === '') {
+			query = newRandom();
 
-				// const urlParams = new URLSearchParams(`s=${query}`);
+			// const urlParams = new URLSearchParams(`s=${query}`);
 
-				// if (history.pushState) {
-				// 	let newUrl =
-				// 		window.location.protocol +
-				// 		'//' +
-				// 		window.location.host +
-				// 		window.location.pathname +
-				// 		'?' +
-				// 		urlParams;
-				// 	if (filter && filter.length > 0)
-				// 		newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
-				// 	window.history.pushState({ path: newUrl }, '', newUrl);
-				// }
-			}
-			search();
-		}, 100);
+			// if (history.pushState) {
+			// 	let newUrl =
+			// 		window.location.protocol +
+			// 		'//' +
+			// 		window.location.host +
+			// 		window.location.pathname +
+			// 		'?' +
+			// 		urlParams;
+			// 	if (filter && filter.length > 0)
+			// 		newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
+			// 	window.history.pushState({ path: newUrl }, '', newUrl);
+			// }
+		}
+		await search();
+		// }, 100);
 	});
 </script>
 
