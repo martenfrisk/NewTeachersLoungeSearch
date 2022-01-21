@@ -15,8 +15,7 @@
 	}
 
 	export let query: string, filter: string[], hits: SearchHit[];
-	let stats: Stats,
-		filterEdited = false;
+	let stats: Stats;
 
 	function epName(episode: string) {
 		return epList.find((x) => x.ep === episode);
@@ -27,7 +26,7 @@
 	let offset = 0;
 
 	async function search() {
-		await searchMeili(query, filter, false, filterEdited, offset).then((data) => {
+		await searchMeili(query, filter, false, offset).then((data) => {
 			hits = data.hits;
 			stats = data.stats;
 		});
@@ -53,11 +52,11 @@
 	onMount(async () => {
 		setTimeout(() => {
 			if (location !== undefined) {
-				query = new URLSearchParams(location.search).get('s') || '';
+				query = new URLSearchParams(location.search)?.get('s') || '';
 				filter =
-					new URLSearchParams(location.search).get('f')?.replaceAll('=', ' = ').split(',') || [];
+					new URLSearchParams(location.search)?.get('f')?.replaceAll('=', ' = ').split(',') || [];
 
-				filterEdited = new URLSearchParams(location.search).has('edited') || false;
+				// filterEdited = new URLSearchParams(location.search)?.has('edited') || false;
 			}
 			if (query === '') {
 				query = newRandom();
@@ -99,10 +98,10 @@
 	>
 </div>
 <div class="flex flex-col flex-wrap w-full gap-2 px-6 my-2">
-	<label for="editedOnly" class="flex items-baseline gap-2 text-sm cursor-pointer">
+	<!-- <label for="editedOnly" class="flex items-baseline gap-2 text-sm cursor-pointer">
 		Edited lines only
 		<input type="checkbox" id="editedOnly" bind:checked={filterEdited} on:change={() => search()} />
-	</label>
+	</label> -->
 	<details>
 		<summary class="cursor-pointer ">
 			<span class="hover:underline"> Filter by season or episode </span>
@@ -159,7 +158,7 @@
 {:else if stats?.nbHits == 0}
 	<p class="flex flex-wrap gap-1 my-4 text-sm md:mt-6 md:mb-8">
 		No results for <em>"{query}"</em>
-		{filterEdited ? '(edited lines only)' : ''} ☹
+		<!-- {filterEdited ? '(edited lines only)' : ''} ☹ -->
 	</p>
 {:else}
 	<p class="mt-6 mb-8">
@@ -273,16 +272,15 @@
 		</div>
 	{/each}
 	{#if stats?.nbHits > 20}
-	<div class="w-full flex justify-center">
-
-		<button
-		class="px-4 py-2 rounded-md border border-blue-600 text-blue-600 cursor-pointer"
-		on:click={() => {
-			offset = offset + 20;
-			search();
-		}}>Load more</button
-		>
-	</div>
+		<div class="w-full flex justify-center">
+			<button
+				class="px-4 py-2 rounded-md border border-blue-600 text-blue-600 cursor-pointer"
+				on:click={() => {
+					offset = offset + 20;
+					search();
+				}}>Load more</button
+			>
+		</div>
 	{/if}
 {:else}
 	<div class="w-full px-4 pt-4 pb-6 mb-6 shadow-md">

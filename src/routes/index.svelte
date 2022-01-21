@@ -2,12 +2,12 @@
 	/**
 	 * @type {import('@sveltejs/kit').Load}
 	 */
-	export async function load({ page }) {
-		let query = await page.query.get('s') || '';
-		let editedOnly = await page.query.has('edited') || false;
-		let filter = await page.query.get('f')?.split(',') || [];
+	export async function load({ url }) {
+		let query = (await url?.searchParams?.get('s')) || '';
+		// let editedOnly = (await url?.searchParams?.has('edited')) || false;
+		let filter = (await url?.searchParams?.get('f')?.split(',')) || [];
 		if (query === '') query = newRandom();
-		const { hits } = await searchMeili(query, filter !== [] && filter, true, editedOnly);
+		const { hits } = await searchMeili(query, filter !== [] && filter, true);
 		return {
 			query: query,
 			filter: filter,
@@ -19,7 +19,7 @@
 <script lang="ts">
 	import Search from '$lib/Search.svelte';
 	import type { SearchHit } from '$lib/types';
-	import { newRandom, searchMeili } from '$lib/utils';
+	import { searchMeili, newRandom } from '$lib/utils';
 	export let query: string, filter: string[], hits: SearchHit[];
 </script>
 
