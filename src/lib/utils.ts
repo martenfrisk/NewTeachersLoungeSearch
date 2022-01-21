@@ -80,7 +80,6 @@ export async function searchMeili(
 	query: string,
 	filter: string[],
 	isSSR = false,
-	filterEdited = false,
 	offset = 0
 ): Promise<MeiliResult> {
 	const index = client.index('teachers');
@@ -92,37 +91,36 @@ export async function searchMeili(
 
 		if (filter.length > 0)
 			newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
-		if (filterEdited) newUrl = `${newUrl}&edited=true`;
+		// if (filterEdited) newUrl = `${newUrl}&edited=true`;
 		window.history.pushState({ path: newUrl }, '', newUrl);
 	}
 	let data: SearchResult;
 	// only edited & no filters
-	if (filterEdited && filter.length == 0) {
-		data = await index.search(query, {
-			attributesToHighlight: ['line'],
-			filters: 'edited=true',
-			facetsDistribution: ['season', 'episode'],
-			limit: 20,
-			offset: offset
-		});
-	} else if (filterEdited && filter.length > 0) {
-		// only edited & filters
-		data = await index.search(query, {
-			attributesToHighlight: ['line'],
-			filters:
-				(filter.length > 1 ? filter.join(' OR ') : filter.toString()) +
-				(filterEdited ? ' AND edited=true' : 'edited=true'),
-			facetsDistribution: ['season', 'episode'],
-			limit: 20,
-			offset: offset
-		});
-	} else if (!filterEdited && filter.length > 0) {
+	// if (filterEdited && filter.length == 0) {
+	// 	data = await index.search(query, {
+	// 		attributesToHighlight: ['line'],
+	// 		filters: 'edited=true',
+	// 		facetsDistribution: ['season', 'episode'],
+	// 		limit: 20,
+	// 		offset: offset
+	// 	});
+	// } else if (filterEdited && filter.length > 0) {
+	// 	// only edited & filters
+	// 	data = await index.search(query, {
+	// 		attributesToHighlight: ['line'],
+	// 		filters:
+	// 			(filter.length > 1 ? filter.join(' OR ') : filter.toString()) +
+	// 			(filterEdited ? ' AND edited=true' : 'edited=true'),
+	// 		facetsDistribution: ['season', 'episode'],
+	// 		limit: 20,
+	// 		offset: offset
+	// 	});
+	// } else if (!filterEdited && filter.length > 0) {
+	if (filter.length > 0) {
 		// not only edited & filters
 		data = await index.search(query, {
 			attributesToHighlight: ['line'],
-			filters:
-				(filter.length > 1 ? filter.join(' OR ') : filter.toString()) +
-				(filterEdited ? 'AND edited=true' : 'edited=true'),
+			filters: filter.length > 1 ? filter.join(' OR ') : filter.toString(),
 			facetsDistribution: ['season', 'episode'],
 			limit: 20,
 			offset: offset

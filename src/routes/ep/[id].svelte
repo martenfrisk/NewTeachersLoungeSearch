@@ -1,17 +1,17 @@
 <script context="module">
-	export async function load({ page }) {
-		const { id } = page.params;
+	export async function load({ url, params }) {
+		const { id } = params;
 		return {
 			props: {
 				episode: id,
-				query: page.query || ""
+				query: url.searchParams
 			}
 		};
 	}
 </script>
 
 <script lang="ts">
-	let animateScroll;
+	import { animateScroll } from 'svelte-scrollto-element';
 	if (!String.prototype.replaceAll) {
 		String.prototype.replaceAll = function (str: any, newStr: any) {
 			// If a regex pattern
@@ -42,13 +42,13 @@
 		return false;
 	};
 	onMount(async () => {
-		animateScroll = await import('svelte-scrollto');
 		hits = await import('../../assets/transcripts/' + episode + '.json');
 
 		if (hits && query.has('t')) {
-			const anchorId = query.get('t');
 			setTimeout(() => {
-				animateScroll.scrollTo({ element: `#${anchorId}`, delay: 300 });
+				const anchorId = query.get('t');
+				const anchor = document.getElementById(anchorId) as HTMLElement;
+				animateScroll.scrollTo({ element: anchor, duration: 500 });
 			}, 500);
 		}
 	});
