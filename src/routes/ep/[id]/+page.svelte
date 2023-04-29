@@ -34,16 +34,16 @@
 		hits = await import(/* @vite-ignore */ '../../../assets/transcripts/' + episode + '.json');
 
 		if (hits && query.has('t')) {
-			// setTimeout(() => {
-			const anchorId = query.get('t');
-			if (anchorId) {
-				const anchor = document.getElementById(anchorId) as HTMLElement;
-				if (!anchor) return;
-				anchor.scrollIntoView({
-					behavior: 'smooth'
-				});
-			}
-			// }, 500);
+			setTimeout(() => {
+				const anchorId = query.get('t');
+				if (anchorId) {
+					const anchor = document.getElementById(anchorId) as HTMLElement;
+					if (!anchor) return;
+					anchor.scrollIntoView({
+						behavior: 'auto'
+					});
+				}
+			}, 50);
 		}
 	});
 </script>
