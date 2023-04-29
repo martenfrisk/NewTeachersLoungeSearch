@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Coffee from '$lib/Coffee.svelte';
+	import Coffee from './Coffee.svelte';
 	import { onMount } from 'svelte';
 
 	$: infoView = true;
@@ -9,7 +9,7 @@
 	const handleMoreInfo = () => (moreInfo = !moreInfo);
 	const handleCopyright = () => (copyright = !copyright);
 
-	let width;
+	let width: number;
 
 	onMount(() => {
 		if (width > 768) {
@@ -22,7 +22,7 @@
 
 <svelte:window bind:innerWidth={width} />
 
-<div class="sticky w-full py-0 mt-0 md:mb-0 md:w-1/4 md:max-w-sm ">
+<div class="sticky w-full py-0 mt-0 md:mb-0 md:w-1/4 md:max-w-sm">
 	<div class="flex items-end justify-end h-16 pr-3 mt-0 text-2xl text-gray-800 bg-blue-300 md:h-40">
 		<Coffee />
 		<div class="flex flex-col justify-end">
@@ -45,7 +45,7 @@
 				>
 			</a>
 		</div>
-		<div
+		<button
 			class="w-1/3 px-3 py-2 text-center bg-gray-100 border-l border-gray-700"
 			on:click={handleInfoView}
 		>
@@ -62,10 +62,12 @@
 					</p>
 				</div>
 			{/if}
-		</div>
+		</button>
 	</div>
 	{#if infoView}
-		<div class="w-full h-auto px-4 text-sm md:text-base py-2 md:py-4 font-sans leading-relaxed text-justify md:px-6">
+		<div
+			class="w-full h-auto px-4 text-sm md:text-base py-2 md:py-4 font-sans leading-relaxed text-justify md:px-6"
+		>
 			<div>
 				<div class="divide-y flex flex-col divide-blue-200">
 					<p class="py-2 md:py-4 text-left">
@@ -103,9 +105,12 @@
 
 				<div>
 					Want to help out? Click{' '}
-					<div on:click={handleMoreInfo} class="inline-block border-b border-dotted cursor-pointer">
+					<button
+						on:click={handleMoreInfo}
+						class="inline-block border-b border-dotted cursor-pointer"
+					>
 						here&nbsp;&#9662;
-					</div>
+					</button>
 				</div>
 				{#if moreInfo}
 					<div class="text-sm">
@@ -125,9 +130,12 @@
 					</div>
 				{/if}
 
-				<div on:click={handleCopyright} class="inline-block border-b border-dotted cursor-pointer">
+				<button
+					on:click={handleCopyright}
+					class="inline-block border-b border-dotted cursor-pointer"
+				>
 					Copyright information&nbsp;&#9662;
-				</div>
+				</button>
 				<br />
 				{#if copyright}
 					<div>
