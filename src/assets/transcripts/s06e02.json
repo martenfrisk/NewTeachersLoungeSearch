@@ -1,5 +1,11 @@
 [
-	{ "time": "0:00:00", "speaker": "null", "line": "", "episode": "s06e02", "edited": false },
+	{
+		"time": "0:00:00",
+		"speaker": "null",
+		"line": "",
+		"episode": "s06e02",
+		"edited": false
+	},
 	{
 		"time": "0:00:00",
 		"speaker": "spk_2",
@@ -14,7 +20,13 @@
 		"episode": "s06e02",
 		"edited": false
 	},
-	{ "time": "0:00:13", "speaker": "spk_4", "line": "I", "episode": "s06e02", "edited": false },
+	{
+		"time": "0:00:13",
+		"speaker": "spk_4",
+		"line": "I",
+		"episode": "s06e02",
+		"edited": false
+	},
 	{
 		"time": "0:00:13",
 		"speaker": "spk_1",
@@ -358,7 +370,13 @@
 		"episode": "s06e02",
 		"edited": false
 	},
-	{ "time": "0:05:43", "speaker": "spk_4", "line": "just", "episode": "s06e02", "edited": false },
+	{
+		"time": "0:05:43",
+		"speaker": "spk_4",
+		"line": "just",
+		"episode": "s06e02",
+		"edited": false
+	},
 	{
 		"time": "0:05:44",
 		"speaker": "spk_3",
@@ -1976,7 +1994,13 @@
 		"episode": "s06e02",
 		"edited": false
 	},
-	{ "time": "0:28:30", "speaker": "spk_2", "line": "I know", "episode": "s06e02", "edited": false },
+	{
+		"time": "0:28:30",
+		"speaker": "spk_2",
+		"line": "I know",
+		"episode": "s06e02",
+		"edited": false
+	},
 	{
 		"time": "0:28:31",
 		"speaker": "spk_3",
@@ -3405,7 +3429,13 @@
 		"episode": "s06e02",
 		"edited": false
 	},
-	{ "time": "0:49:25", "speaker": "spk_4", "line": "now. I", "episode": "s06e02", "edited": false },
+	{
+		"time": "0:49:25",
+		"speaker": "spk_4",
+		"line": "now. I",
+		"episode": "s06e02",
+		"edited": false
+	},
 	{
 		"time": "0:49:26",
 		"speaker": "spk_1",

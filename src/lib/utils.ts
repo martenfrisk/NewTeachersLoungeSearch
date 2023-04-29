@@ -1,12 +1,12 @@
 import { MeiliKey } from '$lib/Env';
-import type { SearchResult } from '$lib/types';
+import type { SearchResult } from 'lib/types';
 import { MeiliSearch } from 'meilisearch';
 
 import epList from '../assets/episodes.json';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type throttleFunction = (args: any) => void;
 export const throttle = (delay: number, fn: throttleFunction): throttleFunction => {
-	let inDebounce = null;
+	let inDebounce: any = null;
 	return (args) => {
 		clearTimeout(inDebounce);
 		inDebounce = setTimeout(() => fn(args), delay);
@@ -56,10 +56,16 @@ export const randomQuery = [
 
 export const getRandomInt = (max: number): number => Math.floor(Math.random() * Math.floor(max));
 
+interface FacetDistribution {
+	[key: string]: {
+		[key: string]: number;
+	};
+}
 export interface MeiliResult {
 	stats: {
-		nbHits: SearchResult['nbHits'];
+		estimatedTotalHits: SearchResult['estimatedTotalHits'];
 		processingTime: SearchResult['processingTimeMs'];
+		facetDistribution?: FacetDistribution;
 		facets: {
 			facetName: string;
 			facetHits: {
@@ -83,17 +89,18 @@ export async function searchMeili(
 	offset = 0
 ): Promise<MeiliResult> {
 	const index = client.index('teachers');
-	if (!isSSR && history.pushState && query !== '') {
-		const urlParams = new URLSearchParams(`s=${query}`);
 
-		let newUrl =
-			window.location.protocol + '//' + window.location.host.replace('/', '') + '?' + urlParams;
+	// if (!isSSR && window.history.pushState && query !== '') {
+	// 	const urlParams = new URLSearchParams(`s=${query}`);
 
-		if (filter.length > 0)
-			newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
-		// if (filterEdited) newUrl = `${newUrl}&edited=true`;
-		window.history.pushState({ path: newUrl }, '', newUrl);
-	}
+	// 	let newUrl =
+	// 		window.location.protocol + '//' + window.location.host.replace('/', '') + '?' + urlParams;
+
+	// 	if (filter.length > 0)
+	// 		newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
+	// 	// if (filterEdited) newUrl = `${newUrl}&edited=true`;
+	// 	window.history.pushState({ path: newUrl }, '', newUrl);
+	// }
 	let data: SearchResult;
 	// only edited & no filters
 	// if (filterEdited && filter.length == 0) {
@@ -120,28 +127,28 @@ export async function searchMeili(
 		// not only edited & filters
 		data = await index.search(query, {
 			attributesToHighlight: ['line'],
-			filters: filter.length > 1 ? filter.join(' OR ') : filter.toString(),
-			facetsDistribution: ['season', 'episode'],
+			filter: filter.length > 1 ? filter.join(' OR ') : filter.toString(),
+			facets: ['season', 'episode'],
 			limit: 20,
 			offset: offset
 		});
 	} else {
 		data = await index.search(query, {
 			attributesToHighlight: ['line'],
-			facetsDistribution: ['season', 'episode'],
+			facets: ['season', 'episode'],
 			limit: 20,
 			offset: offset
 		});
 	}
 
-	const facets = [];
+	const facets: any[] = [];
 	interface FacetHit {
 		ep: string;
 		hits: number;
 	}
-	if (data !== undefined && data.facetsDistribution) {
-		Object.entries(data.facetsDistribution).forEach(([facetKey, facetValue]) => {
-			const valuesArr = [];
+	if (data !== undefined && data.facetDistribution) {
+		Object.entries(data.facetDistribution).forEach(([facetKey, facetValue]) => {
+			const valuesArr: any[] = [];
 			Object.entries(facetValue).forEach(([key, value]) => {
 				valuesArr.push({ ep: key, hits: value });
 			});
@@ -151,10 +158,9 @@ export async function searchMeili(
 			facets.push({ facetName: facetKey, facetHits: valuesArr.slice(0, 9) });
 		});
 	}
-
 	return {
 		stats: {
-			nbHits: data.nbHits,
+			estimatedTotalHits: data.estimatedTotalHits,
 			processingTime: data.processingTimeMs,
 			facets: facets
 		},
@@ -169,9 +175,17 @@ export const timeToUrl = (time: string): URLSearchParams => {
 
 export function findEpNr(title: string, returnValue: string): string | null {
 	const epNr = epList.find((x) => x.title == title);
-	if (epNr) return epNr[returnValue];
-	return null;
+	if (epNr) {
+		// @ts-ignore
+		return epNr[returnValue];
+	} else {
+		return null;
+	}
 }
 export function newRandom(): string {
 	return randomQuery[getRandomInt(randomQuery.length)];
+}
+
+export function epName(episode: string) {
+	return epList.find((x) => x.ep === episode);
 }

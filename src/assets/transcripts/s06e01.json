@@ -1,5 +1,11 @@
 [
-	{ "time": "0:00:00", "speaker": "null", "line": "", "episode": "s06e01", "edited": false },
+	{
+		"time": "0:00:00",
+		"speaker": "null",
+		"line": "",
+		"episode": "s06e01",
+		"edited": false
+	},
 	{
 		"time": "0:00:00",
 		"speaker": "spk_1",
@@ -749,7 +755,13 @@
 		"episode": "s06e01",
 		"edited": false
 	},
-	{ "time": "0:14:38", "speaker": "spk_2", "line": "Yeah,", "episode": "s06e01", "edited": false },
+	{
+		"time": "0:14:38",
+		"speaker": "spk_2",
+		"line": "Yeah,",
+		"episode": "s06e01",
+		"edited": false
+	},
 	{
 		"time": "0:14:39",
 		"speaker": "spk_4",

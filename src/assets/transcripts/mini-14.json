@@ -1,5 +1,11 @@
 [
-	{ "time": "0:00:00", "speaker": "null", "line": "", "episode": "mini-14", "edited": false },
+	{
+		"time": "0:00:00",
+		"speaker": "null",
+		"line": "",
+		"episode": "mini-14",
+		"edited": false
+	},
 	{
 		"time": "0:00:01",
 		"speaker": "spk_0",
@@ -1323,7 +1329,13 @@
 		"episode": "mini-14",
 		"edited": false
 	},
-	{ "time": "0:25:24", "speaker": "spk_0", "line": "So I", "episode": "mini-14", "edited": false },
+	{
+		"time": "0:25:24",
+		"speaker": "spk_0",
+		"line": "So I",
+		"episode": "mini-14",
+		"edited": false
+	},
 	{
 		"time": "0:25:26",
 		"speaker": "spk_3",
@@ -1380,5 +1392,11 @@
 		"episode": "mini-14",
 		"edited": false
 	},
-	{ "time": "0:27:37", "speaker": "spk_2", "line": "Stay a", "episode": "mini-14", "edited": false }
+	{
+		"time": "0:27:37",
+		"speaker": "spk_2",
+		"line": "Stay a",
+		"episode": "mini-14",
+		"edited": false
+	}
 ]

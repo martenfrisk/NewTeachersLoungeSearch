@@ -55,7 +55,13 @@
 		"episode": "mini-26",
 		"edited": false
 	},
-	{ "time": "0:00:55", "speaker": "spk_0", "line": "bang.", "episode": "mini-26", "edited": false },
+	{
+		"time": "0:00:55",
+		"speaker": "spk_0",
+		"line": "bang.",
+		"episode": "mini-26",
+		"edited": false
+	},
 	{
 		"time": "0:00:58",
 		"speaker": "spk_1",

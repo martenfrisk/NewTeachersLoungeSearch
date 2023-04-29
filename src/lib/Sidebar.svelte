@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Coffee from '$lib/Coffee.svelte';
+	import Coffee from './components/Coffee.svelte';
 	import { onMount } from 'svelte';
 
 	$: infoView = true;
@@ -9,7 +9,7 @@
 	const handleMoreInfo = () => (moreInfo = !moreInfo);
 	const handleCopyright = () => (copyright = !copyright);
 
-	let width;
+	let width: number;
 
 	onMount(() => {
 		if (width > 768) {
@@ -22,7 +22,7 @@
 
 <svelte:window bind:innerWidth={width} />
 
-<div class="sticky w-full py-0 mt-0 md:mb-0 md:w-1/4 md:max-w-sm ">
+<div class="sticky w-full py-0 mt-0 md:mb-0 md:w-1/4 md:max-w-sm">
 	<div class="flex items-end justify-end h-16 pr-3 mt-0 text-2xl text-gray-800 bg-blue-300 md:h-40">
 		<Coffee />
 		<div class="flex flex-col justify-end">
@@ -45,7 +45,7 @@
 				>
 			</a>
 		</div>
-		<div
+		<button
 			class="w-1/3 px-3 py-2 text-center bg-gray-100 border-l border-gray-700"
 			on:click={handleInfoView}
 		>
@@ -62,30 +62,23 @@
 					</p>
 				</div>
 			{/if}
-		</div>
+		</button>
 	</div>
 	{#if infoView}
-		<div class="w-full h-auto px-4 text-sm md:text-base py-2 md:py-4 font-sans leading-relaxed text-justify md:px-6">
+		<div
+			class="w-full h-auto px-4 text-sm md:text-base py-2 md:py-4 font-sans leading-relaxed text-justify md:px-6"
+		>
 			<div>
 				<div class="divide-y flex flex-col divide-blue-200">
-					<p class="py-2 md:py-4 text-left">
-						Welcome to the new and improved Seekers' Lounge. Now at a more memorable address:
-						<a href="https://seekerslounge.pcast.site" class="text-blue-800 underline">
-							https://seekerslounge.pcast.site
-						</a>
+					<p class="py-2 md:py-4">
+						Seekers' Lounge is an unofficial fan website where you can search through the
+						transcripts of all episodes to find your favorite bit.
 					</p>
 					<p class="py-2 md:py-4">
-						This is an unofficial fan website where you can search through the transcripts of all
-						episodes to find your favorite bit.
-					</p>
-					<p class="py-2 md:py-4">
-						Listen to the free episodes wherever you get your podcast or subscribe to Stitcher
-						Premium to unlock all seasons.
-					</p>
-					<p class="py-2 md:py-4">
-						At <a class="text-blue-800 underline" href="https://www.stitcherpremium.com/teacher"
-							>stitcherpremium.com/teacher</a
-						> you can sign up for a free trial!
+						Listen to the free episodes wherever you get your podcast or buy them from <a
+							class="text-blue-800 underline"
+							href="https://biggrandewebsite.com/">biggrandewebsite.com</a
+						> (some are only available at Stitcher Premium)
 					</p>
 					<p class="py-2 md:py-4">
 						Transcripts are unedited. Speakers not identified. Intro has been removed so add ~30
@@ -103,18 +96,21 @@
 
 				<div>
 					Want to help out? Click{' '}
-					<div on:click={handleMoreInfo} class="inline-block border-b border-dotted cursor-pointer">
+					<button
+						on:click={handleMoreInfo}
+						class="inline-block border-b border-dotted cursor-pointer"
+					>
 						here&nbsp;&#9662;
-					</div>
+					</button>
 				</div>
 				{#if moreInfo}
 					<div class="text-sm">
-						You can find the unedited transcripts here:{' '}
+						You can find the unedited transcripts
 						<a
-							class="text-xs text-blue-600"
-							href="https://github.com/martenfrisk/seekerslounge/tree/master/src/transcripts"
+							class=" text-blue-600"
+							href="https://github.com/martenfrisk/NewTeachersLoungeSearch/tree/main/src/assets/transcripts"
 						>
-							github.com/martenfrisk/seekerslounge/tree/master/src/transcripts
+							here.
 						</a>
 						<br />Edit the text and submit a pull request.<br />
 						<br />
@@ -125,18 +121,23 @@
 					</div>
 				{/if}
 
-				<div on:click={handleCopyright} class="inline-block border-b border-dotted cursor-pointer">
+				<button
+					on:click={handleCopyright}
+					class="inline-block border-b border-dotted cursor-pointer"
+				>
 					Copyright information&nbsp;&#9662;
-				</div>
+				</button>
 				<br />
 				{#if copyright}
-					<div>
+					<div class="text-sm">
 						<p>
 							No copyright infringement intended. All rights belong to their respective rights
 							holders (probably Big Grande and Earwolf). Want to contact me? I'll see your ass in
 							court (or message me on reddit, u/martanor)
 						</p>
-						<p>Build with Svelte Kit, powered by MeiliSearch, styled with Tailwind CSS.</p>
+						<p class="mt-1">
+							Built with Svelte Kit, powered by MeiliSearch, styled with Tailwind CSS.
+						</p>
 					</div>
 				{/if}
 			</div>

@@ -1,5 +1,11 @@
 [
-	{ "time": "0:00:00", "speaker": "null", "line": "", "episode": "mini-22", "edited": false },
+	{
+		"time": "0:00:00",
+		"speaker": "null",
+		"line": "",
+		"episode": "mini-22",
+		"edited": false
+	},
 	{
 		"time": "0:00:01",
 		"speaker": "spk_0",
@@ -497,7 +503,13 @@
 		"episode": "mini-22",
 		"edited": false
 	},
-	{ "time": "0:09:47", "speaker": "spk_0", "line": "Um, I", "episode": "mini-22", "edited": false },
+	{
+		"time": "0:09:47",
+		"speaker": "spk_0",
+		"line": "Um, I",
+		"episode": "mini-22",
+		"edited": false
+	},
 	{
 		"time": "0:09:48",
 		"speaker": "spk_2",
