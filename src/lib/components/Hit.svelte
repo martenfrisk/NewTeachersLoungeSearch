@@ -78,6 +78,8 @@
 						<a
 							class="font-sans text-base text-blue-600 border-b-2 border-blue-200 border-dotted has-tooltip hover:border-solid"
 							href={epName(hit.episode)?.url}
+							rel="noopener noreferrer"
+							target="_blank"
 						>
 							listen
 						</a>

@@ -4,10 +4,10 @@ import { newRandom, searchMeili } from 'lib/utils';
 /** @type {import('./$types').PageLoad} */
 export async function load({ url }) {
 	let query = url?.searchParams?.get('s') || '';
-	// let editedOnly = ( url?.searchParams?.has('edited')) || false;
+	let editedOnly = url?.searchParams?.has('edited') || false;
 	let filter = url?.searchParams?.get('f')?.split(',') || [];
 	if (query === '') query = newRandom();
-	const { hits } = await searchMeili(query, !filter.length ? filter : [], true);
+	const { hits } = await searchMeili(query, !filter.length ? filter : [], editedOnly);
 	return {
 		query: query,
 		filter: filter,
