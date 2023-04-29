@@ -2,10 +2,11 @@
 import { MeiliSearch } from 'meilisearch';
 import fs from 'fs';
 import path from 'path';
+// import { MeiliKey } from './src/lib/Env';
 
 const client = new MeiliSearch({
 	host: '***REMOVED***',
-	apiKey: '***REMOVED***'
+	apiKey: MeiliKey
 });
 
 /**
@@ -193,4 +194,16 @@ function fixAllEpisodeFields(folderPath) {
 			fixEpisodeField(`${folderPath}/${file}`);
 		}
 	});
+}
+
+function updateFilters() {
+	client
+		.index('teachers')
+		.updateFilterableAttributes(['episode', 'season', 'edited', 'speaker'])
+		.then((response) => {
+			console.log(response);
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 }
