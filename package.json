@@ -32,9 +32,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@vercel/analytics": "^1.0.0",
 		"fuse.js": "^6.6.2",
-		"meilisearch": "^0.32.3",
-		"web-vitals": "^3.3.1"
+		"meilisearch": "^0.32.3"
 	}
 }
