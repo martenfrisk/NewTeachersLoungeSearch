@@ -1,5 +1,11 @@
 [
-	{ "time": "0:00:00", "speaker": "null", "line": "", "episode": "mini-01", "edited": false },
+	{
+		"time": "0:00:00",
+		"speaker": "null",
+		"line": "",
+		"episode": "mini-01",
+		"edited": false
+	},
 	{
 		"time": "0:00:08",
 		"speaker": "spk_0",

@@ -181,7 +181,13 @@
 		"episode": "s05e02",
 		"edited": false
 	},
-	{ "time": "0:02:35", "speaker": "spk_4", "line": "The", "episode": "s05e02", "edited": false },
+	{
+		"time": "0:02:35",
+		"speaker": "spk_4",
+		"line": "The",
+		"episode": "s05e02",
+		"edited": false
+	},
 	{
 		"time": "0:02:35",
 		"speaker": "spk_3",
@@ -1547,7 +1553,13 @@
 		"episode": "s05e02",
 		"edited": false
 	},
-	{ "time": "0:24:16", "speaker": "spk_2", "line": "I", "episode": "s05e02", "edited": false },
+	{
+		"time": "0:24:16",
+		"speaker": "spk_2",
+		"line": "I",
+		"episode": "s05e02",
+		"edited": false
+	},
 	{
 		"time": "0:24:16",
 		"speaker": "spk_1",

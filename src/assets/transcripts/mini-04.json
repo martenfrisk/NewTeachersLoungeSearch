@@ -1,5 +1,11 @@
 [
-	{ "time": "0:00:00", "speaker": "null", "line": "", "episode": "mini-04", "edited": false },
+	{
+		"time": "0:00:00",
+		"speaker": "null",
+		"line": "",
+		"episode": "mini-04",
+		"edited": false
+	},
 	{
 		"time": "0:00:02",
 		"speaker": "spk_0",
@@ -1029,7 +1035,13 @@
 		"episode": "mini-04",
 		"edited": false
 	},
-	{ "time": "0:17:59", "speaker": "spk_1", "line": "was", "episode": "mini-04", "edited": false },
+	{
+		"time": "0:17:59",
+		"speaker": "spk_1",
+		"line": "was",
+		"episode": "mini-04",
+		"edited": false
+	},
 	{
 		"time": "0:17:59",
 		"speaker": "spk_3",

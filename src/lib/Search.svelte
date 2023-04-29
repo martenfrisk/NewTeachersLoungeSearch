@@ -1,28 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { SearchHit, Stats } from '$lib/types';
-	import { newRandom, searchMeili, throttle, timeToUrl } from './utils';
-	import epList from '../assets/episodes.json';
-	import Tooltip from './Tooltip.svelte';
+	import type { SearchHit, HitStats } from '$lib/types';
+	import { newRandom, searchMeili, throttle } from './utils';
 
-	if (!String.prototype.replaceAll) {
-		String.prototype.replaceAll = function (str, newStr) {
-			if (Object.prototype.toString.call(str).toLowerCase() === '[object regexp]') {
-				return this.replace(str, newStr);
-			}
-			return this.replace(new RegExp(str, 'g'), newStr);
-		};
-	}
+	import Hit from './components/Hit.svelte';
+	import Stats from './components/Stats.svelte';
+	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
 
 	export let query: string, filter: string[], hits: SearchHit[];
-	let stats: Stats;
 
-	function epName(episode: string) {
-		return epList.find((x) => x.ep === episode);
-	}
-	$: stats;
-	$: filter = filter;
-	$: query = query;
+	let stats: HitStats;
+
 	let offset = 0;
 
 	async function search() {
@@ -34,50 +23,43 @@
 
 	async function addToFilter(filterName: string, filterValue: string) {
 		const combinedFilter = `${filterName} = ${filterValue}`;
-		filter.includes(combinedFilter)
-			? (filter = filter.filter((x) => x !== combinedFilter))
-			: (filter = [combinedFilter, ...filter]);
+		filter = filter.includes(combinedFilter)
+			? filter.filter((x) => x !== combinedFilter)
+			: [combinedFilter, ...filter];
 
 		await search();
 	}
+
 	async function clearFilter() {
 		filter = [];
 		await search();
 	}
-	const getNewRandom = async () => {
+
+	async function getNewRandom() {
 		query = newRandom();
 		filter = [];
 		await search();
-	};
+	}
+
+	async function updateParams() {
+		const params = new URLSearchParams();
+		params.set('s', query);
+		if (filter.length > 0) {
+			params.set('f', filter.map((x) => x.replaceAll(' = ', '=')).join(','));
+		}
+		await goto(`?${params.toString()}`);
+	}
+	$: if (query && browser) {
+		updateParams();
+	}
+
 	onMount(async () => {
-		setTimeout(() => {
-			if (location !== undefined) {
-				query = new URLSearchParams(location.search)?.get('s') || '';
-				filter =
-					new URLSearchParams(location.search)?.get('f')?.replaceAll('=', ' = ').split(',') || [];
-
-				// filterEdited = new URLSearchParams(location.search)?.has('edited') || false;
-			}
-			if (query === '') {
-				query = newRandom();
-
-				// const urlParams = new URLSearchParams(`s=${query}`);
-
-				// if (history.pushState) {
-				// 	let newUrl =
-				// 		window.location.protocol +
-				// 		'//' +
-				// 		window.location.host +
-				// 		window.location.pathname +
-				// 		'?' +
-				// 		urlParams;
-				// 	if (filter && filter.length > 0)
-				// 		newUrl = `${newUrl}&f=${filter.map((x) => x.replace(' = ', '=')).join(',')}`;
-				// 	window.history.pushState({ path: newUrl }, '', newUrl);
-				// }
-			}
-			search();
-		}, 100);
+		// setTimeout(async () => {
+		if (query === '') {
+			query = newRandom();
+		}
+		await search();
+		// }, 100);
 	});
 </script>
 
@@ -94,8 +76,10 @@
 	/>
 	<button
 		class="w-1/4 h-12 px-px text-sm font-semibold text-blue-800 border-2 border-blue-500 shadow-md rounded-l-md bg-blue-50 rounded-r-md md:rounded-l-none md:px-2 md:text-base md:py-2 hover:bg-blue-500 hover:text-white hover:border-white"
-		on:click={getNewRandom}>Random search</button
+		on:click={getNewRandom}
 	>
+		Random search
+	</button>
 </div>
 <div class="flex flex-col flex-wrap w-full gap-2 px-6 my-2">
 	<!-- <label for="editedOnly" class="flex items-baseline gap-2 text-sm cursor-pointer">
@@ -103,19 +87,21 @@
 		<input type="checkbox" id="editedOnly" bind:checked={filterEdited} on:change={() => search()} />
 	</label> -->
 	<details>
-		<summary class="cursor-pointer ">
+		<summary class="cursor-pointer">
 			<span class="hover:underline"> Filter by season or episode </span>
 			{#if filter?.length > 0}
-				<span
+				<button
 					class="ml-2 text-sm text-gray-700 border-b border-gray-500 border-dotted"
-					on:click={clearFilter}>(clear filter)</span
+					on:click={clearFilter}
 				>
+					(clear filter)
+				</button>
 			{/if}
 		</summary>
 		{#if stats?.facets}
 			<div class="flex flex-wrap w-5/6 gap-2 my-2 max-w-screen">
 				<span class="block w-full md:inline md:w-auto">season:</span>
-				{#each stats.facets.find((x) => x.facetName === 'season').facetHits as facet}
+				{#each stats.facets.find((x) => x.facetName === 'season')?.facetHits || [] as facet}
 					<button
 						class={`border border-blue-500 px-2 py-px focus:outline-none text-sm md:text-base  focus:border-black rounded-lg ${
 							filter?.includes(`season = ${facet.ep}`)
@@ -128,7 +114,7 @@
 			</div>
 			<div class="flex flex-wrap w-5/6 gap-2 my-2 max-w-screen">
 				<span class="block w-full md:inline md:w-auto">episode:</span>
-				{#each stats.facets.find((x) => x.facetName === 'episode').facetHits as facet}
+				{#each stats.facets.find((x) => x.facetName === 'episode')?.facetHits || [] as facet}
 					<button
 						class={`border border-blue-500 px-2 py-px text-sm md:text-base rounded-lg ${
 							filter?.includes(`episode = ${facet.ep}`)
@@ -142,144 +128,22 @@
 		{/if}
 	</details>
 </div>
-{#if stats?.nbHits > 0}
-	<p class="flex flex-wrap gap-1 my-4 text-sm md:mt-6 md:mb-8">
-		<span>
-			{stats.nbHits} hits for <em>"{query}"</em>
-			{#if filter?.length > 0}
-				<span class="text-sm">
-					&nbsp;in&nbsp;
-					{filter.map((x) => x.replace('=', '')).join(', ')}
-				</span>
-			{/if}
-		</span>
-		<span>(results retrieved in {stats.processingTime}ms)</span>
-	</p>
-{:else if stats?.nbHits == 0}
-	<p class="flex flex-wrap gap-1 my-4 text-sm md:mt-6 md:mb-8">
-		No results for <em>"{query}"</em>
-		<!-- {filterEdited ? '(edited lines only)' : ''} ☹ -->
-	</p>
-{:else}
-	<p class="mt-6 mb-8">
-		<span class="w-20 h-8 bg-gray-100 animate-pulse" />
-	</p>
-{/if}
+<Stats {stats} {filter} {query} />
 {#if hits}
 	{#each hits as hit}
-		<div
-			class="w-full px-4 pt-4 pb-2 mb-6 border border-blue-200 rounded-md shadow-xl md:shadow-md hover:bg-blue-50"
-		>
-			<div class="flex flex-wrap items-center justify-between w-full mb-2">
-				<div class="flex flex-row md:items-center">
-					<Tooltip>
-						<svelte:fragment slot="tooltip">Go to episode page</svelte:fragment>
-						<svelte:fragment slot="content">
-							<a
-								class="mr-2 text-sm text-blue-900 uppercase hover:underline"
-								href={`/ep/${epName(hit.episode).ep}`}
-							>
-								{epName(hit.episode).ep}
-							</a>
-						</svelte:fragment>
-					</Tooltip>
-					<div class="text-sm text-gray-900 md:text-base">{epName(hit.episode).title}</div>
-				</div>
-
-				<div class="w-full px-1 my-4 border-gray-400 md:pl-6 md:border-l-2 md:text-lg">
-					<p>{@html hit._formatted.line}</p>
-				</div>
-				<div
-					class="flex items-center justify-between w-full mt-2 font-mono text-sm text-right text-gray-600 md:text-base md:mt-0"
-				>
-					<div class="flex items-center gap-3 mr-2 font-sans ">
-						<span class="text-black border-none">
-							{hit.speaker}
-						</span>
-						<span>
-							{hit.time}
-						</span>
-						{#if hit.edited}
-							<Tooltip>
-								<svelte:fragment slot="tooltip">Edited</svelte:fragment>
-								<svelte:fragment slot="content">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="w-6 h-6 text-green-400"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-										/>
-									</svg>
-								</svelte:fragment>
-							</Tooltip>
-						{:else}
-							<Tooltip>
-								<svelte:fragment slot="tooltip">Not edited</svelte:fragment>
-								<svelte:fragment slot="content">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="w-4 h-4 text-gray-500"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-										/>
-									</svg>
-								</svelte:fragment>
-							</Tooltip>
-						{/if}
-					</div>
-					<div class="flex gap-4 ">
-						<Tooltip>
-							<svelte:fragment slot="tooltip">Go to line in transcript</svelte:fragment>
-							<svelte:fragment slot="content">
-								<a
-									href={`/ep/${epName(hit.episode).ep}?${timeToUrl(
-										`t-${hit.time.replaceAll(':', '')}`
-									)}`}
-									class="font-sans text-base text-blue-600 border-b-2 border-blue-200 border-dotted group hover:border-solid"
-								>
-									transcript
-								</a>
-							</svelte:fragment>
-						</Tooltip>
-						<Tooltip>
-							<svelte:fragment slot="tooltip">Listen on Stitcher</svelte:fragment>
-							<svelte:fragment slot="content">
-								<a
-									class="font-sans text-base text-blue-600 border-b-2 border-blue-200 border-dotted has-tooltip hover:border-solid"
-									href={epName(hit.episode).url}
-								>
-									listen
-								</a>
-							</svelte:fragment>
-						</Tooltip>
-					</div>
-				</div>
-			</div>
-		</div>
+		<Hit {hit} />
 	{/each}
-	{#if stats?.nbHits > 20}
+	{#if stats?.estimatedTotalHits && stats?.estimatedTotalHits > 20}
 		<div class="w-full flex justify-center">
 			<button
 				class="px-4 py-2 rounded-md border border-blue-600 text-blue-600 cursor-pointer"
 				on:click={() => {
 					offset = offset + 20;
 					search();
-				}}>Load more</button
+				}}
 			>
+				Load more
+			</button>
 		</div>
 	{/if}
 {:else}
