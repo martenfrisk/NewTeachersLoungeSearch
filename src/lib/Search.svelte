@@ -9,7 +9,6 @@
 	export let query: string, filter: string[], hits: SearchHit[];
 
 	let stats: HitStats;
-	$: console.log({ stats });
 
 	let offset = 0;
 
