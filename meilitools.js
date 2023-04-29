@@ -5,7 +5,7 @@ import path from 'path';
 // import { MeiliKey } from './src/lib/Env';
 
 const client = new MeiliSearch({
-	host: '***REMOVED***',
+	host: 'https://ts.pcast.site/',
 	apiKey: MeiliKey
 });
 
