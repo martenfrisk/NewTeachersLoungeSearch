@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Tooltip from 'lib/Tooltip.svelte';
+	import Tooltip from 'lib/components/Tooltip.svelte';
 	import Check from 'lib/icons/Check.svelte';
 	import Minus from 'lib/icons/Minus.svelte';
 	import type { SearchHit } from 'lib/types';
