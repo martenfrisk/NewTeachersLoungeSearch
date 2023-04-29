@@ -67,6 +67,8 @@
 		"time": "00:01:00",
 		"speaker": "Customer 2",
 		"line": "Bzz-bzz little more",
+		"episode": "mini-07",
+
 		"objectID": "m070194",
 		"edited": true
 	},
@@ -131,7 +133,13 @@
 		"objectID": "m070197",
 		"edited": true
 	},
-	{ "time": "00:01:30", "speaker": "Greg", "line": "UPS.", "objectID": "m070198", "edited": true },
+	{
+		"time": "00:01:30",
+		"speaker": "Greg",
+		"line": "UPS.",
+		"objectID": "m070198",
+		"edited": true
+	},
 	{
 		"time": "00:01:31",
 		"speaker": "Customer 1",

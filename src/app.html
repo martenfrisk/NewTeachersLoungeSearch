@@ -2,19 +2,11 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta
-			name="description"
-			content="teacherslounge.pcast.site - the Teachers' Lounge search engine"
-		/>
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!-- Privacy-friendly page view tracker -->
-		<script data-goatcounter="https://newseekerslounge.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-
-		%svelte.head%
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		%sveltekit.head%
 	</head>
-	<body>
-		<div id="svelte">%svelte.body%</div>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>

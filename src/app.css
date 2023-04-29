@@ -1,17 +1,3 @@
 @tailwind base;
 @tailwind components;
-
-.tooltip {
-  @apply absolute invisible;
-}
-
-.has-tooltip:hover .tooltip {
-  @apply z-50 visible;
-}
-
 @tailwind utilities;
-
-em {
-	color: rgb(29, 78, 216);
-	font-style: normal;
-}

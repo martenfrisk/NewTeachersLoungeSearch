@@ -114,8 +114,7 @@ export interface SearchResult {
 	hits: SearchHit[];
 	offset: number;
 	limit: number;
-	nbHits: number;
-	exhaustiveNbHits: boolean;
+	estimatedTotalHits: number;
 	processingTimeMs: number;
 	query: string;
 	facetsDistribution?: {
@@ -132,8 +131,8 @@ export interface EpisodeInfo {
 	isoDate: Date;
 }
 
-export interface Stats {
-	nbHits: SearchResult['nbHits'];
+export interface HitStats {
+	estimatedTotalHits: SearchResult['estimatedTotalHits'];
 	processingTime: SearchResult['processingTimeMs'];
 	facets: {
 		facetName: string;
