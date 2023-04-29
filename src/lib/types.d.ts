@@ -117,7 +117,7 @@ export interface SearchResult {
 	estimatedTotalHits: number;
 	processingTimeMs: number;
 	query: string;
-	facetsDistribution?: {
+	facetDistribution?: {
 		episode?: { [key: string]: string };
 		season?: { [key: string]: string };
 	};
