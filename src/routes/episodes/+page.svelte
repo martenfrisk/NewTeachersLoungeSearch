@@ -1,11 +1,10 @@
 <script lang="ts">
-	import episodes from '../assets/episodes.json';
-	import Episode from '$lib/Episode.svelte';
+	import episodes from 'assets/episodes.json';
+	import Episode from '$lib/components/Episode.svelte';
 	import Fuse from 'fuse.js';
 	const fuse = new Fuse(episodes, {
-		keys: [
-			{ name: 'desc', weight: 1 }, 'ep', { name: 'title', weight: 3 } ],
-		includeScore: true,
+		keys: [{ name: 'desc', weight: 1 }, 'ep', { name: 'title', weight: 3 }],
+		includeScore: true
 	});
 
 	$: searchEp = '';
@@ -21,21 +20,27 @@
 		's08',
 		's09',
 		'mini',
-		'Live'
+		'Peecast'
 	];
 
 	$: query = '';
-	$: results = [];
+
+	let results: Fuse.FuseResult<{
+		ep: string;
+		title: string;
+		desc: string;
+		date: string;
+		url: string;
+	}>[] = [];
 	async function search() {
 		results = fuse.search(query);
 	}
 </script>
 
 <svelte:head>
-	<title
-		>Episode List - Seekers' Lounge ☕ The Teachers' Lounge Search Engine -
-		teacherslounge.pcast.site</title
-	>
+	<title>
+		Episode List - Seekers' Lounge ☕ The Teachers' Lounge Search Engine - seekerslounge.pcast.site
+	</title>
 </svelte:head>
 
 <div

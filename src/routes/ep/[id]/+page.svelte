@@ -51,7 +51,7 @@
 <svelte:head>
 	<title>
 		{epName(episode)?.title} ({epName(episode)?.ep}) - Seekers' Lounge ☕ The Teachers' Lounge
-		Search Engine - teacherslounge.pcast.site
+		Search Engine - seekerslounge.pcast.site
 	</title>
 </svelte:head>
 

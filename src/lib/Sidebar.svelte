@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Coffee from './Coffee.svelte';
+	import Coffee from './components/Coffee.svelte';
 	import { onMount } from 'svelte';
 
 	$: infoView = true;
