@@ -5,6 +5,8 @@
 
 	import Hit from './components/Hit.svelte';
 	import Stats from './components/Stats.svelte';
+	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
 
 	export let query: string, filter: string[], hits: SearchHit[];
 
@@ -39,20 +41,25 @@
 		await search();
 	}
 
-	onMount(async () => {
-		setTimeout(async () => {
-			if (location !== undefined) {
-				query = new URLSearchParams(location.search)?.get('s') || '';
-				filter =
-					new URLSearchParams(location.search)?.get('f')?.replaceAll('=', ' = ').split(',') || [];
+	async function updateParams() {
+		const params = new URLSearchParams();
+		params.set('s', query);
+		if (filter.length > 0) {
+			params.set('f', filter.map((x) => x.replaceAll(' = ', '=')).join(','));
+		}
+		await goto(`?${params.toString()}`);
+	}
+	$: if (query && browser) {
+		updateParams();
+	}
 
-				// filterEdited = new URLSearchParams(location.search)?.has('edited') || false;
-			}
-			if (query === '') {
-				query = newRandom();
-			}
-			await search();
-		}, 100);
+	onMount(async () => {
+		// setTimeout(async () => {
+		if (query === '') {
+			query = newRandom();
+		}
+		await search();
+		// }, 100);
 	});
 </script>
 
@@ -69,8 +76,10 @@
 	/>
 	<button
 		class="w-1/4 h-12 px-px text-sm font-semibold text-blue-800 border-2 border-blue-500 shadow-md rounded-l-md bg-blue-50 rounded-r-md md:rounded-l-none md:px-2 md:text-base md:py-2 hover:bg-blue-500 hover:text-white hover:border-white"
-		on:click={getNewRandom}>Random search</button
+		on:click={getNewRandom}
 	>
+		Random search
+	</button>
 </div>
 <div class="flex flex-col flex-wrap w-full gap-2 px-6 my-2">
 	<!-- <label for="editedOnly" class="flex items-baseline gap-2 text-sm cursor-pointer">
