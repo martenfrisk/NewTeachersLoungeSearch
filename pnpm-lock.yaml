@@ -5,6 +5,7 @@ specifiers:
   '@sveltejs/kit': ^1.15.9
   '@typescript-eslint/eslint-plugin': ^5.59.1
   '@typescript-eslint/parser': ^5.59.1
+  '@vercel/analytics': ^1.0.0
   autoprefixer: ^10.4.14
   eslint: ^8.39.0
   eslint-config-prettier: ^8.8.0
@@ -20,10 +21,13 @@ specifiers:
   tslib: ^2.5.0
   typescript: ^5.0.4
   vite: ^4.3.3
+  web-vitals: ^3.3.1
 
 dependencies:
+  '@vercel/analytics': 1.0.0
   fuse.js: 6.6.2
   meilisearch: 0.32.3
+  web-vitals: 3.3.1
 
 devDependencies:
   '@sveltejs/adapter-auto': 2.0.1_@sveltejs+kit@1.15.9
@@ -566,6 +570,12 @@ packages:
       '@typescript-eslint/types': 5.59.1
       eslint-visitor-keys: 3.4.0
     dev: true
+
+  /@vercel/analytics/1.0.0:
+    resolution: {integrity: sha512-RQmj7pv82JwGDHrnKeRc6TtSw2U7rWNubc2IH0ernTzWTj02yr9zvIYiYJeztsBzrJtWv7m8Nz6vxxb+cdEtJw==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dev: false
 
   /acorn-jsx/5.3.2_acorn@8.8.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -2139,6 +2149,10 @@ packages:
     dependencies:
       vite: 4.3.3
     dev: true
+
+  /web-vitals/3.3.1:
+    resolution: {integrity: sha512-LTfY5GjcY3ngFzNsYFSYL+AmVmlWrzPTUxSMDis2rZbf+SzT7HH3NH4Y/l45XOlrAIunOBeURN9qtBHkRskAiA==}
+    dev: false
 
   /webidl-conversions/3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
