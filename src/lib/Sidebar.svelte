@@ -70,24 +70,15 @@
 		>
 			<div>
 				<div class="divide-y flex flex-col divide-blue-200">
-					<p class="py-2 md:py-4 text-left">
-						Welcome to the new and improved Seekers' Lounge. Now at a more memorable address:
-						<a href="https://seekerslounge.pcast.site" class="text-blue-800 underline">
-							https://seekerslounge.pcast.site
-						</a>
+					<p class="py-2 md:py-4">
+						Seekers' Lounge is an unofficial fan website where you can search through the
+						transcripts of all episodes to find your favorite bit.
 					</p>
 					<p class="py-2 md:py-4">
-						This is an unofficial fan website where you can search through the transcripts of all
-						episodes to find your favorite bit.
-					</p>
-					<p class="py-2 md:py-4">
-						Listen to the free episodes wherever you get your podcast or subscribe to Stitcher
-						Premium to unlock all seasons.
-					</p>
-					<p class="py-2 md:py-4">
-						At <a class="text-blue-800 underline" href="https://www.stitcherpremium.com/teacher"
-							>stitcherpremium.com/teacher</a
-						> you can sign up for a free trial!
+						Listen to the free episodes wherever you get your podcast or buy them from <a
+							class="text-blue-800 underline"
+							href="https://biggrandewebsite.com/">biggrandewebsite.com</a
+						> (some are only available at Stitcher Premium)
 					</p>
 					<p class="py-2 md:py-4">
 						Transcripts are unedited. Speakers not identified. Intro has been removed so add ~30
@@ -114,12 +105,12 @@
 				</div>
 				{#if moreInfo}
 					<div class="text-sm">
-						You can find the unedited transcripts here:{' '}
+						You can find the unedited transcripts
 						<a
-							class="text-xs text-blue-600"
-							href="https://github.com/martenfrisk/seekerslounge/tree/master/src/transcripts"
+							class=" text-blue-600"
+							href="https://github.com/martenfrisk/NewTeachersLoungeSearch/tree/main/src/assets/transcripts"
 						>
-							github.com/martenfrisk/seekerslounge/tree/master/src/transcripts
+							here.
 						</a>
 						<br />Edit the text and submit a pull request.<br />
 						<br />
@@ -138,13 +129,15 @@
 				</button>
 				<br />
 				{#if copyright}
-					<div>
+					<div class="text-sm">
 						<p>
 							No copyright infringement intended. All rights belong to their respective rights
 							holders (probably Big Grande and Earwolf). Want to contact me? I'll see your ass in
 							court (or message me on reddit, u/martanor)
 						</p>
-						<p>Build with Svelte Kit, powered by MeiliSearch, styled with Tailwind CSS.</p>
+						<p class="mt-1">
+							Built with Svelte Kit, powered by MeiliSearch, styled with Tailwind CSS.
+						</p>
 					</div>
 				{/if}
 			</div>
