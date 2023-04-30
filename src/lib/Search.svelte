@@ -6,16 +6,15 @@
 	import Hit from './components/Hit.svelte';
 	import Stats from './components/Stats.svelte';
 	import { goto } from '$app/navigation';
-	import { browser } from '$app/environment';
 
-	export let query: string, filter: string[], hits: SearchHit[];
+	export let query: string, filter: string[], hits: SearchHit[] | undefined, editedOnly: boolean;
 
 	let stats: HitStats;
-
 	let offset = 0;
 
 	async function search() {
-		await searchMeili(query, filter, false, offset).then((data) => {
+		updateParams();
+		await searchMeili({ query, filter, offset, filterEdited: editedOnly }).then((data) => {
 			hits = data.hits;
 			stats = data.stats;
 		});
@@ -47,11 +46,13 @@
 		if (filter.length > 0) {
 			params.set('f', filter.map((x) => x.replaceAll(' = ', '=')).join(','));
 		}
-		await goto(`?${params.toString()}`);
+		if (editedOnly) params.set('edited', 'true');
+		console.log(params.toString());
+		await goto(`?${params.toString()}`, { keepFocus: true });
 	}
-	$: if (query && browser) {
-		updateParams();
-	}
+	// $: if ((query || editedOnly) && browser) {
+	// 	throttle(500, updateParams);
+	// }
 
 	onMount(async () => {
 		// setTimeout(async () => {
@@ -82,10 +83,10 @@
 	</button>
 </div>
 <div class="flex flex-col flex-wrap w-full gap-2 px-6 my-2">
-	<!-- <label for="editedOnly" class="flex items-baseline gap-2 text-sm cursor-pointer">
+	<label for="editedOnly" class="flex items-baseline gap-2 text-sm cursor-pointer">
 		Edited lines only
-		<input type="checkbox" id="editedOnly" bind:checked={filterEdited} on:change={() => search()} />
-	</label> -->
+		<input type="checkbox" id="editedOnly" bind:checked={editedOnly} on:change={() => search()} />
+	</label>
 	<details>
 		<summary class="cursor-pointer">
 			<span class="hover:underline"> Filter by season or episode </span>
@@ -129,7 +130,7 @@
 	</details>
 </div>
 <Stats {stats} {filter} {query} />
-{#if hits}
+{#if hits && query}
 	{#each hits as hit}
 		<Hit {hit} />
 	{/each}
