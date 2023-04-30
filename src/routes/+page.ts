@@ -9,11 +9,17 @@ export async function load({ url }) {
 	// if (query === '') query = newRandom();
 	let hits;
 	if (query) {
-		({ hits } = await searchMeili(query, !filter.length ? filter : [], editedOnly));
+		({ hits } = await searchMeili({
+			query,
+			filter: !filter.length ? filter : [],
+			offset: 0,
+			filterEdited: editedOnly
+		}));
 	}
 	return {
 		query: query,
 		filter: filter,
-		hits: hits
+		hits: hits,
+		editedOnly: editedOnly
 	};
 }

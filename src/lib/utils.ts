@@ -82,12 +82,17 @@ export const client = new MeiliSearch({
 	apiKey: MeiliKey
 });
 
-export async function searchMeili(
-	query: string,
-	filter: string[],
-	isSSR = false,
-	offset = 0
-): Promise<MeiliResult> {
+export async function searchMeili({
+	query,
+	filter,
+	offset = 0,
+	filterEdited = false
+}: {
+	query: string;
+	filter: string[];
+	offset: number;
+	filterEdited: boolean;
+}): Promise<MeiliResult> {
 	const index = client.index('teachers');
 
 	// if (!isSSR && window.history.pushState && query !== '') {
@@ -103,27 +108,27 @@ export async function searchMeili(
 	// }
 	let data: SearchResult;
 	// only edited & no filters
-	// if (filterEdited && filter.length == 0) {
-	// 	data = await index.search(query, {
-	// 		attributesToHighlight: ['line'],
-	// 		filters: 'edited=true',
-	// 		facetsDistribution: ['season', 'episode'],
-	// 		limit: 20,
-	// 		offset: offset
-	// 	});
-	// } else if (filterEdited && filter.length > 0) {
-	// 	// only edited & filters
-	// 	data = await index.search(query, {
-	// 		attributesToHighlight: ['line'],
-	// 		filters:
-	// 			(filter.length > 1 ? filter.join(' OR ') : filter.toString()) +
-	// 			(filterEdited ? ' AND edited=true' : 'edited=true'),
-	// 		facetsDistribution: ['season', 'episode'],
-	// 		limit: 20,
-	// 		offset: offset
-	// 	});
-	// } else if (!filterEdited && filter.length > 0) {
-	if (filter.length > 0) {
+	if (filterEdited && filter.length == 0) {
+		data = await index.search(query, {
+			attributesToHighlight: ['line'],
+			filter: 'edited=true',
+			facets: ['season', 'episode'],
+			limit: 20,
+			offset: offset
+		});
+	} else if (filterEdited && filter.length > 0) {
+		// 	// only edited & filter
+		data = await index.search(query, {
+			attributesToHighlight: ['line'],
+			filter:
+				(filter.length > 1 ? filter.join(' OR ') : filter.toString()) +
+				(filterEdited ? ' AND edited=true' : 'edited=true'),
+			facets: ['season', 'episode'],
+			limit: 20,
+			offset: offset
+		});
+	} else if (!filterEdited && filter.length > 0) {
+		// if (filter.length > 0) {
 		// not only edited & filters
 		data = await index.search(query, {
 			attributesToHighlight: ['line'],
