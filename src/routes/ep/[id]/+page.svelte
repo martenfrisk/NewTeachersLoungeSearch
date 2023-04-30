@@ -1,38 +1,24 @@
 <script lang="ts">
-	// if (!String.prototype.replaceAll) {
-	// 	String.prototype.replaceAll = function (str: any, newStr: any) {
-	// 		// If a regex pattern
-	// 		if (Object.prototype.toString.call(str).toLowerCase() === '[object regexp]') {
-	// 			return this.replace(str, newStr);
-	// 		}
-
-	// 		// If a string
-	// 		return this.replace(new RegExp(str, 'g'), newStr);
-	// 	};
-	// }
-	import type { LocalEpisode } from '$lib/types';
-
+	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
 	import epList from 'assets/episodes.json';
+
+	export let data: PageData;
+
+	const { episode, query } = data;
+	const epPromise = import(`../../../assets/transcripts/${episode}.json`);
 
 	function epName(episode: string) {
 		return epList.find((x) => x.ep === episode.replace('.json', ''));
 	}
-	export let data: any;
-	const episode: string = data.episode;
-	const query: URLSearchParams = data.query;
 
-	let hits: {
-		default: LocalEpisode[];
-	};
 	const hitIsActive = (ep: string) => {
 		if (!query.has('t')) return false;
 		if (ep.replaceAll(':', '') === query.get('t')?.replace('t-', '')) return true;
 		return false;
 	};
 	onMount(async () => {
-		hits = await import(/* @vite-ignore */ '../../../assets/transcripts/' + episode + '.json');
-
+		const hits = await epPromise;
 		if (hits && query.has('t')) {
 			setTimeout(() => {
 				const anchorId = query.get('t');
@@ -50,8 +36,8 @@
 
 <svelte:head>
 	<title>
-		{epName(episode)?.title} ({epName(episode)?.ep}) - Seekers' Lounge ☕ The Teachers' Lounge
-		Search Engine - seekerslounge.pcast.site
+		Episode transcript for "{epName(episode)?.title}" ({epName(episode)?.ep}) - Seekers' Lounge ☕
+		The Teachers' Lounge Search Engine - seekerslounge.pcast.site
 	</title>
 </svelte:head>
 
@@ -60,7 +46,7 @@
 	<div class="text-lg text-gray-700 uppercase">{epName(episode)?.ep}</div>
 	<div class="text-lg text-gray-800 md:text-xl">{epName(episode)?.title}</div>
 	<p class="px-4 my-8 md:mr-10">{epName(episode)?.desc}</p>
-	{#if hits}
+	{#await epPromise then hits}
 		{#each hits.default as hit}
 			<div
 				class={`w-full border-2 px-4 pb-6 mb-6 shadow-md hover:bg-blue-50 ${
@@ -85,5 +71,5 @@
 				</div>
 			</div>
 		{/each}
-	{/if}
+	{/await}
 </div>
