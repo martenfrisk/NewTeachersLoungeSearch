@@ -1,12 +1,26 @@
-// meilitool.js
 import { MeiliSearch } from 'meilisearch';
 import fs from 'fs';
 import path from 'path';
-// import { MeiliKey } from './src/lib/Env';
+
+function loadEnv() {
+	const envPath = path.resolve(process.cwd(), '.env');
+	const envData = fs.readFileSync(envPath, 'utf-8');
+	const envLines = envData.split('\n');
+
+	for (const line of envLines) {
+		const [key, value] = line.split('=');
+		if (key === 'VITE_MEILI_KEY') {
+			return value;
+		}
+	}
+	return null;
+}
+
+const MeiliKey = loadEnv();
 
 const client = new MeiliSearch({
-	host: 'https://ts.pcast.site/'
-	// apiKey: MeiliKey
+	host: 'https://ts.pcast.site/',
+	apiKey: MeiliKey
 });
 
 /**
@@ -139,9 +153,9 @@ function getSeason(episodeName) {
  */
 async function importDocuments(filePath) {
 	const data = readJSONFile(filePath);
-	const dataWithID = addID(data);
+	// const dataWithID = addID(data);
 	try {
-		const response = await client.index('teachers').updateDocuments(dataWithID);
+		const response = await client.index('teachers').updateDocuments(data);
 		console.log(response);
 	} catch (error) {
 		console.log(error);
@@ -226,6 +240,43 @@ async function removeEmptyLinesAndAddIds(folderPath) {
 	}
 }
 
+/**
+ * @param {string} episodeName
+ */
+async function searchEpisode(episodeName) {
+	try {
+		const searchResponse = await client.index('teachers').search('', {
+			filter: [`episode = "${episodeName}"`],
+			limit: 400
+		});
+
+		const ids = searchResponse.hits.map((hit) => hit.id);
+		return ids;
+	} catch (error) {
+		console.error('Error searching for episode:', error);
+		return [];
+	}
+}
+
+/**
+ * @param {string} episodeName
+ */
+async function removeLinesFromEpisode(episodeName) {
+	const ids = await searchEpisode(episodeName);
+
+	if (ids.length === 0) {
+		console.log(`No lines found for episode: ${episodeName}`);
+		return;
+	}
+
+	try {
+		const response = await client.index('teachers').deleteDocuments(ids);
+		console.log(`Removed lines from episode: ${episodeName}`, response);
+	} catch (error) {
+		console.error('Error removing lines from episode:', error);
+	}
+}
+
 const args = parseArguments(process.argv.slice(2));
 
 if (args['--gettask'] !== undefined) {
@@ -254,9 +305,23 @@ if (args['--gettask'] !== undefined) {
 } else if (args['--remove-empty-lines'] !== undefined) {
 	const folderPath = args['--remove-empty-lines'];
 	removeEmptyLinesAndAddIds(folderPath);
+} else if (args['--search-episode'] !== undefined) {
+	const episodeName = args['--search-episode'];
+	searchEpisode(episodeName);
+} else if (args['--remove-lines-from-episode'] !== undefined) {
+	const episodeName = args['--remove-lines-from-episode'];
+	removeLinesFromEpisode(episodeName);
 } else {
 	console.log('Usage:');
-	console.log('  node meilitool.js --gettask=<task_id>');
-	console.log('  node meilitool.js --import=<file_path>');
-	console.log('  node meilitool.js --import-all=<folder_path>');
+	console.log('  node meilitools.js --gettask=<task_id>');
+	console.log('  node meilitools.js --import=<file_path>');
+	console.log('  node meilitools.js --import-all=<folder_path>');
+	console.log('  node meilitools.js --fix-episode=<file_path>');
+	console.log('  node meilitools.js --fix-all-episodes=<folder_path>');
+	console.log('  node meilitools.js --add-ids-to-file=<file_path>');
+	console.log('  node meilitools.js --add-ids-to-all-files=<folder_path>');
+	console.log('  node meilitools.js --remove-empty-lines=<file_path>');
+	console.log('  node meilitools.js --remove-empty-lines-all=<folder_path>');
+	console.log('  node meilitools.js --search-episode=<episode_name>');
+	console.log('  node meilitools.js --remove-lines-from-episode=<episode_name>');
 }
