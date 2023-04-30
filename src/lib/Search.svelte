@@ -47,7 +47,6 @@
 			params.set('f', filter.map((x) => x.replaceAll(' = ', '=')).join(','));
 		}
 		if (editedOnly) params.set('edited', 'true');
-		console.log(params.toString());
 		await goto(`?${params.toString()}`, { keepFocus: true });
 	}
 	// $: if ((query || editedOnly) && browser) {
