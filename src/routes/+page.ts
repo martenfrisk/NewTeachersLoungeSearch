@@ -12,7 +12,7 @@ export async function load({ url }) {
 		({ hits } = await searchMeili({
 			query,
 			filter: !filter.length ? filter : [],
-			offset: 0,
+			offset: 20,
 			filterEdited: editedOnly
 		}));
 	}
