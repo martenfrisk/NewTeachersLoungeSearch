@@ -1,13 +1,17 @@
 import { error } from '@sveltejs/kit';
 
-export function load({ params, url }) {
+export async function load({ params }) {
 	const { id } = params;
+	const epPromise = import(`../../../assets/transcripts/${id}.json`);
+	const hits = await epPromise;
 	if (id) {
 		return {
 			episode: id,
-			query: url.searchParams
+			hits: hits
 		};
 	}
 
 	throw error(404, 'Not found');
 }
+
+export const prerender = true;

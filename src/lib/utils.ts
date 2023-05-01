@@ -85,7 +85,7 @@ export const client = new MeiliSearch({
 export async function searchMeili({
 	query,
 	filter,
-	offset = 0,
+	offset = 20,
 	filterEdited = false
 }: {
 	query: string;
@@ -113,8 +113,7 @@ export async function searchMeili({
 			attributesToHighlight: ['line'],
 			filter: 'edited=true',
 			facets: ['season', 'episode'],
-			limit: 20,
-			offset: offset
+			limit: offset
 		});
 	} else if (filterEdited && filter.length > 0) {
 		// 	// only edited & filter
@@ -124,8 +123,7 @@ export async function searchMeili({
 				(filter.length > 1 ? filter.join(' OR ') : filter.toString()) +
 				(filterEdited ? ' AND edited=true' : 'edited=true'),
 			facets: ['season', 'episode'],
-			limit: 20,
-			offset: offset
+			limit: offset
 		});
 	} else if (!filterEdited && filter.length > 0) {
 		// if (filter.length > 0) {
@@ -134,15 +132,13 @@ export async function searchMeili({
 			attributesToHighlight: ['line'],
 			filter: filter.length > 1 ? filter.join(' OR ') : filter.toString(),
 			facets: ['season', 'episode'],
-			limit: 20,
-			offset: offset
+			limit: offset
 		});
 	} else {
 		data = await index.search(query, {
 			attributesToHighlight: ['line'],
 			facets: ['season', 'episode'],
-			limit: 20,
-			offset: offset
+			limit: offset
 		});
 	}
 

@@ -1,2414 +1,2414 @@
 [
-  {
-    "id": "mini-07-1",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:00:14",
-    "speaker": "Customer 2",
-    "line": "[unintelligible imitation of reversed speech]",
-    "edited": true
-  },
-  {
-    "id": "mini-07-2",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:00:36",
-    "speaker": "Waiter 1",
-    "line": "[unintelligible] ...pizza... [unintelligible] ...plate",
-    "edited": true
-  },
-  {
-    "id": "mini-07-3",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:00:40",
-    "speaker": "Customer 1",
-    "line": "[unintelligible] ...or use the napkin instead.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-4",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:00:42",
-    "speaker": "Customer 2",
-    "line": "Does anybody have red pepper? [unintelligible] ...under the bridge.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-5",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:00:49",
-    "speaker": "Waiter 1",
-    "line": "Shaved parmesan, let me know when enough.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-6",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:00:52",
-    "speaker": "Customer 2",
-    "line": "That's enough. ...was there... [unintelligible]",
-    "edited": true
-  },
-  {
-    "id": "mini-07-7",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:00:57",
-    "speaker": "Waiter 1",
-    "line": "Anyone else shaved parmesan?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-8",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:00:58",
-    "speaker": "Customer 1",
-    "line": "Keep going, keep going, keep going.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-9",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:00",
-    "speaker": "Customer 2",
-    "line": "Bzz-bzz little more.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-10",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:00",
-    "speaker": "Waiter 1",
-    "line": "Just let me know.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-11",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:06",
-    "speaker": "Customer 1",
-    "line": "Thank you",
-    "edited": true
-  },
-  {
-    "id": "mini-07-12",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:07",
-    "speaker": "Customer 2",
-    "line": "In actually I'll take some more.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-13",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:13",
-    "speaker": "Waiter 1",
-    "line": "Here's a... my arm is getting tired.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-14",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:16",
-    "speaker": "Customer 2",
-    "line": "You can just leave it on the table I will do it myself.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-15",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:21",
-    "speaker": "Waiter 1",
-    "line": "Have a nice meal, folks. I'll be right back.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-16",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:24",
-    "speaker": "Greg",
-    "line": "Knock, knock, knock.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-17",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:28",
-    "speaker": "Customer 1",
-    "line": "Who's there?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-18",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:30",
-    "speaker": "Greg",
-    "line": "UPS.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-19",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:31",
-    "speaker": "Customer 1",
-    "line": "UPS who?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-20",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:33",
-    "speaker": "Greg",
-    "line": "UPS FedEx.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-21",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:37",
-    "speaker": "Customer 1",
-    "line": "UPS FedEx who?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-22",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:40",
-    "speaker": "Greg",
-    "line": "UPS FedEx DHL.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-23",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:44",
-    "speaker": "Fake Manager",
-    "line": "UPS, uh, DHL who?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-24",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:47",
-    "speaker": "Greg",
-    "line": "UPS FedEx DHL... Post office.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-25",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:54",
-    "speaker": "Customer 1",
-    "line": "UPS FedEx DHL post office who?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-26",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:01:59",
-    "speaker": "Greg",
-    "line": "Just kidding, it's Greg, let me get some parmesan.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-27",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:03",
-    "speaker": "Customer 2",
-    "line": "Oh, Greg, it's good to see you, Greg.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-28",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:06",
-    "speaker": "Customer 1",
-    "line": "Say when.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-29",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:08",
-    "speaker": "Greg",
-    "line": "Little more. How you guys been?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-30",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:12",
-    "speaker": "Customer 2",
-    "line": "We have had a good week. Greg, how are you?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-31",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:15",
-    "speaker": "Fake Manager",
-    "line": "Hey guys, I am the manager, I heard there was a problem over here?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-32",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:21",
-    "speaker": "Customer 1",
-    "line": "No, everything's good. We thought there was a delivery at your door.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-33",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:27",
-    "speaker": "Fake Manager",
-    "line": "OK just want to—",
-    "edited": true
-  },
-  {
-    "id": "mini-07-34",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:28",
-    "speaker": "Customer 1",
-    "line": "But it's just our friend Greg.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-35",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:31",
-    "speaker": "Fake Manager",
-    "line": "Just want to make sure everyone is satisfied here at The Olive Garden.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-36",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:35",
-    "speaker": "Greg",
-    "line": "Are you sure you're the manager? I saw you sitting at another table.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-37",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:42",
-    "speaker": "Fake Manager",
-    "line": "Oh, shoot, I forgot, I was just wearing what the managers wear here.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-38",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:48",
-    "speaker": "Delivery Man 1",
-    "line": "Knock, knock, knock.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-39",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:50",
-    "speaker": "Customer 1",
-    "line": "Who's there?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-40",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:53",
-    "speaker": "Delivery Man 1",
-    "line": "1-800-Flowers.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-41",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:56",
-    "speaker": "Fake Manager",
-    "line": "You [unintelligible]...",
-    "edited": true
-  },
-  {
-    "id": "mini-07-42",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:02:58",
-    "speaker": "Greg",
-    "line": "Don't leave now, you came over here just like the manager.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-43",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:03",
-    "speaker": "Customer 1",
-    "line": "You're our friend now. 1-800-Flowers who?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-44",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:07",
-    "speaker": "Delivery Man 1",
-    "line": "1-800-Flowers TeleFlora!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-45",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:11",
-    "speaker": "Fake Manager",
-    "line": "Oh I have heard this one.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-46",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:13",
-    "speaker": "Greg",
-    "line": "You actually ordered this?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-47",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:17",
-    "speaker": "Fake Manager",
-    "line": "I ordered this joke to my table.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-48",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:21",
-    "speaker": "Customer 1",
-    "line": "I'll have one joke for the lady.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-49",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:24",
-    "speaker": "Diane",
-    "line": "Please don't order for me.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-50",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:27",
-    "speaker": "Customer 1",
-    "line": "Oh it's a feminist!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-51",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:27",
-    "speaker": "Diane",
-    "line": "Fuck you!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-52",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:33",
-    "speaker": "Delivery Man 1",
-    "line": "Everybody calm down.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-53",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:35",
-    "speaker": "Fake Manager",
-    "line": "I think I should get back to my table.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-54",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:38",
-    "speaker": "Customer 1",
-    "line": "Who did you come with today?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-55",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:40",
-    "speaker": "Fake Manager",
-    "line": "I-I feel bad getting caught as the fake manager. I'm not the manager.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-56",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:47",
-    "speaker": "Diane",
-    "line": "Honey, get back to the table. Stop pretending to be the manager.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-57",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:53",
-    "speaker": "Fake Manager",
-    "line": "I'm sorry, Diane, here I come.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-58",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:03:55",
-    "speaker": "Diane",
-    "line": "I'm beginning to think you dress up like managers on purpose so you can pretend to be them. And I want a divorce.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-59",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:06",
-    "speaker": "Fake Manager",
-    "line": "Wait... wait... wait. Don't divorce me in an Olive Garden.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-60",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:11",
-    "speaker": "Waiter 2",
-    "line": "Hello? Can I get you both some extra parmesan?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-61",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:15",
-    "speaker": "Diane",
-    "line": "We're standing up having a fight!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-62",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:18",
-    "speaker": "Customer 1",
-    "line": "Read the room, dude!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-63",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:20",
-    "speaker": "Waiter 2",
-    "line": "Ok, I will head back to the kitchen with this bowl of parmesan.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-64",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:25",
-    "speaker": "Fake Manager",
-    "line": "While you're there, you said 'bowl.' Can I get a bolognese?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-65",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:31",
-    "speaker": "Waiter 2",
-    "line": "Would you like that as an appetizer?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-66",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:33",
-    "speaker": "Customer 1",
-    "line": "This guy ordered a bolognese in the middle of his divorce!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-67",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:39",
-    "speaker": "Diane",
-    "line": "Honey, this is unacceptable. Last time we had a fight you ordered a pizza!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-68",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:47",
-    "speaker": "Fake Manager",
-    "line": "And what happened? It solved our problem.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-69",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:50",
-    "speaker": "Delivery Man 2",
-    "line": "Knock, knock, knock.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-70",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:51",
-    "speaker": "Diane",
-    "line": "Oh, who's there?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-71",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:54",
-    "speaker": "Delivery Man 2",
-    "line": "Domino's.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-72",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:56",
-    "speaker": "Customer 1",
-    "line": "Domino's who?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-73",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:04:58",
-    "speaker": "Delivery Man 2",
-    "line": "Domino's Pizza Hut.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-74",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:05:01",
-    "speaker": "Fake Manager",
-    "line": "Hello folks, I am the real manager here.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-75",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:05:06",
-    "speaker": "Diane",
-    "line": "You simply stepped away a couple feet, put on a mustache, and came back.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-76",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:05:11",
-    "speaker": "Fake Manager",
-    "line": "That is because I am the real manager.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-77",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:05:14",
-    "speaker": "Customer 1",
-    "line": "Why did you say 'real?'",
-    "edited": true
-  },
-  {
-    "id": "mini-07-78",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:05:18",
-    "speaker": "Fake Manager",
-    "line": "Ok, ok, I've been caught.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-79",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:05:21",
-    "speaker": "Customer 1",
-    "line": "You left your divorce to deal with a problem at the restaurant as the fake manager.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-80",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:05:28",
-    "speaker": "Fake Manager",
-    "line": "How about that bolognese? I think the bolognese will calm us all down.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-81",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:05:35",
-    "speaker": "Diane",
-    "line": "Okay, maybe that's true. Guess I'll have some bolognese and see if we can calm down.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-82",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:05:45",
-    "speaker": "Waiter 2",
-    "line": "Are we all invited to have bolognese? Or is this a issue that you want to deal with individually?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-83",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:05:53",
-    "speaker": "Fake Manager",
-    "line": "Of course. Here is a fork. Here is a fork. Here is a fork.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-84",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:05:57",
-    "speaker": "Diane",
-    "line": "Perfect. Forks for bolognese. A bowl of bolognese sauce.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-85",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:03",
-    "speaker": "Waiter 2",
-    "line": "Here is the bolognese.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-86",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:05",
-    "speaker": "Fake Manager",
-    "line": "Wait a second. Is there no pasta in this bolognese?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-87",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:09",
-    "speaker": "Waiter 2",
-    "line": "You only ordered bolognese. You did not specify a pasta.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-88",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:14",
-    "speaker": "Fake Manager",
-    "line": "What kind of freak would only want sauce? What kind of freak would only want sauce?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-89",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:20",
-    "speaker": "Waiter 2",
-    "line": "That is a good question. I just assumed you were going to put the bolognese on the pasta you had.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-90",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:28",
-    "speaker": "Diane",
-    "line": "At this Olive Garden, do you have to order the pasta separately?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-91",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:34",
-    "speaker": "Waiter 2",
-    "line": "Yes. This is a unique Olive Garden.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-92",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:37",
-    "speaker": "Diane",
-    "line": "What's the name of it?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-93",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:39",
-    "speaker": "Waiter 2",
-    "line": "Olive Garden...",
-    "edited": true
-  },
-  {
-    "id": "mini-07-94",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:40",
-    "speaker": "Demon Voice 1",
-    "line": "Satan!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-95",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:40",
-    "speaker": "Diane",
-    "line": "Olive what?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-96",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:46",
-    "speaker": "Demon Voice 1",
-    "line": "Satan!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-97",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:49",
-    "speaker": "Customer 1",
-    "line": "One more time.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-98",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:51",
-    "speaker": "Demon Voice 1",
-    "line": "Satan!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-99",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:54",
-    "speaker": "Customer 1",
-    "line": "Oh, I think I've heard of this place.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-100",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:06:57",
-    "speaker": "Tom Hanks",
-    "line": "Can I get a refill on my Coca-Cola?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-101",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:07:00",
-    "speaker": "Diane",
-    "line": "Oh my God. Look who it is. It's Tom Hanks!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-102",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:07:07",
-    "speaker": "Customer 1",
-    "line": "Tom Hanks drinks Coca-Cola in The Olive Garden.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-103",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:07:10",
-    "speaker": "Waiter 2",
-    "line": "Tom Hanks walked up to me and asked for more Coca-Cola. I'll be to your table soon, Mr Hanks.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-104",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:07:18",
-    "speaker": "Tom Hanks",
-    "line": "Okay, I was just unsure because you haven't been here in 35 minutes, and I wanted to go tackle it all.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-105",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:07:25",
-    "speaker": "Waiter 2",
-    "line": "I didn't want to seem star-struck and like I was giving you too much attention.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-106",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:07:31",
-    "speaker": "Tom Hanks",
-    "line": "It's more obvious when you ignore me that you love me.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-107",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:07:34",
-    "speaker": "Diane",
-    "line": "Mr. Hanks, can I ask you a question?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-108",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:07:38",
-    "speaker": "Tom Hanks",
-    "line": "Of course, I am the people's champ.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-109",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:07:40",
-    "speaker": "Diane",
-    "line": "What, sorry? Go back just a little bit.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-110",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:07:45",
-    "speaker": "Tom Hanks",
-    "line": "I am the people's champ.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-111",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:07:46",
-    "speaker": "Diane",
-    "line": "Okay, now my question has changed. Did you, did The Rock get his idea of 'The People's Champion' from you, Mr. Tom Hanks?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-112",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:01",
-    "speaker": "Tom Hanks",
-    "line": "This is crazy, I get this all the time.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-113",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:03",
-    "speaker": "Diane",
-    "line": "You do?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-114",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:04",
-    "speaker": "Tom Hanks",
-    "line": "I get this all the time. He beat me and took my name in a match.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-115",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:10",
-    "speaker": "Waiter 2",
-    "line": "Your name used to be The Rock.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-116",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:13",
-    "speaker": "Tom Hanks",
-    "line": "My name was The Rock and I was a wrestler until I got big.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-117",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:19",
-    "speaker": "Waiter 2",
-    "line": "You're saying before you shot the movie, 'Big,' you were a wrestler?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-118",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:24",
-    "speaker": "Tom Hanks",
-    "line": "I shot the movie 'Big' and I was going to continue both a movie career and wrestling. But The Rock beat me up and told me, 'Stop wrestling.'",
-    "edited": true
-  },
-  {
-    "id": "mini-07-119",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:33",
-    "speaker": "Diane",
-    "line": "Were you simply just The Rock or were you multiple wrestlers?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-120",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:38",
-    "speaker": "Tom Hanks",
-    "line": "I was also Papa Shango, who wears white face paint and does spells.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-121",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:44",
-    "speaker": "Diane",
-    "line": "Were you any others?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-122",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:47",
-    "speaker": "Tom Hanks",
-    "line": "Well, yes I was: The Ultimate Warrior.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-123",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:52",
-    "speaker": "Manager",
-    "line": "Hey Tom, stop fraternizing, your tables need to be bussed.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-124",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:08:56",
-    "speaker": "Waiter 2",
-    "line": "Wow. Tom Hanks works here as well.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-125",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:00",
-    "speaker": "Tom Hanks",
-    "line": "It's been a rough stretch since 'Captain Phillips.' And I have to get a job to care for my son, Chet Hanks, who doesn't act.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-126",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:11",
-    "speaker": "Diane",
-    "line": "So if your son doesn't act, he's immediately expensive to take care of.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-127",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:17",
-    "speaker": "Tom Hanks",
-    "line": "My son has made me poor by not acting.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-128",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:21",
-    "speaker": "Demon Voice 1",
-    "line": "Satan...Satan...",
-    "edited": true
-  },
-  {
-    "id": "mini-07-129",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:24",
-    "speaker": "Demon Voice 2",
-    "line": "Satan...",
-    "edited": true
-  },
-  {
-    "id": "mini-07-130",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:25",
-    "speaker": "Demon Voice 3",
-    "line": "Satan...",
-    "edited": true
-  },
-  {
-    "id": "mini-07-131",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:26",
-    "speaker": "Demon Voice 2",
-    "line": "Satan the devil.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-132",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:27",
-    "speaker": "Diane",
-    "line": "I'm so sorry to hear that about your son. Were you any other wrestlers?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-133",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:33",
-    "speaker": "Tom Hanks",
-    "line": "Of course I have come down from the rafters as Sting",
-    "edited": true
-  },
-  {
-    "id": "mini-07-134",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:38",
-    "speaker": "Diane",
-    "line": "That was you?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-135",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:39",
-    "speaker": "Customer 3",
-    "line": "We remember that.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-136",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:40",
-    "speaker": "Tom Hanks",
-    "line": "Coming down from the rafters, coming down from the rafters.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-137",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:44",
-    "speaker": "Customer 3",
-    "line": "Were you nWo Sting or real Sting?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-138",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:48",
-    "speaker": "Tom Hanks",
-    "line": "I was luckily there for both iterations.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-139",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:51",
-    "speaker": "Customer 3",
-    "line": "Lucky you.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-140",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:52",
-    "speaker": "Diane",
-    "line": "Lucky!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-141",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:53",
-    "speaker": "Waiter 2",
-    "line": "When did you pass the mantle of Sting to the real Sting?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-142",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:09:59",
-    "speaker": "Tom Hanks",
-    "line": "Well, uh haha, uh haha.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-143",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:01",
-    "speaker": "Customer 3",
-    "line": "Sounds like it's going to be a funny story.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-144",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:04",
-    "speaker": "Tom Hanks",
-    "line": "I think I am the real Sting. But I passed it to Gregory Schmibbledib to be the new Sting when I got 'Castaway.'",
-    "edited": true
-  },
-  {
-    "id": "mini-07-145",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:15",
-    "speaker": "Diane",
-    "line": "So you were simultaneously acting and being a wrestler.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-146",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:18",
-    "speaker": "Tom Hanks",
-    "line": "I was Sting and Tom Hanks for 15 years.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-147",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:21",
-    "speaker": "Waiter 2",
-    "line": "Wow, that is impressive.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-148",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:23",
-    "speaker": "Customer 3",
-    "line": "And 'Castaway' was such a struggle to prepare for that you decided you could only do one or the other.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-149",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:30",
-    "speaker": "Tom Hanks",
-    "line": "That's right. Would anyone like a refill?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-150",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:33",
-    "speaker": "Diane",
-    "line": "Yes. I'll takes some more passion fruit tea.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-151",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:34",
-    "speaker": "Waiter 2",
-    "line": "I'm sorry. I would, I, never mind.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-152",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:39",
-    "speaker": "Diane",
-    "line": "What were you going to say? Were you going to tell us something emotional and you got scared?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-153",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:45",
-    "speaker": "Customer 3",
-    "line": "It's okay to be vulnerable in front of strangers at The Olive Garden.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-154",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:49",
-    "speaker": "Demon Voice 1",
-    "line": "The flames of hell burn eternal.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-155",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:53",
-    "speaker": "Demon Voice 4",
-    "line": "Burn eternal. Burn eternal.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-156",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:56",
-    "speaker": "Demon Voice 2",
-    "line": "Bernie Sanders-ternal.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-157",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:57",
-    "speaker": "Demon Voice 3",
-    "line": "Bernie Sanders-ternal.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-158",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:10:59",
-    "speaker": "Demon Voice 1",
-    "line": "Bernie Sanders' toenails need Purell.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-159",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:01",
-    "speaker": "Demon Voice 2",
-    "line": "Bernie Sanders needs anti-bacterial for his toenails.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-160",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:07",
-    "speaker": "Demon Voice 4",
-    "line": "Bernie Sanders would have been elected if not for his dirty feet.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-161",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:11",
-    "speaker": "Waiter 2",
-    "line": "Bernie's feet are disgusting.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-162",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:16",
-    "speaker": "Diane",
-    "line": "What were you going to say that was emotional?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-163",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:19",
-    "speaker": "Waiter 2",
-    "line": "I was going to say that I've been working at this Olive Garden for a long time and I...",
-    "edited": true
-  },
-  {
-    "id": "mini-07-164",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:27",
-    "speaker": "Diane",
-    "line": "You're going to propose",
-    "edited": true
-  },
-  {
-    "id": "mini-07-165",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:28",
-    "speaker": "Customer 3",
-    "line": "To The Olive Garden?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-166",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:30",
-    "speaker": "Waiter 2",
-    "line": "And this Olive Garden...",
-    "edited": true
-  },
-  {
-    "id": "mini-07-167",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:31",
-    "speaker": "Tom Hanks",
-    "line": "Oh my God. Oh my God. He is doing it.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-168",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:35",
-    "speaker": "Diane",
-    "line": "Isn't The Olive Garden already married to its breadsticks?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-169",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:39",
-    "speaker": "Tom Hanks",
-    "line": "I heard they were on the rocks.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-170",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:42",
-    "speaker": "Waiter 2",
-    "line": "Yes, I was going to say: Olive Garden, if you are not happy in your marriage to your breadsticks, I would love to make me... I would love for...",
-    "edited": true
-  },
-  {
-    "id": "mini-07-171",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:56",
-    "speaker": "Diane",
-    "line": "Oh no, he's botching the proposal.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-172",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:11:58",
-    "speaker": "Tom Hanks",
-    "line": "He would love to make himself the happiest man in the world.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-173",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:12:02",
-    "speaker": "Waiter 2",
-    "line": "I would love to make myself the happiest man in the world by marrying you, Olive Garden.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-174",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:12:10",
-    "speaker": "Tom Hanks",
-    "line": "Oh, my God, I'm just realizing this man is Borat.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-175",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:12:16",
-    "speaker": "Diane",
-    "line": "Oh, my God. How did we not notice this whole time? Is this Sacha Baron Cohen as Borat?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-176",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:12:23",
-    "speaker": "Borat",
-    "line": "I am wearing my tiny bikini.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-177",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:12:27",
-    "speaker": "Customer 3",
-    "line": "On all days I come to The Olive Garden alone and get to see Tom Hanks and Borat.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-178",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:12:33",
-    "speaker": "Borat",
-    "line": "That's right, Olive Garden, I would like to make you *my wife*.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-179",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:12:38",
-    "speaker": "Tom Hanks",
-    "line": "Chicken parmesan, chicken parmesan.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-180",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:12:43",
-    "speaker": "Diane",
-    "line": "Those were mine. Those were mine. Those were mine.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-181",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:12:44",
-    "speaker": "Diane",
-    "line": "Those were his. Oh, my God. The Olive Garden is saying no. And unfortunately, it's on the jumbotron.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-182",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:12:53",
-    "speaker": "Borat",
-    "line": "That is right. This Olive Garden is in a basketball stadium and I proposed in front of it and I am on the jumbotron. Please stop looking at me.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-183",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:04",
-    "speaker": "Customer 3",
-    "line": "Oh, now they've turned the jumbotron, a proposal, into a Kiss Cam. No one will kiss this man.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-184",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:12",
-    "speaker": "Tom Hanks",
-    "line": "Oh wait, oh wait. No-kiss Cam. It's the No-kiss Cam.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-185",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:16",
-    "speaker": "Customer 3",
-    "line": "Sorry, Gene Simmons.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-186",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:18",
-    "speaker": "Borat",
-    "line": "This is embarrassing.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-187",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:20",
-    "speaker": "Tom Hanks",
-    "line": "They are kicking KISS out of the building.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-188",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:24",
-    "speaker": "Customer 3",
-    "line": "Wow, KISS is doing the perp-walk out of the building and they are filming the whole thing.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-189",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:28",
-    "speaker": "Demon Voice 1",
-    "line": "Satan's service. Satan!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-190",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:31",
-    "speaker": "Demon Voice 3",
-    "line": "Knight in Satan's service.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-191",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:34",
-    "speaker": "Demon Voice 2",
-    "line": "I love Satan. Satan!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-192",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:36",
-    "speaker": "Demon Voice 3",
-    "line": "Perfect day.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-193",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:37",
-    "speaker": "Demon Voice 2",
-    "line": "Eat me, Satan!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-194",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:38",
-    "speaker": "Demon Voice 1",
-    "line": "Eat meat, Satan!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-195",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:39",
-    "speaker": "Demon Voice 3",
-    "line": "Satan is a vegetarian!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-196",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:42",
-    "speaker": "Demon Voice 4",
-    "line": "Satan is on keto.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-197",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:46",
-    "speaker": "Demon Voice 1",
-    "line": "The fires of hell burn from ketogenic diets like fat in your body.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-198",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:51",
-    "speaker": "Diane",
-    "line": "Hold on. Tom Hanks, why are you getting into a basketball uniform? Don't tell me you're also many different basketball stars.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-199",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:13:59",
-    "speaker": "Tom Hanks",
-    "line": "No, no, this is a Halloween costume.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-200",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:03",
-    "speaker": "Diane",
-    "line": "Oh right, it's in the dead of center of Halloween tonight.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-201",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:07",
-    "speaker": "Tom Hanks",
-    "line": "I am leaving The Olive Garden-slash-stadium to go trick or treating with my boy Chet Hanks.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-202",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:13",
-    "speaker": "Diane",
-    "line": "Oh, are you trick or treating because you're so poor and you need the candy for your family?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-203",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:19",
-    "speaker": "Tom Hanks",
-    "line": "He will not be with me. I will be getting candy to give to my son.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-204",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:22",
-    "speaker": "Diane",
-    "line": "What did he say? Were you disappointed when he told you he was not going to be an actor?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-205",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:28",
-    "speaker": "Tom Hanks",
-    "line": "He said, Dad, I think we have enough money acting. I would like to be a rapper producer that no listens to.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-206",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:35",
-    "speaker": "Diane",
-    "line": "That was part of his goal that no one would listen to him?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-207",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:38",
-    "speaker": "Tom Hanks",
-    "line": "Absolutely. Lifestyle but no content.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-208",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:42",
-    "speaker": "Borat",
-    "line": "Lifestyle, but no content.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-209",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:45",
-    "speaker": "Customer 3",
-    "line": "Lifestyle, but no content.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-210",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:46",
-    "speaker": "Demon Voice 1",
-    "line": "Satan hates content.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-211",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:49",
-    "speaker": "Demon Voice 2",
-    "line": "Content is king.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-212",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:52",
-    "speaker": "Demon Voice 4",
-    "line": "Satan has outlawed the internet from Hell.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-213",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:14:56",
-    "speaker": "Demon Voice 1",
-    "line": "The Beatles stole my idea to record like this. It is Satan and the Beatles are kidding.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-214",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:15:03",
-    "speaker": "Demon Voice 2",
-    "line": "The Beatles are kidding.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-215",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:15:06",
-    "speaker": "Demon Voice 4",
-    "line": "The Beatles, their whole career, were just kidding.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-216",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:15:08",
-    "speaker": "Demon Voice 3",
-    "line": "They're kidding. I'm serious, I am Satan and I am not joking about this.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-217",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:15:15",
-    "speaker": "Demon Voice 1",
-    "line": "This is how albums are good backwards. The Beatles are only a joke.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-218",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:15:19",
-    "speaker": "Demon Voice 2",
-    "line": "The Beatles thought that they were funny guys, but they are not actually funny.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-219",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:15:26",
-    "speaker": "Demon Voice 3",
-    "line": "Satan is funnier than the Beatles, ask anyone.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-220",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:15:29",
-    "speaker": "Demon Voice 1",
-    "line": "Satan is a wild and crazy guy.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-221",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:15:32",
-    "speaker": "Borat",
-    "line": "Satan could do a lot of funny comedy, but he's stuck in Hell.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-222",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:15:39",
-    "speaker": "Diane",
-    "line": "Satan actually met with Lorne in the late eighties, but he botched the meeting, so he didn't get to host 'Weekend Update.'",
-    "edited": true
-  },
-  {
-    "id": "mini-07-223",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:15:48",
-    "speaker": "Tom Hanks",
-    "line": "Satan and Farley are friends in Hell.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-224",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:15:51",
-    "speaker": "Customer 3",
-    "line": "Farley picked Hell to hang with Satan, and they had a van down by Styx River.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-225",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:00",
-    "speaker": "Borat",
-    "line": "Farley was the only person to ever be given a choice.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-226",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:04",
-    "speaker": "Tom Hanks",
-    "line": "If you ask me, reverse recording is cooler than forward recording, right?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-227",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:09",
-    "speaker": "Diane",
-    "line": "Yes, I think the rest of the podcast will be this way now.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-228",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:13",
-    "speaker": "Borat",
-    "line": "Yes, that is right. It will be from here on out.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-229",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:17",
-    "speaker": "Tom Hanks",
-    "line": "And by that, of course, we mean Satan's podcast in that he's recording from hell backwards on the Teachers' Lounge.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-230",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:24",
-    "speaker": "Borat",
-    "line": "That is right. It is called 'Satan Needs A New Friend.' It's...",
-    "edited": true
-  },
-  {
-    "id": "mini-07-231",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:31",
-    "speaker": "Customer 3",
-    "line": "'Satan Needs A New Friend.' I interview people in hell and say, Maybe we could hang.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-232",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:37",
-    "speaker": "Tom Hanks",
-    "line": "Might as well start at The Olive Garden, my favorite restaurant.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-233",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:41",
-    "speaker": "Diane",
-    "line": "Inside of a basketball place.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-234",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:44",
-    "speaker": "Tom Hanks",
-    "line": "The New York Knicks play here.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-235",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:46",
-    "speaker": "Diane",
-    "line": "It's Madison Square Garden we're in.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-236",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:48",
-    "speaker": "Borat",
-    "line": "Madison Square Olive Garden is the name of this restaurant.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-237",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:53",
-    "speaker": "Tom Hanks",
-    "line": "Where else did you think Hell would be located?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-238",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:56",
-    "speaker": "Borat",
-    "line": "The middle of New York City?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-239",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:16:58",
-    "speaker": "Diane",
-    "line": "We just moved here from Port Authority.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-240",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:02",
-    "speaker": "Customer 3",
-    "line": "The who what where of this situation is a Madison Square Olive Garden in Hell.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-241",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:08",
-    "speaker": "Diane",
-    "line": "And also let's recap how many people were in this scene. We had the original...",
-    "edited": true
-  },
-  {
-    "id": "mini-07-242",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:14",
-    "speaker": "Customer 3",
-    "line": "...table that wanted parmesan.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-243",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:17",
-    "speaker": "Tom Hanks",
-    "line": "Then we had the manager come over.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-244",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:20",
-    "speaker": "Borat",
-    "line": "Who actually was not the actual the manager.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-245",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:23",
-    "speaker": "Customer 3",
-    "line": "Don't forget friend who was pretending to be delivery.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-246",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:26",
-    "speaker": "Tom Hanks",
-    "line": "His wife, manager's wife.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-247",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:30",
-    "speaker": "Diane",
-    "line": "It was... and then... and then we had Tom Hanks, or was the manager actually Tom Hanks?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-248",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:37",
-    "speaker": "Tom Hanks",
-    "line": "Tom Hanks and the manager are same, but then we realized one was Borat.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-249",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:43",
-    "speaker": "Customer 3",
-    "line": "Chet Hanks was referenced, but never physically in the space.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-250",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:46",
-    "speaker": "Diane",
-    "line": "And we zoomed out to realize we were in the Madison Square Olive Garden.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-251",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:50",
-    "speaker": "Customer 3",
-    "line": "What is capacity there?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-252",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:53",
-    "speaker": "Diane",
-    "line": "Fifteen-, sixteen-thousand breadsticks?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-253",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:57",
-    "speaker": "Borat",
-    "line": "That is right.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-254",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:17:58",
-    "speaker": "Tom Hanks",
-    "line": "Satan loves breadsticks.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-255",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:00",
-    "speaker": "Tom Hanks",
-    "line": "KISS, KISS featuring Gene Simmons was also in this scene.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-256",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:05",
-    "speaker": "Diane",
-    "line": "Did he perp walk or did he Crip walk out of Madison Square Garden?",
-    "edited": true
-  },
-  {
-    "id": "mini-07-257",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:09",
-    "speaker": "Customer 3",
-    "line": "He [unintelligible] walked.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-258",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:11",
-    "speaker": "Tom Hanks",
-    "line": "Gene Simmons now in Crips.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-259",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:15",
-    "speaker": "Borat",
-    "line": "Gene Simmons is the most influential member of the Crips.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-260",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:20",
-    "speaker": "Tom Hanks",
-    "line": "Oh, no. This just in: Gene Simmons killed and become memorial in hip-hop community.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-261",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:27",
-    "speaker": "Customer 3",
-    "line": "Deadline headline: Gene Simmons to guest on 'Satan Needs A Friend' in Hell.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-262",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:33",
-    "speaker": "Tom Hanks",
-    "line": "Told ya.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-263",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:34",
-    "speaker": "Diane",
-    "line": "Told ya.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-264",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:35",
-    "speaker": "Customer 3",
-    "line": "Told ya.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-265",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:36",
-    "speaker": "Tom Hanks",
-    "line": "Told ya.",
-    "edited": true
-  },
-  {
-    "id": "mini-07-266",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:39",
-    "speaker": "Demon Voice 1",
-    "line": "Told ya! Told ya! Don't forget Satan told ya!",
-    "edited": true
-  },
-  {
-    "id": "mini-07-267",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:43",
-    "speaker": "Demon Voice 2",
-    "line": "And until next time...",
-    "edited": true
-  },
-  {
-    "id": "mini-07-268",
-    "episode": "mini-07",
-    "season": "mini",
-    "time": "00:18:43",
-    "speaker": "All",
-    "line": "Flippy stay!",
-    "edited": true
-  }
+	{
+		"id": "mini-07-1",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:00:14",
+		"speaker": "Customer 2",
+		"line": "[unintelligible imitation of reversed speech]",
+		"edited": true
+	},
+	{
+		"id": "mini-07-2",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:00:36",
+		"speaker": "Waiter 1",
+		"line": "[unintelligible] ...pizza... [unintelligible] ...plate",
+		"edited": true
+	},
+	{
+		"id": "mini-07-3",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:00:40",
+		"speaker": "Customer 1",
+		"line": "[unintelligible] ...or use the napkin instead.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-4",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:00:42",
+		"speaker": "Customer 2",
+		"line": "Does anybody have red pepper? [unintelligible] ...under the bridge.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-5",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:00:49",
+		"speaker": "Waiter 1",
+		"line": "Shaved parmesan, let me know when enough.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-6",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:00:52",
+		"speaker": "Customer 2",
+		"line": "That's enough. ...was there... [unintelligible]",
+		"edited": true
+	},
+	{
+		"id": "mini-07-7",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:00:57",
+		"speaker": "Waiter 1",
+		"line": "Anyone else shaved parmesan?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-8",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:00:58",
+		"speaker": "Customer 1",
+		"line": "Keep going, keep going, keep going.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-9",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:00",
+		"speaker": "Customer 2",
+		"line": "Bzz-bzz little more.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-10",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:00",
+		"speaker": "Waiter 1",
+		"line": "Just let me know.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-11",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:06",
+		"speaker": "Customer 1",
+		"line": "Thank you",
+		"edited": true
+	},
+	{
+		"id": "mini-07-12",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:07",
+		"speaker": "Customer 2",
+		"line": "In actually I'll take some more.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-13",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:13",
+		"speaker": "Waiter 1",
+		"line": "Here's a... my arm is getting tired.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-14",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:16",
+		"speaker": "Customer 2",
+		"line": "You can just leave it on the table I will do it myself.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-15",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:21",
+		"speaker": "Waiter 1",
+		"line": "Have a nice meal, folks. I'll be right back.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-16",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:24",
+		"speaker": "Greg",
+		"line": "Knock, knock, knock.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-17",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:28",
+		"speaker": "Customer 1",
+		"line": "Who's there?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-18",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:30",
+		"speaker": "Greg",
+		"line": "UPS.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-19",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:31",
+		"speaker": "Customer 1",
+		"line": "UPS who?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-20",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:33",
+		"speaker": "Greg",
+		"line": "UPS FedEx.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-21",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:37",
+		"speaker": "Customer 1",
+		"line": "UPS FedEx who?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-22",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:40",
+		"speaker": "Greg",
+		"line": "UPS FedEx DHL.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-23",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:44",
+		"speaker": "Fake Manager",
+		"line": "UPS, uh, DHL who?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-24",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:47",
+		"speaker": "Greg",
+		"line": "UPS FedEx DHL... Post office.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-25",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:54",
+		"speaker": "Customer 1",
+		"line": "UPS FedEx DHL post office who?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-26",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:01:59",
+		"speaker": "Greg",
+		"line": "Just kidding, it's Greg, let me get some parmesan.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-27",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:03",
+		"speaker": "Customer 2",
+		"line": "Oh, Greg, it's good to see you, Greg.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-28",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:06",
+		"speaker": "Customer 1",
+		"line": "Say when.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-29",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:08",
+		"speaker": "Greg",
+		"line": "Little more. How you guys been?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-30",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:12",
+		"speaker": "Customer 2",
+		"line": "We have had a good week. Greg, how are you?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-31",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:15",
+		"speaker": "Fake Manager",
+		"line": "Hey guys, I am the manager, I heard there was a problem over here?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-32",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:21",
+		"speaker": "Customer 1",
+		"line": "No, everything's good. We thought there was a delivery at your door.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-33",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:27",
+		"speaker": "Fake Manager",
+		"line": "OK just want to—",
+		"edited": true
+	},
+	{
+		"id": "mini-07-34",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:28",
+		"speaker": "Customer 1",
+		"line": "But it's just our friend Greg.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-35",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:31",
+		"speaker": "Fake Manager",
+		"line": "Just want to make sure everyone is satisfied here at The Olive Garden.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-36",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:35",
+		"speaker": "Greg",
+		"line": "Are you sure you're the manager? I saw you sitting at another table.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-37",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:42",
+		"speaker": "Fake Manager",
+		"line": "Oh, shoot, I forgot, I was just wearing what the managers wear here.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-38",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:48",
+		"speaker": "Delivery Man 1",
+		"line": "Knock, knock, knock.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-39",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:50",
+		"speaker": "Customer 1",
+		"line": "Who's there?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-40",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:53",
+		"speaker": "Delivery Man 1",
+		"line": "1-800-Flowers.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-41",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:56",
+		"speaker": "Fake Manager",
+		"line": "You [unintelligible]...",
+		"edited": true
+	},
+	{
+		"id": "mini-07-42",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:02:58",
+		"speaker": "Greg",
+		"line": "Don't leave now, you came over here just like the manager.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-43",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:03",
+		"speaker": "Customer 1",
+		"line": "You're our friend now. 1-800-Flowers who?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-44",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:07",
+		"speaker": "Delivery Man 1",
+		"line": "1-800-Flowers TeleFlora!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-45",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:11",
+		"speaker": "Fake Manager",
+		"line": "Oh I have heard this one.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-46",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:13",
+		"speaker": "Greg",
+		"line": "You actually ordered this?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-47",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:17",
+		"speaker": "Fake Manager",
+		"line": "I ordered this joke to my table.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-48",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:21",
+		"speaker": "Customer 1",
+		"line": "I'll have one joke for the lady.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-49",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:24",
+		"speaker": "Diane",
+		"line": "Please don't order for me.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-50",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:27",
+		"speaker": "Customer 1",
+		"line": "Oh it's a feminist!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-51",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:27",
+		"speaker": "Diane",
+		"line": "Fuck you!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-52",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:33",
+		"speaker": "Delivery Man 1",
+		"line": "Everybody calm down.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-53",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:35",
+		"speaker": "Fake Manager",
+		"line": "I think I should get back to my table.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-54",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:38",
+		"speaker": "Customer 1",
+		"line": "Who did you come with today?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-55",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:40",
+		"speaker": "Fake Manager",
+		"line": "I-I feel bad getting caught as the fake manager. I'm not the manager.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-56",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:47",
+		"speaker": "Diane",
+		"line": "Honey, get back to the table. Stop pretending to be the manager.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-57",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:53",
+		"speaker": "Fake Manager",
+		"line": "I'm sorry, Diane, here I come.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-58",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:03:55",
+		"speaker": "Diane",
+		"line": "I'm beginning to think you dress up like managers on purpose so you can pretend to be them. And I want a divorce.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-59",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:06",
+		"speaker": "Fake Manager",
+		"line": "Wait... wait... wait. Don't divorce me in an Olive Garden.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-60",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:11",
+		"speaker": "Waiter 2",
+		"line": "Hello? Can I get you both some extra parmesan?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-61",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:15",
+		"speaker": "Diane",
+		"line": "We're standing up having a fight!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-62",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:18",
+		"speaker": "Customer 1",
+		"line": "Read the room, dude!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-63",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:20",
+		"speaker": "Waiter 2",
+		"line": "Ok, I will head back to the kitchen with this bowl of parmesan.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-64",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:25",
+		"speaker": "Fake Manager",
+		"line": "While you're there, you said 'bowl.' Can I get a bolognese?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-65",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:31",
+		"speaker": "Waiter 2",
+		"line": "Would you like that as an appetizer?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-66",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:33",
+		"speaker": "Customer 1",
+		"line": "This guy ordered a bolognese in the middle of his divorce!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-67",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:39",
+		"speaker": "Diane",
+		"line": "Honey, this is unacceptable. Last time we had a fight you ordered a pizza!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-68",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:47",
+		"speaker": "Fake Manager",
+		"line": "And what happened? It solved our problem.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-69",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:50",
+		"speaker": "Delivery Man 2",
+		"line": "Knock, knock, knock.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-70",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:51",
+		"speaker": "Diane",
+		"line": "Oh, who's there?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-71",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:54",
+		"speaker": "Delivery Man 2",
+		"line": "Domino's.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-72",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:56",
+		"speaker": "Customer 1",
+		"line": "Domino's who?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-73",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:04:58",
+		"speaker": "Delivery Man 2",
+		"line": "Domino's Pizza Hut.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-74",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:05:01",
+		"speaker": "Fake Manager",
+		"line": "Hello folks, I am the real manager here.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-75",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:05:06",
+		"speaker": "Diane",
+		"line": "You simply stepped away a couple feet, put on a mustache, and came back.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-76",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:05:11",
+		"speaker": "Fake Manager",
+		"line": "That is because I am the real manager.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-77",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:05:14",
+		"speaker": "Customer 1",
+		"line": "Why did you say 'real?'",
+		"edited": true
+	},
+	{
+		"id": "mini-07-78",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:05:18",
+		"speaker": "Fake Manager",
+		"line": "Ok, ok, I've been caught.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-79",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:05:21",
+		"speaker": "Customer 1",
+		"line": "You left your divorce to deal with a problem at the restaurant as the fake manager.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-80",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:05:28",
+		"speaker": "Fake Manager",
+		"line": "How about that bolognese? I think the bolognese will calm us all down.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-81",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:05:35",
+		"speaker": "Diane",
+		"line": "Okay, maybe that's true. Guess I'll have some bolognese and see if we can calm down.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-82",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:05:45",
+		"speaker": "Waiter 2",
+		"line": "Are we all invited to have bolognese? Or is this a issue that you want to deal with individually?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-83",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:05:53",
+		"speaker": "Fake Manager",
+		"line": "Of course. Here is a fork. Here is a fork. Here is a fork.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-84",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:05:57",
+		"speaker": "Diane",
+		"line": "Perfect. Forks for bolognese. A bowl of bolognese sauce.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-85",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:03",
+		"speaker": "Waiter 2",
+		"line": "Here is the bolognese.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-86",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:05",
+		"speaker": "Fake Manager",
+		"line": "Wait a second. Is there no pasta in this bolognese?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-87",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:09",
+		"speaker": "Waiter 2",
+		"line": "You only ordered bolognese. You did not specify a pasta.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-88",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:14",
+		"speaker": "Fake Manager",
+		"line": "What kind of freak would only want sauce? What kind of freak would only want sauce?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-89",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:20",
+		"speaker": "Waiter 2",
+		"line": "That is a good question. I just assumed you were going to put the bolognese on the pasta you had.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-90",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:28",
+		"speaker": "Diane",
+		"line": "At this Olive Garden, do you have to order the pasta separately?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-91",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:34",
+		"speaker": "Waiter 2",
+		"line": "Yes. This is a unique Olive Garden.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-92",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:37",
+		"speaker": "Diane",
+		"line": "What's the name of it?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-93",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:39",
+		"speaker": "Waiter 2",
+		"line": "Olive Garden...",
+		"edited": true
+	},
+	{
+		"id": "mini-07-94",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:40",
+		"speaker": "Demon Voice 1",
+		"line": "Satan!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-95",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:40",
+		"speaker": "Diane",
+		"line": "Olive what?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-96",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:46",
+		"speaker": "Demon Voice 1",
+		"line": "Satan!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-97",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:49",
+		"speaker": "Customer 1",
+		"line": "One more time.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-98",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:51",
+		"speaker": "Demon Voice 1",
+		"line": "Satan!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-99",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:54",
+		"speaker": "Customer 1",
+		"line": "Oh, I think I've heard of this place.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-100",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:06:57",
+		"speaker": "Tom Hanks",
+		"line": "Can I get a refill on my Coca-Cola?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-101",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:07:00",
+		"speaker": "Diane",
+		"line": "Oh my God. Look who it is. It's Tom Hanks!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-102",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:07:07",
+		"speaker": "Customer 1",
+		"line": "Tom Hanks drinks Coca-Cola in The Olive Garden.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-103",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:07:10",
+		"speaker": "Waiter 2",
+		"line": "Tom Hanks walked up to me and asked for more Coca-Cola. I'll be to your table soon, Mr Hanks.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-104",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:07:18",
+		"speaker": "Tom Hanks",
+		"line": "Okay, I was just unsure because you haven't been here in 35 minutes, and I wanted to go tackle it all.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-105",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:07:25",
+		"speaker": "Waiter 2",
+		"line": "I didn't want to seem star-struck and like I was giving you too much attention.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-106",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:07:31",
+		"speaker": "Tom Hanks",
+		"line": "It's more obvious when you ignore me that you love me.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-107",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:07:34",
+		"speaker": "Diane",
+		"line": "Mr. Hanks, can I ask you a question?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-108",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:07:38",
+		"speaker": "Tom Hanks",
+		"line": "Of course, I am the people's champ.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-109",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:07:40",
+		"speaker": "Diane",
+		"line": "What, sorry? Go back just a little bit.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-110",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:07:45",
+		"speaker": "Tom Hanks",
+		"line": "I am the people's champ.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-111",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:07:46",
+		"speaker": "Diane",
+		"line": "Okay, now my question has changed. Did you, did The Rock get his idea of 'The People's Champion' from you, Mr. Tom Hanks?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-112",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:01",
+		"speaker": "Tom Hanks",
+		"line": "This is crazy, I get this all the time.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-113",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:03",
+		"speaker": "Diane",
+		"line": "You do?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-114",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:04",
+		"speaker": "Tom Hanks",
+		"line": "I get this all the time. He beat me and took my name in a match.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-115",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:10",
+		"speaker": "Waiter 2",
+		"line": "Your name used to be The Rock.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-116",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:13",
+		"speaker": "Tom Hanks",
+		"line": "My name was The Rock and I was a wrestler until I got big.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-117",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:19",
+		"speaker": "Waiter 2",
+		"line": "You're saying before you shot the movie, 'Big,' you were a wrestler?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-118",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:24",
+		"speaker": "Tom Hanks",
+		"line": "I shot the movie 'Big' and I was going to continue both a movie career and wrestling. But The Rock beat me up and told me, 'Stop wrestling.'",
+		"edited": true
+	},
+	{
+		"id": "mini-07-119",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:33",
+		"speaker": "Diane",
+		"line": "Were you simply just The Rock or were you multiple wrestlers?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-120",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:38",
+		"speaker": "Tom Hanks",
+		"line": "I was also Papa Shango, who wears white face paint and does spells.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-121",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:44",
+		"speaker": "Diane",
+		"line": "Were you any others?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-122",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:47",
+		"speaker": "Tom Hanks",
+		"line": "Well, yes I was: The Ultimate Warrior.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-123",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:52",
+		"speaker": "Manager",
+		"line": "Hey Tom, stop fraternizing, your tables need to be bussed.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-124",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:08:56",
+		"speaker": "Waiter 2",
+		"line": "Wow. Tom Hanks works here as well.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-125",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:00",
+		"speaker": "Tom Hanks",
+		"line": "It's been a rough stretch since 'Captain Phillips.' And I have to get a job to care for my son, Chet Hanks, who doesn't act.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-126",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:11",
+		"speaker": "Diane",
+		"line": "So if your son doesn't act, he's immediately expensive to take care of.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-127",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:17",
+		"speaker": "Tom Hanks",
+		"line": "My son has made me poor by not acting.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-128",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:21",
+		"speaker": "Demon Voice 1",
+		"line": "Satan...Satan...",
+		"edited": true
+	},
+	{
+		"id": "mini-07-129",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:24",
+		"speaker": "Demon Voice 2",
+		"line": "Satan...",
+		"edited": true
+	},
+	{
+		"id": "mini-07-130",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:25",
+		"speaker": "Demon Voice 3",
+		"line": "Satan...",
+		"edited": true
+	},
+	{
+		"id": "mini-07-131",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:26",
+		"speaker": "Demon Voice 2",
+		"line": "Satan the devil.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-132",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:27",
+		"speaker": "Diane",
+		"line": "I'm so sorry to hear that about your son. Were you any other wrestlers?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-133",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:33",
+		"speaker": "Tom Hanks",
+		"line": "Of course I have come down from the rafters as Sting",
+		"edited": true
+	},
+	{
+		"id": "mini-07-134",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:38",
+		"speaker": "Diane",
+		"line": "That was you?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-135",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:39",
+		"speaker": "Customer 3",
+		"line": "We remember that.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-136",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:40",
+		"speaker": "Tom Hanks",
+		"line": "Coming down from the rafters, coming down from the rafters.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-137",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:44",
+		"speaker": "Customer 3",
+		"line": "Were you nWo Sting or real Sting?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-138",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:48",
+		"speaker": "Tom Hanks",
+		"line": "I was luckily there for both iterations.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-139",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:51",
+		"speaker": "Customer 3",
+		"line": "Lucky you.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-140",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:52",
+		"speaker": "Diane",
+		"line": "Lucky!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-141",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:53",
+		"speaker": "Waiter 2",
+		"line": "When did you pass the mantle of Sting to the real Sting?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-142",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:09:59",
+		"speaker": "Tom Hanks",
+		"line": "Well, uh haha, uh haha.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-143",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:01",
+		"speaker": "Customer 3",
+		"line": "Sounds like it's going to be a funny story.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-144",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:04",
+		"speaker": "Tom Hanks",
+		"line": "I think I am the real Sting. But I passed it to Gregory Schmibbledib to be the new Sting when I got 'Castaway.'",
+		"edited": true
+	},
+	{
+		"id": "mini-07-145",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:15",
+		"speaker": "Diane",
+		"line": "So you were simultaneously acting and being a wrestler.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-146",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:18",
+		"speaker": "Tom Hanks",
+		"line": "I was Sting and Tom Hanks for 15 years.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-147",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:21",
+		"speaker": "Waiter 2",
+		"line": "Wow, that is impressive.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-148",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:23",
+		"speaker": "Customer 3",
+		"line": "And 'Castaway' was such a struggle to prepare for that you decided you could only do one or the other.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-149",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:30",
+		"speaker": "Tom Hanks",
+		"line": "That's right. Would anyone like a refill?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-150",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:33",
+		"speaker": "Diane",
+		"line": "Yes. I'll takes some more passion fruit tea.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-151",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:34",
+		"speaker": "Waiter 2",
+		"line": "I'm sorry. I would, I, never mind.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-152",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:39",
+		"speaker": "Diane",
+		"line": "What were you going to say? Were you going to tell us something emotional and you got scared?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-153",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:45",
+		"speaker": "Customer 3",
+		"line": "It's okay to be vulnerable in front of strangers at The Olive Garden.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-154",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:49",
+		"speaker": "Demon Voice 1",
+		"line": "The flames of hell burn eternal.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-155",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:53",
+		"speaker": "Demon Voice 4",
+		"line": "Burn eternal. Burn eternal.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-156",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:56",
+		"speaker": "Demon Voice 2",
+		"line": "Bernie Sanders-ternal.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-157",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:57",
+		"speaker": "Demon Voice 3",
+		"line": "Bernie Sanders-ternal.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-158",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:10:59",
+		"speaker": "Demon Voice 1",
+		"line": "Bernie Sanders' toenails need Purell.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-159",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:01",
+		"speaker": "Demon Voice 2",
+		"line": "Bernie Sanders needs anti-bacterial for his toenails.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-160",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:07",
+		"speaker": "Demon Voice 4",
+		"line": "Bernie Sanders would have been elected if not for his dirty feet.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-161",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:11",
+		"speaker": "Waiter 2",
+		"line": "Bernie's feet are disgusting.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-162",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:16",
+		"speaker": "Diane",
+		"line": "What were you going to say that was emotional?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-163",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:19",
+		"speaker": "Waiter 2",
+		"line": "I was going to say that I've been working at this Olive Garden for a long time and I...",
+		"edited": true
+	},
+	{
+		"id": "mini-07-164",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:27",
+		"speaker": "Diane",
+		"line": "You're going to propose",
+		"edited": true
+	},
+	{
+		"id": "mini-07-165",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:28",
+		"speaker": "Customer 3",
+		"line": "To The Olive Garden?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-166",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:30",
+		"speaker": "Waiter 2",
+		"line": "And this Olive Garden...",
+		"edited": true
+	},
+	{
+		"id": "mini-07-167",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:31",
+		"speaker": "Tom Hanks",
+		"line": "Oh my God. Oh my God. He is doing it.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-168",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:35",
+		"speaker": "Diane",
+		"line": "Isn't The Olive Garden already married to its breadsticks?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-169",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:39",
+		"speaker": "Tom Hanks",
+		"line": "I heard they were on the rocks.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-170",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:42",
+		"speaker": "Waiter 2",
+		"line": "Yes, I was going to say: Olive Garden, if you are not happy in your marriage to your breadsticks, I would love to make me... I would love for...",
+		"edited": true
+	},
+	{
+		"id": "mini-07-171",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:56",
+		"speaker": "Diane",
+		"line": "Oh no, he's botching the proposal.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-172",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:11:58",
+		"speaker": "Tom Hanks",
+		"line": "He would love to make himself the happiest man in the world.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-173",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:12:02",
+		"speaker": "Waiter 2",
+		"line": "I would love to make myself the happiest man in the world by marrying you, Olive Garden.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-174",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:12:10",
+		"speaker": "Tom Hanks",
+		"line": "Oh, my God, I'm just realizing this man is Borat.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-175",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:12:16",
+		"speaker": "Diane",
+		"line": "Oh, my God. How did we not notice this whole time? Is this Sacha Baron Cohen as Borat?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-176",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:12:23",
+		"speaker": "Borat",
+		"line": "I am wearing my tiny bikini.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-177",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:12:27",
+		"speaker": "Customer 3",
+		"line": "On all days I come to The Olive Garden alone and get to see Tom Hanks and Borat.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-178",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:12:33",
+		"speaker": "Borat",
+		"line": "That's right, Olive Garden, I would like to make you *my wife*.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-179",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:12:38",
+		"speaker": "Tom Hanks",
+		"line": "Chicken parmesan, chicken parmesan.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-180",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:12:43",
+		"speaker": "Diane",
+		"line": "Those were mine. Those were mine. Those were mine.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-181",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:12:44",
+		"speaker": "Diane",
+		"line": "Those were his. Oh, my God. The Olive Garden is saying no. And unfortunately, it's on the jumbotron.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-182",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:12:53",
+		"speaker": "Borat",
+		"line": "That is right. This Olive Garden is in a basketball stadium and I proposed in front of it and I am on the jumbotron. Please stop looking at me.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-183",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:04",
+		"speaker": "Customer 3",
+		"line": "Oh, now they've turned the jumbotron, a proposal, into a Kiss Cam. No one will kiss this man.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-184",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:12",
+		"speaker": "Tom Hanks",
+		"line": "Oh wait, oh wait. No-kiss Cam. It's the No-kiss Cam.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-185",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:16",
+		"speaker": "Customer 3",
+		"line": "Sorry, Gene Simmons.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-186",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:18",
+		"speaker": "Borat",
+		"line": "This is embarrassing.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-187",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:20",
+		"speaker": "Tom Hanks",
+		"line": "They are kicking KISS out of the building.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-188",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:24",
+		"speaker": "Customer 3",
+		"line": "Wow, KISS is doing the perp-walk out of the building and they are filming the whole thing.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-189",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:28",
+		"speaker": "Demon Voice 1",
+		"line": "Satan's service. Satan!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-190",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:31",
+		"speaker": "Demon Voice 3",
+		"line": "Knight in Satan's service.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-191",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:34",
+		"speaker": "Demon Voice 2",
+		"line": "I love Satan. Satan!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-192",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:36",
+		"speaker": "Demon Voice 3",
+		"line": "Perfect day.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-193",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:37",
+		"speaker": "Demon Voice 2",
+		"line": "Eat me, Satan!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-194",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:38",
+		"speaker": "Demon Voice 1",
+		"line": "Eat meat, Satan!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-195",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:39",
+		"speaker": "Demon Voice 3",
+		"line": "Satan is a vegetarian!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-196",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:42",
+		"speaker": "Demon Voice 4",
+		"line": "Satan is on keto.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-197",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:46",
+		"speaker": "Demon Voice 1",
+		"line": "The fires of hell burn from ketogenic diets like fat in your body.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-198",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:51",
+		"speaker": "Diane",
+		"line": "Hold on. Tom Hanks, why are you getting into a basketball uniform? Don't tell me you're also many different basketball stars.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-199",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:13:59",
+		"speaker": "Tom Hanks",
+		"line": "No, no, this is a Halloween costume.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-200",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:03",
+		"speaker": "Diane",
+		"line": "Oh right, it's in the dead of center of Halloween tonight.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-201",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:07",
+		"speaker": "Tom Hanks",
+		"line": "I am leaving The Olive Garden-slash-stadium to go trick or treating with my boy Chet Hanks.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-202",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:13",
+		"speaker": "Diane",
+		"line": "Oh, are you trick or treating because you're so poor and you need the candy for your family?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-203",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:19",
+		"speaker": "Tom Hanks",
+		"line": "He will not be with me. I will be getting candy to give to my son.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-204",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:22",
+		"speaker": "Diane",
+		"line": "What did he say? Were you disappointed when he told you he was not going to be an actor?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-205",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:28",
+		"speaker": "Tom Hanks",
+		"line": "He said, Dad, I think we have enough money acting. I would like to be a rapper producer that no listens to.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-206",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:35",
+		"speaker": "Diane",
+		"line": "That was part of his goal that no one would listen to him?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-207",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:38",
+		"speaker": "Tom Hanks",
+		"line": "Absolutely. Lifestyle but no content.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-208",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:42",
+		"speaker": "Borat",
+		"line": "Lifestyle, but no content.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-209",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:45",
+		"speaker": "Customer 3",
+		"line": "Lifestyle, but no content.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-210",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:46",
+		"speaker": "Demon Voice 1",
+		"line": "Satan hates content.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-211",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:49",
+		"speaker": "Demon Voice 2",
+		"line": "Content is king.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-212",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:52",
+		"speaker": "Demon Voice 4",
+		"line": "Satan has outlawed the internet from Hell.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-213",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:14:56",
+		"speaker": "Demon Voice 1",
+		"line": "The Beatles stole my idea to record like this. It is Satan and the Beatles are kidding.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-214",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:15:03",
+		"speaker": "Demon Voice 2",
+		"line": "The Beatles are kidding.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-215",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:15:06",
+		"speaker": "Demon Voice 4",
+		"line": "The Beatles, their whole career, were just kidding.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-216",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:15:08",
+		"speaker": "Demon Voice 3",
+		"line": "They're kidding. I'm serious, I am Satan and I am not joking about this.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-217",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:15:15",
+		"speaker": "Demon Voice 1",
+		"line": "This is how albums are good backwards. The Beatles are only a joke.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-218",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:15:19",
+		"speaker": "Demon Voice 2",
+		"line": "The Beatles thought that they were funny guys, but they are not actually funny.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-219",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:15:26",
+		"speaker": "Demon Voice 3",
+		"line": "Satan is funnier than the Beatles, ask anyone.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-220",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:15:29",
+		"speaker": "Demon Voice 1",
+		"line": "Satan is a wild and crazy guy.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-221",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:15:32",
+		"speaker": "Borat",
+		"line": "Satan could do a lot of funny comedy, but he's stuck in Hell.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-222",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:15:39",
+		"speaker": "Diane",
+		"line": "Satan actually met with Lorne in the late eighties, but he botched the meeting, so he didn't get to host 'Weekend Update.'",
+		"edited": true
+	},
+	{
+		"id": "mini-07-223",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:15:48",
+		"speaker": "Tom Hanks",
+		"line": "Satan and Farley are friends in Hell.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-224",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:15:51",
+		"speaker": "Customer 3",
+		"line": "Farley picked Hell to hang with Satan, and they had a van down by Styx River.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-225",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:00",
+		"speaker": "Borat",
+		"line": "Farley was the only person to ever be given a choice.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-226",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:04",
+		"speaker": "Tom Hanks",
+		"line": "If you ask me, reverse recording is cooler than forward recording, right?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-227",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:09",
+		"speaker": "Diane",
+		"line": "Yes, I think the rest of the podcast will be this way now.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-228",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:13",
+		"speaker": "Borat",
+		"line": "Yes, that is right. It will be from here on out.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-229",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:17",
+		"speaker": "Tom Hanks",
+		"line": "And by that, of course, we mean Satan's podcast in that he's recording from hell backwards on the Teachers' Lounge.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-230",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:24",
+		"speaker": "Borat",
+		"line": "That is right. It is called 'Satan Needs A New Friend.' It's...",
+		"edited": true
+	},
+	{
+		"id": "mini-07-231",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:31",
+		"speaker": "Customer 3",
+		"line": "'Satan Needs A New Friend.' I interview people in hell and say, Maybe we could hang.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-232",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:37",
+		"speaker": "Tom Hanks",
+		"line": "Might as well start at The Olive Garden, my favorite restaurant.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-233",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:41",
+		"speaker": "Diane",
+		"line": "Inside of a basketball place.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-234",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:44",
+		"speaker": "Tom Hanks",
+		"line": "The New York Knicks play here.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-235",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:46",
+		"speaker": "Diane",
+		"line": "It's Madison Square Garden we're in.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-236",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:48",
+		"speaker": "Borat",
+		"line": "Madison Square Olive Garden is the name of this restaurant.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-237",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:53",
+		"speaker": "Tom Hanks",
+		"line": "Where else did you think Hell would be located?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-238",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:56",
+		"speaker": "Borat",
+		"line": "The middle of New York City?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-239",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:16:58",
+		"speaker": "Diane",
+		"line": "We just moved here from Port Authority.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-240",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:02",
+		"speaker": "Customer 3",
+		"line": "The who what where of this situation is a Madison Square Olive Garden in Hell.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-241",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:08",
+		"speaker": "Diane",
+		"line": "And also let's recap how many people were in this scene. We had the original...",
+		"edited": true
+	},
+	{
+		"id": "mini-07-242",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:14",
+		"speaker": "Customer 3",
+		"line": "...table that wanted parmesan.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-243",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:17",
+		"speaker": "Tom Hanks",
+		"line": "Then we had the manager come over.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-244",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:20",
+		"speaker": "Borat",
+		"line": "Who actually was not the actual the manager.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-245",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:23",
+		"speaker": "Customer 3",
+		"line": "Don't forget friend who was pretending to be delivery.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-246",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:26",
+		"speaker": "Tom Hanks",
+		"line": "His wife, manager's wife.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-247",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:30",
+		"speaker": "Diane",
+		"line": "It was... and then... and then we had Tom Hanks, or was the manager actually Tom Hanks?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-248",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:37",
+		"speaker": "Tom Hanks",
+		"line": "Tom Hanks and the manager are same, but then we realized one was Borat.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-249",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:43",
+		"speaker": "Customer 3",
+		"line": "Chet Hanks was referenced, but never physically in the space.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-250",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:46",
+		"speaker": "Diane",
+		"line": "And we zoomed out to realize we were in the Madison Square Olive Garden.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-251",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:50",
+		"speaker": "Customer 3",
+		"line": "What is capacity there?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-252",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:53",
+		"speaker": "Diane",
+		"line": "Fifteen-, sixteen-thousand breadsticks?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-253",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:57",
+		"speaker": "Borat",
+		"line": "That is right.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-254",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:17:58",
+		"speaker": "Tom Hanks",
+		"line": "Satan loves breadsticks.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-255",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:00",
+		"speaker": "Tom Hanks",
+		"line": "KISS, KISS featuring Gene Simmons was also in this scene.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-256",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:05",
+		"speaker": "Diane",
+		"line": "Did he perp walk or did he Crip walk out of Madison Square Garden?",
+		"edited": true
+	},
+	{
+		"id": "mini-07-257",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:09",
+		"speaker": "Customer 3",
+		"line": "He [unintelligible] walked.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-258",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:11",
+		"speaker": "Tom Hanks",
+		"line": "Gene Simmons now in Crips.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-259",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:15",
+		"speaker": "Borat",
+		"line": "Gene Simmons is the most influential member of the Crips.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-260",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:20",
+		"speaker": "Tom Hanks",
+		"line": "Oh, no. This just in: Gene Simmons killed and become memorial in hip-hop community.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-261",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:27",
+		"speaker": "Customer 3",
+		"line": "Deadline headline: Gene Simmons to guest on 'Satan Needs A Friend' in Hell.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-262",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:33",
+		"speaker": "Tom Hanks",
+		"line": "Told ya.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-263",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:34",
+		"speaker": "Diane",
+		"line": "Told ya.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-264",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:35",
+		"speaker": "Customer 3",
+		"line": "Told ya.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-265",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:36",
+		"speaker": "Tom Hanks",
+		"line": "Told ya.",
+		"edited": true
+	},
+	{
+		"id": "mini-07-266",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:39",
+		"speaker": "Demon Voice 1",
+		"line": "Told ya! Told ya! Don't forget Satan told ya!",
+		"edited": true
+	},
+	{
+		"id": "mini-07-267",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:43",
+		"speaker": "Demon Voice 2",
+		"line": "And until next time...",
+		"edited": true
+	},
+	{
+		"id": "mini-07-268",
+		"episode": "mini-07",
+		"season": "mini",
+		"time": "00:18:43",
+		"speaker": "All",
+		"line": "Flippy stay!",
+		"edited": true
+	}
 ]
