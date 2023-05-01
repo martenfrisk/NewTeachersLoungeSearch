@@ -8,7 +8,7 @@ export async function GET({ url, setHeaders }) {
 	const filterEdited = url?.searchParams?.has('e') || false;
 
 	setHeaders({
-		'Cache-Control': 'max-age=604800, stale-while-revalidate=86400'
+		'Cache-Control': 'max-age=86400, s-maxage=604800'
 	});
 
 	const hits = await searchMeili({
