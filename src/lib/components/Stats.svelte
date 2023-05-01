@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { HitStats } from 'lib/types';
 
-	export let stats: HitStats, query: string, filter: string[];
+	export let stats: HitStats, query: string, filter: string[], offset: number;
 </script>
 
 <p class="flex flex-wrap gap-1 my-4 text-sm md:mt-6 md:mb-8">
@@ -15,7 +15,9 @@
 				</span>
 			{/if}
 		</span>
-		<span>(results retrieved in {stats.processingTime}ms)</span>
+		{#if offset}
+			<span>(showing {offset} lines)</span>
+		{/if}
 	{:else if stats?.estimatedTotalHits == 0}
 		No results for <em>"{query}"</em>
 		<!-- {filterEdited ? '(edited lines only)' : ''} ☹ -->

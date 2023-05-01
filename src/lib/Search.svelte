@@ -10,7 +10,7 @@
 	export let query: string, filter: string[], hits: SearchHit[] | undefined, editedOnly: boolean;
 
 	let stats: HitStats;
-	let offset = 0;
+	let offset = 20;
 
 	async function search() {
 		updateParams();
@@ -47,7 +47,7 @@
 			params.set('f', filter.map((x) => x.replaceAll(' = ', '=')).join(','));
 		}
 		if (editedOnly) params.set('edited', 'true');
-		await goto(`?${params.toString()}`, { keepFocus: true });
+		await goto(`?${params.toString()}`, { keepFocus: true, noScroll: true });
 	}
 	// $: if ((query || editedOnly) && browser) {
 	// 	throttle(500, updateParams);
@@ -128,7 +128,7 @@
 		{/if}
 	</details>
 </div>
-<Stats {stats} {filter} {query} />
+<Stats {stats} {filter} {query} {offset} />
 {#if hits && query}
 	{#each hits as hit}
 		<Hit {hit} />
