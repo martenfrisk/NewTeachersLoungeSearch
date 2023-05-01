@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { SearchHit, HitStats } from '$lib/types';
-	import { newRandom, searchMeili, throttle } from './utils';
+	import { createSearchParams, newRandom, throttle } from './utils';
 
 	import Hit from './components/Hit.svelte';
 	import Stats from './components/Stats.svelte';
@@ -13,11 +13,20 @@
 	let offset = 20;
 
 	async function search() {
-		updateParams();
-		await searchMeili({ query, filter, offset, filterEdited: editedOnly }).then((data) => {
-			hits = data.hits;
-			stats = data.stats;
-		});
+		if (query) {
+			updateParams();
+			const paramsObj = createSearchParams({ query, offset, filter, editedOnly });
+
+			const response = await fetch(`/api/search?${paramsObj}`);
+
+			if (response.ok) {
+				const data = await response.json();
+				hits = data.hits;
+				stats = data.stats;
+			} else {
+				console.error('HTTP-Error: ' + response.status);
+			}
+		}
 	}
 
 	async function addToFilter(filterName: string, filterValue: string) {
@@ -128,7 +137,11 @@
 		{/if}
 	</details>
 </div>
-<Stats {stats} {filter} {query} {offset} />
+{#if query}
+	<Stats {stats} {filter} {query} {offset} />
+{:else}
+	<p>You need to search for something, or click the random search button.</p>
+{/if}
 {#if hits && query}
 	{#each hits as hit}
 		<Hit {hit} />

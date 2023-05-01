@@ -190,3 +190,24 @@ export function newRandom(): string {
 export function epName(episode: string) {
 	return epList.find((x) => x.ep === episode);
 }
+
+export function createSearchParams({
+	query,
+	offset = 20,
+	filter,
+	editedOnly
+}: {
+	query: string;
+	offset?: number;
+	filter?: string[];
+	editedOnly?: boolean;
+}) {
+	const params = new URLSearchParams();
+	params.set('q', query);
+	if (offset) params.set('o', offset.toString());
+	if (filter && filter?.length > 0) {
+		params.set('f', filter.join(','));
+	}
+	if (editedOnly) params.set('e', 'true');
+	return params;
+}
