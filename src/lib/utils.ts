@@ -51,7 +51,9 @@ export const randomQuery = [
 	'oj simpson',
 	"let's just say",
 	'real hair',
-	'refrigerator'
+	'refrigerator',
+	'large olive',
+	'Gandhi'
 ];
 
 export const getRandomInt = (max: number): number => Math.floor(Math.random() * Math.floor(max));
