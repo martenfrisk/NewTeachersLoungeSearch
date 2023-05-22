@@ -12,12 +12,18 @@
 		</a>
 	</div>
 	<div class="w-full items-center justify-between md:items-end flex">
-		<a
-			href={url}
-			class="text-blue-900 border-b border-dotted border-blue-900 hover:text-blue-700 text-md"
-		>
-			Listen
-		</a>
+		{#if url}
+			<a
+				href={url}
+				class="text-blue-900 border-b border-dotted border-blue-900 hover:text-blue-700 text-md"
+			>
+				Listen
+			</a>
+		{:else}
+			<span
+				class="text-blue-900 border-b border-dotted border-blue-900 hover:text-blue-700 text-md"
+			/>
+		{/if}
 		<div class="flex flex-row mt-2 md:mt-0 items-end md:flex-col">
 			<span class="text-sm mr-3 md:mr-0 text-gray-700"> Released </span>
 			<span class="text-sm md:text-base">
