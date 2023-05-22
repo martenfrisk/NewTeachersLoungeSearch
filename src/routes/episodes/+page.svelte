@@ -19,8 +19,14 @@
 		's07',
 		's08',
 		's09',
+		's10',
+		's11',
 		'mini',
-		'Peecast'
+		'exit42',
+		'Peecast',
+		'holidays',
+		'jesus',
+		'lastresort'
 	];
 
 	$: query = '';
@@ -230,7 +236,7 @@
 		{#each episodes as episode}
 			{#if searchEp === ''}
 				<Episode
-					url={episode.url}
+					url={episode.url || ''}
 					ep={episode.ep}
 					title={episode.title}
 					desc={episode.desc}
@@ -238,7 +244,7 @@
 				/>
 			{:else if episode.ep.includes(searchEp)}
 				<Episode
-					url={episode.url}
+					url={episode.url || ''}
 					ep={episode.ep}
 					title={episode.title}
 					desc={episode.desc}
@@ -249,7 +255,7 @@
 	{:else}
 		{#each results as episode}
 			<Episode
-				url={episode.item.url}
+				url={episode.item.url || ''}
 				ep={episode.item.ep}
 				title={episode.item.title}
 				desc={episode.item.desc}
