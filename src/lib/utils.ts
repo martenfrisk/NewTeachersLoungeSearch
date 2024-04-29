@@ -2,7 +2,7 @@ import { MeiliKey } from '$lib/Env';
 import type { SearchResult } from 'lib/types';
 import { MeiliSearch } from 'meilisearch';
 
-import epList from '../assets/episodes.json';
+import epList from '../assets/episodes6.json';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type throttleFunction = (args: any) => void;
 export const throttle = (delay: number, fn: throttleFunction): throttleFunction => {
