@@ -70,6 +70,21 @@
 		>
 			<div>
 				<div class="divide-y flex flex-col divide-blue-200">
+					<p class="py-2 md:py-4">NEW FEATURE: Audio playback (beta)</p>
+					<p></p>
+					<ol class="gap-2 flex flex-col py-2 list-decimal">
+						<li>
+							Go to <a href="https://biggrandewebsite.com/">biggrandewebsite.com</a>
+						</li>
+						<li>Click on Account</li>
+						<li>Podcasts -> Teachers Lounge Archive</li>
+						<li>Copy the link at the bottom</li>
+						<li>Paste it in the box at the bottom of your screen.</li>
+					</ol>
+					<p class="py-2 md:py-4">
+						The link is <span class="underline">only</span> stored in your browser and is never sent
+						to any servers.
+					</p>
 					<p class="py-2 md:py-4">
 						Seekers' Lounge is an unofficial fan website where you can search through the
 						transcripts of all episodes to find your favorite bit.
@@ -78,7 +93,7 @@
 						Listen to the free episodes wherever you get your podcast or buy them from <a
 							class="text-blue-800 underline"
 							href="https://biggrandewebsite.com/">biggrandewebsite.com</a
-						> (some are only available at Stitcher Premium)
+						>
 					</p>
 					<p class="py-2 md:py-4">
 						Transcripts are unedited. Speakers not identified. Intro has been removed so add ~30

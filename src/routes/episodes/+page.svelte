@@ -1,7 +1,7 @@
 <script lang="ts">
 	import episodes from 'assets/episodes.json';
 	import Episode from '$lib/components/Episode.svelte';
-	import Fuse from 'fuse.js';
+	import Fuse, { type FuseResult } from 'fuse.js';
 	const fuse = new Fuse(episodes, {
 		keys: [{ name: 'desc', weight: 1 }, 'ep', { name: 'title', weight: 3 }],
 		includeScore: true
@@ -31,7 +31,7 @@
 
 	$: query = '';
 
-	let results: Fuse.FuseResult<{
+	let results: FuseResult<{
 		ep: string;
 		title: string;
 		desc: string;
