@@ -146,7 +146,6 @@
 </div>
 
 <style>
-	/* START coffee pot */
 	.steam-container {
 		width: 18px;
 		height: 30px;
@@ -316,7 +315,4 @@
 			stroke-dashoffset: 0;
 		}
 	}
-
-	/* END coffee pot */
-	/*# sourceMappingURL=App.css.map */
 </style>
