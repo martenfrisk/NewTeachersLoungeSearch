@@ -277,6 +277,24 @@ async function removeLinesFromEpisode(episodeName) {
 	}
 }
 
+async function getMeiliVersion() {
+	try {
+		const response = await client.getVersion();
+		console.log(response);
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+async function createDump() {
+	try {
+		const response = await client.createDump();
+		console.log(response);
+	} catch (error) {
+		console.log(error);
+	}
+}
+
 const args = parseArguments(process.argv.slice(2));
 
 if (args['--gettask'] !== undefined) {
@@ -311,6 +329,10 @@ if (args['--gettask'] !== undefined) {
 } else if (args['--remove-lines-from-episode'] !== undefined) {
 	const episodeName = args['--remove-lines-from-episode'];
 	removeLinesFromEpisode(episodeName);
+} else if (args['--get-version'] !== undefined) {
+	getMeiliVersion();
+} else if (args['--create-dump'] !== undefined) {
+	await createDump();
 } else {
 	console.log('Usage:');
 	console.log('  node meilitools.js --gettask=<task_id>');
@@ -324,4 +346,5 @@ if (args['--gettask'] !== undefined) {
 	console.log('  node meilitools.js --remove-empty-lines-all=<folder_path>');
 	console.log('  node meilitools.js --search-episode=<episode_name>');
 	console.log('  node meilitools.js --remove-lines-from-episode=<episode_name>');
+	console.log('  node meilitools.js --get-version');
 }

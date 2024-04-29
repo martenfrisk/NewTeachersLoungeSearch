@@ -2,10 +2,19 @@
 	import Tooltip from 'lib/components/Tooltip.svelte';
 	import Check from 'lib/icons/Check.svelte';
 	import Minus from 'lib/icons/Minus.svelte';
+	import { audioTimestamp } from 'lib/stores';
 	import type { SearchHit } from 'lib/types';
 	import { epName, timeToUrl } from 'lib/utils';
 
 	export let hit: SearchHit;
+	const hitEpisode = epName(hit.episode.replace('.json', ''));
+
+	function playLine() {
+		audioTimestamp.set({
+			timestamp: hit.time,
+			episode: hitEpisode?.feedTitle || ''
+		});
+	}
 </script>
 
 <div
@@ -25,7 +34,7 @@
 				</svelte:fragment>
 			</Tooltip>
 			<div class="text-sm text-gray-900 md:text-base">
-				{epName(hit.episode.replace('.json', ''))?.title}
+				{hitEpisode?.title}
 			</div>
 		</div>
 
@@ -63,28 +72,26 @@
 					<svelte:fragment slot="tooltip">Go to line in transcript</svelte:fragment>
 					<svelte:fragment slot="content">
 						<a
-							href={`/ep/${epName(hit.episode)?.ep}?${timeToUrl(
-								`t-${hit.time.replaceAll(':', '')}`
-							)}`}
+							href={`/ep/${hitEpisode?.ep}?${timeToUrl(`t-${hit.time.replaceAll(':', '')}`)}`}
 							class="font-sans text-base text-blue-600 border-b-2 border-blue-200 border-dotted group hover:border-solid"
 						>
 							transcript
 						</a>
 					</svelte:fragment>
 				</Tooltip>
-				<Tooltip>
-					<svelte:fragment slot="tooltip">Listen on Stitcher</svelte:fragment>
-					<svelte:fragment slot="content">
-						<a
-							class="font-sans text-base text-blue-600 border-b-2 border-blue-200 border-dotted has-tooltip hover:border-solid"
-							href={epName(hit.episode)?.url}
-							rel="noopener noreferrer"
-							target="_blank"
-						>
-							listen
-						</a>
-					</svelte:fragment>
-				</Tooltip>
+				{#if hitEpisode?.hasAudio}
+					<Tooltip>
+						<svelte:fragment slot="tooltip">Listen</svelte:fragment>
+						<svelte:fragment slot="content">
+							<button
+								class="font-sans text-base text-blue-600 border-b-2 border-blue-200 border-dotted has-tooltip hover:border-solid"
+								on:click={playLine}
+							>
+								Listen
+							</button>
+						</svelte:fragment>
+					</Tooltip>
+				{/if}
 			</div>
 		</div>
 	</div>
