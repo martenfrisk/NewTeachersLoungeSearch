@@ -69,7 +69,6 @@
 		window.localStorage.removeItem('lounge-feed');
 		rssFeed = '';
 	}
-	$: console.log({ hidden });
 </script>
 
 {#if !hidden}
