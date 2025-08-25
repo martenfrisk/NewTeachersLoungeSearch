@@ -1,18 +1,14 @@
 <script lang="ts">
-	import { run, preventDefault } from 'svelte/legacy';
-
 	import { onMount } from 'svelte';
-	import AudioPlayer from './components/AudioPlayer.svelte';
-	import { audioTimestamp } from './stores';
+	import AudioPlayer from './components/audio/AudioPlayer.svelte';
+	import { audioTimestamp, currentTimestamp } from './stores';
+	import { audioService } from './services/AudioService';
 	import { env } from '$env/dynamic/public';
+
 	let rssFeed = $state('');
 	let audioSrc = $state('');
-
 	let episodes: { title?: string | null; url?: string | null }[] = [];
 	let currTime: number = $state(0);
-	run(() => {
-		currTime;
-	});
 	let currEpTitle = $state('');
 	let hidden = $state(false);
 	let errorMsg = $state('');
@@ -22,12 +18,24 @@
 		return hours * 3600 + minutes * 60 + seconds;
 	}
 
+	// Watch for audio timestamp changes
 	$effect(() => {
 		if ($audioTimestamp?.timestamp && $audioTimestamp?.episode) {
 			const index = episodes.find((ep) => ep.title === $audioTimestamp!.episode);
 			audioSrc = index?.url || '';
 			currTime = timestampToSeconds($audioTimestamp!.timestamp);
 			currEpTitle = $audioTimestamp!.episode;
+		}
+	});
+
+	// Also watch the new store
+	$effect(() => {
+		const timestamp = $currentTimestamp;
+		if (timestamp?.timestamp && timestamp?.episode) {
+			const index = episodes.find((ep) => ep.title === timestamp.episode);
+			audioSrc = index?.url || '';
+			currTime = timestampToSeconds(timestamp.timestamp);
+			currEpTitle = timestamp.episode;
 		}
 	});
 
@@ -130,7 +138,7 @@
 				>
 			</div>
 		{:else if audioSrc && currTime}
-			<AudioPlayer src={audioSrc} paused={false} {currTime} title={currEpTitle || ''} />
+			<AudioPlayer src={audioSrc} {currTime} currEpTitle={currEpTitle || ''} />
 		{/if}
 		<button
 			class="absolute top-0 right-0 md:mr-3 md:mt-3 mr-1 mt-1 text-lg"

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Search from '$lib/Search.svelte';
+	import SearchContainer from '$lib/components/search/SearchContainer.svelte';
+
 	interface Props {
 		data: PageData;
 	}
@@ -10,4 +11,9 @@
 	const { query, filter, hits, editedOnly } = data;
 </script>
 
-<Search {query} {filter} {hits} {editedOnly} />
+<SearchContainer
+	initialQuery={query}
+	initialHits={hits}
+	initialFilters={filter}
+	initialEditedOnly={editedOnly}
+/>

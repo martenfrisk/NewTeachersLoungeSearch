@@ -8,7 +8,7 @@
 	});
 
 	let searchEp = $state('');
-	
+
 	const seasons = [
 		'',
 		's01',
@@ -31,7 +31,6 @@
 	];
 
 	let query = $state('');
-	
 
 	let results: FuseResult<{
 		ep: string;
