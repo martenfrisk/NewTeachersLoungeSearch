@@ -88,7 +88,7 @@ export class AudioService {
 			console.warn('No audio URL found for episode:', timestamp.episode);
 			return;
 		}
-		
+
 		audioStore.setTimestamp(timestamp);
 		this.loadAudio(episode.audioUrl, timestamp.timestamp);
 	}
@@ -111,11 +111,15 @@ export class AudioService {
 				this.audioElement.currentTime = targetTime;
 			} else if (this.audioElement) {
 				// Wait for metadata to load
-				this.audioElement.addEventListener('loadedmetadata', () => {
-					if (this.audioElement) {
-						this.audioElement.currentTime = targetTime;
-					}
-				}, { once: true });
+				this.audioElement.addEventListener(
+					'loadedmetadata',
+					() => {
+						if (this.audioElement) {
+							this.audioElement.currentTime = targetTime;
+						}
+					},
+					{ once: true }
+				);
 			}
 		};
 

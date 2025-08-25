@@ -64,7 +64,7 @@
 
 	// Debounced search to reduce API calls
 	let searchTimeoutId: ReturnType<typeof setTimeout> | undefined;
-	
+
 	function debouncedSearch() {
 		clearTimeout(searchTimeoutId);
 		searchTimeoutId = setTimeout(() => {

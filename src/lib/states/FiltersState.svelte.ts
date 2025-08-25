@@ -15,8 +15,8 @@ export class FiltersState {
 
 	get activeFiltersArray(): string[] {
 		const filters: string[] = [];
-		this.seasons.forEach((season) => filters.push(`season = ${season}`));
-		this.episodes.forEach((episode) => filters.push(`episode = ${episode}`));
+		this.seasons.forEach((season) => filters.push(`season = "${season}"`));
+		this.episodes.forEach((episode) => filters.push(`episode = "${episode}"`));
 		return filters;
 	}
 
@@ -50,10 +50,11 @@ export class FiltersState {
 
 	removeFilter(filterString: string): void {
 		const [filterName, filterValue] = filterString.split(' = ');
+		const cleanValue = filterValue.replace(/"/g, '');
 		if (filterName === 'season') {
-			this.seasons = this.seasons.filter((s) => s !== filterValue);
+			this.seasons = this.seasons.filter((s) => s !== cleanValue);
 		} else if (filterName === 'episode') {
-			this.episodes = this.episodes.filter((e) => e !== filterValue);
+			this.episodes = this.episodes.filter((e) => e !== cleanValue);
 		}
 	}
 
@@ -63,10 +64,11 @@ export class FiltersState {
 
 		activeFilters.forEach((filter) => {
 			const [filterName, filterValue] = filter.split(' = ');
+			const cleanValue = filterValue.replace(/"/g, '');
 			if (filterName === 'season') {
-				this.seasons.push(filterValue);
+				this.seasons.push(cleanValue);
 			} else if (filterName === 'episode') {
-				this.episodes.push(filterValue);
+				this.episodes.push(cleanValue);
 			}
 		});
 	}

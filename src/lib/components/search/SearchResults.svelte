@@ -37,11 +37,10 @@
 		<div class="space-y-4">
 			<!-- Stats -->
 			{#if stats}
-				<div class="text-sm text-gray-600 border-b pb-2">
-					<p>
-						Found <strong>{stats.estimatedTotalHits.toLocaleString()}</strong> results in
-						<strong>{stats.processingTime}ms</strong>
-					</p>
+				<div class="text-sm text-gray-600 pb-2">
+					Found <span class="font-mono text-xs">{stats.estimatedTotalHits.toLocaleString()}</span>
+					results in
+					<span class="font-mono text-xs">{stats.processingTime}ms</span>
 				</div>
 			{/if}
 

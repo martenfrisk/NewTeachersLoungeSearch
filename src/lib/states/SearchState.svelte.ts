@@ -25,8 +25,17 @@ function createSearchState() {
 		error = null;
 
 		try {
+			// Build filter strings properly
+			const filterStrings: string[] = [];
+			if (filters?.seasons) {
+				filters.seasons.forEach(season => filterStrings.push(`season = "${season}"`));
+			}
+			if (filters?.episodes) {
+				filters.episodes.forEach(episode => filterStrings.push(`episode = "${episode}"`));
+			}
+			
 			const result = await searchService.search(query, {
-				filter: filters ? [...(filters.seasons || []), ...(filters.episodes || [])] : [],
+				filter: filterStrings,
 				editedOnly: filters?.editedOnly || false,
 				offset: 20
 			});
@@ -82,22 +91,54 @@ function createSearchState() {
 	}
 
 	return {
-		get query() { return query; },
-		set query(value: string) { query = value; },
-		get hits() { return hits; },
-		set hits(value: SearchHitType[]) { hits = value; },
-		get stats() { return stats; },
-		set stats(value: SearchStats | null) { stats = value; },
-		get loading() { return loading; },
-		set loading(value: boolean) { loading = value; },
-		get error() { return error; },
-		set error(value: string | null) { error = value; },
-		get hasMore() { return hasMore; },
-		set hasMore(value: boolean) { hasMore = value; },
-		get isEmpty() { return isEmpty; },
-		get hasResults() { return hasResults; },
-		get isSearching() { return isSearching; },
-		get isLoadingMore() { return isLoadingMore; },
+		get query() {
+			return query;
+		},
+		set query(value: string) {
+			query = value;
+		},
+		get hits() {
+			return hits;
+		},
+		set hits(value: SearchHitType[]) {
+			hits = value;
+		},
+		get stats() {
+			return stats;
+		},
+		set stats(value: SearchStats | null) {
+			stats = value;
+		},
+		get loading() {
+			return loading;
+		},
+		set loading(value: boolean) {
+			loading = value;
+		},
+		get error() {
+			return error;
+		},
+		set error(value: string | null) {
+			error = value;
+		},
+		get hasMore() {
+			return hasMore;
+		},
+		set hasMore(value: boolean) {
+			hasMore = value;
+		},
+		get isEmpty() {
+			return isEmpty;
+		},
+		get hasResults() {
+			return hasResults;
+		},
+		get isSearching() {
+			return isSearching;
+		},
+		get isLoadingMore() {
+			return isLoadingMore;
+		},
 		search,
 		loadMore,
 		clearResults,
