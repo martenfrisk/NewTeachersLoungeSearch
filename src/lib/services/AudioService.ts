@@ -1,5 +1,4 @@
 import type { AudioTimestamp } from '../types/audio';
-import type { Episode } from '../types/episode';
 import { audioStore } from '../stores/audio';
 import epList from '../../assets/episodes6.json';
 
@@ -9,6 +8,16 @@ interface RSSEpisode {
 	description: string;
 	pubDate: string;
 	duration: string;
+}
+
+interface LocalEpisode {
+	ep: string;
+	title: string;
+	desc: string;
+	date: string;
+	url: string;
+	feedTitle: string;
+	hasAudio: boolean;
 }
 
 export class AudioService {
@@ -234,8 +243,8 @@ export class AudioService {
 		}
 
 		// Fallback to local episode list
-		const localEpisode = epList.find(
-			(ep: any) => ep.title === episodeTitle || ep.feedTitle === episodeTitle
+		const localEpisode = (epList as LocalEpisode[]).find(
+			(ep) => ep.title === episodeTitle || ep.feedTitle === episodeTitle
 		);
 		if (localEpisode) {
 			return {

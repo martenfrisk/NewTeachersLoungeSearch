@@ -1,22 +1,13 @@
 <script lang="ts">
-	import {
-		audioStore,
-		currentTimestamp,
-		isPlaying,
-		audioProgress,
-		formattedCurrentTime,
-		formattedDuration
-	} from '../../stores/audio';
+	import { audioStore } from '../../stores/audio';
 	import { audioService } from '../../services/AudioService';
 	import Button from '../ui/Button.svelte';
 
 	interface Props {
-		src?: string;
-		currTime?: number;
 		currEpTitle?: string;
 	}
 
-	let { src = '', currTime = 0, currEpTitle = '' }: Props = $props();
+	let { currEpTitle = '' }: Props = $props();
 
 	// Direct access to reactive stores - no need for additional derived computations
 	const audioState = $derived($audioStore);
@@ -30,10 +21,6 @@
 		} else {
 			audioService.play();
 		}
-	}
-
-	function handleStop() {
-		audioService.stop();
 	}
 
 	function handleSeek(event: Event) {

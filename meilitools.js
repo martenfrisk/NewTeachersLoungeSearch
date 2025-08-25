@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { MeiliSearch } from 'meilisearch';
 import fs from 'fs';
 import path from 'path';
@@ -163,7 +164,7 @@ async function importDocuments(filePath) {
 }
 
 // Example usage
-const filePath = './src/assets/transcripts/s01e01.json';
+// const filePath = './src/assets/transcripts/s01e01.json';
 
 function fixEpisodeField(filePath) {
 	const data = readJSONFile(filePath);
@@ -189,17 +190,17 @@ function fixAllEpisodeFields(folderPath) {
 	});
 }
 
-function updateFilters() {
-	client
-		.index('teachers')
-		.updateFilterableAttributes(['episode', 'season', 'edited', 'speaker'])
-		.then((response) => {
-			console.log(response);
-		})
-		.catch((error) => {
-			console.log(error);
-		});
-}
+// function updateFilters() {
+// 	client
+// 		.index('teachers')
+// 		.updateFilterableAttributes(['episode', 'season', 'edited', 'speaker'])
+// 		.then((response) => {
+// 			console.log(response);
+// 		})
+// 		.catch((error) => {
+// 			console.log(error);
+// 		});
+// }
 
 /**
  * @param {string} folderPath

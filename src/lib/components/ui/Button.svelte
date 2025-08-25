@@ -9,7 +9,6 @@
 		class?: string;
 		'aria-label'?: string;
 		children?: import('svelte').Snippet;
-		[key: string]: any;
 	}
 
 	let {
@@ -20,8 +19,8 @@
 		onclick,
 		type = 'button',
 		class: className = '',
-		children,
-		...restProps
+		'aria-label': ariaLabel,
+		children
 	}: Props = $props();
 
 	const baseClasses =
@@ -46,7 +45,7 @@
 	const isDisabled = $derived(disabled || loading);
 </script>
 
-<button {type} class={classes} disabled={isDisabled} {onclick} {...restProps}>
+<button {type} class={classes} disabled={isDisabled} {onclick} aria-label={ariaLabel}>
 	{#if loading}
 		<svg class="w-4 h-4 mr-2 animate-spin" fill="none" viewBox="0 0 24 24">
 			<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"

@@ -80,16 +80,16 @@
 	// Effect for query changes with debouncing
 	$effect(() => {
 		// Track query changes
-		searchState.query;
+		void searchState.query;
 		debouncedSearch();
 	});
 
 	// Effect for filter changes - immediate search since these are deliberate actions
 	$effect(() => {
 		// Track filter changes
-		filtersState.seasons;
-		filtersState.episodes;
-		filtersState.editedOnly;
+		void filtersState.seasons;
+		void filtersState.episodes;
+		void filtersState.editedOnly;
 
 		// Clear debounce and search immediately for filter changes
 		clearTimeout(searchTimeoutId);

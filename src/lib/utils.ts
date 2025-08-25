@@ -3,10 +3,9 @@ import type { SearchResult } from 'lib/types';
 import { MeiliSearch } from 'meilisearch';
 
 import epList from '../assets/episodes6.json';
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type throttleFunction = (args: any) => void;
-export const debounceFn = (delay: number, fn: throttleFunction): throttleFunction => {
-	let inDebounce: any = null;
+type ThrottleFunction = (args: unknown) => void;
+export const debounceFn = (delay: number, fn: ThrottleFunction): ThrottleFunction => {
+	let inDebounce: ReturnType<typeof setTimeout> | null = null;
 	return (args) => {
 		clearTimeout(inDebounce);
 		inDebounce = setTimeout(() => fn(args), delay);
@@ -145,14 +144,16 @@ export async function searchMeili({
 		});
 	}
 
-	const facets: any[] = [];
 	interface FacetHit {
 		ep: string;
 		hits: number;
 	}
+
+	const facets: { facetName: string; facetHits: FacetHit[] }[] = [];
+
 	if (data !== undefined && data.facetDistribution) {
 		Object.entries(data.facetDistribution).forEach(([facetKey, facetValue]) => {
-			const valuesArr: any[] = [];
+			const valuesArr: FacetHit[] = [];
 			Object.entries(facetValue).forEach(([key, value]) => {
 				valuesArr.push({ ep: key, hits: value });
 			});
@@ -177,10 +178,10 @@ export const timeToUrl = (time: string): URLSearchParams => {
 	return urlTime;
 };
 
-export function findEpNr(title: string, returnValue: string): string | null {
+export function findEpNr(title: string, returnValue: keyof (typeof epList)[0]): string | null {
 	const epNr = epList.find((x) => x.title == title);
 	if (epNr) {
-		// @ts-ignore
+		// @ts-expect-error - Dynamic property access with validated key
 		return epNr[returnValue];
 	} else {
 		return null;

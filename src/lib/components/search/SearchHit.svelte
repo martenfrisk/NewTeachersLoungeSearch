@@ -1,3 +1,4 @@
+<!-- eslint-disable svelte/no-at-html-tags -->
 <script lang="ts">
 	import type { SearchHitType } from '../../types/search';
 	import { audioService } from '../../services/AudioService';
@@ -210,6 +211,7 @@
 				</div>
 			</div>
 			<div class="prose prose-sm max-w-none">
+				<!-- Safe: MeiliSearch only adds <em> tags for search highlighting -->
 				<p class="text-sm leading-relaxed text-gray-900 m-0">{@html hit._formatted.line}</p>
 			</div>
 		</div>
