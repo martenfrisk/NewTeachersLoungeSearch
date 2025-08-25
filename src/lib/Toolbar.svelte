@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import AudioPlayer from './components/AudioPlayer.svelte';
 	import { audioTimestamp } from './stores';
+	import { env } from '$env/dynamic/public';
 	let rssFeed = '';
 	$: audioSrc = '';
 	let episodes: { title?: string | null; url?: string | null }[] = [];
@@ -9,6 +10,7 @@
 	$: currTime;
 	let currEpTitle = '';
 	let hidden = false;
+	let errorMsg = '';
 
 	function timestampToSeconds(time: string) {
 		const [hours, minutes, seconds] = time.split(':').map(Number);
@@ -32,8 +34,16 @@
 		}
 	});
 
-	async function getFirstEp(feed: string) {
-		const response = await fetch(feed);
+	function checkUrlValidity(url: string) {
+		return url.startsWith(`${env.PUBLIC_LOUNGE_URL}?auth=`);
+	}
+
+	function getUrl(authKey: string) {
+		return `${env.PUBLIC_LOUNGE_URL}?auth=${authKey}`;
+	}
+
+	async function getFirstEp(authToken: string) {
+		const response = await fetch(getUrl(authToken));
 
 		const text = await response.text();
 		const parser = new DOMParser();
@@ -59,7 +69,10 @@
 	) {
 		const data = new FormData(event.currentTarget);
 		const rss = data.get('rss');
-		if (!rss) return;
+		if (!rss || !checkUrlValidity(rss.toString())) {
+			errorMsg = 'Incorrect RSS link';
+			return;
+		}
 		rssFeed = rss.toString();
 		window.localStorage.setItem('lounge-feed', rssFeed);
 		getFirstEp(rssFeed);
@@ -75,7 +88,9 @@
 	<div
 		class="fixed bottom-0 md:w-1/2 w-5/6 mx-auto max-w-full py-2 px-1 md:px-4 bg-white border-gray-300 border"
 	>
-		{#if !rssFeed}
+		{#if errorMsg}
+			<div class="text-red-500">{errorMsg}</div>
+		{:else if !rssFeed}
 			<div class="text-base flex flex-col">
 				<p>Add your own RSS feed to enable audio playback.</p>
 				<div>
