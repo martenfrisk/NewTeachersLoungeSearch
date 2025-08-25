@@ -38,7 +38,7 @@
 	<div class="text-lg text-gray-700 uppercase">{epName(episode)?.ep}</div>
 	<div class="text-lg text-gray-800 md:text-xl">{epName(episode)?.title}</div>
 	<p class="px-4 my-8 md:mr-10">{epName(episode)?.desc}</p>
-	{#each epScript as hit}
+	{#each epScript as hit (hit.id || hit.time)}
 		<div
 			class={`w-full border-2 px-4 pb-6 mb-6 shadow-md hover:bg-blue-50 ${
 				hitIsActive(hit.time) ? 'border-blue-500' : 'border-blue-100'
