@@ -58,6 +58,10 @@ function createAudioStore() {
 			update((state) => ({ ...state, muted: !state.muted }));
 		},
 
+		setMuted(muted: boolean): void {
+			update((state) => ({ ...state, muted }));
+		},
+
 		reset(): void {
 			set(initialState);
 		}
