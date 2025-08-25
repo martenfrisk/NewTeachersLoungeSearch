@@ -45,10 +45,12 @@
 				</div>
 			{/if}
 
-			<!-- Hit List -->
-			<div class="space-y-4">
+			<!-- Hit List with Performance Optimization -->
+			<div class="space-y-4" role="list" aria-label="Search results">
 				{#each hits as hit (hit.id)}
-					<SearchHit {hit} />
+					<div role="listitem">
+						<SearchHit {hit} />
+					</div>
 				{/each}
 			</div>
 

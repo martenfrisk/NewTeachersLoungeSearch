@@ -88,10 +88,9 @@ export class AudioService {
 			console.warn('No audio URL found for episode:', timestamp.episode);
 			return;
 		}
-		console.log({ episode, timestamp });
+		
 		audioStore.setTimestamp(timestamp);
 		this.loadAudio(episode.audioUrl, timestamp.timestamp);
-		return;
 	}
 
 	private loadAudio(url: string, timestamp: string): void {

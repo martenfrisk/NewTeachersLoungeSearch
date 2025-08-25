@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { SearchHitType } from '../../types/search';
-	import { audioTimestamp } from '../../stores'; // Legacy store for compatibility
 	import { audioService } from '../../services/AudioService';
 	import { epName, timeToUrl } from '../../utils';
 	import Tooltip from '../Tooltip.svelte';
@@ -17,18 +16,10 @@
 
 	function handlePlayAudio() {
 		if (hitEpisode?.feedTitle) {
-			// Update both new and legacy stores for compatibility
-			console.log({ hitEpisode });
 			audioService.playTimestamp({
 				timestamp: hit.time,
 				episode: hitEpisode.feedTitle
 			});
-
-			// Also update legacy store
-			// audioTimestamp.set({
-			// 	timestamp: hit.time,
-			// 	episode: hitEpisode.feedTitle
-			// });
 		}
 	}
 </script>

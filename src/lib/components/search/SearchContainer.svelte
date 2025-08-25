@@ -62,23 +62,37 @@
 		});
 	}
 
-	// Effect for query changes
+	// Debounced search to reduce API calls
+	let searchTimeoutId: ReturnType<typeof setTimeout> | undefined;
+	
+	function debouncedSearch() {
+		clearTimeout(searchTimeoutId);
+		searchTimeoutId = setTimeout(() => {
+			if (searchState.query.trim()) {
+				handleSearch();
+			} else {
+				searchState.clearResults();
+				updateURL();
+			}
+		}, 300);
+	}
+
+	// Effect for query changes with debouncing
 	$effect(() => {
-		if (searchState.query.trim()) {
-			handleSearch();
-		} else {
-			searchState.clearResults();
-			updateURL();
-		}
+		// Track query changes
+		searchState.query;
+		debouncedSearch();
 	});
 
-	// Effect for filter changes
+	// Effect for filter changes - immediate search since these are deliberate actions
 	$effect(() => {
 		// Track filter changes
 		filtersState.seasons;
 		filtersState.episodes;
 		filtersState.editedOnly;
 
+		// Clear debounce and search immediately for filter changes
+		clearTimeout(searchTimeoutId);
 		if (searchState.query.trim()) {
 			handleSearch();
 		} else {

@@ -17,7 +17,7 @@
 <svelte:window bind:innerWidth={width} />
 
 <div class="sticky w-full py-0 mt-0 md:mb-0 md:w-1/4 md:max-w-sm">
-	<div class="flex items-end justify-end h-16 pr-3 mt-0 text-2xl text-gray-800 bg-blue-300 md:h-40">
+	<div class="flex items-end justify-end h-16 pr-3 mt-0 text-2xl text-gray-800 bg-blue-300 md:h-40 min-h-[4rem] md:min-h-[10rem]">
 		<Coffee />
 		<div class="flex flex-col justify-end">
 			<a href="/" class="text-gray-700"> Seekers&apos; Lounge </a>

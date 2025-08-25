@@ -5,7 +5,6 @@
 	import { inject } from '@vercel/analytics';
 	import { fly } from 'svelte/transition';
 	import UpArrow from 'lib/icons/UpArrow.svelte';
-	import AudioPlayer from '$lib/components/audio/AudioPlayer.svelte';
 	import { audioStore } from '$lib/stores/audio';
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -20,12 +19,31 @@
 
 	let isButtonVisible = $derived(innerHeight && y > innerHeight ? true : false);
 
-	// Show audio player when there's an active timestamp
+	// Lazy load audio player only when needed
 	const showAudioPlayer = $derived($audioStore.currentTimestamp !== null);
+	
+	// Dynamic import for audio player to reduce initial bundle size
+	let AudioPlayer: any = $state(null);
+	
+	$effect(() => {
+		if (showAudioPlayer && !AudioPlayer) {
+			import('$lib/components/audio/AudioPlayer.svelte').then((module) => {
+				AudioPlayer = module.default;
+			});
+		}
+	});
 </script>
 
 <svelte:head>
 	<title>Seekers' Lounge ☕ The Teachers' Lounge Search Engine</title>
+	<!-- Preload critical resources for better performance -->
+	<link rel="preload" href="/coffee.svg" as="image" type="image/svg+xml" />
+	<!-- Preconnect to external domains -->
+	<link rel="preconnect" href="https://ts.pcast.site" />
+	<link rel="preconnect" href="https://rss.art19.com" />
+	<!-- Performance optimizations -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="theme-color" content="#2563eb" />
 </svelte:head>
 
 <svelte:window bind:scrollY={y} bind:innerHeight />
@@ -45,8 +63,8 @@
 		{/if}
 	</main>
 
-	<!-- Audio Player - shown when there's an active timestamp -->
-	{#if showAudioPlayer}
+	<!-- Audio Player - lazy loaded when needed -->
+	{#if showAudioPlayer && AudioPlayer}
 		<AudioPlayer currEpTitle={$audioStore.currentTimestamp?.episode} />
 	{/if}
 </div>
