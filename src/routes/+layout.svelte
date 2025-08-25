@@ -5,8 +5,8 @@
 	import { inject } from '@vercel/analytics';
 	import { fly } from 'svelte/transition';
 	import UpArrow from 'lib/icons/UpArrow.svelte';
-	// import Toolbar from 'lib/Toolbar.svelte';
-	// import AudioPlayer from '$lib/components/audio/AudioPlayer.svelte';
+	import AudioPlayer from '$lib/components/audio/AudioPlayer.svelte';
+	import { audioStore } from '$lib/stores/audio';
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -19,6 +19,9 @@
 		innerHeight: number | undefined = $state();
 
 	let isButtonVisible = $derived(innerHeight && y > innerHeight ? true : false);
+
+	// Show audio player when there's an active timestamp
+	const showAudioPlayer = $derived($audioStore.currentTimestamp !== null);
 </script>
 
 <svelte:head>
@@ -31,7 +34,6 @@
 	<Sidebar />
 	<main class="w-full h-auto mt-0 px-2 md:px-10 md:mt-10 mb-24 md:w-3/4">
 		{@render children?.()}
-		<!-- <Toolbar /> -->
 		{#if isButtonVisible}
 			<button
 				transition:fly={{ y: 100, duration: 400 }}
@@ -43,6 +45,8 @@
 		{/if}
 	</main>
 
-	<!-- Global Audio Player -->
-	<!-- <AudioPlayer /> -->
+	<!-- Audio Player - shown when there's an active timestamp -->
+	{#if showAudioPlayer}
+		<AudioPlayer currEpTitle={$audioStore.currentTimestamp?.episode} />
+	{/if}
 </div>

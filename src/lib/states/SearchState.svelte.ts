@@ -1,97 +1,110 @@
 import type { SearchHitType, SearchStats, SearchFilters } from '../types/search';
 import { searchService } from '../services/SearchService';
 
-export class SearchState {
-	query = $state('');
-	hits = $state<SearchHitType[]>([]);
-	stats = $state<SearchStats | null>(null);
-	loading = $state(false);
-	error = $state<string | null>(null);
-	hasMore = $state(false);
+function createSearchState() {
+	let query = $state('');
+	let hits = $state<SearchHitType[]>([]);
+	let stats = $state<SearchStats | null>(null);
+	let loading = $state(false);
+	let error = $state<string | null>(null);
+	let hasMore = $state(false);
 
-	get isEmpty() {
-		return this.hits.length === 0;
-	}
+	const isEmpty = $derived(hits.length === 0);
+	const hasResults = $derived(hits.length > 0);
+	const isSearching = $derived(loading && hits.length === 0);
+	const isLoadingMore = $derived(loading && hits.length > 0);
 
-	get hasResults() {
-		return this.hits.length > 0;
-	}
-
-	get isSearching() {
-		return this.loading && this.hits.length === 0;
-	}
-
-	get isLoadingMore() {
-		return this.loading && this.hits.length > 0;
-	}
-
-	async search(query: string, filters?: SearchFilters): Promise<void> {
-		if (!query.trim()) {
-			this.clearResults();
+	async function search(searchQuery: string, filters?: SearchFilters): Promise<void> {
+		if (!searchQuery.trim()) {
+			clearResults();
 			return;
 		}
 
-		this.query = query.trim();
-		this.loading = true;
-		this.error = null;
+		query = searchQuery.trim();
+		loading = true;
+		error = null;
 
 		try {
-			const result = await searchService.search(this.query, {
+			const result = await searchService.search(query, {
 				filter: filters ? [...(filters.seasons || []), ...(filters.episodes || [])] : [],
 				editedOnly: filters?.editedOnly || false,
 				offset: 20
 			});
 
-			this.hits = result.items;
-			this.stats = result.stats;
-			this.hasMore = result.hasMore;
+			hits = result.items;
+			stats = result.stats;
+			hasMore = result.hasMore;
 		} catch (err) {
-			this.error = err instanceof Error ? err.message : 'Search failed';
-			this.hits = [];
-			this.stats = null;
-			this.hasMore = false;
+			error = err instanceof Error ? err.message : 'Search failed';
+			hits = [];
+			stats = null;
+			hasMore = false;
 		} finally {
-			this.loading = false;
+			loading = false;
 		}
 	}
 
-	async loadMore(): Promise<void> {
-		if (!this.hasMore || this.loading || !this.query) return;
+	async function loadMore(): Promise<void> {
+		if (!hasMore || loading || !query) return;
 
-		this.loading = true;
+		loading = true;
 
 		try {
-			const result = await searchService.searchMore(this.query, this.hits);
-			this.hits = result.hits;
-			this.hasMore = result.hasMore;
-			this.stats = result.stats;
+			const result = await searchService.searchMore(query, hits);
+			hits = result.hits;
+			hasMore = result.hasMore;
+			stats = result.stats;
 		} catch (err) {
-			this.error = err instanceof Error ? err.message : 'Failed to load more results';
+			error = err instanceof Error ? err.message : 'Failed to load more results';
 		} finally {
-			this.loading = false;
+			loading = false;
 		}
 	}
 
-	clearResults(): void {
-		this.hits = [];
-		this.stats = null;
-		this.hasMore = false;
-		this.error = null;
+	function clearResults(): void {
+		hits = [];
+		stats = null;
+		hasMore = false;
+		error = null;
 	}
 
-	clearError(): void {
-		this.error = null;
+	function clearError(): void {
+		error = null;
 	}
 
-	reset(): void {
-		this.query = '';
-		this.hits = [];
-		this.stats = null;
-		this.loading = false;
-		this.error = null;
-		this.hasMore = false;
+	function reset(): void {
+		query = '';
+		hits = [];
+		stats = null;
+		loading = false;
+		error = null;
+		hasMore = false;
 	}
+
+	return {
+		get query() { return query; },
+		set query(value: string) { query = value; },
+		get hits() { return hits; },
+		set hits(value: SearchHitType[]) { hits = value; },
+		get stats() { return stats; },
+		set stats(value: SearchStats | null) { stats = value; },
+		get loading() { return loading; },
+		set loading(value: boolean) { loading = value; },
+		get error() { return error; },
+		set error(value: string | null) { error = value; },
+		get hasMore() { return hasMore; },
+		set hasMore(value: boolean) { hasMore = value; },
+		get isEmpty() { return isEmpty; },
+		get hasResults() { return hasResults; },
+		get isSearching() { return isSearching; },
+		get isLoadingMore() { return isLoadingMore; },
+		search,
+		loadMore,
+		clearResults,
+		clearError,
+		reset
+	};
 }
 
 // Global instance
-export const searchState = new SearchState();
+export const searchState = createSearchState();

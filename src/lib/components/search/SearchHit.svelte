@@ -18,16 +18,17 @@
 	function handlePlayAudio() {
 		if (hitEpisode?.feedTitle) {
 			// Update both new and legacy stores for compatibility
+			console.log({ hitEpisode });
 			audioService.playTimestamp({
 				timestamp: hit.time,
 				episode: hitEpisode.feedTitle
 			});
 
 			// Also update legacy store
-			audioTimestamp.set({
-				timestamp: hit.time,
-				episode: hitEpisode.feedTitle
-			});
+			// audioTimestamp.set({
+			// 	timestamp: hit.time,
+			// 	episode: hitEpisode.feedTitle
+			// });
 		}
 	}
 </script>
@@ -121,7 +122,7 @@
 					{/snippet}
 					{#snippet content()}
 						<button
-							class="font-sans text-base text-blue-600 border-b-2 border-blue-200 border-dotted hover:border-solid transition-colors"
+							class="font-sans text-base text-blue-600 border-b-2 cursor-pointer border-blue-200 border-dotted hover:border-solid transition-colors"
 							onclick={handlePlayAudio}
 						>
 							Listen
