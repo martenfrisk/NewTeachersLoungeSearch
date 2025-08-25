@@ -71,22 +71,18 @@ function createAudioStore() {
 // Audio store instance
 export const audioStore = createAudioStore();
 
-// Derived stores for easy access
+// Essential derived stores - most components can access audioStore directly
 export const currentTimestamp = derived(audioStore, ($audio) => $audio.currentTimestamp);
 export const isPlaying = derived(audioStore, ($audio) => $audio.isPlaying);
-export const audioCurrentTime = derived(audioStore, ($audio) => $audio.currentTime);
-export const audioDuration = derived(audioStore, ($audio) => $audio.duration);
-export const audioVolume = derived(audioStore, ($audio) => $audio.volume);
-export const audioMuted = derived(audioStore, ($audio) => $audio.muted);
 
-// Computed values
+// Only keep computed values that are frequently used
 export const audioProgress = derived(
-	[audioCurrentTime, audioDuration],
-	([$currentTime, $duration]) => ($duration > 0 ? ($currentTime / $duration) * 100 : 0)
+	audioStore,
+	($audio) => ($audio.duration > 0 ? ($audio.currentTime / $audio.duration) * 100 : 0)
 );
 
-export const formattedCurrentTime = derived(audioCurrentTime, ($time) => formatTime($time));
-export const formattedDuration = derived(audioDuration, ($duration) => formatTime($duration));
+export const formattedCurrentTime = derived(audioStore, ($audio) => formatTime($audio.currentTime));
+export const formattedDuration = derived(audioStore, ($audio) => formatTime($audio.duration));
 
 function formatTime(seconds: number): string {
 	if (isNaN(seconds)) return '0:00';

@@ -18,18 +18,14 @@
 
 	let { src = '', currTime = 0, currEpTitle = '' }: Props = $props();
 
-	// Use Svelte 5 derived values from stores
-	const playing = $derived($isPlaying);
-	const progress = $derived($audioProgress);
-	const currentTimeFormatted = $derived($formattedCurrentTime);
-	const durationFormatted = $derived($formattedDuration);
+	// Direct access to reactive stores - no need for additional derived computations
 	const audioState = $derived($audioStore);
 	
 	let progressBar: HTMLInputElement;
 	let volumeSlider: HTMLInputElement;
 
 	function handlePlayPause() {
-		if (playing) {
+		if (audioState.isPlaying) {
 			audioService.pause();
 		} else {
 			audioService.play();
@@ -70,6 +66,13 @@
 		audioService.stop();
 		audioStore.reset();
 	}
+
+	function formatTime(seconds: number): string {
+		if (isNaN(seconds)) return '0:00';
+		const minutes = Math.floor(seconds / 60);
+		const secs = Math.floor(seconds % 60);
+		return `${minutes}:${secs.toString().padStart(2, '0')}`;
+	}
 </script>
 
 <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
@@ -107,13 +110,13 @@
 				type="range"
 				min="0"
 				max="100"
-				value={progress}
+				value={audioState.duration > 0 ? (audioState.currentTime / audioState.duration) * 100 : 0}
 				oninput={handleSeek}
 				class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
 			/>
 			<div class="flex justify-between text-xs text-gray-500 mt-1 px-1">
-				<span>{currentTimeFormatted}</span>
-				<span>{durationFormatted}</span>
+				<span>{formatTime(audioState.currentTime)}</span>
+				<span>{formatTime(audioState.duration)}</span>
 			</div>
 		</div>
 
@@ -133,8 +136,8 @@
 				</Button>
 
 				<!-- Play/Pause -->
-				<Button variant="primary" onclick={handlePlayPause} aria-label={playing ? 'Pause' : 'Play'}>
-					{#if playing}
+				<Button variant="primary" onclick={handlePlayPause} aria-label={audioState.isPlaying ? 'Pause' : 'Play'}>
+					{#if audioState.isPlaying}
 						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
 							<path
 								fill-rule="evenodd"

@@ -84,7 +84,7 @@
 			xml:space="preserve"
 			width="40"
 			height="40"
-			style="enable-background:new 0 0 512.001 512.001"
+			style="enable-background:new 0 0 512.001 512.001; display: block;"
 			viewBox="0 0 512.001 512.001"
 		>
 			<path
@@ -157,10 +157,13 @@
 	.coffee-container {
 		width: 40px;
 		height: 40px;
+		min-width: 40px;
+		min-height: 40px;
 		margin-bottom: 28px;
 		margin-right: 15px;
 		position: relative;
 		z-index: 10;
+		flex-shrink: 0;
 	}
 
 	.squiggle-container {
@@ -282,6 +285,12 @@
 			transform: translateY(-15px);
 			opacity: 0;
 		}
+	}
+
+	.coffee-cup-container {
+		width: 40px;
+		height: 40px;
+		flex-shrink: 0;
 	}
 
 	.squiggle {

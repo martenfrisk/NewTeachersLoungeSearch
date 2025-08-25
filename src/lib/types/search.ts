@@ -72,3 +72,9 @@ export interface SearchFilters {
 	episodes: string[];
 	editedOnly: boolean;
 }
+
+export interface HitStats {
+	estimatedTotalHits: number;
+	processingTime: number;
+	facets: SearchFacet[];
+}
