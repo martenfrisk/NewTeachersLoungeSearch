@@ -106,7 +106,7 @@
 				</div>
 
 				<div>
-					Want to help out? Click{' '}
+					Want to help out? Click
 					<button
 						onclick={handleMoreInfo}
 						class="inline-block border-b border-dotted cursor-pointer"

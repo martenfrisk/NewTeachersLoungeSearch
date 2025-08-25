@@ -58,13 +58,13 @@
 			</div>
 
 			<!-- Dynamic Facet Filters -->
-			{#each facets as facet}
+			{#each facets as facet (facet.facetName)}
 				<div class="space-y-2">
 					<h4 class="text-sm font-medium text-gray-700 capitalize">
 						{facet.facetName}
 					</h4>
 					<div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-						{#each facet.facetHits as hit}
+						{#each facet.facetHits as hit (hit.ep)}
 							{@const isActive = filtersState.activeFiltersArray.includes(
 								`${facet.facetName} = "${hit.ep}"`
 							)}
@@ -100,7 +100,7 @@
 								<button class="ml-1 hover:text-green-600" onclick={toggleEditedOnly}> × </button>
 							</span>
 						{/if}
-						{#each filtersState.activeFiltersArray as filter}
+						{#each filtersState.activeFiltersArray as filter (filter)}
 							<span
 								class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
 							>

@@ -62,7 +62,7 @@
 			name="season"
 			id="season"
 		>
-			{#each seasons as season}
+			{#each seasons as season (season)}
 				<option value={season}>{season}</option>
 			{/each}
 		</select>
@@ -77,7 +77,7 @@
 </div>
 <div class="w-full flex flex-wrap">
 	{#if query === ''}
-		{#each episodes as episode}
+		{#each episodes as episode (episode.ep)}
 			{#if searchEp === ''}
 				<Episode
 					url={episode.url || ''}
@@ -97,7 +97,7 @@
 			{/if}
 		{/each}
 	{:else}
-		{#each results as episode}
+		{#each results as episode (episode.item.ep)}
 			<Episode
 				url={episode.item.url || ''}
 				ep={episode.item.ep}

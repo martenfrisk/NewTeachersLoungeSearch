@@ -45,7 +45,7 @@
 	}
 
 	function updateURL() {
-		const params = new URLSearchParams();
+		const params = new URL(window.location.href).searchParams;
 		if (searchState.query) params.set('s', searchState.query);
 		if (filtersState.activeFiltersArray.length > 0) {
 			params.set(
