@@ -20,7 +20,7 @@
 
 	// Direct access to reactive stores - no need for additional derived computations
 	const audioState = $derived($audioStore);
-	
+
 	let progressBar: HTMLInputElement;
 	let volumeSlider: HTMLInputElement;
 
@@ -78,10 +78,10 @@
 <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
 	<div class="max-w-6xl mx-auto p-3 sm:p-4 relative">
 		<!-- Close Button -->
-		<Button 
-			variant="ghost" 
-			size="sm" 
-			onclick={handleClose} 
+		<Button
+			variant="ghost"
+			size="sm"
+			onclick={handleClose}
 			aria-label="Close audio player"
 			class="absolute top-2 right-2 sm:top-3 sm:right-3 p-1"
 		>
@@ -136,7 +136,11 @@
 				</Button>
 
 				<!-- Play/Pause -->
-				<Button variant="primary" onclick={handlePlayPause} aria-label={audioState.isPlaying ? 'Pause' : 'Play'}>
+				<Button
+					variant="primary"
+					onclick={handlePlayPause}
+					aria-label={audioState.isPlaying ? 'Pause' : 'Play'}
+				>
 					{#if audioState.isPlaying}
 						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
 							<path
@@ -157,7 +161,12 @@
 				</Button>
 
 				<!-- Fast Forward -->
-				<Button variant="ghost" size="sm" onclick={handleFastForward} aria-label="Fast forward 10 seconds">
+				<Button
+					variant="ghost"
+					size="sm"
+					onclick={handleFastForward}
+					aria-label="Fast forward 10 seconds"
+				>
 					<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
 						<path
 							fill-rule="evenodd"
@@ -169,7 +178,12 @@
 
 				<!-- Volume Control -->
 				<div class="flex items-center space-x-1 sm:space-x-2 ml-2">
-					<Button variant="ghost" size="sm" onclick={handleMuteToggle} aria-label={audioState.muted ? 'Unmute' : 'Mute'}>
+					<Button
+						variant="ghost"
+						size="sm"
+						onclick={handleMuteToggle}
+						aria-label={audioState.muted ? 'Unmute' : 'Mute'}
+					>
 						{#if audioState.muted || audioState.volume === 0}
 							<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
 								<path

@@ -76,9 +76,8 @@ export const currentTimestamp = derived(audioStore, ($audio) => $audio.currentTi
 export const isPlaying = derived(audioStore, ($audio) => $audio.isPlaying);
 
 // Only keep computed values that are frequently used
-export const audioProgress = derived(
-	audioStore,
-	($audio) => ($audio.duration > 0 ? ($audio.currentTime / $audio.duration) * 100 : 0)
+export const audioProgress = derived(audioStore, ($audio) =>
+	$audio.duration > 0 ? ($audio.currentTime / $audio.duration) * 100 : 0
 );
 
 export const formattedCurrentTime = derived(audioStore, ($audio) => formatTime($audio.currentTime));

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { onMount } from 'svelte';
 	import epList from 'assets/episodes.json';
 	import { page } from '$app/stores';
 
@@ -11,33 +10,20 @@
 	let { data }: Props = $props();
 
 	const { episode, hits } = data;
-	let query: URLSearchParams | null = null;
 
 	function epName(episode: string) {
 		return epList.find((x) => x.ep === episode.replace('.json', ''));
 	}
 	const epScript = hits.default;
 
-	const hitIsActive = (ep: string) => {
-		if (!query?.has('t')) return false;
-		if (ep.replaceAll(':', '') === query.get('t')?.replace('t-', '')) return true;
-		return false;
+	// Simple hash-based active state
+	const targetHash = $derived($page.url?.hash?.slice(1)); // Remove the '#'
+
+	const hitIsActive = (timeString: string) => {
+		if (!targetHash) return false;
+		const expectedId = `t-${timeString.replaceAll(':', '')}`;
+		return expectedId === targetHash;
 	};
-	onMount(async () => {
-		query = $page.url?.searchParams;
-		if (epScript && query?.has('t')) {
-			setTimeout(() => {
-				const anchorId = query?.get('t');
-				if (anchorId) {
-					const anchor = document.getElementById(anchorId) as HTMLElement;
-					if (!anchor) return;
-					anchor.scrollIntoView({
-						behavior: 'auto'
-					});
-				}
-			}, 50);
-		}
-	});
 </script>
 
 <svelte:head>

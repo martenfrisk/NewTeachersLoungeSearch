@@ -66,7 +66,7 @@
 					<div class="grid grid-cols-2 md:grid-cols-3 gap-2">
 						{#each facet.facetHits as hit}
 							{@const isActive = filtersState.activeFiltersArray.includes(
-								`${facet.facetName} = ${hit.ep}`
+								`${facet.facetName} = "${hit.ep}"`
 							)}
 							<button
 								class="text-left p-2 rounded border text-sm transition-colors"
@@ -104,12 +104,12 @@
 							<span
 								class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
 							>
-								{filter.split(' = ')[1]}
+								{filter.split(' = ')[1].replace(/"/g, '')}
 								<button
 									class="ml-1 hover:text-blue-600"
 									onclick={() => {
 										const [name, value] = filter.split(' = ');
-										toggleFilter(name, value);
+										toggleFilter(name, value.replace(/"/g, ''));
 									}}
 								>
 									×

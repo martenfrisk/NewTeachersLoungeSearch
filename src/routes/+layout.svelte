@@ -21,10 +21,10 @@
 
 	// Lazy load audio player only when needed
 	const showAudioPlayer = $derived($audioStore.currentTimestamp !== null);
-	
+
 	// Dynamic import for audio player to reduce initial bundle size
 	let AudioPlayer: any = $state(null);
-	
+
 	$effect(() => {
 		if (showAudioPlayer && !AudioPlayer) {
 			import('$lib/components/audio/AudioPlayer.svelte').then((module) => {
@@ -36,12 +36,8 @@
 
 <svelte:head>
 	<title>Seekers' Lounge ☕ The Teachers' Lounge Search Engine</title>
-	<!-- Preload critical resources for better performance -->
-	<link rel="preload" href="/coffee.svg" as="image" type="image/svg+xml" />
-	<!-- Preconnect to external domains -->
 	<link rel="preconnect" href="https://ts.pcast.site" />
 	<link rel="preconnect" href="https://rss.art19.com" />
-	<!-- Performance optimizations -->
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="theme-color" content="#2563eb" />
 </svelte:head>
