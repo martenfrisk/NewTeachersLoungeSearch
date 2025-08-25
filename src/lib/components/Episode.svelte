@@ -7,13 +7,7 @@
 		date: string;
 	}
 
-	let {
-		url,
-		ep,
-		title,
-		desc,
-		date
-	}: Props = $props();
+	let { url, ep, title, desc, date }: Props = $props();
 </script>
 
 <div class="w-full px-6 py-4 flex mb-4 rounded-md border border-blue-300 shadow-lg flex-wrap">
@@ -34,8 +28,7 @@
 				Listen
 			</a>
 		{:else}
-			<span
-				class="text-blue-900 border-b border-dotted border-blue-900 hover:text-blue-700 text-md"
+			<span class="text-blue-900 border-b border-dotted border-blue-900 hover:text-blue-700 text-md"
 			></span>
 		{/if}
 		<div class="flex flex-row mt-2 md:mt-0 items-end md:flex-col">

@@ -5,7 +5,8 @@
 	import { inject } from '@vercel/analytics';
 	import { fly } from 'svelte/transition';
 	import UpArrow from 'lib/icons/UpArrow.svelte';
-	import Toolbar from 'lib/Toolbar.svelte';
+	// import Toolbar from 'lib/Toolbar.svelte';
+	// import AudioPlayer from '$lib/components/audio/AudioPlayer.svelte';
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -28,17 +29,20 @@
 <div bind:this={element}></div>
 <div class="flex flex-col overflow-x-hidden w-screen md:flex-row">
 	<Sidebar />
-	<main class="w-full h-auto mt-0 px-2 md:px-10 md:mt-10 mb-10 md:w-3/4">
+	<main class="w-full h-auto mt-0 px-2 md:px-10 md:mt-10 mb-24 md:w-3/4">
 		{@render children?.()}
-		<Toolbar />
+		<!-- <Toolbar /> -->
 		{#if isButtonVisible}
 			<button
 				transition:fly={{ y: 100, duration: 400 }}
 				onclick={() => element?.scrollIntoView()}
-				class="bottom-20 rounded-full size-8 md:size-12 bg-blue-700 right-0 md:right-4 fixed text-white select-none"
+				class="bottom-32 rounded-full size-8 md:size-12 bg-blue-700 right-0 md:right-4 fixed text-white select-none"
 			>
 				<UpArrow />
 			</button>
 		{/if}
 	</main>
+
+	<!-- Global Audio Player -->
+	<!-- <AudioPlayer /> -->
 </div>

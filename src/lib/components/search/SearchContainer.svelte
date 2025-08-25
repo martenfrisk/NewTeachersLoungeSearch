@@ -1,0 +1,103 @@
+<script lang="ts">
+	import { goto } from '$app/navigation';
+	import { searchState } from '$lib/states/SearchState.svelte';
+	import { filtersState } from '$lib/states/FiltersState.svelte';
+	import SearchInput from './SearchInput.svelte';
+	import SearchFilters from './SearchFilters.svelte';
+	import SearchResults from './SearchResults.svelte';
+	import type { SearchHitType } from '$lib/types/search';
+
+	interface Props {
+		initialQuery?: string;
+		initialHits?: SearchHitType[];
+		initialFilters?: string[];
+		initialEditedOnly?: boolean;
+	}
+
+	let {
+		initialQuery = '',
+		initialHits = [],
+		initialFilters = [],
+		initialEditedOnly = false
+	}: Props = $props();
+
+	// Initialize state from props
+	if (initialQuery) searchState.query = initialQuery;
+	if (initialHits.length > 0) searchState.hits = initialHits;
+	filtersState.setFromArray(initialFilters);
+	filtersState.editedOnly = initialEditedOnly;
+
+	async function handleSearch() {
+		await searchState.search(searchState.query, filtersState.asSearchFilters);
+		updateURL();
+	}
+
+	function handleLoadMore() {
+		searchState.loadMore();
+	}
+
+	function handleRetry() {
+		handleSearch();
+	}
+
+	function handleClearError() {
+		searchState.clearError();
+	}
+
+	function updateURL() {
+		const params = new URLSearchParams();
+		if (searchState.query) params.set('s', searchState.query);
+		if (filtersState.activeFiltersArray.length > 0) {
+			params.set(
+				'f',
+				filtersState.activeFiltersArray.map((f) => f.replaceAll(' = ', '=')).join(',')
+			);
+		}
+		if (filtersState.editedOnly) params.set('edited', 'true');
+
+		goto(`?${params.toString()}`, {
+			keepFocus: true,
+			noScroll: true,
+			replaceState: true
+		});
+	}
+
+	// Effect for query changes
+	$effect(() => {
+		if (searchState.query.trim()) {
+			handleSearch();
+		} else {
+			searchState.clearResults();
+			updateURL();
+		}
+	});
+
+	// Effect for filter changes
+	$effect(() => {
+		// Track filter changes
+		filtersState.seasons;
+		filtersState.episodes;
+		filtersState.editedOnly;
+
+		if (searchState.query.trim()) {
+			handleSearch();
+		} else {
+			updateURL();
+		}
+	});
+</script>
+
+<div class="w-full max-w-6xl mx-auto px-4 py-6 space-y-6">
+	<SearchInput bind:query={searchState.query} placeholder="Search podcast transcripts..." />
+	<SearchFilters facets={searchState.stats?.facets || []} />
+	<SearchResults
+		hits={searchState.hits}
+		stats={searchState.stats}
+		loading={searchState.loading}
+		error={searchState.error}
+		hasMore={searchState.hasMore}
+		onLoadMore={handleLoadMore}
+		onRetry={handleRetry}
+		onClearError={handleClearError}
+	/>
+</div>

@@ -8,12 +8,7 @@
 		offset: number;
 	}
 
-	let {
-		stats,
-		query,
-		filter,
-		offset
-	}: Props = $props();
+	let { stats, query, filter, offset }: Props = $props();
 </script>
 
 <p class="flex flex-wrap gap-1 my-4 text-sm md:mt-6 md:mb-8">

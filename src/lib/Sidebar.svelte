@@ -1,8 +1,5 @@
 <script lang="ts">
 	import Coffee from './components/Coffee.svelte';
-	import { onMount } from 'svelte';
-
-	let infoView = $state(true);
 
 	let moreInfo = $state(false);
 
@@ -14,13 +11,7 @@
 
 	let width = $state(0);
 
-	onMount(() => {
-		if (width > 768) {
-			infoView = true;
-		} else {
-			infoView = false;
-		}
-	});
+	let infoView = $derived(width > 768 ? true : false);
 </script>
 
 <svelte:window bind:innerWidth={width} />
@@ -73,7 +64,7 @@
 		>
 			<div>
 				<div class="divide-y flex flex-col divide-blue-200">
-					<p class="py-2 md:py-4">NEW FEATURE: Audio playback (beta)</p>
+					<!-- <p class="py-2 md:py-4">NEW FEATURE: Audio playback (beta)</p>
 					<p></p>
 					<ol class="gap-2 flex flex-col py-2 list-decimal">
 						<li>
@@ -87,7 +78,7 @@
 					<p class="py-2 md:py-4">
 						The link is <span class="underline">only</span> stored in your browser and is never sent
 						to any servers.
-					</p>
+					</p> -->
 					<p class="py-2 md:py-4">
 						Seekers' Lounge is an unofficial fan website where you can search through the
 						transcripts of all episodes to find your favorite bit.
@@ -108,7 +99,7 @@
 							href="https://www.buymeacoffee.com/seekerslounge"
 						>
 							buy me a cup
-						</a>of courthouse coffee
+						</a> of courthouse coffee
 					</p>
 				</div>
 
