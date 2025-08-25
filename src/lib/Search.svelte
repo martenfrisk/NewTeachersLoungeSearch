@@ -7,10 +7,22 @@
 	import Stats from './components/Stats.svelte';
 	import { goto } from '$app/navigation';
 
-	export let query: string, filter: string[], hits: SearchHit[] | undefined, editedOnly: boolean;
+	interface Props {
+		query: string;
+		filter: string[];
+		hits: SearchHit[] | undefined;
+		editedOnly: boolean;
+	}
 
-	let stats: HitStats;
-	let offset = 20;
+	let {
+		query = $bindable(),
+		filter = $bindable(),
+		hits = $bindable(),
+		editedOnly = $bindable()
+	}: Props = $props();
+
+	let stats: HitStats | undefined = $state();
+	let offset = $state(20);
 
 	async function search() {
 		if (query) {
@@ -63,12 +75,18 @@
 	// }
 
 	onMount(async () => {
-		// setTimeout(async () => {
-		if (query === '') {
-			query = newRandom();
+		console.log({ query });
+		
+		// Check if there's no search parameter in URL but we have a query (random query was selected)
+		const urlParams = new URLSearchParams(window.location.search);
+		const hasSearchParam = urlParams.has('s');
+		
+		if (!hasSearchParam && query) {
+			// Update URL to reflect the random query
+			updateParams();
 		}
+		
 		await search();
-		// }, 100);
 	});
 </script>
 
@@ -81,11 +99,11 @@
 		type="text"
 		id="search"
 		bind:value={query}
-		on:keyup={throttle(300, search)}
+		onkeyup={throttle(300, search)}
 	/>
 	<button
 		class="w-1/4 h-12 px-px text-sm font-semibold text-blue-800 border-2 border-blue-500 shadow-md rounded-l-md bg-blue-50 rounded-r-md md:rounded-l-none md:px-2 md:text-base md:py-2 hover:bg-blue-500 hover:text-white hover:border-white"
-		on:click={getNewRandom}
+		onclick={getNewRandom}
 	>
 		Random search
 	</button>
@@ -93,7 +111,7 @@
 <div class="flex flex-col flex-wrap w-full gap-2 px-6 my-2">
 	<label for="editedOnly" class="flex items-baseline gap-2 text-sm cursor-pointer">
 		Edited lines only
-		<input type="checkbox" id="editedOnly" bind:checked={editedOnly} on:change={() => search()} />
+		<input type="checkbox" id="editedOnly" bind:checked={editedOnly} onchange={() => search()} />
 	</label>
 	<details>
 		<summary class="cursor-pointer">
@@ -101,7 +119,7 @@
 			{#if filter?.length > 0}
 				<button
 					class="ml-2 text-sm text-gray-700 border-b border-gray-500 border-dotted"
-					on:click={clearFilter}
+					onclick={clearFilter}
 				>
 					(clear filter)
 				</button>
@@ -117,7 +135,7 @@
 								? 'bg-blue-500 text-white'
 								: 'bg-white text-black'
 						}`}
-						on:click={() => addToFilter('season', facet.ep)}>{facet.ep}&nbsp;({facet.hits})</button
+						onclick={() => addToFilter('season', facet.ep)}>{facet.ep}&nbsp;({facet.hits})</button
 					>
 				{/each}
 			</div>
@@ -130,16 +148,16 @@
 								? 'bg-blue-500 text-white'
 								: 'bg-white text-black'
 						}`}
-						on:click={() => addToFilter('episode', facet.ep)}>{facet.ep}&nbsp;({facet.hits})</button
+						onclick={() => addToFilter('episode', facet.ep)}>{facet.ep}&nbsp;({facet.hits})</button
 					>
 				{/each}
 			</div>
 		{/if}
 	</details>
 </div>
-{#if query}
+{#if query && stats}
 	<Stats {stats} {filter} {query} {offset} />
-{:else}
+{:else if query}
 	<p>You need to search for something, or click the random search button.</p>
 {/if}
 {#if hits && query}
@@ -150,7 +168,7 @@
 		<div class="w-full flex justify-center">
 			<button
 				class="px-4 py-2 rounded-md border border-blue-600 text-blue-600 cursor-pointer"
-				on:click={() => {
+				onclick={() => {
 					offset = offset + 20;
 					search();
 				}}
@@ -164,6 +182,6 @@
 		<div class="flex flex-col flex-wrap items-start justify-between w-full gap-2 mb-2">
 			<div class="w-1/2 h-8 bg-gray-200 rounded-md animate-pulse">&nbsp;</div>
 		</div>
-		<div class="h-10 py-2 pl-4 mt-4 bg-gray-200 rounded-md animate-pulse md:text-lg" />
+		<div class="h-10 py-2 pl-4 mt-4 bg-gray-200 rounded-md animate-pulse md:text-lg"></div>
 	</div>
 {/if}

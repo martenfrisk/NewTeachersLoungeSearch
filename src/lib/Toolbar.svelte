@@ -1,28 +1,33 @@
 <script lang="ts">
+	import { run, preventDefault } from 'svelte/legacy';
+
 	import { onMount } from 'svelte';
 	import AudioPlayer from './components/AudioPlayer.svelte';
 	import { audioTimestamp } from './stores';
 	import { env } from '$env/dynamic/public';
-	let rssFeed = '';
-	$: audioSrc = '';
+	let rssFeed = $state('');
+	let audioSrc = $state('');
+
 	let episodes: { title?: string | null; url?: string | null }[] = [];
-	let currTime: number;
-	$: currTime;
-	let currEpTitle = '';
-	let hidden = false;
-	let errorMsg = '';
+	let currTime: number = $state(0);
+	run(() => {
+		currTime;
+	});
+	let currEpTitle = $state('');
+	let hidden = $state(false);
+	let errorMsg = $state('');
 
 	function timestampToSeconds(time: string) {
 		const [hours, minutes, seconds] = time.split(':').map(Number);
 		return hours * 3600 + minutes * 60 + seconds;
 	}
 
-	audioTimestamp.subscribe((timestamp) => {
-		if (timestamp?.timestamp && timestamp?.episode) {
-			const index = episodes.find((ep) => ep.title === timestamp.episode);
+	$effect(() => {
+		if ($audioTimestamp?.timestamp && $audioTimestamp?.episode) {
+			const index = episodes.find((ep) => ep.title === $audioTimestamp!.episode);
 			audioSrc = index?.url || '';
-			currTime = timestampToSeconds(timestamp.timestamp);
-			currEpTitle = timestamp.episode;
+			currTime = timestampToSeconds($audioTimestamp!.timestamp);
+			currEpTitle = $audioTimestamp!.episode;
 		}
 	});
 
@@ -67,6 +72,7 @@
 			currentTarget: EventTarget & HTMLFormElement;
 		}
 	) {
+		event.preventDefault();
 		const data = new FormData(event.currentTarget);
 		const rss = data.get('rss');
 		if (!rss || !checkUrlValidity(rss.toString())) {
@@ -101,7 +107,7 @@
 					</div>
 				</div>
 			</div>
-			<form class="w-full flex justify-between" on:submit|preventDefault={handleSubmit}>
+			<form class="w-full flex justify-between" onsubmit={handleSubmit}>
 				<input
 					type="text"
 					name="rss"
@@ -119,7 +125,7 @@
 				available right now.
 				<button
 					type="button"
-					on:click={clearFeed}
+					onclick={clearFeed}
 					class="border border-red-500 rounded px-2 py-1 text-red-700">Remove feed.</button
 				>
 			</div>
@@ -129,7 +135,7 @@
 		<button
 			class="absolute top-0 right-0 md:mr-3 md:mt-3 mr-1 mt-1 text-lg"
 			type="button"
-			on:click={() => (hidden = true)}>X</button
+			onclick={() => (hidden = true)}>X</button
 		>
 	</div>
 {/if}

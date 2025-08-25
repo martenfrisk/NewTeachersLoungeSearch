@@ -7,7 +7,8 @@
 		includeScore: true
 	});
 
-	$: searchEp = '';
+	let searchEp = $state('');
+	
 	const seasons = [
 		'',
 		's01',
@@ -29,7 +30,8 @@
 		'lastresort'
 	];
 
-	$: query = '';
+	let query = $state('');
+	
 
 	let results: FuseResult<{
 		ep: string;
@@ -37,7 +39,7 @@
 		desc: string;
 		date: string;
 		url: string;
-	}>[] = [];
+	}>[] = $state([]);
 	async function search() {
 		results = fuse.search(query);
 	}
@@ -228,7 +230,7 @@
 		type="text"
 		class="p-2 w-full border-blue-400 rounded-md border py-4"
 		bind:value={query}
-		on:input={search}
+		oninput={search}
 	/>
 </div>
 <div class="w-full flex flex-wrap">

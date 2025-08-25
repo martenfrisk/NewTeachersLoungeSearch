@@ -6,7 +6,11 @@
 	import type { SearchHit } from 'lib/types';
 	import { epName, timeToUrl } from 'lib/utils';
 
-	export let hit: SearchHit;
+	interface Props {
+		hit: SearchHit;
+	}
+
+	let { hit }: Props = $props();
 	const hitEpisode = epName(hit.episode.replace('.json', ''));
 
 	function playLine() {
@@ -23,15 +27,19 @@
 	<div class="flex flex-wrap items-center justify-between w-full mb-2">
 		<div class="flex flex-row md:items-center">
 			<Tooltip>
-				<svelte:fragment slot="tooltip">Go to episode page</svelte:fragment>
-				<svelte:fragment slot="content">
-					<a
-						class="mr-2 text-sm text-blue-900 uppercase hover:underline"
-						href={`/ep/${hit.episode.replace('.json', '')}`}
-					>
-						{hit.episode.replace('.json', '')}
-					</a>
-				</svelte:fragment>
+				{#snippet tooltip()}
+								Go to episode page
+							{/snippet}
+				{#snippet content()}
+							
+						<a
+							class="mr-2 text-sm text-blue-900 uppercase hover:underline"
+							href={`/ep/${hit.episode.replace('.json', '')}`}
+						>
+							{hit.episode.replace('.json', '')}
+						</a>
+					
+							{/snippet}
 			</Tooltip>
 			<div class="text-sm text-gray-900 md:text-base">
 				{hitEpisode?.title}
@@ -53,43 +61,59 @@
 				</span>
 				{#if hit.edited}
 					<Tooltip>
-						<svelte:fragment slot="tooltip">Edited</svelte:fragment>
-						<svelte:fragment slot="content">
-							<Check />
-						</svelte:fragment>
+						{#snippet tooltip()}
+												Edited
+											{/snippet}
+						{#snippet content()}
+											
+								<Check />
+							
+											{/snippet}
 					</Tooltip>
 				{:else}
 					<Tooltip>
-						<svelte:fragment slot="tooltip">Not edited</svelte:fragment>
-						<svelte:fragment slot="content">
-							<Minus />
-						</svelte:fragment>
+						{#snippet tooltip()}
+												Not edited
+											{/snippet}
+						{#snippet content()}
+											
+								<Minus />
+							
+											{/snippet}
 					</Tooltip>
 				{/if}
 			</div>
 			<div class="flex gap-4">
 				<Tooltip>
-					<svelte:fragment slot="tooltip">Go to line in transcript</svelte:fragment>
-					<svelte:fragment slot="content">
-						<a
-							href={`/ep/${hitEpisode?.ep}?${timeToUrl(`t-${hit.time.replaceAll(':', '')}`)}`}
-							class="font-sans text-base text-blue-600 border-b-2 border-blue-200 border-dotted group hover:border-solid"
-						>
-							transcript
-						</a>
-					</svelte:fragment>
+					{#snippet tooltip()}
+										Go to line in transcript
+									{/snippet}
+					{#snippet content()}
+									
+							<a
+								href={`/ep/${hitEpisode?.ep}?${timeToUrl(`t-${hit.time.replaceAll(':', '')}`)}`}
+								class="font-sans text-base text-blue-600 border-b-2 border-blue-200 border-dotted group hover:border-solid"
+							>
+								transcript
+							</a>
+						
+									{/snippet}
 				</Tooltip>
 				{#if hitEpisode?.hasAudio}
 					<Tooltip>
-						<svelte:fragment slot="tooltip">Listen</svelte:fragment>
-						<svelte:fragment slot="content">
-							<button
-								class="font-sans text-base text-blue-600 border-b-2 border-blue-200 border-dotted has-tooltip hover:border-solid"
-								on:click={playLine}
-							>
-								Listen
-							</button>
-						</svelte:fragment>
+						{#snippet tooltip()}
+												Listen
+											{/snippet}
+						{#snippet content()}
+											
+								<button
+									class="font-sans text-base text-blue-600 border-b-2 border-blue-200 border-dotted has-tooltip hover:border-solid"
+									onclick={playLine}
+								>
+									Listen
+								</button>
+							
+											{/snippet}
 					</Tooltip>
 				{/if}
 			</div>
