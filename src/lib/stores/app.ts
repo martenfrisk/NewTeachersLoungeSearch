@@ -1,5 +1,4 @@
 import { writable, derived } from 'svelte/store';
-import type { LoadingState } from '../types/common';
 
 interface AppState {
 	theme: 'light' | 'dark' | 'auto';
@@ -20,7 +19,7 @@ function createAppStore() {
 		notifications: []
 	};
 
-	const { subscribe, set, update } = writable<AppState>(initialState);
+	const { subscribe, update } = writable<AppState>(initialState);
 
 	return {
 		subscribe,

@@ -1,4 +1,4 @@
-import { createSearchParams, newRandom, randomQuery } from 'lib/utils';
+import { createSearchParams, newRandom } from 'lib/utils';
 import type { SearchHitType } from '$lib/types/search';
 
 /** @type {import('./$types').PageLoad} */

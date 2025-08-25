@@ -23,7 +23,7 @@
 	const showAudioPlayer = $derived($audioStore.currentTimestamp !== null);
 
 	// Dynamic import for audio player to reduce initial bundle size
-	let AudioPlayer: any = $state(null);
+	let AudioPlayer: import('svelte').Component | null = $state(null);
 
 	$effect(() => {
 		if (showAudioPlayer && !AudioPlayer) {

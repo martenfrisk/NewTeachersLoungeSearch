@@ -28,12 +28,12 @@ function createSearchState() {
 			// Build filter strings properly
 			const filterStrings: string[] = [];
 			if (filters?.seasons) {
-				filters.seasons.forEach(season => filterStrings.push(`season = "${season}"`));
+				filters.seasons.forEach((season) => filterStrings.push(`season = "${season}"`));
 			}
 			if (filters?.episodes) {
-				filters.episodes.forEach(episode => filterStrings.push(`episode = "${episode}"`));
+				filters.episodes.forEach((episode) => filterStrings.push(`episode = "${episode}"`));
 			}
-			
+
 			const result = await searchService.search(query, {
 				filter: filterStrings,
 				editedOnly: filters?.editedOnly || false,

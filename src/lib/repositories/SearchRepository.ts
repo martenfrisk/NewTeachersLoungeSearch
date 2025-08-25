@@ -1,6 +1,6 @@
 import type { SearchResult, SearchParams, SearchStats, SearchHitType } from '../types/search';
 import type { PaginatedResponse } from '../types/common';
-import { MeiliSearch } from 'meilisearch';
+import { MeiliSearch, type SearchParams as MeiliSearchParams } from 'meilisearch';
 import { MeiliKey } from '$lib/Env';
 import { SearchError, NetworkError, createErrorHandler } from '../utils/errors';
 import { validateSearchParams } from '../utils/validation';
@@ -33,9 +33,10 @@ export class MeiliSearchRepository implements ISearchRepository {
 			const { query, filter, offset, editedOnly } = params;
 			const index = this.client.index('teachers');
 
-			let searchResult: SearchResult;
+			// Check if we have season/episode filters that might hide facet options
+			const hasSeasonOrEpisodeFilters = this.hasSeasonOrEpisodeFilters(filter);
 
-			// Build filter string
+			// Build filter string for results search
 			let filterString = '';
 			if (filter.length > 0) {
 				filterString = filter.length > 1 ? filter.join(' OR ') : filter[0];
@@ -44,26 +45,48 @@ export class MeiliSearchRepository implements ISearchRepository {
 				filterString = filterString ? `(${filterString}) AND edited=true` : 'edited=true';
 			}
 
-			// Perform search
-			const searchOptions: any = {
+			// Perform main search for results
+			const resultsSearchOptions: MeiliSearchParams = {
 				attributesToHighlight: ['line'],
 				facets: ['season', 'episode'],
 				limit: offset
 			};
 
 			if (filterString) {
-				searchOptions.filter = filterString;
+				resultsSearchOptions.filter = filterString;
 			}
 
-			const rawResult = await index.search(query, searchOptions);
-			searchResult = {
-				...rawResult,
-				offset: rawResult.offset ?? 0,
-				limit: rawResult.limit ?? offset
+			const resultsPromise = index.search(query, resultsSearchOptions);
+
+			// If we have season/episode filters, also perform a facets-only search
+			// to get all available facet options (not just ones in filtered results)
+			let facetsPromise: Promise<SearchResult> | null = null;
+			if (hasSeasonOrEpisodeFilters) {
+				const facetsFilterString = editedOnly ? 'edited=true' : '';
+				const facetsSearchOptions: MeiliSearchParams = {
+					facets: ['season', 'episode'],
+					limit: 0 // We only care about facets, not results
+				};
+
+				if (facetsFilterString) {
+					facetsSearchOptions.filter = facetsFilterString;
+				}
+
+				facetsPromise = index.search(query, facetsSearchOptions);
+			}
+
+			// Wait for both searches to complete
+			const [resultsRaw, facetsRaw] = await Promise.all([resultsPromise, facetsPromise]);
+
+			const searchResult: SearchResult = {
+				...resultsRaw,
+				offset: resultsRaw.offset ?? 0,
+				limit: resultsRaw.limit ?? offset
 			} as SearchResult;
 
-			// Process facets
-			const facets = this.processFacets(searchResult.facetDistribution || {});
+			// Use facets from the unfiltered search if available, otherwise use results facets
+			const facetsToUse = facetsRaw?.facetDistribution || searchResult.facetDistribution || {};
+			const facets = this.processFacets(facetsToUse);
 
 			return {
 				items: searchResult.hits,
@@ -88,6 +111,10 @@ export class MeiliSearchRepository implements ISearchRepository {
 		}
 	}
 
+	private hasSeasonOrEpisodeFilters(filters: string[]): boolean {
+		return filters.some((filter) => filter.includes('season = ') || filter.includes('episode = '));
+	}
+
 	private processFacets(facetDistribution: { [key: string]: { [key: string]: number } }) {
 		const facets: Array<{ facetName: string; facetHits: Array<{ ep: string; hits: number }> }> = [];
 
@@ -110,6 +137,7 @@ export class SupabaseSearchRepository implements ISearchRepository {
 		params: SearchParams
 	): Promise<PaginatedResponse<SearchHitType> & { stats: SearchStats }> {
 		// TODO: Implement Supabase search logic
+		console.log('Search params:', params);
 		throw new Error('SupabaseSearchRepository not implemented yet');
 	}
 }
