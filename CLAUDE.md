@@ -8,13 +8,13 @@ This is "Seekers' Lounge" - a search engine for transcripts of the Teachers' Lou
 
 ## Development Commands
 
-- `pnpm dev` - Start development server
-- `pnpm build` - Build for production  
-- `pnpm preview` - Preview production build
-- `pnpm check` - Type check with svelte-check
-- `pnpm check:watch` - Type check in watch mode
-- `pnpm lint` - Run prettier and eslint checks
-- `pnpm format` - Format code with prettier
+- `bun dev` - Start development server
+- `bun build` - Build for production  
+- `bun preview` - Preview production build
+- `bun check` - Type check with svelte-check
+- `bun check:watch` - Type check in watch mode
+- `bun lint` - Run prettier and eslint checks
+- `bun format` - Format code with prettier
 
 ## Architecture
 
@@ -47,4 +47,5 @@ This is "Seekers' Lounge" - a search engine for transcripts of the Teachers' Lou
 
 ## Package Manager
 
-Uses pnpm (specified in package.json with `packageManager` field).
+Uses bun (specified in package.json with `packageManager` field).
+- use bun, not pnpm

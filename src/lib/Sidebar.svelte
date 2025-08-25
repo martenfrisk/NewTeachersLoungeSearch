@@ -2,14 +2,17 @@
 	import Coffee from './components/Coffee.svelte';
 	import { onMount } from 'svelte';
 
-	$: infoView = true;
-	$: moreInfo = false;
-	$: copyright = false;
+	let infoView = $state(true);
+
+	let moreInfo = $state(false);
+
+	let copyright = $state(false);
+
 	const handleInfoView = () => (infoView = !infoView);
 	const handleMoreInfo = () => (moreInfo = !moreInfo);
 	const handleCopyright = () => (copyright = !copyright);
 
-	let width: number;
+	let width = $state(0);
 
 	onMount(() => {
 		if (width > 768) {
@@ -47,7 +50,7 @@
 		</div>
 		<button
 			class="w-1/3 px-3 py-2 text-center bg-gray-100 border-l border-gray-700"
-			on:click={handleInfoView}
+			onclick={handleInfoView}
 		>
 			{#if infoView}
 				<div class="flex justify-center">
@@ -112,7 +115,7 @@
 				<div>
 					Want to help out? Click{' '}
 					<button
-						on:click={handleMoreInfo}
+						onclick={handleMoreInfo}
 						class="inline-block border-b border-dotted cursor-pointer"
 					>
 						here&nbsp;&#9662;
@@ -137,7 +140,7 @@
 				{/if}
 
 				<button
-					on:click={handleCopyright}
+					onclick={handleCopyright}
 					class="inline-block border-b border-dotted cursor-pointer"
 				>
 					Copyright information&nbsp;&#9662;

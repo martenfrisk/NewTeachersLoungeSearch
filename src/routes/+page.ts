@@ -1,8 +1,8 @@
-import { createSearchParams } from 'lib/utils';
+import { createSearchParams, newRandom } from 'lib/utils';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ url, fetch }) {
-	let query = url?.searchParams?.get('s') || '';
+	let query = url?.searchParams?.get('s') || newRandom();
 	let editedOnly = url?.searchParams?.has('edited') || false;
 	let filter = url?.searchParams?.get('f')?.split(',') || [];
 	let hits;

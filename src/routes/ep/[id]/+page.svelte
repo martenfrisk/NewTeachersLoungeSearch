@@ -4,7 +4,11 @@
 	import epList from 'assets/episodes.json';
 	import { page } from '$app/stores';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	const { episode, hits } = data;
 	let query: URLSearchParams | null = null;

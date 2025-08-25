@@ -3,14 +3,23 @@
 	import ReplayTen from 'lib/icons/ReplayTen.svelte';
 	import { onMount } from 'svelte';
 
-	export let src: string;
-	export let title: string;
-	export let currTime: number;
-	export let paused = true;
+	interface Props {
+		src: string;
+		title: string;
+		currTime: number;
+		paused?: boolean;
+	}
 
-	let time = 0;
-	let duration = 0;
-	let audioRef: HTMLAudioElement;
+	let {
+		src,
+		title,
+		currTime,
+		paused = $bindable(true)
+	}: Props = $props();
+
+	let time = $state(0);
+	let duration = $state(0);
+	let audioRef: HTMLAudioElement | undefined = $state();
 
 	function format(time: number) {
 		if (isNaN(time)) return '...';
@@ -55,7 +64,7 @@
 	onMount(() => {
 		if (audioRef) {
 			audioRef.addEventListener('loadedmetadata', () => {
-				if (currTime) {
+				if (currTime && audioRef) {
 					time = currTime + 29; // Set time after ensuring the metadata is loaded
 					audioRef.currentTime = time;
 					if (!paused) {
@@ -80,11 +89,11 @@
 <div
 	class="player items-center gap-1 md:gap-4 p-1 md:p-2 bg-white text-gray-600 select-none flex h-10"
 >
-	<audio {src} bind:currentTime={time} bind:duration bind:this={audioRef} preload="metadata" />
+	<audio {src} bind:currentTime={time} bind:duration bind:this={audioRef} preload="metadata"></audio>
 	<!-- bind:paused -->
 	<div class="flex md:px-2 md:gap-2">
-		<button class="size-5" on:click={() => (time = time - 10)}><ReplayTen /></button>
-		<button class="size-5" on:click={() => (time = time + 10)}><ForwardTen /></button>
+		<button class="size-5" onclick={() => (time = time - 10)}><ReplayTen /></button>
+		<button class="size-5" onclick={() => (time = time + 10)}><ForwardTen /></button>
 	</div>
 	<!-- on:ended={() => {
     time = 0;
@@ -93,8 +102,8 @@
 	<button
 		class="play bg-blue-700 size-8 md:size-10"
 		aria-label={paused ? 'play' : 'pause'}
-		on:click={handleButtonClick}
-	/>
+		onclick={handleButtonClick}
+	></button>
 
 	<div class="overflow-hidden grow">
 		<div class="whitespace-nowrap overflow-hidden text-ellipsis leading-tight">
@@ -103,11 +112,11 @@
 
 		<div class="flex items-center gap-2">
 			<span class="text-xs">{format(time)}</span>
-			<div class="h-2 bg-gray-300 rounded-lg flex-1 overflow-hidden" on:pointerdown={handlePointer}>
+			<div class="h-2 bg-gray-300 rounded-lg flex-1 overflow-hidden" onpointerdown={handlePointer}>
 				<div
 					class="w-[calc(100_*_var(--progress))] h-full bg-blue-500"
 					style="--progress: {time / duration}%"
-				/>
+				></div>
 			</div>
 			<span class="text-xs">{duration ? format(duration) : '--:--'}</span>
 		</div>
