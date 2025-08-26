@@ -7,7 +7,7 @@ type ThrottleFunction = (args: unknown) => void;
 export const debounceFn = (delay: number, fn: ThrottleFunction): ThrottleFunction => {
 	let inDebounce: ReturnType<typeof setTimeout> | null = null;
 	return (args) => {
-		clearTimeout(inDebounce);
+		if (inDebounce) clearTimeout(inDebounce);
 		inDebounce = setTimeout(() => fn(args), delay);
 	};
 };
