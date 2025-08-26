@@ -30,6 +30,9 @@ jobs:
 
       - name: Run tests
         run: bun test
+        env:
+          VITE_ALGOLIA_KEY: test_key
+          VITE_MEILI_KEY: test_key
 
       - name: Build
         run: bun build
