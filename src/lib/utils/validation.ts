@@ -20,7 +20,7 @@ export function validateSearchParams(params: Partial<SearchParams>): {
 	valid: boolean;
 	error?: string;
 } {
-	if (params.query) {
+	if (params.query !== undefined) {
 		const queryValidation = validateSearchQuery(params.query);
 		if (!queryValidation.valid) {
 			return queryValidation;
