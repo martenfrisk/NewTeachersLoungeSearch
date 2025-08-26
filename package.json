@@ -53,5 +53,8 @@
 		"@vercel/analytics": "^1.4.0",
 		"fuse.js": "^7.0.0",
 		"meilisearch": "^0.44.0"
+	},
+	"engines": {
+		"node": ">=20.19.0"
 	}
 }
