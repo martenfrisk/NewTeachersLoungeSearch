@@ -23,16 +23,16 @@ jobs:
         run: bun install
 
       - name: Type check
-        run: bun check
+        run: bun run check
 
       - name: Lint
-        run: bun lint
+        run: bun run lint
 
       - name: Run tests
-        run: bun test
+        run: bun run test
         env:
           VITE_ALGOLIA_KEY: test_key
           VITE_MEILI_KEY: test_key
 
       - name: Build
-        run: bun build
+        run: bun run build
