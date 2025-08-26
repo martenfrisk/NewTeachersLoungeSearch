@@ -22,10 +22,15 @@
 	}: Props = $props();
 
 	// Initialize state from props
-	if (initialQuery) searchState.query = initialQuery;
+	if (initialQuery) {
+		searchState.query = initialQuery;
+	}
 	if (initialHits.length > 0) searchState.hits = initialHits;
 	filtersState.setFromArray(initialFilters);
 	filtersState.editedOnly = initialEditedOnly;
+
+	// Local reactive variable to track the current input value
+	let inputValue = $state(searchState.query);
 
 	async function handleSearch() {
 		await searchState.search(searchState.query, filtersState.asSearchFilters);
@@ -68,19 +73,21 @@
 	function debouncedSearch() {
 		clearTimeout(searchTimeoutId);
 		searchTimeoutId = setTimeout(() => {
-			if (searchState.query.trim()) {
+			// Update searchState.query from input value when actually performing search
+			searchState.query = inputValue;
+			if (inputValue.trim()) {
 				handleSearch();
 			} else {
 				searchState.clearResults();
 				updateURL();
 			}
-		}, 300);
+		}, 150);
 	}
 
-	// Effect for query changes with debouncing
+	// Effect for input changes with debouncing - only triggers search, doesn't affect input display
 	$effect(() => {
-		// Track query changes
-		void searchState.query;
+		// Track input value changes
+		void inputValue;
 		debouncedSearch();
 	});
 
@@ -102,7 +109,7 @@
 </script>
 
 <div class="w-full max-w-6xl mx-auto px-4 py-6 space-y-6">
-	<SearchInput bind:query={searchState.query} placeholder="Search podcast transcripts..." />
+	<SearchInput bind:query={inputValue} placeholder="Search podcast transcripts..." />
 	<SearchFilters facets={searchState.stats?.facets || []} />
 	<SearchResults
 		hits={searchState.hits}

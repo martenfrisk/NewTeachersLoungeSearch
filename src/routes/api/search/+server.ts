@@ -17,7 +17,8 @@ export async function GET({ url, setHeaders }) {
 		}
 
 		setHeaders({
-			'Cache-Control': 'max-age=300, s-maxage=600' // Reduced cache time for better UX
+			'Cache-Control': 'public, max-age=259200, s-maxage=259200, stale-while-revalidate=604800', // 3 days cache, 7 days stale
+			Vary: 'Accept-Encoding'
 		});
 
 		const result = await searchService.search(query, {

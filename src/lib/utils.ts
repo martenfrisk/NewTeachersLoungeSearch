@@ -3,6 +3,10 @@ import type { SearchResult } from 'lib/types';
 import { MeiliSearch } from 'meilisearch';
 
 import epList from '../assets/episodes6.json';
+
+// In-memory cache for search results
+const searchCache = new Map<string, { data: MeiliResult; timestamp: number }>();
+const CACHE_DURATION = 3 * 24 * 60 * 60 * 1000; // 3 days in milliseconds
 type ThrottleFunction = (args: unknown) => void;
 export const debounceFn = (delay: number, fn: ThrottleFunction): ThrottleFunction => {
 	let inDebounce: ReturnType<typeof setTimeout> | null = null;
@@ -95,6 +99,15 @@ export async function searchMeili({
 	offset: number;
 	filterEdited: boolean;
 }): Promise<MeiliResult> {
+	// Create cache key from search parameters
+	const cacheKey = JSON.stringify({ query, filter, offset, filterEdited });
+
+	// Check cache first
+	const cached = searchCache.get(cacheKey);
+	if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+		return cached.data;
+	}
+
 	const index = client.index('teachers');
 
 	// if (!isSSR && window.history.pushState && query !== '') {
@@ -163,7 +176,7 @@ export async function searchMeili({
 			facets.push({ facetName: facetKey, facetHits: valuesArr.slice(0, 9) });
 		});
 	}
-	return {
+	const result = {
 		stats: {
 			estimatedTotalHits: data.estimatedTotalHits,
 			processingTime: data.processingTimeMs,
@@ -171,6 +184,11 @@ export async function searchMeili({
 		},
 		hits: data.hits
 	};
+
+	// Cache the result
+	searchCache.set(cacheKey, { data: result, timestamp: Date.now() });
+
+	return result;
 }
 export const timeToUrl = (time: string): URLSearchParams => {
 	const urlTime = new URLSearchParams();

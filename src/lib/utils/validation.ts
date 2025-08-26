@@ -44,6 +44,7 @@ export function sanitizeSearchQuery(query: string): string {
 	return query
 		.trim()
 		.replace(/[<>"'&]/g, '') // Remove potentially dangerous characters
+		.replace(/\s+/g, ' ') // Normalize multiple spaces to single spaces
 		.substring(0, 500); // Limit length
 }
 
