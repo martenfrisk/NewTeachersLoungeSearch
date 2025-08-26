@@ -13,12 +13,7 @@ export default defineConfig({
 		pool: 'forks',
 		coverage: {
 			reporter: ['text', 'json', 'html'],
-			exclude: [
-				'node_modules/',
-				'**/*.d.ts',
-				'**/*.config.*',
-				'**/coverage/**'
-			],
+			exclude: ['node_modules/', '**/*.d.ts', '**/*.config.*', '**/coverage/**'],
 			thresholds: {
 				global: {
 					branches: 80,
