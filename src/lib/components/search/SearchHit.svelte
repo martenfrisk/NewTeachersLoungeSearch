@@ -154,7 +154,7 @@
 					<span class="text-sm text-gray-600">{hit.time}</span>
 					<!-- Edited Status -->
 					{#if hit.edited}
-						<Tooltip>
+						<Tooltip side="left">
 							{#snippet tooltip()}
 								Edited
 							{/snippet}
@@ -165,7 +165,7 @@
 							{/snippet}
 						</Tooltip>
 					{:else}
-						<Tooltip>
+						<Tooltip side="left">
 							{#snippet tooltip()}
 								Not edited
 							{/snippet}
