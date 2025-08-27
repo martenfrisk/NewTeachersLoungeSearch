@@ -19,25 +19,18 @@
 	function handleInput(event: Event) {
 		const target = event.target as HTMLInputElement;
 		query = target.value;
-
-		// No auto-search here - let parent component handle search logic
-		// Just update the query value
 	}
 
 	function handleRandomSearch() {
 		const randomQuery = newRandom();
 		query = randomQuery;
-		// Let parent handle search
 		inputElement?.focus();
 	}
 
 	function handleClear() {
 		query = '';
-		// Let parent handle clearing
 		inputElement?.focus();
 	}
-
-	// Removed debounce logic since parent handles search timing
 </script>
 
 <div class="w-full">

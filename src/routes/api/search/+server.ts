@@ -11,13 +11,12 @@ export async function GET({ url, setHeaders }) {
 		const offset = Number(url?.searchParams?.get('o')) || 20;
 		const editedOnly = url?.searchParams?.has('e') || false;
 
-		// Validate required parameters
 		if (!query.trim()) {
 			return json({ error: 'Query parameter is required' }, { status: 400 });
 		}
 
 		setHeaders({
-			'Cache-Control': 'public, max-age=259200, s-maxage=259200, stale-while-revalidate=604800', // 3 days cache, 7 days stale
+			'Cache-Control': 'public, max-age=259200, s-maxage=259200, stale-while-revalidate=604800',
 			Vary: 'Accept-Encoding'
 		});
 
@@ -28,7 +27,6 @@ export async function GET({ url, setHeaders }) {
 			useCache: true
 		});
 
-		// Transform result to match expected API format
 		return json({
 			hits: result.items,
 			stats: result.stats

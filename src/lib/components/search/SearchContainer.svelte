@@ -21,15 +21,12 @@
 		initialEditedOnly = false
 	}: Props = $props();
 
-	// Initialize state from props
 	if (initialQuery) {
 		searchState.query = initialQuery;
 	}
 	if (initialHits.length > 0) searchState.hits = initialHits;
 	filtersState.setFromArray(initialFilters);
 	filtersState.editedOnly = initialEditedOnly;
-
-	// Local reactive variable to track the current input value
 	let inputValue = $state(searchState.query);
 
 	async function handleSearch() {
@@ -67,13 +64,11 @@
 		});
 	}
 
-	// Debounced search to reduce API calls
 	let searchTimeoutId: ReturnType<typeof setTimeout> | undefined;
 
 	function debouncedSearch() {
 		clearTimeout(searchTimeoutId);
 		searchTimeoutId = setTimeout(() => {
-			// Update searchState.query from input value when actually performing search
 			searchState.query = inputValue;
 			if (inputValue.trim()) {
 				handleSearch();
@@ -84,21 +79,15 @@
 		}, 150);
 	}
 
-	// Effect for input changes with debouncing - only triggers search, doesn't affect input display
 	$effect(() => {
-		// Track input value changes
 		void inputValue;
 		debouncedSearch();
 	});
 
-	// Effect for filter changes - immediate search since these are deliberate actions
 	$effect(() => {
-		// Track filter changes
 		void filtersState.seasons;
 		void filtersState.episodes;
 		void filtersState.editedOnly;
-
-		// Clear debounce and search immediately for filter changes
 		clearTimeout(searchTimeoutId);
 		if (searchState.query.trim()) {
 			handleSearch();

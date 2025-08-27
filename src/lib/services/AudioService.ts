@@ -37,7 +37,6 @@ export class AudioService {
 		this.audioElement = new Audio();
 		this.audioElement.preload = 'none';
 
-		// Event listeners
 		this.audioElement.addEventListener('loadedmetadata', this.onLoadedMetadata.bind(this));
 		this.audioElement.addEventListener('timeupdate', this.onTimeUpdate.bind(this));
 		this.audioElement.addEventListener('ended', this.onEnded.bind(this));
@@ -47,7 +46,6 @@ export class AudioService {
 	}
 
 	private async fetchRSSFeed(): Promise<RSSEpisode[]> {
-		// Check if cache is still valid
 		const now = Date.now();
 		if (this.rssCache.length > 0 && now - this.rssLastFetched < this.RSS_CACHE_DURATION) {
 			return this.rssCache;
@@ -87,7 +85,7 @@ export class AudioService {
 			return episodes;
 		} catch (error) {
 			console.error('Failed to fetch RSS feed:', error);
-			return this.rssCache; // Return cached data on error
+			return this.rssCache;
 		}
 	}
 
@@ -105,21 +103,16 @@ export class AudioService {
 	private loadAudio(url: string, timestamp: string): void {
 		if (!this.audioElement) return;
 
-		// Store the timestamp to set when metadata loads
 		const targetTime = this.timestampToSeconds(timestamp) + 29; // Offset for intro
 
-		// Only change source if it's different
 		if (this.audioElement.src !== url) {
 			this.audioElement.src = url;
 			this.audioElement.load();
 		}
-
-		// Set timestamp when ready (use a promise-based approach)
 		const setTimestamp = () => {
 			if (this.audioElement && this.audioElement.readyState >= 1) {
 				this.audioElement.currentTime = targetTime;
 			} else if (this.audioElement) {
-				// Wait for metadata to load
 				this.audioElement.addEventListener(
 					'loadedmetadata',
 					() => {
@@ -184,7 +177,6 @@ export class AudioService {
 		audioStore.setCurrentTime(time);
 	}
 
-	// Event handlers
 	private onLoadedMetadata(): void {
 		if (!this.audioElement) return;
 		audioStore.setDuration(this.audioElement.duration);
@@ -206,14 +198,10 @@ export class AudioService {
 	}
 
 	private onLoadStart(): void {
-		// Optional: handle load start
 	}
 
 	private onCanPlay(): void {
-		// Optional: handle can play
 	}
-
-	// Utility methods
 	private timestampToSeconds(timestamp: string): number {
 		const parts = timestamp.split(':').map(Number);
 		if (parts.length === 3) {
@@ -225,7 +213,6 @@ export class AudioService {
 	}
 
 	private async findEpisode(episodeTitle: string): Promise<RSSEpisode | undefined> {
-		// First try to find in RSS feed
 		try {
 			const episodes = await this.fetchRSSFeed();
 			const rssEpisode = episodes.find(
@@ -241,8 +228,6 @@ export class AudioService {
 		} catch (error) {
 			console.warn('Failed to fetch RSS feed, falling back to local data:', error);
 		}
-
-		// Fallback to local episode list
 		const localEpisode = (epList as LocalEpisode[]).find(
 			(ep) => ep.title === episodeTitle || ep.feedTitle === episodeTitle
 		);
@@ -259,7 +244,6 @@ export class AudioService {
 		return undefined;
 	}
 
-	// Cleanup
 	destroy(): void {
 		if (this.audioElement) {
 			this.audioElement.pause();
@@ -269,5 +253,4 @@ export class AudioService {
 	}
 }
 
-// Global singleton instance
 export const audioService = new AudioService();

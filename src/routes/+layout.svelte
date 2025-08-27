@@ -45,9 +45,9 @@
 
 <svelte:window bind:scrollY={y} bind:innerHeight />
 <div bind:this={element}></div>
-<div class="flex flex-col overflow-x-hidden w-screen md:flex-row">
+<div class="flex flex-col overflow-x-hidden min-h-screen max-w-full md:flex-row">
 	<Sidebar />
-	<main class="w-full h-auto mt-0 px-2 md:px-10 md:mt-10 mb-24 md:w-3/4">
+	<main class="flex-1 min-w-0 h-auto mt-0 md:px-10 md:mt-10 mb-24">
 		{@render children?.()}
 		{#if isButtonVisible}
 			<button

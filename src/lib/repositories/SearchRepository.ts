@@ -24,7 +24,6 @@ export class MeiliSearchRepository implements ISearchRepository {
 		params: SearchParams
 	): Promise<PaginatedResponse<SearchHitType> & { stats: SearchStats }> {
 		try {
-			// Validate parameters
 			const validation = validateSearchParams(params);
 			if (!validation.valid) {
 				throw new SearchError(validation.error!);
@@ -33,10 +32,7 @@ export class MeiliSearchRepository implements ISearchRepository {
 			const { query, filter, offset, editedOnly } = params;
 			const index = this.client.index('teachers');
 
-			// Check if we have season/episode filters that might hide facet options
 			const hasSeasonOrEpisodeFilters = this.hasSeasonOrEpisodeFilters(filter);
-
-			// Build filter string for results search
 			let filterString = '';
 			if (filter.length > 0) {
 				filterString = filter.length > 1 ? filter.join(' OR ') : filter[0];
@@ -45,7 +41,6 @@ export class MeiliSearchRepository implements ISearchRepository {
 				filterString = filterString ? `(${filterString}) AND edited=true` : 'edited=true';
 			}
 
-			// Perform main search for results
 			const resultsSearchOptions: MeiliSearchParams = {
 				attributesToHighlight: ['line'],
 				facets: ['season', 'episode'],
@@ -57,15 +52,12 @@ export class MeiliSearchRepository implements ISearchRepository {
 			}
 
 			const resultsPromise = index.search(query, resultsSearchOptions);
-
-			// If we have season/episode filters, also perform a facets-only search
-			// to get all available facet options (not just ones in filtered results)
 			let facetsPromise: Promise<SearchResult> | null = null;
 			if (hasSeasonOrEpisodeFilters) {
 				const facetsFilterString = editedOnly ? 'edited=true' : '';
 				const facetsSearchOptions: MeiliSearchParams = {
 					facets: ['season', 'episode'],
-					limit: 0 // We only care about facets, not results
+					limit: 0
 				};
 
 				if (facetsFilterString) {
@@ -75,7 +67,6 @@ export class MeiliSearchRepository implements ISearchRepository {
 				facetsPromise = index.search(query, facetsSearchOptions);
 			}
 
-			// Wait for both searches to complete
 			const [resultsRaw, facetsRaw] = await Promise.all([resultsPromise, facetsPromise]);
 
 			const searchResult: SearchResult = {
@@ -83,8 +74,6 @@ export class MeiliSearchRepository implements ISearchRepository {
 				offset: resultsRaw.offset ?? 0,
 				limit: resultsRaw.limit ?? offset
 			} as SearchResult;
-
-			// Use facets from the unfiltered search if available, otherwise use results facets
 			const facetsToUse = facetsRaw?.facetDistribution || searchResult.facetDistribution || {};
 			const facets = this.processFacets(facetsToUse);
 
@@ -131,7 +120,6 @@ export class MeiliSearchRepository implements ISearchRepository {
 	}
 }
 
-// Future Supabase repository implementation
 export class SupabaseSearchRepository implements ISearchRepository {
 	async search(
 		params: SearchParams

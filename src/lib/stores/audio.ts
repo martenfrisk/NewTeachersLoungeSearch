@@ -16,7 +16,6 @@ function createAudioStore() {
 	return {
 		subscribe,
 
-		// Actions
 		setTimestamp(timestamp: AudioTimestamp): void {
 			update((state) => ({
 				...state,
@@ -68,14 +67,10 @@ function createAudioStore() {
 	};
 }
 
-// Audio store instance
 export const audioStore = createAudioStore();
 
-// Essential derived stores - most components can access audioStore directly
 export const currentTimestamp = derived(audioStore, ($audio) => $audio.currentTimestamp);
 export const isPlaying = derived(audioStore, ($audio) => $audio.isPlaying);
-
-// Only keep computed values that are frequently used
 export const audioProgress = derived(audioStore, ($audio) =>
 	$audio.duration > 0 ? ($audio.currentTime / $audio.duration) * 100 : 0
 );

@@ -1,28 +1,42 @@
-export interface Episode {
+export interface TranscriptLine {
+	id?: string;
+	speaker: string;
+	edited: boolean;
+	time: string;
+	line: string;
+}
+
+export interface ProcessedTranscriptLine extends TranscriptLine {
+	displaySpeaker: string;
+	speakerColor: string;
+}
+
+export interface TranscriptStats {
+	totalLines: number;
+	editedLines: number;
+	editedPercentage: number;
+	isFullyEdited: boolean;
+	isMostlyEdited: boolean;
+}
+
+export interface EpisodeInfo {
 	ep: string;
 	title: string;
-	feedTitle: string;
-	pubDate: string;
-	description: string;
-	isoDate: Date;
-	url?: string;
-	hasAudio: boolean;
+	date?: string;
+	season?: string;
+	description?: string;
 }
 
-export interface LocalEpisode {
-	time: string;
-	speaker: string;
-	line: string;
+export interface EpisodePageData {
 	episode: string;
-	edited: boolean;
+	hits: {
+		default: ProcessedTranscriptLine[];
+	};
+	transcriptStats: TranscriptStats;
+	episodeInfo?: EpisodeInfo;
 }
 
-export interface TranscriptLine {
-	id: string;
-	episode: string;
-	season: string;
-	time: string;
-	speaker: string;
-	line: string;
-	edited: boolean;
+export interface SpeakerProcessingOptions {
+	generateColors?: boolean;
+	mapUnknownSpeakers?: boolean;
 }

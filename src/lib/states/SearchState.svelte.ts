@@ -25,7 +25,6 @@ function createSearchState() {
 		error = null;
 
 		try {
-			// Build filter strings properly
 			const filterStrings: string[] = [];
 			if (filters?.seasons) {
 				filters.seasons.forEach((season) => filterStrings.push(`season = "${season}"`));
@@ -147,5 +146,4 @@ function createSearchState() {
 	};
 }
 
-// Global instance
 export const searchState = createSearchState();

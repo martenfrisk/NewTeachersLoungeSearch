@@ -2,7 +2,6 @@
 	import Tooltip from '../Tooltip.svelte';
 	import { page } from '$app/state';
 	import { fade, slide } from 'svelte/transition';
-	import { circIn, cubicIn, elasticInOut, elasticOut } from 'svelte/easing';
 
 	interface Props {
 		hit: {
@@ -13,9 +12,11 @@
 			line: string;
 		};
 		isActive: boolean;
+		isHighlighted: boolean;
+		element?: HTMLElement;
 	}
 
-	let { hit, isActive }: Props = $props();
+	let { hit, isActive, isHighlighted, element = $bindable() }: Props = $props();
 
 	let copied = $state(false);
 	let showCopyText = $state(false);
@@ -36,11 +37,12 @@
 </script>
 
 <article
+	bind:this={element}
 	class={`group relative rounded-lg border transition-all duration-200 ${
 		hit.edited
 			? 'bg-green-50/30 border-green-200 hover:bg-green-50/50 hover:border-green-300'
 			: 'bg-gray-50/30 border-gray-200 hover:bg-gray-50/50 hover:border-gray-300'
-	} ${isActive ? '!border-blue-500 !bg-blue-50/50 shadow-lg' : 'shadow-sm hover:shadow-md'}`}
+	} ${isActive ? '!border-blue-500 !bg-blue-50/50 shadow-lg' : isHighlighted ? '!border-blue-500 !bg-blue-50/50 shadow-lg' : 'shadow-sm hover:shadow-md'}`}
 	id={`t-${hit.time.replaceAll(':', '')}`}
 >
 	<header class="px-2 sm:px-4 py-3 border-b border-current/10">
@@ -109,7 +111,7 @@
 					{#if showCopyText || copied}
 						<span
 							transition:slide={{ duration: 200, axis: 'x' }}
-							class="text-xs font-medium whitespace-nowrap"
+							class="text-xs font-medium whitespace-nowrap max-w-24 overflow-hidden"
 						>
 							<span transition:fade={{ duration: 100 }}>
 								{copied ? 'Link copied!' : 'Copy link'}
@@ -140,7 +142,7 @@
 	</header>
 
 	<div class="px-2 sm:px-4 py-4">
-		<p class="text-gray-900 leading-relaxed text-base">
+		<p class="text-gray-900 leading-relaxed text-base break-words">
 			{hit.line}
 		</p>
 	</div>

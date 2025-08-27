@@ -9,7 +9,6 @@
 
 	let { currEpTitle = '' }: Props = $props();
 
-	// Direct access to reactive stores - no need for additional derived computations
 	const audioState = $derived($audioStore);
 
 	let progressBar: HTMLInputElement;

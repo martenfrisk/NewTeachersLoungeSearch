@@ -24,7 +24,6 @@ export class SearchService {
 		} = {}
 	): Promise<PaginatedResponse<SearchHitType> & { stats: SearchStats }> {
 		try {
-			// Validate and sanitize query
 			const validation = validateSearchQuery(query);
 			if (!validation.valid) {
 				throw new SearchError(validation.error!);
@@ -38,7 +37,6 @@ export class SearchService {
 				editedOnly: options.editedOnly || false
 			};
 
-			// Check cache first
 			const cacheKey = this.getCacheKey(params);
 			if (options.useCache !== false) {
 				const cached = searchCache.get(cacheKey) as
@@ -49,12 +47,10 @@ export class SearchService {
 				}
 			}
 
-			// Perform search
 			const result = await this.repository.search(params);
 
-			// Cache the result
 			if (options.useCache !== false) {
-				searchCache.set(cacheKey, result, 5 * 60 * 1000); // 5 minutes
+				searchCache.set(cacheKey, result, 5 * 60 * 1000);
 			}
 
 			return result;
@@ -76,7 +72,7 @@ export class SearchService {
 			const result = await this.search(query, {
 				...options,
 				offset: nextOffset,
-				useCache: false // Don't cache pagination requests
+				useCache: false
 			});
 
 			return {
@@ -98,5 +94,4 @@ export class SearchService {
 	}
 }
 
-// Global singleton instance
 export const searchService = new SearchService();

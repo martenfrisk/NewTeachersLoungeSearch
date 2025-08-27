@@ -5,7 +5,6 @@ export class Cache<T> {
 	private defaultTTL: number;
 
 	constructor(defaultTTL: number = 5 * 60 * 1000) {
-		// 5 minutes default
 		this.defaultTTL = defaultTTL;
 	}
 
@@ -45,7 +44,6 @@ export class Cache<T> {
 	}
 
 	size(): number {
-		// Clean expired entries first
 		this.cleanup();
 		return this.cache.size;
 	}
@@ -60,7 +58,6 @@ export class Cache<T> {
 	}
 }
 
-// Global caches for different data types
-export const searchCache = new Cache(5 * 60 * 1000); // 5 minutes
-export const episodeCache = new Cache(60 * 60 * 1000); // 1 hour
-export const transcriptCache = new Cache(30 * 60 * 1000); // 30 minutes
+export const searchCache = new Cache(5 * 60 * 1000);
+export const episodeCache = new Cache(60 * 60 * 1000);
+export const transcriptCache = new Cache(30 * 60 * 1000);
