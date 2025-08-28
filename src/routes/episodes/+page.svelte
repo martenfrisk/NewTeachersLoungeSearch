@@ -8,15 +8,10 @@
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	let { episodes, seasonsData, navigationSeasons, totalEpisodes } = data;
+	let { episodes, seasonsData, navigationSeasons } = data;
 
 	let showStats = $state(true);
-	let currentVisibleSeason = $state('');
 	let hasSearchQuery = $state(false);
-
-	const handleSeasonChange = (seasonId: string) => {
-		currentVisibleSeason = seasonId;
-	};
 
 	const handleSearchChange = (hasQuery: boolean) => {
 		hasSearchQuery = hasQuery;
@@ -67,6 +62,6 @@
 			</div>
 		</div>
 
-		<SeasonScrollTracker seasons={seasonsData} onSeasonChange={handleSeasonChange} />
+		<SeasonScrollTracker seasons={seasonsData} />
 	{/if}
 </div>

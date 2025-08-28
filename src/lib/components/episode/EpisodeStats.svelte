@@ -1,5 +1,4 @@
 <script lang="ts">
-	import StrokeIcon from 'lib/assets/icons/StrokeIcon.svelte';
 	import EmptyStateIcon from 'lib/assets/icons/EmptyStateIcon.svelte';
 	import ArrowIcon from 'lib/assets/icons/ArrowIcon.svelte';
 	import EpisodesIcon from 'lib/assets/icons/EpisodesIcon.svelte';

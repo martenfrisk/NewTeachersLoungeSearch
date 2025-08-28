@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Debounce utility for search input with configurable delay
 export function debounce<T extends (...args: any[]) => any>(
 	func: T,

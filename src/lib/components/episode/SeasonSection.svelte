@@ -19,7 +19,6 @@
 	};
 
 	const episodeCount = $derived(season.episodes.length);
-	const hasAudioCount = $derived(season.episodes.filter((ep) => ep.hasAudio).length);
 
 	const getSeasonDisplayName = (id: string): string => {
 		const seasonMap: Record<string, string> = {

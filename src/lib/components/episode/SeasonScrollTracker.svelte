@@ -3,10 +3,9 @@
 
 	interface Props {
 		seasons: SeasonData[];
-		onSeasonChange?: (seasonId: string) => void;
 	}
 
-	let { seasons, onSeasonChange }: Props = $props();
+	let { seasons }: Props = $props();
 
 	let currentVisibleSeason = $state('');
 
@@ -27,7 +26,6 @@
 				if (centerOfViewport >= elementTop && centerOfViewport <= elementBottom) {
 					if (currentVisibleSeason !== season.id) {
 						currentVisibleSeason = season.id;
-						onSeasonChange?.(season.id);
 					}
 					return;
 				}

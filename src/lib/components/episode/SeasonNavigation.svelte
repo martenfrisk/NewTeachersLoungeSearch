@@ -12,8 +12,6 @@
 
 	let {
 		seasons,
-		selectedSeason = '',
-		onSeasonSelect,
 		showEpisodeCounts = true,
 		sticky = false,
 		class: className = ''
