@@ -1,75 +1,237 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import { page } from '$app/state';
 	import { onMount } from 'svelte';
-	import epList from 'assets/episodes.json';
-	import { page } from '$app/stores';
+	import TranscriptQualityBanner from '$lib/components/episode/TranscriptQualityBanner.svelte';
+	import EpisodeHeader from '$lib/components/episode/EpisodeHeader.svelte';
+	import EpisodeSearch from '$lib/components/episode/EpisodeSearch.svelte';
+	import VirtualTranscriptList from '$lib/components/episode/VirtualTranscriptList.svelte';
+	import type { EpisodePageData } from '$lib/types/episode';
+	import TranscriptLine from '$lib/components/episode/TranscriptLine.svelte';
+	import ReturnToActiveButton from '$lib/components/audio/ReturnToActiveButton.svelte';
+	import { audioStore, currentPlaybackTime, syncEnabled, isPlaying } from '$lib/stores/audio';
+	import { audioService } from '$lib/services/AudioService';
+	import {
+		findCurrentTranscriptLine,
+		throttle,
+		transcriptTimeToAudioSeconds
+	} from '$lib/utils/audioSync';
 
-	export let data: PageData;
-
-	const { episode, hits } = data;
-	let query: URLSearchParams | null = null;
-
-	function epName(episode: string) {
-		return epList.find((x) => x.ep === episode.replace('.json', ''));
+	interface Props {
+		data: PageData;
 	}
-	const epScript = hits.default;
 
-	const hitIsActive = (ep: string) => {
-		if (!query?.has('t')) return false;
-		if (ep.replaceAll(':', '') === query.get('t')?.replace('t-', '')) return true;
-		return false;
-	};
-	onMount(async () => {
-		query = $page.url?.searchParams;
-		if (epScript && query?.has('t')) {
-			setTimeout(() => {
-				const anchorId = query?.get('t');
-				if (anchorId) {
-					const anchor = document.getElementById(anchorId) as HTMLElement;
-					if (!anchor) return;
-					anchor.scrollIntoView({
-						behavior: 'auto'
-					});
-				}
-			}, 50);
+	let { data }: Props = $props();
+
+	// Ensure we have the correct data structure
+	const episodeData = data as EpisodePageData;
+	const { hits, transcriptStats, episodeInfo } = episodeData;
+	const transcript = hits.default;
+
+	let highlightedTime = $state<string | undefined>(undefined);
+	let virtualListRef = $state<VirtualTranscriptList>();
+	let isLoading = $state(false);
+	let error = $state<string | null>(null);
+	let showReturnButton = $state(false);
+	let currentActiveElement: HTMLElement | null = $state(null);
+
+	const audioState = $derived($audioStore);
+	const currentTime = $derived($currentPlaybackTime);
+	const syncMode = $derived($syncEnabled);
+	const playing = $derived($isPlaying);
+
+	const targetHash = $derived(page.url?.hash?.slice(1) || undefined);
+
+	// Enhanced error boundaries
+	onMount(() => {
+		try {
+			if (!transcript || !Array.isArray(transcript)) {
+				throw new Error('Invalid transcript data');
+			}
+			if (transcript.length === 0) {
+				console.warn('Empty transcript for episode');
+			}
+		} catch (err) {
+			console.error('Episode page initialization error:', err);
+			error = err instanceof Error ? err.message : 'Failed to load episode';
 		}
 	});
+
+	// Handle hash-based navigation
+	$effect(() => {
+		if (targetHash && virtualListRef) {
+			const timeString = targetHash.replace('t-', '').replace(/(\d{2})(\d{2})(\d{2})/, '$1:$2:$3');
+			virtualListRef.scrollToTime(timeString);
+		}
+	});
+
+	// Sync effect - triggers when audio time changes and sync is enabled
+	$effect(() => {
+		if (syncMode && playing && currentTime) {
+			syncToCurrentLine();
+		}
+	});
+
+	// Setup scroll listener effect
+	$effect(() => {
+		if (typeof window === 'undefined') return;
+
+		if (syncMode && playing) {
+			window.addEventListener('scroll', handleScroll);
+			return () => {
+				window.removeEventListener('scroll', handleScroll);
+			};
+		} else {
+			showReturnButton = false;
+		}
+	});
+
+	// Handle search results navigation
+	function handleSearchNavigation(time: string) {
+		highlightedTime = time;
+		if (virtualListRef) {
+			virtualListRef.scrollToTime(time);
+		}
+		// Disable sync when user manually navigates
+		if (syncMode) {
+			audioStore.setSyncEnabled(false);
+		}
+	}
+
+	// Throttled sync function to prevent excessive updates
+	const syncToCurrentLine = throttle(() => {
+		if (!syncMode || !playing || !currentTime || !transcript.length) {
+			currentActiveElement = null;
+			showReturnButton = false;
+			return;
+		}
+
+		const currentLine = findCurrentTranscriptLine(transcript, currentTime);
+		if (currentLine && currentLine.time !== highlightedTime) {
+			highlightedTime = currentLine.time;
+
+			// Get the current line element and track it
+			const element = document.getElementById(`t-${currentLine.time.replaceAll(':', '')}`);
+			if (element) {
+				currentActiveElement = element;
+
+				// Only auto-scroll if the return button isn't being shown
+				// (user hasn't manually scrolled away)
+				if (!showReturnButton) {
+					element.scrollIntoView({
+						behavior: 'smooth',
+						block: 'center',
+						inline: 'nearest'
+					});
+				}
+			}
+		}
+	}, 1000); // Update at most once per second
+
+	// Handle audio playback
+	async function handlePlayEpisode() {
+		if (!episodeInfo?.title) {
+			console.warn('No episode title available for audio playback');
+			return;
+		}
+
+		try {
+			await audioService.playTimestamp({
+				episode: episodeInfo.title,
+				timestamp: '0:00:00'
+			});
+		} catch (error) {
+			console.error('Failed to start episode playback:', error);
+		}
+	}
+
+	// Handle clicking on transcript lines to jump to that timestamp when sync is enabled
+	function handleLineClick(time: string) {
+		if (syncMode && audioState.currentTimestamp) {
+			const audioSeconds = transcriptTimeToAudioSeconds(time, audioState.episodeStartingTime);
+			audioService.seek(audioSeconds);
+		}
+	}
+
+	// Check if the currently active line is visible in the viewport
+	function isElementInViewport(element: HTMLElement): boolean {
+		const rect = element.getBoundingClientRect();
+		const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+		const threshold = windowHeight * 0.3; // Element should be within 30% of viewport
+
+		return rect.top >= -threshold && rect.bottom <= windowHeight + threshold;
+	}
+
+	// Throttled scroll detection to determine if return button should be shown
+	const handleScroll = throttle(() => {
+		if (!syncMode || !playing || !currentActiveElement) {
+			showReturnButton = false;
+			return;
+		}
+
+		const isVisible = isElementInViewport(currentActiveElement);
+		showReturnButton = !isVisible;
+	}, 100);
+
+	// Return to the currently active line
+	function returnToActiveLine() {
+		if (currentActiveElement) {
+			currentActiveElement.scrollIntoView({
+				behavior: 'smooth',
+				block: 'center',
+				inline: 'nearest'
+			});
+			showReturnButton = false;
+		}
+	}
 </script>
 
 <svelte:head>
 	<title>
-		Episode transcript for "{epName(episode)?.title}" ({epName(episode)?.ep}) - Seekers' Lounge ☕
-		The Teachers' Lounge Search Engine - seekerslounge.pcast.site
+		Episode transcript for "{episodeInfo?.title}" ({episodeInfo?.ep}) - Seekers' Lounge ☕ The
+		Teachers' Lounge Search Engine - seekerslounge.pcast.site
 	</title>
 </svelte:head>
 
-<div class="mt-4">
-	<p class="mb-6">Use your browser's "Find in Page" function to search here (CTRL+F or CMD+F).</p>
-	<div class="text-lg text-gray-700 uppercase">{epName(episode)?.ep}</div>
-	<div class="text-lg text-gray-800 md:text-xl">{epName(episode)?.title}</div>
-	<p class="px-4 my-8 md:mr-10">{epName(episode)?.desc}</p>
-	{#each epScript as hit}
-		<div
-			class={`w-full border-2 px-4 pb-6 mb-6 shadow-md hover:bg-blue-50 ${
-				hitIsActive(hit.time) ? 'border-blue-500' : 'border-blue-100'
-			}`}
-			id={`t-${hit.time.replaceAll(':', '')}`}
-		>
-			<div class="flex flex-wrap items-center justify-between w-full mb-2">
-				<div class="flex items-center">{hit.time}</div>
-				<div class="flex items-center font-mono text-right text-gray-600">
-					<div class="mr-2 font-sans text-black">{hit.speaker}</div>
-					&nbsp;
-					{#if hit.edited}
-						<span class="text-2xl text-green-400">✔</span>
-					{:else}
-						<span class="text-2xl text-gray-400">&minus;</span>
-					{/if}
-				</div>
-			</div>
-			<div class="py-2 pl-4 mt-4 md:text-lg">
-				<p>{hit.line}</p>
-			</div>
+<div class="mt-4 max-w-4xl px-2 mx-auto overflow-x-hidden">
+	{#if error}
+		<div class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-4">
+			<h3 class="font-medium">Error loading episode</h3>
+			<p class="text-sm mt-1">{error}</p>
 		</div>
-	{/each}
+	{:else if isLoading}
+		<div class="flex items-center justify-center py-12">
+			<div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+			<span class="ml-3 text-gray-600">Loading transcript...</span>
+		</div>
+	{:else}
+		<header class="mb-8">
+			<TranscriptQualityBanner {transcriptStats} />
+			<EpisodeHeader {episodeInfo} {handlePlayEpisode} />
+		</header>
+
+		<EpisodeSearch
+			transcriptLines={transcript}
+			bind:highlightedTime
+			onNavigateToResult={handleSearchNavigation}
+		/>
+
+		<main class="mt-6">
+			<!-- Regular rendering for all transcripts -->
+			<div class="space-y-3">
+				{#each transcript as hit (hit.id || hit.time)}
+					<TranscriptLine
+						{hit}
+						isActive={targetHash === `t-${hit.time.replaceAll(':', '')}`}
+						isHighlighted={highlightedTime === hit.time}
+						syncEnabled={syncMode && !!audioState.currentTimestamp}
+						onLineClick={handleLineClick}
+					/>
+				{/each}
+			</div>
+		</main>
+	{/if}
 </div>
+
+<!-- Return to Active Line Button -->
+<ReturnToActiveButton visible={showReturnButton} onReturnToActive={returnToActiveLine} />

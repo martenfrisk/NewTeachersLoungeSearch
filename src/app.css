@@ -1,17 +1,107 @@
-@tailwind base;
-@tailwind components;
+@import 'tailwindcss';
 
-.tooltip {
+/* .tooltip {
 	@apply absolute invisible;
 }
 
 .has-tooltip:hover .tooltip {
 	@apply z-50 visible;
-}
-
-@tailwind utilities;
+} */
 
 em {
 	color: rgb(29, 78, 216);
 	font-style: normal;
+}
+
+button {
+	cursor: pointer;
+}
+
+/* Enhanced mobile and animation styles for episode guide */
+.line-clamp-2 {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+}
+
+/* Smooth scrolling for navigation */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Enhanced focus styles for accessibility */
+.focus-ring {
+	@apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+/* Custom scrollbar for horizontal navigation */
+.scrollbar-thin::-webkit-scrollbar {
+	height: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+	@apply bg-gray-100 rounded-full;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+	@apply bg-gray-300 rounded-full;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+	@apply bg-gray-400;
+}
+
+/* Enhanced card hover animations */
+.episode-card {
+	transition: all 0.2s ease-in-out;
+}
+
+.episode-card:hover {
+	transform: translateY(-2px);
+}
+
+/* Mobile-first responsive grid improvements */
+@media (max-width: 640px) {
+	.mobile-single-col {
+		grid-template-columns: 1fr !important;
+	}
+}
+
+/* Loading skeleton animations */
+@keyframes shimmer {
+	0% {
+		background-position: -200px 0;
+	}
+	100% {
+		background-position: calc(200px + 100%) 0;
+	}
+}
+
+.skeleton {
+	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+	background-size: 200px 100%;
+	animation: shimmer 1.5s infinite;
+}
+
+/* Improved touch targets for mobile */
+/* @media (max-width: 768px) {
+	button,
+	a {
+		min-height: 44px;
+		min-width: 44px;
+	}
+} */
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }

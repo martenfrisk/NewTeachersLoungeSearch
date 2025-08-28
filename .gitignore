@@ -9,3 +9,8 @@ node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 /temp
+MIGRATION_PLAN.md
+TEST_SUITE_OVERVIEW.md
+/.claude
+meilitools.js
+.vercel

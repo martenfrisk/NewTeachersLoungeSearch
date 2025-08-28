@@ -1,8 +1,10 @@
-import { writable } from 'svelte/store';
-
-type AudioTimestampStoreType = {
-	timestamp: string;
-	episode: string;
-};
-
-export const audioTimestamp = writable<AudioTimestampStoreType | null>(null);
+// Re-export all stores from organized store modules
+export {
+	audioStore,
+	currentTimestamp,
+	isPlaying,
+	audioProgress,
+	formattedCurrentTime,
+	formattedDuration
+} from './stores/audio';
+export { appStore } from './stores/app';

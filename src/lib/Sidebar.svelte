@@ -1,29 +1,25 @@
 <script lang="ts">
 	import Coffee from './components/Coffee.svelte';
-	import { onMount } from 'svelte';
 
-	$: infoView = true;
-	$: moreInfo = false;
-	$: copyright = false;
+	let moreInfo = $state(false);
+
+	let copyright = $state(false);
+
 	const handleInfoView = () => (infoView = !infoView);
 	const handleMoreInfo = () => (moreInfo = !moreInfo);
 	const handleCopyright = () => (copyright = !copyright);
 
-	let width: number;
+	let width = $state(0);
 
-	onMount(() => {
-		if (width > 768) {
-			infoView = true;
-		} else {
-			infoView = false;
-		}
-	});
+	let infoView = $derived(width > 768 ? true : false);
 </script>
 
 <svelte:window bind:innerWidth={width} />
 
-<div class="sticky w-full py-0 mt-0 md:mb-0 md:w-1/4 md:max-w-sm">
-	<div class="flex items-end justify-end h-16 pr-3 mt-0 text-2xl text-gray-800 bg-blue-300 md:h-40">
+<div class="sticky w-full py-0 mt-0 md:mb-0 md:w-1/4 md:max-w-sm flex-shrink-0">
+	<div
+		class="flex items-end justify-end h-16 pr-3 mt-0 text-2xl text-gray-800 bg-blue-300 md:h-40 min-h-[4rem] md:min-h-[10rem]"
+	>
 		<Coffee />
 		<div class="flex flex-col justify-end">
 			<a href="/" class="text-gray-700"> Seekers&apos; Lounge </a>
@@ -47,7 +43,7 @@
 		</div>
 		<button
 			class="w-1/3 px-3 py-2 text-center bg-gray-100 border-l border-gray-700"
-			on:click={handleInfoView}
+			onclick={handleInfoView}
 		>
 			{#if infoView}
 				<div class="flex justify-center">
@@ -70,7 +66,7 @@
 		>
 			<div>
 				<div class="divide-y flex flex-col divide-blue-200">
-					<p class="py-2 md:py-4">NEW FEATURE: Audio playback (beta)</p>
+					<!-- <p class="py-2 md:py-4">NEW FEATURE: Audio playback (beta)</p>
 					<p></p>
 					<ol class="gap-2 flex flex-col py-2 list-decimal">
 						<li>
@@ -84,7 +80,7 @@
 					<p class="py-2 md:py-4">
 						The link is <span class="underline">only</span> stored in your browser and is never sent
 						to any servers.
-					</p>
+					</p> -->
 					<p class="py-2 md:py-4">
 						Seekers' Lounge is an unofficial fan website where you can search through the
 						transcripts of all episodes to find your favorite bit.
@@ -105,14 +101,14 @@
 							href="https://www.buymeacoffee.com/seekerslounge"
 						>
 							buy me a cup
-						</a>of courthouse coffee
+						</a> of courthouse coffee
 					</p>
 				</div>
 
 				<div>
-					Want to help out? Click{' '}
+					Want to help out? Click
 					<button
-						on:click={handleMoreInfo}
+						onclick={handleMoreInfo}
 						class="inline-block border-b border-dotted cursor-pointer"
 					>
 						here&nbsp;&#9662;
@@ -137,7 +133,7 @@
 				{/if}
 
 				<button
-					on:click={handleCopyright}
+					onclick={handleCopyright}
 					class="inline-block border-b border-dotted cursor-pointer"
 				>
 					Copyright information&nbsp;&#9662;

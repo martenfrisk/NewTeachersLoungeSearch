@@ -1,11 +1,39 @@
-<div class="relative flex flex-col items-center group">
-	<slot name="content" />
-	<div class="absolute bottom-0 flex-col items-center hidden mb-6 group-hover:flex">
-		<span
-			class="relative z-10 p-2 font-sans text-xs leading-none text-center text-white bg-blue-800 shadow-lg"
-		>
-			<slot name="tooltip" />
-		</span>
-		<div class="w-3 h-3 -mt-2 rotate-45 bg-blue-800" />
+<script lang="ts">
+	import { slide } from 'svelte/transition';
+
+	interface Props {
+		content?: import('svelte').Snippet;
+		tooltip?: import('svelte').Snippet;
+		side?: 'left' | 'right';
+	}
+
+	let { content, tooltip, side = 'right' }: Props = $props();
+
+	let showTooltip = $state(false);
+</script>
+
+<div class="relative inline-flex items-center">
+	<div
+		role="button"
+		tabindex="0"
+		onmouseenter={() => (showTooltip = true)}
+		onmouseleave={() => (showTooltip = false)}
+	>
+		{@render content?.()}
 	</div>
+
+	{#if showTooltip}
+		<div
+			transition:slide={{ duration: 200, axis: 'x' }}
+			class="absolute z-50 pointer-events-none {side === 'left'
+				? 'right-full mr-2'
+				: 'left-full ml-2'} top-1/2 -translate-y-1/2"
+		>
+			<div
+				class="bg-white border line-clamp-3 border-gray-200 text-gray-900 text-xs px-3 py-2 inset-shadow-sm w-fit max-w-64 break-words"
+			>
+				{@render tooltip?.()}
+			</div>
+		</div>
+	{/if}
 </div>

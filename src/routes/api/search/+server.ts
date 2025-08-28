@@ -1,21 +1,41 @@
 import { json } from '@sveltejs/kit';
-import { searchMeili } from 'lib/utils';
+import { SearchService } from '$lib/services/SearchService';
+import { handleError } from '$lib/utils/errors';
+
+const searchService = new SearchService();
 
 export async function GET({ url, setHeaders }) {
-	const query = url?.searchParams?.get('q') || '';
-	const filter = url?.searchParams?.get('f')?.split(',') || [];
-	const offset = Number(url?.searchParams?.get('o')) || 20;
-	const filterEdited = url?.searchParams?.has('e') || false;
+	try {
+		const query = url?.searchParams?.get('q') || '';
+		const filterParam = url?.searchParams?.get('f')?.split(',') || [];
+		const offset = Number(url?.searchParams?.get('o')) || 0;
+		const editedOnly = url?.searchParams?.has('e') || false;
 
-	setHeaders({
-		'Cache-Control': 'max-age=86400, s-maxage=604800'
-	});
+		if (!query.trim()) {
+			return json({ error: 'Query parameter is required' }, { status: 400 });
+		}
 
-	const hits = await searchMeili({
-		query,
-		filter,
-		offset,
-		filterEdited
-	});
-	return json(hits);
+		setHeaders({
+			'Cache-Control': 'public, max-age=259200, s-maxage=259200, stale-while-revalidate=604800',
+			Vary: 'Accept-Encoding'
+		});
+
+		const result = await searchService.search(query, {
+			filter: filterParam,
+			offset,
+			editedOnly
+		});
+
+		return json({
+			hits: result.items,
+			stats: result.stats
+		});
+	} catch (error) {
+		const appError = handleError(error);
+		console.error('Search API Error:', appError);
+		console.error('Full error details:', error);
+		console.error('Error stack:', error instanceof Error ? error.stack : 'No stack trace');
+
+		return json({ error: appError.message }, { status: appError.statusCode });
+	}
 }

@@ -1,0 +1,104 @@
+[
+  {
+    "id": "s01",
+    "name": "Season 1",
+    "episodeCount": 6,
+    "isSpecial": false
+  },
+  {
+    "id": "s02",
+    "name": "Season 2",
+    "episodeCount": 6,
+    "isSpecial": false
+  },
+  {
+    "id": "s03",
+    "name": "Season 3",
+    "episodeCount": 8,
+    "isSpecial": false
+  },
+  {
+    "id": "s04",
+    "name": "Season 4",
+    "episodeCount": 9,
+    "isSpecial": false
+  },
+  {
+    "id": "s05",
+    "name": "Season 5",
+    "episodeCount": 8,
+    "isSpecial": false
+  },
+  {
+    "id": "s06",
+    "name": "Season 6",
+    "episodeCount": 7,
+    "isSpecial": false
+  },
+  {
+    "id": "s07",
+    "name": "Season 7",
+    "episodeCount": 7,
+    "isSpecial": false
+  },
+  {
+    "id": "s08",
+    "name": "Season 8",
+    "episodeCount": 7,
+    "isSpecial": false
+  },
+  {
+    "id": "s09",
+    "name": "Season 9",
+    "episodeCount": 40,
+    "isSpecial": false
+  },
+  {
+    "id": "s10",
+    "name": "Season 10",
+    "episodeCount": 7,
+    "isSpecial": false
+  },
+  {
+    "id": "s11",
+    "name": "Season 11",
+    "episodeCount": 7,
+    "isSpecial": false
+  },
+  {
+    "id": "mini",
+    "name": "Mini Episodes",
+    "episodeCount": 60,
+    "isSpecial": false
+  },
+  {
+    "id": "exit42",
+    "name": "Exit 42",
+    "episodeCount": 20,
+    "isSpecial": true
+  },
+  {
+    "id": "Peecast",
+    "name": "Peecast",
+    "episodeCount": 1,
+    "isSpecial": true
+  },
+  {
+    "id": "holidays",
+    "name": "Holidays at the Mall",
+    "episodeCount": 10,
+    "isSpecial": true
+  },
+  {
+    "id": "jesus",
+    "name": "Preacher's Lounge",
+    "episodeCount": 4,
+    "isSpecial": true
+  },
+  {
+    "id": "lastresort",
+    "name": "Last Resort",
+    "episodeCount": 10,
+    "isSpecial": true
+  }
+]

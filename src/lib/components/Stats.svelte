@@ -1,7 +1,14 @@
 <script lang="ts">
 	import type { HitStats } from 'lib/types';
 
-	export let stats: HitStats, query: string, filter: string[], offset: number;
+	interface Props {
+		stats: HitStats;
+		query: string;
+		filter: string[];
+		offset: number;
+	}
+
+	let { stats, query, filter, offset }: Props = $props();
 </script>
 
 <p class="flex flex-wrap gap-1 my-4 text-sm md:mt-6 md:mb-8">
