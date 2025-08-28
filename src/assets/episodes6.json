@@ -6,7 +6,8 @@
     "date": "Thu, 16 May 2019 00:00:36 -0700",
     "url": "https://stitcher.com/show/big-grandes-teachers-lounge/episode/mini-01-whats-the-dealio-20018218",
     "feedTitle": "Mini 01: What's the Dealio?",
-    "hasAudio": true
+    "hasAudio": true,
+    "startingTime": 5
   },
   {
     "ep": "mini-02",
@@ -15,7 +16,8 @@
     "date": "Thu, 16 May 2019 00:05:26 -0700",
     "url": "https://stitcher.com/show/big-grandes-teachers-lounge/episode/mini-02-whos-the-clowns-20018216",
     "feedTitle": "Mini 02: Who's the Clowns?",
-    "hasAudio": true
+    "hasAudio": true,
+    "startingTime": 5
   },
   {
     "ep": "mini-03",
@@ -24,7 +26,8 @@
     "date": "Thu, 23 May 2019 00:00:42 -0700",
     "url": "https://stitcher.com/show/big-grandes-teachers-lounge/episode/mini-03-leaving-a-mark-20016015",
     "feedTitle": "Mini 03: Leaving a Mark",
-    "hasAudio": true
+    "hasAudio": true,
+    "startingTime": 5
   },
   {
     "ep": "mini-04",
@@ -541,12 +544,13 @@
   },
   {
     "ep": "Peecast",
-    "title": "Big Grande's Teacher's Lounge: Ira Pass with Sailing Instructor Commodore Jaxley (Paul F. Tompkins)",
+    "title": "Live from Peecast Blast with Commodore Jaxley (Paul F. Tompkins)",
     "desc": "Live from Peecast Blast, the guys talk about LA and do a live read of Todd's play with sailing instructor Commodore Jaxley (Paul F. Tompkins).",
     "date": "Fri, 21 Dec 2018 00:00:51 -0800",
     "url": "https://www.stitcher.com/show/peecast-blast/episode/big-grandes-teachers-lounge-ira-pass-with-sailing-instructor-commodore-jaxley-paul-f-tompkins-57827449",
     "feedTitle": "Live from Peecast Blast with Commodore Jaxley (Paul F. Tompkins)",
-    "hasAudio": true
+    "hasAudio": true,
+    "startingTime": 20
   },
   {
     "ep": "s01e01",
@@ -614,7 +618,7 @@
   {
     "ep": "s02e02",
     "title": "Overpromise and Underdeliver with Candidate for School Board - Ladysmith Black Mambazo (Carl Tart)",
-    "desc": "The guys are rehired after making some lofty and potentially impossible promises. Mr. Levi's takes over as head of the school paper, Mr Weatherman invests in the students' mental health, Mr. Padre makes strides toward finally understanding the opposite sex, and Mr. Cravy works to bring the track team from â€œlast to fast.â€ The teachers are also joined by candidate for school board, Ladysmith Black Mambazo, to discuss the proper temperature for school lunches and the art of disguise.",
+    "desc": "The guys are rehired after making some lofty and potentially impossible promises. Mr. Levi's takes over as head of the school paper, Mr Weatherman invests in the students' mental health, Mr. Padre makes strides toward finally understanding the opposite sex, and Mr. Cravy works to bring the track team from 'last to fast.' The teachers are also joined by candidate for school board, Ladysmith Black Mambazo, to discuss the proper temperature for school lunches and the art of disguise.",
     "date": "Tue, 18 Apr 2017 17:00:08 -0700",
     "url": "https://stitcher.com/show/big-grandes-teachers-lounge/episode/overpromise-and-underdeliver-with-candidate-for-school-board-ladysmith-black-mambazo-carl-tart-20018303",
     "feedTitle": "S2E2: Overpromise and Underdeliver with Candidate for School Board - Ladysmith Black Mambazo (Carl Tart)",
@@ -623,7 +627,7 @@
   {
     "ep": "s02e03",
     "title": "Great Grief with Home Economics Teacher - Ms. Smuckers (Lauren Lapkus)",
-    "desc": "Mr. Cravy works out on a full stomach, Mr Levi's plans a radio tour to promote the school newspaper, Mr. Padre gets into competitive tickling, and Mr. Weatherman's motivational speaking causes some third degree burns. The teachers are joined by their colleague Ms. Smuckers, who's recently had an unfortunate â€œaccidentâ€.",
+    "desc": "Mr. Cravy works out on a full stomach, Mr Levi's plans a radio tour to promote the school newspaper, Mr. Padre gets into competitive tickling, and Mr. Weatherman's motivational speaking causes some third degree burns. The teachers are joined by their colleague Ms. Smuckers, who's recently had an unfortunate 'accident'.",
     "date": "Tue, 18 Apr 2017 17:00:09 -0700",
     "url": "https://stitcher.com/show/big-grandes-teachers-lounge/episode/great-grief-with-home-economics-teacher-ms-smuckers-lauren-lapkus-20018303",
     "feedTitle": "S2E3: Great Grief with Home Economics Teacher - Ms. Smuckers (Lauren Lapkus)",
@@ -632,7 +636,7 @@
   {
     "ep": "s02e04",
     "title": "The Think Method with School Band Teacher - Marty Mountain (Paul F. Tompkins)",
-    "desc": "Mr. Padre's Poke restaurant's bathroom has its grand opening, Mr. Weatherman's picked up the nickname â€œThe Big Nightmareâ€, Mr. Cravy's star â€œhumanâ€ runner, Cheetahman, is in hot water for licking himself during the national anthem, and a new side of Mr Levi's appears during a confrontation with school band teacher Marty Mountain over Mr. Mountain's controversial teaching methods.",
+    "desc": "Mr. Padre's Poke restaurant's bathroom has its grand opening, Mr. Weatherman's picked up the nickname 'The Big Nightmare', Mr. Cravy's star 'human' runner, Cheetahman, is in hot water for licking himself during the national anthem, and a new side of Mr Levi's appears during a confrontation with school band teacher Marty Mountain over Mr. Mountain's controversial teaching methods.",
     "date": "Tue, 18 Apr 2017 17:00:10 -0700",
     "url": "https://stitcher.com/show/big-grandes-teachers-lounge/episode/the-think-method-with-school-band-teacher-marty-mountain-paul-f-tompkins-20018303",
     "feedTitle": "S2E4: The Think Method with School Band Teacher - Marty Mountain (Paul F. Tompkins)",
@@ -641,7 +645,7 @@
   {
     "ep": "s02e05",
     "title": "The Devil Was The Most Beautiful Angel w/Hamilton's Oldest Student - Barbara Tasty (M. Walter)",
-    "desc": "The guys have had a very rough week -- some of Sam's students have a complete mental breakdown and end up in â€œThe Danger Zoneâ€, Howard leans on a risky partnership to achieve his goals for the paper, Mr. Cravy falls back on familiar habits after his golden boy trackstar, Cheetahman, is exposed, and Todd finds himself head over heels for a mute masseuse named Steve. The teachers are joined by middle-aged student, Barbara Tasty to discuss what it's like being decades older than your classmates and her unique prom experience.",
+    "desc": "The guys have had a very rough week -- some of Sam's students have a complete mental breakdown and end up in 'The Danger Zone', Howard leans on a risky partnership to achieve his goals for the paper, Mr. Cravy falls back on familiar habits after his golden boy trackstar, Cheetahman, is exposed, and Todd finds himself head over heels for a mute masseuse named Steve. The teachers are joined by middle-aged student, Barbara Tasty to discuss what it's like being decades older than your classmates and her unique prom experience.",
     "date": "Tue, 18 Apr 2017 17:00:11 -0700",
     "url": "https://stitcher.com/show/big-grandes-teachers-lounge/episode/the-devil-was-the-most-beautiful-angel-w-hamiltons-oldest-student-barbara-tasty-madeline-walter-20018303",
     "feedTitle": "S2E5: The Devil Was The Most Beautiful Angel w/ Hamilton’s Oldest Student - Barbara Tasty (Madeline Walter)",
@@ -807,7 +811,8 @@
     "date": "Tue, 26 Dec 2017 16:00:29 -0800",
     "url": "https://stitcher.com/show/big-grandes-teachers-lounge/episode/hump-hump-said-the-camel-live-at-ucb-with-ladysmith-black-mambazo-carl-tart-20018299",
     "feedTitle": "Live from UCB with Ladysmith Black Mambazo (Carl Tart)",
-    "hasAudio": true
+    "hasAudio": true,
+    "startingTime": 0
   },
   {
     "ep": "s05e01",
@@ -1432,27 +1437,27 @@
   },
   {
     "ep": "s10e01",
-    "title": "Bottomless Plumbosas",
-    "desc": "On the season 10 finale, The Teachers discuss the Association of Dumb Farmacists, the big reveal of Howard’s last name, and O’Crevus",
-    "date": "Thu, 21 Oct 2021 07:07:24 GMT",
+    "title": "Zahntourage",
+    "desc": "The Teachers are back! They discuss what's new with the crew, plan for a very special event, and take a walk down memory lane.",
+    "date": "Thu, 09 Sep 2021 01:29:43 GMT",
     "url": "",
     "feedTitle": null,
     "hasAudio": false
   },
   {
     "ep": "s10e02",
-    "title": "We're Un-Crazy Anymore",
-    "desc": "The Teachers discuss the Charmin TikTok House, O’Crevus, and their self-care routines.",
-    "date": "Thu, 14 Oct 2021 07:47:36 GMT",
+    "title": "Beretta Vendetta",
+    "desc": "The Teachers discuss the upcoming school play, sabotaging the rival basketball team, and bury the hatchet with a few former foes.",
+    "date": "Thu, 16 Sep 2021 09:13:26 GMT",
     "url": "",
     "feedTitle": null,
     "hasAudio": false
   },
   {
     "ep": "s10e03",
-    "title": "TO2",
-    "desc": "The gang discuss Tomatoes, the potential takedown of Howard’s last name, and share a day in the live of The Teachers.",
-    "date": "Thu, 07 Oct 2021 05:34:04 GMT",
+    "title": "My Morning Toilet",
+    "desc": "The Teachers discuss TicksTok, Bikinis, and prepare for the alumni event.",
+    "date": "Thu, 23 Sep 2021 07:15:08 GMT",
     "url": "",
     "feedTitle": null,
     "hasAudio": false
@@ -1465,30 +1470,30 @@
     "url": "",
     "feedTitle": null,
     "hasAudio": false
-  },
+  }, 
   {
     "ep": "s10e05",
-    "title": "My Morning Toilet",
-    "desc": "The Teachers discuss TicksTok, Bikinis, and prepare for the alumni event.",
-    "date": "Thu, 23 Sep 2021 07:15:08 GMT",
+    "title": "TO2",
+    "desc": "The gang discuss Tomatoes, the potential takedown of Howard’s last name, and share a day in the live of The Teachers.",
+    "date": "Thu, 07 Oct 2021 05:34:04 GMT",
     "url": "",
     "feedTitle": null,
     "hasAudio": false
-  },
+  }, 
   {
     "ep": "s10e06",
-    "title": "Beretta Vendetta",
-    "desc": "The Teachers discuss the upcoming school play, sabotaging the rival basketball team, and bury the hatchet with a few former foes.",
-    "date": "Thu, 16 Sep 2021 09:13:26 GMT",
+    "title": "We're Un-Crazy Anymore",
+    "desc": "The Teachers discuss the Charmin TikTok House, O’Crevus, and their self-care routines.",
+    "date": "Thu, 14 Oct 2021 07:47:36 GMT",
     "url": "",
     "feedTitle": null,
     "hasAudio": false
-  },
+  },  
   {
     "ep": "s10e07",
-    "title": "Zahntourage",
-    "desc": "The Teachers are back! They discuss what's new with the crew, plan for a very special event, and take a walk down memory lane.",
-    "date": "Thu, 09 Sep 2021 01:29:43 GMT",
+    "title": "Bottomless Plumbosas",
+    "desc": "On the season 10 finale, The Teachers discuss the Association of Dumb Farmacists, the big reveal of Howard’s last name, and O’Crevus",
+    "date": "Thu, 21 Oct 2021 07:07:24 GMT",
     "url": "",
     "feedTitle": null,
     "hasAudio": false

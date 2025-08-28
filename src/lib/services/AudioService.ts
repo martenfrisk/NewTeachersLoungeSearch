@@ -1,6 +1,8 @@
 import type { AudioTimestamp } from '../types/audio';
 import { audioStore } from '../stores/audio';
 import epList from '../../assets/episodes6.json';
+import { DEFAULT_EPISODE_START_TIME } from '../constants';
+import { titlesMatch, normalizeTitle } from '../utils/titleNormalization';
 
 interface RSSEpisode {
 	title: string;
@@ -18,6 +20,7 @@ interface LocalEpisode {
 	url: string;
 	feedTitle: string;
 	hasAudio: boolean;
+	startingTime?: number;
 }
 
 export class AudioService {
@@ -92,18 +95,24 @@ export class AudioService {
 	async playTimestamp(timestamp: AudioTimestamp): Promise<void> {
 		const episode = await this.findEpisode(timestamp.episode);
 		if (!episode?.audioUrl) {
-			console.warn('No audio URL found for episode:', timestamp.episode);
+			const errorMessage = `Audio unavailable: Could not find audio file for "${timestamp.episode}" in RSS feed`;
+			console.error(errorMessage);
+			audioStore.setError(errorMessage);
 			return;
 		}
 
+		const startingTime = this.getEpisodeStartingTime(timestamp.episode);
+		audioStore.clearError();
 		audioStore.setTimestamp(timestamp);
-		this.loadAudio(episode.audioUrl, timestamp.timestamp);
+		audioStore.setEpisodeStartingTime(startingTime);
+		this.loadAudio(episode.audioUrl, timestamp.timestamp, timestamp.episode);
 	}
 
-	private loadAudio(url: string, timestamp: string): void {
+	private loadAudio(url: string, timestamp: string, episodeTitle?: string): void {
 		if (!this.audioElement) return;
 
-		const targetTime = this.timestampToSeconds(timestamp) + 29; // Offset for intro
+		const startingTime = this.getEpisodeStartingTime(episodeTitle);
+		const targetTime = this.timestampToSeconds(timestamp) + startingTime;
 
 		if (this.audioElement.src !== url) {
 			this.audioElement.src = url;
@@ -193,7 +202,9 @@ export class AudioService {
 	}
 
 	private onError(): void {
+		const errorMessage = 'Audio playback failed. The audio file may be unavailable or corrupted.';
 		console.error('Audio playback error');
+		audioStore.setError(errorMessage);
 		audioStore.pause();
 	}
 
@@ -210,35 +221,51 @@ export class AudioService {
 		return 0;
 	}
 
+	private getEpisodeStartingTime(episodeTitle?: string): number {
+		if (!episodeTitle) return DEFAULT_EPISODE_START_TIME;
+
+		const localEpisode = (epList as LocalEpisode[]).find(
+			(ep) => ep.title === episodeTitle || ep.feedTitle === episodeTitle
+		);
+
+		return localEpisode?.startingTime ?? DEFAULT_EPISODE_START_TIME;
+	}
+
 	private async findEpisode(episodeTitle: string): Promise<RSSEpisode | undefined> {
 		try {
 			const episodes = await this.fetchRSSFeed();
-			const rssEpisode = episodes.find(
-				(ep) =>
-					ep.title === episodeTitle ||
-					ep.title.includes(episodeTitle) ||
-					episodeTitle.includes(ep.title)
-			);
+			console.log(`Searching for episode: "${episodeTitle}"`);
+			console.log(`Available RSS episodes: ${episodes.length}`);
+
+			// Try to find a matching episode using robust title comparison
+			const rssEpisode = episodes.find((ep) => {
+				const match = titlesMatch(ep.title, episodeTitle);
+				if (match) {
+					console.log(`Found match: RSS="${ep.title}" <-> Local="${episodeTitle}"`);
+				}
+				return match;
+			});
 
 			if (rssEpisode) {
 				return rssEpisode;
 			}
+
+			// Log available titles for debugging
+			console.warn('No title match found. Available RSS titles:');
+			episodes.slice(0, 10).forEach((ep, index) => {
+				console.warn(`${index + 1}. "${ep.title}" (normalized: "${normalizeTitle(ep.title)}")`);
+			});
+			if (episodes.length > 10) {
+				console.warn(`... and ${episodes.length - 10} more episodes`);
+			}
+			console.warn(
+				`Searched for: "${episodeTitle}" (normalized: "${normalizeTitle(episodeTitle)}")`
+			);
 		} catch (error) {
-			console.warn('Failed to fetch RSS feed, falling back to local data:', error);
-		}
-		const localEpisode = (epList as LocalEpisode[]).find(
-			(ep) => ep.title === episodeTitle || ep.feedTitle === episodeTitle
-		);
-		if (localEpisode) {
-			return {
-				title: localEpisode.title || localEpisode.feedTitle || '',
-				audioUrl: localEpisode.url || '',
-				description: '',
-				pubDate: '',
-				duration: ''
-			};
+			console.error('Failed to fetch RSS feed:', error);
 		}
 
+		console.error(`Audio URL not found in RSS feed for episode: "${episodeTitle}"`);
 		return undefined;
 	}
 

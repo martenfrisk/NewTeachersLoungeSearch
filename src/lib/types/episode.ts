@@ -25,6 +25,12 @@ export interface EpisodeInfo {
 	date?: string;
 	season?: string;
 	description?: string;
+	startingTime?: number;
+	isFullyEdited?: boolean;
+	isMostlyEdited?: boolean;
+	editedPercentage?: number;
+	editedLines?: number;
+	totalLines?: number;
 }
 
 export interface EpisodePageData {
@@ -39,4 +45,36 @@ export interface EpisodePageData {
 export interface SpeakerProcessingOptions {
 	generateColors?: boolean;
 	mapUnknownSpeakers?: boolean;
+}
+
+export interface Episode {
+	ep: string;
+	title: string;
+	desc: string;
+	date: string;
+	url?: string;
+	feedTitle?: string | null;
+	hasAudio?: boolean;
+	startingTime?: number;
+}
+
+export interface SeasonData {
+	id: string;
+	name: string;
+	episodes: Episode[];
+	description?: string;
+	dateRange?: string;
+	totalDuration?: number;
+	averageRating?: number;
+	hostNotes?: string;
+	artwork?: string;
+	color?: string;
+}
+
+export interface Season {
+	id: string;
+	name: string;
+	episodeCount: number;
+	color?: string;
+	isSpecial?: boolean;
 }

@@ -76,8 +76,12 @@ export class EpisodeDataProcessor {
 
 		const typedLine = line as Record<string, unknown>;
 
-		if (typeof typedLine.speaker !== 'string') {
-			throw new Error(`Invalid speaker field at line ${lineIndex}: must be string`);
+		if (typeof typedLine.speaker === 'number') {
+			typedLine.speaker = typedLine.speaker.toString();
+		}
+
+		if (typeof typedLine.speaker !== 'string' && typeof typedLine.speaker !== 'number') {
+			throw new Error(`Invalid speaker field at line ${lineIndex}: must be string or number`);
 		}
 
 		if (typeof typedLine.edited !== 'boolean') {

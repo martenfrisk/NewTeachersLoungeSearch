@@ -2,12 +2,21 @@
 	import { audioStore } from '../../stores/audio';
 	import { audioService } from '../../services/AudioService';
 	import Button from '../ui/Button.svelte';
+	import CloseIcon from 'lib/assets/icons/CloseIcon.svelte';
+	import RewindIcon from 'lib/assets/icons/RewindIcon.svelte';
+	import PlayIcon from 'lib/assets/icons/PlayIcon.svelte';
+	import PauseIcon from 'lib/assets/icons/PauseIcon.svelte';
+	import FastForwardIcon from 'lib/assets/icons/FastForwardIcon.svelte';
+	import VolumeOffIcon from 'lib/assets/icons/VolumeOffIcon.svelte';
+	import VolumeOnIcon from 'lib/assets/icons/VolumeOnIcon.svelte';
+	import SyncIcon from 'lib/assets/icons/SyncIcon.svelte';
 
 	interface Props {
 		currEpTitle?: string;
+		syncEnabled?: boolean;
 	}
 
-	let { currEpTitle = '' }: Props = $props();
+	let { currEpTitle = '', syncEnabled = false }: Props = $props();
 
 	const audioState = $derived($audioStore);
 
@@ -40,6 +49,10 @@
 		audioService.setMuted(newMuted);
 	}
 
+	function handleSyncToggle() {
+		audioStore.toggleSync();
+	}
+
 	function handleRewind() {
 		audioService.seek(Math.max(0, audioState.currentTime - 10));
 	}
@@ -51,6 +64,10 @@
 	function handleClose() {
 		audioService.stop();
 		audioStore.reset();
+	}
+
+	function handleErrorDismiss() {
+		audioStore.clearError();
 	}
 
 	function formatTime(seconds: number): string {
@@ -71,14 +88,39 @@
 			aria-label="Close audio player"
 			class="absolute top-2 right-2 sm:top-3 sm:right-3 p-1"
 		>
-			<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-				<path
-					fill-rule="evenodd"
-					d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-					clip-rule="evenodd"
-				/>
-			</svg>
+			<CloseIcon />
 		</Button>
+
+		<!-- Error Message -->
+		{#if audioState.error}
+			<div class="bg-red-50 border border-red-200 rounded-lg p-3 mb-3 pr-8">
+				<div class="flex items-start">
+					<div class="flex-shrink-0">
+						<svg class="h-4 w-4 text-red-400 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+							<path
+								fill-rule="evenodd"
+								d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</div>
+					<div class="ml-2 flex-1">
+						<p class="text-sm text-red-800">{audioState.error}</p>
+					</div>
+					<button
+						onclick={handleErrorDismiss}
+						class="ml-2 flex-shrink-0 text-red-400 hover:text-red-600"
+						aria-label="Dismiss error"
+					>
+						<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+							<path
+								d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+							/>
+						</svg>
+					</button>
+				</div>
+			</div>
+		{/if}
 
 		<!-- Episode Info -->
 		{#if currEpTitle}
@@ -112,13 +154,7 @@
 			<div class="flex items-center justify-center space-x-1 sm:space-x-3">
 				<!-- Rewind -->
 				<Button variant="ghost" size="sm" onclick={handleRewind} aria-label="Rewind 10 seconds">
-					<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-						<path
-							fill-rule="evenodd"
-							d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z"
-							clip-rule="evenodd"
-						/>
-					</svg>
+					<RewindIcon />
 				</Button>
 
 				<!-- Play/Pause -->
@@ -128,21 +164,9 @@
 					aria-label={audioState.isPlaying ? 'Pause' : 'Play'}
 				>
 					{#if audioState.isPlaying}
-						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-							<path
-								fill-rule="evenodd"
-								d="M6 4a1 1 0 011 1v10a1 1 0 11-2 0V5a1 1 0 011-1zM14 4a1 1 0 011 1v10a1 1 0 11-2 0V5a1 1 0 011-1z"
-								clip-rule="evenodd"
-							/>
-						</svg>
+						<PauseIcon />
 					{:else}
-						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-							<path
-								fill-rule="evenodd"
-								d="M6.267 3.455a1 1 0 011.523-.859l8.485 5.545a1 1 0 010 1.708l-8.485 5.545a1 1 0 01-1.523-.859V3.455z"
-								clip-rule="evenodd"
-							/>
-						</svg>
+						<PlayIcon />
 					{/if}
 				</Button>
 
@@ -153,13 +177,7 @@
 					onclick={handleFastForward}
 					aria-label="Fast forward 10 seconds"
 				>
-					<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-						<path
-							fill-rule="evenodd"
-							d="M11.555 5.168A1 1 0 0010 6v2.798L4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832L10 11.202V14a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4z"
-							clip-rule="evenodd"
-						/>
-					</svg>
+					<FastForwardIcon />
 				</Button>
 
 				<!-- Volume Control -->
@@ -171,21 +189,9 @@
 						aria-label={audioState.muted ? 'Unmute' : 'Mute'}
 					>
 						{#if audioState.muted || audioState.volume === 0}
-							<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-								<path
-									fill-rule="evenodd"
-									d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.776L4.707 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.707l3.676-3.776a1 1 0 011 .076zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z"
-									clip-rule="evenodd"
-								/>
-							</svg>
+							<VolumeOffIcon />
 						{:else}
-							<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-								<path
-									fill-rule="evenodd"
-									d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.776L4.707 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.707l3.676-3.776a1 1 0 011 .076zM12 8a1 1 0 011.414 0C14.732 9.318 15.5 10.556 15.5 12s-.768 2.682-2.086 4a1 1 0 11-1.414-1.414C12.732 13.864 13.5 12.993 13.5 12s-.768-1.864-1.5-2.586A1 1 0 0112 8z"
-									clip-rule="evenodd"
-								/>
-							</svg>
+							<VolumeOnIcon />
 						{/if}
 					</Button>
 					<input
@@ -199,6 +205,24 @@
 					/>
 				</div>
 			</div>
+
+			<!-- Sync Controls Row -->
+			{#if syncEnabled}
+				<div class="flex items-center justify-center mt-2">
+					<label class="flex items-center space-x-2 text-xs text-gray-600 cursor-pointer">
+						<input
+							type="checkbox"
+							checked={audioState.syncEnabled}
+							onchange={handleSyncToggle}
+							class="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+						/>
+						<span>Sync to lines</span>
+						{#if audioState.syncEnabled}
+							<SyncIcon class="w-3 h-3 text-blue-600" />
+						{/if}
+					</label>
+				</div>
+			{/if}
 		</div>
 	</div>
 </div>

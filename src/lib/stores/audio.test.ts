@@ -35,7 +35,10 @@ describe('audio store', () => {
 				currentTime: 0,
 				duration: 0,
 				volume: 1.0,
-				muted: false
+				muted: false,
+				syncEnabled: false,
+				episodeStartingTime: 30.29,
+				error: null
 			});
 		});
 
@@ -373,7 +376,10 @@ describe('audio store', () => {
 				currentTime: 0,
 				duration: 0,
 				volume: 1.0,
-				muted: false
+				muted: false,
+				syncEnabled: false,
+				episodeStartingTime: 30.29,
+				error: null
 			});
 
 			// Verify derived stores are also reset

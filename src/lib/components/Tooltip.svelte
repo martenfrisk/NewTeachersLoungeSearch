@@ -30,7 +30,7 @@
 				: 'left-full ml-2'} top-1/2 -translate-y-1/2"
 		>
 			<div
-				class="bg-white border line-clamp-2 border-gray-200 text-gray-900 text-xs px-3 py-2 inset-shadow-sm w-fit max-w-48 break-words"
+				class="bg-white border line-clamp-3 border-gray-200 text-gray-900 text-xs px-3 py-2 inset-shadow-sm w-fit max-w-64 break-words"
 			>
 				{@render tooltip?.()}
 			</div>

@@ -66,58 +66,46 @@
 >
 	<!-- Header -->
 	<div class="p-4">
-		<div class="flex flex-col gap-3">
-			<!-- Episode Info -->
-			<div class="flex flex-row justify-between sm:items-center gap-2">
-				<div class="flex gap-2 items-center">
-					<Tooltip>
-						{#snippet tooltip()}
-							Go to episode page
-						{/snippet}
-						{#snippet content()}
-							<a
-								class="inline-block px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-100 rounded-md hover:bg-blue-200 transition-colors uppercase tracking-wide flex-shrink-0"
-								href="/ep/{hit.episode.replace('.json', '')}"
-							>
-								{hit.episode.replace('.json', '')}
-							</a>
-						{/snippet}
-					</Tooltip>
-					<div class="text-sm text-gray-800 font-medium leading-tight">
-						{hitEpisode?.title || 'Unknown Episode'}
-					</div>
-				</div>
-				<div class="sm:flex hidden justify-end">
-					<button
-						onclick={toggleContext}
-						disabled={loadingContext}
-						class="inline-flex items-center gap-1.5 border-b text-xs font-medium text-blue-700 hover:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-						aria-label="{showContext ? 'Hide' : 'Show'} context"
-					>
-						{#if loadingContext}
-							<div
-								class="w-3 h-3 border border-blue-400 border-t-transparent rounded-full animate-spin"
-							></div>
-							Loading...
-						{:else}
-							<svg
-								class="w-3 h-3 transition-transform {showContext ? 'rotate-180' : ''}"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M19 9l-7 7-7-7"
-								/>
-							</svg>
-							{showContext ? 'Hide' : 'Show'} context
-						{/if}
-					</button>
-				</div>
+		<div class="flex gap-2 items-center">
+			<a
+				class="inline px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-100 rounded-md hover:bg-blue-200 transition-colors uppercase tracking-wide flex-shrink-0"
+				href="/ep/{hit.episode.replace('.json', '')}"
+			>
+				{hit.episode.replace('.json', '')}
+			</a>
+			<div class="text-sm text-gray-800 font-medium leading-tight">
+				{hitEpisode?.title || 'Unknown Episode'}
 			</div>
+		</div>
+		<div class="sm:flex hidden justify-end">
+			<button
+				onclick={toggleContext}
+				disabled={loadingContext}
+				class="inline-flex items-center gap-1.5 border-b text-xs font-medium text-blue-700 hover:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+				aria-label="{showContext ? 'Hide' : 'Show'} context"
+			>
+				{#if loadingContext}
+					<div
+						class="w-3 h-3 border border-blue-400 border-t-transparent rounded-full animate-spin"
+					></div>
+					Loading...
+				{:else}
+					<svg
+						class="w-3 h-3 transition-transform {showContext ? 'rotate-180' : ''}"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M19 9l-7 7-7-7"
+						/>
+					</svg>
+					{showContext ? 'Hide' : 'Show'} context
+				{/if}
+			</button>
 		</div>
 	</div>
 
@@ -245,7 +233,7 @@
 				<!-- Transcript Link -->
 				<Tooltip>
 					{#snippet tooltip()}
-						Go to line in transcript
+						Go to transcript
 					{/snippet}
 					{#snippet content()}
 						<a
@@ -267,23 +255,23 @@
 
 				<!-- Audio Play Button -->
 				{#if hitEpisode?.hasAudio}
-					<Tooltip>
+					<!-- <Tooltip>
 						{#snippet tooltip()}
 							Listen to this line
 						{/snippet}
-						{#snippet content()}
-							<button
-								class="inline-flex items-center gap-2 px-2 py-1 text-sm font-medium text-green-600 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 transition-colors"
-								onclick={handlePlayAudio}
-							>
-								<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-									<path d="M8 5v14l11-7z" />
-								</svg>
-								<span class="hidden sm:inline">Listen</span>
-								<span class="sm:hidden">Play</span>
-							</button>
-						{/snippet}
-					</Tooltip>
+						{#snippet content()} -->
+					<button
+						class="inline-flex items-center gap-2 px-2 py-1 text-sm font-medium text-green-600 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 transition-colors"
+						onclick={handlePlayAudio}
+					>
+						<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M8 5v14l11-7z" />
+						</svg>
+						<span class="hidden sm:inline">Listen</span>
+						<span class="sm:hidden">Play</span>
+					</button>
+					<!-- {/snippet} -->
+					<!-- </Tooltip> -->
 				{/if}
 			</div>
 		</div>

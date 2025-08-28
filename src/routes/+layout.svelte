@@ -52,7 +52,7 @@
 			<button
 				transition:fly={{ y: 100, duration: 400 }}
 				onclick={() => element?.scrollIntoView()}
-				class="bottom-32 rounded-full size-8 md:size-12 bg-blue-700 right-0 md:right-4 fixed text-white select-none"
+				class="bottom-52 rounded-full size-8 md:size-12 bg-blue-700 right-2 md:right-4 fixed text-white select-none"
 			>
 				<UpArrow />
 			</button>

@@ -13,10 +13,19 @@
 		};
 		isActive: boolean;
 		isHighlighted: boolean;
+		syncEnabled?: boolean;
+		onLineClick?: (time: string) => void;
 		element?: HTMLElement;
 	}
 
-	let { hit, isActive, isHighlighted, element = $bindable() }: Props = $props();
+	let {
+		hit,
+		isActive,
+		isHighlighted,
+		syncEnabled = false,
+		onLineClick,
+		element = $bindable()
+	}: Props = $props();
 
 	let copied = $state(false);
 	let showCopyText = $state(false);
@@ -34,16 +43,29 @@
 			console.error('Failed to copy: ', err);
 		}
 	};
+
+	const handleClick = () => {
+		if (syncEnabled && onLineClick) {
+			onLineClick(hit.time);
+		}
+	};
 </script>
 
+<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 <article
 	bind:this={element}
 	class={`group relative rounded-lg border transition-all duration-200 ${
 		hit.edited
 			? 'bg-green-50/30 border-green-200 hover:bg-green-50/50 hover:border-green-300'
 			: 'bg-gray-50/30 border-gray-200 hover:bg-gray-50/50 hover:border-gray-300'
-	} ${isActive ? '!border-blue-500 !bg-blue-50/50 shadow-lg' : isHighlighted ? '!border-blue-500 !bg-blue-50/50 shadow-lg' : 'shadow-sm hover:shadow-md'}`}
+	} ${isActive ? '!border-blue-500 !bg-blue-50/50 shadow-lg' : isHighlighted ? '!border-blue-500 !bg-blue-50/50 shadow-lg' : 'shadow-sm hover:shadow-md'} ${
+		syncEnabled ? 'cursor-pointer hover:ring-2 hover:ring-blue-300/50' : ''
+	}`}
 	id={`t-${hit.time.replaceAll(':', '')}`}
+	onclick={handleClick}
+	role={syncEnabled ? 'button' : undefined}
+	tabindex={syncEnabled ? 0 : -1}
+	onkeydown={syncEnabled ? (e) => e.key === 'Enter' && handleClick() : undefined}
 >
 	<header class="px-2 sm:px-4 py-3 border-b border-current/10">
 		<div class="flex items-center justify-between">

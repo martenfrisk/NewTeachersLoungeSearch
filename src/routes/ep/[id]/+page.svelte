@@ -8,9 +8,14 @@
 	import VirtualTranscriptList from '$lib/components/episode/VirtualTranscriptList.svelte';
 	import type { EpisodePageData } from '$lib/types/episode';
 	import TranscriptLine from '$lib/components/episode/TranscriptLine.svelte';
-	import AudioPlayer from '$lib/components/audio/AudioPlayer.svelte';
-	import { audioStore } from '$lib/stores/audio';
+	import ReturnToActiveButton from '$lib/components/audio/ReturnToActiveButton.svelte';
+	import { audioStore, currentPlaybackTime, syncEnabled, isPlaying } from '$lib/stores/audio';
 	import { audioService } from '$lib/services/AudioService';
+	import {
+		findCurrentTranscriptLine,
+		throttle,
+		transcriptTimeToAudioSeconds
+	} from '$lib/utils/audioSync';
 
 	interface Props {
 		data: PageData;
@@ -27,8 +32,13 @@
 	let virtualListRef = $state<VirtualTranscriptList>();
 	let isLoading = $state(false);
 	let error = $state<string | null>(null);
+	let showReturnButton = $state(false);
+	let currentActiveElement: HTMLElement | null = $state(null);
 
 	const audioState = $derived($audioStore);
+	const currentTime = $derived($currentPlaybackTime);
+	const syncMode = $derived($syncEnabled);
+	const playing = $derived($isPlaying);
 
 	const targetHash = $derived(page.url?.hash?.slice(1) || undefined);
 
@@ -55,13 +65,68 @@
 		}
 	});
 
+	// Sync effect - triggers when audio time changes and sync is enabled
+	$effect(() => {
+		if (syncMode && playing && currentTime) {
+			syncToCurrentLine();
+		}
+	});
+
+	// Setup scroll listener effect
+	$effect(() => {
+		if (typeof window === 'undefined') return;
+
+		if (syncMode && playing) {
+			window.addEventListener('scroll', handleScroll);
+			return () => {
+				window.removeEventListener('scroll', handleScroll);
+			};
+		} else {
+			showReturnButton = false;
+		}
+	});
+
 	// Handle search results navigation
 	function handleSearchNavigation(time: string) {
 		highlightedTime = time;
 		if (virtualListRef) {
 			virtualListRef.scrollToTime(time);
 		}
+		// Disable sync when user manually navigates
+		if (syncMode) {
+			audioStore.setSyncEnabled(false);
+		}
 	}
+
+	// Throttled sync function to prevent excessive updates
+	const syncToCurrentLine = throttle(() => {
+		if (!syncMode || !playing || !currentTime || !transcript.length) {
+			currentActiveElement = null;
+			showReturnButton = false;
+			return;
+		}
+
+		const currentLine = findCurrentTranscriptLine(transcript, currentTime);
+		if (currentLine && currentLine.time !== highlightedTime) {
+			highlightedTime = currentLine.time;
+
+			// Get the current line element and track it
+			const element = document.getElementById(`t-${currentLine.time.replaceAll(':', '')}`);
+			if (element) {
+				currentActiveElement = element;
+
+				// Only auto-scroll if the return button isn't being shown
+				// (user hasn't manually scrolled away)
+				if (!showReturnButton) {
+					element.scrollIntoView({
+						behavior: 'smooth',
+						block: 'center',
+						inline: 'nearest'
+					});
+				}
+			}
+		}
+	}, 1000); // Update at most once per second
 
 	// Handle audio playback
 	async function handlePlayEpisode() {
@@ -77,6 +142,46 @@
 			});
 		} catch (error) {
 			console.error('Failed to start episode playback:', error);
+		}
+	}
+
+	// Handle clicking on transcript lines to jump to that timestamp when sync is enabled
+	function handleLineClick(time: string) {
+		if (syncMode && audioState.currentTimestamp) {
+			const audioSeconds = transcriptTimeToAudioSeconds(time, audioState.episodeStartingTime);
+			audioService.seek(audioSeconds);
+		}
+	}
+
+	// Check if the currently active line is visible in the viewport
+	function isElementInViewport(element: HTMLElement): boolean {
+		const rect = element.getBoundingClientRect();
+		const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+		const threshold = windowHeight * 0.3; // Element should be within 30% of viewport
+
+		return rect.top >= -threshold && rect.bottom <= windowHeight + threshold;
+	}
+
+	// Throttled scroll detection to determine if return button should be shown
+	const handleScroll = throttle(() => {
+		if (!syncMode || !playing || !currentActiveElement) {
+			showReturnButton = false;
+			return;
+		}
+
+		const isVisible = isElementInViewport(currentActiveElement);
+		showReturnButton = !isVisible;
+	}, 100);
+
+	// Return to the currently active line
+	function returnToActiveLine() {
+		if (currentActiveElement) {
+			currentActiveElement.scrollIntoView({
+				behavior: 'smooth',
+				block: 'center',
+				inline: 'nearest'
+			});
+			showReturnButton = false;
 		}
 	}
 </script>
@@ -119,6 +224,8 @@
 						{hit}
 						isActive={targetHash === `t-${hit.time.replaceAll(':', '')}`}
 						isHighlighted={highlightedTime === hit.time}
+						syncEnabled={syncMode && !!audioState.currentTimestamp}
+						onLineClick={handleLineClick}
 					/>
 				{/each}
 			</div>
@@ -126,7 +233,5 @@
 	{/if}
 </div>
 
-<!-- Audio Player - Show when audio is available -->
-{#if audioState.currentTimestamp}
-	<AudioPlayer currEpTitle={episodeInfo?.title || ''} />
-{/if}
+<!-- Return to Active Line Button -->
+<ReturnToActiveButton visible={showReturnButton} onReturnToActive={returnToActiveLine} />

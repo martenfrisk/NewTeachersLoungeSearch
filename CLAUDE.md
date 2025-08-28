@@ -62,3 +62,4 @@ src/
 # (rest of the file remains unchanged)
 
 - don't use mcp-tool-executor
+- add Type as suffix to all Typescript type definitions

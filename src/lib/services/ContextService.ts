@@ -16,7 +16,6 @@ export interface HitContext {
 	after: ContextLine | null;
 }
 
-// Functional transcript cache using Map
 const transcriptCache = new Map<string, ContextLine[]>();
 
 const loadTranscript = async (episode: string): Promise<ContextLine[]> => {
@@ -56,15 +55,18 @@ export const getContext = async (hit: SearchHitType): Promise<HitContext> => {
 		return { before: null, current: hit, after: null };
 	}
 
-	const currentSequence = getSequenceNumber(hit.id);
-	const beforeId = createHitId(episode, currentSequence - 1);
-	const afterId = createHitId(episode, currentSequence + 1);
+	const currentLineIndex = transcript.findIndex(
+		(line) => line.time === hit.time && line.line === hit.line
+	);
 
-	const before = findContextLine(transcript, beforeId);
-	const after = findContextLine(transcript, afterId);
+	if (currentLineIndex === -1) {
+		return { before: null, current: hit, after: null };
+	}
+
+	const before = currentLineIndex > 0 ? transcript[currentLineIndex - 1] : null;
+	const after = currentLineIndex < transcript.length - 1 ? transcript[currentLineIndex + 1] : null;
 
 	return { before, current: hit, after };
 };
 
-// Export utility functions for testing or direct use
 export { loadTranscript, getSequenceNumber, createHitId, findContextLine };

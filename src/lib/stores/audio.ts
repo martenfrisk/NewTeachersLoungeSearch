@@ -1,5 +1,7 @@
 import { writable, derived } from 'svelte/store';
 import type { AudioState, AudioTimestamp } from '../types/audio';
+import { getSyncPreference, setSyncPreference } from '../utils/audioSync';
+import { DEFAULT_EPISODE_START_TIME } from '../constants';
 
 function createAudioStore() {
 	const initialState: AudioState = {
@@ -8,7 +10,10 @@ function createAudioStore() {
 		currentTime: 0,
 		duration: 0,
 		volume: 1.0,
-		muted: false
+		muted: false,
+		syncEnabled: getSyncPreference(),
+		episodeStartingTime: DEFAULT_EPISODE_START_TIME,
+		error: null
 	};
 
 	const { subscribe, set, update } = writable<AudioState>(initialState);
@@ -61,6 +66,31 @@ function createAudioStore() {
 			update((state) => ({ ...state, muted }));
 		},
 
+		setSyncEnabled(syncEnabled: boolean): void {
+			update((state) => ({ ...state, syncEnabled }));
+			setSyncPreference(syncEnabled);
+		},
+
+		toggleSync(): void {
+			update((state) => {
+				const newSyncEnabled = !state.syncEnabled;
+				setSyncPreference(newSyncEnabled);
+				return { ...state, syncEnabled: newSyncEnabled };
+			});
+		},
+
+		setEpisodeStartingTime(startingTime: number): void {
+			update((state) => ({ ...state, episodeStartingTime: startingTime }));
+		},
+
+		setError(error: string | null): void {
+			update((state) => ({ ...state, error }));
+		},
+
+		clearError(): void {
+			update((state) => ({ ...state, error: null }));
+		},
+
 		reset(): void {
 			set(initialState);
 		}
@@ -77,6 +107,14 @@ export const audioProgress = derived(audioStore, ($audio) =>
 
 export const formattedCurrentTime = derived(audioStore, ($audio) => formatTime($audio.currentTime));
 export const formattedDuration = derived(audioStore, ($audio) => formatTime($audio.duration));
+export const syncEnabled = derived(audioStore, ($audio) => $audio.syncEnabled);
+
+// Convert current playback time to transcript format (MM:SS), accounting for intro offset
+export const currentPlaybackTime = derived(audioStore, ($audio) => {
+	if ($audio.currentTime <= $audio.episodeStartingTime) return '0:00:00';
+	const adjustedTime = $audio.currentTime - $audio.episodeStartingTime;
+	return formatTimeWithHours(adjustedTime);
+});
 
 function formatTime(seconds: number): string {
 	if (isNaN(seconds)) return '0:00';
@@ -84,4 +122,14 @@ function formatTime(seconds: number): string {
 	const minutes = Math.floor(seconds / 60);
 	const secs = Math.floor(seconds % 60);
 	return `${minutes}:${secs.toString().padStart(2, '0')}`;
+}
+
+function formatTimeWithHours(seconds: number): string {
+	if (isNaN(seconds)) return '0:00:00';
+
+	const hours = Math.floor(seconds / 3600);
+	const minutes = Math.floor((seconds % 3600) / 60);
+	const secs = Math.floor(seconds % 60);
+
+	return `${hours}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 }

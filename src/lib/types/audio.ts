@@ -10,6 +10,9 @@ export interface AudioState {
 	duration: number;
 	volume: number;
 	muted: boolean;
+	syncEnabled: boolean;
+	episodeStartingTime: number;
+	error: string | null;
 }
 
 export interface AudioPlayerProps {
