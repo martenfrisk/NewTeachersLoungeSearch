@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import episodesPageData from '$lib/../assets/generated/episodes-page-data.json';
+import episodesPageData from '../../../assets/generated/episodes-page-data.json';
 import { EpisodeDataProcessor } from '$lib/services/EpisodeDataProcessor';
 import type { EpisodePageData, EpisodeInfo } from '$lib/types/episode';
 
@@ -7,7 +7,7 @@ export async function entries() {
 	return episodesPageData.episodes.map((episode) => ({ id: episode.ep }));
 }
 
-export async function load({ params }): Promise<EpisodePageData> {
+export async function load({ params, fetch }): Promise<EpisodePageData> {
 	const { id } = params;
 
 	if (!id || typeof id !== 'string') {
@@ -15,9 +15,12 @@ export async function load({ params }): Promise<EpisodePageData> {
 	}
 
 	try {
-		// Import transcript data
-		const transcriptModule = await import(`../../../assets/transcripts/${id}.json`);
-		const rawTranscript = transcriptModule.default;
+		const response = await fetch(`/transcripts/${id}.json`);
+		if (!response.ok) {
+			error(404, `Transcript not found for episode ${id}`);
+		}
+
+		const rawTranscript = await response.json();
 
 		if (!rawTranscript) {
 			error(404, `Transcript not found for episode ${id}`);

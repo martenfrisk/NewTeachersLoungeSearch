@@ -2,7 +2,7 @@ import type { AudioTimestamp } from '../types/audio';
 import { audioStore } from '../stores/audio';
 import epList from '../../assets/episodes6.json';
 import { DEFAULT_EPISODE_START_TIME } from '../constants';
-import { titlesMatch, normalizeTitle } from '../utils/titleNormalization';
+import { titlesMatch } from '../utils/titleNormalization';
 
 interface RSSEpisode {
 	title: string;
@@ -234,37 +234,15 @@ export class AudioService {
 	private async findEpisode(episodeTitle: string): Promise<RSSEpisode | undefined> {
 		try {
 			const episodes = await this.fetchRSSFeed();
-			console.log(`Searching for episode: "${episodeTitle}"`);
-			console.log(`Available RSS episodes: ${episodes.length}`);
-
-			// Try to find a matching episode using robust title comparison
 			const rssEpisode = episodes.find((ep) => {
-				const match = titlesMatch(ep.title, episodeTitle);
-				if (match) {
-					console.log(`Found match: RSS="${ep.title}" <-> Local="${episodeTitle}"`);
-				}
-				return match;
+				return titlesMatch(ep.title, episodeTitle);
 			});
-
 			if (rssEpisode) {
 				return rssEpisode;
 			}
-
-			// Log available titles for debugging
-			console.warn('No title match found. Available RSS titles:');
-			episodes.slice(0, 10).forEach((ep, index) => {
-				console.warn(`${index + 1}. "${ep.title}" (normalized: "${normalizeTitle(ep.title)}")`);
-			});
-			if (episodes.length > 10) {
-				console.warn(`... and ${episodes.length - 10} more episodes`);
-			}
-			console.warn(
-				`Searched for: "${episodeTitle}" (normalized: "${normalizeTitle(episodeTitle)}")`
-			);
 		} catch (error) {
 			console.error('Failed to fetch RSS feed:', error);
 		}
-
 		console.error(`Audio URL not found in RSS feed for episode: "${episodeTitle}"`);
 		return undefined;
 	}

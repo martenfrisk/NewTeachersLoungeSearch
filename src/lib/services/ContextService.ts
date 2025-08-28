@@ -24,7 +24,7 @@ const loadTranscript = async (episode: string): Promise<ContextLine[]> => {
 	}
 
 	try {
-		const response = await fetch(`/src/assets/transcripts/${episode}.json`);
+		const response = await fetch(`/transcripts/${episode}.json`);
 		if (!response.ok) {
 			throw new Error(`Failed to load transcript for ${episode}`);
 		}
