@@ -10,13 +10,13 @@
 	import VolumeOffIcon from 'lib/assets/icons/VolumeOffIcon.svelte';
 	import VolumeOnIcon from 'lib/assets/icons/VolumeOnIcon.svelte';
 	import SyncIcon from 'lib/assets/icons/SyncIcon.svelte';
+	import { page } from '$app/state';
 
 	interface Props {
 		currEpTitle?: string;
-		syncEnabled?: boolean;
 	}
 
-	let { currEpTitle = '', syncEnabled = false }: Props = $props();
+	let { currEpTitle = '' }: Props = $props();
 
 	const audioState = $derived($audioStore);
 
@@ -76,6 +76,8 @@
 		const secs = Math.floor(seconds % 60);
 		return `${minutes}:${secs.toString().padStart(2, '0')}`;
 	}
+
+	let syncEnabled = $derived(page.route.id === '/ep/[id]');
 </script>
 
 <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
