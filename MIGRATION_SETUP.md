@@ -7,6 +7,7 @@ This document explains how to set up and use the feature flag system to migrate 
 ## Current Status
 
 ✅ **Complete**: Migration infrastructure is ready
+
 - Feature flags implemented with Vercel's flags package
 - Supabase search repository implemented
 - SearchProviderFactory for switching between providers
@@ -34,16 +35,19 @@ FLAGS_SECRET=your_vercel_flags_secret
 The following feature flags control the migration:
 
 #### `use-supabase-search`
+
 - **Default**: `false` (uses MeiliSearch)
 - **Purpose**: Switch the search backend from MeiliSearch to Supabase
 - **Impact**: Changes which search repository is used for all search queries
 
 #### `enable-user-auth`
+
 - **Default**: `false` (authentication disabled)
 - **Purpose**: Enable user login and authentication features
 - **Impact**: Shows/hides auth UI components and enables Supabase auth
 
 #### `show-edit-features`
+
 - **Default**: `false` (editing disabled)
 - **Purpose**: Display transcript editing UI components
 - **Impact**: Shows edit buttons and editing interfaces (future feature)
@@ -51,13 +55,16 @@ The following feature flags control the migration:
 ### 3. Migration Process
 
 #### Phase 1: Preparation (Complete)
+
 - ✅ Install Supabase client and configure connection
 - ✅ Create database schema (`supabase-schema.sql`)
 - ✅ Implement `SupabaseSearchRepository`
 - ✅ Set up feature flag infrastructure
 
 #### Phase 2: Data Migration
+
 1. **Set up Supabase project**:
+
    ```bash
    # Create a new Supabase project at https://supabase.com
    # Run the schema: supabase-schema.sql in SQL Editor
@@ -65,10 +72,11 @@ The following feature flags control the migration:
    ```
 
 2. **Run data migration scripts**:
+
    ```bash
    # First migrate episodes
    node migration-scripts/migrate-episodes.js
-   
+
    # Then migrate transcript data
    node migration-scripts/migrate-transcripts.js
    ```
@@ -78,10 +86,12 @@ The following feature flags control the migration:
    - Test search functionality with small queries
 
 #### Phase 3: Testing with Feature Flags
+
 1. **Enable Supabase search for testing**:
+
    ```javascript
    // In your browser console or via Vercel deployment
-   document.cookie = "vercel-flag-overrides=use-supabase-search:true; path=/";
+   document.cookie = 'vercel-flag-overrides=use-supabase-search:true; path=/';
    ```
 
 2. **Compare results**:
@@ -95,14 +105,16 @@ The following feature flags control the migration:
    - Collect user feedback
 
 #### Phase 4: Full Migration
+
 1. **Update flag defaults**:
+
    ```typescript
    // In src/lib/flags.ts
    export const useSupabaseSearch = flag<boolean>({
-     // ... other config
-     decide() {
-       return true; // Switch default to Supabase
-     }
+   	// ... other config
+   	decide() {
+   		return true; // Switch default to Supabase
+   	}
    });
    ```
 
@@ -121,19 +133,21 @@ The following feature flags control the migration:
 If issues arise, you can instantly revert:
 
 1. **Via feature flag**:
+
    ```javascript
    // Reset the cookie to use MeiliSearch
-   document.cookie = "vercel-flag-overrides=use-supabase-search:false; path=/";
+   document.cookie = 'vercel-flag-overrides=use-supabase-search:false; path=/';
    ```
 
 2. **Via code change**:
+
    ```typescript
    // In src/lib/flags.ts
    export const useSupabaseSearch = flag<boolean>({
-     // ... other config
-     decide() {
-       return false; // Revert to MeiliSearch
-     }
+   	// ... other config
+   	decide() {
+   		return false; // Revert to MeiliSearch
+   	}
    });
    ```
 
@@ -164,17 +178,20 @@ bun run build
 ### 6. Architecture Notes
 
 #### SearchProviderFactory
+
 - `src/lib/services/SearchProviderFactory.ts`
 - Dynamically switches between MeiliSearch and Supabase based on feature flags
 - Maintains singleton instances for performance
 - Supports testing with mock repositories
 
 #### Feature Flag Integration
+
 - `src/lib/flags.ts` - Flag definitions
 - `src/hooks.server.ts` - Server-side flag handling
 - `src/lib/services/SearchProviderFactory.ts` - Uses flags to switch providers
 
 #### Future Features Ready
+
 - User authentication system prepared
 - Transcript editing infrastructure planned (see `FUTURE_EDIT_FEATURES.md`)
 - Role-based permissions framework ready

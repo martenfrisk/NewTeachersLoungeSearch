@@ -4,17 +4,7 @@ export interface SearchHitType {
 	time: string;
 	speaker: string;
 	line: string;
-	episode: string;
-	edited: boolean;
-	_formatted: FormattedHit;
-}
-
-export interface FormattedHit {
-	id: string;
-	season: string;
-	time: string;
-	speaker: string;
-	line: string;
+	highlightedLine?: string;
 	episode: string;
 	edited: boolean;
 }
@@ -53,6 +43,7 @@ export interface FacetHit {
 
 export interface SearchParams {
 	query: string;
+	originalQuery?: string;
 	filter: string[];
 	offset: number;
 	limit?: number;

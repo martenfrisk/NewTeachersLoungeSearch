@@ -29,21 +29,43 @@
 			onClose();
 		}
 	}
+
+	function handleModalClick(event: MouseEvent) {
+		event.stopPropagation();
+	}
+
+	function handleModalKeydown(event: KeyboardEvent) {
+		event.stopPropagation();
+	}
+
+	function handleKeydown(event: KeyboardEvent) {
+		if (event.key === 'Escape' && isOpen) {
+			onClose();
+		}
+	}
 </script>
+
+<svelte:window onkeydown={handleKeydown} />
 
 {#if isOpen}
 	<!-- Modal backdrop -->
 	<div
 		class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+		role="presentation"
 		onclick={handleBackdropClick}
 	>
 		<!-- Modal content -->
 		<div
 			class="bg-white rounded-lg shadow-xl max-w-md w-full p-6"
-			onclick={(e) => e.stopPropagation()}
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="modal-title"
+			tabindex="-1"
+			onclick={handleModalClick}
+			onkeydown={handleModalKeydown}
 		>
 			<div class="text-center">
-				<h2 class="text-2xl font-bold mb-2 text-gray-900">Sign In</h2>
+				<h2 id="modal-title" class="text-2xl font-bold mb-2 text-gray-900">Sign In</h2>
 				<p class="text-gray-600 mb-6">
 					Sign in to edit transcripts and contribute to the community
 				</p>

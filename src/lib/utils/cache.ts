@@ -58,6 +58,5 @@ export class Cache<T> {
 	}
 }
 
-export const searchCache = new Cache(5 * 60 * 1000);
 export const episodeCache = new Cache(60 * 60 * 1000);
 export const transcriptCache = new Cache(30 * 60 * 1000);

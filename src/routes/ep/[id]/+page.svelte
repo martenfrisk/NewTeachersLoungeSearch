@@ -8,6 +8,9 @@
 	import VirtualTranscriptList from '$lib/components/episode/VirtualTranscriptList.svelte';
 	import type { EpisodePageData } from '$lib/types/episode';
 	import TranscriptLine from '$lib/components/episode/TranscriptLine.svelte';
+	import AudioPlayer from '$lib/components/audio/AudioPlayer.svelte';
+	import { audioStore } from '$lib/stores/audio';
+	import { audioService } from '$lib/services/AudioService';
 
 	interface Props {
 		data: PageData;
@@ -24,6 +27,8 @@
 	let virtualListRef = $state<VirtualTranscriptList>();
 	let isLoading = $state(false);
 	let error = $state<string | null>(null);
+
+	const audioState = $derived($audioStore);
 
 	const targetHash = $derived(page.url?.hash?.slice(1) || undefined);
 
@@ -57,6 +62,23 @@
 			virtualListRef.scrollToTime(time);
 		}
 	}
+
+	// Handle audio playback
+	async function handlePlayEpisode() {
+		if (!episodeInfo?.title) {
+			console.warn('No episode title available for audio playback');
+			return;
+		}
+
+		try {
+			await audioService.playTimestamp({
+				episode: episodeInfo.title,
+				timestamp: '0:00:00'
+			});
+		} catch (error) {
+			console.error('Failed to start episode playback:', error);
+		}
+	}
 </script>
 
 <svelte:head>
@@ -80,7 +102,7 @@
 	{:else}
 		<header class="mb-8">
 			<TranscriptQualityBanner {transcriptStats} />
-			<EpisodeHeader {episodeInfo} />
+			<EpisodeHeader {episodeInfo} {handlePlayEpisode} />
 		</header>
 
 		<EpisodeSearch
@@ -103,3 +125,8 @@
 		</main>
 	{/if}
 </div>
+
+<!-- Audio Player - Show when audio is available -->
+{#if audioState.currentTimestamp}
+	<AudioPlayer currEpTitle={episodeInfo?.title || ''} />
+{/if}

@@ -5,7 +5,7 @@
 // import { FLAGS_SECRET } from '$env/static/private';
 // import * as flags from '$lib/flags';
 
-// export const handle = createHandle({ 
-// 	secret: FLAGS_SECRET || 'dev-secret-placeholder', 
-// 	flags 
+// export const handle = createHandle({
+// 	secret: FLAGS_SECRET || 'dev-secret-placeholder',
+// 	flags
 // });

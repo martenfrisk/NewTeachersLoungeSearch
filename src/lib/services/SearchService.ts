@@ -2,8 +2,8 @@ import type { SearchParams, SearchHitType, SearchStats } from '../types/search';
 import type { PaginatedResponse } from '../types/common';
 import type { ISearchRepository } from '../repositories/SearchRepository';
 import { SearchProviderFactory } from './SearchProviderFactory';
-import { searchCache } from '../utils/cache';
 import { validateSearchQuery, sanitizeSearchQuery } from '../utils/validation';
+import { parseSearchQuery, buildPostgresQuery } from '../utils/queryParser';
 import { SearchError, createErrorHandler } from '../utils/errors';
 
 export class SearchService {
@@ -28,7 +28,6 @@ export class SearchService {
 			filter?: string[];
 			offset?: number;
 			editedOnly?: boolean;
-			useCache?: boolean;
 		} = {}
 	): Promise<PaginatedResponse<SearchHitType> & { stats: SearchStats }> {
 		try {
@@ -38,31 +37,19 @@ export class SearchService {
 			}
 
 			const sanitizedQuery = sanitizeSearchQuery(query);
+			const parsedQuery = parseSearchQuery(sanitizedQuery);
+			const postgresQuery = buildPostgresQuery(parsedQuery);
+
 			const params: SearchParams = {
-				query: sanitizedQuery,
+				query: postgresQuery,
+				originalQuery: sanitizedQuery,
 				filter: options.filter || [],
-				offset: options.offset || 20,
+				offset: options.offset || 0,
 				editedOnly: options.editedOnly || false
 			};
 
-			const cacheKey = this.getCacheKey(params);
-			if (options.useCache !== false) {
-				const cached = searchCache.get(cacheKey) as
-					| (PaginatedResponse<SearchHitType> & { stats: SearchStats })
-					| null;
-				if (cached) {
-					return cached;
-				}
-			}
-
 			const repository = await this.getRepository();
-			const result = await repository.search(params);
-
-			if (options.useCache !== false) {
-				searchCache.set(cacheKey, result, 5 * 60 * 1000);
-			}
-
-			return result;
+			return await repository.search(params);
 		} catch (error) {
 			throw this.handleError(error);
 		}
@@ -77,11 +64,10 @@ export class SearchService {
 		} = {}
 	): Promise<{ hits: SearchHitType[]; hasMore: boolean; stats: SearchStats }> {
 		try {
-			const nextOffset = currentHits.length + 20;
+			const nextOffset = currentHits.length;
 			const result = await this.search(query, {
 				...options,
-				offset: nextOffset,
-				useCache: false
+				offset: nextOffset
 			});
 
 			return {
@@ -92,14 +78,6 @@ export class SearchService {
 		} catch (error) {
 			throw this.handleError(error);
 		}
-	}
-
-	clearCache(): void {
-		searchCache.clear();
-	}
-
-	private getCacheKey(params: SearchParams): string {
-		return `search_${params.query}_${params.filter.join(',')}_${params.offset}_${params.editedOnly}`;
 	}
 }
 

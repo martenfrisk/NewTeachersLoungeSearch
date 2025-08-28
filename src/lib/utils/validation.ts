@@ -43,7 +43,7 @@ export function validateSearchParams(params: Partial<SearchParams>): {
 export function sanitizeSearchQuery(query: string): string {
 	return query
 		.trim()
-		.replace(/[<>"'&]/g, '') // Remove potentially dangerous characters
+		.replace(/[<>'&]/g, '') // Remove potentially dangerous characters (keep quotes and hyphens for search operators)
 		.replace(/\s+/g, ' ') // Normalize multiple spaces to single spaces
 		.substring(0, 500); // Limit length
 }

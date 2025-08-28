@@ -8,7 +8,7 @@ export async function GET({ url, setHeaders }) {
 	try {
 		const query = url?.searchParams?.get('q') || '';
 		const filterParam = url?.searchParams?.get('f')?.split(',') || [];
-		const offset = Number(url?.searchParams?.get('o')) || 20;
+		const offset = Number(url?.searchParams?.get('o')) || 0;
 		const editedOnly = url?.searchParams?.has('e') || false;
 
 		if (!query.trim()) {
@@ -23,10 +23,9 @@ export async function GET({ url, setHeaders }) {
 		const result = await searchService.search(query, {
 			filter: filterParam,
 			offset,
-			editedOnly,
-			useCache: true
+			editedOnly
 		});
-		console.log(result);
+
 		return json({
 			hits: result.items,
 			stats: result.stats

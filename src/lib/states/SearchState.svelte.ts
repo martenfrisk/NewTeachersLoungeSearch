@@ -36,7 +36,7 @@ function createSearchState() {
 			const result = await searchService.search(query, {
 				filter: filterStrings,
 				editedOnly: filters?.editedOnly || false,
-				offset: 20
+				offset: 0
 			});
 
 			hits = result.items;

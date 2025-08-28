@@ -31,8 +31,8 @@ jobs:
       - name: Run tests
         run: bun run test
         env:
-          VITE_ALGOLIA_KEY: test_key
-          VITE_MEILI_KEY: test_key
+          VITE_SUPABASE_URL: https://test-project.supabase.co
+          VITE_SUPABASE_ANON_KEY: test_key
 
       - name: Build
         run: bun run build

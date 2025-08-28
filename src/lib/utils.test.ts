@@ -7,7 +7,6 @@ import {
 	timeToUrl,
 	newRandom,
 	createSearchParams,
-	searchMeili,
 	randomQuery
 } from './utils';
 
@@ -174,17 +173,6 @@ describe('utils', () => {
 			expect(params.get('f')).toBe('season = 2');
 			expect(params.get('e')).toBe('true');
 		});
-	});
-
-	describe('searchMeili', () => {
-		it('should be a function that accepts search parameters', () => {
-			// Core search function exists and has correct signature
-			expect(typeof searchMeili).toBe('function');
-			expect(searchMeili.length).toBe(1); // Takes one parameter object
-		});
-
-		// Note: Full searchMeili integration tests should be done in E2E tests
-		// to avoid complex MeiliSearch mocking in unit tests
 	});
 
 	describe('randomQuery array', () => {

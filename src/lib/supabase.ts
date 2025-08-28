@@ -9,7 +9,7 @@ export const supabase = createClient(PUBLIC_SUPABASE_URL ?? '', PUBLIC_SUPABASE_
 	},
 	global: {
 		headers: {
-			'statement_timeout': '30000' // 30 second timeout
+			statement_timeout: '15000' // 15 second timeout - FTS should be much faster
 		}
 	},
 	db: {

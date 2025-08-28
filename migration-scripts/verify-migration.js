@@ -79,15 +79,17 @@ async function verifyTranscriptCount() {
 
 		// Count lines in source files
 		const transcriptsDir = path.join(projectRoot, 'src', 'assets', 'transcripts');
-		const transcriptFiles = fs.readdirSync(transcriptsDir).filter(file => file.endsWith('.json'));
-		
+		const transcriptFiles = fs.readdirSync(transcriptsDir).filter((file) => file.endsWith('.json'));
+
 		let totalSourceLines = 0;
 		for (const file of transcriptFiles) {
 			const filePath = path.join(transcriptsDir, file);
 			const transcriptData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 			if (Array.isArray(transcriptData)) {
 				// Only count valid lines (matching the filter in migrate-transcripts.js)
-				const validLines = transcriptData.filter(line => line && typeof line === 'object' && line.line);
+				const validLines = transcriptData.filter(
+					(line) => line && typeof line === 'object' && line.line
+				);
 				totalSourceLines += validLines.length;
 			}
 		}
@@ -136,8 +138,11 @@ async function verifyDataIntegrity() {
 
 		if (sampleLines && sampleLines.length > 0) {
 			// Check if the first few episode IDs exist in the episodes table
-			const uniqueEpisodeIds = [...new Set(sampleLines.map(line => line.episode_id))].slice(0, 10);
-			
+			const uniqueEpisodeIds = [...new Set(sampleLines.map((line) => line.episode_id))].slice(
+				0,
+				10
+			);
+
 			for (const episodeId of uniqueEpisodeIds) {
 				const { data: episode, error: episodeCheckError } = await supabase
 					.from('episodes')
@@ -146,15 +151,18 @@ async function verifyDataIntegrity() {
 					.single();
 
 				if (episodeCheckError || !episode) {
-					console.log(`   ❌ Found orphaned transcript lines referencing non-existent episode: ${episodeId}`);
+					console.log(
+						`   ❌ Found orphaned transcript lines referencing non-existent episode: ${episodeId}`
+					);
 					return false;
 				}
 			}
 		}
 
 		// Check for episodes without transcript lines
-		const { data: episodesWithoutLines, error: episodeError } = await supabase
-			.rpc('get_episodes_without_transcripts');
+		const { data: episodesWithoutLines, error: episodeError } = await supabase.rpc(
+			'get_episodes_without_transcripts'
+		);
 
 		if (episodeError) {
 			console.log(`   ℹ️  RPC function not available, performing manual check...`);
@@ -186,8 +194,12 @@ async function verifyDataIntegrity() {
 			}
 
 			if (episodesWithoutTranscripts.length > 0) {
-				console.log(`   ⚠️  Episodes without transcript lines: ${episodesWithoutTranscripts.slice(0, 5).join(', ')}${episodesWithoutTranscripts.length > 5 ? '...' : ''}`);
-				console.log(`   📊 Total episodes without transcripts: ${episodesWithoutTranscripts.length}`);
+				console.log(
+					`   ⚠️  Episodes without transcript lines: ${episodesWithoutTranscripts.slice(0, 5).join(', ')}${episodesWithoutTranscripts.length > 5 ? '...' : ''}`
+				);
+				console.log(
+					`   📊 Total episodes without transcripts: ${episodesWithoutTranscripts.length}`
+				);
 			}
 		}
 
@@ -258,7 +270,7 @@ async function generateSummaryReport() {
 
 		if (!episodeError && episodeStats) {
 			const seasonCounts = {};
-			episodeStats.forEach(ep => {
+			episodeStats.forEach((ep) => {
 				seasonCounts[ep.season] = (seasonCounts[ep.season] || 0) + 1;
 			});
 
@@ -278,7 +290,7 @@ async function generateSummaryReport() {
 			const lineCounts = {};
 			const editedCounts = {};
 
-			lineStats.forEach(line => {
+			lineStats.forEach((line) => {
 				lineCounts[line.season] = (lineCounts[line.season] || 0) + 1;
 				if (line.edited) {
 					editedCounts[line.season] = (editedCounts[line.season] || 0) + 1;
@@ -327,7 +339,7 @@ async function verifyMigration() {
 	console.log('📋 VERIFICATION SUMMARY');
 	console.log('='.repeat(50));
 	console.log(`✅ Passed: ${passedChecks}/${totalChecks} checks`);
-	
+
 	if (passedChecks === totalChecks) {
 		console.log('🎉 All verification checks passed! Migration is complete and successful.');
 	} else {

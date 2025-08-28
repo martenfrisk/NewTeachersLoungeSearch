@@ -211,9 +211,11 @@
 				</div>
 			</div>
 			<div class="prose prose-sm max-w-none">
-				<!-- Safe: MeiliSearch only adds <em> tags for search highlighting -->
-				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-				<p class="text-sm leading-relaxed text-gray-900 m-0">{@html hit._formatted.line}</p>
+				<!-- Safe: Only <em> tags are added for search highlighting -->
+				<p class="text-sm leading-relaxed text-gray-900 m-0">
+					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+					{@html hit.highlightedLine || hit.line}
+				</p>
 			</div>
 		</div>
 
