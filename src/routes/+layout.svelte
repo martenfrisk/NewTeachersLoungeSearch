@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '../app.css';
-	import '@toolwind/anchors';
 	import Sidebar from '$lib/Sidebar.svelte';
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';

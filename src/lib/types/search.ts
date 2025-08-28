@@ -55,6 +55,7 @@ export interface SearchParams {
 	query: string;
 	filter: string[];
 	offset: number;
+	limit?: number;
 	editedOnly: boolean;
 }
 

@@ -1,17 +1,25 @@
 import type { SearchParams, SearchHitType, SearchStats } from '../types/search';
 import type { PaginatedResponse } from '../types/common';
 import type { ISearchRepository } from '../repositories/SearchRepository';
-import { MeiliSearchRepository } from '../repositories/SearchRepository';
+import { SearchProviderFactory } from './SearchProviderFactory';
 import { searchCache } from '../utils/cache';
 import { validateSearchQuery, sanitizeSearchQuery } from '../utils/validation';
 import { SearchError, createErrorHandler } from '../utils/errors';
 
 export class SearchService {
-	private repository: ISearchRepository;
+	private repository: ISearchRepository | null = null;
 	private readonly handleError = createErrorHandler('SearchService');
 
 	constructor(repository?: ISearchRepository) {
-		this.repository = repository || new MeiliSearchRepository();
+		// Allow injection of repository for testing
+		this.repository = repository || null;
+	}
+
+	private async getRepository(): Promise<ISearchRepository> {
+		if (this.repository) {
+			return this.repository;
+		}
+		return await SearchProviderFactory.createSearchRepository();
 	}
 
 	async search(
@@ -47,7 +55,8 @@ export class SearchService {
 				}
 			}
 
-			const result = await this.repository.search(params);
+			const repository = await this.getRepository();
+			const result = await repository.search(params);
 
 			if (options.useCache !== false) {
 				searchCache.set(cacheKey, result, 5 * 60 * 1000);

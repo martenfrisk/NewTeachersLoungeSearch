@@ -26,7 +26,7 @@ export async function GET({ url, setHeaders }) {
 			editedOnly,
 			useCache: true
 		});
-
+		console.log(result);
 		return json({
 			hits: result.items,
 			stats: result.stats
@@ -34,6 +34,8 @@ export async function GET({ url, setHeaders }) {
 	} catch (error) {
 		const appError = handleError(error);
 		console.error('Search API Error:', appError);
+		console.error('Full error details:', error);
+		console.error('Error stack:', error instanceof Error ? error.stack : 'No stack trace');
 
 		return json({ error: appError.message }, { status: appError.statusCode });
 	}

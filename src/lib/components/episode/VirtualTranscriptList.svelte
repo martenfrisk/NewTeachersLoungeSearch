@@ -40,8 +40,7 @@
 
 	onMount(() => {
 		if (containerEl) {
-			resizeObserver = new ResizeObserver(() => {
-			});
+			resizeObserver = new ResizeObserver(() => {});
 			resizeObserver.observe(containerEl);
 			if (activeTimeHash) {
 				scrollToTimestamp(activeTimeHash);

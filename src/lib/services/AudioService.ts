@@ -197,11 +197,9 @@ export class AudioService {
 		audioStore.pause();
 	}
 
-	private onLoadStart(): void {
-	}
+	private onLoadStart(): void {}
 
-	private onCanPlay(): void {
-	}
+	private onCanPlay(): void {}
 	private timestampToSeconds(timestamp: string): number {
 		const parts = timestamp.split(':').map(Number);
 		if (parts.length === 3) {
