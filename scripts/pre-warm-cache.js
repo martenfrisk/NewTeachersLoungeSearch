@@ -51,33 +51,40 @@ const CACHE_DIR = join(__dirname, '../static/cache');
 function initSupabase() {
 	const supabaseUrl = process.env.PUBLIC_SUPABASE_URL || process.env.VITE_SUPABASE_URL;
 	const supabaseKey = process.env.PUBLIC_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
-	
+
 	if (!supabaseUrl || !supabaseKey) {
 		const env = process.env.NODE_ENV || 'unknown';
 		const isCI = Boolean(process.env.CI || process.env.VERCEL || process.env.GITHUB_ACTIONS);
-		
+
 		console.log(`Environment: ${env}, CI: ${isCI}`);
-		console.log(`Available env vars: PUBLIC_SUPABASE_URL=${Boolean(supabaseUrl)}, PUBLIC_SUPABASE_ANON_KEY=${Boolean(supabaseKey)}`);
-		
-		throw new Error('Missing Supabase environment variables. Please configure PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_ANON_KEY in your deployment environment.');
+		console.log(
+			`Available env vars: PUBLIC_SUPABASE_URL=${Boolean(supabaseUrl)}, PUBLIC_SUPABASE_ANON_KEY=${Boolean(supabaseKey)}`
+		);
+
+		throw new Error(
+			'Missing Supabase environment variables. Please configure PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_ANON_KEY in your deployment environment.'
+		);
 	}
-	
+
 	return createClient(supabaseUrl, supabaseKey);
 }
 
 // Parse search query to build postgres query (simplified version from queryParser)
 function buildPostgresQuery(query) {
-	const terms = query.toLowerCase().split(/\s+/).filter(term => term.length > 0);
-	return terms.map(term => term.replace(/[^a-z0-9]/g, '')).join(' & ');
+	const terms = query
+		.toLowerCase()
+		.split(/\s+/)
+		.filter((term) => term.length > 0);
+	return terms.map((term) => term.replace(/[^a-z0-9]/g, '')).join(' & ');
 }
 
 // Perform actual search using Supabase
 async function performSearch(supabase, query) {
 	const postgresQuery = buildPostgresQuery(query);
-	
+
 	try {
 		console.log(`    Searching for: "${query}" (postgres: "${postgresQuery}")`);
-		
+
 		// Use the same optimized search function that the app uses
 		const { data: searchResults, error: searchError } = await supabase.rpc(
 			'optimized_search_transcripts',
@@ -110,7 +117,7 @@ async function performSearch(supabase, query) {
 		}
 
 		// Process results (simplified version from SearchRepository)
-		const hits = (searchResults || []).map(result => ({
+		const hits = (searchResults || []).map((result) => ({
 			id: result.id,
 			season: result.season,
 			time: result.timestamp_str,
@@ -203,12 +210,14 @@ async function preWarmCache() {
 
 			// Perform actual search
 			const result = await performSearch(supabase, query);
-			
+
 			if (!result) {
 				throw new Error('Search returned null result');
 			}
 
-			console.log(`    Found ${result.items.length} hits (total: ${result.stats.estimatedTotalHits})`);
+			console.log(
+				`    Found ${result.items.length} hits (total: ${result.stats.estimatedTotalHits})`
+			);
 
 			// Create cache file name (sanitize for filesystem)
 			const fileName = query
@@ -241,7 +250,9 @@ async function preWarmCache() {
 			});
 
 			successCount++;
-			console.log(`✅ Cached "${query}" (${result.items.length}/${result.stats.estimatedTotalHits} hits)`);
+			console.log(
+				`✅ Cached "${query}" (${result.items.length}/${result.stats.estimatedTotalHits} hits)`
+			);
 		} catch (error) {
 			console.error(`❌ Failed to cache "${query}":`, error.message);
 			results.push({
