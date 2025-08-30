@@ -2,9 +2,6 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
-	import { editorStore } from '$lib/stores/editor.svelte';
-	import { audioStore } from '$lib/stores/audio';
-	import { audioService } from '$lib/services/AudioService';
 	import EpisodeSelector from './EpisodeSelector.svelte';
 	import EditorHeader from './EditorHeader.svelte';
 	import EditorSidebar from './EditorSidebar.svelte';
@@ -16,8 +13,10 @@
 	import ErrorMessage from '../ui/ErrorMessage.svelte';
 	import Button from '../ui/Button.svelte';
 	import Toast from '../ui/Toast.svelte';
-
-	import type { TranscriptLine, EpisodeInfo } from '$lib/types/episode';
+	import { EpisodeInfo, TranscriptLine } from '../../types/episode';
+	import { audioService } from '../../services/AudioService';
+	import { audioStore } from '../../stores';
+	import { editorStore } from '../../stores/editor.svelte';
 
 	interface Props {
 		initialEpisode?: string;
@@ -335,8 +334,6 @@
 			<EditorHeader
 				{episodeInfo}
 				{selectedEpisode}
-				{hasChanges}
-				{editedLinesCount}
 				{showKeyboardHelp}
 				{transcriptLines}
 				onToggleHelp={handleToggleHelp}

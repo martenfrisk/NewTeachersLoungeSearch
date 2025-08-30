@@ -1,17 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { SvelteSet } from 'svelte/reactivity';
-	import { user } from '$lib/stores/auth';
-	import { moderatorService } from '$lib/services/ModeratorService';
-	import type { PendingEditType } from '$lib/types/editor';
-	import LoadingState from '$lib/components/ui/LoadingState.svelte';
-	import Toast from '$lib/components/ui/Toast.svelte';
-	import ErrorMessage from '$lib/components/ui/ErrorMessage.svelte';
+	import ErrorMessage from '../../lib/components/ui/ErrorMessage.svelte';
+	import LoadingState from '../../lib/components/ui/LoadingState.svelte';
+	import Toast from '../../lib/components/ui/Toast.svelte';
+	import { moderatorService } from '../../lib/services/ModeratorService';
+	import { user } from '../../lib/stores/auth';
+	import { PendingEditType } from '../../lib/types/editor';
 
 	let pendingEdits: PendingEditType[] = $state([]);
 	let isLoading = $state(true);
 	let error = $state<string | null>(null);
-	let selectedEdits = new SvelteSet<string>();
+	let selectedEdits = $state(new SvelteSet<string>());
 	let isSubmitting = $state(false);
 	let statistics = $state({ pending: 0, approved: 0, rejected: 0, totalToday: 0 });
 
