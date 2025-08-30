@@ -1,14 +1,266 @@
 {
   "query": "Wimberley",
-  "timestamp": 1756596431758,
-  "expiresAt": 1757201231758,
+  "timestamp": 1756597643568,
+  "expiresAt": 1757202443568,
   "result": {
-    "hits": [],
+    "hits": [
+      {
+        "id": "90b49abe-b537-45a2-a3a2-73282111cba5",
+        "season": "s01",
+        "time": "00:05:03",
+        "speaker": "Todd",
+        "line": "on I believe it. Which is one of the reasons I've been going to Colombia's because I'm treating my own documentary trying to find its called Finding the Wimberley. Finding the Wimberley is Yeah, tentatively titled. All",
+        "episode": "s01e03",
+        "edited": false
+      },
+      {
+        "id": "c9a5e613-1c71-4bf5-aa64-22fd28d0bc78",
+        "season": "s01",
+        "time": "00:05:03",
+        "speaker": "Todd",
+        "line": "on I believe it. Which is one of the reasons I've been going to Colombia's because I'm treating my own documentary trying to find its called Finding the Wimberley. Finding the Wimberley is Yeah, tentatively titled. All",
+        "episode": "s01e03",
+        "edited": false
+      },
+      {
+        "id": "76fec459-1525-4597-ba4e-7d17b733dfb0",
+        "season": "s03",
+        "time": "00:30:23",
+        "speaker": "2",
+        "line": "see a guy and you go what I wouldn't give to be alone in a room with this guy? Yeah, you know, he's just got a lot of interesting thoughts and I want to know him so well. Good seats were releasing, Finding the Wimberley sits finally found a home finding the Wimberley, my documentary about the six sets of twins that I was accused of killing, but I think just disappeared. You think just",
+        "episode": "s03e04",
+        "edited": false
+      },
+      {
+        "id": "f8bce281-28c9-4a09-96bf-631cb9498b2e",
+        "season": "s03",
+        "time": "00:30:23",
+        "speaker": "2",
+        "line": "see a guy and you go what I wouldn't give to be alone in a room with this guy? Yeah, you know, he's just got a lot of interesting thoughts and I want to know him so well. Good seats were releasing, Finding the Wimberley sits finally found a home finding the Wimberley, my documentary about the six sets of twins that I was accused of killing, but I think just disappeared. You think just",
+        "episode": "s03e04",
+        "edited": false
+      },
+      {
+        "id": "c741a775-be9f-4161-9c1c-c4655d2e4447",
+        "season": "s06",
+        "time": "0:08:59",
+        "speaker": "spk_2",
+        "line": "There's a couple choices for me. Oh, you took Todd's face off. And you, hood Brad Wimberly Lee's face on your one of the Wimberley twins that you say you didn't kill. Face looks. Oh, so it looks like scrapings off of, like, a skeleton or something. Maybe a face like a really good face.",
+        "episode": "s06e07",
+        "edited": false
+      },
+      {
+        "id": "2ded0991-5c09-4ff9-acc2-4cd4151b614b",
+        "season": "s06",
+        "time": "0:08:59",
+        "speaker": "spk_2",
+        "line": "There's a couple choices for me. Oh, you took Todd's face off. And you, hood Brad Wimberly Lee's face on your one of the Wimberley twins that you say you didn't kill. Face looks. Oh, so it looks like scrapings off of, like, a skeleton or something. Maybe a face like a really good face.",
+        "episode": "s06e07",
+        "edited": false
+      },
+      {
+        "id": "3ff6f250-d743-4c74-8a16-dcce4909975f",
+        "season": "s09",
+        "time": "0:14:06",
+        "speaker": "spk_0",
+        "line": "Wimberley was on that flight or that, but right?",
+        "episode": "s09e19",
+        "edited": false
+      },
+      {
+        "id": "2d50f74a-bb8d-4cd1-a75d-6d213f5cf700",
+        "season": "s09",
+        "time": "0:14:06",
+        "speaker": "spk_0",
+        "line": "Wimberley was on that flight or that, but right?",
+        "episode": "s09e19",
+        "edited": false
+      },
+      {
+        "id": "dcbc38c9-8237-4623-980a-0fcaf626dacd",
+        "season": "s09",
+        "time": "0:14:18",
+        "speaker": "spk_2",
+        "line": "Stops tell us what you know about the Wimberley Way. Don't remember",
+        "episode": "s09e19",
+        "edited": false
+      },
+      {
+        "id": "744b5cea-3782-4e8a-8110-c29423d7a780",
+        "season": "s09",
+        "time": "0:14:18",
+        "speaker": "spk_2",
+        "line": "Stops tell us what you know about the Wimberley Way. Don't remember",
+        "episode": "s09e19",
+        "edited": false
+      },
+      {
+        "id": "160eddaf-ec9d-4ce9-9900-7ef609cbd8f0",
+        "season": "s08",
+        "time": "0:15:32",
+        "speaker": "spk_2",
+        "line": "Wimberly lays the Wimberley.",
+        "episode": "s08e03",
+        "edited": false
+      },
+      {
+        "id": "4eac5119-a716-4158-bb92-d86ea8d3f3d0",
+        "season": "s08",
+        "time": "0:15:32",
+        "speaker": "spk_2",
+        "line": "Wimberly lays the Wimberley.",
+        "episode": "s08e03",
+        "edited": false
+      },
+      {
+        "id": "4d0ed8cb-1d7a-4902-84ce-ed46105d0595",
+        "season": "s01",
+        "time": "00:05:00",
+        "speaker": "Sam",
+        "line": "that the Wimberley is The rumor is that they fake their death",
+        "episode": "s01e03",
+        "edited": false
+      },
+      {
+        "id": "f7cc5da0-df13-486b-a7e0-1d6aaff0f387",
+        "season": "s01",
+        "time": "00:05:00",
+        "speaker": "Sam",
+        "line": "that the Wimberley is The rumor is that they fake their death",
+        "episode": "s01e03",
+        "edited": false
+      },
+      {
+        "id": "45bca112-e3be-423c-9d7e-63c40a24e7b8",
+        "season": "s01",
+        "time": "00:12:09",
+        "speaker": "Bill",
+        "line": "You tell me You're not sure if they were whipping way. Believe the obituaries in the in the newspaper. The Wimberley twins didn't",
+        "episode": "s01e04",
+        "edited": false
+      },
+      {
+        "id": "b6991d6f-f30e-4c46-800d-545039691a75",
+        "season": "s01",
+        "time": "00:12:09",
+        "speaker": "Bill",
+        "line": "You tell me You're not sure if they were whipping way. Believe the obituaries in the in the newspaper. The Wimberley twins didn't",
+        "episode": "s01e04",
+        "edited": false
+      },
+      {
+        "id": "5ad1606b-1bae-4e25-a7bc-6f2faf7114d7",
+        "season": "s01",
+        "time": "00:12:20",
+        "speaker": "Bill",
+        "line": "think they're sisters. The Wimberley Twin Sisters. We're hit that",
+        "episode": "s01e04",
+        "edited": false
+      },
+      {
+        "id": "c769cb1c-3155-4bec-a676-2b25c9d22593",
+        "season": "s01",
+        "time": "00:12:20",
+        "speaker": "Bill",
+        "line": "think they're sisters. The Wimberley Twin Sisters. We're hit that",
+        "episode": "s01e04",
+        "edited": false
+      },
+      {
+        "id": "97c663f0-3e7b-4277-8b38-c52215c73c82",
+        "season": "s01",
+        "time": "00:12:52",
+        "speaker": "Bill",
+        "line": "you have found the Wimberley is yet?",
+        "episode": "s01e04",
+        "edited": false
+      },
+      {
+        "id": "dc43e982-b621-4fd6-b4f8-913ab318862e",
+        "season": "s01",
+        "time": "00:12:52",
+        "speaker": "Bill",
+        "line": "you have found the Wimberley is yet?",
+        "episode": "s01e04",
+        "edited": false
+      }
+    ],
     "stats": {
-      "estimatedTotalHits": 0,
+      "estimatedTotalHits": 47,
       "processingTime": 0,
-      "facets": []
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s01",
+              "hits": 28
+            },
+            {
+              "ep": "s03",
+              "hits": 6
+            },
+            {
+              "ep": "s09",
+              "hits": 5
+            },
+            {
+              "ep": "s04",
+              "hits": 4
+            },
+            {
+              "ep": "s08",
+              "hits": 2
+            },
+            {
+              "ep": "s06",
+              "hits": 2
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "s01e04",
+              "hits": 18
+            },
+            {
+              "ep": "s01e05",
+              "hits": 6
+            },
+            {
+              "ep": "s03e04",
+              "hits": 4
+            },
+            {
+              "ep": "s01e03",
+              "hits": 4
+            },
+            {
+              "ep": "s09e19",
+              "hits": 4
+            },
+            {
+              "ep": "s06e07",
+              "hits": 2
+            },
+            {
+              "ep": "s08e03",
+              "hits": 2
+            },
+            {
+              "ep": "s03e06",
+              "hits": 2
+            },
+            {
+              "ep": "s04e02",
+              "hits": 2
+            }
+          ]
+        }
+      ]
     },
-    "hasMore": false
+    "hasMore": true
   }
 }

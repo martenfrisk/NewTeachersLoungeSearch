@@ -1,14 +1,274 @@
 {
   "query": "real hair",
-  "timestamp": 1756596431759,
-  "expiresAt": 1757201231759,
+  "timestamp": 1756597646858,
+  "expiresAt": 1757202446858,
   "result": {
-    "hits": [],
+    "hits": [
+      {
+        "id": "cc44258c-c912-4627-9a83-686bbfd52c03",
+        "season": "s06",
+        "time": "1:07:41",
+        "speaker": "spk_5",
+        "line": "because it's riel crawling. Taste like real hair real. Here, stop eating my riel locks. Just don't take this. Tastes like I am.",
+        "episode": "s06e03",
+        "edited": false
+      },
+      {
+        "id": "b82599df-1765-47d3-bba0-92ab3809680e",
+        "season": "s06",
+        "time": "1:07:41",
+        "speaker": "spk_5",
+        "line": "because it's riel crawling. Taste like real hair real. Here, stop eating my riel locks. Just don't take this. Tastes like I am.",
+        "episode": "s06e03",
+        "edited": false
+      },
+      {
+        "id": "9ceb7c02-750b-4b8d-b455-751d2ac6b624",
+        "season": "s06",
+        "time": "0:12:03",
+        "speaker": "spk_0",
+        "line": "swear on my real hair and realize eyebrows that Oh, well, it doesn't matter enough if you just say it. I swear that I love you. Don't feel the light of earlier on God. Okay.",
+        "episode": "s06e02",
+        "edited": false
+      },
+      {
+        "id": "39124fec-8f70-47a4-8608-48622261978a",
+        "season": "s06",
+        "time": "0:12:03",
+        "speaker": "spk_0",
+        "line": "swear on my real hair and realize eyebrows that Oh, well, it doesn't matter enough if you just say it. I swear that I love you. Don't feel the light of earlier on God. Okay.",
+        "episode": "s06e02",
+        "edited": false
+      },
+      {
+        "id": "a0c4667c-6f03-4517-a5d4-35718ffa404b",
+        "season": "s05",
+        "time": "0:12:19",
+        "speaker": "spk_1",
+        "line": "the world. I'll shave my real hair off for this",
+        "episode": "s05e06",
+        "edited": false
+      },
+      {
+        "id": "6511e185-b308-43fa-a76b-66120e5c7c6d",
+        "season": "s05",
+        "time": "0:12:19",
+        "speaker": "spk_1",
+        "line": "the world. I'll shave my real hair off for this",
+        "episode": "s05e06",
+        "edited": false
+      },
+      {
+        "id": "613eeec4-d05c-4769-b07b-af80ab163d19",
+        "season": "exit42",
+        "time": "0:15:01",
+        "speaker": "spk_3",
+        "line": "Yeah, it was just like people don't have this real hair. It's that you can't, you know, be a clown, you know you know, And we would fight a lot and they would throw me in the air with chainsaws and stuff like that. Sounds pretty unreasonable to me. Well, at our at our wedding, I tried to smell the flowers and they squirted my face and they said And",
+        "episode": "exit42-17",
+        "edited": false
+      },
+      {
+        "id": "9e6c3618-7321-488a-b73c-717c50e4be0f",
+        "season": "exit42",
+        "time": "0:15:01",
+        "speaker": "spk_3",
+        "line": "Yeah, it was just like people don't have this real hair. It's that you can't, you know, be a clown, you know you know, And we would fight a lot and they would throw me in the air with chainsaws and stuff like that. Sounds pretty unreasonable to me. Well, at our at our wedding, I tried to smell the flowers and they squirted my face and they said And",
+        "episode": "exit42-17",
+        "edited": false
+      },
+      {
+        "id": "46d314a9-5816-4102-830f-7cbf7193d190",
+        "season": "s06",
+        "time": "0:43:50",
+        "speaker": "spk_0",
+        "line": "and I'm splitting. Does he? Is it true that your actual real hair is getting cut off and worn by him?",
+        "episode": "s06e06",
+        "edited": false
+      },
+      {
+        "id": "f8175c6e-3d1d-4b0e-9fc7-9819481061cd",
+        "season": "s06",
+        "time": "0:43:50",
+        "speaker": "spk_0",
+        "line": "and I'm splitting. Does he? Is it true that your actual real hair is getting cut off and worn by him?",
+        "episode": "s06e06",
+        "edited": false
+      },
+      {
+        "id": "0b4124b7-2126-422d-bfb8-73adab2ed9ca",
+        "season": "s09",
+        "time": "0:47:35",
+        "speaker": "spk_2",
+        "line": "got the idea for all of our real hair.",
+        "episode": "s09e25",
+        "edited": false
+      },
+      {
+        "id": "e2b53e18-e3f9-4509-a789-75ffd5db25c4",
+        "season": "s09",
+        "time": "0:47:35",
+        "speaker": "spk_2",
+        "line": "got the idea for all of our real hair.",
+        "episode": "s09e25",
+        "edited": false
+      },
+      {
+        "id": "5383fd06-274b-4918-b6b0-6ad1dad75654",
+        "season": "s04",
+        "time": "00:15:20",
+        "speaker": "Unknown",
+        "line": "We do not show a real hair",
+        "episode": "s04e04",
+        "edited": false
+      },
+      {
+        "id": "a15d3152-1d77-4078-83c1-920d5b6f9e96",
+        "season": "s04",
+        "time": "00:15:20",
+        "speaker": "Unknown",
+        "line": "We do not show a real hair",
+        "episode": "s04e04",
+        "edited": false
+      },
+      {
+        "id": "186b932d-d6c5-4b66-99cd-9d842d047614",
+        "season": "lastresort",
+        "time": "0:35:52",
+        "speaker": "spk_3",
+        "line": "That's right. I turned on the sponsorship for the rug boat because my hair is real.",
+        "episode": "lastresort-3",
+        "edited": false
+      },
+      {
+        "id": "97197ba1-0c75-4f7f-bcc2-1974536cee99",
+        "season": "lastresort",
+        "time": "0:35:52",
+        "speaker": "spk_3",
+        "line": "That's right. I turned on the sponsorship for the rug boat because my hair is real.",
+        "episode": "lastresort-3",
+        "edited": false
+      },
+      {
+        "id": "571b760d-d5e9-49af-9e5a-9b950938decc",
+        "season": "lastresort",
+        "time": "0:37:08",
+        "speaker": "spk_0",
+        "line": "You might give you and I'm not saying that your hair is not real.",
+        "episode": "lastresort-3",
+        "edited": false
+      },
+      {
+        "id": "0b45ecc8-8adb-4402-88dd-63ed8da6bfc4",
+        "season": "lastresort",
+        "time": "0:37:08",
+        "speaker": "spk_0",
+        "line": "You might give you and I'm not saying that your hair is not real.",
+        "episode": "lastresort-3",
+        "edited": false
+      },
+      {
+        "id": "bb35e657-347e-4e49-bf8b-e56bd3416632",
+        "season": "lastresort",
+        "time": "1:00:16",
+        "speaker": "spk_7",
+        "line": "do this. In my hair that is real?",
+        "episode": "lastresort-1",
+        "edited": false
+      },
+      {
+        "id": "58d89bee-62cf-47da-90c9-e82f493a684b",
+        "season": "lastresort",
+        "time": "1:00:16",
+        "speaker": "spk_7",
+        "line": "do this. In my hair that is real?",
+        "episode": "lastresort-1",
+        "edited": false
+      }
+    ],
     "stats": {
-      "estimatedTotalHits": 0,
+      "estimatedTotalHits": 31,
       "processingTime": 0,
-      "facets": []
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "lastresort",
+              "hits": 12
+            },
+            {
+              "ep": "s06",
+              "hits": 6
+            },
+            {
+              "ep": "mini",
+              "hits": 4
+            },
+            {
+              "ep": "exit42",
+              "hits": 2
+            },
+            {
+              "ep": "s04",
+              "hits": 2
+            },
+            {
+              "ep": "s05",
+              "hits": 2
+            },
+            {
+              "ep": "s09",
+              "hits": 2
+            },
+            {
+              "ep": "s10",
+              "hits": 1
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "lastresort-3",
+              "hits": 4
+            },
+            {
+              "ep": "lastresort-1",
+              "hits": 4
+            },
+            {
+              "ep": "exit42-17",
+              "hits": 2
+            },
+            {
+              "ep": "s06e06",
+              "hits": 2
+            },
+            {
+              "ep": "s09e25",
+              "hits": 2
+            },
+            {
+              "ep": "lastresort-4",
+              "hits": 2
+            },
+            {
+              "ep": "lastresort-7",
+              "hits": 2
+            },
+            {
+              "ep": "mini-28",
+              "hits": 2
+            },
+            {
+              "ep": "mini-34",
+              "hits": 2
+            }
+          ]
+        }
+      ]
     },
-    "hasMore": false
+    "hasMore": true
   }
 }

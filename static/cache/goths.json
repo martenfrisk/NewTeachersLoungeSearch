@@ -1,14 +1,250 @@
 {
   "query": "goths",
-  "timestamp": 1756596431759,
-  "expiresAt": 1757201231759,
+  "timestamp": 1756597645527,
+  "expiresAt": 1757202445527,
   "result": {
-    "hits": [],
+    "hits": [
+      {
+        "id": "a1366bcc-3667-44cd-9fab-8121f1a8cee0",
+        "season": "s03",
+        "time": "00:51:03",
+        "speaker": "4",
+        "line": "what? Well, you know, I I've been sort of hip to what's going on. Obviously, I sort of passed by. I listen to the podcast every week, so I know kind of the situation that you guys have with the Goths right now. Ah, and I I sort of took a few steps. Ah, to sort of ensure that, um, you know, maybe maybe some things might happen. I've had a lot of Goths coming in to my, uh, my little sort of nurse station. Recently invested, obviously. Yeah, it's a vestibule. It's not really a room. You'll just, uh it's called. I call it the way we do. Call it the Babulal or investing whatever stupid",
+        "episode": "s03e08",
+        "edited": false
+      },
+      {
+        "id": "9f1e1caa-ade7-4149-8e78-7c81ee6f1e90",
+        "season": "s03",
+        "time": "00:51:03",
+        "speaker": "4",
+        "line": "what? Well, you know, I I've been sort of hip to what's going on. Obviously, I sort of passed by. I listen to the podcast every week, so I know kind of the situation that you guys have with the Goths right now. Ah, and I I sort of took a few steps. Ah, to sort of ensure that, um, you know, maybe maybe some things might happen. I've had a lot of Goths coming in to my, uh, my little sort of nurse station. Recently invested, obviously. Yeah, it's a vestibule. It's not really a room. You'll just, uh it's called. I call it the way we do. Call it the Babulal or investing whatever stupid",
+        "episode": "s03e08",
+        "edited": false
+      },
+      {
+        "id": "455fa0f0-8d21-4b61-8ba5-ad0d9c7bed3c",
+        "season": "s03",
+        "time": "01:04:33",
+        "speaker": "3",
+        "line": "There's Ah, there's a rumor going around and I won't say how I how I know this, but it might have something to do with, you know, some covert surveillance tactics we've been using throughout. There's a rumor that no proof, the Goths have sort of assembled. Yes. Have you seen any sort of groups of Goths anything larger than a group of five",
+        "episode": "s03e06",
+        "edited": false
+      },
+      {
+        "id": "735e7a8a-638c-41ae-b711-9ae9aeaf1ce2",
+        "season": "s03",
+        "time": "01:04:33",
+        "speaker": "3",
+        "line": "There's Ah, there's a rumor going around and I won't say how I how I know this, but it might have something to do with, you know, some covert surveillance tactics we've been using throughout. There's a rumor that no proof, the Goths have sort of assembled. Yes. Have you seen any sort of groups of Goths anything larger than a group of five",
+        "episode": "s03e06",
+        "edited": false
+      },
+      {
+        "id": "9883aa06-e2ff-48d1-98e2-52acfee0e127",
+        "season": "lastresort",
+        "time": "0:16:43",
+        "speaker": "spk_1",
+        "line": "I sources inside. I've had a few people watching there I'm calling them Count challengers. There are people who sort of go to where the votes are cast to to sort of see where it's playing with this. They're account challengers. They they do kind of have, like, they're kind of goth kids.",
+        "episode": "lastresort-6",
+        "edited": false
+      },
+      {
+        "id": "8e32b508-1768-4a21-a879-0a1893b97dae",
+        "season": "lastresort",
+        "time": "0:16:43",
+        "speaker": "spk_1",
+        "line": "I sources inside. I've had a few people watching there I'm calling them Count challengers. There are people who sort of go to where the votes are cast to to sort of see where it's playing with this. They're account challengers. They they do kind of have, like, they're kind of goth kids.",
+        "episode": "lastresort-6",
+        "edited": false
+      },
+      {
+        "id": "d9e77d2d-c89a-4ac7-a5d4-30bc59aece8c",
+        "season": "s04",
+        "time": "00:10:05",
+        "speaker": "Unknown",
+        "line": "to know what you heard from your side of the story. We obviously know our side. We escaped, um, from Swine High School when we were surrounded by the Mafia on one side and the Goths on one side.",
+        "episode": "s04e01",
+        "edited": false
+      },
+      {
+        "id": "bb92701a-971e-4b24-92d6-7000113a4f78",
+        "season": "s04",
+        "time": "00:10:05",
+        "speaker": "Unknown",
+        "line": "to know what you heard from your side of the story. We obviously know our side. We escaped, um, from Swine High School when we were surrounded by the Mafia on one side and the Goths on one side.",
+        "episode": "s04e01",
+        "edited": false
+      },
+      {
+        "id": "e9e8bb6f-739b-4597-a7d0-5bcf30010206",
+        "season": "s03",
+        "time": "00:17:01",
+        "speaker": "2",
+        "line": "this now to the Goths. You're not mad at me. You're mad at your daddy. Yes. And",
+        "episode": "s03e07",
+        "edited": false
+      },
+      {
+        "id": "d9876550-9c8d-45e8-b4bb-e6a72e177b76",
+        "season": "s03",
+        "time": "00:17:01",
+        "speaker": "2",
+        "line": "this now to the Goths. You're not mad at me. You're mad at your daddy. Yes. And",
+        "episode": "s03e07",
+        "edited": false
+      },
+      {
+        "id": "1fa4fa33-4749-430c-b6ac-3c3375123554",
+        "season": "s03",
+        "time": "00:20:19",
+        "speaker": "4",
+        "line": "people were profiling are the Goths. So it's fine, right? That's right. That's right, wiped off way specifically clear, pale white",
+        "episode": "s03e03",
+        "edited": false
+      },
+      {
+        "id": "d6de42f4-b7f8-498d-bf86-99e23f6442d8",
+        "season": "s03",
+        "time": "00:20:19",
+        "speaker": "4",
+        "line": "people were profiling are the Goths. So it's fine, right? That's right. That's right, wiped off way specifically clear, pale white",
+        "episode": "s03e03",
+        "edited": false
+      },
+      {
+        "id": "4fd91dec-b49f-4960-a664-e39ec05bb2ea",
+        "season": "s03",
+        "time": "00:20:21",
+        "speaker": "2",
+        "line": "could call him. I just don't get those Vikings listening to the Smiths or anything like that. If we have a bunch of Goths Vikings running around campus",
+        "episode": "s03e04",
+        "edited": false
+      },
+      {
+        "id": "9d925f43-7985-4185-ba86-b47e51bef511",
+        "season": "s03",
+        "time": "00:20:21",
+        "speaker": "2",
+        "line": "could call him. I just don't get those Vikings listening to the Smiths or anything like that. If we have a bunch of Goths Vikings running around campus",
+        "episode": "s03e04",
+        "edited": false
+      },
+      {
+        "id": "856a120a-b3bb-4612-a97b-e66696340ca2",
+        "season": "s03",
+        "time": "00:20:39",
+        "speaker": "2",
+        "line": "Absolutely. What? Those gods have it. And if there if you could look at what we're saying from any angle and think that it's offensive, you are wrong. Okay? Way do not like white Goths. And we think it's okay to profile, period.",
+        "episode": "s03e03",
+        "edited": false
+      },
+      {
+        "id": "77a02268-626d-44a4-9f6b-bbf18347ee8e",
+        "season": "s03",
+        "time": "00:20:39",
+        "speaker": "2",
+        "line": "Absolutely. What? Those gods have it. And if there if you could look at what we're saying from any angle and think that it's offensive, you are wrong. Okay? Way do not like white Goths. And we think it's okay to profile, period.",
+        "episode": "s03e03",
+        "edited": false
+      },
+      {
+        "id": "5cfe9332-7011-4eb9-bad0-6a6c8c113bd1",
+        "season": "s03",
+        "time": "00:20:58",
+        "speaker": "2",
+        "line": "night way that didn't work out. We don't need Thio deepened. Luckily, nobody watched it well, but we don't have any money. It's it's it's It's shocking If we could find I've been studying the tape because we got a tape VHS. Um, from that we think the Goths, it says anonymous, but it's very clearly a bunch of golf. Students",
+        "episode": "s03e07",
+        "edited": false
+      },
+      {
+        "id": "d73b7a63-64ea-41fb-9fbf-77a52136cb02",
+        "season": "s03",
+        "time": "00:20:58",
+        "speaker": "2",
+        "line": "night way that didn't work out. We don't need Thio deepened. Luckily, nobody watched it well, but we don't have any money. It's it's it's It's shocking If we could find I've been studying the tape because we got a tape VHS. Um, from that we think the Goths, it says anonymous, but it's very clearly a bunch of golf. Students",
+        "episode": "s03e07",
+        "edited": false
+      },
+      {
+        "id": "1be11f89-301a-4ebf-9be0-9e4679ba208e",
+        "season": "s03",
+        "time": "00:23:53",
+        "speaker": "3",
+        "line": "we are not. We're not going quietly into that. Exactly. Exactly. You know, I thought we have these Goths under our thumb. I thought we were in control, and they were No. You have started the security. You had three level",
+        "episode": "s03e07",
+        "edited": false
+      },
+      {
+        "id": "8af5370f-e97b-44cd-b616-ffa9b9e8e5d2",
+        "season": "s03",
+        "time": "00:23:53",
+        "speaker": "3",
+        "line": "we are not. We're not going quietly into that. Exactly. Exactly. You know, I thought we have these Goths under our thumb. I thought we were in control, and they were No. You have started the security. You had three level",
+        "episode": "s03e07",
+        "edited": false
+      }
+    ],
     "stats": {
-      "estimatedTotalHits": 0,
+      "estimatedTotalHits": 38,
       "processingTime": 0,
-      "facets": []
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s03",
+              "hits": 34
+            },
+            {
+              "ep": "lastresort",
+              "hits": 2
+            },
+            {
+              "ep": "s04",
+              "hits": 2
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "s03e07",
+              "hits": 10
+            },
+            {
+              "ep": "s03e08",
+              "hits": 10
+            },
+            {
+              "ep": "s03e04",
+              "hits": 6
+            },
+            {
+              "ep": "s03e03",
+              "hits": 4
+            },
+            {
+              "ep": "s04e01",
+              "hits": 2
+            },
+            {
+              "ep": "lastresort-6",
+              "hits": 2
+            },
+            {
+              "ep": "s03e05",
+              "hits": 2
+            },
+            {
+              "ep": "s03e06",
+              "hits": 2
+            }
+          ]
+        }
+      ]
     },
-    "hasMore": false
+    "hasMore": true
   }
 }

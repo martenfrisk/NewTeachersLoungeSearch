@@ -1,14 +1,258 @@
 {
   "query": "bethany hart",
-  "timestamp": 1756596431758,
-  "expiresAt": 1757201231758,
+  "timestamp": 1756597644869,
+  "expiresAt": 1757202444869,
   "result": {
-    "hits": [],
+    "hits": [
+      {
+        "id": "68b96723-a214-4894-8889-6203934f64f9",
+        "season": "s01",
+        "time": "00:43:57",
+        "speaker": "Sam",
+        "line": "way get paired together. And she was surprisingly good, or I was just bad. Can I be honest with you? Yeah. Um, when you first came in, honestly, I thought I was like, That seems like Bill. I know. It's just a silly woman. And I said, hi, I'm Bill. Uh, excuse me. Sorry. I mean, Diane and I still wasn't gravy. And and then I said, Nope, not Diane Crave E Diane. Bethany. And I was like, Nope. I don't have to. First, last first names. My name is Diane Sawyer. And I said no, not her, not the lady who does the news. I'm Bill. No, I'm not. I'm Bethany. My name is Bethany Hart. So I was Bethany Hart for the class.",
+        "episode": "s01e03",
+        "edited": false
+      },
+      {
+        "id": "ebc4ca88-e1d6-4516-9055-cb9ce406ec24",
+        "season": "s01",
+        "time": "00:43:57",
+        "speaker": "Sam",
+        "line": "way get paired together. And she was surprisingly good, or I was just bad. Can I be honest with you? Yeah. Um, when you first came in, honestly, I thought I was like, That seems like Bill. I know. It's just a silly woman. And I said, hi, I'm Bill. Uh, excuse me. Sorry. I mean, Diane and I still wasn't gravy. And and then I said, Nope, not Diane Crave E Diane. Bethany. And I was like, Nope. I don't have to. First, last first names. My name is Diane Sawyer. And I said no, not her, not the lady who does the news. I'm Bill. No, I'm not. I'm Bethany. My name is Bethany Hart. So I was Bethany Hart for the class.",
+        "episode": "s01e03",
+        "edited": false
+      },
+      {
+        "id": "e02a344c-64ac-444f-ab20-85778eac1d35",
+        "season": "s01",
+        "time": "00:02:53",
+        "speaker": "Bill",
+        "line": "Bethany Hart Hart? Yes. And I very much While I am Bethany and very much in love with you.",
+        "episode": "s01e05",
+        "edited": false
+      },
+      {
+        "id": "62335f8a-bbdd-4a28-8b1b-37e65233ad40",
+        "season": "s01",
+        "time": "00:02:53",
+        "speaker": "Bill",
+        "line": "Bethany Hart Hart? Yes. And I very much While I am Bethany and very much in love with you.",
+        "episode": "s01e05",
+        "edited": false
+      },
+      {
+        "id": "6b03b2a8-09e3-4ec6-8e78-c44e4f1ef632",
+        "season": "s01",
+        "time": "00:05:10",
+        "speaker": "Bill",
+        "line": "Hi, I'm previously Bill Crave E now Bethany Hart. Bill was the Spanish teacher and also the basketball coach. He was fired. I returned to the school dressed as a woman and was hired as the main lunch lady. Bethany Hart.",
+        "episode": "s01e05",
+        "edited": false
+      },
+      {
+        "id": "48b8bfe7-4671-4979-b267-62907016bdee",
+        "season": "s01",
+        "time": "00:05:10",
+        "speaker": "Bill",
+        "line": "Hi, I'm previously Bill Crave E now Bethany Hart. Bill was the Spanish teacher and also the basketball coach. He was fired. I returned to the school dressed as a woman and was hired as the main lunch lady. Bethany Hart.",
+        "episode": "s01e05",
+        "edited": false
+      },
+      {
+        "id": "7ef0bd84-888f-4233-a992-d4f658db422f",
+        "season": "s01",
+        "time": "00:13:12",
+        "speaker": "Howard",
+        "line": "prom. I had just come from the region championship game, which I want lighting Bibles, fighting Bibles as Valerie Heart. I was Bethany Hart. No, I know. And I keep getting it confused. I'm thinking about I also do another job where I'm a different woman TV as Bethany's sister Valerie. I have many",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "16128b42-a265-4966-9d67-3a75863448f7",
+        "season": "s01",
+        "time": "00:13:12",
+        "speaker": "Howard",
+        "line": "prom. I had just come from the region championship game, which I want lighting Bibles, fighting Bibles as Valerie Heart. I was Bethany Hart. No, I know. And I keep getting it confused. I'm thinking about I also do another job where I'm a different woman TV as Bethany's sister Valerie. I have many",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "b92e38f0-8726-410e-8677-a3585c755ac5",
+        "season": "s06",
+        "time": "0:10:00",
+        "speaker": "spk_2",
+        "line": "Obviously I finally believe back and I finally believe whatever I'm so we're firm believers in the Lord now. Hey, how's it go in? Uh, my name is Bill Crave E. Um I was ah was a coach. I've taught Spanish. I've been an actor. I've been an ostrich. I have been a woman named Bethany Hart. I have been What else is there? A bear? But now I am myself. Ah, and I am 100%. And I am here and I am studying communications. My",
+        "episode": "s06e01",
+        "edited": false
+      },
+      {
+        "id": "bd9e4566-b685-4c14-954c-4ec5dc97e69d",
+        "season": "s06",
+        "time": "0:10:00",
+        "speaker": "spk_2",
+        "line": "Obviously I finally believe back and I finally believe whatever I'm so we're firm believers in the Lord now. Hey, how's it go in? Uh, my name is Bill Crave E. Um I was ah was a coach. I've taught Spanish. I've been an actor. I've been an ostrich. I have been a woman named Bethany Hart. I have been What else is there? A bear? But now I am myself. Ah, and I am 100%. And I am here and I am studying communications. My",
+        "episode": "s06e01",
+        "edited": false
+      },
+      {
+        "id": "2e49c959-47fe-4ee9-8b62-2b67c14566f2",
+        "season": "s07",
+        "time": "0:24:38",
+        "speaker": "spk_1",
+        "line": "that? My name is Bill Cravy. You all know me. I was a ah, basketball coach that was fired after throwing a tray of hot lasagna in the referee's face. That was premeditated. I had made the lasagna before the game, so I can't blame it on quickly going and making a hamburger helper. Ah, lasagna. Uh, then I tricked this Go by, uh, doing a Mrs Doubtfire. My name was Bethany Hart. I forget how that ended. Then I, uh what else did I",
+        "episode": "s07e01",
+        "edited": false
+      },
+      {
+        "id": "a5e8c199-832a-4c7e-8f67-5cb4d69bf2c2",
+        "season": "s07",
+        "time": "0:24:38",
+        "speaker": "spk_1",
+        "line": "that? My name is Bill Cravy. You all know me. I was a ah, basketball coach that was fired after throwing a tray of hot lasagna in the referee's face. That was premeditated. I had made the lasagna before the game, so I can't blame it on quickly going and making a hamburger helper. Ah, lasagna. Uh, then I tricked this Go by, uh, doing a Mrs Doubtfire. My name was Bethany Hart. I forget how that ended. Then I, uh what else did I",
+        "episode": "s07e01",
+        "edited": false
+      },
+      {
+        "id": "3268b968-c795-41f5-9363-7ae1dc5b750e",
+        "season": "s02",
+        "time": "00:03:59",
+        "speaker": "2",
+        "line": "of all saw fall from grace. Pretty classic story, uh, teachers accidentally, with the help of a student set off a dirty bomb at prom and then escape in O J Simpson's Bronco asic story story. As you all know, I was ah, pretending I got fired last season as the basketball coach, So I came back. Addressed is a woman named Bethany Hart. Ah, and was the lunch lady for a while, I started taking Ah! Ah. Well, what I thought was estrogen pills to convince the school that I was actually a woman to really go in deep in the character I was taking ostrich in, um, and it did turn me into a human ostrich hybrid. Um, female female ostrich eso. Ever since we ah, yeah. Ever since we left left the school or were fired, Um, I have been living as an ostrich on, and I went to ah, kind of went to Australia to get back to my roots, um, and live with ostriches for a while. It was ah, really met. You know, I felt like I met my people",
+        "episode": "s02e01",
+        "edited": false
+      },
+      {
+        "id": "bc2cee78-2435-422c-a6b4-4f61334d3f83",
+        "season": "s02",
+        "time": "00:03:59",
+        "speaker": "2",
+        "line": "of all saw fall from grace. Pretty classic story, uh, teachers accidentally, with the help of a student set off a dirty bomb at prom and then escape in O J Simpson's Bronco asic story story. As you all know, I was ah, pretending I got fired last season as the basketball coach, So I came back. Addressed is a woman named Bethany Hart. Ah, and was the lunch lady for a while, I started taking Ah! Ah. Well, what I thought was estrogen pills to convince the school that I was actually a woman to really go in deep in the character I was taking ostrich in, um, and it did turn me into a human ostrich hybrid. Um, female female ostrich eso. Ever since we ah, yeah. Ever since we left left the school or were fired, Um, I have been living as an ostrich on, and I went to ah, kind of went to Australia to get back to my roots, um, and live with ostriches for a while. It was ah, really met. You know, I felt like I met my people",
+        "episode": "s02e01",
+        "edited": false
+      },
+      {
+        "id": "79393795-0fb6-4ee1-bbaf-f7dd51e9ef1b",
+        "season": "s01",
+        "time": "00:04:17",
+        "speaker": "Howard",
+        "line": "Padre Theater. Hi, Bill. Formerly Bill Crave E. Um, now, Bethany Hart. Um, I am fully, uh, transitioning into a woman, as you can see by these ostrich in pills on taking. I think you're doing a beautiful job, by the way. Thank you. I'm getting the hang of this hair and makeup. I really am. What do you guys think? You almost stayed in the lines this time. I did have lines tattooed on my face like a coloring book inside the lines. And I can't even stay inside the lines on my own face there, though. No, but",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "4d10c3d1-df58-4d7f-88ac-a7a389bf4fae",
+        "season": "s01",
+        "time": "00:04:17",
+        "speaker": "Howard",
+        "line": "Padre Theater. Hi, Bill. Formerly Bill Crave E. Um, now, Bethany Hart. Um, I am fully, uh, transitioning into a woman, as you can see by these ostrich in pills on taking. I think you're doing a beautiful job, by the way. Thank you. I'm getting the hang of this hair and makeup. I really am. What do you guys think? You almost stayed in the lines this time. I did have lines tattooed on my face like a coloring book inside the lines. And I can't even stay inside the lines on my own face there, though. No, but",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "3c388e70-7fa5-421c-b699-77ad139ceb13",
+        "season": "s01",
+        "time": "00:06:03",
+        "speaker": "Howard",
+        "line": "a very chill strip club. Basically, where women in just shirts serve, you know, real stripping. Just kind of parading. Yeah, just walking around. I love it. I love I feel very comfortable there, but yeah, I was That was the straw that broke. Um, camel's back. I was let go. Um, but I have been rehired. Um, as you can see, I am dressed as a woman. Um Who? The same woman who? It works with the Better Business bureau of Bethany Hart and I have been rehired here at the school as a lunch lady. S o. You",
+        "episode": "s01e04",
+        "edited": false
+      },
+      {
+        "id": "ea6f248e-6167-46c8-bac2-c165991bb8a1",
+        "season": "s01",
+        "time": "00:06:03",
+        "speaker": "Howard",
+        "line": "a very chill strip club. Basically, where women in just shirts serve, you know, real stripping. Just kind of parading. Yeah, just walking around. I love it. I love I feel very comfortable there, but yeah, I was That was the straw that broke. Um, camel's back. I was let go. Um, but I have been rehired. Um, as you can see, I am dressed as a woman. Um Who? The same woman who? It works with the Better Business bureau of Bethany Hart and I have been rehired here at the school as a lunch lady. S o. You",
+        "episode": "s01e04",
+        "edited": false
+      },
+      {
+        "id": "dc8e4830-cde5-4826-a194-1e621346f1a3",
+        "season": "s01",
+        "time": "00:13:41",
+        "speaker": "Todd",
+        "line": "hard family. Well, as you all know, I broke up with Bethany Hart and I was on the rebound and I met a wonderful woman. And Valerie the D M v are You told me this was you again. Tell",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "d53b3053-c635-4227-927f-3a66c03e3bac",
+        "season": "s01",
+        "time": "00:13:41",
+        "speaker": "Todd",
+        "line": "hard family. Well, as you all know, I broke up with Bethany Hart and I was on the rebound and I met a wonderful woman. And Valerie the D M v are You told me this was you again. Tell",
+        "episode": "s01e06",
+        "edited": false
+      }
+    ],
     "stats": {
-      "estimatedTotalHits": 0,
+      "estimatedTotalHits": 24,
       "processingTime": 0,
-      "facets": []
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s01",
+              "hits": 16
+            },
+            {
+              "ep": "s06",
+              "hits": 2
+            },
+            {
+              "ep": "s07",
+              "hits": 2
+            },
+            {
+              "ep": "s02",
+              "hits": 2
+            },
+            {
+              "ep": "s05",
+              "hits": 2
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "s01e06",
+              "hits": 6
+            },
+            {
+              "ep": "s01e05",
+              "hits": 6
+            },
+            {
+              "ep": "s01e03",
+              "hits": 2
+            },
+            {
+              "ep": "s01e04",
+              "hits": 2
+            },
+            {
+              "ep": "s02e01",
+              "hits": 2
+            },
+            {
+              "ep": "s05e02",
+              "hits": 2
+            },
+            {
+              "ep": "s06e01",
+              "hits": 2
+            },
+            {
+              "ep": "s07e01",
+              "hits": 2
+            }
+          ]
+        }
+      ]
     },
-    "hasMore": false
+    "hasMore": true
   }
 }

@@ -1,13 +1,210 @@
 {
   "query": "south pole santa",
-  "timestamp": 1756596431757,
-  "expiresAt": 1757201231757,
+  "timestamp": 1756597642590,
+  "expiresAt": 1757202442590,
   "result": {
-    "hits": [],
+    "hits": [
+      {
+        "id": "f10fedb6-ea2d-436a-b8bd-7fd264fc585d",
+        "season": "s09",
+        "time": "0:02:46",
+        "speaker": "spk_1",
+        "line": "South Pole Santa. That's right. Um, which after the holiday is called South Pole Santa. That's what we saw.",
+        "episode": "s09e15",
+        "edited": false
+      },
+      {
+        "id": "38cf8469-31b6-431e-8547-58dab05d23aa",
+        "season": "s09",
+        "time": "0:02:46",
+        "speaker": "spk_1",
+        "line": "South Pole Santa. That's right. Um, which after the holiday is called South Pole Santa. That's what we saw.",
+        "episode": "s09e15",
+        "edited": false
+      },
+      {
+        "id": "a3e24fc2-503e-49e0-9eca-38349b5bee02",
+        "season": "s09",
+        "time": "0:03:10",
+        "speaker": "spk_5",
+        "line": "South Pole Santa is the man downstairs. He's down in the South Pole in every year. You know, when he's coming.",
+        "episode": "s09e15",
+        "edited": false
+      },
+      {
+        "id": "0aa8b0c7-473f-4f17-a795-531d28ebd488",
+        "season": "s09",
+        "time": "0:03:10",
+        "speaker": "spk_5",
+        "line": "South Pole Santa is the man downstairs. He's down in the South Pole in every year. You know, when he's coming.",
+        "episode": "s09e15",
+        "edited": false
+      },
+      {
+        "id": "b7d75539-0ea9-4980-a1dc-cf8449fa23ff",
+        "season": "s09",
+        "time": "0:03:42",
+        "speaker": "spk_1",
+        "line": "there are there are other, other new way. Do we want to start expand on the tradition that, you know we do? You obviously, you know, with the normal With regular Sandy, you go to a mall and you sit in his lap there. But of course, with South Pole Santa, you go to a car dealership. That's right. And he sits on your lap and he sits on your lap. Yes,",
+        "episode": "s09e15",
+        "edited": false
+      },
+      {
+        "id": "522b8ca3-dbfd-4a6b-a854-1273574cad99",
+        "season": "s09",
+        "time": "0:03:42",
+        "speaker": "spk_1",
+        "line": "there are there are other, other new way. Do we want to start expand on the tradition that, you know we do? You obviously, you know, with the normal With regular Sandy, you go to a mall and you sit in his lap there. But of course, with South Pole Santa, you go to a car dealership. That's right. And he sits on your lap and he sits on your lap. Yes,",
+        "episode": "s09e15",
+        "edited": false
+      },
+      {
+        "id": "d63f30e7-08b4-438c-b3a6-c51765147e06",
+        "season": "s09",
+        "time": "0:22:11",
+        "speaker": "spk_4",
+        "line": "Yeah, that's right. South Pole Santa will be there.",
+        "episode": "s09e08",
+        "edited": false
+      },
+      {
+        "id": "f2cd2f84-127d-49a0-86da-0e5ac2c8fbae",
+        "season": "s09",
+        "time": "0:22:11",
+        "speaker": "spk_4",
+        "line": "Yeah, that's right. South Pole Santa will be there.",
+        "episode": "s09e08",
+        "edited": false
+      },
+      {
+        "id": "7439a8e2-3ff9-4b83-9ec0-05ad0493204e",
+        "season": "s04",
+        "time": "00:52:51",
+        "speaker": "1",
+        "line": "memorabilia. I saw that when I was playing South Pole Santa and they were looking around. Uh huh. You don't",
+        "episode": "s04e08",
+        "edited": false
+      },
+      {
+        "id": "1933fb0e-4e62-4068-9b7c-b60aaf351baf",
+        "season": "s04",
+        "time": "00:52:51",
+        "speaker": "1",
+        "line": "memorabilia. I saw that when I was playing South Pole Santa and they were looking around. Uh huh. You don't",
+        "episode": "s04e08",
+        "edited": false
+      },
+      {
+        "id": "ae2ee3fe-06db-44f2-9a95-0952c14c398b",
+        "season": "s03",
+        "time": "00:57:30",
+        "speaker": "3",
+        "line": "got the opportunity. Wait s So what we're saying is, if we need to, we will call South Pole Santa, and he will come",
+        "episode": "s03e07",
+        "edited": false
+      },
+      {
+        "id": "fa6f6b13-9b8d-413b-b1b3-5d18f5110e4b",
+        "season": "s03",
+        "time": "00:57:30",
+        "speaker": "3",
+        "line": "got the opportunity. Wait s So what we're saying is, if we need to, we will call South Pole Santa, and he will come",
+        "episode": "s03e07",
+        "edited": false
+      },
+      {
+        "id": "dad92974-d028-4eab-843e-d1238c233283",
+        "season": "s09",
+        "time": "1:07:12",
+        "speaker": "spk_0",
+        "line": "But yet do you want to see South Pole Santa? Sit on the valedictorians lap. Hashtag TBT l and",
+        "episode": "s09e37",
+        "edited": false
+      },
+      {
+        "id": "e8129599-d23a-4cbe-befb-191db95b2789",
+        "season": "s09",
+        "time": "0:05:07",
+        "speaker": "spk_5",
+        "line": "Everyone in the South Pole loved Rudolph. And then Santa had Rudolph follow the sleigh and Rudolph got lost. And so that killed his red nose s. A killer",
+        "episode": "s09e15",
+        "edited": false
+      },
+      {
+        "id": "e5e30eef-416d-4c23-aa8d-23aef6155bf6",
+        "season": "s09",
+        "time": "0:05:07",
+        "speaker": "spk_5",
+        "line": "Everyone in the South Pole loved Rudolph. And then Santa had Rudolph follow the sleigh and Rudolph got lost. And so that killed his red nose s. A killer",
+        "episode": "s09e15",
+        "edited": false
+      },
+      {
+        "id": "b1a04261-77ae-47bb-9f85-e6ecd4ed6e7b",
+        "season": "s04",
+        "time": "00:47:57",
+        "speaker": "1",
+        "line": "I went, and now there was going to ask. Yeah, it was sent to ask. It was in a different world. And this Santa takes presence from kids playing bridge over the South Pole. Sana. But quickly,",
+        "episode": "s04e08",
+        "edited": false
+      },
+      {
+        "id": "85543e15-7c4b-47a6-9f47-2458b48f9be6",
+        "season": "s04",
+        "time": "00:47:57",
+        "speaker": "1",
+        "line": "I went, and now there was going to ask. Yeah, it was sent to ask. It was in a different world. And this Santa takes presence from kids playing bridge over the South Pole. Sana. But quickly,",
+        "episode": "s04e08",
+        "edited": false
+      }
+    ],
     "stats": {
-      "estimatedTotalHits": 0,
+      "estimatedTotalHits": 17,
       "processingTime": 0,
-      "facets": []
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s09",
+              "hits": 11
+            },
+            {
+              "ep": "s04",
+              "hits": 4
+            },
+            {
+              "ep": "s03",
+              "hits": 2
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "s09e15",
+              "hits": 8
+            },
+            {
+              "ep": "s04e08",
+              "hits": 4
+            },
+            {
+              "ep": "s03e07",
+              "hits": 2
+            },
+            {
+              "ep": "s09e08",
+              "hits": 2
+            },
+            {
+              "ep": "s09e37",
+              "hits": 1
+            }
+          ]
+        }
+      ]
     },
     "hasMore": false
   }

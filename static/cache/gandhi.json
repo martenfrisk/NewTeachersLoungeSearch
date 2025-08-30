@@ -1,14 +1,246 @@
 {
   "query": "Gandhi",
-  "timestamp": 1756596431760,
-  "expiresAt": 1757201231760,
+  "timestamp": 1756597647838,
+  "expiresAt": 1757202447838,
   "result": {
-    "hits": [],
+    "hits": [
+      {
+        "id": "10a761c7-ab11-4d70-801e-831f9c74d784",
+        "season": "holidays",
+        "time": "0:12:04",
+        "speaker": "spk_4",
+        "line": "If you know anybody that wants a thing that says in loving memory of Gandhi. No, it says Gandhi. With the picture of Gandhi with someone's grandpa in his stomach.",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "02271db1-5448-45c6-9d13-a3e3cb788142",
+        "season": "holidays",
+        "time": "0:12:04",
+        "speaker": "spk_4",
+        "line": "If you know anybody that wants a thing that says in loving memory of Gandhi. No, it says Gandhi. With the picture of Gandhi with someone's grandpa in his stomach.",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "1879de99-0773-48d3-ace0-f57c777082aa",
+        "season": "holidays",
+        "time": "0:03:53",
+        "speaker": "spk_7",
+        "line": "It's it's a talking And I see my I see my father's face in Gandhi's belly. Yo. It's Gandhi.",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "45fbcc9f-3e05-4e72-a0a5-c800f7117b5c",
+        "season": "holidays",
+        "time": "0:03:53",
+        "speaker": "spk_7",
+        "line": "It's it's a talking And I see my I see my father's face in Gandhi's belly. Yo. It's Gandhi.",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "a3cfa074-0384-4525-ac95-20412ab2edda",
+        "season": "holidays",
+        "time": "0:04:48",
+        "speaker": "spk_7",
+        "line": "Every fifteen seconds, this like says Gandhi, and it's a picture of Gandhi with my dad's face. Yeah. Hit the belly.",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "0c8b605e-2270-4da5-90f0-6f2d573a549d",
+        "season": "holidays",
+        "time": "0:04:48",
+        "speaker": "spk_7",
+        "line": "Every fifteen seconds, this like says Gandhi, and it's a picture of Gandhi with my dad's face. Yeah. Hit the belly.",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "2a088608-76ac-4aae-9dc5-015a40263586",
+        "season": "holidays",
+        "time": "0:15:20",
+        "speaker": "spk_4",
+        "line": "I thought there was an issue. With autocorrect. That Gandhi is being autocorrect into stuff like Gandhi, Gaters.",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "89319ce2-d947-4249-82a9-edf3e1a0e237",
+        "season": "holidays",
+        "time": "0:15:20",
+        "speaker": "spk_4",
+        "line": "I thought there was an issue. With autocorrect. That Gandhi is being autocorrect into stuff like Gandhi, Gaters.",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "34111f3c-f0cc-49e4-bd79-447eb2916bdf",
+        "season": "s09",
+        "time": "1:01:26",
+        "speaker": "spk_4",
+        "line": "It's just he does Gandhi all of a sudden, you know, they put him in whatever. I can't name another bank. Sexy beast. You, Gandhi and I can't do a single play for five years.",
+        "episode": "s09e04",
+        "edited": false
+      },
+      {
+        "id": "28661eb2-68b2-48c0-933a-5b0f6347b15b",
+        "season": "s09",
+        "time": "1:01:26",
+        "speaker": "spk_4",
+        "line": "It's just he does Gandhi all of a sudden, you know, they put him in whatever. I can't name another bank. Sexy beast. You, Gandhi and I can't do a single play for five years.",
+        "episode": "s09e04",
+        "edited": false
+      },
+      {
+        "id": "bf2094cd-a38f-4dc8-8da1-0627cac5f288",
+        "season": "holidays",
+        "time": "0:02:44",
+        "speaker": "spk_4",
+        "line": "And it's just That's unfortunate because I just thought you meant Gandhi. But I spelled it",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "f399379a-df42-4454-91c7-978e0c07dfb3",
+        "season": "holidays",
+        "time": "0:02:44",
+        "speaker": "spk_4",
+        "line": "And it's just That's unfortunate because I just thought you meant Gandhi. But I spelled it",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "295841a6-27b9-4ab7-87b4-39ab39f8ba50",
+        "season": "holidays",
+        "time": "0:04:09",
+        "speaker": "spk_4",
+        "line": "Gandhi finally got that nice big meal.",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "433934dc-b2ab-4810-8ac3-408e3d70f9ab",
+        "season": "holidays",
+        "time": "0:04:09",
+        "speaker": "spk_4",
+        "line": "Gandhi finally got that nice big meal.",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "50003dd7-0c64-45e6-8b50-5cf053e01a44",
+        "season": "holidays",
+        "time": "0:04:42",
+        "speaker": "spk_3",
+        "line": "So does it stop saying Gandhi at night?",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "5a7a312b-fd2c-4016-a364-a9826cd3fb1b",
+        "season": "holidays",
+        "time": "0:04:42",
+        "speaker": "spk_3",
+        "line": "So does it stop saying Gandhi at night?",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "e0de9984-f6b7-41b5-84a8-4fff12462ff1",
+        "season": "holidays",
+        "time": "0:04:44",
+        "speaker": "spk_8",
+        "line": "Gandhi. I guess not.",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "465cf5da-b044-4aa1-927f-796f95f99491",
+        "season": "holidays",
+        "time": "0:04:44",
+        "speaker": "spk_8",
+        "line": "Gandhi. I guess not.",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "9f08dc55-c8b8-42fb-ac71-a109e298aa02",
+        "season": "holidays",
+        "time": "0:11:50",
+        "speaker": "spk_8",
+        "line": "Hey. How do you like the Gandhi piece?",
+        "episode": "holidays-8",
+        "edited": false
+      },
+      {
+        "id": "9718fe14-04ef-49ec-8a95-62e8a864b7bc",
+        "season": "holidays",
+        "time": "0:11:50",
+        "speaker": "spk_8",
+        "line": "Hey. How do you like the Gandhi piece?",
+        "episode": "holidays-8",
+        "edited": false
+      }
+    ],
     "stats": {
-      "estimatedTotalHits": 0,
+      "estimatedTotalHits": 48,
       "processingTime": 0,
-      "facets": []
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "holidays",
+              "hits": 40
+            },
+            {
+              "ep": "s09",
+              "hits": 4
+            },
+            {
+              "ep": "s06",
+              "hits": 2
+            },
+            {
+              "ep": "s04",
+              "hits": 2
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "holidays-8",
+              "hits": 36
+            },
+            {
+              "ep": "holidays-9",
+              "hits": 4
+            },
+            {
+              "ep": "s04e01",
+              "hits": 2
+            },
+            {
+              "ep": "s06e01",
+              "hits": 2
+            },
+            {
+              "ep": "s09e04",
+              "hits": 2
+            },
+            {
+              "ep": "s09e20",
+              "hits": 2
+            }
+          ]
+        }
+      ]
     },
-    "hasMore": false
+    "hasMore": true
   }
 }

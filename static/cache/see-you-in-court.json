@@ -1,14 +1,278 @@
 {
   "query": "see you in court",
-  "timestamp": 1756596431757,
-  "expiresAt": 1757201231757,
+  "timestamp": 1756597641256,
+  "expiresAt": 1757202441256,
   "result": {
-    "hits": [],
+    "hits": [
+      {
+        "id": "7d447f99-d02b-4d05-b4f6-506b34d80717",
+        "season": "s02",
+        "time": "00:30:11",
+        "speaker": "1",
+        "line": "we'll see you in class, everybody, And I'll see you in court. One of unjust, and I'll see you in court. Perhaps it's a lot like Mr Weather ever. That was not him. Yeah. If I'm under",
+        "episode": "s02e02",
+        "edited": false
+      },
+      {
+        "id": "2448938a-69e4-4b70-884b-56362e9f24c2",
+        "season": "s02",
+        "time": "00:30:11",
+        "speaker": "1",
+        "line": "we'll see you in class, everybody, And I'll see you in court. One of unjust, and I'll see you in court. Perhaps it's a lot like Mr Weather ever. That was not him. Yeah. If I'm under",
+        "episode": "s02e02",
+        "edited": false
+      },
+      {
+        "id": "6dc73a40-d395-47c8-97d0-0656e03cd1e2",
+        "season": "s01",
+        "time": "00:41:08",
+        "speaker": "Howard",
+        "line": "lipstick. But we, um I wanna raining. I see. I'll see you in court, motherfucker. Look, I'll do it. I'm saying now I'll do it and just everybody put your phones away. I don't want you accidentally take a picture or anything like that. I'm about to do pictures. I just got an email from you. To what? What? Yeah. Oh, my God. Good God.",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "1f11151d-a79a-43f7-a757-68f3b90f427b",
+        "season": "s01",
+        "time": "00:41:08",
+        "speaker": "Howard",
+        "line": "lipstick. But we, um I wanna raining. I see. I'll see you in court, motherfucker. Look, I'll do it. I'm saying now I'll do it and just everybody put your phones away. I don't want you accidentally take a picture or anything like that. I'm about to do pictures. I just got an email from you. To what? What? Yeah. Oh, my God. Good God.",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "c73c5a4e-d91e-4b01-ad1f-fac2d6bd88b0",
+        "season": "s01",
+        "time": "00:39:08",
+        "speaker": "Sam",
+        "line": "Hale now? Okay, so I'll see you. I'll see you in court. Them war. Do you know what that's like? I",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "b09bc3b1-5376-4418-ba1e-e251595cb784",
+        "season": "s01",
+        "time": "00:39:08",
+        "speaker": "Sam",
+        "line": "Hale now? Okay, so I'll see you. I'll see you in court. Them war. Do you know what that's like? I",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "0532050f-8b99-43f4-a526-b89ddcd037a9",
+        "season": "s01",
+        "time": "00:14:58",
+        "speaker": "Howard",
+        "line": "Right on the bus. Yeah. Free. Fair to go wherever I want. Thio again. Making transportation easier. Did you know I was court ordered to stop seeing her? I was seeing her for a while, but we kept getting in crashes because even me. Just being on the bus was too much. Wow. It was kind of like secondhand. You're nothing but driving. Yeah, she could not do both. Drive the bus and think therapeutically at the same time. Really? Are you okay?",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "6a3fd609-5577-4833-a607-d81112815e2b",
+        "season": "s01",
+        "time": "00:14:58",
+        "speaker": "Howard",
+        "line": "Right on the bus. Yeah. Free. Fair to go wherever I want. Thio again. Making transportation easier. Did you know I was court ordered to stop seeing her? I was seeing her for a while, but we kept getting in crashes because even me. Just being on the bus was too much. Wow. It was kind of like secondhand. You're nothing but driving. Yeah, she could not do both. Drive the bus and think therapeutically at the same time. Really? Are you okay?",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "bc1e0104-aa1d-49af-af84-ba696fb988c9",
+        "season": "s02",
+        "time": "01:03:03",
+        "speaker": "3",
+        "line": "Oh, my God. Steve just threw a court summons at you. Oh, Jesus Christ, Steve. You'll see me in court looking me, Steve gabbing Steve by both cheeks, pulling his face cars miss, but wide. So you in court",
+        "episode": "s02e05",
+        "edited": false
+      },
+      {
+        "id": "893af212-7fb9-414c-a288-150ae486ecce",
+        "season": "s02",
+        "time": "01:03:03",
+        "speaker": "3",
+        "line": "Oh, my God. Steve just threw a court summons at you. Oh, Jesus Christ, Steve. You'll see me in court looking me, Steve gabbing Steve by both cheeks, pulling his face cars miss, but wide. So you in court",
+        "episode": "s02e05",
+        "edited": false
+      },
+      {
+        "id": "259ef2b7-5295-4452-a709-99ae8074137b",
+        "season": "unknown",
+        "time": "0:26:59",
+        "speaker": "spk_0",
+        "line": "So we owe somebody Raise your hand if you booed. Yeah, we do not like confrontation. Yeah. What? See you in court. So",
+        "episode": "Peecast",
+        "edited": false
+      },
+      {
+        "id": "4b186346-27a9-46bf-aad9-84ed1c0d463f",
+        "season": "unknown",
+        "time": "0:26:59",
+        "speaker": "spk_0",
+        "line": "So we owe somebody Raise your hand if you booed. Yeah, we do not like confrontation. Yeah. What? See you in court. So",
+        "episode": "Peecast",
+        "edited": false
+      },
+      {
+        "id": "c654227f-e63c-4b40-86fd-2704d255ab4b",
+        "season": "s05",
+        "time": "0:41:02",
+        "speaker": "Speaker 3",
+        "line": "All right, fine. I guess I won't see you in court. Get fucked! Wow. Wow! Oh, my God.",
+        "episode": "s05e08",
+        "edited": false
+      },
+      {
+        "id": "b07dc208-b10e-46af-af89-aa5ca2ae0d7c",
+        "season": "s01",
+        "time": "00:02:10",
+        "speaker": "Howard",
+        "line": "is looking really good. Jesus. I didn't think anybody could see those feathers court. We can. You're covered in them. You're",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "7ef01dcf-0096-423c-8e5d-c08e0f5bfdfa",
+        "season": "s01",
+        "time": "00:02:10",
+        "speaker": "Howard",
+        "line": "is looking really good. Jesus. I didn't think anybody could see those feathers court. We can. You're covered in them. You're",
+        "episode": "s01e06",
+        "edited": false
+      },
+      {
+        "id": "22c0fd96-6576-4769-b4f9-8f9a491f478c",
+        "season": "s03",
+        "time": "00:33:33",
+        "speaker": "4",
+        "line": "Human which they spend too much time talking about in the in the er. It's a bad doctor manner. It's poorly made. And honestly, I have many, many friends in the law community now. Good. So if you ever need anything, don't worry about it. Yeah, Yeah, that's good to know. Yeah, because they know what they know. What will happen if they keep pressing you. They'll have thio. So sue me. Yeah. See you in court. God, we love going to",
+        "episode": "s03e04",
+        "edited": false
+      },
+      {
+        "id": "5282211d-4fc8-4985-894b-2c8f98cd0509",
+        "season": "s03",
+        "time": "00:33:33",
+        "speaker": "4",
+        "line": "Human which they spend too much time talking about in the in the er. It's a bad doctor manner. It's poorly made. And honestly, I have many, many friends in the law community now. Good. So if you ever need anything, don't worry about it. Yeah, Yeah, that's good to know. Yeah, because they know what they know. What will happen if they keep pressing you. They'll have thio. So sue me. Yeah. See you in court. God, we love going to",
+        "episode": "s03e04",
+        "edited": false
+      },
+      {
+        "id": "b64d8c9d-5b43-46c4-8e9a-02629adaf4eb",
+        "season": "s03",
+        "time": "00:38:03",
+        "speaker": "1",
+        "line": "will see you in court. Hashtag tricky dick Hash tag Nixon hashtag tricky dick refers to my Penis being sneaky. You",
+        "episode": "s03e03",
+        "edited": false
+      },
+      {
+        "id": "76231327-6b05-4cb0-b491-7ed14e6fe994",
+        "season": "s03",
+        "time": "00:38:03",
+        "speaker": "1",
+        "line": "will see you in court. Hashtag tricky dick Hash tag Nixon hashtag tricky dick refers to my Penis being sneaky. You",
+        "episode": "s03e03",
+        "edited": false
+      },
+      {
+        "id": "970f691a-3ab9-49d9-a871-5ccf82b9d924",
+        "season": "s01",
+        "time": "00:39:53",
+        "speaker": "Howard",
+        "line": "Bradley Cooper. Oh, my God. If we just listen where you'll see us in court because we're not gonna kiss you because you're under have Todd's lawyer. Can he represent me as well? Yeah, absolutely. I think you'd be happy to you. And your lawyer is a real doll. Is that correct? Yes. Kind of like the Ryan Gosling movie Lars and the real girl. It",
+        "episode": "s01e06",
+        "edited": false
+      }
+    ],
     "stats": {
-      "estimatedTotalHits": 0,
+      "estimatedTotalHits": 71,
       "processingTime": 0,
-      "facets": []
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s01",
+              "hits": 13
+            },
+            {
+              "ep": "s05",
+              "hits": 10
+            },
+            {
+              "ep": "s02",
+              "hits": 10
+            },
+            {
+              "ep": "s06",
+              "hits": 8
+            },
+            {
+              "ep": "s09",
+              "hits": 7
+            },
+            {
+              "ep": "mini",
+              "hits": 6
+            },
+            {
+              "ep": "s03",
+              "hits": 6
+            },
+            {
+              "ep": "holidays",
+              "hits": 4
+            },
+            {
+              "ep": "lastresort",
+              "hits": 2
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "s01e06",
+              "hits": 12
+            },
+            {
+              "ep": "s06e05",
+              "hits": 8
+            },
+            {
+              "ep": "s05e06",
+              "hits": 6
+            },
+            {
+              "ep": "s03e03",
+              "hits": 4
+            },
+            {
+              "ep": "s02e04",
+              "hits": 4
+            },
+            {
+              "ep": "s02e05",
+              "hits": 4
+            },
+            {
+              "ep": "Peecast",
+              "hits": 2
+            },
+            {
+              "ep": "holidays-10",
+              "hits": 2
+            },
+            {
+              "ep": "holidays-6",
+              "hits": 2
+            }
+          ]
+        }
+      ]
     },
-    "hasMore": false
+    "hasMore": true
   }
 }

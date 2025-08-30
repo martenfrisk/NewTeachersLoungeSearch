@@ -1,14 +1,278 @@
 {
   "query": "lasagna",
-  "timestamp": 1756596431756,
-  "expiresAt": 1757201231756,
+  "timestamp": 1756597639916,
+  "expiresAt": 1757202439916,
   "result": {
-    "hits": [],
+    "hits": [
+      {
+        "id": "30a30bcf-3451-46fe-b3a3-5eae8463ee8e",
+        "season": "s01",
+        "time": "0:11:55",
+        "speaker": "Speaker 3",
+        "line": "I'll say this, in a pinch, I've had old lasagna, and I've had lasagna covered in Gatorade powder, but I have never had old lasagna covered in Gatorade powder, and that just seems like a deadly mix for a 16-year-old stomach or a 72-year-old stomach. I was so mad after we lost that game, I started a very believable...",
+        "episode": "s01e02",
+        "edited": false
+      },
+      {
+        "id": "a5e8c199-832a-4c7e-8f67-5cb4d69bf2c2",
+        "season": "s07",
+        "time": "0:24:38",
+        "speaker": "spk_1",
+        "line": "that? My name is Bill Cravy. You all know me. I was a ah, basketball coach that was fired after throwing a tray of hot lasagna in the referee's face. That was premeditated. I had made the lasagna before the game, so I can't blame it on quickly going and making a hamburger helper. Ah, lasagna. Uh, then I tricked this Go by, uh, doing a Mrs Doubtfire. My name was Bethany Hart. I forget how that ended. Then I, uh what else did I",
+        "episode": "s07e01",
+        "edited": false
+      },
+      {
+        "id": "2e49c959-47fe-4ee9-8b62-2b67c14566f2",
+        "season": "s07",
+        "time": "0:24:38",
+        "speaker": "spk_1",
+        "line": "that? My name is Bill Cravy. You all know me. I was a ah, basketball coach that was fired after throwing a tray of hot lasagna in the referee's face. That was premeditated. I had made the lasagna before the game, so I can't blame it on quickly going and making a hamburger helper. Ah, lasagna. Uh, then I tricked this Go by, uh, doing a Mrs Doubtfire. My name was Bethany Hart. I forget how that ended. Then I, uh what else did I",
+        "episode": "s07e01",
+        "edited": false
+      },
+      {
+        "id": "7250d056-ba14-4b43-8f7f-91c7180be333",
+        "season": "s01",
+        "time": "0:34:05",
+        "speaker": "Bill",
+        "line": "That's exactly what happened. There was, no they don't serve lasagna during a game. I brought in lasagna because I said, if anything goes down with any of these refs, I am throwing a full plate of lasagna in their face. You know, if they made a call against my,",
+        "episode": "s01e01",
+        "edited": true
+      },
+      {
+        "id": "dbbd3b1e-913b-4a81-a5a3-de9f1b9f9730",
+        "season": "s01",
+        "time": "0:34:05",
+        "speaker": "Bill",
+        "line": "That's exactly what happened. There was, no they don't serve lasagna during a game. I brought in lasagna because I said, if anything goes down with any of these refs, I am throwing a full plate of lasagna in their face. You know, if they made a call against my,",
+        "episode": "s01e01",
+        "edited": true
+      },
+      {
+        "id": "ddfe87c2-738f-41b1-8949-e24151bfdf63",
+        "season": "s01",
+        "time": "00:12:04",
+        "speaker": "Sam",
+        "line": "you that don't know, I typically in order to help give my team and advantage, I will attempt to poison the other team or hurt them via usually lasagnas poisoned lasagnas, spoiled lasagnas. Uh, and this game was no different whatsoever. My back Thio, an Italian catering truck up to the porch, reports on the",
+        "episode": "s01e03",
+        "edited": false
+      },
+      {
+        "id": "212ce953-1c92-422a-a4b8-1af589433f3d",
+        "season": "s01",
+        "time": "00:12:04",
+        "speaker": "Sam",
+        "line": "you that don't know, I typically in order to help give my team and advantage, I will attempt to poison the other team or hurt them via usually lasagnas poisoned lasagnas, spoiled lasagnas. Uh, and this game was no different whatsoever. My back Thio, an Italian catering truck up to the porch, reports on the",
+        "episode": "s01e03",
+        "edited": false
+      },
+      {
+        "id": "038a4ff4-04c1-41c7-892f-0327e4c2f3b4",
+        "season": "unknown",
+        "time": "0:02:13",
+        "speaker": "spk_0",
+        "line": "Amazing. Thank you. Thank you. Bye, guys. My name is Bill Cravy. Okay, Okay. Thank you very much. I'm holding a basketball. So, you know, I'm a basketball couch. I used to coach a college basketball. I was fired for throwing a lot lasagna at the opposing team's coach. I think poisoning poison ledges, lasagna, and I Fred it to the other team. Is that the story line? It's been a",
+        "episode": "Peecast",
+        "edited": false
+      },
+      {
+        "id": "4b845a32-0b82-490a-94ad-2dd4af0c48f9",
+        "season": "unknown",
+        "time": "0:02:13",
+        "speaker": "spk_0",
+        "line": "Amazing. Thank you. Thank you. Bye, guys. My name is Bill Cravy. Okay, Okay. Thank you very much. I'm holding a basketball. So, you know, I'm a basketball couch. I used to coach a college basketball. I was fired for throwing a lot lasagna at the opposing team's coach. I think poisoning poison ledges, lasagna, and I Fred it to the other team. Is that the story line? It's been a",
+        "episode": "Peecast",
+        "edited": false
+      },
+      {
+        "id": "918bd4fa-bca8-4ac9-b31c-915ed7ee793b",
+        "season": "s01",
+        "time": "0:10:07",
+        "speaker": "Speaker 1",
+        "line": "Thank you. While they were defecating themselves, they were still scoring good points. And I would like to take responsibility for food poisoning the other team right now. I was in a blind rage after the first half. Now, was this another lasagna? We've heard that you've used a lasagna against a team before.",
+        "episode": "s01e02",
+        "edited": false
+      },
+      {
+        "id": "0226f0cb-fed1-4290-b5d8-abe5f0e9b4a4",
+        "season": "s03",
+        "time": "00:07:46",
+        "speaker": "1",
+        "line": "on your bench instead of that. What is that? And we said, is a bird baked in a dish on and they said, Well, what I buy how we get it But that's a lasagna dish would be okay if we're being honest. That's one of the most common birds in our town. Right? Baked was on your bird. You see good baked bird for Thanksgiving. It's the center of the table of that big bird thing. Absolutely. So I'm cooking lasagna and for my little robot son, they eat well, they sit with me, and then they eat. And then",
+        "episode": "s03e06",
+        "edited": false
+      },
+      {
+        "id": "73e95225-fe07-49ff-9a98-3f184930f7aa",
+        "season": "s03",
+        "time": "00:07:46",
+        "speaker": "1",
+        "line": "on your bench instead of that. What is that? And we said, is a bird baked in a dish on and they said, Well, what I buy how we get it But that's a lasagna dish would be okay if we're being honest. That's one of the most common birds in our town. Right? Baked was on your bird. You see good baked bird for Thanksgiving. It's the center of the table of that big bird thing. Absolutely. So I'm cooking lasagna and for my little robot son, they eat well, they sit with me, and then they eat. And then",
+        "episode": "s03e06",
+        "edited": false
+      },
+      {
+        "id": "e5446c21-1daf-4529-98c8-bdf650e2ac05",
+        "season": "s03",
+        "time": "00:40:51",
+        "speaker": "2",
+        "line": "Yeah, he poisons competing sports teams with his losing. Yeah, I used to make poison lasagna and give it to opposing teams. And this guy's lasagna could make Garfield turn his nose up.",
+        "episode": "s03e01",
+        "edited": false
+      },
+      {
+        "id": "b20229ed-8df2-46d4-b751-cbc748791d20",
+        "season": "s03",
+        "time": "00:40:51",
+        "speaker": "2",
+        "line": "Yeah, he poisons competing sports teams with his losing. Yeah, I used to make poison lasagna and give it to opposing teams. And this guy's lasagna could make Garfield turn his nose up.",
+        "episode": "s03e01",
+        "edited": false
+      },
+      {
+        "id": "1961afcb-a78c-42cb-ab15-a5d25424fa5e",
+        "season": "s01",
+        "time": "01:03:40",
+        "speaker": "Howard",
+        "line": "lasagna six times in the past four days. It's been for breakfast and lunch to Yes. Yeah, that's our old lasagnas that I used to poison other teams with. And I'm getting them into the lunch breakfast. Well, you know, a lot. A lot went down today on the teacher's lounge. Guys, thank you so much for listening. I honestly don't know how we come back from this. I don't either. Uh, hopefully we don't get canceled on. We can. We can sort of reforma next week and and and see what's going on. But thank you so much next week for the taste is getting into some type of pod.",
+        "episode": "s01e04",
+        "edited": false
+      },
+      {
+        "id": "455218f3-c24e-46cd-8dea-77c4ac2504e5",
+        "season": "s01",
+        "time": "01:03:40",
+        "speaker": "Howard",
+        "line": "lasagna six times in the past four days. It's been for breakfast and lunch to Yes. Yeah, that's our old lasagnas that I used to poison other teams with. And I'm getting them into the lunch breakfast. Well, you know, a lot. A lot went down today on the teacher's lounge. Guys, thank you so much for listening. I honestly don't know how we come back from this. I don't either. Uh, hopefully we don't get canceled on. We can. We can sort of reforma next week and and and see what's going on. But thank you so much next week for the taste is getting into some type of pod.",
+        "episode": "s01e04",
+        "edited": false
+      },
+      {
+        "id": "5103ba9f-e2e9-4d85-95db-390e95655617",
+        "season": "s07",
+        "time": "1:03:50",
+        "speaker": "spk_1",
+        "line": "So you eat ask. You eat pushy. What else? Like what do you make lasagna? Lasagna?",
+        "episode": "s07e03",
+        "edited": false
+      },
+      {
+        "id": "d4336830-eb9d-4d96-a5c0-508c832a5b63",
+        "season": "s07",
+        "time": "1:03:50",
+        "speaker": "spk_1",
+        "line": "So you eat ask. You eat pushy. What else? Like what do you make lasagna? Lasagna?",
+        "episode": "s07e03",
+        "edited": false
+      },
+      {
+        "id": "653e88b8-c9b1-4f37-a663-2ce8a2ce92de",
+        "season": "s05",
+        "time": "0:01:18",
+        "speaker": "spk_1",
+        "line": "talk about a cartoon hand. It was making a lasagna on the scene.",
+        "episode": "s05e02",
+        "edited": false
+      },
+      {
+        "id": "6df27307-4e38-4d69-8970-d81adc0af0ca",
+        "season": "s05",
+        "time": "0:01:18",
+        "speaker": "spk_1",
+        "line": "talk about a cartoon hand. It was making a lasagna on the scene.",
+        "episode": "s05e02",
+        "edited": false
+      }
+    ],
     "stats": {
-      "estimatedTotalHits": 0,
+      "estimatedTotalHits": 72,
       "processingTime": 0,
-      "facets": []
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s03",
+              "hits": 20
+            },
+            {
+              "ep": "mini",
+              "hits": 14
+            },
+            {
+              "ep": "s01",
+              "hits": 14
+            },
+            {
+              "ep": "s07",
+              "hits": 8
+            },
+            {
+              "ep": "s09",
+              "hits": 5
+            },
+            {
+              "ep": "s05",
+              "hits": 4
+            },
+            {
+              "ep": "s02",
+              "hits": 2
+            },
+            {
+              "ep": "s10",
+              "hits": 2
+            },
+            {
+              "ep": "unknown",
+              "hits": 2
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "s03e01",
+              "hits": 10
+            },
+            {
+              "ep": "s03e06",
+              "hits": 10
+            },
+            {
+              "ep": "s07e03",
+              "hits": 6
+            },
+            {
+              "ep": "s01e01",
+              "hits": 6
+            },
+            {
+              "ep": "mini-53",
+              "hits": 6
+            },
+            {
+              "ep": "s01e03",
+              "hits": 4
+            },
+            {
+              "ep": "mini-38",
+              "hits": 4
+            },
+            {
+              "ep": "s01e02",
+              "hits": 2
+            },
+            {
+              "ep": "mini-48",
+              "hits": 2
+            }
+          ]
+        }
+      ]
     },
-    "hasMore": false
+    "hasMore": true
   }
 }

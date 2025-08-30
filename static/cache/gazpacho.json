@@ -1,13 +1,95 @@
 {
   "query": "gazpacho",
-  "timestamp": 1756596431760,
-  "expiresAt": 1757201231760,
+  "timestamp": 1756597648161,
+  "expiresAt": 1757202448161,
   "result": {
-    "hits": [],
+    "hits": [
+      {
+        "id": "38e5617e-6bc0-4c85-83c2-009b202f3b5e",
+        "season": "exit42",
+        "time": "0:12:54",
+        "speaker": "spk_3",
+        "line": "Time for the splash zone. I knew he sounded fever. He sounds like the saw guy. Are we in a weird saw thing? Wait. I thought the splash zone was gonna be Gespacho. It's seemingly blood. No. Robert, please make us cold soon. What a let me just came hungry. When does Gespachio when does Gespachio come into play? Robert, just please do gazpacho next. This place is called Robert's gazpacho. Please do Gespacho.",
+        "episode": "exit42-14",
+        "edited": false
+      },
+      {
+        "id": "0c3cd037-f54e-41e2-b68f-cf3521e705d9",
+        "season": "exit42",
+        "time": "0:12:54",
+        "speaker": "spk_3",
+        "line": "Time for the splash zone. I knew he sounded fever. He sounds like the saw guy. Are we in a weird saw thing? Wait. I thought the splash zone was gonna be Gespacho. It's seemingly blood. No. Robert, please make us cold soon. What a let me just came hungry. When does Gespachio when does Gespachio come into play? Robert, just please do gazpacho next. This place is called Robert's gazpacho. Please do Gespacho.",
+        "episode": "exit42-14",
+        "edited": false
+      },
+      {
+        "id": "d5cf3d87-a20c-4dc5-a764-f468f2b170af",
+        "season": "exit42",
+        "time": "0:08:58",
+        "speaker": "spk_3",
+        "line": "He just threw a couple of gazpacho on him. And who are these children running around the stage throwing Gespacho. There there was a perfect opportunity to rhyme and say Gespacho. And he said, cold soup. Do do do do do do do do do do do do Okay. Getting kind of into it though. Alrighty then. Somebody stop me.",
+        "episode": "exit42-14",
+        "edited": false
+      },
+      {
+        "id": "b2aa10b5-e547-41ee-88d4-67dfea9b443b",
+        "season": "exit42",
+        "time": "0:08:58",
+        "speaker": "spk_3",
+        "line": "He just threw a couple of gazpacho on him. And who are these children running around the stage throwing Gespacho. There there was a perfect opportunity to rhyme and say Gespacho. And he said, cold soup. Do do do do do do do do do do do do Okay. Getting kind of into it though. Alrighty then. Somebody stop me.",
+        "episode": "exit42-14",
+        "edited": false
+      },
+      {
+        "id": "535c4311-6c4b-4bb0-baa6-1f8417bda889",
+        "season": "s09",
+        "time": "1:13:16",
+        "speaker": "spk_3",
+        "line": "We see a bunch of Jason Biggs looks at a big gazpacho.",
+        "episode": "s09e35",
+        "edited": false
+      },
+      {
+        "id": "1851762d-b67b-4d23-aac9-f0ec5bdd15c6",
+        "season": "s09",
+        "time": "1:13:16",
+        "speaker": "spk_3",
+        "line": "We see a bunch of Jason Biggs looks at a big gazpacho.",
+        "episode": "s09e35",
+        "edited": false
+      }
+    ],
     "stats": {
-      "estimatedTotalHits": 0,
+      "estimatedTotalHits": 6,
       "processingTime": 0,
-      "facets": []
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "exit42",
+              "hits": 4
+            },
+            {
+              "ep": "s09",
+              "hits": 2
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "exit42-14",
+              "hits": 4
+            },
+            {
+              "ep": "s09e35",
+              "hits": 2
+            }
+          ]
+        }
+      ]
     },
     "hasMore": false
   }

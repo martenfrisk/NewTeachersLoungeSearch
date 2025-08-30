@@ -1,14 +1,278 @@
 {
   "query": "refrigerator",
-  "timestamp": 1756596431759,
-  "expiresAt": 1757201231759,
+  "timestamp": 1756597647194,
+  "expiresAt": 1757202447194,
   "result": {
-    "hits": [],
+    "hits": [
+      {
+        "id": "add90334-beec-4788-bcdb-c1805bd44f41",
+        "season": "s03",
+        "time": "00:59:20",
+        "speaker": "1",
+        "line": "these Let's grab this refrigerator. Let's grab this refrigerator. Everybody dress up like a refrigerator and I'll push you across the police line",
+        "episode": "s03e08",
+        "edited": false
+      },
+      {
+        "id": "dcf577f7-0cae-46b4-a8ba-0938793311fd",
+        "season": "s03",
+        "time": "00:59:20",
+        "speaker": "1",
+        "line": "these Let's grab this refrigerator. Let's grab this refrigerator. Everybody dress up like a refrigerator and I'll push you across the police line",
+        "episode": "s03e08",
+        "edited": false
+      },
+      {
+        "id": "cf43d22e-a847-42a3-8f5e-14ac660d776b",
+        "season": "s10",
+        "time": "0:02:43",
+        "speaker": "spk_1",
+        "line": "He's also selling old refrigerators out of there. For refrigerators in the parking lot. Oh, from Jimmy's thin fridges. That's right. Yeah. It's all thin fridges. They're made Most of them are made to hold only sodas sideways. So with the soda can't all the way up, do not pull from the bottom.",
+        "episode": "s10e05",
+        "edited": false
+      },
+      {
+        "id": "28d69357-5f56-4b38-8fdd-9e317052c5f0",
+        "season": "exit42",
+        "time": "0:06:29",
+        "speaker": "spk_3",
+        "line": "And that is my cross to bear. Daddy too fast. I just wanted to say, hearing you bust up like that really shot to my core and I would like everyone to know that even though I drive refrigerated goods in an unrefrigerated truck, because I could not afford to put the coolant back in my refrigerator truck. So I have to make sure I get whatever goods and and services. There's some services. In the back of my truck, there's customer service agent Sometimes there's cleaning people trainers. But I would go off route and try to find your daddy. That's a good process. Bitch",
+        "episode": "exit42-8",
+        "edited": false
+      },
+      {
+        "id": "d7ad8af9-71c0-4760-a88a-c092830fdb49",
+        "season": "exit42",
+        "time": "0:06:29",
+        "speaker": "spk_3",
+        "line": "And that is my cross to bear. Daddy too fast. I just wanted to say, hearing you bust up like that really shot to my core and I would like everyone to know that even though I drive refrigerated goods in an unrefrigerated truck, because I could not afford to put the coolant back in my refrigerator truck. So I have to make sure I get whatever goods and and services. There's some services. In the back of my truck, there's customer service agent Sometimes there's cleaning people trainers. But I would go off route and try to find your daddy. That's a good process. Bitch",
+        "episode": "exit42-8",
+        "edited": false
+      },
+      {
+        "id": "cad7c030-a094-477f-8fe4-f601a3638a3e",
+        "season": "mini",
+        "time": "0:25:23",
+        "speaker": "spk_0",
+        "line": "I don't want Castillo lobby anything in the lobby. Uh, big refrigerator. Yeah, I I was I went and auditioned, and there were some refrigerator boxes and you know all my interaction",
+        "episode": "mini-15",
+        "edited": false
+      },
+      {
+        "id": "7b6fec57-d4b7-46e4-a9fc-4791341b8c34",
+        "season": "mini",
+        "time": "0:25:23",
+        "speaker": "spk_0",
+        "line": "I don't want Castillo lobby anything in the lobby. Uh, big refrigerator. Yeah, I I was I went and auditioned, and there were some refrigerator boxes and you know all my interaction",
+        "episode": "mini-15",
+        "edited": false
+      },
+      {
+        "id": "4035769b-ac42-4182-b065-c5c51833ff66",
+        "season": "mini",
+        "time": "0:31:37",
+        "speaker": "spk_2",
+        "line": "The button, the feet, dude. I'm sitting there on my bus just like fucking Can you drive? You can't drive? I'm sitting there. Slouch down in my fucking shit in my fucking seat and I can't even hit the pedals with my knobs. So I gotta go back in there to get my spaghetti out of the refrigerator to complete my body. Right. I I just listened. I lost my head. I'm admitting it. I'm admitting it here. Okay? I drive the bus through through through the wall in multi purpose room because I left my butt in my feet in the refrigerator. Thank you. Thank you.",
+        "episode": "mini-57",
+        "edited": false
+      },
+      {
+        "id": "a23bb552-b2a2-4e72-b3f2-a0c4f1d50c5d",
+        "season": "mini",
+        "time": "0:31:37",
+        "speaker": "spk_2",
+        "line": "The button, the feet, dude. I'm sitting there on my bus just like fucking Can you drive? You can't drive? I'm sitting there. Slouch down in my fucking shit in my fucking seat and I can't even hit the pedals with my knobs. So I gotta go back in there to get my spaghetti out of the refrigerator to complete my body. Right. I I just listened. I lost my head. I'm admitting it. I'm admitting it here. Okay? I drive the bus through through through the wall in multi purpose room because I left my butt in my feet in the refrigerator. Thank you. Thank you.",
+        "episode": "mini-57",
+        "edited": false
+      },
+      {
+        "id": "efdd2a77-bf99-4409-a034-cdc14ae880a3",
+        "season": "mini",
+        "time": "0:01:29",
+        "speaker": "spk_2",
+        "line": "That's right. We like this large is refrigerated, and this barge is the city's number one freshest barge. One that we've won the awards six years running and we don't want to lose it because ah, Clarence isn't cleaning the shoot proper? Yes,",
+        "episode": "mini-14",
+        "edited": false
+      },
+      {
+        "id": "fdcdae01-45c7-471c-9f77-a58fef9fe634",
+        "season": "mini",
+        "time": "0:01:29",
+        "speaker": "spk_2",
+        "line": "That's right. We like this large is refrigerated, and this barge is the city's number one freshest barge. One that we've won the awards six years running and we don't want to lose it because ah, Clarence isn't cleaning the shoot proper? Yes,",
+        "episode": "mini-14",
+        "edited": false
+      },
+      {
+        "id": "109bf71d-285f-4b77-b2c4-58f5cf3d0eca",
+        "season": "s07",
+        "time": "0:01:54",
+        "speaker": "spk_4",
+        "line": "I found a baby crocodile when I was jumping in the creek and I wrestle him and I brought him home, and he had all the food out of the refrigerator. And then in Amanda, where he went upstairs. Yeah, you slathered upstairs. I said what he's doing and he answered because he's an animal in. I was like, I'm you. I should have been by you back here. You just caused in ruckus and hullabaloo. Jacob, your",
+        "episode": "s07e06",
+        "edited": false
+      },
+      {
+        "id": "62e898bd-03cd-48a3-aab0-02622319b4e2",
+        "season": "s07",
+        "time": "0:01:54",
+        "speaker": "spk_4",
+        "line": "I found a baby crocodile when I was jumping in the creek and I wrestle him and I brought him home, and he had all the food out of the refrigerator. And then in Amanda, where he went upstairs. Yeah, you slathered upstairs. I said what he's doing and he answered because he's an animal in. I was like, I'm you. I should have been by you back here. You just caused in ruckus and hullabaloo. Jacob, your",
+        "episode": "s07e06",
+        "edited": false
+      },
+      {
+        "id": "af2a9314-042e-4e1e-870c-7ac0a2cd7ffc",
+        "season": "lastresort",
+        "time": "0:03:17",
+        "speaker": "spk_1",
+        "line": "i was gonna say, if anybody has a refrigerated boat, that they could lend us for the next few trips. We did I won't say waste a few trips with some perishable milk that did go bad. While we were trying to get out there to the four seasons. Island residents now, I think you have to call them because they won't be able to get back to the mainland for a while. But but we're hoping to continue our sort of trips out there with with supplies, paper towels, obviously, a thing that you definitely need in in disaster situations. Oh,",
+        "episode": "lastresort-4",
+        "edited": false
+      },
+      {
+        "id": "13a9f186-5f52-4c49-9474-9ff65dc614ff",
+        "season": "lastresort",
+        "time": "0:03:17",
+        "speaker": "spk_1",
+        "line": "i was gonna say, if anybody has a refrigerated boat, that they could lend us for the next few trips. We did I won't say waste a few trips with some perishable milk that did go bad. While we were trying to get out there to the four seasons. Island residents now, I think you have to call them because they won't be able to get back to the mainland for a while. But but we're hoping to continue our sort of trips out there with with supplies, paper towels, obviously, a thing that you definitely need in in disaster situations. Oh,",
+        "episode": "lastresort-4",
+        "edited": false
+      },
+      {
+        "id": "a696ab54-3894-4c85-b021-497dc347c74b",
+        "season": "lastresort",
+        "time": "0:06:18",
+        "speaker": "spk_2",
+        "line": "And, you know, I I believe that Scott Skip and and his son were at your place, and Dennis The lunatic rearranged all those little letters on your refrigerator that were you were using for names. And it threw you off. You know those letters, people write poems and stuff.",
+        "episode": "lastresort-10",
+        "edited": false
+      },
+      {
+        "id": "6bc6eaef-845f-4145-9a17-54b4c3472924",
+        "season": "lastresort",
+        "time": "0:06:18",
+        "speaker": "spk_2",
+        "line": "And, you know, I I believe that Scott Skip and and his son were at your place, and Dennis The lunatic rearranged all those little letters on your refrigerator that were you were using for names. And it threw you off. You know those letters, people write poems and stuff.",
+        "episode": "lastresort-10",
+        "edited": false
+      },
+      {
+        "id": "86b68c3e-89bd-420c-9f08-efba34aa0c7a",
+        "season": "lastresort",
+        "time": "0:06:37",
+        "speaker": "spk_1",
+        "line": "Little magnetic letters. Yeah. Refrigerator magnetic letters. Yeah. Yeah. And I'm saying that that I let them run wild.",
+        "episode": "lastresort-10",
+        "edited": false
+      },
+      {
+        "id": "16b62740-0854-42c8-851d-2ed505fe5635",
+        "season": "lastresort",
+        "time": "0:06:37",
+        "speaker": "spk_1",
+        "line": "Little magnetic letters. Yeah. Refrigerator magnetic letters. Yeah. Yeah. And I'm saying that that I let them run wild.",
+        "episode": "lastresort-10",
+        "edited": false
+      },
+      {
+        "id": "887136e4-9726-4f91-a2f6-15a6666d4511",
+        "season": "s09",
+        "time": "0:06:48",
+        "speaker": "spk_1",
+        "line": "be the the sub. Uh, I got what I thought was a Boston Dynamics robot. Turns out it was a Boston market refrigerator. Uh, just",
+        "episode": "s09e03",
+        "edited": false
+      }
+    ],
     "stats": {
-      "estimatedTotalHits": 0,
+      "estimatedTotalHits": 111,
       "processingTime": 0,
-      "facets": []
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s03",
+              "hits": 20
+            },
+            {
+              "ep": "s04",
+              "hits": 18
+            },
+            {
+              "ep": "mini",
+              "hits": 16
+            },
+            {
+              "ep": "s09",
+              "hits": 15
+            },
+            {
+              "ep": "lastresort",
+              "hits": 10
+            },
+            {
+              "ep": "s02",
+              "hits": 6
+            },
+            {
+              "ep": "s05",
+              "hits": 6
+            },
+            {
+              "ep": "s06",
+              "hits": 6
+            },
+            {
+              "ep": "exit42",
+              "hits": 4
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "s03e07",
+              "hits": 16
+            },
+            {
+              "ep": "mini-57",
+              "hits": 6
+            },
+            {
+              "ep": "s04e04",
+              "hits": 6
+            },
+            {
+              "ep": "s06e02",
+              "hits": 6
+            },
+            {
+              "ep": "s04e06",
+              "hits": 4
+            },
+            {
+              "ep": "lastresort-10",
+              "hits": 4
+            },
+            {
+              "ep": "exit42-8",
+              "hits": 4
+            },
+            {
+              "ep": "s09e03",
+              "hits": 4
+            },
+            {
+              "ep": "s03e08",
+              "hits": 4
+            }
+          ]
+        }
+      ]
     },
-    "hasMore": false
+    "hasMore": true
   }
 }
