@@ -5,6 +5,8 @@ import { handleError } from '$lib/utils/errors';
 const searchService = new SearchService();
 
 export async function GET({ url, setHeaders }) {
+	const startTime = Date.now();
+
 	try {
 		const query = url?.searchParams?.get('q') || '';
 		const filterParam = url?.searchParams?.get('f')?.split(',') || [];
@@ -25,6 +27,25 @@ export async function GET({ url, setHeaders }) {
 			offset,
 			editedOnly
 		});
+
+		const totalResponseTime = Date.now() - startTime;
+
+		// Log API request summary for Vercel analytics
+		console.log(
+			JSON.stringify({
+				event: 'search_api_request',
+				query: query.substring(0, 50), // Truncate long queries for logs
+				cacheHit: result.stats.cacheHit || false,
+				cacheSource: result.stats.cacheSource || 'none',
+				totalResponseTime,
+				searchResponseTime: result.stats.cacheResponseTime || result.stats.processingTime,
+				hits: result.items.length,
+				hasFilters: filterParam.length > 0,
+				isPageLoad: offset === 0,
+				editedOnly,
+				timestamp: new Date().toISOString()
+			})
+		);
 
 		return json({
 			hits: result.items,

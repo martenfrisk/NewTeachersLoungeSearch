@@ -17,7 +17,6 @@
 		onStartEditing: (index: number) => void;
 		onStopEditing: (index: number) => void;
 		onNavigateAndEdit?: (index: number) => void;
-		onCommitLine?: (index: number) => void;
 	}
 
 	let {
@@ -34,13 +33,12 @@
 		onAddNewLineAfter,
 		onStartEditing,
 		onStopEditing,
-		onNavigateAndEdit,
-		onCommitLine
+		onNavigateAndEdit
 	}: Props = $props();
 </script>
 
 <!-- Main Content - Full Width Transcript -->
-<div class={controlsCollapsed ? 'pr-4' : 'pr-84'}>
+<div class={controlsCollapsed ? 'pr-4' : 'pr-0'}>
 	{#if transcriptLines.length === 0}
 		<div class="bg-white rounded-lg border border-gray-200 shadow-sm p-8 text-center">
 			<p class="text-gray-600">No transcript lines found for this episode.</p>
@@ -78,7 +76,6 @@
 								{onStartEditing}
 								{onStopEditing}
 								{onNavigateAndEdit}
-								{onCommitLine}
 							/>
 						</div>
 					{/each}

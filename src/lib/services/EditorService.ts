@@ -1,9 +1,10 @@
-import type { EditableTranscriptLineType, SpeakerType } from '../types/editor';
+import type { EditableTranscriptLineType, SpeakerType, EditSubmissionType } from '../types/editor';
 import type { IEditorRepository } from '../repositories/EditorRepository';
 import { SupabaseEditorRepository } from '../repositories/EditorRepository';
 import { createErrorHandler } from '../utils/errors';
 import { DEFAULT_SPEAKERS } from '../types/editor';
 import epListData from '../../assets/episodes6.json';
+import { supabase } from '$lib/supabase';
 
 interface EpisodeListItemType {
 	ep: string;
@@ -433,6 +434,160 @@ export class EditorService {
 			console.warn('Failed to get episode audio info:', error);
 			return null;
 		}
+	}
+
+	// Detect changes in a line
+	hasLineChanged(line: EditableTranscriptLineType): boolean {
+		return (
+			line.line !== line.originalText ||
+			line.speaker !== line.originalSpeaker ||
+			line.time !== line.originalTime
+		);
+	}
+
+	// Get change types for a line
+	getLineChangeTypes(line: EditableTranscriptLineType): string[] {
+		const changes: string[] = [];
+
+		if (line.line !== line.originalText) {
+			changes.push('text');
+		}
+		if (line.speaker !== line.originalSpeaker) {
+			changes.push('speaker');
+		}
+		if (line.time !== line.originalTime) {
+			changes.push('timestamp');
+		}
+
+		return changes;
+	}
+
+	// Get all changed lines from transcript
+	getChangedLines(lines: EditableTranscriptLineType[]): EditableTranscriptLineType[] {
+		return lines.filter((line) => this.hasLineChanged(line));
+	}
+
+	// Create edit submission for a line
+	createEditSubmission(
+		line: EditableTranscriptLineType,
+		contributorInfo?: { name?: string; email?: string; notes?: string }
+	): EditSubmissionType {
+		const changeTypes = this.getLineChangeTypes(line);
+
+		return {
+			lineId: line.id ?? '',
+			originalText: line.originalText || line.line || '',
+			originalSpeaker: line.originalSpeaker ?? line.speaker,
+			originalTimestamp: line.originalTime ?? line.time,
+			newText: line.line !== line.originalText ? line.line : undefined,
+			newSpeaker: line.speaker !== line.originalSpeaker ? line.speaker : undefined,
+			newTimestamp: line.time !== line.originalTime ? line.time : undefined,
+			changeTypes,
+			contributorName: contributorInfo?.name,
+			contributorEmail: contributorInfo?.email,
+			notes: contributorInfo?.notes
+		};
+	}
+
+	// Submit single line edit
+	async submitLineEdit(
+		line: EditableTranscriptLineType,
+		contributorInfo?: { name?: string; email?: string; notes?: string }
+	): Promise<string> {
+		try {
+			if (!this.hasLineChanged(line)) {
+				throw new Error('No changes detected in line');
+			}
+
+			const repository = await this.getRepository();
+			const editSubmission = this.createEditSubmission(line, contributorInfo);
+
+			// Get current user if authenticated
+			let userId: string | undefined;
+			try {
+				const { data } = await supabase.auth.getUser();
+				userId = data.user?.id;
+			} catch {
+				// Not authenticated, that's fine for anonymous submissions
+				userId = undefined;
+			}
+
+			return await repository.submitEdit(editSubmission, userId);
+		} catch (error) {
+			throw this.handleError(error);
+		}
+	}
+
+	// Submit multiple line edits
+	async submitAllChanges(
+		lines: EditableTranscriptLineType[],
+		contributorInfo?: { name?: string; email?: string; notes?: string }
+	): Promise<string[]> {
+		try {
+			const changedLines = this.getChangedLines(lines);
+
+			if (changedLines.length === 0) {
+				throw new Error('No changes detected');
+			}
+
+			const repository = await this.getRepository();
+			const editIds: string[] = [];
+
+			// Get current user if authenticated
+			let userId: string | undefined;
+			try {
+				const { data } = await supabase.auth.getUser();
+				userId = data.user?.id;
+			} catch {
+				// Not authenticated, that's fine for anonymous submissions
+				userId = undefined;
+			}
+
+			// Submit all changes
+			for (const line of changedLines) {
+				const editSubmission = this.createEditSubmission(line, contributorInfo);
+				const editId = await repository.submitEdit(editSubmission, userId);
+				editIds.push(editId);
+			}
+
+			return editIds;
+		} catch (error) {
+			throw this.handleError(error);
+		}
+	}
+
+	// Get current user info
+	async getCurrentUserInfo(): Promise<{ id: string; email: string } | null> {
+		try {
+			const { data, error } = await supabase.auth.getUser();
+			if (error || !data.user) {
+				return null;
+			}
+			return {
+				id: data.user.id,
+				email: data.user.email || ''
+			};
+		} catch (error) {
+			console.warn('Error getting user info:', error);
+			return null;
+		}
+	}
+
+	// Check if user is authenticated
+	async isUserAuthenticated(): Promise<boolean> {
+		const userInfo = await this.getCurrentUserInfo();
+		return userInfo !== null;
+	}
+
+	// Reset line changes (mark as no longer having changes)
+	resetLineChanges(lines: EditableTranscriptLineType[]): EditableTranscriptLineType[] {
+		return lines.map((line) => ({
+			...line,
+			hasChanges: false,
+			originalText: line.line,
+			originalSpeaker: line.speaker,
+			originalTime: line.time
+		}));
 	}
 }
 

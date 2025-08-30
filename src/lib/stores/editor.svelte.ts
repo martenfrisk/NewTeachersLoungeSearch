@@ -475,6 +475,11 @@ class EditorStore {
 			this.setIsLoading(false);
 		}
 	}
+
+	// Reset all line changes after successful submission
+	resetLineChanges() {
+		this.#state.transcriptLines = editorService.resetLineChanges(this.#state.transcriptLines);
+	}
 }
 
 // Create and export the store instance

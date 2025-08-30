@@ -40,8 +40,10 @@
 	}
 </script>
 
-<!-- Floating Controls Panel -->
-<div class="fixed top-20 right-4 z-50 w-80 max-h-[calc(100vh-6rem)] overflow-y-auto">
+<!-- Floating Controls Panel - Hidden on smaller screens -->
+<div
+	class="hidden lg:block fixed top-20 right-4 z-50 w-80 max-h-[calc(100vh-6rem)] overflow-y-auto"
+>
 	<!-- Collapse Toggle Button -->
 	<button
 		onclick={onToggleControls}

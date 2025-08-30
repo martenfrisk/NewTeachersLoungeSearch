@@ -1,4 +1,26 @@
+import { get } from '@vercel/edge-config';
+import { randomQuery } from '../utils';
 import type { CacheEntry } from '../types/common';
+import type { SearchHitType, SearchStats } from '../types/search';
+
+export interface CacheDataType {
+	query: string;
+	timestamp: number;
+	expiresAt: number;
+	result: {
+		hits: SearchHitType[];
+		stats: SearchStats;
+		hasMore: boolean;
+	};
+}
+
+export interface CacheResultType {
+	hits: SearchHitType[];
+	stats: SearchStats;
+	hasMore: boolean;
+	cached: boolean;
+	source: 'static' | 'edge' | 'none';
+}
 
 export class Cache<T> {
 	private cache = new Map<string, CacheEntry<T>>();
@@ -60,3 +82,146 @@ export class Cache<T> {
 
 export const episodeCache = new Cache(60 * 60 * 1000);
 export const transcriptCache = new Cache(30 * 60 * 1000);
+
+/**
+ * Check if a query is one of the predefined random queries
+ */
+export function isRandomQuery(query: string): boolean {
+	return randomQuery.includes(query.toLowerCase());
+}
+
+/**
+ * Generate cache key for Edge Config storage
+ */
+export function generateCacheKey(query: string, filter?: string[], editedOnly?: boolean): string {
+	const baseKey = `search:${query.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+	const filterKey = filter && filter.length > 0 ? `:f:${filter.sort().join(',')}` : '';
+	const editedKey = editedOnly ? ':edited' : '';
+	return `${baseKey}${filterKey}${editedKey}`;
+}
+
+/**
+ * Load cached search result from static file (for random queries)
+ */
+export async function loadStaticCache(query: string): Promise<CacheResultType | null> {
+	const startTime = performance.now();
+
+	try {
+		// Generate filename same way as pre-warm script
+		const fileName = query
+			.toLowerCase()
+			.replace(/[^a-z0-9]/g, '-')
+			.replace(/-+/g, '-')
+			.replace(/^-|-$/g, '');
+
+		// In browser/server context, fetch from static cache
+		const response = await fetch(`/cache/${fileName}.json`);
+
+		if (!response.ok) {
+			return null;
+		}
+
+		const cacheData: CacheDataType = await response.json();
+
+		// Check if cache is expired
+		if (Date.now() > cacheData.expiresAt) {
+			console.warn(`Static cache expired for query: ${query}`);
+			return null;
+		}
+
+		const cacheResponseTime = Math.round(performance.now() - startTime);
+
+		return {
+			...cacheData.result,
+			stats: {
+				...cacheData.result.stats,
+				cacheHit: true,
+				cacheResponseTime,
+				cacheSource: 'static'
+			},
+			cached: true,
+			source: 'static'
+		};
+	} catch (error) {
+		console.warn(`Failed to load static cache for query: ${query}`, error);
+		return null;
+	}
+}
+
+/**
+ * Load cached search result from Vercel Edge Config
+ */
+export async function loadEdgeCache(cacheKey: string): Promise<CacheResultType | null> {
+	const startTime = performance.now();
+
+	try {
+		const cacheData = await get<CacheDataType>(cacheKey);
+
+		if (!cacheData) {
+			return null;
+		}
+
+		// Check if cache is expired
+		if (Date.now() > cacheData.expiresAt) {
+			console.warn(`Edge cache expired for key: ${cacheKey}`);
+			return null;
+		}
+
+		const cacheResponseTime = Math.round(performance.now() - startTime);
+
+		return {
+			...cacheData.result,
+			stats: {
+				...cacheData.result.stats,
+				cacheHit: true,
+				cacheResponseTime,
+				cacheSource: 'edge'
+			},
+			cached: true,
+			source: 'edge'
+		};
+	} catch (error) {
+		console.warn(`Failed to load edge cache for key: ${cacheKey}`, error);
+		return null;
+	}
+}
+
+/**
+ * Determine if a query should be cached based on frequency/popularity
+ */
+export function shouldCache(query: string, stats?: SearchStats): boolean {
+	// Always cache random queries (handled by static cache)
+	if (isRandomQuery(query)) {
+		return false; // Don't duplicate in edge cache
+	}
+
+	// Cache queries that return results and are longer than 2 characters
+	return query.trim().length > 2 && (stats?.estimatedTotalHits ?? 0) > 0;
+}
+
+/**
+ * Create cache data structure
+ */
+export function createCacheData(
+	query: string,
+	result: { hits: SearchHitType[]; stats: SearchStats; hasMore: boolean },
+	ttlHours = 24
+): CacheDataType {
+	return {
+		query,
+		timestamp: Date.now(),
+		expiresAt: Date.now() + ttlHours * 60 * 60 * 1000,
+		result
+	};
+}
+
+/**
+ * Get cache statistics for monitoring
+ */
+export function getCacheStats() {
+	return {
+		randomQueries: randomQuery.length,
+		staticCacheEnabled: true,
+		edgeCacheEnabled: Boolean(process.env.EDGE_CONFIG)
+	};
+}

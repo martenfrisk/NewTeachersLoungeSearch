@@ -1,12 +1,13 @@
 <script lang="ts">
 	import '../app.css';
-	import Sidebar from '$lib/Sidebar.svelte';
+	import Header from '$lib/Header.svelte';
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 	import { fly } from 'svelte/transition';
 	import UpArrow from 'lib/icons/UpArrow.svelte';
 	import { audioStore } from '$lib/stores/audio';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import AuthModal from 'lib/components/auth/AuthModal.svelte';
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -27,6 +28,13 @@
 	// Dynamic import for audio player to reduce initial bundle size
 	let AudioPlayer: import('svelte').Component | null = $state(null);
 
+	let showAuthModal = $state(false);
+
+	// Global auth modal handler
+	function openAuthModal() {
+		showAuthModal = true;
+	}
+
 	$effect(() => {
 		if (showAudioPlayer && !AudioPlayer) {
 			import('$lib/components/audio/AudioPlayer.svelte').then((module) => {
@@ -46,21 +54,21 @@
 
 <svelte:window bind:scrollY={y} bind:innerHeight />
 <div bind:this={element}></div>
-<div class="flex flex-col overflow-x-hidden min-h-screen max-w-full md:flex-row">
-	<Sidebar />
-	<main class="flex-1 min-w-0 h-auto mt-0 md:px-10 md:mt-10 mb-24">
+<div class="min-h-screen">
+	<Header onAuthModalOpen={openAuthModal} />
+	<main class="container mx-auto px-4 py-6 mb-24">
 		{@render children?.()}
 		{#if isButtonVisible}
 			<button
 				transition:fly={{ y: 100, duration: 400 }}
 				onclick={() => element?.scrollIntoView()}
-				class="bottom-52 rounded-full size-8 md:size-12 bg-blue-700 right-2 md:right-4 fixed text-white select-none"
+				class="bottom-52 rounded-full size-8 md:size-12 z-20 bg-blue-700 right-2 md:right-4 fixed text-white select-none"
 			>
 				<UpArrow />
 			</button>
 		{/if}
 	</main>
-
+	<AuthModal isOpen={showAuthModal} onClose={() => (showAuthModal = false)} />
 	<!-- Audio Player - lazy loaded when needed -->
 	{#if showAudioPlayer && AudioPlayer}
 		<AudioPlayer currEpTitle={$audioStore.currentTimestamp?.episode} />

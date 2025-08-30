@@ -1,0 +1,14 @@
+{
+  "query": "morrissey",
+  "timestamp": 1756596431758,
+  "expiresAt": 1757201231758,
+  "result": {
+    "hits": [],
+    "stats": {
+      "estimatedTotalHits": 0,
+      "processingTime": 0,
+      "facets": []
+    },
+    "hasMore": false
+  }
+}

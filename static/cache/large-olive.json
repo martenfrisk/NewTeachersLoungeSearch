@@ -1,0 +1,14 @@
+{
+  "query": "large olive",
+  "timestamp": 1756596431759,
+  "expiresAt": 1757201231759,
+  "result": {
+    "hits": [],
+    "stats": {
+      "estimatedTotalHits": 0,
+      "processingTime": 0,
+      "facets": []
+    },
+    "hasMore": false
+  }
+}

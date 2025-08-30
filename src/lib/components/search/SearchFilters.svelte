@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { filtersState } from '../../states/FiltersState.svelte';
 	import type { SearchFacet } from '../../types/search';
-	import Button from '../ui/Button.svelte';
 
 	interface Props {
 		facets?: SearchFacet[];
@@ -31,46 +30,82 @@
 </script>
 
 <div class="w-full">
-	<div class="flex items-center justify-between mb-4">
-		<h3 class="text-sm font-medium text-gray-700">Filters</h3>
-		<div class="flex items-center gap-2">
-			{#if hasActiveFilters}
-				<Button variant="ghost" size="sm" onclick={clearAllFilters}>Clear all</Button>
-			{/if}
-			<Button variant="ghost" size="sm" onclick={() => (showFilters = !showFilters)}>
-				{showFilters ? 'Hide' : 'Show'} Filters
-			</Button>
-		</div>
+	<!-- Compact Filter Controls -->
+	<div class="flex items-center justify-between">
+		<button
+			class="flex items-center gap-1 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+			onclick={() => (showFilters = !showFilters)}
+		>
+			<svg
+				class="w-3 h-3 transition-transform duration-200"
+				class:rotate-180={showFilters}
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+			>
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+			</svg>
+			<span class="font-medium">
+				Filters
+				{#if hasActiveFilters}
+					<span class="ml-1 bg-blue-600 text-white text-xs px-1.5 py-0.5 rounded">
+						{filtersState.activeFiltersCount}
+					</span>
+				{/if}
+			</span>
+		</button>
+
+		{#if hasActiveFilters}
+			<div class="flex items-center gap-2">
+				<div class="flex gap-1">
+					{#if filtersState.editedOnly}
+						<span class="px-2 py-0.5 text-xs bg-green-100 text-green-700 rounded"> Edited </span>
+					{/if}
+					{#each filtersState.activeFiltersArray.slice(0, 3) as filter (filter)}
+						<span class="px-2 py-0.5 text-xs bg-blue-100 text-blue-700 rounded">
+							{filter.split(' = ')[1].replace(/"/g, '')}
+						</span>
+					{/each}
+					{#if filtersState.activeFiltersArray.length > 3}
+						<span class="text-xs text-gray-400">+{filtersState.activeFiltersArray.length - 3}</span>
+					{/if}
+				</div>
+				<button class="text-xs text-gray-500 hover:text-gray-700 ml-2" onclick={clearAllFilters}>
+					Clear
+				</button>
+			</div>
+		{/if}
 	</div>
 
 	{#if showFilters}
-		<div class="space-y-4">
-			<!-- Edited Only Filter -->
-			<div class="flex items-center">
+		<div class="border border-gray-200 rounded p-3 space-y-3">
+			<!-- Edited Only Option -->
+			<label class="flex items-center cursor-pointer text-sm">
 				<input
 					id="edited-only"
 					type="checkbox"
+					name="edited-only"
 					bind:checked={filtersState.editedOnly}
 					onchange={toggleEditedOnly}
-					class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+					class="h-3 w-3 rounded border-gray-300 text-blue-600 focus:ring-blue-500 focus:ring-offset-0 mr-2"
 				/>
-				<label for="edited-only" class="ml-2 text-sm text-gray-700"> Edited lines only </label>
-			</div>
+				Edited lines only
+			</label>
 
-			<!-- Dynamic Facet Filters -->
+			<!-- Horizontal Filter Sections -->
 			{#each facets as facet (facet.facetName)}
-				<div class="space-y-2">
-					<h4 class="text-sm font-medium text-gray-700 capitalize">
+				<div>
+					<h4 class="text-xs font-medium text-gray-700 uppercase tracking-wide mb-2">
 						{facet.facetName}
 					</h4>
-					<div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+					<div class="flex flex-wrap gap-1.5">
 						{#each facet.facetHits as hit (hit.ep)}
 							{@const isActive = filtersState.activeFiltersArray.includes(
 								`${facet.facetName} = "${hit.ep}"`
 							)}
 							<button
-								class="text-left p-2 rounded border text-sm transition-colors"
-								class:bg-blue-50={isActive}
+								class="px-2.5 py-1.5 text-xs rounded border transition-colors"
+								class:bg-blue-100={isActive}
 								class:border-blue-300={isActive}
 								class:text-blue-800={isActive}
 								class:bg-gray-50={!isActive}
@@ -79,46 +114,13 @@
 								class:hover:bg-gray-100={!isActive}
 								onclick={() => toggleFilter(facet.facetName, hit.ep)}
 							>
-								<div class="font-medium">{hit.ep}</div>
-								<div class="text-xs opacity-75">{hit.hits} results</div>
+								{hit.ep}
+								<span class="ml-1 opacity-60">({hit.hits})</span>
 							</button>
 						{/each}
 					</div>
 				</div>
 			{/each}
-
-			<!-- Active Filters Summary -->
-			{#if hasActiveFilters}
-				<div class="pt-4 border-t">
-					<h4 class="text-sm font-medium text-gray-700 mb-2">Active Filters:</h4>
-					<div class="flex flex-wrap gap-2">
-						{#if filtersState.editedOnly}
-							<span
-								class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800"
-							>
-								Edited Only
-								<button class="ml-1 hover:text-green-600" onclick={toggleEditedOnly}> × </button>
-							</span>
-						{/if}
-						{#each filtersState.activeFiltersArray as filter (filter)}
-							<span
-								class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
-							>
-								{filter.split(' = ')[1].replace(/"/g, '')}
-								<button
-									class="ml-1 hover:text-blue-600"
-									onclick={() => {
-										const [name, value] = filter.split(' = ');
-										toggleFilter(name, value.replace(/"/g, ''));
-									}}
-								>
-									×
-								</button>
-							</span>
-						{/each}
-					</div>
-				</div>
-			{/if}
 		</div>
 	{/if}
 </div>

@@ -1,0 +1,14 @@
+{
+  "query": "guinness",
+  "timestamp": 1756596431755,
+  "expiresAt": 1757201231755,
+  "result": {
+    "hits": [],
+    "stats": {
+      "estimatedTotalHits": 0,
+      "processingTime": 0,
+      "facets": []
+    },
+    "hasMore": false
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "query": "gazpacho",
+  "timestamp": 1756596431760,
+  "expiresAt": 1757201231760,
+  "result": {
+    "hits": [],
+    "stats": {
+      "estimatedTotalHits": 0,
+      "processingTime": 0,
+      "facets": []
+    },
+    "hasMore": false
+  }
+}

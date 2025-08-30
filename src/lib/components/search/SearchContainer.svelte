@@ -29,7 +29,11 @@
 	filtersState.editedOnly = initialEditedOnly;
 	let inputValue = $state(searchState.query);
 
-	async function handleSearch() {
+	async function handleSearch(query?: string) {
+		if (query !== undefined) {
+			searchState.query = query;
+			inputValue = query;
+		}
 		await searchState.search(searchState.query, filtersState.asSearchFilters);
 		updateURL();
 	}
@@ -97,8 +101,12 @@
 	});
 </script>
 
-<div class="w-full max-w-6xl mx-auto px-4 py-6 space-y-6">
-	<SearchInput bind:query={inputValue} placeholder="Search podcast transcripts..." />
+<div class="w-full max-w-6xl mx-auto space-y-6">
+	<SearchInput
+		bind:query={inputValue}
+		placeholder="Search podcast transcripts..."
+		onSearch={handleSearch}
+	/>
 	<SearchFilters facets={searchState.stats?.facets || []} />
 	<SearchResults
 		hits={searchState.hits}

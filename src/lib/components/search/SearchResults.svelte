@@ -34,18 +34,18 @@
 
 	<!-- Results -->
 	{#if hits.length > 0}
-		<div class="space-y-4">
+		<div class="space-y-1">
 			<!-- Stats -->
 			{#if stats}
-				<div class="text-sm text-gray-600 pb-2">
-					Found <span class="font-mono text-xs">{stats.estimatedTotalHits.toLocaleString()}</span>
+				<div class="text-sm text-gray-600">
+					<span class="font-mono text-xs">{stats.estimatedTotalHits.toLocaleString()}</span>
 					results in
 					<span class="font-mono text-xs">{stats.processingTime}ms</span>
 				</div>
 			{/if}
 
 			<!-- Hit List with Performance Optimization -->
-			<div class="space-y-4" role="list" aria-label="Search results">
+			<div role="list" class="space-y-3" aria-label="Search results">
 				{#each hits as hit (hit.id)}
 					<div role="listitem">
 						<SearchHit {hit} />

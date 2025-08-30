@@ -55,6 +55,38 @@ export interface EditorSettingsType {
 	audioSyncEnabled: boolean;
 }
 
+export interface EditSubmissionType {
+	lineId: string;
+	originalText: string;
+	originalSpeaker: string;
+	originalTimestamp: string;
+	newText?: string;
+	newSpeaker?: string;
+	newTimestamp?: string;
+	changeTypes: string[];
+	contributorName?: string;
+	contributorEmail?: string;
+	notes?: string;
+}
+
+export interface PendingEditType {
+	id: string;
+	originalLineId: string;
+	versionNumber: number;
+	lineText?: string;
+	timestampStr?: string;
+	speaker?: string;
+	changeType: string[];
+	editedBy?: string;
+	status: 'pending' | 'approved' | 'rejected' | 'deleted';
+	contributorName?: string;
+	contributorEmail?: string;
+	notes?: string;
+	createdAt: string;
+	reviewedBy?: string;
+	reviewedAt?: string;
+}
+
 export const DEFAULT_SPEAKERS: SpeakerType[] = [
 	{
 		id: 'howard',

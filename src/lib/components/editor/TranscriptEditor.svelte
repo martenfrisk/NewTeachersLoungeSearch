@@ -15,6 +15,7 @@
 	import LoadingState from '../ui/LoadingState.svelte';
 	import ErrorMessage from '../ui/ErrorMessage.svelte';
 	import Button from '../ui/Button.svelte';
+	import Toast from '../ui/Toast.svelte';
 
 	import type { TranscriptLine, EpisodeInfo } from '$lib/types/episode';
 
@@ -48,6 +49,11 @@
 	let showAutoSaveNotification = $state(false);
 	let autoSaveTimestamp = $state<Date | null>(null);
 	let shiftControlsCollapsed = $state(true); // Default collapsed since only used once
+
+	// Submission state
+	let showSubmissionToast = $state(false);
+	let submissionToastMessage = $state('');
+	let submissionToastType: 'success' | 'error' | 'info' = $state('info');
 
 	// Keyboard action handler
 	function handleToggleHelp() {
@@ -214,10 +220,6 @@
 		scrollToCurrentLine();
 	}
 
-	function handleCommitLine(index: number) {
-		editorStore.commitLine(index);
-	}
-
 	function handleShiftAllLines(shiftSeconds: number) {
 		editorStore.shiftAllLinesTime(shiftSeconds);
 	}
@@ -249,6 +251,33 @@
 				activeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
 			}
 		}
+	}
+
+	// Submission handlers
+	function handleSubmitSuccess(editIds: string[]) {
+		const count = editIds.length;
+		submissionToastMessage = `Successfully submitted ${count} change${count === 1 ? '' : 's'} for review!`;
+		submissionToastType = 'success';
+		showSubmissionToast = true;
+
+		// Reset the transcript lines to clear the changes indicators
+		editorStore.resetLineChanges();
+
+		// Clear local storage since changes are submitted
+		if (selectedEpisode) {
+			editorStore.clearLocalStorage(selectedEpisode);
+		}
+	}
+
+	function handleSubmitError(error: Error) {
+		console.error('Submission failed:', error);
+		submissionToastMessage = `Failed to submit changes: ${error.message}`;
+		submissionToastType = 'error';
+		showSubmissionToast = true;
+	}
+
+	function handleCloseToast() {
+		showSubmissionToast = false;
 	}
 
 	// Sync audio time with transcript
@@ -301,7 +330,7 @@
 
 <EditorErrorBoundary>
 	<div class="min-h-screen bg-gray-50">
-		<div class="max-w-7xl mx-auto px-4 py-6">
+		<div class="max-w-full mx-auto px-4 py-6 sm:mr-80 relative">
 			<!-- Header -->
 			<EditorHeader
 				{episodeInfo}
@@ -309,7 +338,10 @@
 				{hasChanges}
 				{editedLinesCount}
 				{showKeyboardHelp}
+				{transcriptLines}
 				onToggleHelp={handleToggleHelp}
+				onSubmitSuccess={handleSubmitSuccess}
+				onSubmitError={handleSubmitError}
 			/>
 
 			<!-- Auto-save notification -->
@@ -372,10 +404,17 @@
 						onStartEditing={handleStartEditing}
 						onStopEditing={handleStopEditing}
 						onNavigateAndEdit={handleNavigateAndEdit}
-						onCommitLine={handleCommitLine}
 					/>
 				{/if}
 			{/if}
 		</div>
 	</div>
 </EditorErrorBoundary>
+
+<!-- Submission Toast -->
+<Toast
+	message={submissionToastMessage}
+	type={submissionToastType}
+	show={showSubmissionToast}
+	onClose={handleCloseToast}
+/>

@@ -1,0 +1,14 @@
+{
+  "query": "see you in court",
+  "timestamp": 1756596431757,
+  "expiresAt": 1757201231757,
+  "result": {
+    "hits": [],
+    "stats": {
+      "estimatedTotalHits": 0,
+      "processingTime": 0,
+      "facets": []
+    },
+    "hasMore": false
+  }
+}
