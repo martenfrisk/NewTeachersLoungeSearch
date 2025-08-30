@@ -11,7 +11,8 @@
 	let pendingEdits: PendingEditType[] = $state([]);
 	let isLoading = $state(true);
 	let error = $state<string | null>(null);
-	let selectedEdits = $state(new SvelteSet<string>());
+	// svelte-ignore non_reactive_update
+	let selectedEdits = new SvelteSet<string>();
 	let isSubmitting = $state(false);
 	let statistics = $state({ pending: 0, approved: 0, rejected: 0, totalToday: 0 });
 

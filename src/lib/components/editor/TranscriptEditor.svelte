@@ -35,8 +35,6 @@
 	let isLoading = $derived(editorStore.isLoading);
 	let error = $derived(editorStore.error);
 	let isAudioSynced = $derived(editorStore.isAudioSynced);
-	let hasChanges = $derived(editorStore.hasChanges);
-	let editedLinesCount = $derived(editorStore.editedLinesCount);
 
 	// Audio state
 	let audioCurrentTime = $derived($audioStore.currentTime);
