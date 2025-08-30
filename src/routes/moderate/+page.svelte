@@ -6,7 +6,7 @@
 	import Toast from '../../lib/components/ui/Toast.svelte';
 	import { moderatorService } from '../../lib/services/ModeratorService';
 	import { user } from '../../lib/stores/auth';
-	import { PendingEditType } from '../../lib/types/editor';
+	import type { PendingEditType } from '../../lib/types/editor';
 
 	let pendingEdits: PendingEditType[] = $state([]);
 	let isLoading = $state(true);

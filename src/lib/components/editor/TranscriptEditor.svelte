@@ -13,7 +13,7 @@
 	import ErrorMessage from '../ui/ErrorMessage.svelte';
 	import Button from '../ui/Button.svelte';
 	import Toast from '../ui/Toast.svelte';
-	import { EpisodeInfo, TranscriptLine } from '../../types/episode';
+	import type { EpisodeInfo, TranscriptLine } from '../../types/episode';
 	import { audioService } from '../../services/AudioService';
 	import { audioStore } from '../../stores';
 	import { editorStore } from '../../stores/editor.svelte';
