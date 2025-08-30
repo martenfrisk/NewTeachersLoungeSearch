@@ -25,6 +25,7 @@ export interface EpisodeInfo {
 	date?: string;
 	season?: string;
 	description?: string;
+	hasAudio?: boolean;
 	startingTime?: number;
 	isFullyEdited?: boolean;
 	isMostlyEdited?: boolean;

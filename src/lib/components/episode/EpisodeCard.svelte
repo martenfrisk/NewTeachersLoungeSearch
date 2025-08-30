@@ -6,16 +6,11 @@
 		title: string;
 		desc: string;
 		date: string;
-		url?: string;
-		feedTitle?: string | null;
 		hasAudio?: boolean;
-		startingTime?: number;
 		duration?: number;
 		transcriptWordCount?: number;
 		tags?: string[];
 		guestHosts?: string[];
-		rating?: number;
-		thumbnail?: string;
 		specialNotes?: string;
 		isHighlight?: boolean;
 		isFullyEdited?: boolean;
@@ -245,7 +240,7 @@
 
 		{#if episode.guestHosts && episode.guestHosts.length > 0}
 			<div class="flex flex-wrap gap-1">
-				{#each episode.guestHosts as guest}
+				{#each episode.guestHosts as guest (guest)}
 					<span
 						class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700"
 					>
@@ -261,7 +256,7 @@
 
 		{#if episode.tags && episode.tags.length > 0}
 			<div class="flex flex-wrap gap-1">
-				{#each episode.tags.slice(0, 4) as tag}
+				{#each episode.tags.slice(0, 4) as tag (tag)}
 					<span
 						class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-gray-100 text-gray-600"
 					>

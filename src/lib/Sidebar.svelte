@@ -147,7 +147,7 @@
 							court (or message me on reddit, u/martanor)
 						</p>
 						<p class="mt-1">
-							Built with Svelte Kit, powered by MeiliSearch, styled with Tailwind CSS.
+							Built with Svelte Kit, powered by Supabase, styled with Tailwind CSS.
 						</p>
 					</div>
 				{/if}

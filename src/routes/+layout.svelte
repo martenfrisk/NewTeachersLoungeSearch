@@ -6,10 +6,12 @@
 	import { fly } from 'svelte/transition';
 	import UpArrow from 'lib/icons/UpArrow.svelte';
 	import { audioStore } from '$lib/stores/audio';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
 
+	injectSpeedInsights();
 	let { children }: Props = $props();
 
 	inject({ mode: dev ? 'development' : 'production' });

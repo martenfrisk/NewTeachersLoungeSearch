@@ -13,7 +13,8 @@ function createAudioStore() {
 		muted: false,
 		syncEnabled: getSyncPreference(),
 		episodeStartingTime: DEFAULT_EPISODE_START_TIME,
-		error: null
+		error: null,
+		url: null
 	};
 
 	const { subscribe, set, update } = writable<AudioState>(initialState);
@@ -89,6 +90,10 @@ function createAudioStore() {
 
 		clearError(): void {
 			update((state) => ({ ...state, error: null }));
+		},
+
+		setUrl(url: string | null): void {
+			update((state) => ({ ...state, url }));
 		},
 
 		reset(): void {

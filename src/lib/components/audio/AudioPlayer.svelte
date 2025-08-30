@@ -11,6 +11,8 @@
 	import VolumeOnIcon from 'lib/assets/icons/VolumeOnIcon.svelte';
 	import SyncIcon from 'lib/assets/icons/SyncIcon.svelte';
 	import { page } from '$app/state';
+	import { editorStore } from '$lib/stores/editor.svelte';
+	import AudioWaveform from './AudioWaveform.svelte';
 
 	interface Props {
 		currEpTitle?: string;
@@ -61,6 +63,14 @@
 		audioService.seek(Math.min(audioState.duration, audioState.currentTime + 10));
 	}
 
+	function handleRewind5() {
+		audioService.seek(Math.max(0, audioState.currentTime - 5));
+	}
+
+	function handleFastForward5() {
+		audioService.seek(Math.min(audioState.duration, audioState.currentTime + 5));
+	}
+
 	function handleClose() {
 		audioService.stop();
 		audioStore.reset();
@@ -77,7 +87,35 @@
 		return `${minutes}:${secs.toString().padStart(2, '0')}`;
 	}
 
-	let syncEnabled = $derived(page.route.id === '/ep/[id]');
+	let syncEnabled = $derived(page.route.id === '/ep/[id]' || page.route.id?.startsWith('/editor'));
+	let isEditorPage = $derived(page.route.id?.startsWith('/editor') || false);
+
+	// Editor-specific state
+	let currentLine = $derived(editorStore.currentLine);
+	let showWaveform = false;
+	let waveformZoomSeconds = $state<number>(10);
+
+	function handleJumpToCurrentLine() {
+		if (currentLine && isEditorPage) {
+			// Seek to current line timestamp
+			const currentSeconds = parseTimestamp(currentLine.time);
+			audioService.seek(currentSeconds);
+		}
+	}
+
+	function parseTimestamp(timestamp: string): number {
+		const parts = timestamp.split(':').map(Number);
+		if (parts.length === 3) {
+			return parts[0] * 3600 + parts[1] * 60 + parts[2];
+		} else if (parts.length === 2) {
+			return parts[0] * 60 + parts[1];
+		}
+		return 0;
+	}
+
+	// function toggleWaveform() {
+	// 	showWaveformOverride = !showWaveform;
+	// }
 </script>
 
 <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
@@ -126,11 +164,42 @@
 
 		<!-- Episode Info -->
 		{#if currEpTitle}
-			<div class="text-center mb-2 pr-8">
+			<div class="text-center mb-2 pr-8 flex items-center justify-center">
 				<h3 class="text-xs sm:text-sm font-medium text-gray-900 truncate px-2">
 					{currEpTitle}
 				</h3>
+				{#if isEditorPage}
+					<div class="ml-2 flex items-center space-x-2">
+						<!-- <button
+							onclick={toggleWaveform}
+							class="p-1 text-gray-400 hover:text-gray-600 text-xs"
+							aria-label={showWaveform ? 'Hide waveform' : 'Show waveform'}
+						>
+							{showWaveform ? '🌊' : '📊'}
+						</button> -->
+						{#if showWaveform}
+							<div class="flex items-center space-x-1 text-xs text-gray-500">
+								<span>±</span>
+								<select
+									bind:value={waveformZoomSeconds}
+									class="bg-transparent border-none text-xs text-gray-600 hover:text-gray-800"
+									aria-label="Waveform zoom window"
+								>
+									<option value={5}>5s</option>
+									<option value={10}>10s</option>
+									<option value={15}>15s</option>
+									<option value={30}>30s</option>
+								</select>
+							</div>
+						{/if}
+					</div>
+				{/if}
 			</div>
+		{/if}
+
+		<!-- Waveform -->
+		{#if isEditorPage && showWaveform && audioState.url}
+			<AudioWaveform height={60} />
 		{/if}
 
 		<!-- Progress Bar -->
@@ -153,10 +222,27 @@
 		<!-- Mobile-Optimized Controls -->
 		<div class="space-y-2">
 			<!-- Primary Controls Row -->
-			<div class="flex items-center justify-center space-x-1 sm:space-x-3">
-				<!-- Rewind -->
+			<div class="flex items-center justify-center space-x-1 sm:space-x-2">
+				<!-- Small Rewind (5s) -->
+				<Button
+					variant="ghost"
+					size="sm"
+					onclick={handleRewind5}
+					aria-label="Rewind 5 seconds"
+					class="text-xs"
+				>
+					<div class="flex items-center space-x-1">
+						<RewindIcon />
+						<span class="text-xs font-medium">5</span>
+					</div>
+				</Button>
+
+				<!-- Large Rewind (10s) -->
 				<Button variant="ghost" size="sm" onclick={handleRewind} aria-label="Rewind 10 seconds">
-					<RewindIcon />
+					<div class="flex items-center space-x-1">
+						<RewindIcon />
+						<span class="text-xs font-bold">10</span>
+					</div>
 				</Button>
 
 				<!-- Play/Pause -->
@@ -172,14 +258,31 @@
 					{/if}
 				</Button>
 
-				<!-- Fast Forward -->
+				<!-- Large Fast Forward (10s) -->
 				<Button
 					variant="ghost"
 					size="sm"
 					onclick={handleFastForward}
 					aria-label="Fast forward 10 seconds"
 				>
-					<FastForwardIcon />
+					<div class="flex items-center space-x-1">
+						<FastForwardIcon />
+						<span class="text-xs font-bold">10</span>
+					</div>
+				</Button>
+
+				<!-- Small Fast Forward (5s) -->
+				<Button
+					variant="ghost"
+					size="sm"
+					onclick={handleFastForward5}
+					aria-label="Fast forward 5 seconds"
+					class="text-xs"
+				>
+					<div class="flex items-center space-x-1">
+						<FastForwardIcon />
+						<span class="text-xs font-medium">5</span>
+					</div>
 				</Button>
 
 				<!-- Volume Control -->
@@ -211,18 +314,43 @@
 			<!-- Sync Controls Row -->
 			{#if syncEnabled}
 				<div class="flex items-center justify-center mt-2">
-					<label class="flex items-center space-x-2 text-xs text-gray-600 cursor-pointer">
-						<input
-							type="checkbox"
-							checked={audioState.syncEnabled}
-							onchange={handleSyncToggle}
-							class="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-						/>
-						<span>Sync to lines</span>
-						{#if audioState.syncEnabled}
-							<SyncIcon class="w-3 h-3 text-blue-600" />
+					<div class="flex items-center space-x-4">
+						<label class="flex items-center space-x-2 text-xs text-gray-600 cursor-pointer">
+							<input
+								type="checkbox"
+								checked={audioState.syncEnabled}
+								onchange={handleSyncToggle}
+								class="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+							/>
+							<span>Sync to lines</span>
+							{#if audioState.syncEnabled}
+								<SyncIcon class="w-3 h-3 text-blue-600" />
+							{/if}
+						</label>
+
+						{#if isEditorPage && currentLine}
+							<Button
+								variant="ghost"
+								size="sm"
+								onclick={handleJumpToCurrentLine}
+								class="text-xs text-blue-600 hover:text-blue-800"
+								aria-label="Jump to current line"
+							>
+								→ Line {currentLine.time}
+							</Button>
 						{/if}
-					</label>
+					</div>
+				</div>
+			{/if}
+
+			<!-- Editor shortcuts info -->
+			{#if isEditorPage}
+				<div class="flex items-center justify-center mt-1">
+					<div class="text-xs text-gray-500 flex space-x-3">
+						<span><kbd class="px-1 py-0.5 bg-gray-100 rounded text-xs">F1</kbd> Play/Pause</span>
+						<span><kbd class="px-1 py-0.5 bg-gray-100 rounded text-xs">F2</kbd> ←5s</span>
+						<span><kbd class="px-1 py-0.5 bg-gray-100 rounded text-xs">F3</kbd> 5s→</span>
+					</div>
 				</div>
 			{/if}
 		</div>

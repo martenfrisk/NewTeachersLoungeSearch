@@ -116,6 +116,7 @@ export class AudioService {
 
 		if (this.audioElement.src !== url) {
 			this.audioElement.src = url;
+			audioStore.setUrl(url);
 			this.audioElement.load();
 		}
 		const setTimestamp = () => {
@@ -184,6 +185,37 @@ export class AudioService {
 
 		this.audioElement.currentTime = time;
 		audioStore.setCurrentTime(time);
+	}
+
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	seekToTimeRange(startTime: number, _endTime: number): void {
+		this.seek(startTime);
+	}
+
+	playRange(startTime: number, endTime: number): Promise<void> {
+		return new Promise((resolve) => {
+			if (!this.audioElement) {
+				resolve();
+				return;
+			}
+
+			this.seek(startTime);
+
+			const onTimeUpdate = () => {
+				if (this.audioElement && this.audioElement.currentTime >= endTime) {
+					this.pause();
+					this.audioElement.removeEventListener('timeupdate', onTimeUpdate);
+					resolve();
+				}
+			};
+
+			this.audioElement.addEventListener('timeupdate', onTimeUpdate);
+			this.play();
+		});
+	}
+
+	getCurrentAudioUrl(): string | null {
+		return this.audioElement?.src || null;
 	}
 
 	private onLoadedMetadata(): void {
