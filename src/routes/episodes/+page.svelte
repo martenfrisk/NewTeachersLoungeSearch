@@ -16,14 +16,36 @@
 	const handleSearchChange = (hasQuery: boolean) => {
 		hasSearchQuery = hasQuery;
 	};
+
 </script>
 
 <svelte:head>
-	<title>Episode Guide - Seekers' Lounge ☕ The Teachers' Lounge Search Engine</title>
+	<title>Episode Guide | Seekers' Lounge ☕ Teachers' Lounge Search</title>
 	<meta
 		name="description"
 		content="Complete episode guide for The Teachers' Lounge podcast. Browse episodes by season, search transcripts, and discover your next favorite episode."
 	/>
+
+	<!-- Open Graph Tags -->
+	<meta property="og:title" content="Episode Guide | Seekers' Lounge" />
+	<meta
+		property="og:description"
+		content="Complete episode guide for The Teachers' Lounge podcast. Browse episodes by season, search transcripts, and discover your next favorite episode."
+	/>
+	<meta property="og:url" content="https://seekerslounge.pcast.site/episodes" />
+	<meta property="og:image" content="https://seekerslounge.pcast.site/og-episodes.png" />
+
+	<!-- Twitter Card Tags -->
+	<meta name="twitter:title" content="Episode Guide | Seekers' Lounge" />
+	<meta
+		name="twitter:description"
+		content="Complete episode guide for The Teachers' Lounge podcast. Browse episodes by season, search transcripts, and discover your next favorite episode."
+	/>
+	<meta name="twitter:image" content="https://seekerslounge.pcast.site/og-episodes.png" />
+
+	<!-- Canonical URL -->
+	<link rel="canonical" href="https://seekerslounge.pcast.site/episodes" />
+
 </svelte:head>
 
 <div class="min-h-screen">

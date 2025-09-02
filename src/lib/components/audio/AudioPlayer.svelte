@@ -104,6 +104,7 @@
 	}
 
 	function parseTimestamp(timestamp: string): number {
+		// Support both 00:00:01 and 0:00:01 formats
 		const parts = timestamp.split(':').map(Number);
 		if (parts.length === 3) {
 			return parts[0] * 3600 + parts[1] * 60 + parts[2];
@@ -118,8 +119,8 @@
 	// }
 </script>
 
-<div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
-	<div class="max-w-6xl mx-auto p-3 sm:p-4 relative">
+<div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
+	<div class="w-full p-3 sm:p-4 relative">
 		<!-- Close Button -->
 		<Button
 			variant="ghost"

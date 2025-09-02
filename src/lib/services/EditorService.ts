@@ -1,10 +1,20 @@
-import type { EditableTranscriptLineType, SpeakerType, EditSubmissionType } from '../types/editor';
+import type {
+	EditableTranscriptLineType,
+	SpeakerType,
+	EpisodeSubmissionType
+} from '../types/editor';
 import type { IEditorRepository } from '../repositories/EditorRepository';
 import { SupabaseEditorRepository } from '../repositories/EditorRepository';
 import { createErrorHandler } from '../utils/errors';
 import { DEFAULT_SPEAKERS } from '../types/editor';
 import epListData from '../../assets/episodes6.json';
 import { supabase } from '$lib/supabase';
+import {
+	normalizeTimestamp,
+	isValidTimestampFormat,
+	timestampToSeconds,
+	secondsToNormalizedTimestamp
+} from '../utils/audioSync';
 
 interface EpisodeListItemType {
 	ep: string;
@@ -75,11 +85,12 @@ export class EditorService {
 		const line = updatedLines[lineIndex];
 
 		if (line) {
+			const hasActualChanges = newText !== line.originalText;
 			updatedLines[lineIndex] = {
 				...line,
 				line: newText,
-				hasChanges: newText !== line.originalText,
-				edited: true
+				editState: hasActualChanges ? 'unsaved' : 'unedited',
+				edited: hasActualChanges ? false : false
 			};
 		}
 
@@ -95,11 +106,12 @@ export class EditorService {
 		const line = updatedLines[lineIndex];
 
 		if (line) {
+			const hasActualChanges = this.hasLineChanged({ ...line, speaker: newSpeaker });
 			updatedLines[lineIndex] = {
 				...line,
 				speaker: newSpeaker,
-				hasChanges: newSpeaker !== line.originalSpeaker || line.hasChanges,
-				edited: true
+				editState: hasActualChanges ? 'unsaved' : 'unedited',
+				edited: hasActualChanges ? false : false
 			};
 		}
 
@@ -111,23 +123,27 @@ export class EditorService {
 		lineIndex: number,
 		newTimestamp: string
 	): EditableTranscriptLineType[] {
-		if (!this.isValidTimestamp(newTimestamp)) {
+		if (!isValidTimestampFormat(newTimestamp)) {
 			throw new Error('Invalid timestamp format. Use HH:MM:SS or MM:SS');
 		}
+
+		// Normalize timestamp to single-digit format (0:00:01 instead of 00:00:01)
+		const normalizedTimestamp = normalizeTimestamp(newTimestamp);
 
 		const updatedLines = [...lines];
 		const line = updatedLines[lineIndex];
 
 		if (line) {
+			const hasActualChanges = this.hasLineChanged({ ...line, time: normalizedTimestamp });
 			updatedLines[lineIndex] = {
 				...line,
-				time: newTimestamp,
-				hasChanges: newTimestamp !== line.originalTime || line.hasChanges,
-				edited: true
+				time: normalizedTimestamp,
+				editState: hasActualChanges ? 'unsaved' : 'unedited'
 			};
 		}
 
-		return updatedLines;
+		// Sort lines chronologically by timestamp after any timestamp change
+		return this.sortLinesByTimestamp(updatedLines);
 	}
 
 	splitLine(
@@ -144,11 +160,11 @@ export class EditorService {
 
 			if (firstPart && secondPart) {
 				// Update first line
+				const hasFirstPartChanges = firstPart !== line.originalText;
 				updatedLines[lineIndex] = {
 					...line,
 					line: firstPart,
-					hasChanges: true,
-					edited: true
+					editState: hasFirstPartChanges ? 'unsaved' : 'unedited'
 				};
 
 				// Create second line
@@ -156,8 +172,7 @@ export class EditorService {
 					...line,
 					id: `${line.id}-split-${Date.now()}`,
 					line: secondPart,
-					hasChanges: true,
-					edited: true,
+					editState: 'unsaved',
 					originalText: secondPart
 				};
 
@@ -177,11 +192,12 @@ export class EditorService {
 		if (currentLine && nextLine) {
 			// Merge lines if they have the same speaker
 			if (currentLine.speaker === nextLine.speaker) {
+				const mergedText = `${currentLine.line} ${nextLine.line}`;
+				const hasChanges = mergedText !== currentLine.originalText;
 				updatedLines[lineIndex] = {
 					...currentLine,
-					line: `${currentLine.line} ${nextLine.line}`,
-					hasChanges: true,
-					edited: true
+					line: mergedText,
+					editState: hasChanges ? 'unsaved' : 'unedited'
 				};
 
 				// Remove next line
@@ -206,8 +222,8 @@ export class EditorService {
 				line: '',
 				speaker: speaker || referenceLine.speaker,
 				time: referenceLine.time, // Will need manual timestamp adjustment
-				hasChanges: true,
 				edited: true,
+				editState: 'unsaved',
 				isEditing: true,
 				originalText: '',
 				originalSpeaker: speaker || referenceLine.speaker,
@@ -247,8 +263,8 @@ export class EditorService {
 				line: '',
 				speaker: speaker || referenceLine.speaker,
 				time: newTimestamp,
-				hasChanges: true,
 				edited: true,
+				editState: 'unsaved',
 				isEditing: true,
 				originalText: '',
 				originalSpeaker: speaker || referenceLine.speaker,
@@ -257,6 +273,35 @@ export class EditorService {
 
 			// Insert new line after current line
 			updatedLines.splice(lineIndex + 1, 0, newLine);
+		}
+
+		return updatedLines;
+	}
+
+	// Delete a line
+	deleteLine(lines: EditableTranscriptLineType[], lineIndex: number): EditableTranscriptLineType[] {
+		const updatedLines = [...lines];
+
+		// Don't allow deletion if it's the only line left
+		if (updatedLines.length <= 1) {
+			return updatedLines;
+		}
+
+		// Remove the line at the specified index
+		updatedLines.splice(lineIndex, 1);
+
+		// Mark a nearby line as changed to track that a deletion occurred
+		// This ensures the "Submit Changes" button appears after deletion
+		const nearbyIndex = Math.min(lineIndex, updatedLines.length - 1);
+		if (nearbyIndex >= 0 && updatedLines[nearbyIndex]) {
+			const nearbyLine = updatedLines[nearbyIndex];
+			// Only mark as changed if it's not already marked as saved or edited
+			if (nearbyLine.editState === 'unedited') {
+				updatedLines[nearbyIndex] = {
+					...nearbyLine,
+					editState: 'unsaved'
+				};
+			}
 		}
 
 		return updatedLines;
@@ -282,31 +327,11 @@ export class EditorService {
 	}
 
 	timestampToSeconds(timestamp: string): number {
-		const parts = timestamp.split(':').map(Number);
-		if (parts.length === 3) {
-			return parts[0] * 3600 + parts[1] * 60 + parts[2];
-		} else if (parts.length === 2) {
-			return parts[0] * 60 + parts[1];
-		}
-		return 0;
+		return timestampToSeconds(timestamp);
 	}
 
 	secondsToTimestamp(seconds: number): string {
-		const hours = Math.floor(seconds / 3600);
-		const minutes = Math.floor((seconds % 3600) / 60);
-		const secs = Math.floor(seconds % 60);
-
-		if (hours > 0) {
-			return `${hours}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-		} else {
-			return `${minutes}:${secs.toString().padStart(2, '0')}`;
-		}
-	}
-
-	private isValidTimestamp(timestamp: string): boolean {
-		// Match formats: HH:MM:SS, MM:SS, H:MM:SS, M:SS
-		const timestampRegex = /^(\d{1,2}:)?([0-5]?\d):([0-5]\d)$/;
-		return timestampRegex.test(timestamp);
+		return secondsToNormalizedTimestamp(seconds);
 	}
 
 	getSpeakerByName(speakers: SpeakerType[], name: string): SpeakerType | null {
@@ -365,11 +390,11 @@ export class EditorService {
 			const newSeconds = Math.max(0, currentSeconds + shiftSeconds); // Don't allow negative timestamps
 			const newTimestamp = this.secondsToTimestamp(newSeconds);
 
+			const hasChanges = this.hasLineChanged({ ...line, time: newTimestamp });
 			return {
 				...line,
 				time: newTimestamp,
-				hasChanges: true,
-				edited: true
+				editState: hasChanges ? 'unsaved' : 'unedited'
 			};
 		});
 	}
@@ -389,15 +414,48 @@ export class EditorService {
 			const previousSeconds = this.timestampToSeconds(previousLine.time);
 			const newTimestamp = this.secondsToTimestamp(previousSeconds + 1);
 
+			const hasChanges = this.hasLineChanged({ ...currentLine, time: newTimestamp });
 			updatedLines[lineIndex] = {
 				...currentLine,
 				time: newTimestamp,
-				hasChanges: newTimestamp !== currentLine.originalTime || currentLine.hasChanges,
-				edited: true
+				editState: hasChanges ? 'unsaved' : 'unedited'
 			};
 		}
 
 		return updatedLines;
+	}
+
+	// Save a line (persist changes without marking as done)
+	saveLine(lines: EditableTranscriptLineType[], lineIndex: number): EditableTranscriptLineType[] {
+		const updatedLines = [...lines];
+		const line = updatedLines[lineIndex];
+
+		if (line) {
+			const hasActualChanges = this.hasLineChanged(line);
+			updatedLines[lineIndex] = {
+				...line,
+				editState: hasActualChanges ? 'saved' : 'unedited',
+				edited: hasActualChanges ? false : false
+			};
+		}
+
+		return updatedLines;
+	}
+
+	// Save all lines that have changes (preserving their edited status)
+	saveAllChanges(lines: EditableTranscriptLineType[]): EditableTranscriptLineType[] {
+		return lines.map((line) => {
+			// Only process lines that are unsaved
+			if (line.editState === 'unsaved') {
+				const hasActualChanges = this.hasLineChanged(line);
+				return {
+					...line,
+					editState: hasActualChanges ? 'saved' : 'unedited',
+					edited: hasActualChanges ? false : false
+				};
+			}
+			return line;
+		});
 	}
 
 	// Commit a line (mark as edited/done)
@@ -406,10 +464,11 @@ export class EditorService {
 		const line = updatedLines[lineIndex];
 
 		if (line) {
+			// Always mark as 'edited' when explicitly committed, regardless of changes
+			// This allows users to mark lines as reviewed/verified even if content is correct
 			updatedLines[lineIndex] = {
 				...line,
-				isCommitted: true,
-				hasChanges: false, // Clear unsaved changes when committing
+				editState: 'edited',
 				edited: true
 			};
 		}
@@ -464,43 +523,26 @@ export class EditorService {
 
 	// Get all changed lines from transcript
 	getChangedLines(lines: EditableTranscriptLineType[]): EditableTranscriptLineType[] {
-		return lines.filter((line) => this.hasLineChanged(line));
+		return lines.filter((line) => line.editState !== 'unedited' || line.edited === true);
 	}
 
-	// Create edit submission for a line
-	createEditSubmission(
-		line: EditableTranscriptLineType,
-		contributorInfo?: { name?: string; email?: string; notes?: string }
-	): EditSubmissionType {
-		const changeTypes = this.getLineChangeTypes(line);
-
-		return {
-			lineId: line.id ?? '',
-			originalText: line.originalText || line.line || '',
-			originalSpeaker: line.originalSpeaker ?? line.speaker,
-			originalTimestamp: line.originalTime ?? line.time,
-			newText: line.line !== line.originalText ? line.line : undefined,
-			newSpeaker: line.speaker !== line.originalSpeaker ? line.speaker : undefined,
-			newTimestamp: line.time !== line.originalTime ? line.time : undefined,
-			changeTypes,
-			contributorName: contributorInfo?.name,
-			contributorEmail: contributorInfo?.email,
-			notes: contributorInfo?.notes
-		};
+	// Sort lines chronologically by timestamp
+	sortLinesByTimestamp(lines: EditableTranscriptLineType[]): EditableTranscriptLineType[] {
+		return [...lines].sort((a, b) => {
+			const aSeconds = this.timestampToSeconds(a.time);
+			const bSeconds = this.timestampToSeconds(b.time);
+			return aSeconds - bSeconds;
+		});
 	}
 
-	// Submit single line edit
-	async submitLineEdit(
-		line: EditableTranscriptLineType,
+	// Submit entire episode transcript
+	async submitEpisodeTranscript(
+		episodeEp: string,
+		transcriptLines: EditableTranscriptLineType[],
 		contributorInfo?: { name?: string; email?: string; notes?: string }
 	): Promise<string> {
 		try {
-			if (!this.hasLineChanged(line)) {
-				throw new Error('No changes detected in line');
-			}
-
 			const repository = await this.getRepository();
-			const editSubmission = this.createEditSubmission(line, contributorInfo);
 
 			// Get current user if authenticated
 			let userId: string | undefined;
@@ -512,45 +554,18 @@ export class EditorService {
 				userId = undefined;
 			}
 
-			return await repository.submitEdit(editSubmission, userId);
-		} catch (error) {
-			throw this.handleError(error);
-		}
-	}
+			// Create episode submission
+			const episodeSubmission: EpisodeSubmissionType = {
+				episodeEp,
+				submissionType: 'full_replacement',
+				transcriptData: transcriptLines,
+				contributorName: contributorInfo?.name,
+				contributorEmail: contributorInfo?.email,
+				notes: contributorInfo?.notes
+			};
 
-	// Submit multiple line edits
-	async submitAllChanges(
-		lines: EditableTranscriptLineType[],
-		contributorInfo?: { name?: string; email?: string; notes?: string }
-	): Promise<string[]> {
-		try {
-			const changedLines = this.getChangedLines(lines);
-
-			if (changedLines.length === 0) {
-				throw new Error('No changes detected');
-			}
-
-			const repository = await this.getRepository();
-			const editIds: string[] = [];
-
-			// Get current user if authenticated
-			let userId: string | undefined;
-			try {
-				const { data } = await supabase.auth.getUser();
-				userId = data.user?.id;
-			} catch {
-				// Not authenticated, that's fine for anonymous submissions
-				userId = undefined;
-			}
-
-			// Submit all changes
-			for (const line of changedLines) {
-				const editSubmission = this.createEditSubmission(line, contributorInfo);
-				const editId = await repository.submitEdit(editSubmission, userId);
-				editIds.push(editId);
-			}
-
-			return editIds;
+			const submissionId = await repository.submitEpisodeTranscript(episodeSubmission, userId);
+			return submissionId;
 		} catch (error) {
 			throw this.handleError(error);
 		}
@@ -583,11 +598,248 @@ export class EditorService {
 	resetLineChanges(lines: EditableTranscriptLineType[]): EditableTranscriptLineType[] {
 		return lines.map((line) => ({
 			...line,
-			hasChanges: false,
+			// Preserve 'edited' state, only reset 'unsaved' and 'saved' to 'unedited'
+			editState: line.editState === 'edited' ? ('edited' as const) : ('unedited' as const),
 			originalText: line.line,
 			originalSpeaker: line.speaker,
 			originalTime: line.time
 		}));
+	}
+
+	// Mass actions - perform operations on multiple lines
+	massAction(
+		lines: EditableTranscriptLineType[],
+		lineIndices: number[],
+		action:
+			| 'save'
+			| 'commit'
+			| 'reset-edited'
+			| 'delete'
+			| 'set-unedited'
+			| 'set-unsaved'
+			| 'set-saved'
+			| 'set-edited'
+			| 'revert-to-original',
+		options?: { confirmDelete?: boolean }
+	): EditableTranscriptLineType[] {
+		let updatedLines = [...lines];
+
+		switch (action) {
+			case 'save':
+				lineIndices.forEach((index) => {
+					if (index >= 0 && index < updatedLines.length) {
+						const line = updatedLines[index];
+						if (line) {
+							const hasActualChanges = this.hasLineChanged(line);
+							updatedLines[index] = {
+								...line,
+								editState: hasActualChanges ? 'saved' : 'unedited',
+								edited: hasActualChanges ? false : false
+							};
+						}
+					}
+				});
+				break;
+
+			case 'commit':
+				lineIndices.forEach((index) => {
+					if (index >= 0 && index < updatedLines.length) {
+						const line = updatedLines[index];
+						if (line) {
+							updatedLines[index] = {
+								...line,
+								editState: 'edited',
+								edited: true
+							};
+						}
+					}
+				});
+				break;
+
+			case 'reset-edited':
+				lineIndices.forEach((index) => {
+					if (index >= 0 && index < updatedLines.length) {
+						const line = updatedLines[index];
+						if (line && line.editState === 'edited') {
+							const hasActualChanges = this.hasLineChanged(line);
+							updatedLines[index] = {
+								...line,
+								editState: hasActualChanges ? 'saved' : 'unedited',
+								edited: hasActualChanges ? false : false
+							};
+						}
+					}
+				});
+				break;
+
+			case 'delete': {
+				if (!options?.confirmDelete) {
+					throw new Error('Delete action requires confirmation');
+				}
+				// Sort indices in descending order to avoid index shifting issues
+				const sortedIndices = lineIndices.sort((a, b) => b - a);
+				sortedIndices.forEach((index) => {
+					if (index >= 0 && index < updatedLines.length && updatedLines.length > 1) {
+						updatedLines.splice(index, 1);
+					}
+				});
+
+				// Mark a nearby line as changed to track that deletions occurred
+				if (sortedIndices.length > 0 && updatedLines.length > 0) {
+					const nearbyIndex = Math.min(
+						sortedIndices[sortedIndices.length - 1],
+						updatedLines.length - 1
+					);
+					if (nearbyIndex >= 0 && updatedLines[nearbyIndex]) {
+						const nearbyLine = updatedLines[nearbyIndex];
+						if (nearbyLine.editState === 'unedited') {
+							updatedLines[nearbyIndex] = {
+								...nearbyLine,
+								editState: 'unsaved'
+							};
+						}
+					}
+				}
+				break;
+			}
+
+			case 'set-unedited':
+				updatedLines = this.changeLineStates(updatedLines, lineIndices, 'unedited', true);
+				break;
+
+			case 'set-unsaved':
+				updatedLines = this.changeLineStates(updatedLines, lineIndices, 'unsaved', true);
+				break;
+
+			case 'set-saved':
+				updatedLines = this.changeLineStates(updatedLines, lineIndices, 'saved', true);
+				break;
+
+			case 'set-edited':
+				updatedLines = this.changeLineStates(updatedLines, lineIndices, 'edited', true);
+				break;
+
+			case 'revert-to-original':
+				updatedLines = this.revertLinesToOriginal(updatedLines, lineIndices);
+				break;
+
+			default:
+				throw new Error(`Unknown mass action: ${action}`);
+		}
+
+		return updatedLines;
+	}
+
+	// Reset a specific line's edited state back to false
+	resetLineEditedState(
+		lines: EditableTranscriptLineType[],
+		lineIndex: number
+	): EditableTranscriptLineType[] {
+		const updatedLines = [...lines];
+		const line = updatedLines[lineIndex];
+
+		if (line && (line.editState === 'edited' || (line.editState === 'unedited' && line.edited))) {
+			const hasActualChanges = this.hasLineChanged(line);
+			updatedLines[lineIndex] = {
+				...line,
+				editState: hasActualChanges ? 'saved' : 'unedited',
+				edited: false
+			};
+		}
+
+		return updatedLines;
+	}
+
+	// Get lines that match certain criteria for mass actions
+	getLinesByState(
+		lines: EditableTranscriptLineType[],
+		states: ('unedited' | 'unsaved' | 'saved' | 'edited')[]
+	): number[] {
+		return lines
+			.map((line, index) => (states.includes(line.editState) ? index : -1))
+			.filter((index) => index !== -1);
+	}
+
+	// Get lines by speaker for mass actions
+	getLinesBySpeaker(lines: EditableTranscriptLineType[], speakerName: string): number[] {
+		return lines
+			.map((line, index) => (line.speaker.toLowerCase() === speakerName.toLowerCase() ? index : -1))
+			.filter((index) => index !== -1);
+	}
+
+	// Change state of multiple lines to a target state
+	changeLineStates(
+		lines: EditableTranscriptLineType[],
+		lineIndices: number[],
+		targetState: 'unedited' | 'unsaved' | 'saved' | 'edited',
+		forceExactState: boolean = false
+	): EditableTranscriptLineType[] {
+		// eslint-disable-next-line prefer-const
+		let updatedLines = [...lines];
+
+		lineIndices.forEach((index) => {
+			if (index >= 0 && index < updatedLines.length) {
+				const line = updatedLines[index];
+				if (line) {
+					let newState = targetState;
+
+					// Apply business logic for state transitions only if not forced
+					if (!forceExactState) {
+						if (targetState === 'unedited') {
+							// When transitioning to unedited, check if line actually has changes
+							const hasActualChanges = this.hasLineChanged(line);
+							if (hasActualChanges) {
+								// If line has actual changes, it should be 'saved' instead of 'unedited'
+								newState = 'saved';
+							} else {
+								newState = 'unedited';
+							}
+						} else if (targetState === 'saved') {
+							// When transitioning to saved, check if line actually has changes
+							const hasActualChanges = this.hasLineChanged(line);
+							newState = hasActualChanges ? 'saved' : 'unedited';
+						}
+					}
+					// For 'unsaved' and 'edited' states, we can set them directly
+					// When forceExactState is true, we use targetState directly
+
+					updatedLines[index] = {
+						...line,
+						editState: newState,
+						edited: newState === 'edited'
+					};
+				}
+			}
+		});
+
+		return updatedLines;
+	}
+
+	// Revert lines to their original state (undo all changes)
+	revertLinesToOriginal(
+		lines: EditableTranscriptLineType[],
+		lineIndices: number[]
+	): EditableTranscriptLineType[] {
+		// eslint-disable-next-line prefer-const
+		let updatedLines = [...lines];
+
+		lineIndices.forEach((index) => {
+			if (index >= 0 && index < updatedLines.length) {
+				const line = updatedLines[index];
+				if (line && (line.originalText || line.originalSpeaker || line.originalTime)) {
+					updatedLines[index] = {
+						...line,
+						line: line.originalText || line.line,
+						speaker: line.originalSpeaker || line.speaker,
+						time: line.originalTime || line.time,
+						editState: 'unedited',
+						edited: false
+					};
+				}
+			}
+		});
+
+		return updatedLines;
 	}
 }
 

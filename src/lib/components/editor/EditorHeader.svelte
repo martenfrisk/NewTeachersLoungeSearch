@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { KEYBOARD_SHORTCUTS } from '$lib/types/editor';
+	import { KEYBOARD_SHORTCUTS_BY_CATEGORY } from '$lib/types/editor';
 	import type { EpisodeInfo } from '$lib/types/episode';
 	import type { EditableTranscriptLineType } from '$lib/types/editor';
 	import Button from '../ui/Button.svelte';
@@ -11,7 +11,7 @@
 		showKeyboardHelp: boolean;
 		transcriptLines: EditableTranscriptLineType[];
 		onToggleHelp: () => void;
-		onSubmitSuccess?: (editIds: string[]) => void;
+		onSubmitSuccess?: (submissionId: string) => void;
 		onSubmitError?: (error: Error) => void;
 	}
 
@@ -60,38 +60,124 @@
 	<!-- Prominent Submit Controls - Always visible when there are changes -->
 	{#if selectedEpisode && transcriptLines.length > 0}
 		<div class="mt-4">
-			<SubmitControls {transcriptLines} {onSubmitSuccess} {onSubmitError} />
+			<SubmitControls
+				episodeEp={selectedEpisode}
+				{transcriptLines}
+				{onSubmitSuccess}
+				{onSubmitError}
+			/>
 		</div>
 	{/if}
 </div>
 
 <!-- Keyboard shortcuts help -->
 {#if showKeyboardHelp}
-	<div class="mb-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
-		<h3 class="font-medium text-blue-900 mb-3">Keyboard Shortcuts</h3>
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-sm text-blue-800">
-			{#each KEYBOARD_SHORTCUTS as shortcut (shortcut.description)}
-				<div class="flex items-center gap-2">
-					<kbd class="px-2 py-1 bg-blue-100 rounded text-xs font-mono">
-						{shortcut.ctrlKey
-							? navigator.platform.includes('Mac')
-								? 'Cmd+'
-								: 'Ctrl+'
-							: ''}{shortcut.shiftKey ? 'Shift+' : ''}{shortcut.key === ' '
-							? 'Space'
-							: shortcut.key}
-					</kbd>
-					<span>{shortcut.description}</span>
+	<div
+		class="mb-6 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6 shadow-sm"
+	>
+		<div class="flex items-center gap-2 mb-4">
+			<svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+				/>
+			</svg>
+			<h3 class="text-lg font-semibold text-blue-900">Keyboard Shortcuts</h3>
+		</div>
+
+		<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+			{#each KEYBOARD_SHORTCUTS_BY_CATEGORY as category (category.name)}
+				<div class="bg-white rounded-lg border border-blue-100 p-4 shadow-sm">
+					<div class="flex items-center gap-2 mb-3">
+						{#if category.icon}
+							<span class="text-lg">{category.icon}</span>
+						{/if}
+						<h4 class="font-medium text-gray-900 text-sm">{category.name}</h4>
+					</div>
+
+					<div class="space-y-2">
+						{#each category.shortcuts as shortcut (shortcut.description)}
+							<div class="flex items-center justify-between gap-3">
+								<span class="text-sm text-gray-700 truncate">{shortcut.description}</span>
+								<kbd class="shortcut-key">
+									{#if shortcut.ctrlKey}
+										<span class="key-modifier"
+											>{navigator.platform.includes('Mac') ? '⌘' : 'Ctrl'}</span
+										>
+									{/if}
+									{#if shortcut.shiftKey}
+										<span class="key-modifier">⇧</span>
+									{/if}
+									{#if shortcut.altKey}
+										<span class="key-modifier"
+											>{navigator.platform.includes('Mac') ? '⌥' : 'Alt'}</span
+										>
+									{/if}
+									<span class="key-main">
+										{shortcut.key === ' '
+											? 'Space'
+											: shortcut.key === 'ArrowUp'
+												? '↑'
+												: shortcut.key === 'ArrowDown'
+													? '↓'
+													: shortcut.key}
+									</span>
+								</kbd>
+							</div>
+						{/each}
+					</div>
 				</div>
 			{/each}
+		</div>
+
+		<div class="mt-4 p-3 bg-blue-100 rounded-lg">
+			<p class="text-xs text-blue-800">
+				<span class="font-medium">💡 Tip:</span> Most shortcuts work when a transcript line is selected.
+				Audio controls work globally.
+			</p>
 		</div>
 	</div>
 {/if}
 
 <style>
-	kbd {
+	.shortcut-key {
+		display: inline-flex;
+		align-items: center;
+		gap: 1px;
 		font-family: ui-monospace, SFMono-Regular, 'SF Mono', monospace;
-		font-size: 0.75rem;
+		font-size: 0.7rem;
+		font-weight: 500;
+		background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
+		border: 1px solid #cbd5e1;
+		border-radius: 0.375rem;
+		padding: 0.15rem 0.4rem;
+		box-shadow:
+			0 1px 2px rgba(0, 0, 0, 0.05),
+			inset 0 1px 0 rgba(255, 255, 255, 0.1);
+		color: #374151;
+		white-space: nowrap;
+	}
+
+	.key-modifier {
+		font-size: 0.65rem;
+		opacity: 0.8;
+	}
+
+	.key-modifier:not(:last-child)::after {
+		content: '+';
+		margin: 0 1px;
+		opacity: 0.6;
+	}
+
+	.key-main {
 		font-weight: 600;
+		margin-left: 1px;
+	}
+
+	.shortcut-key:hover {
+		background: linear-gradient(145deg, #f1f5f9 0%, #d1d5db 100%);
+		border-color: #9ca3af;
 	}
 </style>

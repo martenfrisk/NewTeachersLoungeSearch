@@ -1,25 +1,43 @@
 {
   "query": "scarecrow",
-  "timestamp": 1756597642254,
-  "expiresAt": 1757202442254,
+  "timestamp": 1756802531373,
+  "expiresAt": 1757407331373,
   "result": {
     "hits": [
       {
-        "id": "b081e1ab-4ea3-4026-9dd1-73abfbf79e0b",
+        "id": "83e949da-4965-4e17-84f4-770a86e13fb9",
         "season": "s04",
-        "time": "00:04:06",
+        "time": "0:04:06",
         "speaker": "1",
         "line": "party puts scared crows in there with the Scarecrow to assure everyone this can't be a scarecrow because there lots of crows around and they would have cars fly office scarecrow. Its course. Todd. I think",
         "episode": "s04e07",
         "edited": false
       },
       {
-        "id": "83e949da-4965-4e17-84f4-770a86e13fb9",
+        "id": "8609c064-8bb9-41ef-8f51-37eb83e5225e",
         "season": "s04",
-        "time": "00:04:06",
+        "time": "0:08:27",
+        "speaker": "Unknown",
+        "line": "all got distracted from because I or some people allege the Scarecrow, pretending to be made, burst into flames on uh, luckily, I got put out quickly. It was no big deal. Everyone said Todd. It looks like you're just a bunch of straw that lit on fire. This is a scarecrow.",
+        "episode": "s04e04",
+        "edited": false
+      },
+      {
+        "id": "0a61faf4-1162-4546-aa3c-c287fdee749c",
+        "season": "s04",
+        "time": "0:12:58",
         "speaker": "1",
-        "line": "party puts scared crows in there with the Scarecrow to assure everyone this can't be a scarecrow because there lots of crows around and they would have cars fly office scarecrow. Its course. Todd. I think",
-        "episode": "s04e07",
+        "line": "Well, it seemed like you packed the theater with crows to throw off the fact that it was a scarecrow. Because if the crows weren't there, everybody would be like, Well, that's a scarecrow, of course, but it seems crazier. There were been packed with crows. Your ah, Padres auditioning.",
+        "episode": "s04e02",
+        "edited": false
+      },
+      {
+        "id": "b736c563-2ab7-4703-80a6-8859f402f3ef",
+        "season": "s04",
+        "time": "0:13:18",
+        "speaker": "Unknown",
+        "line": "Okay, So what? What are two choices here? That I was watching the auditions in a promising new student auditioned with a similar name to May? Or that I bought a scarecrow to watch the additions. I came in an audition, is a young child and then thought to myself Well, people are gonna know it's a scarecrow. How do I convince him it's not I by 3000 scare crows and I filled the theater with",
+        "episode": "s04e02",
         "edited": false
       },
       {
@@ -32,12 +50,12 @@
         "edited": false
       },
       {
-        "id": "e793edf6-93e5-4e33-aebe-a066bc733d71",
-        "season": "s06",
-        "time": "0:26:25",
-        "speaker": "spk_0",
-        "line": "scarecrow out of a field that had six scarecrows.",
-        "episode": "s06e07",
+        "id": "bcce98c6-4e0f-43c3-b358-55f891beecd1",
+        "season": "s04",
+        "time": "0:31:49",
+        "speaker": "Unknown",
+        "line": "right? And there's a big gaffe this week when Padre was giving the ah speech at chapel and he said, Hey, everyone, you all know me. I'm Todd. Padre Oops. No, no, no, That was wrong. That's not my name. That's a teacher's name teacher who's right over there. And you pointed to us Scarecrow. Um, that's Todd Padre. Time rock Draw Dodgers. I'm right, Dad, right? No, no, no, That was wrong. Oops. You all know Rod Dajae his No. One. And then you said, Oops. No, no, no. Rod de Adre is someone, and he's right over there. And you pointed to a another scarecrow in the audience. And this went on for 20 minutes. Where you were saying the wrong are very pod was saying the wrong names and then you ran off. He ran off.",
+        "episode": "s04e03",
         "edited": false
       },
       {
@@ -50,84 +68,48 @@
         "edited": false
       },
       {
-        "id": "d586e032-a7a9-4fd6-ba84-4b3baae74ce7",
-        "season": "s06",
-        "time": "0:34:38",
-        "speaker": "spk_3",
-        "line": "for the traditional way, Bob. Studying this season a winning is a sacrifice bill. You're being killed, Will. You can clap your wind. Gather here. You do not tell my girlfriend to get out of here. Scared of a scarecrow because you're being turned into a crow by her husband who waits. He's not a scarecrow. I know she wasn't the prettiest one, which is the one that",
-        "episode": "s06e07",
+        "id": "940b0da6-8187-470f-b91f-ae960e46d41c",
+        "season": "s04",
+        "time": "0:03:39",
+        "speaker": "1",
+        "line": "doubling said He also said, I'll be there later, but I will look crispy. I will be wearing overalls and I birds will be afraid of me. And I was like Now this is also feeding into that theory that when Todd is being pod, he dresses up a scarecrow to look like himself.",
+        "episode": "s04e07",
         "edited": false
       },
       {
-        "id": "8609c064-8bb9-41ef-8f51-37eb83e5225e",
+        "id": "6de26c41-8b0a-4012-a7e8-cc2bbb8a229d",
         "season": "s04",
-        "time": "00:08:27",
-        "speaker": "Unknown",
-        "line": "all got distracted from because I or some people allege the Scarecrow, pretending to be made, burst into flames on uh, luckily, I got put out quickly. It was no big deal. Everyone said Todd. It looks like you're just a bunch of straw that lit on fire. This is a scarecrow.",
+        "time": "0:04:02",
+        "speaker": "2",
+        "line": "You could never find pot and Todd in the same room, but you can always find a scarecrow in the same room as",
+        "episode": "s04e07",
+        "edited": false
+      },
+      {
+        "id": "e6c7abea-05fc-43c9-bb60-4518a0ae24b4",
+        "season": "s04",
+        "time": "0:08:47",
+        "speaker": "2",
+        "line": "Yeah. They were stomping out the scarecrow. There was no you in it Anywhere was just loose hay",
         "episode": "s04e04",
         "edited": false
       },
       {
-        "id": "e078ea6d-1c90-4311-bce8-6ec99cf4bc49",
+        "id": "88a94eaf-a6ff-43db-9c3f-c3cdec0e12a9",
         "season": "s04",
-        "time": "00:08:27",
-        "speaker": "Unknown",
-        "line": "all got distracted from because I or some people allege the Scarecrow, pretending to be made, burst into flames on uh, luckily, I got put out quickly. It was no big deal. Everyone said Todd. It looks like you're just a bunch of straw that lit on fire. This is a scarecrow.",
-        "episode": "s04e04",
-        "edited": false
-      },
-      {
-        "id": "22d5b0c0-e95c-4b0c-9064-ee403bd2b3eb",
-        "season": "s04",
-        "time": "00:12:58",
+        "time": "0:11:47",
         "speaker": "1",
-        "line": "Well, it seemed like you packed the theater with crows to throw off the fact that it was a scarecrow. Because if the crows weren't there, everybody would be like, Well, that's a scarecrow, of course, but it seems crazier. There were been packed with crows. Your ah, Padres auditioning.",
+        "line": "little rectangular window When you gotta have it, that a, uh um and I did see a very obvious scarecrow in your seat behind your desk and then a student question mark auditioning that let the light like either time.",
         "episode": "s04e02",
         "edited": false
       },
       {
-        "id": "0a61faf4-1162-4546-aa3c-c287fdee749c",
+        "id": "b4eed01c-30dd-4a04-9c26-2b9903e27b2f",
         "season": "s04",
-        "time": "00:12:58",
-        "speaker": "1",
-        "line": "Well, it seemed like you packed the theater with crows to throw off the fact that it was a scarecrow. Because if the crows weren't there, everybody would be like, Well, that's a scarecrow, of course, but it seems crazier. There were been packed with crows. Your ah, Padres auditioning.",
+        "time": "0:12:50",
+        "speaker": "Unknown",
+        "line": "Um and I don't know this whole scarecrow business because there were crows all over the theater. So obviously that's not what you saw.",
         "episode": "s04e02",
-        "edited": false
-      },
-      {
-        "id": "b736c563-2ab7-4703-80a6-8859f402f3ef",
-        "season": "s04",
-        "time": "00:13:18",
-        "speaker": "Unknown",
-        "line": "Okay, So what? What are two choices here? That I was watching the auditions in a promising new student auditioned with a similar name to May? Or that I bought a scarecrow to watch the additions. I came in an audition, is a young child and then thought to myself Well, people are gonna know it's a scarecrow. How do I convince him it's not I by 3000 scare crows and I filled the theater with",
-        "episode": "s04e02",
-        "edited": false
-      },
-      {
-        "id": "a0c9fc70-8d63-4e77-b7ad-bd4e906ae91b",
-        "season": "s04",
-        "time": "00:13:18",
-        "speaker": "Unknown",
-        "line": "Okay, So what? What are two choices here? That I was watching the auditions in a promising new student auditioned with a similar name to May? Or that I bought a scarecrow to watch the additions. I came in an audition, is a young child and then thought to myself Well, people are gonna know it's a scarecrow. How do I convince him it's not I by 3000 scare crows and I filled the theater with",
-        "episode": "s04e02",
-        "edited": false
-      },
-      {
-        "id": "87855f4c-3731-43f4-99db-3d463884c132",
-        "season": "s04",
-        "time": "00:31:49",
-        "speaker": "Unknown",
-        "line": "right? And there's a big gaffe this week when Padre was giving the ah speech at chapel and he said, Hey, everyone, you all know me. I'm Todd. Padre Oops. No, no, no, That was wrong. That's not my name. That's a teacher's name teacher who's right over there. And you pointed to us Scarecrow. Um, that's Todd Padre. Time rock Draw Dodgers. I'm right, Dad, right? No, no, no, That was wrong. Oops. You all know Rod Dajae his No. One. And then you said, Oops. No, no, no. Rod de Adre is someone, and he's right over there. And you pointed to a another scarecrow in the audience. And this went on for 20 minutes. Where you were saying the wrong are very pod was saying the wrong names and then you ran off. He ran off.",
-        "episode": "s04e03",
-        "edited": false
-      },
-      {
-        "id": "bcce98c6-4e0f-43c3-b358-55f891beecd1",
-        "season": "s04",
-        "time": "00:31:49",
-        "speaker": "Unknown",
-        "line": "right? And there's a big gaffe this week when Padre was giving the ah speech at chapel and he said, Hey, everyone, you all know me. I'm Todd. Padre Oops. No, no, no, That was wrong. That's not my name. That's a teacher's name teacher who's right over there. And you pointed to us Scarecrow. Um, that's Todd Padre. Time rock Draw Dodgers. I'm right, Dad, right? No, no, no, That was wrong. Oops. You all know Rod Dajae his No. One. And then you said, Oops. No, no, no. Rod de Adre is someone, and he's right over there. And you pointed to a another scarecrow in the audience. And this went on for 20 minutes. Where you were saying the wrong are very pod was saying the wrong names and then you ran off. He ran off.",
-        "episode": "s04e03",
         "edited": false
       },
       {
@@ -140,25 +122,16 @@
         "edited": false
       },
       {
-        "id": "6c961c87-dfe5-4b58-9143-20c0f3a3eeee",
-        "season": "s08",
-        "time": "0:13:23",
-        "speaker": "spk_0",
-        "line": "that man taking care of his city? My name is Sam Weatherman and I security at the mall. I am going to catch the Scarecrow mall. Robert,",
-        "episode": "s08e05",
+        "id": "cbf79ee5-5492-4fc5-aa39-487f51f20fce",
+        "season": "s04",
+        "time": "0:17:38",
+        "speaker": "1",
+        "line": "typing right now. It's his diving and bodies diving foot. Fucking auto. Correct. Okay, it says be there in minute Got stuck in field and is a picture look and feel of a It's a big chair of a scarecrow. Oh, my God. What is that? Nobody. You don't even know what it",
+        "episode": "s04e07",
         "edited": false
       },
       {
         "id": "4320f86c-4e02-455b-a288-fe07c15ae957",
-        "season": "s07",
-        "time": "0:18:45",
-        "speaker": "spk_2",
-        "line": "pay schemes his body to do a weekend at burning. You are burning around. I a big scarecrow. You left the body somewhere else.",
-        "episode": "s07e06",
-        "edited": false
-      },
-      {
-        "id": "d0ce55ac-bf98-479e-8395-1a3a262b333f",
         "season": "s07",
         "time": "0:18:45",
         "speaker": "spk_2",
@@ -176,17 +149,44 @@
         "edited": false
       },
       {
-        "id": "e1b618e3-7689-42d3-a448-e4328c4aaca4",
+        "id": "9abf25fd-9d81-4c6d-86aa-aaffc1afafd9",
         "season": "s07",
-        "time": "0:19:01",
-        "speaker": "spk_2",
-        "line": "dragged her out onto the dock from the lake and just left her there dead on. Then you walked around the scarecrow saying, This is",
+        "time": "0:19:07",
+        "speaker": "spk_4",
+        "line": "her. I put on stilts and I put strings on the scarecrows. And I was puppeteer.",
         "episode": "s07e06",
+        "edited": false
+      },
+      {
+        "id": "f49c387e-5370-494b-8bf3-d619e1316bfa",
+        "season": "s07",
+        "time": "0:19:14",
+        "speaker": "spk_2",
+        "line": "Everyone can see the scarecrow was too tall, too tall. They look like a little girl from can. You're",
+        "episode": "s07e06",
+        "edited": false
+      },
+      {
+        "id": "facbc899-b697-4f8d-9b18-dd35d1d5e9f2",
+        "season": "s07",
+        "time": "0:19:36",
+        "speaker": "spk_2",
+        "line": "way. All swore. We thought she was a scarecrow. Enrolled",
+        "episode": "s07e06",
+        "edited": false
+      },
+      {
+        "id": "807189d7-3c72-4e99-b18d-d3572ab89cc2",
+        "season": "s06",
+        "time": "0:22:53",
+        "speaker": "spk_3",
+        "line": "Sure. I think with Strong Theo Scarecrow.",
+        "episode": "s06e07",
         "edited": false
       }
     ],
     "stats": {
-      "estimatedTotalHits": 81,
+      "estimatedTotalHits": 41,
       "processingTime": 0,
       "facets": [
         {
@@ -194,31 +194,31 @@
           "facetHits": [
             {
               "ep": "s04",
-              "hits": 36
+              "hits": 18
             },
             {
               "ep": "s09",
-              "hits": 16
+              "hits": 8
             },
             {
               "ep": "s07",
-              "hits": 10
+              "hits": 5
             },
             {
               "ep": "s06",
-              "hits": 10
+              "hits": 5
             },
             {
               "ep": "lastresort",
-              "hits": 4
+              "hits": 2
             },
             {
               "ep": "s03",
-              "hits": 2
+              "hits": 1
             },
             {
               "ep": "s08",
-              "hits": 2
+              "hits": 1
             },
             {
               "ep": "s10",
@@ -231,39 +231,39 @@
           "facetHits": [
             {
               "ep": "s04e07",
-              "hits": 16
+              "hits": 8
             },
             {
               "ep": "s06e07",
-              "hits": 10
+              "hits": 5
             },
             {
               "ep": "s07e06",
-              "hits": 10
+              "hits": 5
             },
             {
               "ep": "s04e02",
-              "hits": 8
+              "hits": 4
             },
             {
               "ep": "s09e11",
-              "hits": 8
+              "hits": 4
             },
             {
               "ep": "s09e35",
-              "hits": 6
+              "hits": 3
             },
             {
               "ep": "s04e03",
-              "hits": 6
-            },
-            {
-              "ep": "lastresort-3",
-              "hits": 4
+              "hits": 3
             },
             {
               "ep": "s04e04",
-              "hits": 4
+              "hits": 2
+            },
+            {
+              "ep": "lastresort-3",
+              "hits": 2
             }
           ]
         }

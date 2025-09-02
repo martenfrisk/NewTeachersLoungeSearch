@@ -56,31 +56,43 @@ async function updateTranscript(episodeCode) {
 	try {
 		console.log(`📄 Processing ${episodeCode}...`);
 
-		// Delete existing transcript lines for this episode
-		const { error: deleteError } = await supabase
+		// Get episode ID first
+		const episodeId = await getEpisodeId(episodeCode);
+		console.log(`   📋 Episode ID: ${episodeId}`);
+
+		// Check how many existing lines we have
+		const { count: existingCount } = await supabase
 			.from('transcript_lines')
-			.delete()
-			.eq('episode_id', await getEpisodeId(episodeCode));
+			.select('*', { count: 'exact', head: true })
+			.eq('episode_id', episodeId);
+
+		console.log(`   🗑️  Found ${existingCount || 0} existing lines to delete`);
+
+		// Delete existing transcript lines for this episode
+		const {
+			count: deleteCount,
+			status: deleteStatus,
+			error: deleteError
+		} = await supabase.from('transcript_lines').delete().eq('episode_id', episodeId);
 
 		if (deleteError) {
 			console.error(`❌ Error deleting existing lines for ${episodeCode}:`, deleteError.message);
 			return false;
 		}
 
-		// Load transcript data
-		const filePath = path.join(
-			process.cwd(),
-			'src',
-			'assets',
-			'transcripts',
-			`${episodeCode}.json`
+		console.log(
+			`   ✅ Deleted ${existingCount || 0} existing lines - ${{ deleteCount }}, ${{ deleteStatus }}`
 		);
+
+		// Load transcript data
+		const filePath = path.join(process.cwd(), 'static', 'transcripts', `${episodeCode}.json`);
 
 		if (!fs.existsSync(filePath)) {
 			console.error(`❌ File not found: ${filePath}`);
 			return false;
 		}
 
+		console.log(`   📖 Loading transcript from: ${filePath}`);
 		const transcriptData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
 		if (!Array.isArray(transcriptData) || transcriptData.length === 0) {
@@ -88,8 +100,9 @@ async function updateTranscript(episodeCode) {
 			return false;
 		}
 
-		// Get episode ID and season
-		const episodeId = await getEpisodeId(episodeCode);
+		console.log(`   📊 Raw transcript contains ${transcriptData.length} items`);
+
+		// Get season
 		const season = extractSeason(episodeCode);
 
 		// Prepare transcript lines for insertion
@@ -109,24 +122,35 @@ async function updateTranscript(episodeCode) {
 			return false;
 		}
 
+		console.log(`   ✨ Prepared ${lines.length} valid lines for insertion`);
+
 		// Insert transcript lines in batches
 		const batchSize = 1000;
 		let insertedLines = 0;
+		const totalBatches = Math.ceil(lines.length / batchSize);
+
+		console.log(`   🔄 Inserting in ${totalBatches} batch${totalBatches > 1 ? 'es' : ''}...`);
 
 		for (let i = 0; i < lines.length; i += batchSize) {
 			const batch = lines.slice(i, i + batchSize);
+			const batchNumber = Math.floor(i / batchSize) + 1;
+
+			console.log(
+				`     📦 Batch ${batchNumber}/${totalBatches}: inserting ${batch.length} lines...`
+			);
 
 			const { data, error } = await supabase.from('transcript_lines').insert(batch).select('id');
 
 			if (error) {
-				console.error(`❌ Error inserting lines for ${episodeCode}:`, error.message);
+				console.error(`❌ Error inserting batch ${batchNumber} for ${episodeCode}:`, error.message);
 				throw error;
 			}
 
 			insertedLines += data?.length || 0;
+			console.log(`     ✅ Batch ${batchNumber} completed: ${data?.length || 0} lines inserted`);
 		}
 
-		console.log(`✅ ${episodeCode}: ${insertedLines} lines updated`);
+		console.log(`✅ ${episodeCode}: Successfully updated with ${insertedLines} lines`);
 		return true;
 	} catch (error) {
 		console.error(`❌ Error processing ${episodeCode}:`, error.message);

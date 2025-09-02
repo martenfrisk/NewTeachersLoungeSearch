@@ -24,11 +24,52 @@ const loadTranscript = async (episode: string): Promise<ContextLine[]> => {
 	}
 
 	try {
-		const response = await fetch(`/transcripts/${episode}.json`);
-		if (!response.ok) {
-			throw new Error(`Failed to load transcript for ${episode}`);
+		const { supabase } = await import('$lib/supabase');
+
+		const { data, error } = await supabase
+			.from('transcript_lines')
+			.select(
+				`
+				id,
+				timestamp_str,
+				speaker,
+				line,
+				edited,
+				episode:episodes!inner(ep, season)
+			`
+			)
+			.eq('episodes.ep', episode)
+			.order('timestamp_str');
+
+		if (error) {
+			throw new Error(`Failed to load transcript for ${episode}: ${error.message}`);
 		}
-		const transcript: ContextLine[] = await response.json();
+
+		if (!data || data.length === 0) {
+			console.warn(`No transcript found for episode: ${episode}`);
+			return [];
+		}
+
+		// Convert to ContextLine format
+		const transcript: ContextLine[] = data.map(
+			(item: {
+				id: string;
+				timestamp_str: string;
+				speaker: string;
+				line: string;
+				edited: boolean;
+				episode: { ep: string; season: string }[];
+			}) => ({
+				id: item.id,
+				episode: item.episode[0]?.ep || episode,
+				season: item.episode[0]?.season || '',
+				time: item.timestamp_str,
+				speaker: item.speaker,
+				line: item.line,
+				edited: item.edited
+			})
+		);
+
 		transcriptCache.set(episode, transcript);
 		return transcript;
 	} catch (error) {
@@ -55,11 +96,26 @@ export const getContext = async (hit: SearchHitType): Promise<HitContext> => {
 		return { before: null, current: hit, after: null };
 	}
 
-	const currentLineIndex = transcript.findIndex(
-		(line) => line.time === hit.time && line.line === hit.line
-	);
+	// First try to find by ID if it exists
+	let currentLineIndex = -1;
+	if (hit.id) {
+		currentLineIndex = transcript.findIndex((line) => line.id === hit.id);
+	}
+
+	// If not found by ID, try to find by time and line content
+	if (currentLineIndex === -1) {
+		currentLineIndex = transcript.findIndex(
+			(line) => line.time === hit.time && line.line === hit.line
+		);
+	}
+
+	// If still not found, try to find by time only (in case line content differs)
+	if (currentLineIndex === -1) {
+		currentLineIndex = transcript.findIndex((line) => line.time === hit.time);
+	}
 
 	if (currentLineIndex === -1) {
+		console.warn(`Could not find context for hit:`, { episode, time: hit.time, line: hit.line });
 		return { before: null, current: hit, after: null };
 	}
 

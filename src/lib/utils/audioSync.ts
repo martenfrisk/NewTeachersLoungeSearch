@@ -135,3 +135,81 @@ export function transcriptTimeToAudioSeconds(transcriptTime: string, startingTim
 	const transcriptSeconds = timeStringToSeconds(transcriptTime);
 	return transcriptSeconds + startingTime; // Add back the intro offset
 }
+
+/**
+ * Normalizes timestamp format to single-digit format (0:00:01 instead of 00:00:01)
+ * Supports both HH:MM:SS and MM:SS formats, always returns normalized format
+ */
+export function normalizeTimestamp(timestamp: string): string {
+	if (!timestamp || typeof timestamp !== 'string') return '0:00:00';
+
+	// Remove any whitespace
+	const cleaned = timestamp.trim();
+
+	// Match various timestamp formats
+	const match =
+		cleaned.match(/^(\d{1,2}):(\d{1,2}):(\d{1,2})$/) || cleaned.match(/^(\d{1,2}):(\d{1,2})$/);
+
+	if (!match) return '0:00:00';
+
+	if (match.length === 4) {
+		// HH:MM:SS format
+		const hours = parseInt(match[1], 10);
+		const minutes = parseInt(match[2], 10);
+		const seconds = parseInt(match[3], 10);
+
+		// Validate ranges
+		if (minutes > 59 || seconds > 59) return '0:00:00';
+
+		return `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+	} else if (match.length === 3) {
+		// MM:SS format
+		const minutes = parseInt(match[1], 10);
+		const seconds = parseInt(match[2], 10);
+
+		// Validate ranges
+		if (minutes > 59 || seconds > 59) return '0:00:00';
+
+		return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+	}
+
+	return '0:00:00';
+}
+
+/**
+ * Checks if a timestamp format is valid (supports both 00:00:01 and 0:00:01)
+ */
+export function isValidTimestampFormat(timestamp: string): boolean {
+	if (!timestamp || typeof timestamp !== 'string') return false;
+
+	const cleaned = timestamp.trim();
+
+	// Match formats: HH:MM:SS, MM:SS, H:MM:SS, M:SS (with leading zeros or without)
+	const timestampRegex = /^(\d{1,2}:)?([0-5]?\d):([0-5]\d)$/;
+	return timestampRegex.test(cleaned);
+}
+
+/**
+ * Converts timestamp to seconds, supporting both padded and unpadded formats
+ */
+export function timestampToSeconds(timestamp: string): number {
+	const normalized = normalizeTimestamp(timestamp);
+	return timeStringToSeconds(normalized);
+}
+
+/**
+ * Converts seconds back to normalized timestamp format (single-digit format)
+ */
+export function secondsToNormalizedTimestamp(seconds: number): string {
+	if (isNaN(seconds) || seconds < 0) return '0:00:00';
+
+	const hours = Math.floor(seconds / 3600);
+	const minutes = Math.floor((seconds % 3600) / 60);
+	const secs = Math.floor(seconds % 60);
+
+	if (hours > 0) {
+		return `${hours}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+	} else {
+		return `${minutes}:${secs.toString().padStart(2, '0')}`;
+	}
+}

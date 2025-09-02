@@ -2,6 +2,7 @@ import { get } from '@vercel/edge-config';
 import { randomQuery } from '../utils';
 import type { CacheEntry } from '../types/common';
 import type { SearchHitType, SearchStats } from '../types/search';
+import { highlightSearchTerms } from './highlighting';
 
 export interface CacheDataType {
 	query: string;
@@ -131,8 +132,15 @@ export async function loadStaticCache(query: string): Promise<CacheResultType | 
 
 		const cacheResponseTime = Math.round(performance.now() - startTime);
 
+		// Apply highlighting to cached results
+		const highlightedHits = cacheData.result.hits.map((hit) => ({
+			...hit,
+			highlightedLine: highlightSearchTerms(hit.line, query)
+		}));
+
 		return {
 			...cacheData.result,
+			hits: highlightedHits,
 			stats: {
 				...cacheData.result.stats,
 				cacheHit: true,

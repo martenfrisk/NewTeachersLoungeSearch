@@ -176,7 +176,7 @@
 								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
 							/>
 							<p class="text-xs text-gray-500 mt-1">
-								This will be shown publicly if your edit is approved
+								This display name will be shown publicly if your edit is approved
 							</p>
 						</div>
 
@@ -194,7 +194,8 @@
 								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
 							/>
 							<p class="text-xs text-gray-500 mt-1">
-								Private - only visible to moderators for follow-up if needed
+								Used only for duplicate prevention - stored securely as a hash, not readable by
+								moderators
 							</p>
 						</div>
 
@@ -233,8 +234,9 @@
 								</svg>
 								<div class="ml-2">
 									<p class="text-xs text-blue-800">
-										<strong>Anonymous submissions welcome!</strong> All fields are optional. Your edits
-										will be reviewed by our team before being published.
+										<strong>Privacy-first submissions!</strong> All fields are optional. Email is hashed
+										for privacy, display name is public only if you provide one. Your edits will be reviewed
+										before publishing.
 									</p>
 								</div>
 							</div>

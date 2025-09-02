@@ -1,5 +1,5 @@
 {
-  "generated": 1756597648161,
+  "generated": 1756802537868,
   "version": "2.0",
   "method": "database-search",
   "queries": [
@@ -7,203 +7,203 @@
       "query": "guinness",
       "fileName": "guinness",
       "hitCount": 20,
-      "totalHits": 176,
+      "totalHits": 109,
       "cached": true
     },
     {
       "query": "ridiculous voice",
       "fileName": "ridiculous-voice",
       "hitCount": 20,
-      "totalHits": 113,
+      "totalHits": 56,
       "cached": true
     },
     {
       "query": "bronco",
       "fileName": "bronco",
       "hitCount": 20,
-      "totalHits": 55,
+      "totalHits": 30,
       "cached": true
     },
     {
       "query": "lasagna",
       "fileName": "lasagna",
       "hitCount": 20,
-      "totalHits": 72,
+      "totalHits": 41,
       "cached": true
     },
     {
       "query": "big nightmare",
       "fileName": "big-nightmare",
-      "hitCount": 20,
-      "totalHits": 25,
+      "hitCount": 12,
+      "totalHits": 12,
       "cached": true
     },
     {
       "query": "el chapo",
       "fileName": "el-chapo",
-      "hitCount": 20,
-      "totalHits": 33,
+      "hitCount": 17,
+      "totalHits": 17,
       "cached": true
     },
     {
       "query": "cheetah man",
       "fileName": "cheetah-man",
-      "hitCount": 20,
-      "totalHits": 20,
+      "hitCount": 10,
+      "totalHits": 10,
       "cached": true
     },
     {
       "query": "see you in court",
       "fileName": "see-you-in-court",
       "hitCount": 20,
-      "totalHits": 71,
+      "totalHits": 38,
       "cached": true
     },
     {
       "query": "beef diaper",
       "fileName": "beef-diaper",
       "hitCount": 20,
-      "totalHits": 192,
+      "totalHits": 104,
       "cached": true
     },
     {
       "query": "bottomless piggy bank",
       "fileName": "bottomless-piggy-bank",
-      "hitCount": 20,
-      "totalHits": 36,
+      "hitCount": 18,
+      "totalHits": 18,
       "cached": true
     },
     {
       "query": "scarecrow",
       "fileName": "scarecrow",
       "hitCount": 20,
-      "totalHits": 81,
+      "totalHits": 41,
       "cached": true
     },
     {
       "query": "south pole santa",
       "fileName": "south-pole-santa",
-      "hitCount": 17,
-      "totalHits": 17,
+      "hitCount": 9,
+      "totalHits": 9,
       "cached": true
     },
     {
       "query": "obsessed with corn",
       "fileName": "obsessed-with-corn",
-      "hitCount": 11,
-      "totalHits": 11,
+      "hitCount": 6,
+      "totalHits": 6,
       "cached": true
     },
     {
       "query": "permit crab",
       "fileName": "permit-crab",
-      "hitCount": 20,
-      "totalHits": 26,
+      "hitCount": 13,
+      "totalHits": 13,
       "cached": true
     },
     {
       "query": "Wimberley",
       "fileName": "wimberley",
       "hitCount": 20,
-      "totalHits": 47,
+      "totalHits": 24,
       "cached": true
     },
     {
       "query": "tricky dick",
       "fileName": "tricky-dick",
-      "hitCount": 4,
-      "totalHits": 4,
+      "hitCount": 2,
+      "totalHits": 2,
       "cached": true
     },
     {
       "query": "picasso",
       "fileName": "picasso",
-      "hitCount": 20,
-      "totalHits": 24,
-      "cached": true
-    },
-    {
-      "query": "grotesque genitals",
-      "fileName": "grotesque-genitals",
       "hitCount": 12,
       "totalHits": 12,
       "cached": true
     },
     {
+      "query": "grotesque genitals",
+      "fileName": "grotesque-genitals",
+      "hitCount": 6,
+      "totalHits": 6,
+      "cached": true
+    },
+    {
       "query": "bethany hart",
       "fileName": "bethany-hart",
-      "hitCount": 20,
-      "totalHits": 24,
+      "hitCount": 12,
+      "totalHits": 12,
       "cached": true
     },
     {
       "query": "morrissey",
       "fileName": "morrissey",
-      "hitCount": 20,
-      "totalHits": 26,
+      "hitCount": 13,
+      "totalHits": 13,
       "cached": true
     },
     {
       "query": "goths",
       "fileName": "goths",
-      "hitCount": 20,
-      "totalHits": 38,
+      "hitCount": 19,
+      "totalHits": 19,
       "cached": true
     },
     {
       "query": "famously",
       "fileName": "famously",
       "hitCount": 20,
-      "totalHits": 581,
+      "totalHits": 304,
       "cached": true
     },
     {
       "query": "oj simpson",
       "fileName": "oj-simpson",
-      "hitCount": 6,
-      "totalHits": 6,
+      "hitCount": 5,
+      "totalHits": 5,
       "cached": true
     },
     {
       "query": "let's just say",
       "fileName": "let-s-just-say",
       "hitCount": 20,
-      "totalHits": 940,
+      "totalHits": 506,
       "cached": true
     },
     {
       "query": "real hair",
       "fileName": "real-hair",
-      "hitCount": 20,
-      "totalHits": 31,
+      "hitCount": 15,
+      "totalHits": 15,
       "cached": true
     },
     {
       "query": "refrigerator",
       "fileName": "refrigerator",
       "hitCount": 20,
-      "totalHits": 111,
+      "totalHits": 59,
       "cached": true
     },
     {
       "query": "large olive",
       "fileName": "large-olive",
-      "hitCount": 12,
-      "totalHits": 12,
+      "hitCount": 6,
+      "totalHits": 6,
       "cached": true
     },
     {
       "query": "Gandhi",
       "fileName": "gandhi",
       "hitCount": 20,
-      "totalHits": 48,
+      "totalHits": 24,
       "cached": true
     },
     {
       "query": "gazpacho",
       "fileName": "gazpacho",
-      "hitCount": 6,
-      "totalHits": 6,
+      "hitCount": 3,
+      "totalHits": 3,
       "cached": true
     }
   ],
@@ -211,6 +211,6 @@
     "total": 29,
     "cached": 29,
     "failed": 0,
-    "totalHits": 2838
+    "totalHits": 1514
   }
 }

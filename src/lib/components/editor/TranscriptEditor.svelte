@@ -35,10 +35,15 @@
 	let isLoading = $derived(editorStore.isLoading);
 	let error = $derived(editorStore.error);
 	let isAudioSynced = $derived(editorStore.isAudioSynced);
+	let changedLinesCount = $derived(editorStore.editedLinesCount);
+	let selectedLineIndices = $derived(editorStore.selectedLineIndices);
 
 	// Audio state
 	let audioCurrentTime = $derived($audioStore.currentTime);
 	let currentLine = $derived(editorStore.currentLine);
+
+	// Track last selected index for shift-click range selection
+	let lastSelectedIndex = $state<number>(-1);
 
 	// UI state
 	let showKeyboardHelp = $state(false);
@@ -46,6 +51,7 @@
 	let showAutoSaveNotification = $state(false);
 	let autoSaveTimestamp = $state<Date | null>(null);
 	let shiftControlsCollapsed = $state(true); // Default collapsed since only used once
+	let mouseControlsCollapsed = $state(false); // Show mouse controls by default
 
 	// Submission state
 	let showSubmissionToast = $state(false);
@@ -57,12 +63,12 @@
 		showKeyboardHelp = !showKeyboardHelp;
 	}
 
-	function handleToggleControls() {
-		controlsCollapsed = !controlsCollapsed;
-	}
-
 	function handleToggleShiftControls() {
 		shiftControlsCollapsed = !shiftControlsCollapsed;
+	}
+
+	function handleToggleMouseControls() {
+		mouseControlsCollapsed = !mouseControlsCollapsed;
 	}
 
 	function handleKeyboardAction(action: string) {
@@ -125,9 +131,24 @@
 					scrollToCurrentLine();
 				}
 				break;
+			case 'delete-line':
+				if (currentLineIndex >= 0 && transcriptLines.length > 1) {
+					// Confirm deletion for safety
+					const confirmed = confirm('Are you sure you want to delete this line?');
+					if (confirmed) {
+						editorStore.deleteLine(currentLineIndex);
+						scrollToCurrentLine();
+					}
+				}
+				break;
 			case 'cancel-edit':
 				if (currentLineIndex >= 0) {
 					editorStore.stopEditingLine(currentLineIndex);
+				}
+				break;
+			case 'save-line':
+				if (currentLineIndex >= 0) {
+					editorStore.saveLine(currentLineIndex);
 				}
 				break;
 			case 'commit-line':
@@ -142,6 +163,11 @@
 				break;
 			case 'show-help':
 				showKeyboardHelp = !showKeyboardHelp;
+				break;
+			case 'reset-edited':
+				if (currentLineIndex >= 0) {
+					editorStore.resetLineEditedState(currentLineIndex);
+				}
 				break;
 		}
 	}
@@ -221,6 +247,52 @@
 		editorStore.shiftAllLinesTime(shiftSeconds);
 	}
 
+	function handleSaveAllChanges() {
+		editorStore.saveAllChanges();
+	}
+
+	function handleSelectionChange(index: number, selected: boolean, shiftKey?: boolean) {
+		// Handle special index values for select all/clear
+		if (index === -1) {
+			// Clear selection
+			editorStore.clearLineSelection();
+			lastSelectedIndex = -1;
+			return;
+		}
+
+		if (index === -2) {
+			// Select/deselect all
+			if (selected) {
+				editorStore.selectAllLines();
+			} else {
+				editorStore.clearLineSelection();
+			}
+			lastSelectedIndex = -1;
+			return;
+		}
+
+		// Handle normal line selection
+		if (shiftKey && lastSelectedIndex >= 0) {
+			// Range selection - select everything between lastSelectedIndex and current index
+			editorStore.selectLineRange(lastSelectedIndex, index);
+			// Don't update lastSelectedIndex for shift-click, keep it as the anchor point
+		} else {
+			// Normal checkbox behavior - just toggle the individual line
+			if (selected) {
+				// Add to selection (don't clear others - checkboxes support multi-select naturally)
+				if (!editorStore.isLineSelected(index)) {
+					editorStore.toggleLineSelection(index);
+				}
+			} else {
+				// Remove from selection
+				if (editorStore.isLineSelected(index)) {
+					editorStore.toggleLineSelection(index);
+				}
+			}
+			lastSelectedIndex = index;
+		}
+	}
+
 	// Auto-save functions
 	function loadAutoSavedData() {
 		if (selectedEpisode && editorStore.loadFromLocalStorage(selectedEpisode)) {
@@ -251,9 +323,8 @@
 	}
 
 	// Submission handlers
-	function handleSubmitSuccess(editIds: string[]) {
-		const count = editIds.length;
-		submissionToastMessage = `Successfully submitted ${count} change${count === 1 ? '' : 's'} for review!`;
+	function handleSubmitSuccess(submissionId: string) {
+		submissionToastMessage = `Successfully submitted episode transcript for review! (ID: ${submissionId})`;
 		submissionToastType = 'success';
 		showSubmissionToast = true;
 
@@ -297,7 +368,7 @@
 				originalText: line.line,
 				originalSpeaker: line.speaker,
 				originalTime: line.time,
-				hasChanges: false
+				editState: 'unedited' as const
 			}));
 
 			editorStore.setSelectedEpisode(initialEpisode);
@@ -326,82 +397,100 @@
 </script>
 
 <EditorErrorBoundary>
-	<div class="min-h-screen bg-gray-50">
-		<div class="max-w-full mx-auto px-4 py-6 sm:mr-80 relative">
-			<!-- Header -->
-			<EditorHeader
-				{episodeInfo}
-				{selectedEpisode}
-				{showKeyboardHelp}
-				{transcriptLines}
-				onToggleHelp={handleToggleHelp}
-				onSubmitSuccess={handleSubmitSuccess}
-				onSubmitError={handleSubmitError}
-			/>
+	<div class="min-h-screen mb-20 bg-gray-50">
+		<!-- Grid Container for Two-Frame Layout (Content + Sidebar) -->
+		<div
+			class="h-[calc(100vh-theme(spacing.16))] max-w-none grid lg:grid-cols-[1fr_320px] grid-cols-1 pb-32"
+		>
+			<!-- Main Content Frame -->
+			<div class="overflow-y-auto px-4 py-6 relative max-w-none">
+				<!-- Header -->
+				<EditorHeader
+					{episodeInfo}
+					{selectedEpisode}
+					{showKeyboardHelp}
+					{transcriptLines}
+					onToggleHelp={handleToggleHelp}
+					onSubmitSuccess={handleSubmitSuccess}
+					onSubmitError={handleSubmitError}
+				/>
 
-			<!-- Auto-save notification -->
-			<EditorAutoSaveNotification
-				show={showAutoSaveNotification}
-				timestamp={autoSaveTimestamp}
-				onLoadAutoSavedData={loadAutoSavedData}
-				onDiscardAutoSavedData={discardAutoSavedData}
-				onDismiss={dismissAutoSaveNotification}
-			/>
+				<!-- Auto-save notification -->
+				<EditorAutoSaveNotification
+					show={showAutoSaveNotification}
+					timestamp={autoSaveTimestamp}
+					onLoadAutoSavedData={loadAutoSavedData}
+					onDiscardAutoSavedData={discardAutoSavedData}
+					onDismiss={dismissAutoSaveNotification}
+				/>
 
-			<!-- Episode Selection -->
-			{#if !selectedEpisode}
-				<div class="mb-6">
-					<EpisodeSelector {selectedEpisode} onEpisodeSelect={handleEpisodeSelect} />
-				</div>
-			{/if}
+				<!-- Episode Selection -->
+				{#if !selectedEpisode}
+					<div class="mb-6">
+						<EpisodeSelector {selectedEpisode} onEpisodeSelect={handleEpisodeSelect} />
+					</div>
+				{/if}
 
-			{#if selectedEpisode}
-				<!-- Keyboard Handler -->
-				<EditorKeyboardHandler onKeyboardAction={handleKeyboardAction} />
+				{#if selectedEpisode}
+					<!-- Keyboard Handler -->
+					<EditorKeyboardHandler onKeyboardAction={handleKeyboardAction} />
 
-				<!-- Floating Controls Panel -->
+					<!-- Main Content - Full Width Transcript -->
+					{#if isLoading}
+						<LoadingState message="Loading transcript..." />
+					{:else if error}
+						<div class="bg-white rounded-lg border border-gray-200 shadow-sm p-8">
+							<ErrorMessage {error} />
+							<div class="mt-4 text-center">
+								<Button onclick={() => editorStore.clearError()}>Try Again</Button>
+							</div>
+						</div>
+					{:else}
+						<TranscriptView
+							{transcriptLines}
+							{speakers}
+							{currentLineIndex}
+							{controlsCollapsed}
+							onTextEdit={handleTextEdit}
+							onSpeakerEdit={handleSpeakerEdit}
+							onTimestampEdit={handleTimestampEdit}
+							onLineClick={handleLineClick}
+							onSplitLine={handleSplitLine}
+							onAddNewLineBefore={handleAddNewLineBefore}
+							onAddNewLineAfter={handleAddNewLineAfter}
+							onStartEditing={handleStartEditing}
+							onStopEditing={handleStopEditing}
+							onNavigateAndEdit={handleNavigateAndEdit}
+							onKeyboardAction={handleKeyboardAction}
+							{selectedLineIndices}
+							onSelectionChange={handleSelectionChange}
+						/>
+					{/if}
+				{/if}
+			</div>
+
+			<!-- Sidebar Frame -->
+			<div class="lg:block hidden">
+				<!-- Floating Controls Panel - Hidden on smaller screens -->
 				<EditorSidebar
 					{selectedEpisode}
 					{speakers}
-					{controlsCollapsed}
 					{shiftControlsCollapsed}
-					onToggleControls={handleToggleControls}
+					{mouseControlsCollapsed}
 					onToggleShiftControls={handleToggleShiftControls}
+					onToggleMouseControls={handleToggleMouseControls}
 					onEpisodeSelect={handleEpisodeSelect}
 					onSpeakersChange={handleSpeakersChange}
 					onAddSpeaker={handleAddSpeaker}
 					onShiftAllLines={handleShiftAllLines}
+					onSaveAllChanges={handleSaveAllChanges}
+					onKeyboardAction={handleKeyboardAction}
+					{changedLinesCount}
+					{currentLineIndex}
+					transcriptLinesLength={transcriptLines.length}
+					{isLoading}
 				/>
-
-				<!-- Main Content - Full Width Transcript -->
-				{#if isLoading}
-					<LoadingState message="Loading transcript..." />
-				{:else if error}
-					<div class="bg-white rounded-lg border border-gray-200 shadow-sm p-8">
-						<ErrorMessage {error} />
-						<div class="mt-4 text-center">
-							<Button onclick={() => editorStore.clearError()}>Try Again</Button>
-						</div>
-					</div>
-				{:else}
-					<TranscriptView
-						{transcriptLines}
-						{speakers}
-						{currentLineIndex}
-						{controlsCollapsed}
-						onTextEdit={handleTextEdit}
-						onSpeakerEdit={handleSpeakerEdit}
-						onTimestampEdit={handleTimestampEdit}
-						onLineClick={handleLineClick}
-						onSplitLine={handleSplitLine}
-						onAddNewLineBefore={handleAddNewLineBefore}
-						onAddNewLineAfter={handleAddNewLineAfter}
-						onStartEditing={handleStartEditing}
-						onStopEditing={handleStopEditing}
-						onNavigateAndEdit={handleNavigateAndEdit}
-					/>
-				{/if}
-			{/if}
+			</div>
 		</div>
 	</div>
 </EditorErrorBoundary>

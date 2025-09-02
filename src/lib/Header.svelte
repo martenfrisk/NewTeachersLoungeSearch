@@ -1,31 +1,20 @@
 <script lang="ts">
+	import { slide } from 'svelte/transition';
 	import Coffee from './components/Coffee.svelte';
-	import AuthModal from './components/auth/AuthModal.svelte';
 	import { user } from './stores/auth';
-
-	interface Props {
-		onAuthModalOpen?: () => void;
-	}
-
-	let { onAuthModalOpen }: Props = $props();
+	import { appStore } from './stores/app';
 
 	let moreInfo = $state(false);
 	let copyright = $state(false);
-	let showAuthModal = $state(false);
 	let showMobileMenu = $state(false);
 	let showInfoDropdown = $state(false);
 
 	const handleMoreInfo = () => (moreInfo = !moreInfo);
 	const handleCopyright = () => (copyright = !copyright);
 	const handleAuthModal = () => {
-		if (onAuthModalOpen) {
-			onAuthModalOpen();
-		} else {
-			showAuthModal = true;
-		}
+		appStore.openAuthModal();
 	};
 
-	const toggleMobileMenu = () => (showMobileMenu = !showMobileMenu);
 	const toggleInfoDropdown = () => (showInfoDropdown = !showInfoDropdown);
 </script>
 
@@ -38,7 +27,10 @@
 			<div class="flex items-center space-x-3">
 				<Coffee />
 				<div class="flex flex-col">
-					<a href="/" class="text-white font-bold text-lg hover:text-blue-100 transition-colors">
+					<a
+						href="/"
+						class="text-white font-bold text-lg hover:text-blue-100 active:underline transition-colors"
+					>
 						Seekers&apos; Lounge
 					</a>
 					<div class="hidden sm:block text-xs text-blue-100">
@@ -126,26 +118,34 @@
 						</div>
 					</div>
 				{:else}
+					<!-- Sign In button temporarily hidden
 					<button
 						onclick={handleAuthModal}
 						class="px-3 py-1.5 text-xs font-medium text-blue-700 bg-white border border-blue-200 rounded-md hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
 					>
 						Sign In
 					</button>
+					-->
 				{/if}
 
 				<!-- Mobile menu button -->
 				<button
-					onclick={toggleMobileMenu}
-					class="md:hidden p-2 text-white hover:bg-blue-600 rounded-md transition-colors"
+					onclick={toggleInfoDropdown}
+					class="md:hidden flex items-center justify-center fill-white stroke-white text-white"
 					aria-label="Toggle mobile menu"
 				>
-					<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="size-8"
+					>
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
-							stroke-width="2"
-							d="M4 6h16M4 12h16M4 18h16"
+							d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
 						/>
 					</svg>
 				</button>
@@ -161,7 +161,7 @@
 				<div class="flex items-center space-x-4">
 					<a
 						href="/"
-						class="flex items-center space-x-2 text-gray-800 hover:text-gray-900 transition-colors"
+						class="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
 					>
 						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path
@@ -179,7 +179,7 @@
 				<div>
 					<a
 						href="/episodes"
-						class="text-sm border-b border-blue-300 font-medium flex items-center space-x-2 text-gray-800 hover:text-gray-900 transition-colors"
+						class="text-sm border-b border-blue-300 font-medium flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
 					>
 						Episode Guide
 					</a>
@@ -204,15 +204,18 @@
 
 	<!-- Info dropdown content -->
 	{#if showInfoDropdown}
-		<div class="absolute top-full left-0 right-0 bg-white shadow-sm border-t border-blue-100 z-50">
+		<div
+			transition:slide
+			class="absolute top-full left-0 right-0 bg-blue-50 shadow-lg border-y border-blue-100 z-50"
+		>
 			<div class="px-4 py-6 mx-auto max-w-4xl">
 				<div class="grid md:grid-cols-2 gap-6 text-sm">
 					<div class="space-y-4">
-						<p class="text-gray-700">
+						<p class="text-gray-800">
 							Seekers' Lounge is an unofficial fan website where you can search through the
 							transcripts of all episodes to find your favorite bit.
 						</p>
-						<p class="text-gray-700">
+						<p class="text-gray-800">
 							Listen to the free episodes wherever you get your podcast or buy them from
 							<a
 								class="text-blue-600 underline hover:text-blue-700 transition-colors"
@@ -221,14 +224,14 @@
 								biggrandewebsite.com
 							</a>
 						</p>
-						<p class="text-gray-700">
+						<p class="text-gray-800">
 							Transcripts are unedited. Speakers not identified. Intro has been removed so add ~30
 							seconds for accurate timestamp.
 						</p>
 					</div>
 
-					<div class="space-y-4">
-						<p class="text-sm text-gray-600">
+					<div class="space-y-4 p-4 text-xs bg-amber-50 shadow-md rounded-md">
+						<p class="">
 							Seekers' Lounge is free with no ads. If you find it useful you can
 							<a
 								class="text-blue-600 underline hover:text-blue-700 transition-colors"
@@ -239,7 +242,7 @@
 						</p>
 
 						<div>
-							<span class="text-gray-700">Want to help out? </span>
+							<span class="">Want to help out? </span>
 							<button
 								onclick={handleMoreInfo}
 								class="inline-flex items-center space-x-1 text-blue-600 hover:text-blue-700 transition-colors focus:outline-none"
@@ -262,7 +265,7 @@
 						</div>
 
 						{#if moreInfo}
-							<div class="text-sm text-gray-600 space-y-2 pl-4 border-l-2 border-blue-200">
+							<div class=" text-gray-600 space-y-2 pl-4 border-l-2 border-blue-200">
 								<p>
 									You can find the unedited transcripts
 									<a
@@ -304,7 +307,7 @@
 						</div>
 
 						{#if copyright}
-							<div class="text-sm text-gray-600 space-y-2 pl-4 border-l-2 border-blue-200">
+							<div class="text-gray-600 space-y-2 pl-4 border-l-2 border-blue-200">
 								<p>
 									No copyright infringement intended. All rights belong to their respective rights
 									holders (probably Big Grande and Earwolf). Want to contact me? I'll see your ass
@@ -319,8 +322,3 @@
 		</div>
 	{/if}
 </header>
-
-<!-- AuthModal - only show if handled locally -->
-{#if showAuthModal}
-	<AuthModal isOpen={showAuthModal} onClose={() => (showAuthModal = false)} />
-{/if}

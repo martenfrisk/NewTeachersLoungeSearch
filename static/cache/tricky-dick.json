@@ -1,22 +1,13 @@
 {
   "query": "tricky dick",
-  "timestamp": 1756597643898,
-  "expiresAt": 1757202443898,
+  "timestamp": 1756802533313,
+  "expiresAt": 1757407333313,
   "result": {
     "hits": [
       {
         "id": "1e40829b-51a1-4975-8e2f-19f78230b0b1",
         "season": "s03",
-        "time": "00:50:30",
-        "speaker": "5",
-        "line": "I read it and it said no comment. Tag Nixon Hash tag. Tricky Dick. Hashtag tricky referred to you dicks,",
-        "episode": "s03e03",
-        "edited": false
-      },
-      {
-        "id": "d8feb2ea-53b4-44ef-9d9d-37db8cc17ed3",
-        "season": "s03",
-        "time": "00:50:30",
+        "time": "0:50:30",
         "speaker": "5",
         "line": "I read it and it said no comment. Tag Nixon Hash tag. Tricky Dick. Hashtag tricky referred to you dicks,",
         "episode": "s03e03",
@@ -25,16 +16,7 @@
       {
         "id": "76231327-6b05-4cb0-b491-7ed14e6fe994",
         "season": "s03",
-        "time": "00:38:03",
-        "speaker": "1",
-        "line": "will see you in court. Hashtag tricky dick Hash tag Nixon hashtag tricky dick refers to my Penis being sneaky. You",
-        "episode": "s03e03",
-        "edited": false
-      },
-      {
-        "id": "b64d8c9d-5b43-46c4-8e9a-02629adaf4eb",
-        "season": "s03",
-        "time": "00:38:03",
+        "time": "0:38:03",
         "speaker": "1",
         "line": "will see you in court. Hashtag tricky dick Hash tag Nixon hashtag tricky dick refers to my Penis being sneaky. You",
         "episode": "s03e03",
@@ -42,7 +24,7 @@
       }
     ],
     "stats": {
-      "estimatedTotalHits": 4,
+      "estimatedTotalHits": 2,
       "processingTime": 0,
       "facets": [
         {
@@ -50,7 +32,7 @@
           "facetHits": [
             {
               "ep": "s03",
-              "hits": 4
+              "hits": 2
             }
           ]
         },
@@ -59,7 +41,7 @@
           "facetHits": [
             {
               "ep": "s03e03",
-              "hits": 4
+              "hits": 2
             }
           ]
         }

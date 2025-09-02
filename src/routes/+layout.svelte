@@ -8,6 +8,8 @@
 	import { audioStore } from '$lib/stores/audio';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 	import AuthModal from 'lib/components/auth/AuthModal.svelte';
+	import { page } from '$app/stores';
+	import { appStore, authModalOpen } from '$lib/stores/app';
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -28,13 +30,6 @@
 	// Dynamic import for audio player to reduce initial bundle size
 	let AudioPlayer: import('svelte').Component | null = $state(null);
 
-	let showAuthModal = $state(false);
-
-	// Global auth modal handler
-	function openAuthModal() {
-		showAuthModal = true;
-	}
-
 	$effect(() => {
 		if (showAudioPlayer && !AudioPlayer) {
 			import('$lib/components/audio/AudioPlayer.svelte').then((module) => {
@@ -50,13 +45,30 @@
 	<link rel="preconnect" href="https://rss.art19.com" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="theme-color" content="#2563eb" />
+
+	<!-- Open Graph Meta Tags -->
+	<meta property="og:site_name" content="Seekers' Lounge" />
+	<meta property="og:type" content="website" />
+	<meta property="og:locale" content="en_US" />
+
+	<!-- Twitter Card Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@seekerslounge" />
+
+	<!-- Canonical URL (will be overridden by individual pages) -->
+	<link rel="canonical" href="https://seekerslounge.pcast.site{$page.url.pathname}" />
 </svelte:head>
 
 <svelte:window bind:scrollY={y} bind:innerHeight />
 <div bind:this={element}></div>
 <div class="min-h-screen">
-	<Header onAuthModalOpen={openAuthModal} />
-	<main class="container mx-auto px-4 py-6 mb-24">
+	<Header />
+	<main
+		class:container={!$page.route.id?.startsWith('/editor')}
+		class:mx-auto={!$page.route.id?.startsWith('/editor')}
+		class:px-4={!$page.route.id?.startsWith('/editor')}
+		class="py-6 mb-24"
+	>
 		{@render children?.()}
 		{#if isButtonVisible}
 			<button
@@ -68,7 +80,7 @@
 			</button>
 		{/if}
 	</main>
-	<AuthModal isOpen={showAuthModal} onClose={() => (showAuthModal = false)} />
+	<AuthModal isOpen={$authModalOpen} onClose={appStore.closeAuthModal} />
 	<!-- Audio Player - lazy loaded when needed -->
 	{#if showAudioPlayer && AudioPlayer}
 		<AudioPlayer currEpTitle={$audioStore.currentTimestamp?.episode} />

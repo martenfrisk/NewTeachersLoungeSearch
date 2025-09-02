@@ -43,8 +43,6 @@
 			);
 
 			wavesurfer.on('ready', () => {
-				console.log('WaveSurfer ready');
-
 				// Sync initial position if we have a current time
 				if (audioState.currentTime > 0 && audioState.duration > 0) {
 					const progress = audioState.currentTime / audioState.duration;

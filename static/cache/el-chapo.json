@@ -1,11 +1,11 @@
 {
   "query": "el chapo",
-  "timestamp": 1756597640591,
-  "expiresAt": 1757202440591,
+  "timestamp": 1756802528764,
+  "expiresAt": 1757407328764,
   "result": {
     "hits": [
       {
-        "id": "e3942b26-16bc-4a21-b077-5dc94c79fd84",
+        "id": "e3ef5506-15b1-4e4f-a073-87ef5a4b1a35",
         "season": "s09",
         "time": "1:10:31",
         "speaker": "spk_0",
@@ -14,12 +14,120 @@
         "edited": false
       },
       {
-        "id": "e3ef5506-15b1-4e4f-a073-87ef5a4b1a35",
-        "season": "s09",
-        "time": "1:10:31",
-        "speaker": "spk_0",
-        "line": "knows the answer. You got your futures. Is the teachers and orange the teachers? I'm Are you El Chapo? I'm El Chapo Guzman. He's in the",
-        "episode": "s09e35",
+        "id": "239bce78-d92a-4a1a-b200-0199baba5efb",
+        "season": "s03",
+        "time": "0:05:57",
+        "speaker": "2",
+        "line": "fondly on our time with El Chapo. I don't know about you guys. It's",
+        "episode": "s03e01",
+        "edited": false
+      },
+      {
+        "id": "772cd7f1-b368-4064-ab11-e55d631e8617",
+        "season": "s03",
+        "time": "0:06:03",
+        "speaker": "2",
+        "line": "JJ. Yeah, I changed for the better. Now because of El Chapo,",
+        "episode": "s03e01",
+        "edited": false
+      },
+      {
+        "id": "160ce92a-b3c5-416c-af85-bb6b67429eaa",
+        "season": "s03",
+        "time": "0:07:27",
+        "speaker": "2",
+        "line": "motif of El Chapo's whole operation down.",
+        "episode": "s03e01",
+        "edited": false
+      },
+      {
+        "id": "7b48ba77-8b89-4127-8164-7459b5fbd229",
+        "season": "s02",
+        "time": "0:07:32",
+        "speaker": "2",
+        "line": "in 10 years on. It's basically used to print 100 print copies of the newspaper, and I decided to throw 300,000 through there on the orders of El Chapo. He said he had a very serious order. He, uh he wanted to get 150,000 copies he delivered. He",
+        "episode": "s02e06",
+        "edited": false
+      },
+      {
+        "id": "7d2467ed-e7e2-4454-9995-12b51ee8aa0a",
+        "season": "s02",
+        "time": "0:08:27",
+        "speaker": "2",
+        "line": "lie to me? El Chapo and I we've been friends for a few weeks. Like close friends for a few weeks. We talk about each other's lives. He told me about his vacation recently. What was it? Hey, friend. He went to Hawaii for a couple of okay.",
+        "episode": "s02e06",
+        "edited": false
+      },
+      {
+        "id": "eb2746c5-7aef-4ad9-b7da-7722ae648715",
+        "season": "s03",
+        "time": "0:09:16",
+        "speaker": "2",
+        "line": "lambs for awhile right down there on El Chapo's farm. But we were on the lam. We were escaping",
+        "episode": "s03e01",
+        "edited": false
+      },
+      {
+        "id": "98151cb0-656d-43af-8ab9-a7b1ede62fdd",
+        "season": "s02",
+        "time": "0:14:48",
+        "speaker": "2",
+        "line": "it. Well, anyway, this email was addressed to me on it. Offered to get 30 33,000 copies of my newspaper distributed in the country of Mexico. What? Yes. Yes. And it was signed by El Chapo himself through. He said He said would love to do business with you again. And I promise this isn't about drugs.",
+        "episode": "s02e04",
+        "edited": false
+      },
+      {
+        "id": "42a34247-c75b-41de-af58-4ac97675b48a",
+        "season": "s02",
+        "time": "0:15:19",
+        "speaker": "3",
+        "line": "We owe El Chapo gave us his tunnel recipe. Yeah, that's right. Well, we've had his tunnel resume, and that shit is",
+        "episode": "s02e04",
+        "edited": false
+      },
+      {
+        "id": "6cd23ce2-3675-4812-bc26-6e1bfa31d53a",
+        "season": "s04",
+        "time": "0:15:36",
+        "speaker": "1",
+        "line": "El Chapo in the can. We killed the hillside hump. Er I mean, either we're just associating with the worst people on Earth because no one else can stand us. And we keep stuff people that's not true or we're heroes.",
+        "episode": "s04e01",
+        "edited": false
+      },
+      {
+        "id": "3e8020ea-e290-49bf-b5f6-e7445ede4218",
+        "season": "s02",
+        "time": "0:16:51",
+        "speaker": "2",
+        "line": "I do. Guys, you know, I started a partnership last week with El Chapo. Um, and he's really increased the newspaper distribution.",
+        "episode": "s02e05",
+        "edited": false
+      },
+      {
+        "id": "482d0153-e98b-4b36-bd2d-0240cc9bf6d9",
+        "season": "s04",
+        "time": "0:31:17",
+        "speaker": "Unknown",
+        "line": "Yeah, that's true. Yeah, a lot of rounds in the audience. Well, yeah, this is we just started season three. Um, and, uh, last season, we blew up our old school Hamilton high school. Well, you did, Sam. Well, we did, But I did. Yeah. We all had a hand in it eating, really? But we blamed it on you. Um, And then we escaped to Mexico with El Chapo. Yeah, and we lived with him there for a while. We filmed a reality show that we're still shopping around. It's very similar to the real world in that it's pretty much just the real world with us and chop of. It's called the Real World. Also Tech and Ruthie Air There it's called The Real World. Can we send it to MTV? We haven't heard back yet.",
+        "episode": "s04e09",
+        "edited": false
+      },
+      {
+        "id": "1e9a2090-1e1b-4b12-95da-02b7369c3d91",
+        "season": "s03",
+        "time": "0:32:47",
+        "speaker": "3",
+        "line": "than all of the students here, the school who maybe have disagreements with us, Um, and hate our guts and the Mafia. And, um, El Chapo, do",
+        "episode": "s03e05",
+        "edited": false
+      },
+      {
+        "id": "fd01145c-314a-4d15-ac29-ec98f8506d7a",
+        "season": "s02",
+        "time": "0:54:35",
+        "speaker": "2",
+        "line": "Wow. Yeah. And you know, I of course, Um, Now I'm coming to realize sort of mixed up in a significant drug trafficking ring, potentially the largest of the of its kind with the biggest known drug cartel leader, El Chapo. Um, and quite honestly, I I I feel scared. I told the school I would start a women's studies programs that day. And I could better understand women. And I've never hated women. Maur and I also hate it. I hate a gay man now too, which I didn't before because he stole my ex wife. Run!",
+        "episode": "s02e06",
         "edited": false
       },
       {
@@ -32,161 +140,26 @@
         "edited": false
       },
       {
-        "id": "239bce78-d92a-4a1a-b200-0199baba5efb",
+        "id": "eb3b5f62-9f6e-4a3c-8709-8344b508effb",
         "season": "s03",
-        "time": "00:05:57",
-        "speaker": "2",
-        "line": "fondly on our time with El Chapo. I don't know about you guys. It's",
-        "episode": "s03e01",
+        "time": "1:00:37",
+        "speaker": "4",
+        "line": "Obviously you guys know him. This is El Chapo. I shop friends with him",
+        "episode": "s03e08",
         "edited": false
       },
       {
-        "id": "a6b210d8-a926-452a-9905-c45159af820a",
+        "id": "bb29db13-9bc5-4b0c-8341-b15b22d6ca39",
         "season": "s03",
-        "time": "00:05:57",
-        "speaker": "2",
-        "line": "fondly on our time with El Chapo. I don't know about you guys. It's",
-        "episode": "s03e01",
-        "edited": false
-      },
-      {
-        "id": "772cd7f1-b368-4064-ab11-e55d631e8617",
-        "season": "s03",
-        "time": "00:06:03",
-        "speaker": "2",
-        "line": "JJ. Yeah, I changed for the better. Now because of El Chapo,",
-        "episode": "s03e01",
-        "edited": false
-      },
-      {
-        "id": "c09f2eb4-8379-4c75-9b5b-062e10f5ed91",
-        "season": "s03",
-        "time": "00:06:03",
-        "speaker": "2",
-        "line": "JJ. Yeah, I changed for the better. Now because of El Chapo,",
-        "episode": "s03e01",
-        "edited": false
-      },
-      {
-        "id": "160ce92a-b3c5-416c-af85-bb6b67429eaa",
-        "season": "s03",
-        "time": "00:07:27",
-        "speaker": "2",
-        "line": "motif of El Chapo's whole operation down.",
-        "episode": "s03e01",
-        "edited": false
-      },
-      {
-        "id": "49f8753b-97e4-4ab4-943a-7b9e3eb6c888",
-        "season": "s03",
-        "time": "00:07:27",
-        "speaker": "2",
-        "line": "motif of El Chapo's whole operation down.",
-        "episode": "s03e01",
-        "edited": false
-      },
-      {
-        "id": "65c100b3-8227-403c-93f0-c8e8fbcd25ee",
-        "season": "s02",
-        "time": "00:07:32",
-        "speaker": "2",
-        "line": "in 10 years on. It's basically used to print 100 print copies of the newspaper, and I decided to throw 300,000 through there on the orders of El Chapo. He said he had a very serious order. He, uh he wanted to get 150,000 copies he delivered. He",
-        "episode": "s02e06",
-        "edited": false
-      },
-      {
-        "id": "7b48ba77-8b89-4127-8164-7459b5fbd229",
-        "season": "s02",
-        "time": "00:07:32",
-        "speaker": "2",
-        "line": "in 10 years on. It's basically used to print 100 print copies of the newspaper, and I decided to throw 300,000 through there on the orders of El Chapo. He said he had a very serious order. He, uh he wanted to get 150,000 copies he delivered. He",
-        "episode": "s02e06",
-        "edited": false
-      },
-      {
-        "id": "7d2467ed-e7e2-4454-9995-12b51ee8aa0a",
-        "season": "s02",
-        "time": "00:08:27",
-        "speaker": "2",
-        "line": "lie to me? El Chapo and I we've been friends for a few weeks. Like close friends for a few weeks. We talk about each other's lives. He told me about his vacation recently. What was it? Hey, friend. He went to Hawaii for a couple of okay.",
-        "episode": "s02e06",
-        "edited": false
-      },
-      {
-        "id": "16d5fc40-c69b-4b70-a7a7-1c2c9eea8208",
-        "season": "s02",
-        "time": "00:08:27",
-        "speaker": "2",
-        "line": "lie to me? El Chapo and I we've been friends for a few weeks. Like close friends for a few weeks. We talk about each other's lives. He told me about his vacation recently. What was it? Hey, friend. He went to Hawaii for a couple of okay.",
-        "episode": "s02e06",
-        "edited": false
-      },
-      {
-        "id": "c3e27223-ea9c-49e2-a239-fe01c81f3a71",
-        "season": "s03",
-        "time": "00:09:16",
-        "speaker": "2",
-        "line": "lambs for awhile right down there on El Chapo's farm. But we were on the lam. We were escaping",
-        "episode": "s03e01",
-        "edited": false
-      },
-      {
-        "id": "eb2746c5-7aef-4ad9-b7da-7722ae648715",
-        "season": "s03",
-        "time": "00:09:16",
-        "speaker": "2",
-        "line": "lambs for awhile right down there on El Chapo's farm. But we were on the lam. We were escaping",
-        "episode": "s03e01",
-        "edited": false
-      },
-      {
-        "id": "dc125411-9208-4b74-b4c8-baab2f58bfcd",
-        "season": "s02",
-        "time": "00:14:48",
-        "speaker": "2",
-        "line": "it. Well, anyway, this email was addressed to me on it. Offered to get 30 33,000 copies of my newspaper distributed in the country of Mexico. What? Yes. Yes. And it was signed by El Chapo himself through. He said He said would love to do business with you again. And I promise this isn't about drugs.",
-        "episode": "s02e04",
-        "edited": false
-      },
-      {
-        "id": "98151cb0-656d-43af-8ab9-a7b1ede62fdd",
-        "season": "s02",
-        "time": "00:14:48",
-        "speaker": "2",
-        "line": "it. Well, anyway, this email was addressed to me on it. Offered to get 30 33,000 copies of my newspaper distributed in the country of Mexico. What? Yes. Yes. And it was signed by El Chapo himself through. He said He said would love to do business with you again. And I promise this isn't about drugs.",
-        "episode": "s02e04",
-        "edited": false
-      },
-      {
-        "id": "cc25c0b2-0039-45bb-971f-e81fbef68506",
-        "season": "s02",
-        "time": "00:15:19",
-        "speaker": "3",
-        "line": "We owe El Chapo gave us his tunnel recipe. Yeah, that's right. Well, we've had his tunnel resume, and that shit is",
-        "episode": "s02e04",
-        "edited": false
-      },
-      {
-        "id": "42a34247-c75b-41de-af58-4ac97675b48a",
-        "season": "s02",
-        "time": "00:15:19",
-        "speaker": "3",
-        "line": "We owe El Chapo gave us his tunnel recipe. Yeah, that's right. Well, we've had his tunnel resume, and that shit is",
-        "episode": "s02e04",
-        "edited": false
-      },
-      {
-        "id": "dad0d239-403a-41a3-a2d2-bc6d5af70747",
-        "season": "s04",
-        "time": "00:15:36",
-        "speaker": "1",
-        "line": "El Chapo in the can. We killed the hillside hump. Er I mean, either we're just associating with the worst people on Earth because no one else can stand us. And we keep stuff people that's not true or we're heroes.",
-        "episode": "s04e01",
+        "time": "1:02:33",
+        "speaker": "4",
+        "line": "not turning a profit, how are we gonna keep El Chapo off of us? He could break out of prison at any time, the moment, the moment way. We need to be ableto keep all of our defenses in order. Okay,",
+        "episode": "s03e04",
         "edited": false
       }
     ],
     "stats": {
-      "estimatedTotalHits": 33,
+      "estimatedTotalHits": 17,
       "processingTime": 0,
       "facets": [
         {
@@ -194,22 +167,22 @@
           "facetHits": [
             {
               "ep": "s03",
-              "hits": 14
+              "hits": 7
             },
             {
               "ep": "s02",
-              "hits": 12
+              "hits": 6
             },
             {
               "ep": "s04",
-              "hits": 4
-            },
-            {
-              "ep": "s09",
               "hits": 2
             },
             {
               "ep": "s05",
+              "hits": 1
+            },
+            {
+              "ep": "s09",
               "hits": 1
             }
           ]
@@ -219,44 +192,44 @@
           "facetHits": [
             {
               "ep": "s03e01",
-              "hits": 8
-            },
-            {
-              "ep": "s02e06",
-              "hits": 6
-            },
-            {
-              "ep": "s02e04",
               "hits": 4
             },
             {
-              "ep": "s03e04",
+              "ep": "s02e06",
+              "hits": 3
+            },
+            {
+              "ep": "s02e04",
               "hits": 2
+            },
+            {
+              "ep": "s03e04",
+              "hits": 1
             },
             {
               "ep": "s03e05",
-              "hits": 2
+              "hits": 1
             },
             {
               "ep": "s03e08",
-              "hits": 2
+              "hits": 1
             },
             {
               "ep": "s04e01",
-              "hits": 2
+              "hits": 1
             },
             {
               "ep": "s04e09",
-              "hits": 2
+              "hits": 1
             },
             {
-              "ep": "s09e35",
-              "hits": 2
+              "ep": "s05e08",
+              "hits": 1
             }
           ]
         }
       ]
     },
-    "hasMore": true
+    "hasMore": false
   }
 }

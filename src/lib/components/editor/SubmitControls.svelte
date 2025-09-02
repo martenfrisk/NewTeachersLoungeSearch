@@ -5,16 +5,19 @@
 	import ContributorForm from './ContributorForm.svelte';
 
 	interface Props {
+		episodeEp: string; // Episode identifier like "s03e06"
 		transcriptLines: EditableTranscriptLineType[];
-		onSubmitSuccess?: (editIds: string[]) => void;
+		onSubmitSuccess?: (submissionId: string) => void;
 		onSubmitError?: (error: Error) => void;
 	}
 
-	let { transcriptLines, onSubmitSuccess, onSubmitError }: Props = $props();
+	let { episodeEp, transcriptLines, onSubmitSuccess, onSubmitError }: Props = $props();
 
 	let isSubmitting = $state(false);
 	let showContributorForm = $state(false);
-	let changedLinesCount = $derived(editorService.getChangedLines(transcriptLines).length);
+	let changedLinesCount = $derived(
+		transcriptLines.filter((line) => line.editState !== 'unedited' || line.edited === true).length
+	);
 	let isAuthenticated = $derived($user !== null);
 
 	async function handleSubmitChanges(contributorInfo?: {
@@ -28,9 +31,14 @@
 			isSubmitting = true;
 			showContributorForm = false;
 
-			const editIds = await editorService.submitAllChanges(transcriptLines, contributorInfo);
+			// Use new episode submission method
+			const submissionId = await editorService.submitEpisodeTranscript(
+				episodeEp,
+				transcriptLines,
+				contributorInfo
+			);
 
-			onSubmitSuccess?.(editIds);
+			onSubmitSuccess?.(submissionId);
 		} catch (error) {
 			console.error('Failed to submit changes:', error);
 			onSubmitError?.(error as Error);

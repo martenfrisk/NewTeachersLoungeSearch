@@ -1,40 +1,22 @@
 {
   "query": "famously",
-  "timestamp": 1756597645852,
-  "expiresAt": 1757202445852,
+  "timestamp": 1756802535389,
+  "expiresAt": 1757407335389,
   "result": {
     "hits": [
       {
         "id": "1ebad96f-8bbf-4bf1-b810-cff814252396",
         "season": "s01",
-        "time": "00:07:37",
+        "time": "0:07:37",
         "speaker": "Bill",
         "line": "you failed limos, rain or shine. Right? And you famously cannot drive. That's correct. Well, I don't know if it's famously I mean I mean, I would say it's semi famous. I mean, there was there's usually",
         "episode": "s01e03",
-        "edited": false
-      },
-      {
-        "id": "4b80c48c-28d7-4958-85e5-e7dee154f58c",
-        "season": "s01",
-        "time": "00:07:37",
-        "speaker": "Bill",
-        "line": "you failed limos, rain or shine. Right? And you famously cannot drive. That's correct. Well, I don't know if it's famously I mean I mean, I would say it's semi famous. I mean, there was there's usually",
-        "episode": "s01e03",
-        "edited": false
-      },
-      {
-        "id": "b8e381c1-91c8-437e-80bf-4fa99a69db3a",
-        "season": "s02",
-        "time": "00:30:58",
-        "speaker": "1",
-        "line": "You're famous. I didn't really your fucking famous for being the biggest piece of shit in America. Come on, now. You can read it like that, I'm sure. But you can also read. No, that's it was written like that. Come on. I said, how are famous for being the biggest piece of shit, man. Three crap. Shut the paper. I don't believe it. Said the written word is back. People are buying newspapers",
-        "episode": "s02e06",
         "edited": false
       },
       {
         "id": "e402097a-3ae0-4454-80fc-bb6ce6af0d00",
         "season": "s02",
-        "time": "00:30:58",
+        "time": "0:30:58",
         "speaker": "1",
         "line": "You're famous. I didn't really your fucking famous for being the biggest piece of shit in America. Come on, now. You can read it like that, I'm sure. But you can also read. No, that's it was written like that. Come on. I said, how are famous for being the biggest piece of shit, man. Three crap. Shut the paper. I don't believe it. Said the written word is back. People are buying newspapers",
         "episode": "s02e06",
@@ -43,16 +25,7 @@
       {
         "id": "1bccab6b-f49c-4e43-aea8-b4e9229c603c",
         "season": "s03",
-        "time": "00:46:03",
-        "speaker": "3",
-        "line": "time death tours are in sort of famous towns that have sort of famous people, if with famous deaths with this is just a tour that is in a in a hearse that goes around and points out people who are maybe",
-        "episode": "s03e08",
-        "edited": false
-      },
-      {
-        "id": "af13f7c0-8c60-41af-b6ed-9bafd57af704",
-        "season": "s03",
-        "time": "00:46:03",
+        "time": "0:46:03",
         "speaker": "3",
         "line": "time death tours are in sort of famous towns that have sort of famous people, if with famous deaths with this is just a tour that is in a in a hearse that goes around and points out people who are maybe",
         "episode": "s03e08",
@@ -60,15 +33,6 @@
       },
       {
         "id": "0728ecfe-a730-47f7-bb4f-28d650c9eb98",
-        "season": "s05",
-        "time": "0:02:08",
-        "speaker": "spk_4",
-        "line": "Arkle. Ben was not there. Ben doesn't hang. Um famous famous Amos",
-        "episode": "s05e02",
-        "edited": false
-      },
-      {
-        "id": "2ae4e37f-a04d-441a-9c9f-fe0404111665",
         "season": "s05",
         "time": "0:02:08",
         "speaker": "spk_4",
@@ -86,30 +50,12 @@
         "edited": false
       },
       {
-        "id": "a7f0d21a-55e3-4956-b19e-8364596556d5",
-        "season": "mini",
-        "time": "0:04:29",
-        "speaker": "spk_4",
-        "line": "it kept up my problem. We were British before. They sent us over that, you know, we're famously very famously prisoners of the British that were sent to Australia.",
-        "episode": "mini-57",
-        "edited": false
-      },
-      {
         "id": "83b82e81-db85-416f-86c3-49144363f294",
         "season": "s11",
         "time": "0:08:47",
         "speaker": "spk_4",
         "line": "Have you noticed famous people don't have friends? You know why? Because they're too busy being famous.",
         "episode": "s11e07",
-        "edited": false
-      },
-      {
-        "id": "24db4ac9-873d-478c-afab-982bba0aa234",
-        "season": "s07",
-        "time": "0:09:51",
-        "speaker": "spk_4",
-        "line": "famously, famously. That was the thing that really got us off the ground. You know, your initial notoriety said got us through some doors. Yeah. I mean, a lot of people find the blues because they're going through some stuff in their life. You found the blues through an audition as a child.",
-        "episode": "s07e04",
         "edited": false
       },
       {
@@ -122,6 +68,15 @@
         "edited": false
       },
       {
+        "id": "7999ac72-7256-4d43-84cc-56965bd9ff8f",
+        "season": "s02",
+        "time": "0:11:29",
+        "speaker": "2",
+        "line": "a, uh you're you're famous for your mental instability around town. Yeah. You have a second only to one other man. Famous chemical involved.",
+        "episode": "s02e06",
+        "edited": false
+      },
+      {
         "id": "7e4c4cf9-0908-44e6-8111-3ac5a95c72c7",
         "season": "mini",
         "time": "0:13:33",
@@ -131,39 +86,12 @@
         "edited": false
       },
       {
-        "id": "f9e086ef-0a49-4707-beeb-a7144b0537a5",
-        "season": "mini",
-        "time": "0:13:33",
-        "speaker": "spk_1",
-        "line": "don't you design. May I have a famous dead dad? Who is a Tell me who is anyone. Any man that's dead that's famous is my dad. Tell 3 to 1. Who is it? Just burst. Senior George Bush Sr. I am George Bush. Jeb Bush's little brother. Okay, you get You want me to go there toe Arlington Cemetery? And did his have him know like you said? Have him dig himself up. Is he buried at Arlington? I don't know. I think I wanna fire Blake. No, no, Come on. Yeah, obviously running like no greater thing. This is my",
-        "episode": "mini-31",
-        "edited": false
-      },
-      {
-        "id": "32a360f8-938e-4e06-a551-434197742b37",
-        "season": "s06",
-        "time": "0:14:24",
-        "speaker": "spk_0",
-        "line": "into the basement. Right? And she immediately had sex with you. Like that ness famous. That's famous. That's favor. That's you lost your virginity. I mean, man from college. That's right. Lauren",
-        "episode": "s06e02",
-        "edited": false
-      },
-      {
         "id": "f02eb2dc-3ca0-4af6-a637-919aea0433c6",
         "season": "s06",
         "time": "0:14:24",
         "speaker": "spk_0",
         "line": "into the basement. Right? And she immediately had sex with you. Like that ness famous. That's famous. That's favor. That's you lost your virginity. I mean, man from college. That's right. Lauren",
         "episode": "s06e02",
-        "edited": false
-      },
-      {
-        "id": "4a408feb-a844-4978-ad75-cd4facf58d49",
-        "season": "s07",
-        "time": "0:21:24",
-        "speaker": "spk_2",
-        "line": "Marvin Gillespie. Dizzy Gillespie, son, Who's famous fame in one of the famous Trump? The one",
-        "episode": "s07e01",
         "edited": false
       },
       {
@@ -183,10 +111,82 @@
         "line": "I want to be famous. I want to be famous artist.",
         "episode": "s05e03",
         "edited": false
+      },
+      {
+        "id": "72dd996a-c543-4c47-941c-a7a9e2ea062c",
+        "season": "s05",
+        "time": "0:21:39",
+        "speaker": "spk_3",
+        "line": "fame. Oh, I want to know that I'm famous. Well, I work. I mean Oh, I've been very infamous. I still am. Yeah, you know that. Except it's fine. Congratulations. You're famous director. You're about to be a big actor. You're representing them both. But I directed a homeless man yesterday, so I think we're all doing well.",
+        "episode": "s05e03",
+        "edited": false
+      },
+      {
+        "id": "e76346fe-f401-49bc-b284-27294a87fa3b",
+        "season": "s01",
+        "time": "0:22:48",
+        "speaker": "Howard",
+        "line": "for I searched for famous dick pic on Google because I wanted one that, like, looked good, you know? And if it's famous, it's gonna look good. Eso I That was the first result on Google image search is I downloaded it the plan waas thio print it out, uh, and send it in the mail. Just cause I felt like that would be easy to not have. That seems counterintuitive because usually when your trade in nudie pics, you want to kind of be in the heat of the moment and",
+        "episode": "s01e04",
+        "edited": false
+      },
+      {
+        "id": "df8e4c83-cb37-4d1b-8a9a-bae8cce92474",
+        "season": "s06",
+        "time": "0:25:40",
+        "speaker": "spk_0",
+        "line": "guys air on my coattails, t get famous trying to get famous. They're using me, but put their name out there. You know, they a big actor, huge personality, loved by everybody Who, uh, you describing myself? It wasn't it obvious.",
+        "episode": "s06e06",
+        "edited": false
+      },
+      {
+        "id": "d27d447e-9ceb-4574-93be-d0eb6637d666",
+        "season": "jesus",
+        "time": "0:27:37",
+        "speaker": "spk_4",
+        "line": "Well, famously, again, boy famously, that's the opposite of the story of Jesus we talked about.",
+        "episode": "jesus-4",
+        "edited": false
+      },
+      {
+        "id": "55e6c3d2-79f5-4604-a987-002ec5125187",
+        "season": "s02",
+        "time": "0:36:37",
+        "speaker": "1",
+        "line": "famously fell down the stairs at school, famously, and, um, I honestly don't think",
+        "episode": "s02e03",
+        "edited": false
+      },
+      {
+        "id": "42c6191c-4dd7-4017-9ca9-b82498265401",
+        "season": "s09",
+        "time": "0:40:49",
+        "speaker": "spk_3",
+        "line": "A lot of famous actors got famous off of the documentary about how they were agreeable.",
+        "episode": "s09e31",
+        "edited": false
+      },
+      {
+        "id": "44b13fe2-3600-4735-a1e9-920ac10e03c3",
+        "season": "s04",
+        "time": "0:42:58",
+        "speaker": "4",
+        "line": "Uh, let me at first. I think I first I was very resistant. Is your therapist a famous lawyer? He is a famous lawyer. Uh, he will up its the its story already, huh? Gloria Allred. She's my Fabrice. How did you know",
+        "episode": "s04e07",
+        "edited": false
+      },
+      {
+        "id": "6e1997fb-6d0a-400a-8455-e9bc35203efe",
+        "season": "s05",
+        "time": "0:44:14",
+        "speaker": "spk_5",
+        "line": "place. Look, it's all like a pyramid stepping system, Okay? Like you're not gonna get famous if you don't have other famous stuff before it, right? Look at Meghan Trainor. That's",
+        "episode": "s05e06",
+        "edited": false
       }
     ],
     "stats": {
-      "estimatedTotalHits": 581,
+      "estimatedTotalHits": 304,
       "processingTime": 0,
       "facets": [
         {
@@ -194,39 +194,39 @@
           "facetHits": [
             {
               "ep": "s09",
-              "hits": 126
+              "hits": 67
             },
             {
               "ep": "s05",
-              "hits": 77
-            },
-            {
-              "ep": "mini",
-              "hits": 62
-            },
-            {
-              "ep": "s03",
-              "hits": 48
-            },
-            {
-              "ep": "s04",
-              "hits": 46
-            },
-            {
-              "ep": "s02",
               "hits": 40
             },
             {
+              "ep": "mini",
+              "hits": 30
+            },
+            {
+              "ep": "s03",
+              "hits": 24
+            },
+            {
+              "ep": "s04",
+              "hits": 23
+            },
+            {
+              "ep": "s02",
+              "hits": 20
+            },
+            {
               "ep": "s07",
-              "hits": 34
+              "hits": 17
             },
             {
               "ep": "s01",
-              "hits": 31
+              "hits": 17
             },
             {
               "ep": "lastresort",
-              "hits": 30
+              "hits": 15
             }
           ]
         },
@@ -235,39 +235,39 @@
           "facetHits": [
             {
               "ep": "s05e06",
-              "hits": 20
+              "hits": 10
             },
             {
               "ep": "s05e03",
-              "hits": 18
+              "hits": 9
             },
             {
               "ep": "s02e06",
-              "hits": 16
+              "hits": 8
             },
             {
               "ep": "s07e04",
-              "hits": 14
+              "hits": 7
             },
             {
               "ep": "s03e06",
-              "hits": 14
-            },
-            {
-              "ep": "mini-31",
-              "hits": 12
+              "hits": 7
             },
             {
               "ep": "s09e31",
-              "hits": 12
+              "hits": 6
             },
             {
-              "ep": "s02e03",
-              "hits": 12
+              "ep": "mini-31",
+              "hits": 6
             },
             {
               "ep": "s09e13",
-              "hits": 12
+              "hits": 6
+            },
+            {
+              "ep": "s02e03",
+              "hits": 6
             }
           ]
         }

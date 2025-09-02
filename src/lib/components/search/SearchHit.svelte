@@ -22,12 +22,13 @@
 	let context = $state<HitContext | null>(null);
 	let loadingContext = $state(false);
 
-	function handlePlayAudio() {
+	async function handlePlayAudio() {
 		if (hitEpisode?.feedTitle) {
-			audioService.playTimestamp({
+			await audioService.playTimestamp({
 				timestamp: hit.time,
 				episode: hitEpisode.feedTitle
 			});
+			audioService.play();
 		}
 	}
 
@@ -74,12 +75,46 @@
 
 	<!-- Main Content -->
 	<div class="p-3">
+		<!-- Context Before -->
+		{#if showContext && context && context.before}
+			<div
+				class="mb-2 p-2 bg-gray-50 border-l-3 border-gray-300 rounded-r-md"
+				in:slide={{ duration: 250, easing: quintOut }}
+				out:slide={{ duration: 200, easing: quintOut }}
+			>
+				<div class="flex justify-between items-center gap-2 mb-1">
+					<span class="text-xs text-gray-600">{formatSpeaker(context.before.speaker)}</span>
+					<span class="text-xs text-gray-500">{context.before.time}</span>
+				</div>
+				<p class="text-sm text-gray-700 leading-snug">
+					{context.before.line}
+				</p>
+			</div>
+		{/if}
+
 		<!-- Main Hit Line - Always at top, spans full width -->
 		<p class="mb-3 pt-2 text-base leading-relaxed text-gray-900 prose prose-sm max-w-none">
 			<!-- Safe: Only <em> tags are added for search highlighting -->
 			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html hit.highlightedLine || hit.line}
 		</p>
+
+		<!-- Context After -->
+		{#if showContext && context && context.after}
+			<div
+				class="mb-2 p-2 bg-gray-50 border-l-3 border-gray-300 rounded-r-md"
+				in:slide={{ duration: 250, delay: 50, easing: quintOut }}
+				out:slide={{ duration: 200, easing: quintOut }}
+			>
+				<div class="flex justify-between items-center gap-2 mb-1">
+					<span class="text-xs text-gray-600">{formatSpeaker(context.after.speaker)}</span>
+					<span class="text-xs text-gray-500">{context.after.time}</span>
+				</div>
+				<p class="text-sm text-gray-700 leading-snug">
+					{context.after.line}
+				</p>
+			</div>
+		{/if}
 
 		<!-- Episode Title Banner -->
 		<div class="mb-2 -mx-3 px-3 py-2 bg-gray-50/80 text-xs text-gray-700 font-medium">
@@ -117,40 +152,6 @@
 				{/if}
 			</div>
 		</div>
-
-		<!-- Context Before -->
-		{#if showContext && context && context.before}
-			<div
-				class="mb-2 p-2 bg-gray-50 border-l-3 border-gray-300 rounded-r-md"
-				in:slide={{ duration: 250, easing: quintOut }}
-				out:slide={{ duration: 200, easing: quintOut }}
-			>
-				<div class="flex justify-between items-center gap-2 mb-1">
-					<span class="text-xs text-gray-600">{formatSpeaker(context.before.speaker)}</span>
-					<span class="text-xs text-gray-500">{context.before.time}</span>
-				</div>
-				<p class="text-sm text-gray-700 leading-snug">
-					{context.before.line}
-				</p>
-			</div>
-		{/if}
-
-		<!-- Context After -->
-		{#if showContext && context && context.after}
-			<div
-				class="mt-2 p-2 bg-gray-50 border-l-3 border-gray-300 rounded-r-md"
-				in:slide={{ duration: 250, delay: 50, easing: quintOut }}
-				out:slide={{ duration: 200, easing: quintOut }}
-			>
-				<div class="flex justify-between items-center gap-2 mb-1">
-					<span class="text-xs text-gray-600">{formatSpeaker(context.after.speaker)}</span>
-					<span class="text-xs text-gray-500">{context.after.time}</span>
-				</div>
-				<p class="text-sm text-gray-700 leading-snug">
-					{context.after.line}
-				</p>
-			</div>
-		{/if}
 	</div>
 
 	<!-- Compact Footer -->

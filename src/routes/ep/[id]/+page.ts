@@ -1,13 +1,14 @@
 import { error } from '@sveltejs/kit';
 import episodesPageData from '../../../assets/generated/episodes-page-data.json';
 import { EpisodeDataProcessor } from '$lib/services/EpisodeDataProcessor';
+import { SupabaseEditorRepository } from '$lib/repositories/EditorRepository';
 import type { EpisodePageData, EpisodeInfo } from '$lib/types/episode';
 
 export async function entries() {
 	return episodesPageData.episodes.map((episode) => ({ id: episode.ep }));
 }
 
-export async function load({ params, fetch }): Promise<EpisodePageData> {
+export async function load({ params }): Promise<EpisodePageData> {
 	const { id } = params;
 
 	if (!id || typeof id !== 'string') {
@@ -15,16 +16,21 @@ export async function load({ params, fetch }): Promise<EpisodePageData> {
 	}
 
 	try {
-		const response = await fetch(`/transcripts/${id}.json`);
-		if (!response.ok) {
+		// Always fetch live data from Supabase for server-side rendering
+		const repository = new SupabaseEditorRepository();
+		const transcriptLines = await repository.fetchEpisodeTranscript(id);
+
+		if (!transcriptLines || transcriptLines.length === 0) {
 			error(404, `Transcript not found for episode ${id}`);
 		}
-
-		const rawTranscript = await response.json();
-
-		if (!rawTranscript) {
-			error(404, `Transcript not found for episode ${id}`);
-		}
+		// Convert to expected format
+		const rawTranscript = transcriptLines.map((line) => ({
+			id: line.id,
+			time: line.time,
+			speaker: line.speaker,
+			line: line.line,
+			edited: line.editState === 'edited'
+		}));
 
 		// Get episode data processor instance
 		const processor = EpisodeDataProcessor.getInstance();
@@ -38,17 +44,8 @@ export async function load({ params, fetch }): Promise<EpisodePageData> {
 			(x) => x.ep === id.replace('.json', '')
 		);
 
-		// Use pre-calculated stats from episode info if available, otherwise calculate
-		const transcriptStats =
-			episodeInfo && 'editedPercentage' in episodeInfo
-				? {
-						totalLines: episodeInfo.totalLines || 0,
-						editedLines: episodeInfo.editedLines || 0,
-						editedPercentage: episodeInfo.editedPercentage || 0,
-						isFullyEdited: episodeInfo.isFullyEdited || false,
-						isMostlyEdited: episodeInfo.isMostlyEdited || false
-					}
-				: processor.calculateTranscriptStats(id, validatedTranscript);
+		// Calculate transcript stats from live data
+		const transcriptStats = processor.calculateTranscriptStats(id, validatedTranscript);
 
 		return {
 			episode: id,
@@ -60,8 +57,7 @@ export async function load({ params, fetch }): Promise<EpisodePageData> {
 		console.error(`Failed to load episode ${id}:`, err);
 
 		if (err instanceof Error) {
-			// Handle specific error types
-			if (err.message.includes('Cannot resolve module')) {
+			if (err.message.includes('No transcript found')) {
 				error(404, `Episode ${id} not found`);
 			}
 			if (err.message.includes('Invalid transcript')) {
@@ -72,5 +68,3 @@ export async function load({ params, fetch }): Promise<EpisodePageData> {
 		error(500, `Failed to load episode ${id}`);
 	}
 }
-
-export const prerender = true;

@@ -1,7 +1,7 @@
 {
   "query": "oj simpson",
-  "timestamp": 1756597646179,
-  "expiresAt": 1757202446179,
+  "timestamp": 1756802535742,
+  "expiresAt": 1757407335742,
   "result": {
     "hits": [
       {
@@ -43,16 +43,7 @@
       {
         "id": "cf70b368-c273-4a56-8d82-de286959fc84",
         "season": "s01",
-        "time": "00:58:12",
-        "speaker": "Sam",
-        "line": "Okay, We're gonna deport me. Go way Get a new one. Don't tell anybody. Okay, guys, We're gonna talk, Padre for O J. Simpson, please. You don't get off the road texting or something way, O J. I need the Bronco. I thought you said you had it. You had to get the problem. I just need his approval call. Call OJ's bunny. Okay, go. Jae Seo. We're listening to this. Ever started the Teacherslounge way? Really appreciate everybody who supported us for the last few months. Wait. Let's go, Rooth.",
-        "episode": "s01e06",
-        "edited": false
-      },
-      {
-        "id": "e3f93054-d25a-4151-9f14-799e4aff7136",
-        "season": "s01",
-        "time": "00:58:12",
+        "time": "0:58:12",
         "speaker": "Sam",
         "line": "Okay, We're gonna deport me. Go way Get a new one. Don't tell anybody. Okay, guys, We're gonna talk, Padre for O J. Simpson, please. You don't get off the road texting or something way, O J. I need the Bronco. I thought you said you had it. You had to get the problem. I just need his approval call. Call OJ's bunny. Okay, go. Jae Seo. We're listening to this. Ever started the Teacherslounge way? Really appreciate everybody who supported us for the last few months. Wait. Let's go, Rooth.",
         "episode": "s01e06",
@@ -60,7 +51,7 @@
       }
     ],
     "stats": {
-      "estimatedTotalHits": 6,
+      "estimatedTotalHits": 5,
       "processingTime": 0,
       "facets": [
         {
@@ -72,7 +63,7 @@
             },
             {
               "ep": "s01",
-              "hits": 2
+              "hits": 1
             }
           ]
         },
@@ -85,7 +76,7 @@
             },
             {
               "ep": "s01e06",
-              "hits": 2
+              "hits": 1
             }
           ]
         }

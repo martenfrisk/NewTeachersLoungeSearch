@@ -1,5 +1,6 @@
 import type { SearchHitType, SearchStats, SearchFilters } from '../types/search';
 import { searchService } from '../services/SearchService';
+import { SvelteSet } from 'svelte/reactivity';
 
 function createSearchState() {
 	let query = $state('');
@@ -100,7 +101,17 @@ function createSearchState() {
 			return hits;
 		},
 		set hits(value: SearchHitType[]) {
-			hits = value;
+			// Deduplicate by ID to prevent rendering duplicates
+			const seen = new SvelteSet<string>();
+			const deduped = value.filter((hit) => {
+				if (seen.has(hit.id)) {
+					console.warn('Duplicate hit detected and filtered:', hit.id);
+					return false;
+				}
+				seen.add(hit.id);
+				return true;
+			});
+			hits = deduped;
 		},
 		get stats() {
 			return stats;

@@ -1,7 +1,7 @@
 {
   "query": "let's just say",
-  "timestamp": 1756597646526,
-  "expiresAt": 1757202446526,
+  "timestamp": 1756802536107,
+  "expiresAt": 1757407336107,
   "result": {
     "hits": [
       {
@@ -14,27 +14,9 @@
         "edited": false
       },
       {
-        "id": "5718985c-9ccc-494b-b47a-3ffd9784a45f",
-        "season": "s05",
-        "time": "0:07:50",
-        "speaker": "spk_1",
-        "line": "Please tell me you're getting the Tonight Show with Leno back up on its feet. Well, let's just say he's out of the garage. Please tell me Let's just say you Banks is there. Let's just say you can hear the bass. Oh, my God, Trying to say, Is it 10 PM Conan is not happy. Jay Leno's 10 p.m. show is back in the works. Well, let's just say the audience is piping hot. Wow. And let's just say is he shaking hands with the Friar out? Hollis Tress Others and two drink",
-        "episode": "s05e07",
-        "edited": false
-      },
-      {
         "id": "e273129b-2025-49dd-bc1d-780314cc680f",
         "season": "s02",
-        "time": "00:33:00",
-        "speaker": "4",
-        "line": "asked will say, Let's just say that. Let's just let's just say she's",
-        "episode": "s02e06",
-        "edited": false
-      },
-      {
-        "id": "b689c5ee-189a-45d0-bbe7-dd3ea3893623",
-        "season": "s02",
-        "time": "00:33:00",
+        "time": "0:33:00",
         "speaker": "4",
         "line": "asked will say, Let's just say that. Let's just let's just say she's",
         "episode": "s02e06",
@@ -43,16 +25,7 @@
       {
         "id": "04d9f62d-b380-48b5-a0c9-81d685bc0315",
         "season": "s02",
-        "time": "00:25:06",
-        "speaker": "4",
-        "line": "early nineties Braves. But I did get a hold of Bonds and let's just say, Here's let's just say I got some steroids and I'm giving it to my team. Let's just say that. Let's just say that we'll leave it at that. It will just leave it at. I have steroids and I'm giving him toe all my team.",
-        "episode": "s02e05",
-        "edited": false
-      },
-      {
-        "id": "9b5bb2c8-16a7-4b5f-9f98-44687b8edecb",
-        "season": "s02",
-        "time": "00:25:06",
+        "time": "0:25:06",
         "speaker": "4",
         "line": "early nineties Braves. But I did get a hold of Bonds and let's just say, Here's let's just say I got some steroids and I'm giving it to my team. Let's just say that. Let's just say that we'll leave it at that. It will just leave it at. I have steroids and I'm giving him toe all my team.",
         "episode": "s02e05",
@@ -61,34 +34,16 @@
       {
         "id": "7c5f40d3-ac5e-4783-957f-b3059994925a",
         "season": "s04",
-        "time": "00:13:50",
+        "time": "0:13:50",
         "speaker": "2",
         "line": "Yeah, let's just say that. Say it. Let's just say",
         "episode": "s04e04",
-        "edited": false
-      },
-      {
-        "id": "2c881811-aec6-487a-973a-32d9db0799d8",
-        "season": "s04",
-        "time": "00:13:50",
-        "speaker": "2",
-        "line": "Yeah, let's just say that. Say it. Let's just say",
-        "episode": "s04e04",
-        "edited": false
-      },
-      {
-        "id": "c429ab79-7085-4ba3-93e9-8ae8353e68b1",
-        "season": "s02",
-        "time": "00:25:51",
-        "speaker": "3",
-        "line": "is a danger zone. Let's just say that if any parents fall into that speaking code, unless you say Let's just say that if any parents fall into the moat, they'll be eaten by again. Let's just say a cheetah. Well, it seems like this",
-        "episode": "s02e05",
         "edited": false
       },
       {
         "id": "fd037531-ee81-4509-a283-5454a814cfeb",
         "season": "s02",
-        "time": "00:25:51",
+        "time": "0:25:51",
         "speaker": "3",
         "line": "is a danger zone. Let's just say that if any parents fall into that speaking code, unless you say Let's just say that if any parents fall into the moat, they'll be eaten by again. Let's just say a cheetah. Well, it seems like this",
         "episode": "s02e05",
@@ -96,15 +51,6 @@
       },
       {
         "id": "b2d21db7-6b64-4ef8-9f8e-32f070b35d20",
-        "season": "s08",
-        "time": "0:42:26",
-        "speaker": "spk_1",
-        "line": "Let's say Let's say this. I think you need some. I think you need another couple hours to figure that shit out",
-        "episode": "s08e07",
-        "edited": false
-      },
-      {
-        "id": "0c2aa428-fbb2-4647-a340-95ca849d41bc",
         "season": "s08",
         "time": "0:42:26",
         "speaker": "spk_1",
@@ -122,30 +68,12 @@
         "edited": false
       },
       {
-        "id": "f7d4ff58-dc35-4b53-904c-bf283a887beb",
-        "season": "s09",
-        "time": "0:46:32",
-        "speaker": "spk_1",
-        "line": "wispy blow will get Let's say, let's say I'm walking down",
-        "episode": "s09e02",
-        "edited": false
-      },
-      {
         "id": "fb2adccc-497e-4b01-ae7e-abb9e59481e5",
         "season": "s11",
         "time": "0:50:32",
         "speaker": "spk_3",
         "line": "PG. Let's say let's say",
         "episode": "s11e04",
-        "edited": false
-      },
-      {
-        "id": "c8b6bba9-12a1-42fb-8b7d-0827ffe53d0c",
-        "season": "jesus",
-        "time": "0:44:11",
-        "speaker": "spk_1",
-        "line": "do that. I think he lets us do that. I think he lets us say Jiminy crickets. I think he lets us say.",
-        "episode": "jesus-1",
         "edited": false
       },
       {
@@ -176,17 +104,89 @@
         "edited": false
       },
       {
-        "id": "bdd3cb6f-a44b-4085-b21c-55ef147b786f",
+        "id": "d4e2baeb-86d9-4c61-b76e-a80a5e6062ac",
         "season": "s09",
-        "time": "0:05:11",
+        "time": "0:25:45",
+        "speaker": "spk_4",
+        "line": "Well, let's just say let's just say he was dunking him a little hard. He was doing a little hard.",
+        "episode": "s09e14",
+        "edited": false
+      },
+      {
+        "id": "8d1b713f-6c37-4b4e-8a0b-2dadfb859b00",
+        "season": "s09",
+        "time": "0:12:16",
+        "speaker": "spk_1",
+        "line": "say what we Let's let's look around us and say what we see.",
+        "episode": "s09e15",
+        "edited": false
+      },
+      {
+        "id": "ae581f2b-fb87-4c02-96c7-c2b8c19d193d",
+        "season": "s01",
+        "time": "0:17:33",
+        "speaker": "Sam",
+        "line": "your words to explain it clearly. Know any letters harder. Don't do any. Let's just say say say he's just say exactly",
+        "episode": "s01e03",
+        "edited": false
+      },
+      {
+        "id": "833d54d3-d177-46f0-83f6-1915e7f182b7",
+        "season": "s05",
+        "time": "0:13:19",
         "speaker": "spk_0",
-        "line": "Humpty Dumpty drawn a little differently in my story Bay had Let's just say, Let's just say it wasn't exactly a smooth egg. No,",
-        "episode": "s09e23",
+        "line": "Let's just say we'll throw. Let's just say a posthumously on everything we just said,",
+        "episode": "s05e07",
+        "edited": false
+      },
+      {
+        "id": "a9a2e5fa-46ac-43a3-94f0-4c92f44164a3",
+        "season": "s02",
+        "time": "0:54:43",
+        "speaker": "2",
+        "line": "handles tons. It's crap, man. I did anybody see Templeton? I love, just like, you know, that is one play that I could get behind you. How did you hear that? Really expensive. Yeah. Yeah. Well, did you sneak in or were you in? It are. Let's just say you two options. Let's just say I used to drive around. You know the guy",
+        "episode": "s02e01",
+        "edited": false
+      },
+      {
+        "id": "32fad7a3-ff70-48ce-85a8-1ac751e22b35",
+        "season": "s06",
+        "time": "0:31:44",
+        "speaker": "spk_1",
+        "line": "Yeah, well, let's just say I didn't make Let's just say right now I didn't make it. I didn't make it firstly, but",
+        "episode": "s06e01",
+        "edited": false
+      },
+      {
+        "id": "c3b902bc-3587-4e06-8567-dd19c47d50f7",
+        "season": "s05",
+        "time": "0:21:14",
+        "speaker": "spk_1",
+        "line": "You keep saying, Let's just say like that saying, OK, you have a mole that I need to get checked. Right? Okay, so now you're talking about that cart cancerous mole that's on your nose?",
+        "episode": "s05e02",
+        "edited": false
+      },
+      {
+        "id": "4b8dde01-3f4c-4706-9931-1f3c4fa70283",
+        "season": "s05",
+        "time": "0:07:39",
+        "speaker": "spk_1",
+        "line": "yeah. What? No, no, You've been saying this all week. Let's just say and then you say exactly what you're doing.",
+        "episode": "s05e07",
+        "edited": false
+      },
+      {
+        "id": "be420572-2bd4-4cbd-8e39-4b4b848b7df6",
+        "season": "s07",
+        "time": "0:25:54",
+        "speaker": "spk_2",
+        "line": "well, Let's just say let's just arm t o e. I will say this. It's knife, toe, arm to table.",
+        "episode": "s07e06",
         "edited": false
       }
     ],
     "stats": {
-      "estimatedTotalHits": 940,
+      "estimatedTotalHits": 506,
       "processingTime": 0,
       "facets": [
         {
@@ -194,39 +194,39 @@
           "facetHits": [
             {
               "ep": "s09",
-              "hits": 202
+              "hits": 108
             },
             {
               "ep": "mini",
-              "hits": 136
+              "hits": 67
             },
             {
               "ep": "lastresort",
-              "hits": 96
+              "hits": 48
             },
             {
               "ep": "s05",
-              "hits": 65
+              "hits": 36
             },
             {
               "ep": "s04",
-              "hits": 58
+              "hits": 29
             },
             {
               "ep": "s08",
-              "hits": 58
+              "hits": 29
             },
             {
               "ep": "s06",
-              "hits": 56
+              "hits": 28
+            },
+            {
+              "ep": "s10",
+              "hits": 24
             },
             {
               "ep": "s02",
-              "hits": 46
-            },
-            {
-              "ep": "s07",
-              "hits": 44
+              "hits": 23
             }
           ]
         },
@@ -235,39 +235,39 @@
           "facetHits": [
             {
               "ep": "s02e01",
-              "hits": 20
+              "hits": 10
             },
             {
               "ep": "s05e02",
-              "hits": 20
-            },
-            {
-              "ep": "s05e07",
-              "hits": 18
+              "hits": 10
             },
             {
               "ep": "lastresort-6",
-              "hits": 18
+              "hits": 9
+            },
+            {
+              "ep": "s05e07",
+              "hits": 9
+            },
+            {
+              "ep": "s01e02",
+              "hits": 8
             },
             {
               "ep": "lastresort-5",
-              "hits": 16
+              "hits": 8
+            },
+            {
+              "ep": "s10e05",
+              "hits": 8
             },
             {
               "ep": "s04e07",
-              "hits": 14
-            },
-            {
-              "ep": "s08e05",
-              "hits": 14
-            },
-            {
-              "ep": "s01e03",
-              "hits": 14
+              "hits": 7
             },
             {
               "ep": "lastresort-4",
-              "hits": 14
+              "hits": 7
             }
           ]
         }

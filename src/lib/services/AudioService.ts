@@ -101,18 +101,20 @@ export class AudioService {
 			return;
 		}
 
-		const startingTime = this.getEpisodeStartingTime(timestamp.episode);
+		// const startingTime = this.getEpisodeStartingTime(timestamp.episode);
 		audioStore.clearError();
 		audioStore.setTimestamp(timestamp);
-		audioStore.setEpisodeStartingTime(startingTime);
-		this.loadAudio(episode.audioUrl, timestamp.timestamp, timestamp.episode);
+		// audioStore.setEpisodeStartingTime(startingTime);
+		audioStore.setEpisodeStartingTime(0); // Use 0 instead of startingTime
+		this.loadAudio(episode.audioUrl, timestamp.timestamp);
 	}
 
-	private loadAudio(url: string, timestamp: string, episodeTitle?: string): void {
+	private loadAudio(url: string, timestamp: string): void {
 		if (!this.audioElement) return;
 
-		const startingTime = this.getEpisodeStartingTime(episodeTitle);
-		const targetTime = this.timestampToSeconds(timestamp) + startingTime;
+		// const startingTime = this.getEpisodeStartingTime(episodeTitle);
+		// const targetTime = this.timestampToSeconds(timestamp) + startingTime;
+		const targetTime = this.timestampToSeconds(timestamp);
 
 		if (this.audioElement.src !== url) {
 			this.audioElement.src = url;
@@ -244,6 +246,7 @@ export class AudioService {
 
 	private onCanPlay(): void {}
 	private timestampToSeconds(timestamp: string): number {
+		// Support both 00:00:01 and 0:00:01 formats
 		const parts = timestamp.split(':').map(Number);
 		if (parts.length === 3) {
 			return parts[0] * 3600 + parts[1] * 60 + parts[2];

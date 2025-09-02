@@ -28,6 +28,7 @@
 	filtersState.setFromArray(initialFilters);
 	filtersState.editedOnly = initialEditedOnly;
 	let inputValue = $state(searchState.query);
+	let hasInitialized = false;
 
 	async function handleSearch(query?: string) {
 		if (query !== undefined) {
@@ -83,8 +84,18 @@
 		}, 150);
 	}
 
+	// Only enable reactive search after initial hydration if we don't have initial hits
 	$effect(() => {
 		void inputValue;
+
+		if (!hasInitialized) {
+			hasInitialized = true;
+			// If we have initial hits, don't search automatically
+			if (initialHits.length > 0) {
+				return;
+			}
+		}
+
 		debouncedSearch();
 	});
 
@@ -92,6 +103,12 @@
 		void filtersState.seasons;
 		void filtersState.episodes;
 		void filtersState.editedOnly;
+
+		// Don't search automatically if we haven't initialized yet and have initial hits
+		if (!hasInitialized && initialHits.length > 0) {
+			return;
+		}
+
 		clearTimeout(searchTimeoutId);
 		if (searchState.query.trim()) {
 			handleSearch();

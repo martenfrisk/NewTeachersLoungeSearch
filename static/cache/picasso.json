@@ -1,22 +1,13 @@
 {
   "query": "picasso",
-  "timestamp": 1756597644220,
-  "expiresAt": 1757202444220,
+  "timestamp": 1756802533689,
+  "expiresAt": 1757407333689,
   "result": {
     "hits": [
       {
-        "id": "b3036188-5089-437d-9715-1394467da5b6",
-        "season": "s03",
-        "time": "00:18:08",
-        "speaker": "2",
-        "line": "bottomless piggy bank was our ceramic pig that had its pants pulled to its ankles. And ah, it's grotesque. Genitals were shown. It was beautifully crafted by our good friend slob Low Picasso, who is not related to the painter Picasso but instead related to Petey slob slob Blow the Southern",
-        "episode": "s03e07",
-        "edited": false
-      },
-      {
         "id": "5ee6fd97-48f4-4cd4-8a50-62d861fdd4ad",
         "season": "s03",
-        "time": "00:18:08",
+        "time": "0:18:08",
         "speaker": "2",
         "line": "bottomless piggy bank was our ceramic pig that had its pants pulled to its ankles. And ah, it's grotesque. Genitals were shown. It was beautifully crafted by our good friend slob Low Picasso, who is not related to the painter Picasso but instead related to Petey slob slob Blow the Southern",
         "episode": "s03e07",
@@ -25,32 +16,86 @@
       {
         "id": "46f78e0f-4d4a-4d6e-9f4c-1c93fb640b0e",
         "season": "s03",
-        "time": "00:22:11",
+        "time": "0:22:11",
         "speaker": "Sam",
         "line": "Sloblo was a real pro. Sloblo Picasso did our bottomless piggy bank and it's fucking disgusting. Let's be clear, no relation. No relation to Pablo Picasso. No, no, no, no. I mean, they have the same last name and a similar first name.",
         "episode": "s03e01",
         "edited": true
       },
       {
-        "id": "7641b0d5-1ba0-4afa-b269-58b2ff0fa797",
+        "id": "a71712ce-5e54-4872-988f-d7cdb7877509",
         "season": "s03",
-        "time": "00:22:11",
-        "speaker": "Sam",
-        "line": "Sloblo was a real pro. Sloblo Picasso did our bottomless piggy bank and it's fucking disgusting. Let's be clear, no relation. No relation to Pablo Picasso. No, no, no, no. I mean, they have the same last name and a similar first name.",
-        "episode": "s03e01",
-        "edited": true
-      },
-      {
-        "id": "d8aacf8b-6b96-4182-8550-18d5ccc4ae8a",
-        "season": "s08",
-        "time": "0:34:04",
-        "speaker": "spk_0",
-        "line": "floor of the void. The generals were very, very grotesque and specific and done well. And it was made by Sloblo Picasso. No relation of no relations relation. Two pt Sloblo. Alright, Glad we got through that,",
-        "episode": "s08e03",
+        "time": "0:13:13",
+        "speaker": "4",
+        "line": "a charter school. We kept all of our money in cash in a porcelain are sorry. Ceramic pig that had its pants pulled to its ankles grow faster. Generals Designed by our good friend slob Low Picasso.",
+        "episode": "s03e06",
         "edited": false
       },
       {
-        "id": "5d766e92-4185-4d84-98bd-d91e84a6813f",
+        "id": "0f70c1a8-2b70-43c2-8491-151ba8304b2e",
+        "season": "s03",
+        "time": "0:13:27",
+        "speaker": "2",
+        "line": "No relation to Pablo Picasso. Lots of relation to P slot blow.",
+        "episode": "s03e06",
+        "edited": false
+      },
+      {
+        "id": "815c862a-004c-40da-aaae-070203a692c9",
+        "season": "s03",
+        "time": "0:16:55",
+        "speaker": "3",
+        "line": "more devastating. It's just devastating. As you all know, we keep all the money that funds this school in a bottomless piggy bank that is a pig with its pants. Ceramic pig with his pants pulled to the ground, showcasing its grotesque genitals. Sorry, Imogene. Sort of ceramic genitals. It was designed by one of our best friends, Pablo Picasso,",
+        "episode": "s03e05",
+        "edited": false
+      },
+      {
+        "id": "dc3117ac-e3be-40a7-80cd-ef7fdebd05a0",
+        "season": "s03",
+        "time": "0:17:59",
+        "speaker": "2",
+        "line": "what it's gross. Was Weighs heavily related to slob love Picasso",
+        "episode": "s03e05",
+        "edited": false
+      },
+      {
+        "id": "8a6d86cc-b725-4103-99a2-bcaf987b35f8",
+        "season": "s03",
+        "time": "0:17:59",
+        "speaker": "3",
+        "line": "currently keeping all of our money in cash in a bottomless piggy bank. And that is a big ceramic pig. Things got his band's mope with no bats and grotesque genitals. And it was, uh, designed and made by my one of my good friends Slob Low Picasso. That's right. That's right.",
+        "episode": "s03e02",
+        "edited": false
+      },
+      {
+        "id": "226a6d33-b065-4f1b-8dce-0926cd3c78ff",
+        "season": "s03",
+        "time": "0:21:59",
+        "speaker": "2",
+        "line": "Looks good. So I commissioned my friend, um, Sloblo Picasso.",
+        "episode": "s03e01",
+        "edited": false
+      },
+      {
+        "id": "912b5d61-6856-4284-b70f-6fc220e21afd",
+        "season": "s03",
+        "time": "0:26:02",
+        "speaker": "2",
+        "line": "piggy bank. Huh? What? That's bottoms pulled to its ankles. Let's g o on. And you should see it's grotesque. Genitals are kind of splayed out on showing on. And it was done by our friends. Slob Low Picasso,",
+        "episode": "s03e05",
+        "edited": false
+      },
+      {
+        "id": "8a8d18a6-0c92-4f76-a23c-16ca3c9a1fc1",
+        "season": "s03",
+        "time": "0:26:17",
+        "speaker": "3",
+        "line": "right? Who? Everyone? No relation to Picasso. Everybody knows this, I think at",
+        "episode": "s03e05",
+        "edited": false
+      },
+      {
+        "id": "d8aacf8b-6b96-4182-8550-18d5ccc4ae8a",
         "season": "s08",
         "time": "0:34:04",
         "speaker": "spk_0",
@@ -66,127 +111,10 @@
         "line": "way you get to live again. Well, so your big toe live. Yeah, you guys, Where did you guys not like my little Picasso handbags?",
         "episode": "s09e35",
         "edited": false
-      },
-      {
-        "id": "ef397f17-1e59-4cbe-aca2-428762f9b61c",
-        "season": "s09",
-        "time": "0:49:46",
-        "speaker": "spk_3",
-        "line": "way you get to live again. Well, so your big toe live. Yeah, you guys, Where did you guys not like my little Picasso handbags?",
-        "episode": "s09e35",
-        "edited": false
-      },
-      {
-        "id": "604f6bbb-bc8a-4f5f-836c-ec2eb329c7ba",
-        "season": "s03",
-        "time": "00:13:13",
-        "speaker": "4",
-        "line": "a charter school. We kept all of our money in cash in a porcelain are sorry. Ceramic pig that had its pants pulled to its ankles grow faster. Generals Designed by our good friend slob Low Picasso.",
-        "episode": "s03e06",
-        "edited": false
-      },
-      {
-        "id": "a71712ce-5e54-4872-988f-d7cdb7877509",
-        "season": "s03",
-        "time": "00:13:13",
-        "speaker": "4",
-        "line": "a charter school. We kept all of our money in cash in a porcelain are sorry. Ceramic pig that had its pants pulled to its ankles grow faster. Generals Designed by our good friend slob Low Picasso.",
-        "episode": "s03e06",
-        "edited": false
-      },
-      {
-        "id": "0f70c1a8-2b70-43c2-8491-151ba8304b2e",
-        "season": "s03",
-        "time": "00:13:27",
-        "speaker": "2",
-        "line": "No relation to Pablo Picasso. Lots of relation to P slot blow.",
-        "episode": "s03e06",
-        "edited": false
-      },
-      {
-        "id": "f853d4bd-cf50-47c5-8733-f01916e1c67a",
-        "season": "s03",
-        "time": "00:13:27",
-        "speaker": "2",
-        "line": "No relation to Pablo Picasso. Lots of relation to P slot blow.",
-        "episode": "s03e06",
-        "edited": false
-      },
-      {
-        "id": "ff2def3a-b911-4eba-87dc-492b5650f2db",
-        "season": "s03",
-        "time": "00:16:55",
-        "speaker": "3",
-        "line": "more devastating. It's just devastating. As you all know, we keep all the money that funds this school in a bottomless piggy bank that is a pig with its pants. Ceramic pig with his pants pulled to the ground, showcasing its grotesque genitals. Sorry, Imogene. Sort of ceramic genitals. It was designed by one of our best friends, Pablo Picasso,",
-        "episode": "s03e05",
-        "edited": false
-      },
-      {
-        "id": "815c862a-004c-40da-aaae-070203a692c9",
-        "season": "s03",
-        "time": "00:16:55",
-        "speaker": "3",
-        "line": "more devastating. It's just devastating. As you all know, we keep all the money that funds this school in a bottomless piggy bank that is a pig with its pants. Ceramic pig with his pants pulled to the ground, showcasing its grotesque genitals. Sorry, Imogene. Sort of ceramic genitals. It was designed by one of our best friends, Pablo Picasso,",
-        "episode": "s03e05",
-        "edited": false
-      },
-      {
-        "id": "8a6d86cc-b725-4103-99a2-bcaf987b35f8",
-        "season": "s03",
-        "time": "00:17:59",
-        "speaker": "3",
-        "line": "currently keeping all of our money in cash in a bottomless piggy bank. And that is a big ceramic pig. Things got his band's mope with no bats and grotesque genitals. And it was, uh, designed and made by my one of my good friends Slob Low Picasso. That's right. That's right.",
-        "episode": "s03e02",
-        "edited": false
-      },
-      {
-        "id": "dc3117ac-e3be-40a7-80cd-ef7fdebd05a0",
-        "season": "s03",
-        "time": "00:17:59",
-        "speaker": "2",
-        "line": "what it's gross. Was Weighs heavily related to slob love Picasso",
-        "episode": "s03e05",
-        "edited": false
-      },
-      {
-        "id": "aea24258-c05d-4f8b-a1bd-88e2111e8493",
-        "season": "s03",
-        "time": "00:17:59",
-        "speaker": "3",
-        "line": "currently keeping all of our money in cash in a bottomless piggy bank. And that is a big ceramic pig. Things got his band's mope with no bats and grotesque genitals. And it was, uh, designed and made by my one of my good friends Slob Low Picasso. That's right. That's right.",
-        "episode": "s03e02",
-        "edited": false
-      },
-      {
-        "id": "96f6eacf-e79b-4094-aa73-fc008e665b9d",
-        "season": "s03",
-        "time": "00:17:59",
-        "speaker": "2",
-        "line": "what it's gross. Was Weighs heavily related to slob love Picasso",
-        "episode": "s03e05",
-        "edited": false
-      },
-      {
-        "id": "e172df45-7a72-4348-ab67-f4709b95fca3",
-        "season": "s03",
-        "time": "00:21:59",
-        "speaker": "2",
-        "line": "Looks good. So I commissioned my friend, um, Sloblo Picasso.",
-        "episode": "s03e01",
-        "edited": false
-      },
-      {
-        "id": "226a6d33-b065-4f1b-8dce-0926cd3c78ff",
-        "season": "s03",
-        "time": "00:21:59",
-        "speaker": "2",
-        "line": "Looks good. So I commissioned my friend, um, Sloblo Picasso.",
-        "episode": "s03e01",
-        "edited": false
       }
     ],
     "stats": {
-      "estimatedTotalHits": 24,
+      "estimatedTotalHits": 12,
       "processingTime": 0,
       "facets": [
         {
@@ -194,15 +122,15 @@
           "facetHits": [
             {
               "ep": "s03",
-              "hits": 20
-            },
-            {
-              "ep": "s08",
-              "hits": 2
+              "hits": 10
             },
             {
               "ep": "s09",
-              "hits": 2
+              "hits": 1
+            },
+            {
+              "ep": "s08",
+              "hits": 1
             }
           ]
         },
@@ -211,36 +139,36 @@
           "facetHits": [
             {
               "ep": "s03e05",
-              "hits": 8
-            },
-            {
-              "ep": "s03e06",
               "hits": 4
             },
             {
               "ep": "s03e01",
-              "hits": 4
-            },
-            {
-              "ep": "s03e07",
               "hits": 2
             },
             {
-              "ep": "s08e03",
+              "ep": "s03e06",
               "hits": 2
             },
             {
               "ep": "s09e35",
-              "hits": 2
+              "hits": 1
+            },
+            {
+              "ep": "s03e07",
+              "hits": 1
             },
             {
               "ep": "s03e02",
-              "hits": 2
+              "hits": 1
+            },
+            {
+              "ep": "s08e03",
+              "hits": 1
             }
           ]
         }
       ]
     },
-    "hasMore": true
+    "hasMore": false
   }
 }

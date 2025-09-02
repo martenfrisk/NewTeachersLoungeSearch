@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import episodesPageData from '../../../assets/generated/episodes-page-data.json';
-import { EpisodeDataProcessor } from '$lib/services/EpisodeDataProcessor';
+import { SupabaseEditorRepository } from '$lib/repositories/EditorRepository';
 import type { EpisodeInfo } from '$lib/types/episode';
 import type { PageLoad } from './$types';
 
@@ -11,7 +11,7 @@ export async function entries() {
 		.map((episode) => ({ id: episode.ep }));
 }
 
-export const load: PageLoad = async ({ params, fetch }) => {
+export const load: PageLoad = async ({ params }) => {
 	const { id } = params;
 
 	if (!id || typeof id !== 'string') {
@@ -19,24 +19,9 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	}
 
 	try {
-		const response = await fetch(`/transcripts/${id}.json`);
-		if (!response.ok) {
-			error(404, `Transcript not found for episode ${id}`);
-		}
-
-		const rawTranscript = await response.json();
-
-		if (!rawTranscript) {
-			error(404, `Transcript not found for episode ${id}`);
-		}
-
-		// Get episode data processor instance
-		const processor = EpisodeDataProcessor.getInstance();
-
-		// Validate and process transcript
-		const validatedTranscript = processor.validateTranscript(rawTranscript);
-		const processedTranscript = processor.processTranscript(id, validatedTranscript);
-
+		// Use database repository instead of static files
+		const repository = new SupabaseEditorRepository();
+		const transcriptLines = await repository.fetchEpisodeTranscript(id);
 		// Get episode metadata
 		const episodeInfo: EpisodeInfo | undefined = episodesPageData.episodes.find(
 			(x) => x.ep === id.replace('.json', '')
@@ -51,21 +36,24 @@ export const load: PageLoad = async ({ params, fetch }) => {
 			error(400, `Episode ${id} does not have audio available for editing`);
 		}
 
-		// Use pre-calculated stats from episode info if available, otherwise calculate
-		const transcriptStats =
-			episodeInfo && 'editedPercentage' in episodeInfo
-				? {
-						totalLines: episodeInfo.totalLines || 0,
-						editedLines: episodeInfo.editedLines || 0,
-						editedPercentage: episodeInfo.editedPercentage || 0,
-						isFullyEdited: episodeInfo.isFullyEdited || false,
-						isMostlyEdited: episodeInfo.isMostlyEdited || false
-					}
-				: processor.calculateTranscriptStats(id, validatedTranscript);
+		// Calculate transcript statistics
+		const totalLines = transcriptLines.length;
+		const editedLines = transcriptLines.filter((line) => line.edited).length;
+		const editedPercentage = totalLines > 0 ? Math.round((editedLines / totalLines) * 100) : 0;
+		const isFullyEdited = editedPercentage === 100;
+		const isMostlyEdited = editedPercentage >= 75;
+
+		const transcriptStats = {
+			totalLines,
+			editedLines,
+			editedPercentage,
+			isFullyEdited,
+			isMostlyEdited
+		};
 
 		return {
 			episode: id,
-			transcript: processedTranscript,
+			transcript: transcriptLines,
 			transcriptStats,
 			episodeInfo,
 			meta: {

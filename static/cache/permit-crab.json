@@ -1,20 +1,11 @@
 {
   "query": "permit crab",
-  "timestamp": 1756597643252,
-  "expiresAt": 1757202443252,
+  "timestamp": 1756802532541,
+  "expiresAt": 1757407332541,
   "result": {
     "hits": [
       {
         "id": "568f3e63-c947-48f0-b71c-d7c0ee801383",
-        "season": "s06",
-        "time": "0:26:38",
-        "speaker": "spk_3",
-        "line": "And we said, um, we said you probably need to get permits for this. And you came back with a bunch of crabs, little crabs. And you said these air my permit crabs. And",
-        "episode": "s06e03",
-        "edited": false
-      },
-      {
-        "id": "dc11f884-40a8-43bb-8a3a-43afc1feee1b",
         "season": "s06",
         "time": "0:26:38",
         "speaker": "spk_3",
@@ -32,39 +23,12 @@
         "edited": false
       },
       {
-        "id": "be112d1d-7f65-4e8a-97e7-fb5bc9de07d3",
-        "season": "s06",
-        "time": "0:13:02",
-        "speaker": "spk_3",
-        "line": "Really? Really. I'm like, That's not me. I'm taking over the door is your dorm and I was trying to lay the permit process so nit picky. Permit the permit. Crab is a nitpicker. Podd keeps",
-        "episode": "s06e06",
-        "edited": false
-      },
-      {
         "id": "36dd3e82-4797-4ae4-9951-d2f927a0ee5d",
         "season": "s06",
         "time": "0:28:23",
         "speaker": "spk_1",
         "line": "crab is basically giving me his blessing, he says. I permit everything in here. Okay, Guy, permit crab everything in here and we're really working together to stay up above code and everything.",
         "episode": "s06e03",
-        "edited": false
-      },
-      {
-        "id": "fb103f30-dc8e-40da-9170-15bada2484da",
-        "season": "s06",
-        "time": "0:28:23",
-        "speaker": "spk_1",
-        "line": "crab is basically giving me his blessing, he says. I permit everything in here. Okay, Guy, permit crab everything in here and we're really working together to stay up above code and everything.",
-        "episode": "s06e03",
-        "edited": false
-      },
-      {
-        "id": "992e62a1-463f-4aea-8ea5-024337204798",
-        "season": "s06",
-        "time": "0:04:01",
-        "speaker": "spk_2",
-        "line": "slammed your Bluetooth back on its hook at the very and just slammed it down. I think you could just leave it on your ear now. I had to do that for effect permit. Crab needs to know. Im myths. Well,",
-        "episode": "s06e06",
         "edited": false
       },
       {
@@ -86,25 +50,7 @@
         "edited": false
       },
       {
-        "id": "3e681b78-a216-4af8-9afe-4b238a9a325a",
-        "season": "s06",
-        "time": "0:12:36",
-        "speaker": "spk_2",
-        "line": "you like. If you're a natural, it's intentional. Your slammer, I I'll tell you what the fucking permit crab is a slammer",
-        "episode": "s06e06",
-        "edited": false
-      },
-      {
         "id": "2e71c4db-345a-42b8-9a43-e166d8b638fa",
-        "season": "s06",
-        "time": "0:27:09",
-        "speaker": "spk_3",
-        "line": "Yeah. I mean, if you can get in good with the permit crab, you You said you could build. Okay, You've been like a Karajan about your house with that with easily.",
-        "episode": "s06e03",
-        "edited": false
-      },
-      {
-        "id": "5eed5fc0-9d54-4b47-872d-8fc4509ce9f9",
         "season": "s06",
         "time": "0:27:09",
         "speaker": "spk_3",
@@ -122,25 +68,7 @@
         "edited": false
       },
       {
-        "id": "9e6d7f5b-41ea-46b5-8545-6dfb7b9c1e21",
-        "season": "s06",
-        "time": "0:27:16",
-        "speaker": "spk_4",
-        "line": "There's a little bit of a conflict of interest happening. You brought the permit crabs daughter to the wedding, maybe to kind of win him over? Well,",
-        "episode": "s06e07",
-        "edited": false
-      },
-      {
         "id": "2d82294c-9b9f-4a87-847b-30f7066d4d3c",
-        "season": "s06",
-        "time": "0:28:21",
-        "speaker": "spk_3",
-        "line": "permit crab to give you some",
-        "episode": "s06e03",
-        "edited": false
-      },
-      {
-        "id": "dbb52487-9973-42b8-87d7-2f78e2893824",
         "season": "s06",
         "time": "0:28:21",
         "speaker": "spk_3",
@@ -158,24 +86,6 @@
         "edited": false
       },
       {
-        "id": "00de1913-f48c-4c90-9c0f-65274bf5def4",
-        "season": "s06",
-        "time": "0:28:52",
-        "speaker": "spk_3",
-        "line": "instruction. He's He's in 1/2. Yeah, well, that's cool. I couldn't get the permit crab to listen to any of my pitches for our new frat.",
-        "episode": "s06e03",
-        "edited": false
-      },
-      {
-        "id": "036efa57-c393-4778-8a18-4b021291f4a4",
-        "season": "s06",
-        "time": "0:51:04",
-        "speaker": "spk_2",
-        "line": "s so glad you came with us. We got away from her wedding to box on. Oh, thank God. Oh, God! Way Bug. Son's dead. Hopefully the permit crab is dead. Hopefully I behind his daughter. Is that",
-        "episode": "s06e07",
-        "edited": false
-      },
-      {
         "id": "8ddabb09-65a2-4855-acd2-2c019b35d7af",
         "season": "s06",
         "time": "0:51:04",
@@ -183,10 +93,37 @@
         "line": "s so glad you came with us. We got away from her wedding to box on. Oh, thank God. Oh, God! Way Bug. Son's dead. Hopefully the permit crab is dead. Hopefully I behind his daughter. Is that",
         "episode": "s06e07",
         "edited": false
+      },
+      {
+        "id": "f855807f-b0e9-4ccf-bcce-2ed0840dc18c",
+        "season": "s06",
+        "time": "0:54:35",
+        "speaker": "spk_2",
+        "line": "I have bad news from the PC. The permit crab. Oh, no, it's good text. Yeah, we're on a text relationship. We send fiery text back and forth and he just said texts very fast. Yeah, absolutely. He all caps, No, microphones were not zoned for amplification. And I well, because it's the old dining hall and so they're trying to keep it quiet in there because they don't want food fights to start its old thinking. That's what start food fights, actually sticking with old racist crowds",
+        "episode": "s06e06",
+        "edited": false
+      },
+      {
+        "id": "9237683d-fdce-4034-bcf1-7ea28bc5ca3b",
+        "season": "s06",
+        "time": "0:03:03",
+        "speaker": "spk_2",
+        "line": "into permit problems. Hermit crab are, uh let's just say we're dancing around this thing, and he's got more feet than I do. Okay, So he's running",
+        "episode": "s06e06",
+        "edited": false
+      },
+      {
+        "id": "b4b6a033-7bc9-45c1-9efd-1b057064b03b",
+        "season": "s06",
+        "time": "0:27:41",
+        "speaker": "spk_0",
+        "line": "I went to go pick her up, it was not easy. Yeah, yeah, I went over to their whole and and sort of coach. I saw the cooks coaxed her out of the hole and guess who comes following with his watch on J's at a small shotgun with you. Listen, Wow. I'm not going to shut down your operation tonight, But if you bring my daughter back one minute past midnight, your dad it's a permit. Grab the crabs Do have, ah, graduate princesses. They back before midnight or something bad happened. That's true of all princesses, not just in gorilla. That's actually true of ever.",
+        "episode": "s06e07",
+        "edited": false
       }
     ],
     "stats": {
-      "estimatedTotalHits": 26,
+      "estimatedTotalHits": 13,
       "processingTime": 0,
       "facets": [
         {
@@ -194,7 +131,7 @@
           "facetHits": [
             {
               "ep": "s06",
-              "hits": 26
+              "hits": 13
             }
           ]
         },
@@ -203,20 +140,20 @@
           "facetHits": [
             {
               "ep": "s06e03",
-              "hits": 10
+              "hits": 5
             },
             {
               "ep": "s06e06",
-              "hits": 10
+              "hits": 5
             },
             {
               "ep": "s06e07",
-              "hits": 6
+              "hits": 3
             }
           ]
         }
       ]
     },
-    "hasMore": true
+    "hasMore": false
   }
 }

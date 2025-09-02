@@ -1,22 +1,13 @@
 {
   "query": "bronco",
-  "timestamp": 1756597639588,
-  "expiresAt": 1757202439588,
+  "timestamp": 1756802527495,
+  "expiresAt": 1757407327495,
   "result": {
     "hits": [
       {
-        "id": "8adbbff1-d6d1-4409-870c-a1b7e3d67198",
-        "season": "s01",
-        "time": "00:56:53",
-        "speaker": "Todd",
-        "line": "No, uh, went our bronco driving away and say that is not them in that bronco wait to leave. Shop yourself in the",
-        "episode": "s01e06",
-        "edited": false
-      },
-      {
         "id": "01524b04-8b8e-4989-9783-f0580fa71e35",
         "season": "s01",
-        "time": "00:56:53",
+        "time": "0:56:53",
         "speaker": "Todd",
         "line": "No, uh, went our bronco driving away and say that is not them in that bronco wait to leave. Shop yourself in the",
         "episode": "s01e06",
@@ -25,28 +16,19 @@
       {
         "id": "5b451459-fa55-4820-ae88-e920b85919bb",
         "season": "s02",
-        "time": "00:59:01",
+        "time": "0:59:01",
         "speaker": "1",
         "line": "Do we have choppers? Do we have? Do we have a total recipe? It has already been cooked. Okay, wait. Let's get let's get on this lamp thing. This place rigged to blow luv all over again. Everybody in the way. The Broncos. I know we were digging the way double. You wait in here while you're down there because the Bronco's there. I just You know the way. Well, the juice on the way. Yes. We get a ride. Yeah, I think we're ready to roll. Let's roll. Everybody listen, a lot of mix Half of this season, you will recite for everything. I'm care. I'm turning into",
         "episode": "s02e06",
         "edited": false
       },
       {
-        "id": "ccb30349-591c-40e6-8e53-91215ce14a59",
+        "id": "3268b968-c795-41f5-9363-7ae1dc5b750e",
         "season": "s02",
-        "time": "00:59:01",
-        "speaker": "1",
-        "line": "Do we have choppers? Do we have? Do we have a total recipe? It has already been cooked. Okay, wait. Let's get let's get on this lamp thing. This place rigged to blow luv all over again. Everybody in the way. The Broncos. I know we were digging the way double. You wait in here while you're down there because the Bronco's there. I just You know the way. Well, the juice on the way. Yes. We get a ride. Yeah, I think we're ready to roll. Let's roll. Everybody listen, a lot of mix Half of this season, you will recite for everything. I'm care. I'm turning into",
-        "episode": "s02e06",
-        "edited": false
-      },
-      {
-        "id": "79c1477f-739b-432f-8e07-687ee23a8311",
-        "season": "s06",
-        "time": "0:20:41",
-        "speaker": "spk_2",
-        "line": "Let's say thank you, DOJ right now, O J, you ain't thank you. You have gotten us out of so many sticky situations. There we are, blowing up one of those schools we worked at. Maybe it was Hamilton I The second time we were there, we blew it up. You? Who shot up in the Bronco? O J?",
-        "episode": "s06e01",
+        "time": "0:03:59",
+        "speaker": "2",
+        "line": "of all saw fall from grace. Pretty classic story, uh, teachers accidentally, with the help of a student set off a dirty bomb at prom and then escape in O J Simpson's Bronco asic story story. As you all know, I was ah, pretending I got fired last season as the basketball coach, So I came back. Addressed is a woman named Bethany Hart. Ah, and was the lunch lady for a while, I started taking Ah! Ah. Well, what I thought was estrogen pills to convince the school that I was actually a woman to really go in deep in the character I was taking ostrich in, um, and it did turn me into a human ostrich hybrid. Um, female female ostrich eso. Ever since we ah, yeah. Ever since we left left the school or were fired, Um, I have been living as an ostrich on, and I went to ah, kind of went to Australia to get back to my roots, um, and live with ostriches for a while. It was ah, really met. You know, I felt like I met my people",
+        "episode": "s02e01",
         "edited": false
       },
       {
@@ -56,15 +38,6 @@
         "speaker": "spk_2",
         "line": "Let's say thank you, DOJ right now, O J, you ain't thank you. You have gotten us out of so many sticky situations. There we are, blowing up one of those schools we worked at. Maybe it was Hamilton I The second time we were there, we blew it up. You? Who shot up in the Bronco? O J?",
         "episode": "s06e01",
-        "edited": false
-      },
-      {
-        "id": "fd786809-e284-4eb9-a10b-7151c768c236",
-        "season": "s07",
-        "time": "0:27:15",
-        "speaker": "spk_1",
-        "line": "a bucking bronco with the human negative. They made the",
-        "episode": "s07e06",
         "edited": false
       },
       {
@@ -113,54 +86,18 @@
         "edited": false
       },
       {
-        "id": "3268b968-c795-41f5-9363-7ae1dc5b750e",
-        "season": "s02",
-        "time": "00:03:59",
-        "speaker": "2",
-        "line": "of all saw fall from grace. Pretty classic story, uh, teachers accidentally, with the help of a student set off a dirty bomb at prom and then escape in O J Simpson's Bronco asic story story. As you all know, I was ah, pretending I got fired last season as the basketball coach, So I came back. Addressed is a woman named Bethany Hart. Ah, and was the lunch lady for a while, I started taking Ah! Ah. Well, what I thought was estrogen pills to convince the school that I was actually a woman to really go in deep in the character I was taking ostrich in, um, and it did turn me into a human ostrich hybrid. Um, female female ostrich eso. Ever since we ah, yeah. Ever since we left left the school or were fired, Um, I have been living as an ostrich on, and I went to ah, kind of went to Australia to get back to my roots, um, and live with ostriches for a while. It was ah, really met. You know, I felt like I met my people",
-        "episode": "s02e01",
-        "edited": false
-      },
-      {
-        "id": "bc2cee78-2435-422c-a6b4-4f61334d3f83",
-        "season": "s02",
-        "time": "00:03:59",
-        "speaker": "2",
-        "line": "of all saw fall from grace. Pretty classic story, uh, teachers accidentally, with the help of a student set off a dirty bomb at prom and then escape in O J Simpson's Bronco asic story story. As you all know, I was ah, pretending I got fired last season as the basketball coach, So I came back. Addressed is a woman named Bethany Hart. Ah, and was the lunch lady for a while, I started taking Ah! Ah. Well, what I thought was estrogen pills to convince the school that I was actually a woman to really go in deep in the character I was taking ostrich in, um, and it did turn me into a human ostrich hybrid. Um, female female ostrich eso. Ever since we ah, yeah. Ever since we left left the school or were fired, Um, I have been living as an ostrich on, and I went to ah, kind of went to Australia to get back to my roots, um, and live with ostriches for a while. It was ah, really met. You know, I felt like I met my people",
-        "episode": "s02e01",
-        "edited": false
-      },
-      {
-        "id": "f00b0f4c-f3ef-4bf0-920b-18a4f6adecf1",
-        "season": "s01",
-        "time": "00:55:10",
-        "speaker": "Todd",
-        "line": "Look, he's got another What scratches him. Special way. Listen, my buddy O j let me borrow his Bronco, All right? This thing goes up to 40 miles an hour.",
-        "episode": "s01e06",
-        "edited": false
-      },
-      {
         "id": "aeafce02-ab0a-403b-ae2e-5a9f9d55c265",
         "season": "s01",
-        "time": "00:55:10",
+        "time": "0:55:10",
         "speaker": "Todd",
         "line": "Look, he's got another What scratches him. Special way. Listen, my buddy O j let me borrow his Bronco, All right? This thing goes up to 40 miles an hour.",
-        "episode": "s01e06",
-        "edited": false
-      },
-      {
-        "id": "a4f5b3a7-c7df-49ed-9466-1210ef5b0c6b",
-        "season": "s01",
-        "time": "00:55:37",
-        "speaker": "Stephanie AIDS",
-        "line": "here. Yeah, we didn't sneak in. If you want to go, if you all want to go get that bronco and drive off in a sense, it I will cut off the principal's other ear.",
         "episode": "s01e06",
         "edited": false
       },
       {
         "id": "d100b53b-e720-4cee-9764-0f04a7ae7e1f",
         "season": "s01",
-        "time": "00:55:37",
+        "time": "0:55:37",
         "speaker": "Stephanie AIDS",
         "line": "here. Yeah, we didn't sneak in. If you want to go, if you all want to go get that bronco and drive off in a sense, it I will cut off the principal's other ear.",
         "episode": "s01e06",
@@ -169,24 +106,87 @@
       {
         "id": "cf70b368-c273-4a56-8d82-de286959fc84",
         "season": "s01",
-        "time": "00:58:12",
+        "time": "0:58:12",
         "speaker": "Sam",
         "line": "Okay, We're gonna deport me. Go way Get a new one. Don't tell anybody. Okay, guys, We're gonna talk, Padre for O J. Simpson, please. You don't get off the road texting or something way, O J. I need the Bronco. I thought you said you had it. You had to get the problem. I just need his approval call. Call OJ's bunny. Okay, go. Jae Seo. We're listening to this. Ever started the Teacherslounge way? Really appreciate everybody who supported us for the last few months. Wait. Let's go, Rooth.",
         "episode": "s01e06",
         "edited": false
       },
       {
-        "id": "e3f93054-d25a-4151-9f14-799e4aff7136",
-        "season": "s01",
-        "time": "00:58:12",
-        "speaker": "Sam",
-        "line": "Okay, We're gonna deport me. Go way Get a new one. Don't tell anybody. Okay, guys, We're gonna talk, Padre for O J. Simpson, please. You don't get off the road texting or something way, O J. I need the Bronco. I thought you said you had it. You had to get the problem. I just need his approval call. Call OJ's bunny. Okay, go. Jae Seo. We're listening to this. Ever started the Teacherslounge way? Really appreciate everybody who supported us for the last few months. Wait. Let's go, Rooth.",
-        "episode": "s01e06",
+        "id": "d956b537-dcab-4135-a749-45b3da7b81fb",
+        "season": "s03",
+        "time": "1:01:26",
+        "speaker": "1",
+        "line": "way. Go! Jump in. Jump in the part of the window that opens in the back gate of the Bronco. Okay. Whoa! Whoa. All",
+        "episode": "s03e08",
+        "edited": false
+      },
+      {
+        "id": "1cb23e34-f48c-48f2-a4dd-09f6a97b6680",
+        "season": "s05",
+        "time": "1:01:27",
+        "speaker": "Speaker 3",
+        "line": "No, call Todd. Oh my God, they're getting into his old exoskeleton. No, I'm calling Todd. No rats. I'm calling Todd. No rats in Stu's body. I'm calling Todd. No rats in Stu's body. Wait, Todd's coming. Wait, is that the Bronco? Fellas. Todd! Todd! Come in. Get in. Todd, we have to get in. Wait a second. Let me just park this thing. No. No, don't park. How do we get through? Don't park, Todd. Okay, Todd, he's back. He's in the space. Todd. Todd. Todd. Todd, don't park. We need you to get us and go away.",
+        "episode": "s05e08",
+        "edited": false
+      },
+      {
+        "id": "6e98374a-5c91-4219-a010-1b8baac556cc",
+        "season": "s09",
+        "time": "1:02:03",
+        "speaker": "spk_2",
+        "line": "It's nice talking. Your father town. Where is that pulled up? Next Bill. Is that a Bronco? Macy, Macy?",
+        "episode": "s09e24",
+        "edited": false
+      },
+      {
+        "id": "17f1434b-848b-4ed8-99d9-ab89abdc8c6c",
+        "season": "s09",
+        "time": "1:03:34",
+        "speaker": "spk_4",
+        "line": "again? Is this somebody you met? Orange Simpson Simpson has a Bronco Missus",
+        "episode": "s09e35",
+        "edited": false
+      },
+      {
+        "id": "1a5b7613-7171-4982-a5c6-6b77facfdc81",
+        "season": "s09",
+        "time": "1:03:45",
+        "speaker": "spk_5",
+        "line": "Ito Sue Bronco. You see a medium and a Quattro personas Mori Guapo Gretzky",
+        "episode": "s09e35",
+        "edited": false
+      },
+      {
+        "id": "f8f7ec7d-8da8-4d9c-a90f-c5f7aeecc1d4",
+        "season": "s09",
+        "time": "1:04:27",
+        "speaker": "spk_2",
+        "line": "Okay, well, we have to wait here. He's bringing the Bronco. He's got room for us. Okay, We're",
+        "episode": "s09e35",
+        "edited": false
+      },
+      {
+        "id": "e1bb4526-db4a-467c-9331-55efdd824080",
+        "season": "s09",
+        "time": "1:04:33",
+        "speaker": "spk_0",
+        "line": "fit in the Bronco Or do I have to write him jets? Cute for bringing",
+        "episode": "s09e35",
+        "edited": false
+      },
+      {
+        "id": "f6713414-da38-4987-ad89-ef3fc763b9e5",
+        "season": "s09",
+        "time": "1:05:26",
+        "speaker": "spk_4",
+        "line": "Yeah, but you know what? The living it till it's the absence of a living. I don't see the Bronco,",
+        "episode": "s09e35",
         "edited": false
       }
     ],
     "stats": {
-      "estimatedTotalHits": 55,
+      "estimatedTotalHits": 30,
       "processingTime": 0,
       "facets": [
         {
@@ -194,39 +194,39 @@
           "facetHits": [
             {
               "ep": "s09",
-              "hits": 22
-            },
-            {
-              "ep": "s01",
-              "hits": 8
-            },
-            {
-              "ep": "s04",
-              "hits": 8
+              "hits": 11
             },
             {
               "ep": "s05",
               "hits": 5
             },
             {
-              "ep": "s02",
+              "ep": "s01",
               "hits": 4
             },
             {
-              "ep": "s07",
+              "ep": "s04",
+              "hits": 4
+            },
+            {
+              "ep": "s02",
               "hits": 2
+            },
+            {
+              "ep": "s07",
+              "hits": 1
             },
             {
               "ep": "s06",
-              "hits": 2
-            },
-            {
-              "ep": "s08",
-              "hits": 2
+              "hits": 1
             },
             {
               "ep": "s03",
-              "hits": 2
+              "hits": 1
+            },
+            {
+              "ep": "s08",
+              "hits": 1
             }
           ]
         },
@@ -235,39 +235,39 @@
           "facetHits": [
             {
               "ep": "s09e35",
-              "hits": 18
-            },
-            {
-              "ep": "s01e06",
-              "hits": 8
-            },
-            {
-              "ep": "s04e08",
-              "hits": 8
+              "hits": 9
             },
             {
               "ep": "s05e08",
               "hits": 5
             },
             {
-              "ep": "s09e24",
-              "hits": 2
+              "ep": "s01e06",
+              "hits": 4
             },
             {
-              "ep": "s02e01",
-              "hits": 2
-            },
-            {
-              "ep": "s02e06",
-              "hits": 2
-            },
-            {
-              "ep": "s03e08",
-              "hits": 2
+              "ep": "s04e08",
+              "hits": 4
             },
             {
               "ep": "s06e01",
-              "hits": 2
+              "hits": 1
+            },
+            {
+              "ep": "s07e06",
+              "hits": 1
+            },
+            {
+              "ep": "s02e01",
+              "hits": 1
+            },
+            {
+              "ep": "s09e24",
+              "hits": 1
+            },
+            {
+              "ep": "s03e08",
+              "hits": 1
             }
           ]
         }
