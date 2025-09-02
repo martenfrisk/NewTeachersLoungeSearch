@@ -16,7 +16,6 @@
 	const handleSearchChange = (hasQuery: boolean) => {
 		hasSearchQuery = hasQuery;
 	};
-
 </script>
 
 <svelte:head>
@@ -45,7 +44,6 @@
 
 	<!-- Canonical URL -->
 	<link rel="canonical" href="https://seekerslounge.pcast.site/episodes" />
-
 </svelte:head>
 
 <div class="min-h-screen">

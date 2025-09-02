@@ -37,7 +37,6 @@
 		? `Full transcript for The Teachers' Lounge episode "${episodeInfo.title}" (${episodeInfo.ep}). Search, read, and listen along with synchronized audio.`
 		: "Episode transcript from The Teachers' Lounge podcast with searchable content and synchronized audio playback.";
 
-
 	let highlightedTime = $state<string | undefined>(undefined);
 	let virtualListRef = $state<VirtualTranscriptList>();
 	let isLoading = $state(false);
@@ -214,7 +213,6 @@
 
 	<!-- Canonical URL -->
 	<link rel="canonical" href="https://seekerslounge.pcast.site/ep/{episodeInfo?.ep}" />
-
 </svelte:head>
 
 <div class="mt-4 max-w-4xl px-2 mx-auto overflow-x-hidden">

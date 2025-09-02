@@ -11,7 +11,7 @@ This is "Seekers' Lounge" - a search engine for transcripts of the Teachers' Lou
 - **Frontend**: SvelteKit 2 with Svelte 5 (using runes for state management)
 - **Backend**: Supabase (PostgreSQL with pg_trgm extension for fuzzy search)
 - **Build Tool**: Vite with Bun package manager
-- **Styling**: Tailwind CSS v4 
+- **Styling**: Tailwind CSS v4
 - **Audio**: WaveSurfer.js for waveform visualization
 - **Testing**: Vitest with Playwright for browser tests
 - **Deployment**: Vercel with adapter-vercel
@@ -19,6 +19,7 @@ This is "Seekers' Lounge" - a search engine for transcripts of the Teachers' Lou
 ## Development Commands
 
 **Core Commands:**
+
 - `bun dev` - Start development server
 - `bun build` - Build for production (includes cache prebuild step)
 - `bun preview` - Preview production build
@@ -26,10 +27,12 @@ This is "Seekers' Lounge" - a search engine for transcripts of the Teachers' Lou
 - `bun check:watch` - Type check in watch mode
 
 **Code Quality:**
+
 - `bun lint` - Run prettier and eslint checks
 - `bun format` - Format code with prettier
 
 **Testing:**
+
 - `bun run test` - Run all tests
 - `bun run test:unit` - Run server-side unit tests with vitest
 - `bun run test:unit:client` - Run client-side/component tests with browser
@@ -38,6 +41,7 @@ This is "Seekers' Lounge" - a search engine for transcripts of the Teachers' Lou
 - `bun run test:ui` - Run tests with vitest UI
 
 **Data Generation:**
+
 - `bun run generate:static` - Generate static episode data files
 - `bun run cache:prebuild` - Pre-warm search cache for build
 
@@ -46,6 +50,7 @@ This is "Seekers' Lounge" - a search engine for transcripts of the Teachers' Lou
 ### State Management Pattern
 
 The app uses **Svelte 5 runes** for reactive state management:
+
 - `states/` directory: Modern runes-based state (SearchState, FiltersState)
 - `stores/` directory: Traditional Svelte stores for backward compatibility
 - All new state should use runes pattern following `SearchState.svelte.ts`
@@ -61,6 +66,7 @@ The app uses **Svelte 5 runes** for reactive state management:
 ### Data Layer
 
 **Database (Supabase PostgreSQL):**
+
 - `episodes` - Episode metadata and audio information
 - `transcript_lines` - Individual transcript lines with speakers/timestamps
 - `users` - User authentication and roles
@@ -68,6 +74,7 @@ The app uses **Svelte 5 runes** for reactive state management:
 - Uses pg_trgm extension for fuzzy text search
 
 **Search Implementation:**
+
 - PostgreSQL full-text search with pg_trgm for fuzzy matching
 - Multi-layered caching (static cache + Edge Config + runtime cache)
 - Query parsing supports advanced syntax (quotes, boolean operators)
@@ -75,6 +82,7 @@ The app uses **Svelte 5 runes** for reactive state management:
 ### Component Architecture
 
 **Modular Component Design:**
+
 ```
 components/
 ├── audio/          # AudioPlayer, AudioWaveform, sync controls
@@ -89,14 +97,17 @@ components/
 ### Key Patterns
 
 **Repository Pattern:**
+
 - `repositories/SearchRepository.ts` - Abstract data access
 - `repositories/EditorRepository.ts` - Editor-specific data operations
 
 **Error Handling:**
+
 - Centralized error handling via `utils/errors.ts`
 - Error boundaries for React-like error catching in Svelte
 
 **Testing Strategy:**
+
 - Server-side logic: Standard Vitest unit tests
 - Client components: Browser-based tests with Playwright
 - Separate configs for server vs client testing
@@ -104,6 +115,7 @@ components/
 ## Migration Context
 
 **Current Migration:** MeiliSearch → Supabase (PostgreSQL)
+
 - Migration scripts in `migration-scripts/` directory
 - Database schema in `sql/schema/supabase-schema.sql`
 - Full migration plan documented in `docs/claude/MIGRATION_PLAN.md`

@@ -2,7 +2,7 @@
 	import { slide } from 'svelte/transition';
 	import Coffee from './components/Coffee.svelte';
 	import { user } from './stores/auth';
-	import { appStore } from './stores/app';
+	// import { appStore } from './stores/app';
 
 	let moreInfo = $state(false);
 	let copyright = $state(false);
@@ -11,9 +11,9 @@
 
 	const handleMoreInfo = () => (moreInfo = !moreInfo);
 	const handleCopyright = () => (copyright = !copyright);
-	const handleAuthModal = () => {
-		appStore.openAuthModal();
-	};
+	// const handleAuthModal = () => {
+	// 	appStore.openAuthModal();
+	// };
 
 	const toggleInfoDropdown = () => (showInfoDropdown = !showInfoDropdown);
 </script>
