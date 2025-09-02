@@ -1,0 +1,186 @@
+{
+  "query": "big nightmare",
+  "timestamp": 1756802528349,
+  "expiresAt": 1757407328349,
+  "result": {
+    "hits": [
+      {
+        "id": "6c61e87a-74dd-48c4-8047-5e86ab53933f",
+        "season": "s02",
+        "time": "0:20:06",
+        "speaker": "4",
+        "line": "there was a famous painting done of me called The Big Nightmare that now rests in the loo. Ve r i p For those who don't know the love is gone. God, that's right. The big nightmare has really become a kind of wanted to move out of its misery. It started with the big the Big Laugh in our last leg For a while, Miley. I mean, everybody knows the luv is just tacky. It's only the",
+        "episode": "s02e06",
+        "edited": false
+      },
+      {
+        "id": "e375c685-4e8e-4629-b5c5-06b5f264fadc",
+        "season": "s02",
+        "time": "0:19:25",
+        "speaker": "3",
+        "line": "a picture of me button interpretation of right looks somewhat like the devil. Some column Biel's above. Some way Call the devil. That's what I said. She should entitled the painting. Beals. A bug. Yeah, not the big man. Big nightmare. But, you know, uh, so",
+        "episode": "s02e04",
+        "edited": false
+      },
+      {
+        "id": "e8798ac4-e739-465c-b3e2-fabb3948d08b",
+        "season": "s02",
+        "time": "0:20:52",
+        "speaker": "4",
+        "line": "Yeah, I think so. What do you want to come back, right? Uh, yes. Good. Yeah. Look, and take it back. I would sit and so said the big So you're going by the big nightmare now? The danger zone blew up, but",
+        "episode": "s02e06",
+        "edited": false
+      },
+      {
+        "id": "4d96ea1a-7e19-4a87-8c82-24ffb9627f03",
+        "season": "s02",
+        "time": "0:19:02",
+        "speaker": "3",
+        "line": "and she blamed me for it. And that is why she has risen like a Phoenix. But her paintings really took off. Exactly. The paintings that are just horrifying, horrifying show nightmare. Absolutely nightmarish. The 1st 1 was called The Big Nightmare, and there's just a picture of me screaming in your face and it's It's",
+        "episode": "s02e04",
+        "edited": false
+      },
+      {
+        "id": "d0d6b06f-f576-4138-9d2e-9059e7c745bf",
+        "season": "exit42",
+        "time": "0:16:16",
+        "speaker": "spk_1",
+        "line": "This The big nightmare was in the loop. The",
+        "episode": "exit42-11",
+        "edited": false
+      },
+      {
+        "id": "cbce818b-d900-458c-b3db-73db88b2fcc0",
+        "season": "exit42",
+        "time": "0:16:18",
+        "speaker": "spk_3",
+        "line": "big nightmare was in Zuluth, and someone blew it up, it looks like someone's Second time. Is Macron okay? Let me ask you a question. Let me ask you a quick question. Macron,",
+        "episode": "exit42-11",
+        "edited": false
+      },
+      {
+        "id": "b2fbfaf2-a293-466a-8e03-82167b9415f9",
+        "season": "s02",
+        "time": "0:19:50",
+        "speaker": "2",
+        "line": "this now. You actually have a new tattoo on your neck that says the big nightmare. Yeah, Yeah, it's a little higher than the peace sign you carved into your biceps.",
+        "episode": "s02e06",
+        "edited": false
+      },
+      {
+        "id": "cb23212a-4e38-40bb-ac6b-518d8b824999",
+        "season": "mini",
+        "time": "0:20:18",
+        "speaker": "spk_1",
+        "line": "Yeah, well, you've got You've got descent into madness. You've almost ah sure. You know, we had the big nightmare. Sure. Uh,",
+        "episode": "mini-16",
+        "edited": false
+      },
+      {
+        "id": "c3f17e57-5738-4151-a7d1-564553e100ab",
+        "season": "s02",
+        "time": "0:21:17",
+        "speaker": "4",
+        "line": "too much heat? Too much eat. I've been cranking that boiler room because it hasn't been hot enough in the big nightmare. And you disconnected",
+        "episode": "s02e06",
+        "edited": false
+      },
+      {
+        "id": "234580c7-b96f-494f-9d7c-d9da5a180aa4",
+        "season": "s11",
+        "time": "0:29:15",
+        "speaker": "spk_4",
+        "line": "I I can't think of anyone that people would be luckier to be motivated by. Mhmm. I mean, the creator of the big nightmare. The inventor of the baseball haunted massage. Yeah. The the the the man who is",
+        "episode": "s11e01",
+        "edited": false
+      },
+      {
+        "id": "5c88e4a2-fa9f-4fe0-8c48-a097a965836a",
+        "season": "s08",
+        "time": "0:42:10",
+        "speaker": "spk_1",
+        "line": "One student even went as far as to say the big nightmare is",
+        "episode": "s08e01",
+        "edited": false
+      },
+      {
+        "id": "7644a092-0306-487e-8f24-06c075902642",
+        "season": "s09",
+        "time": "0:01:49",
+        "speaker": "spk_0",
+        "line": "immaculately conceived. Well, um, my flop show, right? Encampment nightmares. What? I would go down the homeless and carry on. Just tear them apart. Wiser Teoh? Is that Why is it so gross? What's happening here? Where to go wrong? I put on my great British accent. Yes, but you would say Don't even give me this mental illness thing. I'm not buying. You're talking to the big guy. You're lazy. Yeah, that",
+        "episode": "s09e12",
+        "edited": false
+      }
+    ],
+    "stats": {
+      "estimatedTotalHits": 12,
+      "processingTime": 0,
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s02",
+              "hits": 6
+            },
+            {
+              "ep": "exit42",
+              "hits": 2
+            },
+            {
+              "ep": "s11",
+              "hits": 1
+            },
+            {
+              "ep": "mini",
+              "hits": 1
+            },
+            {
+              "ep": "s08",
+              "hits": 1
+            },
+            {
+              "ep": "s09",
+              "hits": 1
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "s02e06",
+              "hits": 4
+            },
+            {
+              "ep": "exit42-11",
+              "hits": 2
+            },
+            {
+              "ep": "s02e04",
+              "hits": 2
+            },
+            {
+              "ep": "s09e12",
+              "hits": 1
+            },
+            {
+              "ep": "mini-16",
+              "hits": 1
+            },
+            {
+              "ep": "s11e01",
+              "hits": 1
+            },
+            {
+              "ep": "s08e01",
+              "hits": 1
+            }
+          ]
+        }
+      ]
+    },
+    "hasMore": false
+  }
+}

@@ -38,7 +38,7 @@ if (browser) {
 // Auth helper functions
 export const authHelpers = {
 	// Sign in with OAuth provider
-	async signInWithProvider(provider: 'google' | 'github' | 'discord') {
+	async signInWithProvider(provider: 'github') {
 		const { error } = await supabase.auth.signInWithOAuth({
 			provider,
 			options: {
@@ -48,6 +48,35 @@ export const authHelpers = {
 
 		if (error) {
 			console.error('Sign in error:', error.message);
+			throw error;
+		}
+	},
+
+	// Sign in with email
+	async signInWithEmail(email: string, password: string) {
+		const { error } = await supabase.auth.signInWithPassword({
+			email,
+			password
+		});
+
+		if (error) {
+			console.error('Sign in error:', error.message);
+			throw error;
+		}
+	},
+
+	// Sign up with email
+	async signUpWithEmail(email: string, password: string) {
+		const { error } = await supabase.auth.signUp({
+			email,
+			password,
+			options: {
+				emailRedirectTo: `${window.location.origin}/auth/callback`
+			}
+		});
+
+		if (error) {
+			console.error('Sign up error:', error.message);
 			throw error;
 		}
 	},

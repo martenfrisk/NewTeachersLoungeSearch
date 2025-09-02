@@ -7,6 +7,7 @@ interface AppState {
 	globalLoading: boolean;
 	globalError: string | null;
 	notifications: string[];
+	authModalOpen: boolean;
 }
 
 function createAppStore() {
@@ -16,7 +17,8 @@ function createAppStore() {
 		online: typeof navigator !== 'undefined' ? navigator.onLine : true,
 		globalLoading: false,
 		globalError: null,
-		notifications: []
+		notifications: [],
+		authModalOpen: false
 	};
 
 	const { subscribe, update } = writable<AppState>(initialState);
@@ -94,6 +96,15 @@ function createAppStore() {
 
 		clearNotifications(): void {
 			update((state) => ({ ...state, notifications: [] }));
+		},
+
+		// Auth modal actions
+		openAuthModal(): void {
+			update((state) => ({ ...state, authModalOpen: true }));
+		},
+
+		closeAuthModal(): void {
+			update((state) => ({ ...state, authModalOpen: false }));
 		}
 	};
 }
@@ -108,6 +119,7 @@ export const isOnline = derived(appStore, ($app) => $app.online);
 export const globalLoading = derived(appStore, ($app) => $app.globalLoading);
 export const globalError = derived(appStore, ($app) => $app.globalError);
 export const notifications = derived(appStore, ($app) => $app.notifications);
+export const authModalOpen = derived(appStore, ($app) => $app.authModalOpen);
 
 // Initialize app on load
 if (typeof window !== 'undefined') {

@@ -38,7 +38,8 @@ describe('audio store', () => {
 				muted: false,
 				syncEnabled: false,
 				episodeStartingTime: 30.29,
-				error: null
+				error: null,
+				url: null
 			});
 		});
 
@@ -379,7 +380,8 @@ describe('audio store', () => {
 				muted: false,
 				syncEnabled: false,
 				episodeStartingTime: 30.29,
-				error: null
+				error: null,
+				url: null
 			});
 
 			// Verify derived stores are also reset

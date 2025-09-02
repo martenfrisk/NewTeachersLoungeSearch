@@ -1,0 +1,144 @@
+{
+  "query": "cheetah man",
+  "timestamp": 1756802529491,
+  "expiresAt": 1757407329491,
+  "result": {
+    "hits": [
+      {
+        "id": "f8b8a67f-173b-49fe-9593-ed40239e84ac",
+        "season": "s02",
+        "time": "0:21:15",
+        "speaker": "3",
+        "line": "Cheatham. And you're You all know my star every every, um uh event runner. Uh, Cheetah man breaking these breaking records. He's breaking school records. A lot of it will say he's an actual cheetah. And to them, I say Fuck off. Yeah, you. He's not in actual cheetah. He's just a Jewish man who runs on all fours and occasionally looks like a cheetah if you catch him in the shoes, which is shouldn't make juice point. Um, he got caught licking himself during the national",
+        "episode": "s02e04",
+        "edited": false
+      },
+      {
+        "id": "f3d9c31c-f963-41e9-9925-7f527b816385",
+        "season": "s02",
+        "time": "0:17:28",
+        "speaker": "2",
+        "line": "But anyway, while the means to the end are are sort of ah, less than positive. The end to that is actually has been wonderful. You know, I want to go on record to apologize for last week, everybody, I buried the lead on that. I let myself go. And Ah, And that Cheetah man Cheetah men just happened to be in the room last week and I let loose on him",
+        "episode": "s02e05",
+        "edited": false
+      },
+      {
+        "id": "b838e375-3ad6-4207-840c-71a98d31716b",
+        "season": "s02",
+        "time": "0:20:02",
+        "speaker": "4",
+        "line": "last week, Cheatham in my star runner on my track team, he was exposed. Well, you know, an alleged cheetah dressed as a Jewish boy and alleged cheat addresses a Jewish boy. He was obviously a Jewish boy who was my fan. My best runner in the alleged cheetah. I met on the Savannah when I was living there as an ostrich. But you cheetah was in an attempt to protect me. You were screaming last week. Cheetah man came in here, you choked him out. And off came his disguise. His little boy disguised little boy disguise of on those glasses with a nose on a mustache. Um, and a Yamaka came off",
+        "episode": "s02e05",
+        "edited": false
+      },
+      {
+        "id": "d9dec912-1fef-4855-a96b-2adbd7a1e364",
+        "season": "s02",
+        "time": "0:37:56",
+        "speaker": "4",
+        "line": "How well something tell you about that little treat? A man What is that? Not only will first someone thinks he's a cheat A man Not what Cheetah? What a teeter!",
+        "episode": "s02e03",
+        "edited": false
+      },
+      {
+        "id": "11af4ba7-4090-4987-84b4-fa0ea68c14d7",
+        "season": "s03",
+        "time": "0:53:41",
+        "speaker": "4",
+        "line": "I miss Cheatham in a cheetah that I disguised as a Jewish student who was my surprise track star. Gotta miss Cheatham in anyway. All right, be cheetah man. I'm look coming for you. I'm looking for you. Do you have a ticket to Cuba? Yes. Yes, I do have a one way ticket to Cuba and I'm planning on living down there. Ah, drinking tequila, smoking cigars and looking for Chairman. Oh, the Cubans air so well known for their tequila? Absolutely. Yes, yes, not rum, tequila,",
+        "episode": "s03e06",
+        "edited": false
+      },
+      {
+        "id": "92057f95-eff6-4115-a233-424e0550e371",
+        "season": "s02",
+        "time": "0:22:47",
+        "speaker": "4",
+        "line": "Cheetah man. I don't know",
+        "episode": "s02e03",
+        "edited": false
+      },
+      {
+        "id": "68ebfe54-e2c1-4bf0-b386-2e6c2a78de01",
+        "season": "s02",
+        "time": "0:23:28",
+        "speaker": "1",
+        "line": "But, hey, I mean, I'm delivering on my promises. The young, uh, cheetah man is really, really doing a great job for my team. He is.",
+        "episode": "s02e03",
+        "edited": false
+      },
+      {
+        "id": "44c066d1-4d53-465e-aeae-a293b58c48e0",
+        "season": "s02",
+        "time": "0:53:36",
+        "speaker": "3",
+        "line": "Of course, I tried to buy Cheetah Man for my own.",
+        "episode": "s02e06",
+        "edited": false
+      },
+      {
+        "id": "c263a3e8-d589-4f16-8585-430dfd1ecf03",
+        "season": "s02",
+        "time": "0:58:43",
+        "speaker": "3",
+        "line": "motherfucker back to life imaginable. He deserves to be dead. Just imagine him being alive again, remember? Use the things I used to think. Method cheating man's alive. You fuck me and cheetah,",
+        "episode": "s02e04",
+        "edited": false
+      },
+      {
+        "id": "5188334d-f245-44c4-a484-936050627383",
+        "season": "s02",
+        "time": "1:00:32",
+        "speaker": "4",
+        "line": "Uh, a zoo Jewish man. For thousands of years, we've been called cheetahs, and that is bringing up so much history that you don't understand by accusing Jews of",
+        "episode": "s02e04",
+        "edited": false
+      }
+    ],
+    "stats": {
+      "estimatedTotalHits": 10,
+      "processingTime": 0,
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s02",
+              "hits": 9
+            },
+            {
+              "ep": "s03",
+              "hits": 1
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "s02e03",
+              "hits": 3
+            },
+            {
+              "ep": "s02e04",
+              "hits": 3
+            },
+            {
+              "ep": "s02e05",
+              "hits": 2
+            },
+            {
+              "ep": "s02e06",
+              "hits": 1
+            },
+            {
+              "ep": "s03e06",
+              "hits": 1
+            }
+          ]
+        }
+      ]
+    },
+    "hasMore": false
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "query": "oj simpson",
+  "timestamp": 1756802535742,
+  "expiresAt": 1757407335742,
+  "result": {
+    "hits": [
+      {
+        "id": "32d25013-f246-4367-9c60-d2bb426e64c7",
+        "season": "s05",
+        "time": "0:36:24",
+        "speaker": "Speaker 4",
+        "line": "earlier. You did. You can't go back on it at this point, Todd. You've admitted it for the public to hear and see. Well, yeah, that happened. You know, I killed OJ Simpson. Big eye roll. You just fake painted when you said that. It seems like you are admitting that you killed OJ Simpson. No. Yeah, because you're about to go to your",
+        "episode": "s05e08",
+        "edited": false
+      },
+      {
+        "id": "d1ed9dc5-d366-4c9c-a647-8ab8297e2f4f",
+        "season": "s05",
+        "time": "0:11:34",
+        "speaker": "Speaker 4",
+        "line": "Very specific. Last week we accidentally let a little something slip. Yeah, it relates to the untimely death of Sir OJ Simpson. Yeah, which if you're listening to this, you have maybe seen OJ was released from prison in Las Vegas or Nevada. Thank God. Yeah, he was released, and the death, his death was not publicized.",
+        "episode": "s05e08",
+        "edited": false
+      },
+      {
+        "id": "b14109a1-b585-41ed-91a9-f4ad2e941748",
+        "season": "s05",
+        "time": "0:13:57",
+        "speaker": "Speaker 4",
+        "line": "forever. Yeah. So good. So the sarcasm of the title. And you're dressed like this on the cover, of course, because as the accusation goes, this is what they thought you were dressed like when you killed OJ Simpson. That's right. That's right. So it's a real send up of like, oh yeah, this is all true. Right. Yeah, sure. I dressed like this normally and got into a fight with OJ",
+        "episode": "s05e08",
+        "edited": false
+      },
+      {
+        "id": "cd3f2ee2-d3b0-452b-a823-5306b8134dfe",
+        "season": "s05",
+        "time": "0:14:47",
+        "speaker": "Speaker 1",
+        "line": "get close to OJ Simpson and they didn't like me. I see. And then I went out with Kato. Kato had a Playboy and was like, hey, I could bring this girl over to make love to you. And I was like, that's a weird thing to say, Kato. From a Playboy? Yeah, yeah. Like it was a catalog? He was like, I know this girl. I know this girl. I could bring her over. He's been trying to lure me around with Playboys too. He's like, hey, come get lunch.",
+        "episode": "s05e08",
+        "edited": false
+      },
+      {
+        "id": "cf70b368-c273-4a56-8d82-de286959fc84",
+        "season": "s01",
+        "time": "0:58:12",
+        "speaker": "Sam",
+        "line": "Okay, We're gonna deport me. Go way Get a new one. Don't tell anybody. Okay, guys, We're gonna talk, Padre for O J. Simpson, please. You don't get off the road texting or something way, O J. I need the Bronco. I thought you said you had it. You had to get the problem. I just need his approval call. Call OJ's bunny. Okay, go. Jae Seo. We're listening to this. Ever started the Teacherslounge way? Really appreciate everybody who supported us for the last few months. Wait. Let's go, Rooth.",
+        "episode": "s01e06",
+        "edited": false
+      }
+    ],
+    "stats": {
+      "estimatedTotalHits": 5,
+      "processingTime": 0,
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s05",
+              "hits": 4
+            },
+            {
+              "ep": "s01",
+              "hits": 1
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "s05e08",
+              "hits": 4
+            },
+            {
+              "ep": "s01e06",
+              "hits": 1
+            }
+          ]
+        }
+      ]
+    },
+    "hasMore": false
+  }
+}

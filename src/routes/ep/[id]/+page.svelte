@@ -28,6 +28,15 @@
 	const { hits, transcriptStats, episodeInfo } = episodeData;
 	const transcript = hits.default;
 
+	// SEO-optimized title and description
+	const pageTitle = episodeInfo?.title
+		? `${episodeInfo.title} (${episodeInfo.ep}) | Seekers' Lounge`
+		: "Episode Transcript | Seekers' Lounge";
+
+	const pageDescription = episodeInfo?.title
+		? `Full transcript for The Teachers' Lounge episode "${episodeInfo.title}" (${episodeInfo.ep}). Search, read, and listen along with synchronized audio.`
+		: "Episode transcript from The Teachers' Lounge podcast with searchable content and synchronized audio playback.";
+
 	let highlightedTime = $state<string | undefined>(undefined);
 	let virtualListRef = $state<VirtualTranscriptList>();
 	let isLoading = $state(false);
@@ -187,10 +196,23 @@
 </script>
 
 <svelte:head>
-	<title>
-		Episode transcript for "{episodeInfo?.title}" ({episodeInfo?.ep}) - Seekers' Lounge ☕ The
-		Teachers' Lounge Search Engine - seekerslounge.pcast.site
-	</title>
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageDescription} />
+
+	<!-- Open Graph Tags -->
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDescription} />
+	<meta property="og:url" content="https://seekerslounge.pcast.site/ep/{episodeInfo?.ep}" />
+	<meta property="og:type" content="article" />
+	<meta property="og:image" content="https://seekerslounge.pcast.site/og-episode.png" />
+
+	<!-- Twitter Card Tags -->
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={pageDescription} />
+	<meta name="twitter:image" content="https://seekerslounge.pcast.site/og-episode.png" />
+
+	<!-- Canonical URL -->
+	<link rel="canonical" href="https://seekerslounge.pcast.site/ep/{episodeInfo?.ep}" />
 </svelte:head>
 
 <div class="mt-4 max-w-4xl px-2 mx-auto overflow-x-hidden">
@@ -226,6 +248,7 @@
 						isHighlighted={highlightedTime === hit.time}
 						syncEnabled={syncMode && !!audioState.currentTimestamp}
 						onLineClick={handleLineClick}
+						{episodeInfo}
 					/>
 				{/each}
 			</div>

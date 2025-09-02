@@ -13,7 +13,8 @@ function createAudioStore() {
 		muted: false,
 		syncEnabled: getSyncPreference(),
 		episodeStartingTime: DEFAULT_EPISODE_START_TIME,
-		error: null
+		error: null,
+		url: null
 	};
 
 	const { subscribe, set, update } = writable<AudioState>(initialState);
@@ -91,6 +92,10 @@ function createAudioStore() {
 			update((state) => ({ ...state, error: null }));
 		},
 
+		setUrl(url: string | null): void {
+			update((state) => ({ ...state, url }));
+		},
+
 		reset(): void {
 			set(initialState);
 		}
@@ -111,9 +116,10 @@ export const syncEnabled = derived(audioStore, ($audio) => $audio.syncEnabled);
 
 // Convert current playback time to transcript format (MM:SS), accounting for intro offset
 export const currentPlaybackTime = derived(audioStore, ($audio) => {
-	if ($audio.currentTime <= $audio.episodeStartingTime) return '0:00:00';
-	const adjustedTime = $audio.currentTime - $audio.episodeStartingTime;
-	return formatTimeWithHours(adjustedTime);
+	// if ($audio.currentTime <= $audio.episodeStartingTime) return '0:00:00';
+	// const adjustedTime = $audio.currentTime - $audio.episodeStartingTime;
+	// return formatTimeWithHours(adjustedTime);
+	return formatTimeWithHours($audio.currentTime);
 });
 
 function formatTime(seconds: number): string {

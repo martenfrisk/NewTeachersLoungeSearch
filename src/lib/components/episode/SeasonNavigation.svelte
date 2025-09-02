@@ -3,8 +3,6 @@
 
 	interface Props {
 		seasons: Season[];
-		selectedSeason?: string;
-		onSeasonSelect?: (seasonId: string) => void;
 		showEpisodeCounts?: boolean;
 		sticky?: boolean;
 		class?: string;

@@ -1,0 +1,167 @@
+{
+  "query": "morrissey",
+  "timestamp": 1756802534739,
+  "expiresAt": 1757407334739,
+  "result": {
+    "hits": [
+      {
+        "id": "597755cf-4ace-4426-b1b5-5b05fb89c126",
+        "season": "s03",
+        "time": "1:04:02",
+        "speaker": "4",
+        "line": "Hold on. I'm confused. Morrissey is not. Is the got Niss monster know Morrissey is the queen. Got",
+        "episode": "s03e04",
+        "edited": false
+      },
+      {
+        "id": "acc31c9c-91b8-4180-88e9-5a09daed0e44",
+        "season": "s03",
+        "time": "0:16:56",
+        "speaker": "2",
+        "line": "It's Morrissey's house down the street.",
+        "episode": "s03e04",
+        "edited": false
+      },
+      {
+        "id": "50152ad4-b07f-4d69-9e33-d3e5018a7a59",
+        "season": "s03",
+        "time": "0:17:01",
+        "speaker": "5",
+        "line": "We've got to get to Morrissey and kill him. Well, here's the thing. I like yourself already saying will tell you this. I read. I",
+        "episode": "s03e04",
+        "edited": false
+      },
+      {
+        "id": "58e6ee4a-2ac2-4dec-9272-6199f68b2cae",
+        "season": "s03",
+        "time": "0:22:05",
+        "speaker": "2",
+        "line": "Yes, but we also did. We studied this tape, and there's a moment in it when, uh, you hear in the background kind of like downstairs or something, you hear, knock open the door ups for Morrissey. So we",
+        "episode": "s03e07",
+        "edited": false
+      },
+      {
+        "id": "c4762fae-4f1c-4974-8331-4c2cfbf36b05",
+        "season": "s03",
+        "time": "0:22:23",
+        "speaker": "3",
+        "line": "think way. Think it's at Morrissey's house, the queen dot",
+        "episode": "s03e07",
+        "edited": false
+      },
+      {
+        "id": "e3027f80-8a07-4c65-8945-7d7c32f2bda2",
+        "season": "s03",
+        "time": "0:22:27",
+        "speaker": "2",
+        "line": "Yeah, he's the queen and way know for a fact that that the gods have communicated with Morrissey. Yes. Yeah, they're always walking around listening to the Smiths on their little year. But iPhones and they don't",
+        "episode": "s03e07",
+        "edited": false
+      },
+      {
+        "id": "81201c01-cfaf-4ba2-aff3-afecdcc949f9",
+        "season": "s03",
+        "time": "0:22:53",
+        "speaker": "3",
+        "line": "conversation keeps going, says Yes, this is Morrisey. I'm Morrissey,",
+        "episode": "s03e07",
+        "edited": false
+      },
+      {
+        "id": "0d2594de-7547-4d8b-bca6-34df8e76d5e6",
+        "season": "s03",
+        "time": "0:27:59",
+        "speaker": "2",
+        "line": "s. So that's obviously him singing that awful Smith song. Um uh, you know about getting hit by a bus and wanting to die in a woman's arms and no one cares. Morrissey. Yeah. So it's like you. We'd never heard him singing snow, so we got a little suspicious. So we went to the Goths house? Yeah. Morris his house way. Knocked on their door, huh? And they handed us this tape player.",
+        "episode": "s03e08",
+        "edited": false
+      },
+      {
+        "id": "6866fb56-1300-425f-9e26-28939d989432",
+        "season": "s03",
+        "time": "0:29:22",
+        "speaker": "2",
+        "line": "We have no qualms killing you all with the Gulf ness monster. Okay. And way. We've had to talk a little bit too, Sam, because his little boy cowboys air now Goths and live in Morrissey's house.",
+        "episode": "s03e08",
+        "edited": false
+      },
+      {
+        "id": "9c05a499-8db3-40f2-a0ad-e8aed4535a28",
+        "season": "s03",
+        "time": "0:30:08",
+        "speaker": "2",
+        "line": "Absolutely. It's a minor inconvenience for you if other people are living their own life, not in the way you want them to. I just don't know what to do because I love them so much, but they're just little freaks. And I think they deserve to die. Well, you know, maybe it's the grief talking, but I am absolutely willing to kill these high schoolers and the little boy Cowboys and Morrissey.",
+        "episode": "s03e08",
+        "edited": false
+      },
+      {
+        "id": "69a5a0dd-e76b-4202-9487-4febf0b80ea8",
+        "season": "s04",
+        "time": "0:49:45",
+        "speaker": "Unknown",
+        "line": "on. We're here. We're ears for a lot of reasons. But we also blew up Morrissey's house, which people were pretty happy. Yeah, that's right. But anyway, so this Christmas parties going on and it is getting rowdy out there, and I noticed I hate to say the same, but I just curly fry eyes out there kind of dancing with you.",
+        "episode": "s04e08",
+        "edited": false
+      },
+      {
+        "id": "27e8e829-e119-4a32-9ca8-bfa75b015f61",
+        "season": "s03",
+        "time": "0:57:03",
+        "speaker": "4",
+        "line": "on my phone that Morrissey's house has been destroyed as",
+        "episode": "s03e08",
+        "edited": false
+      },
+      {
+        "id": "5b43ea47-70b9-4ea4-a4e6-8810a76f80eb",
+        "season": "s03",
+        "time": "1:04:16",
+        "speaker": "4",
+        "line": "school has been born from Morrissey. Yes,",
+        "episode": "s03e04",
+        "edited": false
+      }
+    ],
+    "stats": {
+      "estimatedTotalHits": 13,
+      "processingTime": 0,
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s03",
+              "hits": 12
+            },
+            {
+              "ep": "s04",
+              "hits": 1
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "s03e08",
+              "hits": 4
+            },
+            {
+              "ep": "s03e07",
+              "hits": 4
+            },
+            {
+              "ep": "s03e04",
+              "hits": 4
+            },
+            {
+              "ep": "s04e08",
+              "hits": 1
+            }
+          ]
+        }
+      ]
+    },
+    "hasMore": false
+  }
+}

@@ -6,16 +6,11 @@
 		title: string;
 		desc: string;
 		date: string;
-		url?: string;
-		feedTitle?: string | null;
 		hasAudio?: boolean;
-		startingTime?: number;
 		duration?: number;
 		transcriptWordCount?: number;
 		tags?: string[];
 		guestHosts?: string[];
-		rating?: number;
-		thumbnail?: string;
 		specialNotes?: string;
 		isHighlight?: boolean;
 		isFullyEdited?: boolean;
@@ -205,17 +200,6 @@
 							{/snippet}
 						</Tooltip>
 					{/if}
-
-					{#if episode.rating}
-						<div class="flex items-center text-yellow-500">
-							<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-								<path
-									d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-								/>
-							</svg>
-							<span class="text-xs font-medium ml-1">{episode.rating.toFixed(1)}</span>
-						</div>
-					{/if}
 				</div>
 			</div>
 
@@ -245,7 +229,7 @@
 
 		{#if episode.guestHosts && episode.guestHosts.length > 0}
 			<div class="flex flex-wrap gap-1">
-				{#each episode.guestHosts as guest}
+				{#each episode.guestHosts as guest (guest)}
 					<span
 						class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700"
 					>
@@ -261,7 +245,7 @@
 
 		{#if episode.tags && episode.tags.length > 0}
 			<div class="flex flex-wrap gap-1">
-				{#each episode.tags.slice(0, 4) as tag}
+				{#each episode.tags.slice(0, 4) as tag (tag)}
 					<span
 						class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-gray-100 text-gray-600"
 					>

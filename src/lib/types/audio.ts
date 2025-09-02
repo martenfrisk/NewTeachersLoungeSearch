@@ -13,6 +13,7 @@ export interface AudioState {
 	syncEnabled: boolean;
 	episodeStartingTime: number;
 	error: string | null;
+	url: string | null;
 }
 
 export interface AudioPlayerProps {

@@ -1,0 +1,104 @@
+{
+  "query": "obsessed with corn",
+  "timestamp": 1756802532157,
+  "expiresAt": 1757407332157,
+  "result": {
+    "hits": [
+      {
+        "id": "83c0bfdf-0a57-4090-897f-2525a5a350f3",
+        "season": "mini",
+        "time": "0:06:54",
+        "speaker": "spk_0",
+        "line": "may God have my core. You're obsessed with corn, your delicious our corn forward. I love corn. I eat it up and I get sizzling and I eat it. I'm obsessed with corn. You",
+        "episode": "mini-26",
+        "edited": false
+      },
+      {
+        "id": "94ed6df3-7ee3-428e-a874-616cc937141b",
+        "season": "s09",
+        "time": "0:44:58",
+        "speaker": "spk_3",
+        "line": "I'm worried for both of us, Bill, because I know that you're obsessed with corn. And I know that obsesses in my own feet.",
+        "episode": "s09e39",
+        "edited": false
+      },
+      {
+        "id": "0e7cba7b-74f1-4188-90c0-227d931b79e2",
+        "season": "s09",
+        "time": "0:37:32",
+        "speaker": "spk_4",
+        "line": "That's right, National Corn Day out. Everything about that. You love over. You pull. You don't know. But that assessed with horn. I'm obsessed with corn. So what is that?",
+        "episode": "s09e15",
+        "edited": false
+      },
+      {
+        "id": "32bee27f-db41-4807-944f-30d7126ea7d8",
+        "season": "mini",
+        "time": "0:16:02",
+        "speaker": "spk_0",
+        "line": "you fucking piece of shit way arrested. Probably give me the shirt on. I'm going. Let me rip his face off Goddio. E o I gotta go. He was going to stop this. Don't have to tell him I got sick and I will be the riff. I'm gonna I'm gonna do it, Give you going. Get obsessed with corn. Our voices. It's Keith. It's Logan's. Its mouth, dear, came in?",
+        "episode": "mini-26",
+        "edited": false
+      },
+      {
+        "id": "914bab19-ae18-4b43-94e2-5d8777e3283d",
+        "season": "s09",
+        "time": "0:55:40",
+        "speaker": "spk_2",
+        "line": "so obsessed with corn husks. Another ah, good detail about our characters.",
+        "episode": "s09e23",
+        "edited": false
+      },
+      {
+        "id": "118afca9-51d2-4e39-b932-3afd4414ee22",
+        "season": "s09",
+        "time": "0:55:45",
+        "speaker": "spk_0",
+        "line": "You're learning our care. They blew up the loop. I'm of obsessed with corn. I should come to school more. Your fellas,",
+        "episode": "s09e23",
+        "edited": false
+      }
+    ],
+    "stats": {
+      "estimatedTotalHits": 6,
+      "processingTime": 0,
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s09",
+              "hits": 4
+            },
+            {
+              "ep": "mini",
+              "hits": 2
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "mini-26",
+              "hits": 2
+            },
+            {
+              "ep": "s09e23",
+              "hits": 2
+            },
+            {
+              "ep": "s09e15",
+              "hits": 1
+            },
+            {
+              "ep": "s09e39",
+              "hits": 1
+            }
+          ]
+        }
+      ]
+    },
+    "hasMore": false
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "query": "tricky dick",
+  "timestamp": 1756802533313,
+  "expiresAt": 1757407333313,
+  "result": {
+    "hits": [
+      {
+        "id": "1e40829b-51a1-4975-8e2f-19f78230b0b1",
+        "season": "s03",
+        "time": "0:50:30",
+        "speaker": "5",
+        "line": "I read it and it said no comment. Tag Nixon Hash tag. Tricky Dick. Hashtag tricky referred to you dicks,",
+        "episode": "s03e03",
+        "edited": false
+      },
+      {
+        "id": "76231327-6b05-4cb0-b491-7ed14e6fe994",
+        "season": "s03",
+        "time": "0:38:03",
+        "speaker": "1",
+        "line": "will see you in court. Hashtag tricky dick Hash tag Nixon hashtag tricky dick refers to my Penis being sneaky. You",
+        "episode": "s03e03",
+        "edited": false
+      }
+    ],
+    "stats": {
+      "estimatedTotalHits": 2,
+      "processingTime": 0,
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "s03",
+              "hits": 2
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "s03e03",
+              "hits": 2
+            }
+          ]
+        }
+      ]
+    },
+    "hasMore": false
+  }
+}

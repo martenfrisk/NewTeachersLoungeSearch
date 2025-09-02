@@ -13,6 +13,10 @@ export class FiltersState {
 		return !this.isEmpty;
 	}
 
+	get activeFiltersCount(): number {
+		return this.seasons.length + this.episodes.length + (this.editedOnly ? 1 : 0);
+	}
+
 	get activeFiltersArray(): string[] {
 		const filters: string[] = [];
 		this.seasons.forEach((season) => filters.push(`season = "${season}"`));

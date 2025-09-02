@@ -22,12 +22,13 @@
 	let context = $state<HitContext | null>(null);
 	let loadingContext = $state(false);
 
-	function handlePlayAudio() {
+	async function handlePlayAudio() {
 		if (hitEpisode?.feedTitle) {
-			audioService.playTimestamp({
+			await audioService.playTimestamp({
 				timestamp: hit.time,
 				episode: hitEpisode.feedTitle
 			});
+			audioService.play();
 		}
 	}
 
@@ -62,233 +63,166 @@
 </script>
 
 <article
-	class="w-full border border-blue-200 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 mb-6 bg-white hover:bg-blue-50/30"
+	class="w-full border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 bg-white hover:bg-blue-50/20 relative"
 >
-	<!-- Header -->
-	<div class="p-4">
-		<div class="flex gap-2 items-center">
-			<a
-				class="inline px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-100 rounded-md hover:bg-blue-200 transition-colors uppercase tracking-wide flex-shrink-0"
-				href="/ep/{hit.episode.replace('.json', '')}"
-			>
-				{hit.episode.replace('.json', '')}
-			</a>
-			<div class="text-sm text-gray-800 font-medium leading-tight">
-				{hitEpisode?.title || 'Unknown Episode'}
-			</div>
-		</div>
-		<div class="sm:flex hidden justify-end">
-			<button
-				onclick={toggleContext}
-				disabled={loadingContext}
-				class="inline-flex items-center gap-1.5 border-b text-xs font-medium text-blue-700 hover:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-				aria-label="{showContext ? 'Hide' : 'Show'} context"
-			>
-				{#if loadingContext}
-					<div
-						class="w-3 h-3 border border-blue-400 border-t-transparent rounded-full animate-spin"
-					></div>
-					Loading...
-				{:else}
-					<svg
-						class="w-3 h-3 transition-transform {showContext ? 'rotate-180' : ''}"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M19 9l-7 7-7-7"
-						/>
-					</svg>
-					{showContext ? 'Hide' : 'Show'} context
-				{/if}
-			</button>
-		</div>
-	</div>
+	<!-- Episode Number - Top Right Corner (above content) -->
+	<a
+		class="absolute top-0 right-0 inline px-1 py-0.5 text-xs text-blue-700 bg-blue-50 uppercase tracking-wide z-10"
+		href="/ep/{hit.episode.replace('.json', '')}"
+	>
+		{hit.episode.replace('.json', '')}
+	</a>
 
-	<!-- Content -->
-	<div class="px-4">
+	<!-- Main Content -->
+	<div class="p-3">
 		<!-- Context Before -->
 		{#if showContext && context && context.before}
 			<div
-				class="mb-3 p-3 bg-gray-50 border-l-4 border-gray-300 rounded-r-lg"
+				class="mb-2 p-2 bg-gray-50 border-l-3 border-gray-300 rounded-r-md"
 				in:slide={{ duration: 250, easing: quintOut }}
 				out:slide={{ duration: 200, easing: quintOut }}
 			>
-				<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-					<span class="text-xs text-gray-600 order-1">{formatSpeaker(context.before.speaker)}</span>
-					<span class="text-xs text-gray-500 order-2 sm:order-1">{context.before.time}</span>
+				<div class="flex justify-between items-center gap-2 mb-1">
+					<span class="text-xs text-gray-600">{formatSpeaker(context.before.speaker)}</span>
+					<span class="text-xs text-gray-500">{context.before.time}</span>
 				</div>
-				<p class="text-sm text-gray-700 leading-relaxed">
+				<p class="text-sm text-gray-700 leading-snug">
 					{context.before.line}
 				</p>
 			</div>
 		{/if}
 
-		<!-- Main Hit -->
-		<div
-			class="p-4 {showContext
-				? 'bg-blue-50 border-l-4 border-blue-400 rounded-r-lg'
-				: 'border-l-4 border-blue-200'}"
-		>
-			<div
-				class="sm:flex grid grid-temp-areas sm:flex-row sm:items-center justify-between gap-2 mb-3"
-			>
-				<span class=" text-gray-800 text-sm area-a order-1">{formatSpeaker(hit.speaker)}</span>
-				<div class="flex items-center area-b gap-2 order-2 sm:order-1">
-					<span class="text-sm text-gray-600">{hit.time}</span>
-					<!-- Edited Status -->
-					{#if hit.edited}
-						<Tooltip side="left">
-							{#snippet tooltip()}
-								Edited
-							{/snippet}
-							{#snippet content()}
-								<div class="text-green-600">
-									<Check />
-								</div>
-							{/snippet}
-						</Tooltip>
-					{:else}
-						<Tooltip side="left">
-							{#snippet tooltip()}
-								Not edited
-							{/snippet}
-							{#snippet content()}
-								<div class="text-gray-400">
-									<Minus />
-								</div>
-							{/snippet}
-						</Tooltip>
-					{/if}
-				</div>
-
-				<!-- Context Toggle Button -->
-				<div class="flex area-c sm:hidden justify-end">
-					<button
-						onclick={toggleContext}
-						disabled={loadingContext}
-						class="inline-flex items-center gap-1.5 border-b text-xs font-medium text-blue-700 hover:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-						aria-label="{showContext ? 'Hide' : 'Show'} context"
-					>
-						{#if loadingContext}
-							<div
-								class="w-3 h-3 border border-blue-400 border-t-transparent rounded-full animate-spin"
-							></div>
-							Loading...
-						{:else}
-							<svg
-								class="w-3 h-3 transition-transform {showContext ? 'rotate-180' : ''}"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M19 9l-7 7-7-7"
-								/>
-							</svg>
-							{showContext ? 'Hide' : 'Show'} context
-						{/if}
-					</button>
-				</div>
-			</div>
-			<div class="prose prose-sm max-w-none">
-				<!-- Safe: Only <em> tags are added for search highlighting -->
-				<p class="text-sm leading-relaxed text-gray-900 m-0">
-					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-					{@html hit.highlightedLine || hit.line}
-				</p>
-			</div>
-		</div>
+		<!-- Main Hit Line - Always at top, spans full width -->
+		<p class="mb-3 pt-2 text-base leading-relaxed text-gray-900 prose prose-sm max-w-none">
+			<!-- Safe: Only <em> tags are added for search highlighting -->
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+			{@html hit.highlightedLine || hit.line}
+		</p>
 
 		<!-- Context After -->
 		{#if showContext && context && context.after}
 			<div
-				class="mt-3 p-3 bg-gray-50 border-l-4 border-gray-300 rounded-r-lg"
+				class="mb-2 p-2 bg-gray-50 border-l-3 border-gray-300 rounded-r-md"
 				in:slide={{ duration: 250, delay: 50, easing: quintOut }}
 				out:slide={{ duration: 200, easing: quintOut }}
 			>
-				<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-					<span class="text-xs text-gray-600 order-1">{formatSpeaker(context.after.speaker)}</span>
-					<span class="text-xs text-gray-500 order-2 sm:order-1">{context.after.time}</span>
+				<div class="flex justify-between items-center gap-2 mb-1">
+					<span class="text-xs text-gray-600">{formatSpeaker(context.after.speaker)}</span>
+					<span class="text-xs text-gray-500">{context.after.time}</span>
 				</div>
-				<p class="text-sm text-gray-700 leading-relaxed">
+				<p class="text-sm text-gray-700 leading-snug">
 					{context.after.line}
 				</p>
 			</div>
 		{/if}
-	</div>
 
-	<!-- Footer -->
-	<div class="px-4 pb-4 border-t border-gray-100">
-		<div class="pt-3">
-			<!-- Actions -->
-			<div class="flex flex-wrap items-center gap-2">
-				<!-- Transcript Link -->
-				<Tooltip>
-					{#snippet tooltip()}
-						Go to transcript
-					{/snippet}
-					{#snippet content()}
-						<a
-							href="/ep/{hitEpisode?.ep}#t-{hit.time.replaceAll(':', '')}"
-							class="inline-flex items-center gap-2 px-2 py-1 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors"
-						>
-							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-								/>
-							</svg>
-							<span>Episode</span>
-						</a>
-					{/snippet}
-				</Tooltip>
+		<!-- Episode Title Banner -->
+		<div class="mb-2 -mx-3 px-3 py-2 bg-gray-50/80 text-xs text-gray-700 font-medium">
+			{hitEpisode?.title || 'Unknown Episode'}
+		</div>
 
-				<!-- Audio Play Button -->
-				{#if hitEpisode?.hasAudio}
-					<!-- <Tooltip>
+		<!-- Speaker and Time -->
+		<div class="flex text-xs justify-between items-center">
+			<span class="text-gray-600">{formatSpeaker(hit.speaker)}</span>
+			<div class="flex items-center gap-2">
+				<span class="text-gray-500">{hit.time}</span>
+				<!-- Edited Status -->
+				{#if hit.edited}
+					<Tooltip side="left">
 						{#snippet tooltip()}
-							Listen to this line
+							Edited
 						{/snippet}
-						{#snippet content()} -->
-					<button
-						class="inline-flex items-center gap-2 px-2 py-1 text-sm font-medium text-green-600 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 transition-colors"
-						onclick={handlePlayAudio}
-					>
-						<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-							<path d="M8 5v14l11-7z" />
-						</svg>
-						<span class="hidden sm:inline">Listen</span>
-						<span class="sm:hidden">Play</span>
-					</button>
-					<!-- {/snippet} -->
-					<!-- </Tooltip> -->
+						{#snippet content()}
+							<div class="text-green-600">
+								<Check />
+							</div>
+						{/snippet}
+					</Tooltip>
+				{:else}
+					<Tooltip side="left">
+						{#snippet tooltip()}
+							Not edited
+						{/snippet}
+						{#snippet content()}
+							<div class="text-gray-400">
+								<Minus />
+							</div>
+						{/snippet}
+					</Tooltip>
 				{/if}
 			</div>
 		</div>
 	</div>
-</article>
 
-<style>
-	.grid-temp-areas {
-		grid-template-areas: 'a c' 'b d';
-	}
-	.area-a {
-		grid-area: a;
-	}
-	.area-b {
-		grid-area: b;
-	}
-	.area-c {
-		grid-area: c;
-	}
-</style>
+	<!-- Compact Footer -->
+	<div class="px-3 pb-3 pt-2 border-t border-gray-100 flex justify-between items-center">
+		<!-- Actions -->
+		<div class="flex items-center gap-2">
+			<!-- Transcript Link -->
+			<Tooltip>
+				{#snippet tooltip()}
+					Go to transcript
+				{/snippet}
+				{#snippet content()}
+					<a
+						href="/ep/{hitEpisode?.ep}#t-{hit.time.replaceAll(':', '')}"
+						class="inline-flex items-center gap-1.5 px-2 py-1 text-xs font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-md hover:bg-blue-100 transition-colors"
+					>
+						<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+							/>
+						</svg>
+						<span>Episode</span>
+					</a>
+				{/snippet}
+			</Tooltip>
+
+			<!-- Audio Play Button -->
+			{#if hitEpisode?.hasAudio}
+				<button
+					class="inline-flex items-center gap-1.5 px-2 py-1 text-xs font-medium text-green-600 bg-green-50 border border-green-200 rounded-md hover:bg-green-100 transition-colors"
+					onclick={handlePlayAudio}
+				>
+					<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+						<path d="M8 5v14l11-7z" />
+					</svg>
+					<span class="hidden sm:inline">Listen</span>
+					<span class="sm:hidden">Play</span>
+				</button>
+			{/if}
+		</div>
+		<!-- Context Toggle Button -->
+		<button
+			onclick={toggleContext}
+			disabled={loadingContext}
+			class="inline-flex items-center gap-1 text-xs font-medium text-blue-700 hover:text-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+			aria-label="{showContext ? 'Hide' : 'Show'} context"
+		>
+			{#if loadingContext}
+				<div
+					class="w-3 h-3 border border-blue-400 border-t-transparent rounded-full animate-spin"
+				></div>
+				Loading...
+			{:else}
+				<svg
+					class="w-3 h-3 transition-transform {showContext ? 'rotate-180' : ''}"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M19 9l-7 7-7-7"
+					/>
+				</svg>
+				{showContext ? 'Hide' : 'Show'} context
+			{/if}
+		</button>
+	</div>
+</article>

@@ -2,6 +2,8 @@
 	import Tooltip from '../Tooltip.svelte';
 	import { page } from '$app/state';
 	import { fade, slide } from 'svelte/transition';
+	import { audioService } from '../../services/AudioService';
+	import type { EpisodeInfo } from '../../types/episode';
 
 	interface Props {
 		hit: {
@@ -16,6 +18,7 @@
 		syncEnabled?: boolean;
 		onLineClick?: (time: string) => void;
 		element?: HTMLElement;
+		episodeInfo?: EpisodeInfo;
 	}
 
 	let {
@@ -24,7 +27,8 @@
 		isHighlighted,
 		syncEnabled = false,
 		onLineClick,
-		element = $bindable()
+		element = $bindable(),
+		episodeInfo
 	}: Props = $props();
 
 	let copied = $state(false);
@@ -47,6 +51,16 @@
 	const handleClick = () => {
 		if (syncEnabled && onLineClick) {
 			onLineClick(hit.time);
+		}
+	};
+
+	const handlePlayAudio = async () => {
+		if (episodeInfo?.title) {
+			await audioService.playTimestamp({
+				timestamp: hit.time,
+				episode: episodeInfo.title
+			});
+			audioService.play();
 		}
 	};
 </script>
@@ -159,6 +173,19 @@
 						</svg>
 					{/if}
 				</button>
+
+				<!-- Audio Play Button -->
+				{#if episodeInfo?.hasAudio}
+					<button
+						onclick={handlePlayAudio}
+						class="p-1.5 rounded-full text-gray-400 cursor-pointer hover:text-green-600 hover:bg-green-50 transition-colors"
+						aria-label="Play audio from this timestamp"
+					>
+						<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M8 5v14l11-7z" />
+						</svg>
+					</button>
+				{/if}
 			</div>
 		</div>
 	</header>

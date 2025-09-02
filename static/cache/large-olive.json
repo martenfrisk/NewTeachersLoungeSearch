@@ -1,0 +1,88 @@
+{
+  "query": "large olive",
+  "timestamp": 1756802537159,
+  "expiresAt": 1757407337159,
+  "result": {
+    "hits": [
+      {
+        "id": "8dea1464-0c37-4c75-bd2d-f1700582a6c9",
+        "season": "exit42",
+        "time": "0:18:06",
+        "speaker": "spk_2",
+        "line": "Take him to subway. Oh my god. Yeah. Hi. We'll take a large you want a large olive? We'll take a large olive extra VIN, 1 week. What? What? I love a tree. There's so The only piece This is less cow. Jars of every TV show. Honey. Turn on TRL. It's",
+        "episode": "exit42-3",
+        "edited": false
+      },
+      {
+        "id": "e1efa9ea-5189-4e2d-a374-e45a7021598a",
+        "season": "exit42",
+        "time": "0:18:56",
+        "speaker": "spk_2",
+        "line": "it's a large olive baby. That's all it is. It's a large olive, baby. I don't want kids. They're also Click 1 82, no. Honey. Listen, babe. I literally",
+        "episode": "exit42-3",
+        "edited": false
+      },
+      {
+        "id": "7ef9b75f-adfa-45e4-922a-b8514b26ebe7",
+        "season": "exit42",
+        "time": "0:02:54",
+        "speaker": "spk_4",
+        "line": "I think I heard I think I heard the whole thing, large olive, extra vinegar. Yep. And so we'll take a I'm assuming you want, like, a sort of full portion of all olives, not just a dusting.",
+        "episode": "exit42-3",
+        "edited": false
+      },
+      {
+        "id": "406ee07c-0823-496e-aeb3-447c7cd368bc",
+        "season": "exit42",
+        "time": "0:02:45",
+        "speaker": "spk_2",
+        "line": "Alright. Thank you. We Large olive. Okay.",
+        "episode": "exit42-3",
+        "edited": false
+      },
+      {
+        "id": "42aabc3d-8efa-40d0-8047-ea7485c1432b",
+        "season": "exit42",
+        "time": "0:12:22",
+        "speaker": "spk_2",
+        "line": "All you want is a large olive. Well, don't blow it. Oh, sorry. Hold on. How is how is look, the other 1 fell",
+        "episode": "exit42-3",
+        "edited": false
+      },
+      {
+        "id": "10db43c0-867d-4209-acab-ed4817bf55f2",
+        "season": "exit42",
+        "time": "0:12:40",
+        "speaker": "spk_2",
+        "line": "that's what you think. I'll take a large olive, extra vinegar, on a bun.",
+        "episode": "exit42-3",
+        "edited": false
+      }
+    ],
+    "stats": {
+      "estimatedTotalHits": 6,
+      "processingTime": 0,
+      "facets": [
+        {
+          "facetName": "season",
+          "facetHits": [
+            {
+              "ep": "exit42",
+              "hits": 6
+            }
+          ]
+        },
+        {
+          "facetName": "episode",
+          "facetHits": [
+            {
+              "ep": "exit42-3",
+              "hits": 6
+            }
+          ]
+        }
+      ]
+    },
+    "hasMore": false
+  }
+}

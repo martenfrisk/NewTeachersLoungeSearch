@@ -14,3 +14,4 @@ TEST_SUITE_OVERVIEW.md
 /.claude
 meilitools.js
 .vercel
+.env*.local

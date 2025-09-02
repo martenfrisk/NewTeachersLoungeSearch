@@ -4,7 +4,25 @@
 		<meta charset="utf-8" />
 		<meta name="description" content="Seekers Lounge - the Teachers' Lounge search engine" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<link rel="apple-touch-icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Preconnect to external domains for performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+		<!-- Organization structured data -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "Seekers' Lounge",
+				"url": "https://seekerslounge.pcast.site",
+				"description": "The Teachers' Lounge podcast search engine and transcript database",
+				"sameAs": ["https://twitter.com/seekerslounge"]
+			}
+		</script>
+
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

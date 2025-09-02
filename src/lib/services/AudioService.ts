@@ -101,21 +101,24 @@ export class AudioService {
 			return;
 		}
 
-		const startingTime = this.getEpisodeStartingTime(timestamp.episode);
+		// const startingTime = this.getEpisodeStartingTime(timestamp.episode);
 		audioStore.clearError();
 		audioStore.setTimestamp(timestamp);
-		audioStore.setEpisodeStartingTime(startingTime);
-		this.loadAudio(episode.audioUrl, timestamp.timestamp, timestamp.episode);
+		// audioStore.setEpisodeStartingTime(startingTime);
+		audioStore.setEpisodeStartingTime(0); // Use 0 instead of startingTime
+		this.loadAudio(episode.audioUrl, timestamp.timestamp);
 	}
 
-	private loadAudio(url: string, timestamp: string, episodeTitle?: string): void {
+	private loadAudio(url: string, timestamp: string): void {
 		if (!this.audioElement) return;
 
-		const startingTime = this.getEpisodeStartingTime(episodeTitle);
-		const targetTime = this.timestampToSeconds(timestamp) + startingTime;
+		// const startingTime = this.getEpisodeStartingTime(episodeTitle);
+		// const targetTime = this.timestampToSeconds(timestamp) + startingTime;
+		const targetTime = this.timestampToSeconds(timestamp);
 
 		if (this.audioElement.src !== url) {
 			this.audioElement.src = url;
+			audioStore.setUrl(url);
 			this.audioElement.load();
 		}
 		const setTimestamp = () => {
@@ -186,6 +189,37 @@ export class AudioService {
 		audioStore.setCurrentTime(time);
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	seekToTimeRange(startTime: number, _endTime: number): void {
+		this.seek(startTime);
+	}
+
+	playRange(startTime: number, endTime: number): Promise<void> {
+		return new Promise((resolve) => {
+			if (!this.audioElement) {
+				resolve();
+				return;
+			}
+
+			this.seek(startTime);
+
+			const onTimeUpdate = () => {
+				if (this.audioElement && this.audioElement.currentTime >= endTime) {
+					this.pause();
+					this.audioElement.removeEventListener('timeupdate', onTimeUpdate);
+					resolve();
+				}
+			};
+
+			this.audioElement.addEventListener('timeupdate', onTimeUpdate);
+			this.play();
+		});
+	}
+
+	getCurrentAudioUrl(): string | null {
+		return this.audioElement?.src || null;
+	}
+
 	private onLoadedMetadata(): void {
 		if (!this.audioElement) return;
 		audioStore.setDuration(this.audioElement.duration);
@@ -212,6 +246,7 @@ export class AudioService {
 
 	private onCanPlay(): void {}
 	private timestampToSeconds(timestamp: string): number {
+		// Support both 00:00:01 and 0:00:01 formats
 		const parts = timestamp.split(':').map(Number);
 		if (parts.length === 3) {
 			return parts[0] * 3600 + parts[1] * 60 + parts[2];
