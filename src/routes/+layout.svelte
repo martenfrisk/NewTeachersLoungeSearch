@@ -10,6 +10,9 @@
 	import AuthModal from 'lib/components/auth/AuthModal.svelte';
 	import { page } from '$app/stores';
 	import { appStore, authModalOpen } from '$lib/stores/app';
+	import { userPreferencesStore } from '$lib/stores/userPreferences.svelte';
+	import { onMount } from 'svelte';
+
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -29,6 +32,11 @@
 
 	// Dynamic import for audio player to reduce initial bundle size
 	let AudioPlayer: import('svelte').Component | null = $state(null);
+
+	// Initialize user preferences and theme on mount
+	onMount(() => {
+		userPreferencesStore.initializeTheme();
+	});
 
 	$effect(() => {
 		if (showAudioPlayer && !AudioPlayer) {
@@ -66,8 +74,7 @@
 	<main
 		class:container={!$page.route.id?.startsWith('/editor')}
 		class:mx-auto={!$page.route.id?.startsWith('/editor')}
-		class:px-4={!$page.route.id?.startsWith('/editor')}
-		class="py-6 mb-24"
+		class="py-6"
 	>
 		{@render children?.()}
 		{#if isButtonVisible}

@@ -42,8 +42,24 @@ class UserPreferencesState {
 	}
 
 	updatePreferences(updates: Partial<UserPreferences>) {
+		const oldSearchHistory = this.preferences.searchHistory;
 		this.preferences = { ...this.preferences, ...updates };
+
+		// If search history setting changed, notify search history store
+		if (updates.searchHistory !== undefined && updates.searchHistory !== oldSearchHistory) {
+			this.notifySearchHistoryChange();
+		}
+
 		this.savePreferences();
+	}
+
+	private notifySearchHistoryChange() {
+		// Import dynamically to avoid circular dependency
+		if (browser) {
+			import('./searchHistory.svelte').then((module) => {
+				module.searchHistoryStore.toggleHistoryEnabled();
+			});
+		}
 	}
 
 	resetPreferences() {
@@ -78,13 +94,14 @@ class UserPreferencesState {
 			this.applyTheme();
 
 			// Listen for system theme changes if using auto
-			if (this.preferences.theme === 'auto') {
-				window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-					if (this.preferences.theme === 'auto') {
-						this.applyTheme();
-					}
-				});
-			}
+			const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+			const handleThemeChange = () => {
+				if (this.preferences.theme === 'auto') {
+					this.applyTheme();
+				}
+			};
+
+			mediaQuery.addEventListener('change', handleThemeChange);
 		}
 	}
 

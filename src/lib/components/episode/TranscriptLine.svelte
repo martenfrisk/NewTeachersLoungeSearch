@@ -19,6 +19,8 @@
 		onLineClick?: (time: string) => void;
 		element?: HTMLElement;
 		episodeInfo?: EpisodeInfo;
+		hasEditHistory?: boolean;
+		editCount?: number;
 	}
 
 	let {
@@ -28,7 +30,9 @@
 		syncEnabled = false,
 		onLineClick,
 		element = $bindable(),
-		episodeInfo
+		episodeInfo,
+		hasEditHistory = false,
+		editCount = 0
 	}: Props = $props();
 
 	let copied = $state(false);
@@ -99,6 +103,12 @@
 					<Tooltip>
 						{#snippet tooltip()}
 							This line has been manually edited for accuracy
+							{#if hasEditHistory && editCount > 0}
+								<br />
+								<span class="text-xs opacity-75">
+									{editCount} revision{editCount === 1 ? '' : 's'}
+								</span>
+							{/if}
 						{/snippet}
 						{#snippet content()}
 							<span
@@ -112,6 +122,9 @@
 									/>
 								</svg>
 								Edited
+								{#if hasEditHistory && editCount > 0}
+									<span class="ml-1 text-xs opacity-75">({editCount})</span>
+								{/if}
 							</span>
 						{/snippet}
 					</Tooltip>

@@ -83,71 +83,67 @@
 </script>
 
 <div class="mb-6">
-	<div class="max-w-2xl">
-		<label for="episode-search" class="block text-sm font-medium text-gray-700 mb-2">
-			Search this episode
-		</label>
+	<label for="episode-search" class="block text-sm font-medium text-gray-700 mb-2">
+		Search this episode
+	</label>
 
-		<div class="relative">
-			<input
-				id="episode-search"
-				bind:this={inputElement}
-				type="text"
-				placeholder="Search through transcript lines..."
-				value={query}
-				oninput={handleInput}
-				onkeydown={handleKeydown}
-				class="block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-				class:pr-10={hasQuery}
-			/>
-
-			{#if hasQuery}
-				<button
-					class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-					onclick={handleClear}
-					aria-label="Clear search"
-				>
-					<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width={2}
-							d="M6 18L18 6M6 6l12 12"
-						/>
-					</svg>
-				</button>
-			{/if}
-		</div>
+	<div class="relative">
+		<input
+			id="episode-search"
+			bind:this={inputElement}
+			type="text"
+			placeholder="Search through transcript lines..."
+			value={query}
+			oninput={handleInput}
+			onkeydown={handleKeydown}
+			class="block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+			class:pr-10={hasQuery}
+		/>
 
 		{#if hasQuery}
-			<div class="mt-1 text-sm text-gray-500">
-				{#if isLoading}
-					Loading search...
-				{:else if hasResults}
-					{searchResults.length} result{searchResults.length === 1 ? '' : 's'} found
-				{:else}
-					No results found for "{query}"
-				{/if}
-			</div>
+			<button
+				class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+				onclick={handleClear}
+				aria-label="Clear search"
+			>
+				<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width={2}
+						d="M6 18L18 6M6 6l12 12"
+					/>
+				</svg>
+			</button>
 		{/if}
 	</div>
 
-	{#if showResults}
-		<div class="mt-4 space-y-2" transition:slide={{ duration: 200 }}>
-			<h3 class="text-sm font-medium text-gray-700 border-b border-gray-200 pb-2">
-				Search Results
-			</h3>
-
-			<div class="space-y-2 max-h-96 overflow-y-auto">
-				{#each searchResults as result (result.item.time)}
-					<EpisodeSearchResult
-						{result}
-						bind:highlightedTime
-						searchQuery={query}
-						{onNavigateToResult}
-					/>
-				{/each}
-			</div>
+	{#if hasQuery}
+		<div class="mt-1 text-sm text-gray-500">
+			{#if isLoading}
+				Loading search...
+			{:else if hasResults}
+				{searchResults.length} result{searchResults.length === 1 ? '' : 's'} found
+			{:else}
+				No results found for "{query}"
+			{/if}
 		</div>
 	{/if}
 </div>
+
+{#if showResults}
+	<div class="mt-4 space-y-2" transition:slide={{ duration: 200 }}>
+		<h3 class="text-sm font-medium text-gray-700 border-b border-gray-200 pb-2">Search Results</h3>
+
+		<div class="space-y-2 max-h-96 overflow-y-auto">
+			{#each searchResults as result (result.item.time)}
+				<EpisodeSearchResult
+					{result}
+					bind:highlightedTime
+					searchQuery={query}
+					{onNavigateToResult}
+				/>
+			{/each}
+		</div>
+	</div>
+{/if}

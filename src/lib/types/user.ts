@@ -38,3 +38,23 @@ export enum CorrectionStatus {
 	APPROVED = 'approved',
 	REJECTED = 'rejected'
 }
+
+// Episode-level contribution interface for the new submission system
+export interface EpisodeContributionType {
+	id: string;
+	episodeEp: string;
+	episodeTitle: string;
+	submissionType: 'full_replacement' | 'partial_edit';
+	linesChanged: number;
+	status: CorrectionStatus;
+	createdAt: string;
+	reviewedAt?: string;
+	reviewedBy?: string;
+	notes?: string;
+}
+
+export interface ContributionsResponseType {
+	contributions: EpisodeContributionType[];
+	totalCount: number;
+	hasMore: boolean;
+}

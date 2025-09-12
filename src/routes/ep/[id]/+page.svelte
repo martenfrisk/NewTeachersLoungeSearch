@@ -9,7 +9,9 @@
 	import type { EpisodePageData } from '$lib/types/episode';
 	import TranscriptLine from '$lib/components/episode/TranscriptLine.svelte';
 	import ReturnToActiveButton from '$lib/components/audio/ReturnToActiveButton.svelte';
+	import EpisodeHistoryPanel from '$lib/components/episode/EpisodeHistoryPanel.svelte';
 	import { audioStore, currentPlaybackTime, syncEnabled, isPlaying } from '$lib/stores/audio';
+	import type { EpisodeHistoryDataType, EpisodeHistoryStatsType } from '$lib/types/history';
 	import { audioService } from '$lib/services/AudioService';
 	import {
 		findCurrentTranscriptLine,
@@ -24,8 +26,7 @@
 	let { data }: Props = $props();
 
 	// Ensure we have the correct data structure
-	const episodeData = data as EpisodePageData;
-	const { hits, transcriptStats, episodeInfo } = episodeData;
+	const { hits, transcriptStats, episodeInfo, historyStats: serverHistoryStats } = data;
 	const transcript = hits.default;
 
 	// SEO-optimized title and description
@@ -43,6 +44,9 @@
 	let error = $state<string | null>(null);
 	let showReturnButton = $state(false);
 	let currentActiveElement: HTMLElement | null = $state(null);
+	let historyStats = $state<EpisodeHistoryStatsType | null>(serverHistoryStats || null);
+	let historyData = $state<EpisodeHistoryDataType | null>(null);
+	let showHistoryPanel = $state(false);
 
 	const audioState = $derived($audioStore);
 	const currentTime = $derived($currentPlaybackTime);
@@ -52,7 +56,7 @@
 	const targetHash = $derived(page.url?.hash?.slice(1) || undefined);
 
 	// Enhanced error boundaries
-	onMount(() => {
+	onMount(async () => {
 		try {
 			if (!transcript || !Array.isArray(transcript)) {
 				throw new Error('Invalid transcript data');
@@ -60,11 +64,42 @@
 			if (transcript.length === 0) {
 				console.warn('Empty transcript for episode');
 			}
+
+			// History stats are now loaded on the server
 		} catch (err) {
 			console.error('Episode page initialization error:', err);
 			error = err instanceof Error ? err.message : 'Failed to load episode';
 		}
 	});
+
+	// History stats are now loaded on the server - this function is no longer needed
+
+	// Load full history data (when panel is opened)
+	async function loadHistoryData() {
+		if (!data.episode || historyData) return;
+
+		try {
+			const response = await fetch(`/api/episodes/${data.episode}/history`);
+			console.log(response);
+			if (response.ok) {
+				historyData = await response.json();
+			}
+		} catch (err) {
+			console.error('Failed to load history data:', err);
+		}
+	}
+
+	// Handle history panel toggle
+	async function handleHistoryClick() {
+		if (!showHistoryPanel) {
+			await loadHistoryData();
+		}
+		showHistoryPanel = !showHistoryPanel;
+	}
+
+	function handleHistoryPanelClose() {
+		showHistoryPanel = false;
+	}
 
 	// Handle hash-based navigation
 	$effect(() => {
@@ -229,8 +264,24 @@
 	{:else}
 		<header class="mb-8">
 			<TranscriptQualityBanner {transcriptStats} />
-			<EpisodeHeader {episodeInfo} {handlePlayEpisode} />
+			<EpisodeHeader
+				{episodeInfo}
+				{handlePlayEpisode}
+				{historyStats}
+				onHistoryClick={handleHistoryClick}
+			/>
 		</header>
+
+		<!-- History Panel -->
+		{#if showHistoryPanel && historyData}
+			<div class="mb-6">
+				<EpisodeHistoryPanel
+					{historyData}
+					isOpen={showHistoryPanel}
+					onClose={handleHistoryPanelClose}
+				/>
+			</div>
+		{/if}
 
 		<EpisodeSearch
 			transcriptLines={transcript}

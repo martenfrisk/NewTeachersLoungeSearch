@@ -23,20 +23,24 @@
 	};
 </script>
 
-<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-	<h2 class="text-xl font-semibold text-gray-900 mb-4">Preferences</h2>
+<div
+	class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8"
+>
+	<h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Preferences</h2>
 
 	<div class="space-y-4">
 		<!-- Theme Preference -->
 		<div class="flex items-center justify-between">
 			<div>
-				<label for="theme-select" class="text-sm font-medium text-gray-700">Theme</label>
-				<p class="text-xs text-gray-500">Choose your preferred color scheme</p>
+				<label for="theme-select" class="text-sm font-medium text-gray-700 dark:text-gray-300"
+					>Theme</label
+				>
+				<p class="text-xs text-gray-500 dark:text-gray-400">Choose your preferred color scheme</p>
 			</div>
 			<select
 				id="theme-select"
 				bind:value={preferences.theme}
-				class="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+				class="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
 			>
 				<option value="light">Light</option>
 				<option value="dark">Dark</option>
@@ -47,10 +51,12 @@
 		<!-- Autoplay Preference -->
 		<div class="flex items-center justify-between">
 			<div>
-				<label for="autoplay-checkbox" class="text-sm font-medium text-gray-700"
+				<label for="autoplay-checkbox" class="text-sm font-medium text-gray-700 dark:text-gray-300"
 					>Autoplay Audio</label
 				>
-				<p class="text-xs text-gray-500">Automatically play audio when clicking search results</p>
+				<p class="text-xs text-gray-500 dark:text-gray-400">
+					Automatically play audio when clicking search results
+				</p>
 			</div>
 			<input
 				id="autoplay-checkbox"
@@ -63,10 +69,11 @@
 		<!-- Search History Preference -->
 		<div class="flex items-center justify-between">
 			<div>
-				<label for="search-history-checkbox" class="text-sm font-medium text-gray-700"
-					>Save Search History</label
+				<label
+					for="search-history-checkbox"
+					class="text-sm font-medium text-gray-700 dark:text-gray-300">Save Search History</label
 				>
-				<p class="text-xs text-gray-500">Remember your recent searches</p>
+				<p class="text-xs text-gray-500 dark:text-gray-400">Remember your recent searches</p>
 			</div>
 			<input
 				id="search-history-checkbox"
@@ -79,10 +86,13 @@
 		<!-- Notifications Preference -->
 		<div class="flex items-center justify-between">
 			<div>
-				<label for="notifications-checkbox" class="text-sm font-medium text-gray-700"
-					>Notifications</label
+				<label
+					for="notifications-checkbox"
+					class="text-sm font-medium text-gray-700 dark:text-gray-300">Notifications</label
 				>
-				<p class="text-xs text-gray-500">Get notified about updates and new features</p>
+				<p class="text-xs text-gray-500 dark:text-gray-400">
+					Get notified about updates and new features
+				</p>
 			</div>
 			<input
 				id="notifications-checkbox"
@@ -94,8 +104,10 @@
 	</div>
 
 	{#if isDirty}
-		<div class="mt-6 pt-4 border-t border-gray-200 flex items-center justify-between">
-			<p class="text-sm text-gray-600">You have unsaved changes</p>
+		<div
+			class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-600 flex items-center justify-between"
+		>
+			<p class="text-sm text-gray-600 dark:text-gray-300">You have unsaved changes</p>
 			<div class="space-x-2">
 				<Button onclick={handleReset} variant="secondary" size="sm">Reset</Button>
 				<Button onclick={handleSave} variant="primary" size="sm">Save Changes</Button>

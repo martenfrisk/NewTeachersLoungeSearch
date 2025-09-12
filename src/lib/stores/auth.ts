@@ -127,5 +127,29 @@ export const authHelpers = {
 	// Set pending redirect (for use by pages that need auth)
 	setPendingRedirect(path: string): void {
 		pendingRedirect.set(path);
+	},
+
+	// Reset password for email
+	async resetPasswordForEmail(email: string) {
+		const { error } = await supabase.auth.resetPasswordForEmail(email, {
+			redirectTo: `${window.location.origin}/auth/update-password`
+		});
+
+		if (error) {
+			console.error('Password reset error:', error.message);
+			throw error;
+		}
+	},
+
+	// Update user password
+	async updatePassword(newPassword: string) {
+		const { error } = await supabase.auth.updateUser({
+			password: newPassword
+		});
+
+		if (error) {
+			console.error('Password update error:', error.message);
+			throw error;
+		}
 	}
 };

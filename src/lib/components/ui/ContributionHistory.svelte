@@ -1,12 +1,23 @@
 <script lang="ts">
-	import type { Correction, CorrectionStatus } from '$lib/types/user';
+	import type { EpisodeContributionType, CorrectionStatus } from '$lib/types/user';
 
 	interface Props {
-		corrections?: Correction[];
+		corrections?: EpisodeContributionType[];
 		loading?: boolean;
+		error?: string | null;
+		hasMore?: boolean;
+		totalCount?: number;
+		onLoadMore?: () => void;
 	}
 
-	let { corrections = [], loading = false }: Props = $props();
+	let {
+		corrections = [],
+		loading = false,
+		error = null,
+		hasMore = false,
+		totalCount = 0,
+		onLoadMore
+	}: Props = $props();
 
 	const getStatusColor = (status: CorrectionStatus) => {
 		switch (status) {
@@ -35,12 +46,31 @@
 	};
 </script>
 
-<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-	<h2 class="text-xl font-semibold text-gray-900 mb-4">Contribution History</h2>
+<div
+	class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8"
+>
+	<h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Contribution History</h2>
 
 	{#if loading}
 		<div class="flex items-center justify-center py-8">
 			<div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+		</div>
+	{:else if error}
+		<div class="text-center py-8">
+			<div class="text-red-500 mb-4">
+				<svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.664-.833-2.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"
+					/>
+				</svg>
+			</div>
+			<h3 class="mt-2 text-sm font-medium text-red-900 dark:text-red-100">
+				Error Loading Contributions
+			</h3>
+			<p class="mt-1 text-sm text-red-600 dark:text-red-300">{error}</p>
 		</div>
 	{:else if corrections.length === 0}
 		<div class="text-center py-8">
@@ -57,8 +87,8 @@
 					d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
 				/>
 			</svg>
-			<h3 class="mt-2 text-sm font-medium text-gray-900">No contributions yet</h3>
-			<p class="mt-1 text-sm text-gray-500">
+			<h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">No contributions yet</h3>
+			<p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
 				Start editing transcripts to see your contribution history here.
 			</p>
 			<div class="mt-6">
@@ -81,7 +111,9 @@
 	{:else}
 		<div class="space-y-3">
 			{#each corrections as correction (correction.id)}
-				<div class="border border-gray-200 rounded-lg p-4">
+				<div
+					class="border border-gray-200 dark:border-gray-600 rounded-lg p-4 bg-white dark:bg-gray-800"
+				>
 					<div class="flex items-start justify-between">
 						<div class="flex-1">
 							<div class="flex items-center space-x-2 mb-2">
@@ -103,32 +135,56 @@
 									</svg>
 									{correction.status.charAt(0).toUpperCase() + correction.status.slice(1)}
 								</span>
-								<span class="text-xs text-gray-500">
+								<span class="text-xs text-gray-500 dark:text-gray-400">
 									{new Date(correction.createdAt).toLocaleDateString()}
 								</span>
 							</div>
 
 							<div class="text-sm">
-								<p class="text-gray-600 mb-1">Original:</p>
-								<p class="bg-red-50 border border-red-200 rounded p-2 mb-2">
-									"{correction.originalLine}"
-								</p>
+								<div class="mb-3">
+									<h4 class="font-medium text-gray-900 dark:text-white mb-1">
+										{correction.episodeTitle}
+									</h4>
+									<p class="text-xs text-gray-500 dark:text-gray-400">
+										Episode: {correction.episodeEp}
+									</p>
+								</div>
 
-								<p class="text-gray-600 mb-1">Corrected:</p>
-								<p class="bg-green-50 border border-green-200 rounded p-2 mb-2">
-									"{correction.correctedLine}"
-								</p>
+								<div class="grid grid-cols-2 gap-4 mb-2">
+									<div>
+										<p class="text-xs text-gray-600 dark:text-gray-400">Submission Type:</p>
+										<p class="text-sm font-medium text-gray-800 dark:text-gray-200">
+											{correction.submissionType === 'full_replacement'
+												? 'Full Episode'
+												: 'Partial Edit'}
+										</p>
+									</div>
+									<div>
+										<p class="text-xs text-gray-600 dark:text-gray-400">Lines Changed:</p>
+										<p class="text-sm font-medium text-gray-800 dark:text-gray-200">
+											{correction.linesChanged} lines
+										</p>
+									</div>
+								</div>
 
-								{#if correction.reason}
-									<p class="text-gray-600 mb-1">Reason:</p>
-									<p class="text-sm text-gray-800 italic">"{correction.reason}"</p>
+								{#if correction.notes}
+									<div class="mt-2">
+										<p class="text-xs text-gray-600 dark:text-gray-400 mb-1">Notes:</p>
+										<p
+											class="text-sm text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-700 rounded p-2"
+										>
+											{correction.notes}
+										</p>
+									</div>
 								{/if}
 							</div>
 						</div>
 					</div>
 
 					{#if correction.reviewedAt && correction.reviewedBy}
-						<div class="mt-3 pt-3 border-t border-gray-100 text-xs text-gray-500">
+						<div
+							class="mt-3 pt-3 border-t border-gray-100 dark:border-gray-600 text-xs text-gray-500 dark:text-gray-400"
+						>
 							Reviewed by {correction.reviewedBy} on {new Date(
 								correction.reviewedAt
 							).toLocaleDateString()}
@@ -138,11 +194,20 @@
 			{/each}
 		</div>
 
-		{#if corrections.length > 5}
+		{#if hasMore}
 			<div class="mt-4 text-center">
-				<button class="text-sm text-blue-600 hover:text-blue-800 font-medium">
-					Load more contributions
+				<button
+					onclick={onLoadMore}
+					disabled={loading}
+					class="text-sm text-blue-600 hover:text-blue-800 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+				>
+					{loading ? 'Loading...' : 'Load more contributions'}
 				</button>
+				{#if totalCount > 0}
+					<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+						Showing {corrections.length} of {totalCount} contributions
+					</p>
+				{/if}
 			</div>
 		{/if}
 	{/if}

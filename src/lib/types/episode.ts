@@ -41,6 +41,7 @@ export interface EpisodePageData {
 	};
 	transcriptStats: TranscriptStats;
 	episodeInfo?: EpisodeInfo;
+	historyStats?: import('./history').EpisodeHistoryStatsType | null;
 }
 
 export interface SpeakerProcessingOptions {
