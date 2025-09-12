@@ -1,20 +1,11 @@
 {
   "query": "lasagna",
-  "timestamp": 1756802527882,
-  "expiresAt": 1757407327882,
+  "timestamp": 1757672804872,
+  "expiresAt": 1758277604872,
   "result": {
     "hits": [
       {
-        "id": "bd9264a9-f6cb-455c-8b99-af756c2e4368",
-        "season": "s01",
-        "time": "0:11:55",
-        "speaker": "Speaker 3",
-        "line": "I'll say this, in a pinch, I've had old lasagna, and I've had lasagna covered in Gatorade powder, but I have never had old lasagna covered in Gatorade powder, and that just seems like a deadly mix for a 16-year-old stomach or a 72-year-old stomach. I was so mad after we lost that game, I started a very believable...",
-        "episode": "s01e02",
-        "edited": true
-      },
-      {
-        "id": "7402e925-7e94-4180-8be0-99fbabc3dbc6",
+        "id": "bca388bd-3b36-4e09-bc3d-57c624e2622d",
         "season": "s01",
         "time": "0:11:55",
         "speaker": "Speaker 3",
@@ -68,22 +59,13 @@
         "edited": false
       },
       {
-        "id": "b7ca0456-1324-45aa-a2bb-faa7cddce44c",
+        "id": "08f14a7e-a48c-44a8-94a6-87c6da5a1a9e",
         "season": "s01",
         "time": "0:10:07",
         "speaker": "Speaker 1",
         "line": "Thank you. While they were defecating themselves, they were still scoring good points. And I would like to take responsibility for food poisoning the other team right now. I was in a blind rage after the first half. Now, was this another lasagna? We've heard that you've used a lasagna against a team before.",
         "episode": "s01e02",
         "edited": false
-      },
-      {
-        "id": "721ff51c-d6b8-4ef1-ad9b-36e372f0a9c9",
-        "season": "s01",
-        "time": "0:10:07",
-        "speaker": "Speaker 1",
-        "line": "Thank you. While they were defecating themselves, they were still scoring good points. And I would like to take responsibility for food poisoning the other team right now. I was in a blind rage after the first half. Now, was this another lasagna? We've heard that you've used a lasagna against a team before.",
-        "episode": "s01e02",
-        "edited": true
       },
       {
         "id": "e5446c21-1daf-4529-98c8-bdf650e2ac05",
@@ -183,10 +165,28 @@
         "line": "Esso and did anything else happen Sort of on the night that these these little boy robots cook you a lasagna dinner?",
         "episode": "s03e06",
         "edited": false
+      },
+      {
+        "id": "79a4dd4f-28d7-4b45-9fde-069f5486e688",
+        "season": "s03",
+        "time": "0:10:56",
+        "speaker": "1",
+        "line": "I think that was it. That that was the real moment. But I'm saying the suspicion was with the lasagna. They were buttering me up all evening just to get Saran wrap to my own bed. So you",
+        "episode": "s03e06",
+        "edited": false
+      },
+      {
+        "id": "9c22de32-c4db-4107-bf08-441809520df2",
+        "season": "mini",
+        "time": "0:11:30",
+        "speaker": "spk_3",
+        "line": "look at the pasta I owe you. Say, these aren't books. I need to get books. But while I'm here, I'll get some few silly and I'll get some lasagna noodle angel hair, regular spaghetti.",
+        "episode": "mini-53",
+        "edited": false
       }
     ],
     "stats": {
-      "estimatedTotalHits": 41,
+      "estimatedTotalHits": 39,
       "processingTime": 0,
       "facets": [
         {
@@ -198,7 +198,7 @@
             },
             {
               "ep": "s01",
-              "hits": 10
+              "hits": 8
             },
             {
               "ep": "mini",
@@ -213,11 +213,11 @@
               "hits": 3
             },
             {
-              "ep": "s10",
+              "ep": "s05",
               "hits": 2
             },
             {
-              "ep": "s05",
+              "ep": "s10",
               "hits": 2
             },
             {
@@ -242,10 +242,6 @@
               "hits": 5
             },
             {
-              "ep": "s01e02",
-              "hits": 4
-            },
-            {
               "ep": "s01e01",
               "hits": 3
             },
@@ -258,11 +254,15 @@
               "hits": 3
             },
             {
-              "ep": "mini-38",
+              "ep": "s01e03",
               "hits": 2
             },
             {
-              "ep": "s01e03",
+              "ep": "s01e02",
+              "hits": 2
+            },
+            {
+              "ep": "mini-38",
               "hits": 2
             },
             {

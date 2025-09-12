@@ -1,7 +1,7 @@
 {
   "query": "let's just say",
-  "timestamp": 1756802536107,
-  "expiresAt": 1757407336107,
+  "timestamp": 1757672811486,
+  "expiresAt": 1758277611486,
   "result": {
     "hits": [
       {
@@ -186,7 +186,7 @@
       }
     ],
     "stats": {
-      "estimatedTotalHits": 506,
+      "estimatedTotalHits": 502,
       "processingTime": 0,
       "facets": [
         {
@@ -209,11 +209,11 @@
               "hits": 36
             },
             {
-              "ep": "s04",
+              "ep": "s08",
               "hits": 29
             },
             {
-              "ep": "s08",
+              "ep": "s04",
               "hits": 29
             },
             {
@@ -250,10 +250,6 @@
               "hits": 9
             },
             {
-              "ep": "s01e02",
-              "hits": 8
-            },
-            {
               "ep": "lastresort-5",
               "hits": 8
             },
@@ -267,6 +263,10 @@
             },
             {
               "ep": "lastresort-4",
+              "hits": 7
+            },
+            {
+              "ep": "s01e03",
               "hits": 7
             }
           ]

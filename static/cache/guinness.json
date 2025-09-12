@@ -1,7 +1,7 @@
 {
   "query": "guinness",
-  "timestamp": 1756802525921,
-  "expiresAt": 1757407325921,
+  "timestamp": 1757672802879,
+  "expiresAt": 1758277602879,
   "result": {
     "hits": [
       {
@@ -186,7 +186,7 @@
       }
     ],
     "stats": {
-      "estimatedTotalHits": 109,
+      "estimatedTotalHits": 106,
       "processingTime": 0,
       "facets": [
         {
@@ -201,19 +201,19 @@
               "hits": 12
             },
             {
-              "ep": "s01",
-              "hits": 8
+              "ep": "mini",
+              "hits": 7
             },
             {
               "ep": "s06",
               "hits": 7
             },
             {
-              "ep": "mini",
-              "hits": 7
+              "ep": "lastresort",
+              "hits": 5
             },
             {
-              "ep": "lastresort",
+              "ep": "s01",
               "hits": 5
             },
             {
@@ -242,10 +242,6 @@
               "hits": 11
             },
             {
-              "ep": "s01e02",
-              "hits": 6
-            },
-            {
               "ep": "s09e30",
               "hits": 5
             },
@@ -268,6 +264,10 @@
             {
               "ep": "mini-10",
               "hits": 4
+            },
+            {
+              "ep": "s06e02",
+              "hits": 3
             }
           ]
         }

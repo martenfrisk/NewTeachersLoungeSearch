@@ -87,9 +87,9 @@
 		return s;
 	});
 
-	let selectedDiffTypes = new SvelteSet(['modified', 'added', 'removed']);
+	let selectedDiffTypes = $state(new SvelteSet(['modified', 'added', 'removed']));
 	let showContext = $state(true);
-	let expandedLines = new SvelteSet<number>();
+	let expandedLines = $state(new SvelteSet<number>());
 
 	function toggleDiffType(type: DiffType) {
 		if (selectedDiffTypes.has(type)) {

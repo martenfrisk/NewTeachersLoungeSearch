@@ -1,5 +1,6 @@
 import type { RequestHandler } from './$types';
 import { dev } from '$app/environment';
+import episodesData from '../../assets/episodes6.json';
 
 interface Episode {
 	ep: string;
@@ -7,22 +8,10 @@ interface Episode {
 	date?: string;
 }
 
-async function loadEpisodes(): Promise<Episode[]> {
-	try {
-		const response = await fetch('/src/assets/episodes.json');
-		const data = await response.json();
-		return data.episodes || [];
-	} catch (error) {
-		console.error('Failed to load episodes for sitemap:', error);
-		// Fallback: return empty array or basic structure
-		return [];
-	}
-}
-
 const baseUrl = dev ? 'http://localhost:5173' : 'https://seekerslounge.pcast.site';
 
 export const GET: RequestHandler = async () => {
-	const episodes = await loadEpisodes();
+	const episodes: Episode[] = episodesData;
 
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

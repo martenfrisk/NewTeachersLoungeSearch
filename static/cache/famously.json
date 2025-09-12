@@ -1,7 +1,7 @@
 {
   "query": "famously",
-  "timestamp": 1756802535389,
-  "expiresAt": 1757407335389,
+  "timestamp": 1757672810835,
+  "expiresAt": 1758277610835,
   "result": {
     "hits": [
       {
@@ -186,7 +186,7 @@
       }
     ],
     "stats": {
-      "estimatedTotalHits": 304,
+      "estimatedTotalHits": 303,
       "processingTime": 0,
       "facets": [
         {
@@ -222,7 +222,7 @@
             },
             {
               "ep": "s01",
-              "hits": 17
+              "hits": 16
             },
             {
               "ep": "lastresort",

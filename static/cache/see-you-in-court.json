@@ -1,7 +1,7 @@
 {
   "query": "see you in court",
-  "timestamp": 1756802529886,
-  "expiresAt": 1757407329886,
+  "timestamp": 1757672806174,
+  "expiresAt": 1758277606174,
   "result": {
     "hits": [
       {
@@ -186,7 +186,7 @@
       }
     ],
     "stats": {
-      "estimatedTotalHits": 38,
+      "estimatedTotalHits": 37,
       "processingTime": 0,
       "facets": [
         {
@@ -194,7 +194,7 @@
           "facetHits": [
             {
               "ep": "s01",
-              "hits": 8
+              "hits": 7
             },
             {
               "ep": "s05",
@@ -262,11 +262,11 @@
               "hits": 2
             },
             {
-              "ep": "s01e02",
-              "hits": 2
+              "ep": "s07e04",
+              "hits": 1
             },
             {
-              "ep": "s09e25",
+              "ep": "s09e03",
               "hits": 1
             }
           ]
