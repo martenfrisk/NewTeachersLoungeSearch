@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { authHelpers } from '$lib/stores/auth';
+	import { goto } from '$app/navigation';
 
 	interface Props {
 		isOpen: boolean;
 		onClose: () => void;
+		redirectTo?: string | null;
 	}
 
-	let { isOpen, onClose }: Props = $props();
+	let { isOpen, onClose, redirectTo }: Props = $props();
 	let loading = $state(false);
 	let error = $state<string | null>(null);
 	let success = $state<string | null>(null);
@@ -22,7 +24,7 @@
 		success = null;
 
 		try {
-			await authHelpers.signInWithProvider(provider);
+			await authHelpers.signInWithProvider(provider, redirectTo || undefined);
 			// The OAuth flow will redirect to the provider, then back to /auth/callback
 		} catch (err) {
 			error = err instanceof Error ? err.message : 'Sign in failed';
@@ -37,8 +39,13 @@
 		success = null;
 
 		try {
-			await authHelpers.signInWithEmail(email, password);
+			await authHelpers.signInWithEmail(email, password, redirectTo || undefined);
 			onClose();
+
+			// For email sign-in, redirect immediately since there's no OAuth callback
+			if (redirectTo) {
+				goto(redirectTo);
+			}
 		} catch (err) {
 			error = err instanceof Error ? err.message : 'Sign in failed';
 		} finally {

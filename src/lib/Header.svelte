@@ -1,21 +1,50 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import Coffee from './components/Coffee.svelte';
-	import { user } from './stores/auth';
-	// import { appStore } from './stores/app';
+	import { user, authHelpers } from './stores/auth';
+	import { appStore } from './stores/app';
+	import { goto } from '$app/navigation';
 
 	let moreInfo = $state(false);
 	let copyright = $state(false);
 	let showMobileMenu = $state(false);
 	let showInfoDropdown = $state(false);
+	let showUserDropdown = $state(false);
 
 	const handleMoreInfo = () => (moreInfo = !moreInfo);
 	const handleCopyright = () => (copyright = !copyright);
-	// const handleAuthModal = () => {
-	// 	appStore.openAuthModal();
-	// };
+	const handleAuthModal = () => {
+		appStore.openAuthModal();
+	};
 
 	const toggleInfoDropdown = () => (showInfoDropdown = !showInfoDropdown);
+	const toggleUserDropdown = () => (showUserDropdown = !showUserDropdown);
+
+	const handleSignOut = async () => {
+		try {
+			showUserDropdown = false;
+			await authHelpers.signOut();
+			goto('/');
+		} catch (error) {
+			console.error('Sign out error:', error);
+		}
+	};
+
+	// Close dropdowns when clicking outside
+	$effect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			const target = event.target as Element;
+			if (!target.closest('[data-dropdown]')) {
+				showUserDropdown = false;
+				showInfoDropdown = false;
+			}
+		};
+
+		if (typeof window !== 'undefined') {
+			document.addEventListener('click', handleClickOutside);
+			return () => document.removeEventListener('click', handleClickOutside);
+		}
+	});
 </script>
 
 <!-- Sticky Header -->
@@ -75,6 +104,7 @@
 					<button
 						onclick={toggleInfoDropdown}
 						class="px-4 py-2 text-white hover:bg-blue-600 rounded-md transition-colors flex items-center space-x-2"
+						data-dropdown
 					>
 						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path
@@ -104,34 +134,95 @@
 				</div>
 			</nav>
 
-			<!-- Right: Auth and mobile menu -->
-			<div class="flex items-center space-x-3">
-				<!-- Auth button -->
-				{#if $user}
-					<div class="flex items-center space-x-2">
-						<div
-							class="w-8 h-8 bg-blue-400 rounded-full flex items-center justify-center border-2 border-blue-200"
-						>
-							<span class="text-xs font-medium text-white">
-								{$user.email?.charAt(0).toUpperCase() || 'U'}
-							</span>
-						</div>
-					</div>
-				{:else}
-					<!-- Sign In button temporarily hidden
+			{#if $user}
+				<div class="relative" data-dropdown>
 					<button
-						onclick={handleAuthModal}
-						class="px-3 py-1.5 text-xs font-medium text-blue-700 bg-white border border-blue-200 rounded-md hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+						onclick={toggleUserDropdown}
+						class="w-8 h-8 bg-blue-400 rounded-full flex items-center justify-center border-2 border-blue-200 hover:bg-blue-300 transition-colors cursor-pointer"
 					>
-						Sign In
+						<span class="text-xs font-medium text-white">
+							{$user.email?.charAt(0).toUpperCase() || 'U'}
+						</span>
 					</button>
-					-->
-				{/if}
+
+					{#if showUserDropdown}
+						<div
+							class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
+							role="menu"
+							tabindex="-1"
+							onclick={(e) => e.stopPropagation()}
+							onkeydown={(e) => e.stopPropagation()}
+						>
+							<a
+								href="/profile"
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+								onclick={() => (showUserDropdown = false)}
+							>
+								<div class="flex items-center space-x-2">
+									<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+										/>
+									</svg>
+									<span>Profile</span>
+								</div>
+							</a>
+							<a
+								href="/editor"
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+								onclick={() => (showUserDropdown = false)}
+							>
+								<div class="flex items-center space-x-2">
+									<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+										/>
+									</svg>
+									<span>Edit Transcripts</span>
+								</div>
+							</a>
+							<hr class="my-1" />
+							<button
+								onclick={handleSignOut}
+								class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+							>
+								<div class="flex items-center space-x-2">
+									<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+										/>
+									</svg>
+									<span>Sign Out</span>
+								</div>
+							</button>
+						</div>
+					{/if}
+				</div>
+			{:else}
+				<button
+					onclick={handleAuthModal}
+					class="px-3 py-1.5 text-xs font-medium text-blue-700 bg-white border border-blue-200 rounded-md hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+				>
+					Sign In
+				</button>
+			{/if}
+			<!-- Right: Auth and mobile menu -->
+			<div class="md:hidden flex items-center">
+				<!-- Auth button -->
 
 				<!-- Mobile menu button -->
 				<button
 					onclick={toggleInfoDropdown}
-					class="md:hidden flex items-center justify-center fill-white stroke-white text-white"
+					class="items-center justify-center fill-white stroke-white text-white"
 					aria-label="Toggle mobile menu"
 				>
 					<svg

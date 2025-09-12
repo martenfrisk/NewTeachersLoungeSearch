@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { supabase } from '$lib/supabase';
+	import { authHelpers } from '$lib/stores/auth';
 	import LoadingSpinner from '$lib/components/ui/LoadingSpinner.svelte';
 
 	let loading = true;
@@ -11,6 +12,7 @@
 		try {
 			// Handle the OAuth callback
 			const { data, error: authError } = await supabase.auth.getSession();
+			console.log('Auth callback session:', { data, authError });
 
 			if (authError) {
 				throw authError;
@@ -18,8 +20,12 @@
 
 			if (data.session) {
 				// User successfully authenticated
-				// Redirect back to the main page
-				await goto('/', { replaceState: true });
+				// Check for pending redirect
+				const pendingRedirect = authHelpers.consumePendingRedirect();
+				const destination = pendingRedirect || '/';
+
+				console.log('Redirecting to:', destination);
+				await goto(destination, { replaceState: true });
 			} else {
 				// No session found, redirect to home
 				await goto('/', { replaceState: true });

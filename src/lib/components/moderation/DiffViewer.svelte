@@ -87,8 +87,10 @@
 		return s;
 	});
 
+	// eslint-disable-next-line svelte/no-unnecessary-state-wrap
 	let selectedDiffTypes = $state(new SvelteSet(['modified', 'added', 'removed']));
 	let showContext = $state(true);
+	// eslint-disable-next-line svelte/no-unnecessary-state-wrap
 	let expandedLines = $state(new SvelteSet<number>());
 
 	function toggleDiffType(type: DiffType) {

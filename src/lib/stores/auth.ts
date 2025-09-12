@@ -10,6 +10,9 @@ export const user = derived(session, ($session) => $session?.user ?? null);
 // Auth loading state
 export const authLoading = writable(true);
 
+// Redirect state for post-authentication navigation
+export const pendingRedirect = writable<string | null>(null);
+
 // Initialize auth state
 if (browser) {
 	// Get initial session
@@ -38,7 +41,11 @@ if (browser) {
 // Auth helper functions
 export const authHelpers = {
 	// Sign in with OAuth provider
-	async signInWithProvider(provider: 'github') {
+	async signInWithProvider(provider: 'github', redirectAfterAuth?: string) {
+		if (redirectAfterAuth) {
+			pendingRedirect.set(redirectAfterAuth);
+		}
+
 		const { error } = await supabase.auth.signInWithOAuth({
 			provider,
 			options: {
@@ -53,7 +60,11 @@ export const authHelpers = {
 	},
 
 	// Sign in with email
-	async signInWithEmail(email: string, password: string) {
+	async signInWithEmail(email: string, password: string, redirectAfterAuth?: string) {
+		if (redirectAfterAuth) {
+			pendingRedirect.set(redirectAfterAuth);
+		}
+
 		const { error } = await supabase.auth.signInWithPassword({
 			email,
 			password
@@ -101,5 +112,20 @@ export const authHelpers = {
 	// Check if user is authenticated
 	isAuthenticated(userSession: Session | null): boolean {
 		return userSession !== null;
+	},
+
+	// Get and clear pending redirect
+	consumePendingRedirect(): string | null {
+		let redirect: string | null = null;
+		pendingRedirect.subscribe((value) => (redirect = value))();
+		if (redirect) {
+			pendingRedirect.set(null);
+		}
+		return redirect;
+	},
+
+	// Set pending redirect (for use by pages that need auth)
+	setPendingRedirect(path: string): void {
+		pendingRedirect.set(path);
 	}
 };
