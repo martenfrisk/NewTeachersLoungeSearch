@@ -34,7 +34,6 @@ export const GET: RequestHandler = async ({ params, url }) => {
 		};
 
 		const historyData = await historyService.getEpisodeHistory(episodeId, filters);
-		console.log('logme ', { historyData });
 		return json(historyData);
 	} catch (err) {
 		console.error('Error fetching episode history:', err);

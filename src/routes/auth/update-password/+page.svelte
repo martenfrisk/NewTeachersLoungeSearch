@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { authHelpers } from '$lib/stores/auth';
-	import { session } from '$lib/stores/auth';
 	import { supabase } from '$lib/supabase';
 	import LoadingSpinner from '$lib/components/ui/LoadingSpinner.svelte';
 
@@ -16,7 +15,7 @@
 
 	// Validate that user is authenticated (came from reset email)
 	onMount(() => {
-		let subscription: any = null;
+		let subscription: { unsubscribe: () => void } | null = null;
 
 		// Initialize auth check
 		const initAuth = async () => {

@@ -97,7 +97,7 @@
 							fill="none"
 							viewBox="0 0 24 24"
 							stroke="currentColor"
-							aria-hidden="true"
+							aria-hidden={true}
 						>
 							<path
 								stroke-linecap="round"

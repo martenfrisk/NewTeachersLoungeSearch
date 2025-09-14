@@ -96,7 +96,7 @@
 			</div>
 
 			<!-- Document-style transcript with line spacing -->
-			<div class="p-6">
+			<div class="p-6 pb-64">
 				<div class="space-y-1">
 					{#each transcriptLines as line, lineIndex (line.id || lineIndex)}
 						<div data-line-index={lineIndex}>

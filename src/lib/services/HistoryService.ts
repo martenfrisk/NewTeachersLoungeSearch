@@ -73,7 +73,7 @@ export class HistoryService {
 			}
 
 			const { data: versions, error } = await query;
-			console.log('logme ', { versions, error });
+
 			if (error) {
 				throw new Error(`Failed to fetch episode history: ${error.message}`);
 			}

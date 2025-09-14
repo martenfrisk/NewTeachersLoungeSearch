@@ -1,7 +1,7 @@
 {
   "query": "let's just say",
-  "timestamp": 1757693449214,
-  "expiresAt": 1758298249214,
+  "timestamp": 1757845533665,
+  "expiresAt": 1758450333665,
   "result": {
     "hits": [
       {
@@ -167,6 +167,15 @@
         "edited": false
       },
       {
+        "id": "dd6c19bf-0857-4f46-a5af-8760500ce8fb",
+        "season": "s04",
+        "time": "0:14:00",
+        "speaker": "Speaker 1",
+        "line": "there. What do you mean? And let's just say we were the farmers. Wait, hang on. Let's just say daddy got a new pair of over",
+        "episode": "s04e06",
+        "edited": false
+      },
+      {
         "id": "4b8dde01-3f4c-4706-9931-1f3c4fa70283",
         "season": "s05",
         "time": "0:07:39",
@@ -174,19 +183,10 @@
         "line": "yeah. What? No, no, You've been saying this all week. Let's just say and then you say exactly what you're doing.",
         "episode": "s05e07",
         "edited": false
-      },
-      {
-        "id": "be420572-2bd4-4cbd-8e39-4b4b848b7df6",
-        "season": "s07",
-        "time": "0:25:54",
-        "speaker": "spk_2",
-        "line": "well, Let's just say let's just arm t o e. I will say this. It's knife, toe, arm to table.",
-        "episode": "s07e06",
-        "edited": false
       }
     ],
     "stats": {
-      "estimatedTotalHits": 502,
+      "estimatedTotalHits": 503,
       "processingTime": 0,
       "facets": [
         {
@@ -209,11 +209,11 @@
               "hits": 36
             },
             {
-              "ep": "s08",
-              "hits": 29
+              "ep": "s04",
+              "hits": 30
             },
             {
-              "ep": "s04",
+              "ep": "s08",
               "hits": 29
             },
             {

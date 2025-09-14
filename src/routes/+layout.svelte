@@ -4,7 +4,7 @@
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 	import { fly } from 'svelte/transition';
-	import UpArrow from 'lib/icons/UpArrow.svelte';
+	import Icon from '$lib/components/ui/Icon.svelte';
 	import { audioStore } from '$lib/stores/audio';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 	import AuthModal from 'lib/components/auth/AuthModal.svelte';
@@ -81,9 +81,9 @@
 			<button
 				transition:fly={{ y: 100, duration: 400 }}
 				onclick={() => element?.scrollIntoView()}
-				class="bottom-52 rounded-full size-8 md:size-12 z-20 bg-blue-700 right-2 md:right-4 fixed text-white select-none"
+				class="bottom-52 rounded-full size-8 md:size-12 z-20 bg-blue-700 right-2 md:right-4 fixed text-white select-none flex items-center justify-center"
 			>
-				<UpArrow />
+				<Icon name="up-arrow" size={20} color="white" aria-label="Scroll to top" />
 			</button>
 		{/if}
 	</main>

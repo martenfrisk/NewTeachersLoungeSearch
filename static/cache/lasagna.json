@@ -1,7 +1,7 @@
 {
   "query": "lasagna",
-  "timestamp": 1757693442486,
-  "expiresAt": 1758298242486,
+  "timestamp": 1757845526351,
+  "expiresAt": 1758450326351,
   "result": {
     "hits": [
       {
@@ -149,15 +149,6 @@
         "edited": false
       },
       {
-        "id": "9982f163-b92a-4aa6-b9d6-72bf9a5b28c3",
-        "season": "mini",
-        "time": "0:09:40",
-        "speaker": "spk_4",
-        "line": "Lasagnas 60 40 brought dogs 60 40 from the man who broke the ping pong table. Alright, Alright, guys. Well, the higher your meat content, the more what we have in the in the meat blood consumption business called the leak.",
-        "episode": "mini-48",
-        "edited": false
-      },
-      {
         "id": "9c9b4be6-f725-439a-aa29-4336cbe23e3f",
         "season": "s03",
         "time": "0:10:28",
@@ -182,6 +173,15 @@
         "speaker": "spk_3",
         "line": "look at the pasta I owe you. Say, these aren't books. I need to get books. But while I'm here, I'll get some few silly and I'll get some lasagna noodle angel hair, regular spaghetti.",
         "episode": "mini-53",
+        "edited": false
+      },
+      {
+        "id": "7d42f645-b630-4931-a1c5-72a871d4a69b",
+        "season": "s01",
+        "time": "0:12:49",
+        "speaker": "Sam",
+        "line": "Yeah, I saw you. You were enjoying that porch. It's nice, right? Yeah, absolutely. Um, go ahead. Yeah. No, I, uh I tried to serve the other team. Bad lasagna. Um, right as they got there, as they Now,",
+        "episode": "s01e03",
         "edited": false
       }
     ],

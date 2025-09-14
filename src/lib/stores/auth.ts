@@ -25,7 +25,6 @@ if (browser) {
 	const {
 		data: { subscription }
 	} = supabase.auth.onAuthStateChange((event, newSession) => {
-		console.log('Auth state changed:', event);
 		session.set(newSession);
 		authLoading.set(false);
 	});

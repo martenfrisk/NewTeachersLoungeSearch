@@ -134,7 +134,10 @@ export class EditorService {
 		const line = updatedLines[lineIndex];
 
 		if (line) {
-			const hasActualChanges = this.hasLineChanged({ ...line, time: normalizedTimestamp });
+			// Create a temporary line with the new timestamp to check for changes
+			const tempLine = { ...line, time: normalizedTimestamp };
+			const hasActualChanges = this.hasLineChanged(tempLine);
+
 			updatedLines[lineIndex] = {
 				...line,
 				time: normalizedTimestamp,
@@ -521,9 +524,34 @@ export class EditorService {
 		return changes;
 	}
 
-	// Get all changed lines from transcript
+	// Get all changed lines from transcript - single source of truth for change detection
 	getChangedLines(lines: EditableTranscriptLineType[]): EditableTranscriptLineType[] {
-		return lines.filter((line) => line.editState !== 'unedited' || line.edited === true);
+		const changedLines = lines.filter((line) => {
+			// Use hasLineChanged as the authoritative method for detecting changes
+			// This handles all edge cases with timestamp normalization, whitespace, etc.
+			const hasContentChanges = this.hasLineChanged(line);
+			const isMarkedEdited = line.editState === 'edited';
+
+			// IMPORTANT: Also consider lines in workflow states that indicate changes in current session
+			// 'unsaved' = modified but not saved, 'saved' = saved but not committed
+			const hasWorkflowChanges = line.editState === 'unsaved' || line.editState === 'saved';
+
+			const isChanged = hasContentChanges || isMarkedEdited || hasWorkflowChanges;
+
+			return isChanged;
+		});
+
+		return changedLines;
+	}
+
+	// Helper method to check if any lines have changes - used by stores and components
+	hasAnyChanges(lines: EditableTranscriptLineType[]): boolean {
+		return this.getChangedLines(lines).length > 0;
+	}
+
+	// Helper method to count changed lines - used by stores and components
+	getChangedLinesCount(lines: EditableTranscriptLineType[]): number {
+		return this.getChangedLines(lines).length;
 	}
 
 	// Sort lines chronologically by timestamp
@@ -704,7 +732,9 @@ export class EditorService {
 			}
 
 			case 'set-unedited':
-				updatedLines = this.changeLineStates(updatedLines, lineIndices, 'unedited', true);
+				// IMPORTANT: Use forceExactState: false to allow business logic
+				// This ensures lines with actual changes get set to 'saved' instead of 'unedited'
+				updatedLines = this.changeLineStates(updatedLines, lineIndices, 'unedited', false);
 				break;
 
 			case 'set-unsaved':

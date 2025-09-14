@@ -1,7 +1,7 @@
 {
   "query": "beef diaper",
-  "timestamp": 1757693444246,
-  "expiresAt": 1758298244246,
+  "timestamp": 1757845528477,
+  "expiresAt": 1758450328477,
   "result": {
     "hits": [
       {
@@ -131,9 +131,9 @@
         "edited": false
       },
       {
-        "id": "6b30e9d7-4f20-4c63-867d-9e2969370dad",
+        "id": "b4c9dc4a-22dc-43cc-813d-63dfde9f5f7d",
         "season": "mini",
-        "time": "0:20:05",
+        "time": "20:19",
         "speaker": "spk_4",
         "line": "Okay. We got a new home for my man in 20,000 and one beef diapers. What? Over a new home. Bird side, old man, Another beef diaper to",
         "episode": "mini-48",

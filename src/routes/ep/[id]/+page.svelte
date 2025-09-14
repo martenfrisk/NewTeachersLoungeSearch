@@ -6,7 +6,6 @@
 	import EpisodeHeader from '$lib/components/episode/EpisodeHeader.svelte';
 	import EpisodeSearch from '$lib/components/episode/EpisodeSearch.svelte';
 	import VirtualTranscriptList from '$lib/components/episode/VirtualTranscriptList.svelte';
-	import type { EpisodePageData } from '$lib/types/episode';
 	import TranscriptLine from '$lib/components/episode/TranscriptLine.svelte';
 	import ReturnToActiveButton from '$lib/components/audio/ReturnToActiveButton.svelte';
 	import EpisodeHistoryPanel from '$lib/components/episode/EpisodeHistoryPanel.svelte';
@@ -80,7 +79,7 @@
 
 		try {
 			const response = await fetch(`/api/episodes/${data.episode}/history`);
-			console.log(response);
+
 			if (response.ok) {
 				historyData = await response.json();
 			}

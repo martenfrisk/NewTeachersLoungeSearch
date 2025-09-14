@@ -4,7 +4,7 @@ import type { UserPreferences } from '$lib/types/user';
 const defaultPreferences: UserPreferences = {
 	theme: 'auto',
 	autoplay: true,
-	searchHistory: true,
+	searchHistory: false,
 	notifications: false
 };
 
