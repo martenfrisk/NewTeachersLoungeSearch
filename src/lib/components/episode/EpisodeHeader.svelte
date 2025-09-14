@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Button from '../ui/Button.svelte';
+	import EpisodeHistoryBadge from './EpisodeHistoryBadge.svelte';
+	import type { EpisodeHistoryStatsType } from '../../types/history';
 
 	interface Props {
 		episodeInfo?: {
@@ -9,9 +11,11 @@
 			date?: string;
 		};
 		handlePlayEpisode?: () => void;
+		historyStats?: EpisodeHistoryStatsType | null;
+		onHistoryClick?: () => void;
 	}
 
-	let { episodeInfo, handlePlayEpisode }: Props = $props();
+	let { episodeInfo, handlePlayEpisode, historyStats, onHistoryClick }: Props = $props();
 
 	function formatDate(dateString?: string): string {
 		if (!dateString) return '';
@@ -30,8 +34,13 @@
 </script>
 
 <div class="text-center mb-6">
-	<div class="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
-		{episodeInfo?.ep}
+	<div class="flex items-center justify-center gap-3 mb-2">
+		<div class="text-sm font-semibold text-blue-600 uppercase tracking-wide">
+			{episodeInfo?.ep}
+		</div>
+		{#if historyStats}
+			<EpisodeHistoryBadge stats={historyStats} onClick={onHistoryClick} />
+		{/if}
 	</div>
 	<h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{episodeInfo?.title}</h1>
 

@@ -1,7 +1,7 @@
 {
   "query": "permit crab",
-  "timestamp": 1757672808100,
-  "expiresAt": 1758277608100,
+  "timestamp": 1757845530177,
+  "expiresAt": 1758450330177,
   "result": {
     "hits": [
       {

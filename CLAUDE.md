@@ -129,3 +129,4 @@ components/
 - Follow component modularity patterns
 - Test both server and client code appropriately
 - Don't use mcp-tool-executor agent
+- after finishing a task, always run "bun run lint" and "bun run check" and fix ALL issues, even if they're warnings or unrelated to your changes.

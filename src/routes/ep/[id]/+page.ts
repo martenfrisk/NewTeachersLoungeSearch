@@ -2,13 +2,14 @@ import { error } from '@sveltejs/kit';
 import episodesPageData from '../../../assets/generated/episodes-page-data.json';
 import { EpisodeDataProcessor } from '$lib/services/EpisodeDataProcessor';
 import { SupabaseEditorRepository } from '$lib/repositories/EditorRepository';
+import { historyService } from '$lib/services/HistoryService';
 import type { EpisodePageData, EpisodeInfo } from '$lib/types/episode';
 
 export async function entries() {
 	return episodesPageData.episodes.map((episode) => ({ id: episode.ep }));
 }
 
-export async function load({ params }): Promise<EpisodePageData> {
+export async function load({ params, fetch }): Promise<EpisodePageData> {
 	const { id } = params;
 
 	if (!id || typeof id !== 'string') {
@@ -47,11 +48,15 @@ export async function load({ params }): Promise<EpisodePageData> {
 		// Calculate transcript stats from live data
 		const transcriptStats = processor.calculateTranscriptStats(id, validatedTranscript);
 
+		// Fetch history stats on the server with SvelteKit fetch
+		const historyStats = await historyService.getEpisodeHistoryStats(id, fetch);
+
 		return {
 			episode: id,
 			hits: { default: processedTranscript },
 			transcriptStats,
-			episodeInfo
+			episodeInfo,
+			historyStats
 		};
 	} catch (err) {
 		console.error(`Failed to load episode ${id}:`, err);

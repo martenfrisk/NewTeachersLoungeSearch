@@ -15,9 +15,7 @@
 
 	let isSubmitting = $state(false);
 	let showContributorForm = $state(false);
-	let changedLinesCount = $derived(
-		transcriptLines.filter((line) => line.editState !== 'unedited' || line.edited === true).length
-	);
+	let changedLinesCount = $derived(editorService.getChangedLinesCount(transcriptLines));
 	let isAuthenticated = $derived($user !== null);
 
 	async function handleSubmitChanges(contributorInfo?: {

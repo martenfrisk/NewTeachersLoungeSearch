@@ -71,15 +71,11 @@ class EditorStore {
 	}
 
 	get hasChanges(): boolean {
-		return this.#state.transcriptLines.some(
-			(line) => line.editState !== 'unedited' || line.edited === true
-		);
+		return editorService.hasAnyChanges(this.#state.transcriptLines);
 	}
 
 	get editedLinesCount(): number {
-		return this.#state.transcriptLines.filter(
-			(line) => line.editState !== 'unedited' || line.edited === true
-		).length;
+		return editorService.getChangedLinesCount(this.#state.transcriptLines);
 	}
 
 	// Actions
@@ -383,10 +379,8 @@ class EditorStore {
 	saveToLocalStorage() {
 		if (!browser || !this.#state.selectedEpisode) return;
 
-		// Save lines that have changes (not unedited or have edited flag)
-		const linesToSave = this.#state.transcriptLines.filter(
-			(line) => line.editState !== 'unedited' || line.edited === true
-		);
+		// Save lines that have changes - use unified change detection
+		const linesToSave = editorService.getChangedLines(this.#state.transcriptLines);
 		if (linesToSave.length === 0) return;
 
 		const autoSaveData = {

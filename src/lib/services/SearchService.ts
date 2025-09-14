@@ -1,27 +1,20 @@
 import type { SearchParams, SearchHitType, SearchStats } from '../types/search';
 import type { PaginatedResponse } from '../types/common';
 import type { ISearchRepository } from '../repositories/SearchRepository';
+import { BaseService } from './BaseService';
+import { CacheService, type CacheSourceType } from './CacheService';
 import { SearchProviderFactory } from './SearchProviderFactory';
 import { validateSearchQuery, sanitizeSearchQuery } from '../utils/validation';
 import { parseSearchQuery, buildPostgresQuery } from '../utils/queryParser';
-import { SearchError, createErrorHandler } from '../utils/errors';
-import {
-	isRandomQuery,
-	loadStaticCache,
-	loadEdgeCache,
-	generateCacheKey,
-	shouldCache,
-	createCacheData,
-	type CacheResultType
-} from '../utils/cache';
 
-export class SearchService {
+export class SearchService extends BaseService {
 	private repository: ISearchRepository | null = null;
-	private readonly handleError = createErrorHandler('SearchService');
+	private readonly cacheService: CacheService;
 
-	constructor(repository?: ISearchRepository) {
-		// Allow injection of repository for testing
+	constructor(repository?: ISearchRepository, cacheService?: CacheService) {
+		super('SearchService');
 		this.repository = repository || null;
+		this.cacheService = cacheService || new CacheService();
 	}
 
 	private async getRepository(): Promise<ISearchRepository> {
@@ -39,93 +32,38 @@ export class SearchService {
 			editedOnly?: boolean;
 		} = {}
 	): Promise<PaginatedResponse<SearchHitType> & { stats: SearchStats }> {
-		try {
-			const validation = validateSearchQuery(query);
-			if (!validation.valid) {
-				throw new SearchError(validation.error!);
-			}
+		return this.executeWithErrorHandling(
+			async () => {
+				// Validate and sanitize input
+				this.validateInput(query, validateSearchQuery, 'search query');
+				const sanitizedQuery = sanitizeSearchQuery(query);
 
-			const sanitizedQuery = sanitizeSearchQuery(query);
-
-			// Skip caching for paginated requests (offset > 0)
-			if ((options.offset || 0) === 0) {
-				const cachedResult = await this.getCachedResult(sanitizedQuery, options);
-				if (cachedResult) {
-					// Log cache hit for Vercel analytics
-					console.log(
-						JSON.stringify({
-							event: 'search_cache_hit',
-							query: sanitizedQuery,
-							source: cachedResult.source,
-							responseTime: cachedResult.stats.cacheResponseTime,
-							hits: cachedResult.hits.length,
-							filters: options.filter?.length || 0,
-							editedOnly: options.editedOnly || false,
-							timestamp: new Date().toISOString()
-						})
-					);
-
-					return {
-						items: cachedResult.hits,
-						total: cachedResult.stats.estimatedTotalHits,
-						page: 1,
-						limit: cachedResult.hits.length,
-						hasMore: cachedResult.hasMore,
-						stats: cachedResult.stats
-					};
+				// Check cache for initial requests only
+				if ((options.offset || 0) === 0) {
+					const cachedResult = await this.getCachedResult(sanitizedQuery, options);
+					if (cachedResult) {
+						return this.formatCachedResult(cachedResult, sanitizedQuery, options);
+					}
 				}
-			}
 
-			const parsedQuery = parseSearchQuery(sanitizedQuery);
-			const postgresQuery = buildPostgresQuery(parsedQuery);
+				// Execute search
+				const result = await this.executeSearch(sanitizedQuery, options);
 
-			const params: SearchParams = {
-				query: postgresQuery,
-				originalQuery: sanitizedQuery,
-				filter: options.filter || [],
+				// Cache result if appropriate
+				if ((options.offset || 0) === 0 && this.shouldCache(result)) {
+					await this.setCachedResult(sanitizedQuery, options, result);
+				}
+
+				return result;
+			},
+			'search',
+			{
+				query: query.substring(0, 50),
+				filters: options.filter?.length || 0,
 				offset: options.offset || 0,
 				editedOnly: options.editedOnly || false
-			};
-
-			const repository = await this.getRepository();
-			const result = await repository.search(params);
-
-			// Mark as non-cached result
-			result.stats = {
-				...result.stats,
-				cacheHit: false,
-				cacheSource: 'none'
-			};
-
-			// Log cache miss for Vercel analytics
-			console.log(
-				JSON.stringify({
-					event: 'search_cache_miss',
-					query: sanitizedQuery,
-					source: 'database',
-					responseTime: result.stats.processingTime,
-					hits: result.items.length,
-					filters: options.filter?.length || 0,
-					editedOnly: options.editedOnly || false,
-					offset: options.offset || 0,
-					willCache: shouldCache(sanitizedQuery, result.stats),
-					timestamp: new Date().toISOString()
-				})
-			);
-
-			// Cache the result if it's a fresh search (offset = 0) and should be cached
-			if ((options.offset || 0) === 0 && shouldCache(sanitizedQuery, result.stats)) {
-				await this.setCachedResult(sanitizedQuery, options, {
-					hits: result.items,
-					stats: result.stats,
-					hasMore: result.hasMore
-				});
 			}
-
-			return result;
-		} catch (error) {
-			throw this.handleError(error);
-		}
+		);
 	}
 
 	async searchMore(
@@ -136,41 +74,91 @@ export class SearchService {
 			editedOnly?: boolean;
 		} = {}
 	): Promise<{ hits: SearchHitType[]; hasMore: boolean; stats: SearchStats }> {
-		try {
-			const nextOffset = currentHits.length;
-			const result = await this.search(query, {
-				...options,
-				offset: nextOffset
-			});
+		return this.executeWithErrorHandling(
+			async () => {
+				const nextOffset = currentHits.length;
+				const result = await this.search(query, {
+					...options,
+					offset: nextOffset
+				});
 
-			return {
-				hits: [...currentHits, ...result.items],
-				hasMore: result.hasMore,
-				stats: result.stats
-			};
-		} catch (error) {
-			throw this.handleError(error);
-		}
+				return {
+					hits: [...currentHits, ...result.items],
+					hasMore: result.hasMore,
+					stats: result.stats
+				};
+			},
+			'searchMore',
+			{ query: query.substring(0, 50), currentHits: currentHits.length }
+		);
+	}
+
+	private async executeSearch(
+		sanitizedQuery: string,
+		options: { filter?: string[]; offset?: number; editedOnly?: boolean }
+	): Promise<PaginatedResponse<SearchHitType> & { stats: SearchStats }> {
+		const parsedQuery = parseSearchQuery(sanitizedQuery);
+		const postgresQuery = buildPostgresQuery(parsedQuery);
+
+		const params: SearchParams = {
+			query: postgresQuery,
+			originalQuery: sanitizedQuery,
+			filter: options.filter || [],
+			offset: options.offset || 0,
+			editedOnly: options.editedOnly || false
+		};
+
+		const repository = await this.getRepository();
+		const result = await repository.search(params);
+
+		// Mark as non-cached result
+		result.stats = {
+			...result.stats,
+			cacheHit: false,
+			cacheSource: 'none'
+		};
+
+		return result;
 	}
 
 	private async getCachedResult(
 		query: string,
 		options: { filter?: string[]; editedOnly?: boolean }
-	): Promise<CacheResultType | null> {
+	): Promise<{
+		hits: SearchHitType[];
+		stats: SearchStats;
+		hasMore: boolean;
+		source: CacheSourceType;
+	} | null> {
 		try {
-			// First try static cache for random queries
-			if (isRandomQuery(query) && !options.filter?.length && !options.editedOnly) {
-				const staticResult = await loadStaticCache(query);
-				if (staticResult) {
-					return staticResult;
-				}
+			const cacheKey = this.cacheService.generateKey('search', {
+				query,
+				filters: options.filter || [],
+				editedOnly: options.editedOnly || false
+			});
+
+			// Determine cache sources to check
+			const sources: CacheSourceType[] =
+				this.isRandomQuery(query) && !options.filter?.length && !options.editedOnly
+					? ['static', 'edge', 'memory']
+					: ['edge', 'memory'];
+
+			const cached = await this.cacheService.get<{
+				hits: SearchHitType[];
+				stats: SearchStats;
+				hasMore: boolean;
+			}>(cacheKey, sources);
+
+			if (cached) {
+				return {
+					...cached.value,
+					source: cached.source
+				};
 			}
 
-			// Try edge cache for other queries
-			const cacheKey = generateCacheKey(query, options.filter, options.editedOnly);
-			return await loadEdgeCache(cacheKey);
+			return null;
 		} catch (error) {
-			console.warn('Failed to load cached result:', error);
+			this.log('warn', 'Cache retrieval failed', { error });
 			return null;
 		}
 	}
@@ -178,24 +166,79 @@ export class SearchService {
 	private async setCachedResult(
 		query: string,
 		options: { filter?: string[]; editedOnly?: boolean },
-		result: { hits: SearchHitType[]; stats: SearchStats; hasMore: boolean }
+		result: PaginatedResponse<SearchHitType> & { stats: SearchStats }
 	): Promise<void> {
 		try {
-			// Only cache to Edge Config (don't duplicate random queries in static cache)
-			if (isRandomQuery(query)) {
-				return; // Random queries are handled by static cache
+			// Don't cache random queries (they're handled by static cache)
+			if (this.isRandomQuery(query)) {
+				return;
 			}
 
-			const cacheKey = generateCacheKey(query, options.filter, options.editedOnly);
-			const cacheData = createCacheData(query, result);
+			const cacheKey = this.cacheService.generateKey('search', {
+				query,
+				filters: options.filter || [],
+				editedOnly: options.editedOnly || false
+			});
 
-			// Note: Setting to Edge Config requires server-side implementation
-			// This is a placeholder for the actual Edge Config set operation
-			// In practice, you'd need to implement an API endpoint to set cache values
-			console.log(`Would cache result for key: ${cacheKey}`, cacheData);
+			const cacheData = {
+				hits: result.items,
+				stats: result.stats,
+				hasMore: result.hasMore
+			};
+
+			await this.cacheService.set(cacheKey, cacheData, {
+				ttlMs: 300000, // 5 minutes
+				sources: ['memory', 'edge']
+			});
 		} catch (error) {
-			console.warn('Failed to cache result:', error);
+			this.log('warn', 'Cache storage failed', { error });
 		}
+	}
+
+	private formatCachedResult(
+		cachedResult: {
+			hits: SearchHitType[];
+			stats: SearchStats;
+			hasMore: boolean;
+			source: CacheSourceType;
+		},
+		query: string,
+		options: { filter?: string[]; editedOnly?: boolean }
+	): PaginatedResponse<SearchHitType> & { stats: SearchStats } {
+		// Update stats to indicate cache hit
+		const stats: SearchStats = {
+			...cachedResult.stats,
+			cacheHit: true,
+			cacheSource: cachedResult.source as 'static' | 'edge'
+		};
+
+		this.log('info', 'Search cache hit', {
+			query,
+			source: cachedResult.source,
+			hits: cachedResult.hits.length,
+			filters: options.filter?.length || 0,
+			editedOnly: options.editedOnly || false
+		});
+
+		return {
+			items: cachedResult.hits,
+			total: stats.estimatedTotalHits,
+			page: 1,
+			limit: cachedResult.hits.length,
+			hasMore: cachedResult.hasMore,
+			stats
+		};
+	}
+
+	private shouldCache(result: PaginatedResponse<SearchHitType> & { stats: SearchStats }): boolean {
+		// Cache if we have results and processing time is reasonable
+		return result.items.length > 0 && result.stats.processingTime < 5000;
+	}
+
+	private isRandomQuery(query: string): boolean {
+		const randomWords = ['random', 'surprise', 'any', 'anything'];
+		const normalizedQuery = query.toLowerCase().trim();
+		return randomWords.includes(normalizedQuery);
 	}
 }
 

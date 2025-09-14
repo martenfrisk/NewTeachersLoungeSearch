@@ -47,8 +47,8 @@
 </svelte:head>
 
 <div class="min-h-screen">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-		<h1 class="text-3xl text-center font-bold text-gray-900 sm:text-4xl">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+		<h1 class="text-2xl text-center mb-4 md:mb-8 font-bold text-gray-900 sm:text-4xl">
 			Teachers' Lounge Episode Guide
 		</h1>
 

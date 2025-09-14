@@ -4,12 +4,15 @@
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 	import { fly } from 'svelte/transition';
-	import UpArrow from 'lib/icons/UpArrow.svelte';
+	import Icon from '$lib/components/ui/Icon.svelte';
 	import { audioStore } from '$lib/stores/audio';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 	import AuthModal from 'lib/components/auth/AuthModal.svelte';
 	import { page } from '$app/stores';
 	import { appStore, authModalOpen } from '$lib/stores/app';
+	import { userPreferencesStore } from '$lib/stores/userPreferences.svelte';
+	import { onMount } from 'svelte';
+
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -29,6 +32,11 @@
 
 	// Dynamic import for audio player to reduce initial bundle size
 	let AudioPlayer: import('svelte').Component | null = $state(null);
+
+	// Initialize user preferences and theme on mount
+	onMount(() => {
+		userPreferencesStore.initializeTheme();
+	});
 
 	$effect(() => {
 		if (showAudioPlayer && !AudioPlayer) {
@@ -66,17 +74,16 @@
 	<main
 		class:container={!$page.route.id?.startsWith('/editor')}
 		class:mx-auto={!$page.route.id?.startsWith('/editor')}
-		class:px-4={!$page.route.id?.startsWith('/editor')}
-		class="py-6 mb-24"
+		class="py-6"
 	>
 		{@render children?.()}
 		{#if isButtonVisible}
 			<button
 				transition:fly={{ y: 100, duration: 400 }}
 				onclick={() => element?.scrollIntoView()}
-				class="bottom-52 rounded-full size-8 md:size-12 z-20 bg-blue-700 right-2 md:right-4 fixed text-white select-none"
+				class="bottom-52 rounded-full size-8 md:size-12 z-20 bg-blue-700 right-2 md:right-4 fixed text-white select-none flex items-center justify-center"
 			>
-				<UpArrow />
+				<Icon name="up-arrow" size={20} color="white" aria-label="Scroll to top" />
 			</button>
 		{/if}
 	</main>

@@ -3,6 +3,7 @@ import { audioStore } from '../stores/audio';
 import epList from '../../assets/episodes6.json';
 import { DEFAULT_EPISODE_START_TIME } from '../constants';
 import { titlesMatch } from '../utils/titleNormalization';
+import { userPreferencesStore } from '../stores/userPreferences.svelte';
 
 interface RSSEpisode {
 	title: string;
@@ -92,7 +93,7 @@ export class AudioService {
 		}
 	}
 
-	async playTimestamp(timestamp: AudioTimestamp): Promise<void> {
+	async playTimestamp(timestamp: AudioTimestamp, autoplay?: boolean): Promise<void> {
 		const episode = await this.findEpisode(timestamp.episode);
 		if (!episode?.audioUrl) {
 			const errorMessage = `Audio unavailable: Could not find audio file for "${timestamp.episode}" in RSS feed`;
@@ -106,10 +107,14 @@ export class AudioService {
 		audioStore.setTimestamp(timestamp);
 		// audioStore.setEpisodeStartingTime(startingTime);
 		audioStore.setEpisodeStartingTime(0); // Use 0 instead of startingTime
-		this.loadAudio(episode.audioUrl, timestamp.timestamp);
+
+		// Check autoplay preference - use parameter if provided, otherwise check user preferences
+		const shouldAutoplay =
+			autoplay !== undefined ? autoplay : userPreferencesStore.isAutoplayEnabled;
+		this.loadAudio(episode.audioUrl, timestamp.timestamp, shouldAutoplay);
 	}
 
-	private loadAudio(url: string, timestamp: string): void {
+	private loadAudio(url: string, timestamp: string, autoplay: boolean = true): void {
 		if (!this.audioElement) return;
 
 		// const startingTime = this.getEpisodeStartingTime(episodeTitle);
@@ -121,15 +126,22 @@ export class AudioService {
 			audioStore.setUrl(url);
 			this.audioElement.load();
 		}
+
 		const setTimestamp = () => {
 			if (this.audioElement && this.audioElement.readyState >= 1) {
 				this.audioElement.currentTime = targetTime;
+				if (autoplay) {
+					this.play();
+				}
 			} else if (this.audioElement) {
 				this.audioElement.addEventListener(
 					'loadedmetadata',
 					() => {
 						if (this.audioElement) {
 							this.audioElement.currentTime = targetTime;
+							if (autoplay) {
+								this.play();
+							}
 						}
 					},
 					{ once: true }

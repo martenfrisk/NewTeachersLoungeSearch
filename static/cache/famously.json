@@ -1,7 +1,7 @@
 {
   "query": "famously",
-  "timestamp": 1757672810835,
-  "expiresAt": 1758277610835,
+  "timestamp": 1757845532915,
+  "expiresAt": 1758450332915,
   "result": {
     "hits": [
       {
@@ -186,7 +186,7 @@
       }
     ],
     "stats": {
-      "estimatedTotalHits": 303,
+      "estimatedTotalHits": 302,
       "processingTime": 0,
       "facets": [
         {
@@ -210,7 +210,7 @@
             },
             {
               "ep": "s04",
-              "hits": 23
+              "hits": 22
             },
             {
               "ep": "s02",
@@ -254,11 +254,11 @@
               "hits": 7
             },
             {
-              "ep": "s09e31",
+              "ep": "mini-31",
               "hits": 6
             },
             {
-              "ep": "mini-31",
+              "ep": "s09e31",
               "hits": 6
             },
             {

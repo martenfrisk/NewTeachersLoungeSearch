@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { searchState } from '$lib/states/SearchState.svelte';
 	import { filtersState } from '$lib/states/FiltersState.svelte';
+	import { searchHistoryStore } from '$lib/stores/searchHistory.svelte';
 	import SearchInput from './SearchInput.svelte';
 	import SearchFilters from './SearchFilters.svelte';
 	import SearchResults from './SearchResults.svelte';
@@ -35,7 +36,17 @@
 			searchState.query = query;
 			inputValue = query;
 		}
-		await searchState.search(searchState.query, filtersState.asSearchFilters);
+
+		const searchQuery = searchState.query.trim();
+		if (searchQuery) {
+			await searchState.search(searchQuery, filtersState.asSearchFilters);
+
+			// Add to search history with results count
+			searchHistoryStore.addSearch(searchQuery, searchState.stats?.estimatedTotalHits || 0, {
+				seasons: filtersState.seasons.length > 0 ? [...filtersState.seasons] : undefined,
+				episodes: filtersState.episodes.length > 0 ? [...filtersState.episodes] : undefined
+			});
+		}
 		updateURL();
 	}
 
@@ -118,7 +129,7 @@
 	});
 </script>
 
-<div class="w-full max-w-6xl mx-auto space-y-6">
+<div class="w-full px-4 mb-24 max-w-6xl mx-auto space-y-6">
 	<SearchInput
 		bind:query={inputValue}
 		placeholder="Search podcast transcripts..."
