@@ -2,6 +2,8 @@
 	import AuthModal from '$lib/components/auth/AuthModal.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import type { Pathname } from '$app/types';
 	import { user } from '$lib/stores/auth';
 	import { page } from '$app/stores';
 
@@ -9,7 +11,7 @@
 	let redirectTo = $state<string | null>(null);
 
 	const handleClose = () => {
-		goto('/');
+		goto(resolve('/'));
 	};
 
 	onMount(() => {
@@ -18,8 +20,8 @@
 
 		// If user is already signed in, redirect to intended destination or home
 		if ($user) {
-			const destination = redirectTo || '/';
-			goto(destination);
+			const destination = (redirectTo || '/') as Pathname;
+			goto(resolve(destination));
 		}
 	});
 </script>

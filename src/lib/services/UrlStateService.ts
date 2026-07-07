@@ -1,7 +1,14 @@
 import { BaseService } from './BaseService';
 import { goto } from '$app/navigation';
+import { resolve } from '$app/paths';
 import { browser } from '$app/environment';
 import { UrlUtils } from '../utils/index';
+
+// resolve()'s overloads are keyed per literal route, so they reject a
+// pathname that's only known at runtime (e.g. "wherever the user currently
+// is"). The argument (not the resolve() call itself) is cast to bypass
+// overload matching, so eslint's svelte/no-navigation-without-resolve still
+// sees a direct call to resolve().
 
 export interface SearchUrlState {
 	query: string;
@@ -73,7 +80,11 @@ export class UrlStateService extends BaseService {
 
 				// Only navigate if URL actually changed
 				if (newUrl !== currentUrl.pathname + currentUrl.search) {
-					await goto(newUrl, { ...this.DEFAULT_OPTIONS, ...options });
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any
+					await goto(resolve(newUrl as any), {
+						...this.DEFAULT_OPTIONS,
+						...options
+					});
 				}
 			},
 			'updateSearchUrl',
@@ -90,7 +101,11 @@ export class UrlStateService extends BaseService {
 				if (!browser) return;
 
 				const currentUrl = new URL(window.location.href);
-				await goto(currentUrl.pathname, { ...this.DEFAULT_OPTIONS, ...options });
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				await goto(resolve(currentUrl.pathname as any), {
+					...this.DEFAULT_OPTIONS,
+					...options
+				});
 			},
 			'clearSearchUrl',
 			{ options }
@@ -141,7 +156,8 @@ export class UrlStateService extends BaseService {
 				if (context?.searchQuery) params.q = context.searchQuery;
 
 				const queryString = UrlUtils.buildQueryString(params);
-				const url = `/ep/${episodeId}${queryString ? `?${queryString}` : ''}`;
+				const routeId = queryString ? (`/ep/[id]?${queryString}` as const) : ('/ep/[id]' as const);
+				const url = resolve(routeId, { id: episodeId });
 
 				await goto(url, { ...this.DEFAULT_OPTIONS, ...options });
 			},

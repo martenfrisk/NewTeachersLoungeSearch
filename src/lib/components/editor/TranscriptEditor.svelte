@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import EpisodeSelector from './EpisodeSelector.svelte';
 	import EditorHeader from './EditorHeader.svelte';
 	import EditorSidebar from './EditorSidebar.svelte';
@@ -177,12 +178,12 @@
 		if (episodeId && episodeId !== selectedEpisode) {
 			// Navigate to the episode-specific URL - this will trigger server-side data loading
 			if (browser) {
-				goto(`/editor/${episodeId}`);
+				goto(resolve('/editor/[id]', { id: episodeId }));
 			}
 		} else if (!episodeId) {
 			// Navigate back to main editor page
 			if (browser) {
-				goto('/editor');
+				goto(resolve('/editor'));
 			}
 			editorStore.setSelectedEpisode(null);
 		}

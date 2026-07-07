@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { authHelpers } from '$lib/stores/auth';
 	import { supabase } from '$lib/supabase';
 	import LoadingSpinner from '$lib/components/ui/LoadingSpinner.svelte';
@@ -30,7 +31,7 @@
 				authenticated = false;
 				pageLoading = false;
 				setTimeout(() => {
-					goto('/auth/reset-password');
+					goto(resolve('/auth/reset-password'));
 				}, 3000);
 			}
 
@@ -41,7 +42,7 @@
 				if (event === 'SIGNED_OUT' || !newSession) {
 					authenticated = false;
 					setTimeout(() => {
-						goto('/auth/reset-password');
+						goto(resolve('/auth/reset-password'));
 					}, 1000);
 				}
 			});
@@ -84,7 +85,7 @@
 
 			// Redirect to home page after success
 			setTimeout(() => {
-				goto('/');
+				goto(resolve('/'));
 			}, 3000);
 		} catch (err) {
 			error = err instanceof Error ? err.message : 'Failed to update password';
@@ -214,7 +215,9 @@
 
 			<div class="text-center">
 				<p class="text-sm text-gray-600">
-					<a href="/" class="font-medium text-blue-600 hover:text-blue-500"> Back to Home </a>
+					<a href={resolve('/')} class="font-medium text-blue-600 hover:text-blue-500">
+						Back to Home
+					</a>
 				</p>
 			</div>
 		{/if}

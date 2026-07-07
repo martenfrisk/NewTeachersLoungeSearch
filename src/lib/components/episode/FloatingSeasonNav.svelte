@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { getSeasonShortName } from '$lib/constants';
+
 	interface Season {
 		id: string;
 		name: string;
@@ -18,28 +20,7 @@
 	let isScrolling = $state(false);
 	let scrollTimeout: ReturnType<typeof setTimeout> | undefined = $state();
 
-	const getSeasonDisplayName = (id: string): string => {
-		const seasonMap: Record<string, string> = {
-			s01: 'S1',
-			s02: 'S2',
-			s03: 'S3',
-			s04: 'S4',
-			s05: 'S5',
-			s06: 'S6',
-			s07: 'S7',
-			s08: 'S8',
-			s09: 'S9',
-			s10: 'S10',
-			s11: 'S11',
-			mini: 'Mini',
-			exit42: 'Exit42',
-			Peecast: 'Peecast',
-			holidays: 'Holiday',
-			jesus: 'Jesus',
-			lastresort: 'Resort'
-		};
-		return seasonMap[id] || id;
-	};
+	const getSeasonDisplayName = getSeasonShortName;
 
 	const getCurrentSeasonName = (): string => {
 		if (!currentSeason) return 'All Seasons';

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Season } from '$lib/types/episode';
+	import { getSeasonShortName } from '$lib/constants';
 
 	interface Props {
 		seasons: Season[];
@@ -17,28 +18,7 @@
 
 	let showMobileNav = $state(false);
 
-	const getSeasonDisplayName = (id: string): string => {
-		const seasonMap: Record<string, string> = {
-			s01: 'S1',
-			s02: 'S2',
-			s03: 'S3',
-			s04: 'S4',
-			s05: 'S5',
-			s06: 'S6',
-			s07: 'S7',
-			s08: 'S8',
-			s09: 'S9',
-			s10: 'S10',
-			s11: 'S11',
-			mini: 'Minis',
-			exit42: 'Exit 42',
-			Peecast: 'Peecast',
-			holidays: 'Holidays',
-			jesus: 'Jesus',
-			lastresort: 'Last Resort'
-		};
-		return seasonMap[id] || id;
-	};
+	const getSeasonDisplayName = getSeasonShortName;
 
 	const scrollToSeason = (seasonId: string) => {
 		const element = document.getElementById(`season-${seasonId}`);

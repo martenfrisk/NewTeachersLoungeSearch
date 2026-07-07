@@ -1,7 +1,13 @@
 // Search context for eliminating prop drilling and centralizing search state
 import { getContext, setContext } from 'svelte';
 import { goto } from '$app/navigation';
+import { resolve } from '$app/paths';
 import type { SearchHitType, SearchStats } from '$lib/types/search';
+
+// resolve()'s overloads are keyed per literal route, so they reject the
+// current page's pathname, which is only known at runtime. The argument
+// (not the resolve() call itself) is cast to bypass overload matching, so
+// eslint's svelte/no-navigation-without-resolve still sees a direct call.
 
 interface SearchFiltersType {
 	seasons?: string[];
@@ -123,8 +129,11 @@ export function createSearchContext(): SearchContextType {
 		}
 
 		// Handle other URL params from filters context
-		const url = params.toString() ? `?${params.toString()}` : '';
-		goto(url, {
+		const url = params.toString()
+			? `${window.location.pathname}?${params.toString()}`
+			: window.location.pathname;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		goto(resolve(url as any), {
 			keepFocus: true,
 			noScroll: true,
 			replaceState: true

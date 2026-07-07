@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { authHelpers } from '$lib/stores/auth';
 	import LoadingSpinner from '$lib/components/ui/LoadingSpinner.svelte';
+	import { resolve } from '$app/paths';
 
 	let loading = $state(false);
 	let error = $state<string | null>(null);
@@ -121,7 +122,9 @@
 			<div class="text-center">
 				<p class="text-sm text-gray-600">
 					Remember your password?
-					<a href="/" class="font-medium text-blue-600 hover:text-blue-500"> Back to Sign In </a>
+					<a href={resolve('/')} class="font-medium text-blue-600 hover:text-blue-500">
+						Back to Sign In
+					</a>
 				</p>
 			</div>
 		{/if}

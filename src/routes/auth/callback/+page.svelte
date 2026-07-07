@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import type { Pathname } from '$app/types';
 	import { supabase } from '$lib/supabase';
 	import { authHelpers } from '$lib/stores/auth';
 	import LoadingSpinner from '$lib/components/ui/LoadingSpinner.svelte';
@@ -22,13 +24,13 @@
 				// User successfully authenticated
 				// Check for pending redirect
 				const pendingRedirect = authHelpers.consumePendingRedirect();
-				const destination = pendingRedirect || '/';
+				const destination = (pendingRedirect || '/') as Pathname;
 
 				console.log('Redirecting to:', destination);
-				await goto(destination, { replaceState: true });
+				await goto(resolve(destination), { replaceState: true });
 			} else {
 				// No session found, redirect to home
-				await goto('/', { replaceState: true });
+				await goto(resolve('/'), { replaceState: true });
 			}
 		} catch (err) {
 			console.error('Auth callback error:', err);
@@ -36,7 +38,7 @@
 
 			// Redirect to home after a delay
 			setTimeout(() => {
-				goto('/', { replaceState: true });
+				goto(resolve('/'), { replaceState: true });
 			}, 3000);
 		} finally {
 			loading = false;

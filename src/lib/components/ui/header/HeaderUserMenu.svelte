@@ -4,6 +4,7 @@
 	import { componentPatterns } from '$lib/design/tokens';
 	import { fly } from 'svelte/transition';
 	import { ariaAttributes } from '$lib/utils/accessibility';
+	import { resolve } from '$app/paths';
 
 	/**
 	 * User menu component with authentication button or user dropdown
@@ -68,7 +69,7 @@
 					transition:fly={{ y: -10, duration: 150 }}
 				>
 					<a
-						href="/profile"
+						href={resolve('/profile')}
 						class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
 						role="menuitem"
 						onclick={() => (showDropdown = false)}
@@ -79,7 +80,7 @@
 						</div>
 					</a>
 					<a
-						href="/editor"
+						href={resolve('/editor')}
 						class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
 						role="menuitem"
 						onclick={() => (showDropdown = false)}

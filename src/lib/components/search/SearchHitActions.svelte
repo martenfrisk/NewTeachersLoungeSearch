@@ -3,6 +3,7 @@
 	import { audioService } from '../../services/AudioService';
 	import { epName } from '../../utils';
 	import Tooltip from '../Tooltip.svelte';
+	import { resolve } from '$app/paths';
 
 	interface Props {
 		hit: SearchHitType;
@@ -37,7 +38,9 @@
 			{/snippet}
 			{#snippet content()}
 				<a
-					href="/ep/{hitEpisode?.ep}#t-{hit.time.replaceAll(':', '')}"
+					href={resolve(`/ep/[id]#t-${hit.time.replaceAll(':', '')}`, {
+						id: hitEpisode?.ep ?? ''
+					})}
 					class="inline-flex items-center gap-1.5 px-2 py-1 text-xs font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-md hover:bg-blue-100 transition-colors"
 				>
 					<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

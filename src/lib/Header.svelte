@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { page } from '$app/stores';
 	import { user, authHelpers } from '$lib/stores/auth';
 	import { appStore } from '$lib/stores/app';
@@ -52,7 +53,7 @@
 		try {
 			showUserDropdown = false;
 			await authHelpers.signOut();
-			goto('/');
+			goto(resolve('/'));
 		} catch (error) {
 			console.error('Sign out error:', error);
 		}

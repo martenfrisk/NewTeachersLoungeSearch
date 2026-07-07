@@ -8,6 +8,7 @@
 	import StarIcon from 'lib/assets/icons/StarIcon.svelte';
 
 	import { type Component } from 'svelte';
+	import { getSeasonDisplayName } from '$lib/constants';
 
 	interface Episode {
 		ep: string;
@@ -148,26 +149,7 @@
 
 	const seasonDisplayName = $derived.by(() => {
 		if (!selectedSeason) return 'All Episodes';
-		const seasonMap: Record<string, string> = {
-			s01: 'Season 1',
-			s02: 'Season 2',
-			s03: 'Season 3',
-			s04: 'Season 4',
-			s05: 'Season 5',
-			s06: 'Season 6',
-			s07: 'Season 7',
-			s08: 'Season 8',
-			s09: 'Season 9',
-			s10: 'Season 10',
-			s11: 'Season 11',
-			mini: 'Mini Episodes',
-			exit42: 'Exit 42',
-			Peecast: 'Peecast',
-			holidays: 'Holiday Specials',
-			jesus: 'Jesus Chronicles',
-			lastresort: 'Last Resort'
-		};
-		return seasonMap[selectedSeason] || selectedSeason;
+		return getSeasonDisplayName(selectedSeason);
 	});
 </script>
 

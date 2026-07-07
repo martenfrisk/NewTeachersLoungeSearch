@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Coffee from '$lib/components/Coffee.svelte';
 	import type { HeaderLogoPropsType } from '$lib/types/header';
+	import { resolve } from '$app/paths';
 
 	/**
 	 * Header logo component with coffee icon and site branding
@@ -13,7 +14,7 @@
 	<Coffee />
 	<div class="flex flex-col">
 		<a
-			href="/"
+			href={resolve('/')}
 			class="text-white font-bold text-lg hover:text-blue-100 active:underline transition-colors"
 		>
 			Seekers&apos; Lounge

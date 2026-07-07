@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
+
 	interface Props {
 		url: string;
 		ep: string;
@@ -12,10 +14,10 @@
 
 <div class="w-full px-6 py-4 flex mb-4 rounded-md border border-blue-300 shadow-lg flex-wrap">
 	<div class="w-full items-center md:items-end flex">
-		<a href={`/ep/${ep}`} class="text-blue-700 hover:underline font-semibold">
+		<a href={resolve('/ep/[id]', { id: ep })} class="text-blue-700 hover:underline font-semibold">
 			{ep}
 		</a>
-		<a href={`/ep/${ep}`} class="text-blue-800 hover:underline text-xl pl-4">
+		<a href={resolve('/ep/[id]', { id: ep })} class="text-blue-800 hover:underline text-xl pl-4">
 			{title}
 		</a>
 	</div>
@@ -23,6 +25,7 @@
 		{#if url}
 			<a
 				href={url}
+				rel="external"
 				class="text-blue-900 border-b border-dotted border-blue-900 hover:text-blue-700 text-md"
 			>
 				Listen
