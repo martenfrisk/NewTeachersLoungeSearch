@@ -24,9 +24,16 @@ export async function load({ params, fetch }): Promise<EpisodePageData> {
 	}
 
 	try {
-		// Always fetch live data from Supabase for server-side rendering
+		// Always fetch live data from Supabase for server-side rendering.
+		// Transcript and history stats are independent, so fetch them
+		// concurrently instead of adding their round-trips together -
+		// getEpisodeHistoryStats never throws (it catches internally and
+		// returns null), so this doesn't change error-handling behavior.
 		const repository = new SupabaseEditorRepository();
-		const transcriptLines = await repository.fetchEpisodeTranscript(id);
+		const [transcriptLines, historyStats] = await Promise.all([
+			repository.fetchEpisodeTranscript(id),
+			historyService.getEpisodeHistoryStats(id, fetch)
+		]);
 
 		if (!transcriptLines || transcriptLines.length === 0) {
 			error(404, `Transcript not found for episode ${id}`);
@@ -54,9 +61,6 @@ export async function load({ params, fetch }): Promise<EpisodePageData> {
 
 		// Calculate transcript stats from live data
 		const transcriptStats = processor.calculateTranscriptStats(id, validatedTranscript);
-
-		// Fetch history stats on the server with SvelteKit fetch
-		const historyStats = await historyService.getEpisodeHistoryStats(id, fetch);
 
 		return {
 			episode: id,
