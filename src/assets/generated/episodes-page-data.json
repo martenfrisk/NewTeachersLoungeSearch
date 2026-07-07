@@ -3035,7 +3035,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 1130
     },
     {
       "ep": "s12e02",
@@ -3049,7 +3049,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 1203
     },
     {
       "ep": "s12e03",
@@ -3063,7 +3063,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 1119
     },
     {
       "ep": "s12e04",
@@ -3077,7 +3077,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 1165
     },
     {
       "ep": "s12e05",
@@ -3091,7 +3091,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 827
     },
     {
       "ep": "s12e06",
@@ -3105,7 +3105,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 969
     },
     {
       "ep": "s12e07",
@@ -3119,7 +3119,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 996
     },
     {
       "ep": "s13e01",
@@ -3133,7 +3133,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 955
     },
     {
       "ep": "s13e02",
@@ -3147,7 +3147,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 922
     },
     {
       "ep": "s13e03",
@@ -3161,7 +3161,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 928
     },
     {
       "ep": "s13e04",
@@ -3175,7 +3175,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 987
     },
     {
       "ep": "s13e05",
@@ -3189,7 +3189,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 876
     },
     {
       "ep": "s13e06",
@@ -3203,7 +3203,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 995
     },
     {
       "ep": "s13e07",
@@ -3217,7 +3217,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 1072
     },
     {
       "ep": "exit43-1",
@@ -3231,7 +3231,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 256
     },
     {
       "ep": "exit43-2",
@@ -3245,7 +3245,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 274
     },
     {
       "ep": "exit43-3",
@@ -3259,7 +3259,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 291
     },
     {
       "ep": "exit43-4",
@@ -3273,7 +3273,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 237
     },
     {
       "ep": "exit43-5",
@@ -3287,7 +3287,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 339
     },
     {
       "ep": "exit43-6",
@@ -3301,7 +3301,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 267
     },
     {
       "ep": "exit43-7",
@@ -3313,9 +3313,9 @@
       "hasAudio": false,
       "isFullyEdited": false,
       "isMostlyEdited": false,
-      "editedPercentage": 0,
-      "editedLines": 0,
-      "totalLines": 0
+      "editedPercentage": 1,
+      "editedLines": 1,
+      "totalLines": 197
     },
     {
       "ep": "exit43-8",
@@ -3329,7 +3329,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 290
     },
     {
       "ep": "exit43-9",
@@ -3343,7 +3343,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 303
     },
     {
       "ep": "exit43-10",
@@ -3357,7 +3357,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 301
     },
     {
       "ep": "exit43-11",
@@ -3370,8 +3370,8 @@
       "isFullyEdited": false,
       "isMostlyEdited": false,
       "editedPercentage": 0,
-      "editedLines": 0,
-      "totalLines": 0
+      "editedLines": 1,
+      "totalLines": 358
     },
     {
       "ep": "exit43-12",
@@ -3385,7 +3385,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 336
     },
     {
       "ep": "exit43-13",
@@ -3399,7 +3399,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 264
     },
     {
       "ep": "exit43-14",
@@ -3413,7 +3413,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 300
     },
     {
       "ep": "exit43-15",
@@ -3427,7 +3427,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 395
     },
     {
       "ep": "exit43-16",
@@ -3441,7 +3441,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 274
     },
     {
       "ep": "exit43-17",
@@ -3455,7 +3455,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 258
     },
     {
       "ep": "exit43-18",
@@ -3469,7 +3469,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 252
     },
     {
       "ep": "exit43-19",
@@ -3483,7 +3483,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 298
     },
     {
       "ep": "exit43-20",
@@ -3497,7 +3497,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 319
     },
     {
       "ep": "countyfair-1",
@@ -3511,7 +3511,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 178
     },
     {
       "ep": "countyfair-2",
@@ -3525,7 +3525,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 260
     },
     {
       "ep": "countyfair-3",
@@ -3539,7 +3539,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 263
     },
     {
       "ep": "countyfair-4",
@@ -3553,7 +3553,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 310
     },
     {
       "ep": "countyfair-5",
@@ -3567,7 +3567,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 256
     },
     {
       "ep": "countyfair-6",
@@ -3581,7 +3581,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 199
     },
     {
       "ep": "countyfair-7",
@@ -3595,7 +3595,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 320
     },
     {
       "ep": "countyfair-8",
@@ -3609,7 +3609,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 291
     },
     {
       "ep": "countyfair-9",
@@ -3623,7 +3623,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 342
     },
     {
       "ep": "countyfair-10",
@@ -3637,7 +3637,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 292
     },
     {
       "ep": "mainstreet-1",
@@ -3651,7 +3651,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 358
     },
     {
       "ep": "mainstreet-2",
@@ -3665,7 +3665,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 329
     },
     {
       "ep": "mainstreet-3",
@@ -3679,7 +3679,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 387
     },
     {
       "ep": "mainstreet-4",
@@ -3693,7 +3693,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 432
     },
     {
       "ep": "mainstreet-5",
@@ -3707,7 +3707,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 281
     },
     {
       "ep": "mainstreet-6",
@@ -3721,7 +3721,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 282
     },
     {
       "ep": "mainstreet-7",
@@ -3735,7 +3735,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 262
     },
     {
       "ep": "mainstreet-8",
@@ -3749,7 +3749,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 248
     },
     {
       "ep": "mainstreet-9",
@@ -3763,7 +3763,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 206
     },
     {
       "ep": "mainstreet-10",
@@ -3777,7 +3777,7 @@
       "isMostlyEdited": false,
       "editedPercentage": 0,
       "editedLines": 0,
-      "totalLines": 0
+      "totalLines": 347
     }
   ],
   "seasonsData": [
@@ -5444,7 +5444,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 1130
         },
         {
           "ep": "s12e02",
@@ -5458,7 +5458,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 1203
         },
         {
           "ep": "s12e03",
@@ -5472,7 +5472,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 1119
         },
         {
           "ep": "s12e04",
@@ -5486,7 +5486,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 1165
         },
         {
           "ep": "s12e05",
@@ -5500,7 +5500,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 827
         },
         {
           "ep": "s12e06",
@@ -5514,7 +5514,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 969
         },
         {
           "ep": "s12e07",
@@ -5528,7 +5528,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 996
         }
       ]
     },
@@ -5549,7 +5549,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 955
         },
         {
           "ep": "s13e02",
@@ -5563,7 +5563,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 922
         },
         {
           "ep": "s13e03",
@@ -5577,7 +5577,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 928
         },
         {
           "ep": "s13e04",
@@ -5591,7 +5591,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 987
         },
         {
           "ep": "s13e05",
@@ -5605,7 +5605,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 876
         },
         {
           "ep": "s13e06",
@@ -5619,7 +5619,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 995
         },
         {
           "ep": "s13e07",
@@ -5633,7 +5633,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 1072
         }
       ]
     },
@@ -7150,7 +7150,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 256
         },
         {
           "ep": "exit43-2",
@@ -7164,7 +7164,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 274
         },
         {
           "ep": "exit43-3",
@@ -7178,7 +7178,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 291
         },
         {
           "ep": "exit43-4",
@@ -7192,7 +7192,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 237
         },
         {
           "ep": "exit43-5",
@@ -7206,7 +7206,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 339
         },
         {
           "ep": "exit43-6",
@@ -7220,7 +7220,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 267
         },
         {
           "ep": "exit43-7",
@@ -7232,9 +7232,9 @@
           "hasAudio": false,
           "isFullyEdited": false,
           "isMostlyEdited": false,
-          "editedPercentage": 0,
-          "editedLines": 0,
-          "totalLines": 0
+          "editedPercentage": 1,
+          "editedLines": 1,
+          "totalLines": 197
         },
         {
           "ep": "exit43-8",
@@ -7248,7 +7248,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 290
         },
         {
           "ep": "exit43-9",
@@ -7262,7 +7262,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 303
         },
         {
           "ep": "exit43-10",
@@ -7276,7 +7276,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 301
         },
         {
           "ep": "exit43-11",
@@ -7289,8 +7289,8 @@
           "isFullyEdited": false,
           "isMostlyEdited": false,
           "editedPercentage": 0,
-          "editedLines": 0,
-          "totalLines": 0
+          "editedLines": 1,
+          "totalLines": 358
         },
         {
           "ep": "exit43-12",
@@ -7304,7 +7304,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 336
         },
         {
           "ep": "exit43-13",
@@ -7318,7 +7318,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 264
         },
         {
           "ep": "exit43-14",
@@ -7332,7 +7332,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 300
         },
         {
           "ep": "exit43-15",
@@ -7346,7 +7346,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 395
         },
         {
           "ep": "exit43-16",
@@ -7360,7 +7360,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 274
         },
         {
           "ep": "exit43-17",
@@ -7374,7 +7374,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 258
         },
         {
           "ep": "exit43-18",
@@ -7388,7 +7388,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 252
         },
         {
           "ep": "exit43-19",
@@ -7402,7 +7402,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 298
         },
         {
           "ep": "exit43-20",
@@ -7416,7 +7416,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 319
         }
       ]
     },
@@ -7437,7 +7437,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 178
         },
         {
           "ep": "countyfair-2",
@@ -7451,7 +7451,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 260
         },
         {
           "ep": "countyfair-3",
@@ -7465,7 +7465,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 263
         },
         {
           "ep": "countyfair-4",
@@ -7479,7 +7479,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 310
         },
         {
           "ep": "countyfair-5",
@@ -7493,7 +7493,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 256
         },
         {
           "ep": "countyfair-6",
@@ -7507,7 +7507,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 199
         },
         {
           "ep": "countyfair-7",
@@ -7521,7 +7521,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 320
         },
         {
           "ep": "countyfair-8",
@@ -7535,7 +7535,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 291
         },
         {
           "ep": "countyfair-9",
@@ -7549,7 +7549,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 342
         },
         {
           "ep": "countyfair-10",
@@ -7563,7 +7563,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 292
         }
       ]
     },
@@ -7584,7 +7584,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 358
         },
         {
           "ep": "mainstreet-2",
@@ -7598,7 +7598,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 329
         },
         {
           "ep": "mainstreet-3",
@@ -7612,7 +7612,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 387
         },
         {
           "ep": "mainstreet-4",
@@ -7626,7 +7626,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 432
         },
         {
           "ep": "mainstreet-5",
@@ -7640,7 +7640,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 281
         },
         {
           "ep": "mainstreet-6",
@@ -7654,7 +7654,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 282
         },
         {
           "ep": "mainstreet-7",
@@ -7668,7 +7668,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 262
         },
         {
           "ep": "mainstreet-8",
@@ -7682,7 +7682,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 248
         },
         {
           "ep": "mainstreet-9",
@@ -7696,7 +7696,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 206
         },
         {
           "ep": "mainstreet-10",
@@ -7710,7 +7710,7 @@
           "isMostlyEdited": false,
           "editedPercentage": 0,
           "editedLines": 0,
-          "totalLines": 0
+          "totalLines": 347
         }
       ]
     }
@@ -7850,5 +7850,5 @@
     }
   ],
   "totalEpisodes": 271,
-  "lastUpdated": "2026-07-07T19:09:46.786Z"
+  "lastUpdated": "2026-07-07T19:33:58.209Z"
 }
