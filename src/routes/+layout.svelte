@@ -80,7 +80,7 @@
 		{#if isButtonVisible}
 			<button
 				transition:fly={{ y: 100, duration: 400 }}
-				onclick={() => element?.scrollIntoView()}
+				onclick={() => element?.scrollIntoView({ behavior: 'smooth' })}
 				class="bottom-52 rounded-full size-8 md:size-12 z-20 bg-blue-700 right-2 md:right-4 fixed text-white select-none flex items-center justify-center"
 			>
 				<Icon name="up-arrow" size={20} color="white" aria-label="Scroll to top" />
