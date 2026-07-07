@@ -4,8 +4,7 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "bun run cache:prebuild && vite build",
-		"cache:prebuild": "node scripts/pre-warm-cache.js",
+		"build": "vite build",
 		"generate:static": "node scripts/generate-static-data.js",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -63,6 +62,6 @@
 		"wavesurfer.js": "^7.12.8"
 	},
 	"engines": {
-		"node": ">=20.19.0"
+		"node": "24.x"
 	}
 }
