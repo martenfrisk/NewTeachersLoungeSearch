@@ -15,3 +15,13 @@ TEST_SUITE_OVERVIEW.md
 meilitools.js
 .vercel
 .env*.local
+
+/local
+/logs
+/docs/claude
+
+# local transcription tooling (whisply) - venv, raw audio, and scratch output
+/transcription/venv
+/transcription/audio
+/transcription/output
+/transcription/logs
