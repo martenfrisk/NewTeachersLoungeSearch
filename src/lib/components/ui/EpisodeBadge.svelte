@@ -18,7 +18,7 @@
 
 	let { type, info, tooltip, showLabel = false, size = 'md' }: Props = $props();
 
-	const badgeConfig = {
+	const badgeConfig = $derived({
 		audio: {
 			icon: 'audio' as const,
 			label: 'Audio',
@@ -57,12 +57,12 @@
 			defaultTooltip: 'Special episode',
 			classes: 'text-purple-600 bg-purple-100 border-purple-300'
 		}
-	};
+	});
 
-	const config = badgeConfig[type];
-	const finalTooltip = tooltip || config.defaultTooltip;
-	const iconSize = size === 'sm' ? 12 : 16;
-	const badgeClasses = size === 'sm' ? 'px-1.5 py-0.5 text-xs' : 'px-2 py-1 text-xs';
+	const config = $derived(badgeConfig[type]);
+	const finalTooltip = $derived(tooltip || config.defaultTooltip);
+	const iconSize = $derived(size === 'sm' ? 12 : 16);
+	const badgeClasses = $derived(size === 'sm' ? 'px-1.5 py-0.5 text-xs' : 'px-2 py-1 text-xs');
 </script>
 
 <Tooltip>

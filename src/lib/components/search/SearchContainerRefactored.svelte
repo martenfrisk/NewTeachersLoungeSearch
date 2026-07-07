@@ -25,15 +25,21 @@
 	const searchContext = createSearchContext();
 	setSearchContext(searchContext);
 
-	// Initialize state
+	// Initialize state from SSR-provided initial props exactly once at mount -
+	// intentionally not reactive, since re-running this on every prop change
+	// would blow away the user's in-progress search.
+	// svelte-ignore state_referenced_locally
 	if (initialQuery) {
 		// Set initial data without triggering search
 		searchContext.query = initialQuery;
 	}
+	// svelte-ignore state_referenced_locally
 	if (initialHits.length > 0) {
 		searchContext.hits = initialHits;
 	}
+	// svelte-ignore state_referenced_locally
 	filtersState.setFromArray(initialFilters);
+	// svelte-ignore state_referenced_locally
 	filtersState.editedOnly = initialEditedOnly;
 
 	let inputValue = $state(searchContext.query);

@@ -3,15 +3,19 @@
 	import type { ProcessedTranscriptLine } from '$lib/types/episode';
 
 	interface Props {
-		result: { item: ProcessedTranscriptLine; score?: number };
+		result: { item: ProcessedTranscriptLine };
 		highlightedTime?: string | null;
 		searchQuery: string;
 		onNavigateToResult?: (time: string) => void;
 	}
 
+	// $bindable() flows the value to the parent via binding; ESLint's core
+	// no-useless-assignment rule doesn't understand that two-way-binding
+	// pattern and sees the local writes as dead.
+	// eslint-disable-next-line no-useless-assignment
 	let { result, highlightedTime = $bindable(), searchQuery, onNavigateToResult }: Props = $props();
 
-	const { item } = result;
+	const item = $derived(result.item);
 
 	function scrollToLine(timeString: string) {
 		// Set highlight state using Svelte reactivity

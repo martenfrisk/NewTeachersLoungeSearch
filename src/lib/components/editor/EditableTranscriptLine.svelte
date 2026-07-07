@@ -61,8 +61,14 @@
 	let isEditingSpeaker = $state(false);
 	let isEditingTimestamp = $state(false);
 	let textareaRef: HTMLTextAreaElement | null = $state(null);
+	// These need to stay mutable $state (the user types into them), so they
+	// can't be $derived - the $effect below re-syncs them when `line` changes
+	// externally while not actively being edited.
+	// svelte-ignore state_referenced_locally
 	let editedText = $state(line.line);
+	// svelte-ignore state_referenced_locally
 	let editedSpeaker = $state(line.speaker);
+	// svelte-ignore state_referenced_locally
 	let editedTimestamp = $state(line.time);
 
 	// Sync local state when line changes

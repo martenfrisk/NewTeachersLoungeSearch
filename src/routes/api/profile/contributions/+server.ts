@@ -86,7 +86,7 @@ export const GET: RequestHandler = async ({ url, request }) => {
 							: contrib.transcript_data;
 					linesChanged = Array.isArray(transcriptData) ? transcriptData.length : 0;
 				} catch {
-					linesChanged = 0;
+					// leave linesChanged at its initialized 0
 				}
 
 				return {

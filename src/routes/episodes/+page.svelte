@@ -8,6 +8,9 @@
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
+	// This route is fully prerendered (see +page.ts), so `data` is static
+	// build-time output and genuinely never changes after initial load.
+	// svelte-ignore state_referenced_locally
 	let { episodes, seasonsData, navigationSeasons } = data;
 
 	let showStats = $state(true);

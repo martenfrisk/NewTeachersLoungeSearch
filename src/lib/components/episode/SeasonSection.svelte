@@ -12,6 +12,10 @@
 
 	let { season, isExpanded = false, showStats = true, id, children }: Props = $props();
 
+	// Seed local toggle state from the initial prop once, then let it diverge -
+	// Expand All/Collapse All (SeasonNavigation) toggle sections via simulated
+	// clicks, not by changing this prop, so it isn't meant to stay in sync.
+	// svelte-ignore state_referenced_locally
 	let expanded = $state(isExpanded);
 	let sectionElement: HTMLElement | undefined = $state();
 

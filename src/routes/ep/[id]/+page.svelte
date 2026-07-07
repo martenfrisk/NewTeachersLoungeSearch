@@ -24,18 +24,24 @@
 
 	let { data }: Props = $props();
 
-	// Ensure we have the correct data structure
-	const { hits, transcriptStats, episodeInfo, historyStats: serverHistoryStats } = data;
-	const transcript = hits.default;
+	// Ensure we have the correct data structure - derived (not plain const)
+	// since SvelteKit reuses this component instance when navigating between
+	// two /ep/[id] routes, so `data` changes without a remount.
+	const { hits, transcriptStats, episodeInfo, historyStats: serverHistoryStats } = $derived(data);
+	const transcript = $derived(hits.default);
 
 	// SEO-optimized title and description
-	const pageTitle = episodeInfo?.title
-		? `${episodeInfo.title} (${episodeInfo.ep}) | Seekers' Lounge`
-		: "Episode Transcript | Seekers' Lounge";
+	const pageTitle = $derived(
+		episodeInfo?.title
+			? `${episodeInfo.title} (${episodeInfo.ep}) | Seekers' Lounge`
+			: "Episode Transcript | Seekers' Lounge"
+	);
 
-	const pageDescription = episodeInfo?.title
-		? `Full transcript for The Teachers' Lounge episode "${episodeInfo.title}" (${episodeInfo.ep}). Search, read, and listen along with synchronized audio.`
-		: "Episode transcript from The Teachers' Lounge podcast with searchable content and synchronized audio playback.";
+	const pageDescription = $derived(
+		episodeInfo?.title
+			? `Full transcript for The Teachers' Lounge episode "${episodeInfo.title}" (${episodeInfo.ep}). Search, read, and listen along with synchronized audio.`
+			: "Episode transcript from The Teachers' Lounge podcast with searchable content and synchronized audio playback."
+	);
 
 	let highlightedTime = $state<string | undefined>(undefined);
 	let virtualListRef = $state<VirtualTranscriptList>();
@@ -43,7 +49,7 @@
 	let error = $state<string | null>(null);
 	let showReturnButton = $state(false);
 	let currentActiveElement: HTMLElement | null = $state(null);
-	let historyStats = $state<EpisodeHistoryStatsType | null>(serverHistoryStats || null);
+	let historyStats = $derived<EpisodeHistoryStatsType | null>(serverHistoryStats || null);
 	let historyData = $state<EpisodeHistoryDataType | null>(null);
 	let showHistoryPanel = $state(false);
 

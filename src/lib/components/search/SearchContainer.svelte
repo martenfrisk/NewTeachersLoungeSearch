@@ -28,11 +28,18 @@
 		initialEditedOnly = false
 	}: Props = $props();
 
+	// Seed global search/filter state from SSR-provided initial props exactly
+	// once at mount - intentionally not reactive, since re-running this on
+	// every prop change would blow away the user's in-progress search.
+	// svelte-ignore state_referenced_locally
 	if (initialQuery) {
 		searchState.query = initialQuery;
 	}
+	// svelte-ignore state_referenced_locally
 	if (initialHits.length > 0) searchState.hits = initialHits;
+	// svelte-ignore state_referenced_locally
 	filtersState.setFromArray(initialFilters);
+	// svelte-ignore state_referenced_locally
 	filtersState.editedOnly = initialEditedOnly;
 	let inputValue = $state(searchState.query);
 	let hasInitialized = false;

@@ -17,20 +17,22 @@
 		onSearchChange
 	}: Props = $props();
 
-	const fuse = new Fuse(episodes, {
-		keys: [
-			{ name: 'title', weight: 10 },
-			{ name: 'ep', weight: 3 },
-			{ name: 'desc', weight: 1 }
-		],
-		includeScore: true,
-		threshold: 0.4,
-		distance: 100,
-		minMatchCharLength: 2,
-		shouldSort: true,
-		findAllMatches: false,
-		ignoreLocation: true
-	});
+	const fuse = $derived(
+		new Fuse(episodes, {
+			keys: [
+				{ name: 'title', weight: 10 },
+				{ name: 'ep', weight: 3 },
+				{ name: 'desc', weight: 1 }
+			],
+			includeScore: true,
+			threshold: 0.4,
+			distance: 100,
+			minMatchCharLength: 2,
+			shouldSort: true,
+			findAllMatches: false,
+			ignoreLocation: true
+		})
+	);
 
 	let query = $state('');
 	let results: FuseResult<Episode>[] = $state([]);
