@@ -542,8 +542,7 @@
 				style="min-height: 2rem;"
 				oninput={adjustTextareaHeight}
 				onkeydown={handleTextareaKeydown}
-				placeholder="Enter text..."
-			></textarea>
+				placeholder="Enter text..."></textarea>
 		{:else}
 			<div
 				class="text-gray-900 leading-relaxed text-base break-words cursor-text hover:bg-gray-100/20 px-2 py-1 -mx-2 -my-1 rounded transition-colors"

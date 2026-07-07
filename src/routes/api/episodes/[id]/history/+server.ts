@@ -21,8 +21,7 @@ export const GET: RequestHandler = async ({ params, url }) => {
 		// Get full history data
 		const filters = {
 			status: url.searchParams.getAll('status') as
-				| ('pending' | 'approved' | 'rejected' | 'deleted')[]
-				| undefined,
+				('pending' | 'approved' | 'rejected' | 'deleted')[] | undefined,
 			contributor: url.searchParams.get('contributor') || undefined,
 			dateRange:
 				url.searchParams.get('start_date') && url.searchParams.get('end_date')
