@@ -42,7 +42,14 @@
 	// svelte-ignore state_referenced_locally
 	filtersState.editedOnly = initialEditedOnly;
 	let inputValue = $state(searchState.query);
-	let hasInitialized = false;
+	// Each effect below needs its own flag - they both guard against
+	// re-searching when SSR already provided initialHits, but a shared flag
+	// let the first effect's mount run flip it before the second effect's
+	// mount run ever read it, silently defeating that guard and causing a
+	// redundant client-side re-search (bypassing the /api/search CDN cache)
+	// on every single page load.
+	let hasInitializedSearchEffect = false;
+	let hasInitializedFiltersEffect = false;
 
 	async function handleSearch(query?: string) {
 		if (query !== undefined) {
@@ -114,8 +121,8 @@
 	$effect(() => {
 		void inputValue;
 
-		if (!hasInitialized) {
-			hasInitialized = true;
+		if (!hasInitializedSearchEffect) {
+			hasInitializedSearchEffect = true;
 			// If we have initial hits, don't search automatically
 			if (initialHits.length > 0) {
 				return;
@@ -131,8 +138,11 @@
 		void filtersState.editedOnly;
 
 		// Don't search automatically if we haven't initialized yet and have initial hits
-		if (!hasInitialized && initialHits.length > 0) {
-			return;
+		if (!hasInitializedFiltersEffect) {
+			hasInitializedFiltersEffect = true;
+			if (initialHits.length > 0) {
+				return;
+			}
 		}
 
 		clearTimeout(searchTimeoutId);

@@ -10,7 +10,16 @@ export async function load({ url, fetch }) {
 	const searchQuery = query || newRandom();
 	if (searchQuery) {
 		try {
-			const searchParams = createSearchParams({ query: searchQuery, filter, editedOnly });
+			// createSearchParams defaults offset to 20 (meant for the "load more"
+			// caller, which always passes its own explicit offset) - the initial
+			// page-load search needs page one, or it silently skips the first 20
+			// matches and often comes back empty for the shorter curated terms.
+			const searchParams = createSearchParams({
+				query: searchQuery,
+				offset: 0,
+				filter,
+				editedOnly
+			});
 			const response = await fetch(`/api/search?${searchParams}`);
 			if (response.ok) {
 				const data = await response.json();
