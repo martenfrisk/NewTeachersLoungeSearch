@@ -4,10 +4,17 @@ import { EpisodeDataProcessor } from '$lib/services/EpisodeDataProcessor';
 import { SupabaseEditorRepository } from '$lib/repositories/EditorRepository';
 import { historyService } from '$lib/services/HistoryService';
 import type { EpisodePageData, EpisodeInfo } from '$lib/types/episode';
+import type { Config } from '@sveltejs/adapter-vercel';
 
-export async function entries() {
-	return episodesPageData.episodes.map((episode) => ({ id: episode.ep }));
-}
+// Episode transcripts are edited rarely and traffic is low, so an hour of
+// staleness is an easy trade for skipping a live Supabase round-trip on
+// every view - Vercel serves the cached response and revalidates in the
+// background for up to a day after that.
+export const config: Config = {
+	isr: {
+		expiration: 3600
+	}
+};
 
 export async function load({ params, fetch }): Promise<EpisodePageData> {
 	const { id } = params;
