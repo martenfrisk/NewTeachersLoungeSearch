@@ -10,7 +10,7 @@
 	import ReturnToActiveButton from '$lib/components/audio/ReturnToActiveButton.svelte';
 	import EpisodeHistoryPanel from '$lib/components/episode/EpisodeHistoryPanel.svelte';
 	import { audioStore, currentPlaybackTime, syncEnabled, isPlaying } from '$lib/stores/audio';
-	import type { EpisodeHistoryDataType, EpisodeHistoryStatsType } from '$lib/types/history';
+	import type { EpisodeHistoryDataType } from '$lib/types/history';
 	import { audioService } from '$lib/services/AudioService';
 	import {
 		findCurrentTranscriptLine,
@@ -27,7 +27,7 @@
 	// Ensure we have the correct data structure - derived (not plain const)
 	// since SvelteKit reuses this component instance when navigating between
 	// two /ep/[id] routes, so `data` changes without a remount.
-	const { hits, transcriptStats, episodeInfo, historyStats: serverHistoryStats } = $derived(data);
+	const { hits, transcriptStats, episodeInfo, historyStats } = $derived(data);
 	const transcript = $derived(hits.default);
 
 	// SEO-optimized title and description
@@ -49,7 +49,6 @@
 	let error = $state<string | null>(null);
 	let showReturnButton = $state(false);
 	let currentActiveElement: HTMLElement | null = $state(null);
-	let historyStats = $derived<EpisodeHistoryStatsType | null>(serverHistoryStats || null);
 	let historyData = $state<EpisodeHistoryDataType | null>(null);
 	let showHistoryPanel = $state(false);
 

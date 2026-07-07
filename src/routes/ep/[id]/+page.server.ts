@@ -23,17 +23,16 @@ export async function load({ params, fetch }): Promise<EpisodePageData> {
 		error(400, 'Invalid episode ID');
 	}
 
+	// Kick this off immediately but don't await it - it's a small, non-
+	// critical "X edits" badge, not worth blocking the transcript render on.
+	// Streamed to the client as a promise instead (getEpisodeHistoryStats
+	// never throws, it catches internally and resolves to null).
+	const historyStatsPromise = historyService.getEpisodeHistoryStats(id, fetch);
+
 	try {
 		// Always fetch live data from Supabase for server-side rendering.
-		// Transcript and history stats are independent, so fetch them
-		// concurrently instead of adding their round-trips together -
-		// getEpisodeHistoryStats never throws (it catches internally and
-		// returns null), so this doesn't change error-handling behavior.
 		const repository = new SupabaseEditorRepository();
-		const [transcriptLines, historyStats] = await Promise.all([
-			repository.fetchEpisodeTranscript(id),
-			historyService.getEpisodeHistoryStats(id, fetch)
-		]);
+		const transcriptLines = await repository.fetchEpisodeTranscript(id);
 
 		if (!transcriptLines || transcriptLines.length === 0) {
 			error(404, `Transcript not found for episode ${id}`);
@@ -67,7 +66,7 @@ export async function load({ params, fetch }): Promise<EpisodePageData> {
 			hits: { default: processedTranscript },
 			transcriptStats,
 			episodeInfo,
-			historyStats
+			historyStats: historyStatsPromise
 		};
 	} catch (err) {
 		console.error(`Failed to load episode ${id}:`, err);

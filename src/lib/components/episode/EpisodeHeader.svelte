@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
 	import Button from '../ui/Button.svelte';
 	import EpisodeHistoryBadge from './EpisodeHistoryBadge.svelte';
 	import type { EpisodeHistoryStatsType } from '../../types/history';
@@ -11,7 +12,9 @@
 			date?: string;
 		};
 		handlePlayEpisode?: () => void;
-		historyStats?: EpisodeHistoryStatsType | null;
+		// Streamed from the load function rather than awaited, so this small
+		// badge doesn't block the rest of the page from rendering.
+		historyStats?: Promise<EpisodeHistoryStatsType | null>;
 		onHistoryClick?: () => void;
 	}
 
@@ -34,13 +37,22 @@
 </script>
 
 <div class="text-center mb-6">
-	<div class="flex items-center justify-center gap-3 mb-2">
-		<div class="text-sm font-semibold text-blue-600 uppercase tracking-wide">
+	<div class="flex items-center justify-center mb-2">
+		<div class="relative text-sm font-semibold text-blue-600 uppercase tracking-wide">
 			{episodeInfo?.ep}
+			{#if historyStats}
+				{#await historyStats then resolvedStats}
+					{#if resolvedStats}
+						<div
+							class="absolute left-full top-1/2 ml-3 w-max -translate-y-1/2"
+							transition:fade={{ duration: 200 }}
+						>
+							<EpisodeHistoryBadge stats={resolvedStats} onClick={onHistoryClick} />
+						</div>
+					{/if}
+				{/await}
+			{/if}
 		</div>
-		{#if historyStats}
-			<EpisodeHistoryBadge stats={historyStats} onClick={onHistoryClick} />
-		{/if}
 	</div>
 	<h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{episodeInfo?.title}</h1>
 

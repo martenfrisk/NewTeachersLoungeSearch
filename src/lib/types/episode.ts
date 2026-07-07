@@ -41,7 +41,9 @@ export interface EpisodePageData {
 	};
 	transcriptStats: TranscriptStats;
 	episodeInfo?: EpisodeInfo;
-	historyStats?: import('./history').EpisodeHistoryStatsType | null;
+	// Streamed rather than awaited in the load function - it's a small,
+	// non-critical badge, not worth blocking the transcript on.
+	historyStats?: Promise<import('./history').EpisodeHistoryStatsType | null>;
 }
 
 export interface SpeakerProcessingOptions {
