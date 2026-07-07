@@ -1,16 +1,29 @@
 <script lang="ts">
 	import type { Episode, SeasonData } from '$lib/types/episode';
+	import { getSeasonDisplayName as getCentralSeasonDisplayName } from '$lib/constants';
 
 	interface Props {
 		season: SeasonData;
 		isExpanded?: boolean;
 		showStats?: boolean;
+		isHighlighted?: boolean;
 		id?: string;
 		children?: import('svelte').Snippet<[Episode[]]>;
 	}
 
-	let { season, isExpanded = false, showStats = true, id, children }: Props = $props();
+	let {
+		season,
+		isExpanded = false,
+		showStats = true,
+		isHighlighted = false,
+		id,
+		children
+	}: Props = $props();
 
+	// Seed local toggle state from the initial prop once, then let it diverge -
+	// Expand All/Collapse All (SeasonNavigation) toggle sections via simulated
+	// clicks, not by changing this prop, so it isn't meant to stay in sync.
+	// svelte-ignore state_referenced_locally
 	let expanded = $state(isExpanded);
 	let sectionElement: HTMLElement | undefined = $state();
 
@@ -20,28 +33,7 @@
 
 	const episodeCount = $derived(season.episodes.length);
 
-	const getSeasonDisplayName = (id: string): string => {
-		const seasonMap: Record<string, string> = {
-			s01: 'Season 1',
-			s02: 'Season 2',
-			s03: 'Season 3',
-			s04: 'Season 4',
-			s05: 'Season 5',
-			s06: 'Season 6',
-			s07: 'Season 7',
-			s08: 'Season 8',
-			s09: 'Season 9',
-			s10: 'Season 10',
-			s11: 'Season 11',
-			mini: 'Mini Episodes',
-			exit42: 'Exit 42',
-			Peecast: 'Peecast',
-			holidays: 'Holiday Specials',
-			jesus: 'Jesus Chronicles',
-			lastresort: 'Last Resort'
-		};
-		return seasonMap[id] || season.name || id;
-	};
+	const getSeasonDisplayName = (id: string): string => getCentralSeasonDisplayName(id, season.name);
 
 	const getSeasonColor = (id: string): string => {
 		const colorMap: Record<string, string> = {
@@ -56,8 +48,11 @@
 			s09: 'bg-teal-50 border-teal-200',
 			s10: 'bg-cyan-50 border-cyan-200',
 			s11: 'bg-emerald-50 border-emerald-200',
+			s12: 'bg-orange-50 border-orange-200',
+			s13: 'bg-red-50 border-red-200',
 			mini: 'bg-gray-50 border-gray-200',
 			exit42: 'bg-violet-50 border-violet-200',
+			exit43: 'bg-violet-50 border-violet-200',
 			Peecast: 'bg-rose-50 border-rose-200',
 			holidays: 'bg-red-100 border-red-300',
 			jesus: 'bg-amber-50 border-amber-200',
@@ -83,7 +78,9 @@
 	bind:this={sectionElement}
 	class="mb-6 rounded-lg border-2 {getSeasonColor(
 		season.id
-	)} overflow-hidden transition-all duration-200 hover:shadow-md"
+	)} overflow-hidden transition-all duration-300 hover:shadow-md {isHighlighted
+		? 'ring-4 ring-blue-400 ring-offset-2 shadow-lg'
+		: ''}"
 	{id}
 >
 	<header

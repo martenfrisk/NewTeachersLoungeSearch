@@ -2,6 +2,7 @@
 	import EpisodeBadge from '$lib/components/ui/EpisodeBadge.svelte';
 	import { componentPatterns } from '$lib/design/tokens';
 	import { StringUtils } from '$lib/utils/index';
+	import { resolve } from '$app/paths';
 
 	interface Episode {
 		ep: string;
@@ -135,7 +136,7 @@
 				: 'text-lg'}"
 		>
 			<a
-				href="/ep/{episode.ep}"
+				href={resolve('/ep/[id]', { id: episode.ep })}
 				class="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
 			>
 				{episode.title}
@@ -192,7 +193,7 @@
 		<div class="flex items-center justify-between pt-2">
 			{#if showTranscriptLink}
 				<a
-					href="/ep/{episode.ep}"
+					href={resolve('/ep/[id]', { id: episode.ep })}
 					class="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
 				>
 					View Transcript

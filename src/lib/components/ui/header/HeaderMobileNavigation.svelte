@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Icon from '$lib/components/ui/Icon.svelte';
 	import type { HeaderMobileNavigationPropsType, NavigationLinkType } from '$lib/types/header';
+	import { resolve } from '$app/paths';
 
 	/**
 	 * Mobile secondary navigation bar with search and episodes links
@@ -10,12 +11,12 @@
 
 	const mobileLinks: NavigationLinkType[] = [
 		{
-			href: '/',
+			href: resolve('/'),
 			label: 'Search',
 			icon: 'audio'
 		},
 		{
-			href: '/episodes',
+			href: resolve('/episodes'),
 			label: 'Episode Guide',
 			icon: 'episodes'
 		}
@@ -28,7 +29,7 @@
 			<!-- Left side: Search link -->
 			<div>
 				<a
-					href={mobileLinks[0].href}
+					href={resolve('/')}
 					class="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
 					class:text-gray-900={currentPath === mobileLinks[0].href}
 					class:font-semibold={currentPath === mobileLinks[0].href}
@@ -44,7 +45,7 @@
 			<!-- Right side: Episode Guide -->
 			<div>
 				<a
-					href={mobileLinks[1].href}
+					href={resolve('/episodes')}
 					class="text-sm border-b border-blue-300 font-medium flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
 					class:text-gray-900={currentPath === mobileLinks[1].href}
 					class:font-semibold={currentPath === mobileLinks[1].href}

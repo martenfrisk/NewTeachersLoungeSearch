@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { searchState } from '$lib/states/SearchState.svelte';
 	import { filtersState } from '$lib/states/FiltersState.svelte';
 	import { searchHistoryStore } from '$lib/stores/searchHistory.svelte';
@@ -7,6 +8,11 @@
 	import SearchFilters from './SearchFilters.svelte';
 	import SearchResults from './SearchResults.svelte';
 	import type { SearchHitType } from '$lib/types/search';
+
+	// resolve()'s overloads are keyed per literal route, so they reject the
+	// current page's pathname, which is only known at runtime. The argument
+	// (not the resolve() call itself) is cast to bypass overload matching, so
+	// eslint's svelte/no-navigation-without-resolve still sees a direct call.
 
 	interface Props {
 		initialQuery?: string;
@@ -22,11 +28,18 @@
 		initialEditedOnly = false
 	}: Props = $props();
 
+	// Seed global search/filter state from SSR-provided initial props exactly
+	// once at mount - intentionally not reactive, since re-running this on
+	// every prop change would blow away the user's in-progress search.
+	// svelte-ignore state_referenced_locally
 	if (initialQuery) {
 		searchState.query = initialQuery;
 	}
+	// svelte-ignore state_referenced_locally
 	if (initialHits.length > 0) searchState.hits = initialHits;
+	// svelte-ignore state_referenced_locally
 	filtersState.setFromArray(initialFilters);
+	// svelte-ignore state_referenced_locally
 	filtersState.editedOnly = initialEditedOnly;
 	let inputValue = $state(searchState.query);
 	let hasInitialized = false;
@@ -73,7 +86,9 @@
 		}
 		if (filtersState.editedOnly) params.set('edited', 'true');
 
-		goto(`?${params.toString()}`, {
+		const newUrl = `${window.location.pathname}?${params.toString()}`;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		goto(resolve(newUrl as any), {
 			keepFocus: true,
 			noScroll: true,
 			replaceState: true

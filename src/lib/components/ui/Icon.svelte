@@ -46,7 +46,7 @@
 		onclick
 	}: Props = $props();
 
-	const sizeValue = typeof size === 'number' ? `${size}px` : size;
+	const sizeValue = $derived(typeof size === 'number' ? `${size}px` : size);
 
 	// Icon paths organized by name
 	const iconPaths: Record<IconName, string> = {
@@ -118,12 +118,14 @@
 		stroke: '0 0 26 26'
 	};
 
-	const path = iconPaths[name];
-	const viewBox = viewBoxes[name];
+	const path = $derived(iconPaths[name]);
+	const viewBox = $derived(viewBoxes[name]);
 
-	if (!path) {
-		console.warn(`Icon "${name}" not found`);
-	}
+	$effect(() => {
+		if (!path) {
+			console.warn(`Icon "${name}" not found`);
+		}
+	});
 </script>
 
 <svg

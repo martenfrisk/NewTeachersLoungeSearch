@@ -1,50 +1,45 @@
 <script lang="ts">
 	import type { Season } from '$lib/types/episode';
+	import { getSeasonShortName } from '$lib/constants';
 
 	interface Props {
 		seasons: Season[];
 		showEpisodeCounts?: boolean;
 		sticky?: boolean;
 		class?: string;
+		onSeasonNavigate?: (seasonId: string) => void;
 	}
 
 	let {
 		seasons,
 		showEpisodeCounts = true,
 		sticky = false,
-		class: className = ''
+		class: className = '',
+		onSeasonNavigate
 	}: Props = $props();
 
 	let showMobileNav = $state(false);
+	let navEl = $state<HTMLElement>();
 
-	const getSeasonDisplayName = (id: string): string => {
-		const seasonMap: Record<string, string> = {
-			s01: 'S1',
-			s02: 'S2',
-			s03: 'S3',
-			s04: 'S4',
-			s05: 'S5',
-			s06: 'S6',
-			s07: 'S7',
-			s08: 'S8',
-			s09: 'S9',
-			s10: 'S10',
-			s11: 'S11',
-			mini: 'Minis',
-			exit42: 'Exit 42',
-			Peecast: 'Peecast',
-			holidays: 'Holidays',
-			jesus: 'Jesus',
-			lastresort: 'Last Resort'
-		};
-		return seasonMap[id] || id;
-	};
+	const getSeasonDisplayName = getSeasonShortName;
 
+	// scrollIntoView({block: 'start'}) puts the target flush with the top of
+	// the viewport, but the site header and (when sticky) this nav itself
+	// stay pinned there too, so the target ends up hidden behind them. Scroll
+	// to an explicit position that clears both, measured live since their
+	// heights differ between mobile and desktop layouts.
 	const scrollToSeason = (seasonId: string) => {
 		const element = document.getElementById(`season-${seasonId}`);
-		if (element) {
-			element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-		}
+		if (!element) return;
+
+		const header = document.querySelector('header');
+		const stickyBottom = Math.max(
+			header?.getBoundingClientRect().bottom ?? 0,
+			navEl?.getBoundingClientRect().bottom ?? 0
+		);
+		const targetTop = element.getBoundingClientRect().top + window.scrollY - stickyBottom - 16;
+		window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+		onSeasonNavigate?.(seasonId);
 	};
 
 	const handleSeasonClick = (seasonId: string) => {
@@ -72,6 +67,7 @@
 </script>
 
 <nav
+	bind:this={navEl}
 	class="bg-white border-b border-gray-200 {sticky
 		? 'sticky top-0 z-10 shadow-sm'
 		: ''} {className}"

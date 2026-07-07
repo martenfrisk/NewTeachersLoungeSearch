@@ -53,6 +53,12 @@ function extractSeason(episodeCode) {
 		return 'jesus';
 	} else if (episodeCode.startsWith('lastresort-')) {
 		return 'lastresort';
+	} else if (episodeCode.startsWith('exit43-')) {
+		return 'exit43';
+	} else if (episodeCode.startsWith('countyfair-')) {
+		return 'countyfair';
+	} else if (episodeCode.startsWith('mainstreet-')) {
+		return 'mainstreet';
 	}
 	return 'unknown';
 }

@@ -7,7 +7,7 @@
 	}
 
 	let { class: className = 'w-4 h-4', size, path, viewBox = '0 0 20 20' }: Props = $props();
-	let finalClass = size ? `w-${size} h-${size}` : className;
+	let finalClass = $derived(size ? `w-${size} h-${size}` : className);
 </script>
 
 <svg class={finalClass} fill="currentColor" {viewBox}>

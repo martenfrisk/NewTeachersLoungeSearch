@@ -2,6 +2,7 @@
 	import { authHelpers } from '$lib/stores/auth';
 	import { userPreferencesStore } from '$lib/stores/userPreferences.svelte';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import Button from '$lib/components/ui/Button.svelte';
 	import UserPreferencesForm from '$lib/components/ui/UserPreferencesForm.svelte';
 	import ContributionHistory from '$lib/components/ui/ContributionHistory.svelte';
@@ -27,7 +28,7 @@
 		try {
 			loading = true;
 			await authHelpers.signOut();
-			goto('/');
+			goto(resolve('/'));
 		} catch (error) {
 			console.error('Sign out error:', error);
 		} finally {
@@ -141,7 +142,7 @@
 
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 				<a
-					href="/editor"
+					href={resolve('/editor')}
 					class="p-4 border border-gray-200 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
 				>
 					<div class="flex items-center space-x-3">
@@ -170,7 +171,7 @@
 				</a>
 
 				<a
-					href="/moderate"
+					href={resolve('/moderate')}
 					class="p-4 border border-gray-200 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
 				>
 					<div class="flex items-center space-x-3">

@@ -3,6 +3,7 @@
 	import { epName } from '../../utils';
 	import Tooltip from '../Tooltip.svelte';
 	import Icon from '../ui/Icon.svelte';
+	import { resolve } from '$app/paths';
 
 	interface Props {
 		hit: SearchHitType;
@@ -64,7 +65,7 @@
 <div class="px-3 flex gap-2 items-center py-2 bg-gray-50/80 text-xs text-gray-700 font-medium">
 	<a
 		class="px-1 py-0.5 text-xs text-blue-700 bg-blue-50 uppercase tracking-wide z-10"
-		href="/ep/{hit.episode.replace('.json', '')}"
+		href={resolve('/ep/[id]', { id: hit.episode.replace('.json', '') })}
 		aria-label="Go to episode {hit.episode.replace('.json', '')}"
 	>
 		{hit.episode.replace('.json', '')}

@@ -4,10 +4,17 @@ import { EpisodeDataProcessor } from '$lib/services/EpisodeDataProcessor';
 import { SupabaseEditorRepository } from '$lib/repositories/EditorRepository';
 import { historyService } from '$lib/services/HistoryService';
 import type { EpisodePageData, EpisodeInfo } from '$lib/types/episode';
+import type { Config } from '@sveltejs/adapter-vercel';
 
-export async function entries() {
-	return episodesPageData.episodes.map((episode) => ({ id: episode.ep }));
-}
+// Episode transcripts are edited rarely and traffic is low, so an hour of
+// staleness is an easy trade for skipping a live Supabase round-trip on
+// every view - Vercel serves the cached response and revalidates in the
+// background for up to a day after that.
+export const config: Config = {
+	isr: {
+		expiration: 3600
+	}
+};
 
 export async function load({ params, fetch }): Promise<EpisodePageData> {
 	const { id } = params;
@@ -16,8 +23,14 @@ export async function load({ params, fetch }): Promise<EpisodePageData> {
 		error(400, 'Invalid episode ID');
 	}
 
+	// Kick this off immediately but don't await it - it's a small, non-
+	// critical "X edits" badge, not worth blocking the transcript render on.
+	// Streamed to the client as a promise instead (getEpisodeHistoryStats
+	// never throws, it catches internally and resolves to null).
+	const historyStatsPromise = historyService.getEpisodeHistoryStats(id, fetch);
+
 	try {
-		// Always fetch live data from Supabase for server-side rendering
+		// Always fetch live data from Supabase for server-side rendering.
 		const repository = new SupabaseEditorRepository();
 		const transcriptLines = await repository.fetchEpisodeTranscript(id);
 
@@ -48,15 +61,12 @@ export async function load({ params, fetch }): Promise<EpisodePageData> {
 		// Calculate transcript stats from live data
 		const transcriptStats = processor.calculateTranscriptStats(id, validatedTranscript);
 
-		// Fetch history stats on the server with SvelteKit fetch
-		const historyStats = await historyService.getEpisodeHistoryStats(id, fetch);
-
 		return {
 			episode: id,
 			hits: { default: processedTranscript },
 			transcriptStats,
 			episodeInfo,
-			historyStats
+			historyStats: historyStatsPromise
 		};
 	} catch (err) {
 		console.error(`Failed to load episode ${id}:`, err);

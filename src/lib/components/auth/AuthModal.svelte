@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { authHelpers } from '$lib/stores/auth';
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	import type { Pathname } from '$app/types';
 
 	interface Props {
 		isOpen: boolean;
@@ -44,7 +46,7 @@
 
 			// For email sign-in, redirect immediately since there's no OAuth callback
 			if (redirectTo) {
-				goto(redirectTo);
+				goto(resolve(redirectTo as Pathname));
 			}
 		} catch (err) {
 			error = err instanceof Error ? err.message : 'Sign in failed';

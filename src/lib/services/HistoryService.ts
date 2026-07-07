@@ -122,25 +122,26 @@ export class HistoryService {
 					})
 				: supabase;
 
-			// First, get the episode UUID from the ep code if needed
-			const episodeId = await this.getEpisodeUUID(episodeIdentifier, client);
-			if (!episodeId) {
-				return null;
-			}
+			// Filter through the episodes join directly (like
+			// fetchEpisodeTranscript does) instead of resolving the UUID with
+			// a separate round-trip first - this call always runs in
+			// parallel with the transcript fetch, so cutting a sequential
+			// query here shortens the slower of the two branches.
+			const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+			const isUuid = uuidRegex.test(episodeIdentifier);
 
-			const { data: versions, error } = await client
+			let query = client
 				.from('episode_transcript_versions')
 				.select(
-					`
-					id,
-					version_number,
-					source_type,
-					created_by,
-					created_at,
-					is_current
-				`
-				)
-				.eq('episode_id', episodeId);
+					isUuid
+						? `id, version_number, source_type, created_by, created_at, is_current`
+						: `id, version_number, source_type, created_by, created_at, is_current, episodes!inner(ep)`
+				);
+			query = isUuid
+				? query.eq('episode_id', episodeIdentifier)
+				: query.eq('episodes.ep', episodeIdentifier);
+
+			const { data: versions, error } = await query;
 
 			if (error) {
 				throw new Error(`Failed to fetch episode history stats: ${error.message}`);

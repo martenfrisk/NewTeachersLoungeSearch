@@ -2,6 +2,7 @@
 	import Icon from '$lib/components/ui/Icon.svelte';
 	import type { HeaderNavigationPropsType, NavigationLinkType } from '$lib/types/header';
 	import { ariaAttributes } from '$lib/utils/accessibility';
+	import { resolve } from '$app/paths';
 
 	/**
 	 * Desktop header navigation with links and info dropdown trigger
@@ -17,14 +18,16 @@
 		onToggleInfoDropdown?: () => void;
 	} = $props();
 
-	const navigationLinks: NavigationLinkType[] = [
+	const navigationLinks: (NavigationLinkType & { routeId: '/' | '/episodes' })[] = [
 		{
-			href: '/',
+			href: resolve('/'),
+			routeId: '/',
 			label: 'Search',
 			icon: 'search'
 		},
 		{
-			href: '/episodes',
+			href: resolve('/episodes'),
+			routeId: '/episodes',
 			label: 'Episodes',
 			icon: 'episodes'
 		}
@@ -36,7 +39,7 @@
 <nav class="hidden md:flex items-center space-x-1 {className}" aria-label="Main navigation">
 	{#each navigationLinks as link (link.href)}
 		<a
-			href={link.href}
+			href={resolve(link.routeId)}
 			class="px-4 py-2 text-white hover:bg-blue-600 rounded-md transition-colors flex items-center space-x-2"
 			class:bg-blue-700={currentPath === link.href}
 			aria-current={currentPath === link.href ? 'page' : undefined}

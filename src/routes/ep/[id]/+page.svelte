@@ -5,12 +5,11 @@
 	import TranscriptQualityBanner from '$lib/components/episode/TranscriptQualityBanner.svelte';
 	import EpisodeHeader from '$lib/components/episode/EpisodeHeader.svelte';
 	import EpisodeSearch from '$lib/components/episode/EpisodeSearch.svelte';
-	import VirtualTranscriptList from '$lib/components/episode/VirtualTranscriptList.svelte';
 	import TranscriptLine from '$lib/components/episode/TranscriptLine.svelte';
 	import ReturnToActiveButton from '$lib/components/audio/ReturnToActiveButton.svelte';
 	import EpisodeHistoryPanel from '$lib/components/episode/EpisodeHistoryPanel.svelte';
 	import { audioStore, currentPlaybackTime, syncEnabled, isPlaying } from '$lib/stores/audio';
-	import type { EpisodeHistoryDataType, EpisodeHistoryStatsType } from '$lib/types/history';
+	import type { EpisodeHistoryDataType } from '$lib/types/history';
 	import { audioService } from '$lib/services/AudioService';
 	import {
 		findCurrentTranscriptLine,
@@ -24,26 +23,30 @@
 
 	let { data }: Props = $props();
 
-	// Ensure we have the correct data structure
-	const { hits, transcriptStats, episodeInfo, historyStats: serverHistoryStats } = data;
-	const transcript = hits.default;
+	// Ensure we have the correct data structure - derived (not plain const)
+	// since SvelteKit reuses this component instance when navigating between
+	// two /ep/[id] routes, so `data` changes without a remount.
+	const { hits, transcriptStats, episodeInfo, historyStats } = $derived(data);
+	const transcript = $derived(hits.default);
 
 	// SEO-optimized title and description
-	const pageTitle = episodeInfo?.title
-		? `${episodeInfo.title} (${episodeInfo.ep}) | Seekers' Lounge`
-		: "Episode Transcript | Seekers' Lounge";
+	const pageTitle = $derived(
+		episodeInfo?.title
+			? `${episodeInfo.title} (${episodeInfo.ep}) | Seekers' Lounge`
+			: "Episode Transcript | Seekers' Lounge"
+	);
 
-	const pageDescription = episodeInfo?.title
-		? `Full transcript for The Teachers' Lounge episode "${episodeInfo.title}" (${episodeInfo.ep}). Search, read, and listen along with synchronized audio.`
-		: "Episode transcript from The Teachers' Lounge podcast with searchable content and synchronized audio playback.";
+	const pageDescription = $derived(
+		episodeInfo?.title
+			? `Full transcript for The Teachers' Lounge episode "${episodeInfo.title}" (${episodeInfo.ep}). Search, read, and listen along with synchronized audio.`
+			: "Episode transcript from The Teachers' Lounge podcast with searchable content and synchronized audio playback."
+	);
 
 	let highlightedTime = $state<string | undefined>(undefined);
-	let virtualListRef = $state<VirtualTranscriptList>();
 	let isLoading = $state(false);
 	let error = $state<string | null>(null);
 	let showReturnButton = $state(false);
 	let currentActiveElement: HTMLElement | null = $state(null);
-	let historyStats = $state<EpisodeHistoryStatsType | null>(serverHistoryStats || null);
 	let historyData = $state<EpisodeHistoryDataType | null>(null);
 	let showHistoryPanel = $state(false);
 
@@ -100,11 +103,18 @@
 		showHistoryPanel = false;
 	}
 
+	// Scroll a transcript line into view. Used for search result navigation
+	// and as a fallback for hash-based deep links, in case content is still
+	// settling when the browser's native anchor scroll fires. scroll-mt on
+	// TranscriptLine keeps the target clear of the sticky header either way.
+	function scrollToTranscriptLine(id: string) {
+		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
+
 	// Handle hash-based navigation
 	$effect(() => {
-		if (targetHash && virtualListRef) {
-			const timeString = targetHash.replace('t-', '').replace(/(\d{2})(\d{2})(\d{2})/, '$1:$2:$3');
-			virtualListRef.scrollToTime(timeString);
+		if (targetHash) {
+			scrollToTranscriptLine(targetHash);
 		}
 	});
 
@@ -132,9 +142,7 @@
 	// Handle search results navigation
 	function handleSearchNavigation(time: string) {
 		highlightedTime = time;
-		if (virtualListRef) {
-			virtualListRef.scrollToTime(time);
-		}
+		scrollToTranscriptLine(`t-${time.replaceAll(':', '')}`);
 		// Disable sync when user manually navigates
 		if (syncMode) {
 			audioStore.setSyncEnabled(false);

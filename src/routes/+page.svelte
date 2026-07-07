@@ -8,16 +8,20 @@
 
 	let { data }: Props = $props();
 
-	const { query, filter, hits, editedOnly } = data;
+	const { query, filter, hits, editedOnly } = $derived(data);
 
 	// Dynamic title and description based on search
-	const pageTitle = query
-		? `"${query}" - Search Results | Seekers' Lounge`
-		: "Seekers' Lounge ☕ The Teachers' Lounge Search Engine";
+	const pageTitle = $derived(
+		query
+			? `"${query}" - Search Results | Seekers' Lounge`
+			: "Seekers' Lounge ☕ The Teachers' Lounge Search Engine"
+	);
 
-	const pageDescription = query
-		? `Search results for "${query}" in The Teachers' Lounge podcast transcripts. Find the funniest moments and memorable quotes.`
-		: "Search through thousands of hours of The Teachers' Lounge podcast transcripts. Find your favorite moments, quotes, and episodes with our powerful search engine.";
+	const pageDescription = $derived(
+		query
+			? `Search results for "${query}" in The Teachers' Lounge podcast transcripts. Find the funniest moments and memorable quotes.`
+			: "Search through thousands of hours of The Teachers' Lounge podcast transcripts. Find your favorite moments, quotes, and episodes with our powerful search engine."
+	);
 </script>
 
 <svelte:head>
