@@ -66,6 +66,18 @@
     "isSpecial": false
   },
   {
+    "id": "s12",
+    "name": "Season 12",
+    "episodeCount": 7,
+    "isSpecial": false
+  },
+  {
+    "id": "s13",
+    "name": "Season 13",
+    "episodeCount": 7,
+    "isSpecial": false
+  },
+  {
     "id": "mini",
     "name": "Mini Episodes",
     "episodeCount": 60,
@@ -98,6 +110,24 @@
   {
     "id": "lastresort",
     "name": "Last Resort",
+    "episodeCount": 10,
+    "isSpecial": true
+  },
+  {
+    "id": "exit43",
+    "name": "Exit 43",
+    "episodeCount": 20,
+    "isSpecial": true
+  },
+  {
+    "id": "countyfair",
+    "name": "County Fair",
+    "episodeCount": 10,
+    "isSpecial": true
+  },
+  {
+    "id": "mainstreet",
+    "name": "Main Street Sounds - Volume 1",
     "episodeCount": 10,
     "isSpecial": true
   }

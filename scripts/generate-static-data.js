@@ -1,6 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createClient } from '@supabase/supabase-js';
+import { config } from 'dotenv';
+
+config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,34 +13,77 @@ const __dirname = path.dirname(__filename);
 const episodesPath = path.join(__dirname, '../src/assets/episodes6.json');
 const episodes = JSON.parse(fs.readFileSync(episodesPath, 'utf8'));
 
-// Helper function to calculate transcript editing stats
-const calculateEpisodeEditingStats = (episodeId) => {
-	const transcriptPath = path.join(__dirname, `../src/assets/transcripts/${episodeId}.json`);
+function initSupabase() {
+	const supabaseUrl = process.env.PUBLIC_SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+	const supabaseKey = process.env.PUBLIC_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
 
-	try {
-		const transcript = JSON.parse(fs.readFileSync(transcriptPath, 'utf8'));
-		const totalLines = transcript.length;
-		const editedLines = transcript.filter((line) => line.edited).length;
-		const editedPercentage = totalLines > 0 ? Math.round((editedLines / totalLines) * 100) : 0;
-
-		return {
-			isFullyEdited: editedPercentage === 100,
-			isMostlyEdited: editedPercentage >= 50,
-			editedPercentage,
-			editedLines,
-			totalLines
-		};
-	} catch (error) {
-		console.warn(`Warning: Could not read transcript for ${episodeId}:`, error.message);
-		return {
-			isFullyEdited: false,
-			isMostlyEdited: false,
-			editedPercentage: 0,
-			editedLines: 0,
-			totalLines: 0
-		};
+	if (!supabaseUrl || !supabaseKey) {
+		throw new Error(
+			'Missing Supabase environment variables. Please configure PUBLIC_SUPABASE_URL and PUBLIC_SUPABASE_ANON_KEY.'
+		);
 	}
-};
+
+	return createClient(supabaseUrl, supabaseKey);
+}
+
+// Fetch { ep: { totalLines, editedLines } } for every episode from Supabase.
+// transcript_lines no longer exists locally (src/assets/transcripts was
+// removed once data moved to Supabase), so editing stats have to be read
+// from the database instead of the filesystem.
+async function fetchEditingStatsByEpisode(supabase) {
+	const { data: episodeRows, error: episodeError } = await supabase
+		.from('episodes')
+		.select('id, ep');
+
+	if (episodeError) {
+		throw new Error(`Failed to fetch episodes: ${episodeError.message}`);
+	}
+
+	const epById = new Map(episodeRows.map((row) => [row.id, row.ep]));
+
+	const counts = new Map();
+	const pageSize = 1000;
+	let from = 0;
+
+	// transcript_lines can hold tens of thousands of rows, so page through it
+	while (true) {
+		const { data: lineRows, error: lineError } = await supabase
+			.from('transcript_lines')
+			.select('episode_id, edited')
+			.range(from, from + pageSize - 1);
+
+		if (lineError) {
+			throw new Error(`Failed to fetch transcript_lines: ${lineError.message}`);
+		}
+		if (!lineRows || lineRows.length === 0) break;
+
+		for (const row of lineRows) {
+			const ep = epById.get(row.episode_id);
+			if (!ep) continue;
+
+			const stats = counts.get(ep) || { totalLines: 0, editedLines: 0 };
+			stats.totalLines += 1;
+			if (row.edited) stats.editedLines += 1;
+			counts.set(ep, stats);
+		}
+
+		if (lineRows.length < pageSize) break;
+		from += pageSize;
+	}
+
+	return counts;
+}
+
+function buildEditingStats({ totalLines, editedLines }) {
+	const editedPercentage = totalLines > 0 ? Math.round((editedLines / totalLines) * 100) : 0;
+	return {
+		isFullyEdited: editedPercentage === 100,
+		isMostlyEdited: editedPercentage >= 50,
+		editedPercentage,
+		editedLines,
+		totalLines
+	};
+}
 
 // Server-side season grouping logic
 const groupEpisodesBySeasons = (episodes) => {
@@ -58,6 +105,12 @@ const groupEpisodesBySeasons = (episodes) => {
 			seasonId = 'jesus';
 		} else if (episode.ep.startsWith('lastresort-')) {
 			seasonId = 'lastresort';
+		} else if (episode.ep.startsWith('exit43-')) {
+			seasonId = 'exit43';
+		} else if (episode.ep.startsWith('countyfair-')) {
+			seasonId = 'countyfair';
+		} else if (episode.ep.startsWith('mainstreet-')) {
+			seasonId = 'mainstreet';
 		} else if (episode.ep === 'Peecast') {
 			seasonId = 'Peecast';
 		} else {
@@ -87,6 +140,8 @@ const groupEpisodesBySeasons = (episodes) => {
 		s09: { name: 'Season 9', description: 'Canon reset and real guests', order: 9 },
 		s10: { name: 'Season 10', description: 'Alumni Week', order: 10 },
 		s11: { name: 'Season 11', description: 'Pumped', order: 11 },
+		s12: { name: 'Season 12', description: 'Order Up', order: 12 },
+		s13: { name: 'Season 13', description: 'Academy', order: 13 },
 		mini: {
 			name: 'Mini Episodes',
 			description: 'Shorter episodes',
@@ -116,6 +171,21 @@ const groupEpisodesBySeasons = (episodes) => {
 				'10 part improvised podcast series, chronicling the struggles of a Gulf Coast resort.',
 			order: 105
 		},
+		exit43: {
+			name: 'Exit 43',
+			description: '20 more doses of Big Grande improv, back at the same insane highway exit.',
+			order: 106
+		},
+		countyfair: {
+			name: 'County Fair',
+			description: '10 part improvised podcast series set at a county fair.',
+			order: 107
+		},
+		mainstreet: {
+			name: 'Main Street Sounds - Volume 1',
+			description: '10 part improvised podcast series set around Main Street.',
+			order: 108
+		},
 		other: { name: 'Other Episodes', description: 'Miscellaneous episodes', order: 999 }
 	};
 
@@ -140,11 +210,14 @@ const groupEpisodesBySeasons = (episodes) => {
 };
 
 // Add editing stats to episodes
+const supabase = initSupabase();
+const editingStatsByEpisode = await fetchEditingStatsByEpisode(supabase);
+
 const episodesWithEditingStats = episodes.map((episode) => {
-	const editingStats = calculateEpisodeEditingStats(episode.ep);
+	const stats = editingStatsByEpisode.get(episode.ep) || { totalLines: 0, editedLines: 0 };
 	return {
 		...episode,
-		...editingStats
+		...buildEditingStats(stats)
 	};
 });
 
