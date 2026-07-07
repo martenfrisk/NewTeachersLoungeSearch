@@ -1,0 +1,2360 @@
+[
+  {
+    "time": "0:00:33",
+    "startTime": "0:00:33",
+    "stopTime": "0:01:07",
+    "speaker": "Speaker 0",
+    "line": "Good morning. Sorry, good afternoon. And welcome to Live from Hamilton, where we talk to the members of the Hamilton community who make our town tick. I'm Shep Greenwood, and I'm here with some incredible guests today. Joining me directly to my left, if you're going clockwise. Hi there, Gary Bench. I run the local snack stand down near the Little League, but not the Little League field. That's right. Gary, we met when I was trying to get a good deal on a soda and a hot dog.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:01:07",
+    "startTime": "0:01:07",
+    "stopTime": "0:01:09",
+    "speaker": "Speaker 5",
+    "line": "Yeah, that's right. That's right. And hey, we gave you that deal.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:01:09",
+    "startTime": "0:01:09",
+    "stopTime": "0:01:13",
+    "speaker": "Speaker 0",
+    "line": "That's right. And to Gary's left.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:01:13",
+    "startTime": "0:01:13",
+    "stopTime": "0:01:29",
+    "speaker": "Speaker 3",
+    "line": "Hi, it's me, Hugh Moose. I own the local sporting goods store and the used car dealership on 13th Street. Get your rods, get your reels, get your wheels with Hugh Moose.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:01:30",
+    "startTime": "0:01:30",
+    "stopTime": "0:01:37",
+    "speaker": "Speaker 0",
+    "line": "That's right. Hugh Moose's sporting goods. We're proud to have the third most popular sporting goods store in the city.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:01:37",
+    "startTime": "0:01:37",
+    "stopTime": "0:01:42",
+    "speaker": "Speaker 3",
+    "line": "That's right. Represented here today. Right behind Big Five and Carl's Place.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:01:43",
+    "startTime": "0:01:43",
+    "stopTime": "0:01:45",
+    "speaker": "Speaker 0",
+    "line": "Which he runs right out of his garage.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:01:46",
+    "startTime": "0:01:46",
+    "stopTime": "0:01:58",
+    "speaker": "Speaker 2",
+    "line": "Hi, my name's Brad for the table. And I run the snack stand at the field.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:02:01",
+    "startTime": "0:02:01",
+    "stopTime": "0:02:06",
+    "speaker": "Speaker 6",
+    "line": "So not near the field, but once you get all the way there, that's my snack stand.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:02:07",
+    "startTime": "0:02:07",
+    "stopTime": "0:02:09",
+    "speaker": "Speaker 2",
+    "line": "Hi, I'm Brad for the table.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:02:10",
+    "startTime": "0:02:10",
+    "stopTime": "0:02:33",
+    "speaker": "Speaker 0",
+    "line": "Wonderful to have everybody here. It has been a tumultuous week in Hamilton. Of course, they finally figured out how to stop the spill. Excuse me. They finally figured out how to stop the spill coming out of the fire hydrant. That caused a lot of problems. And the first thing we wanted to talk about is...",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:02:33",
+    "startTime": "0:02:33",
+    "stopTime": "0:02:42",
+    "speaker": "Speaker 5",
+    "line": "How did they get the lines all mixed up? It's usually water coming out of the hydrant, but it was sewage. And so thank God they got the lines fixed.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:02:42",
+    "startTime": "0:02:42",
+    "stopTime": "0:02:47",
+    "speaker": "Speaker 3",
+    "line": "Well, there was, I believe I heard that there was some sort of issue where people were putting in illegal septics",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:02:47",
+    "startTime": "0:02:47",
+    "stopTime": "0:02:58",
+    "speaker": "Speaker 2",
+    "line": "and it was causing some sort of cross contamination with the local sewer. It was really trouble when they put out my garage fire with piss. That was stinky.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:02:58",
+    "startTime": "0:02:58",
+    "stopTime": "0:02:58",
+    "speaker": "Speaker 3",
+    "line": "It was",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:02:58",
+    "startTime": "0:02:58",
+    "stopTime": "0:02:59",
+    "speaker": "Speaker 0",
+    "line": "really trouble.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:02:59",
+    "startTime": "0:02:59",
+    "stopTime": "0:02:59",
+    "speaker": "Speaker 5",
+    "line": "It",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:02:59",
+    "startTime": "0:02:59",
+    "stopTime": "0:03:01",
+    "speaker": "Speaker 0",
+    "line": "worked. Yes. But that was",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:03:01",
+    "startTime": "0:03:01",
+    "stopTime": "0:03:07",
+    "speaker": "Speaker 5",
+    "line": "trouble. But this has been controversial because these septics are supposed to be really good. We",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:03:07",
+    "startTime": "0:03:07",
+    "stopTime": "0:03:08",
+    "speaker": "Speaker 1",
+    "line": "were",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:03:08",
+    "startTime": "0:03:08",
+    "stopTime": "0:03:11",
+    "speaker": "Speaker 5",
+    "line": "promised that the septics were good.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:03:12",
+    "startTime": "0:03:12",
+    "stopTime": "0:03:26",
+    "speaker": "Speaker 1",
+    "line": "Hamilton was put under a spell by a town to town septic salesman who we now know was a charlatan. Everybody watching this, I'm sure, has dealt with overpaying for a septic that they were assured was good. We now wined and dined all our city",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:03:26",
+    "startTime": "0:03:26",
+    "stopTime": "0:03:27",
+    "speaker": "Speaker 6",
+    "line": "officials.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:03:28",
+    "startTime": "0:03:28",
+    "stopTime": "0:03:30",
+    "speaker": "Speaker 1",
+    "line": "And our septic was compromised.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:03:30",
+    "startTime": "0:03:30",
+    "stopTime": "0:03:42",
+    "speaker": "Speaker 0",
+    "line": "He told us all, he told us all, we were going to get to meet Peter Dinklage. I got an autographed headshot of Peter Dinklage, which I have now looked up Peter's handwriting and it is not signed by him. I have a feeling that rat bastard signed it himself.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:03:43",
+    "startTime": "0:03:43",
+    "stopTime": "0:03:50",
+    "speaker": "Speaker 5",
+    "line": "Two years ago, Hamilton won the award for best community septic system, but we didn't think that was good enough.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:03:51",
+    "startTime": "0:03:51",
+    "stopTime": "0:04:06",
+    "speaker": "Speaker 0",
+    "line": "We thought that every home needed a tank before it hit the municipal system. That way the tanks are full all the time. And lucky for us, just as we were discussing that as a city, a gentleman rolled right through who said he had best septic and he screwed us all.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:04:07",
+    "startTime": "0:04:07",
+    "stopTime": "0:04:10",
+    "speaker": "Speaker 2",
+    "line": "A lot of people don't know this, but city officials can be had.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:04:11",
+    "startTime": "0:04:11",
+    "stopTime": "0:04:14",
+    "speaker": "Speaker 0",
+    "line": "They're just, you know, people are coming through trying to sell stuff all the time and you have",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:04:14",
+    "startTime": "0:04:14",
+    "stopTime": "0:04:35",
+    "speaker": "Speaker 5",
+    "line": "government money and you can partner with any private company to get something that your city needs done done. Now this is one area where we agree. I think that city officials can be had. And the fact that they can just call anything a snack stand when something else already has the name snack stand is ludicrous.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:04:37",
+    "startTime": "0:04:37",
+    "stopTime": "0:04:42",
+    "speaker": "Speaker 0",
+    "line": "A point well made. I think it's something we're going to be discussing later. And I think it's kind of about your rivalry.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:04:42",
+    "startTime": "0:04:42",
+    "stopTime": "0:04:45",
+    "speaker": "Speaker 1",
+    "line": "Now that it got brought up, I do feel like I'd love to respond.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:04:45",
+    "startTime": "0:04:45",
+    "stopTime": "0:04:46",
+    "speaker": "Speaker 0",
+    "line": "Yes, you do.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:04:46",
+    "startTime": "0:04:46",
+    "stopTime": "0:05:13",
+    "speaker": "Speaker 2",
+    "line": "Well, having the original snack stand at the fields felt like I had jurisdiction over snacks near and around the fields and the rec department. Ludicrous. Ridiculous that you would come and put a snack stand on the one in and out road to the field and to the rec department and you would put a snack stand",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:05:13",
+    "startTime": "0:05:13",
+    "stopTime": "0:05:18",
+    "speaker": "Speaker 1",
+    "line": "and you put up a sign that said no more snacks after this point. Nobody wants a hot",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:05:18",
+    "startTime": "0:05:18",
+    "stopTime": "0:05:21",
+    "speaker": "Speaker 5",
+    "line": "dog once they've seen the stands. They",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:05:21",
+    "startTime": "0:05:21",
+    "stopTime": "0:05:23",
+    "speaker": "Speaker 1",
+    "line": "want the hot dog before they get to the stands.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:05:23",
+    "startTime": "0:05:23",
+    "stopTime": "0:05:23",
+    "speaker": "Speaker 0",
+    "line": "No,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:05:24",
+    "startTime": "0:05:24",
+    "stopTime": "0:05:25",
+    "speaker": "Speaker 5",
+    "line": "they want to eat it on the stands.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:05:26",
+    "startTime": "0:05:26",
+    "stopTime": "0:05:29",
+    "speaker": "Speaker 0",
+    "line": "Okay. Gentlemen, gentlemen, respect. Gentlemen,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:05:30",
+    "startTime": "0:05:30",
+    "stopTime": "0:05:48",
+    "speaker": "Speaker 2",
+    "line": "respect. Gentlemen, respect on the show. We will always treat each other with respect and debate. If that goes out the window, your whole point goes out the window. Okay. No more high pitched words out of either of you. I'm just a little upset that I sat in a Los Angeles Mediterranean restaurant for eight hours waiting for Dinklage and he never showed. And that was really tough on",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:05:48",
+    "startTime": "0:05:48",
+    "stopTime": "0:05:50",
+    "speaker": "Speaker 5",
+    "line": "me. I think we all share the same pain there.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:05:51",
+    "startTime": "0:05:51",
+    "stopTime": "0:05:59",
+    "speaker": "Speaker 0",
+    "line": "Yeah. Who amongst us in this town hasn't been at a Kebab Brothers waiting for Peter Dinklage to show up because he bought an expensive septic tank for the man who assured",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:05:59",
+    "startTime": "0:05:59",
+    "stopTime": "0:06:11",
+    "speaker": "Speaker 5",
+    "line": "you it was good. And to the Kebab Brothers. I can't believe you partnered with that charlatan to do these fake little meetups.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:06:12",
+    "startTime": "0:06:12",
+    "stopTime": "0:06:13",
+    "speaker": "Speaker 0",
+    "line": "If you have... Are you part...",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:06:13",
+    "startTime": "0:06:13",
+    "stopTime": "0:06:29",
+    "speaker": "Speaker 2",
+    "line": "Kebab Brothers, were you part of it or just simply used by the charlatan? And also, I really didn't appreciate how you embarrassed my friend Hugh Moose because his name sounds so much like hummus.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:06:29",
+    "startTime": "0:06:29",
+    "stopTime": "0:06:32",
+    "speaker": "Speaker 5",
+    "line": "Yeah. I was thinking that",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:06:32",
+    "startTime": "0:06:32",
+    "stopTime": "0:06:54",
+    "speaker": "Speaker 3",
+    "line": "right when we got started. Now, hang on, fellas. I don't... I think it's a bit presumptuous that you guys would think that I was upset by that. Okay? I thought it was funny. I actually thought it was funny. I don't need you all to take up for me. Okay? I thought it was really funny that they gave me that t -shirt that just said Hugh Moose hummus. I thought it was really funny that",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:06:54",
+    "startTime": "0:06:54",
+    "stopTime": "0:06:59",
+    "speaker": "Speaker 5",
+    "line": "they... Hummus. Yeah. I think you don't know how to pronounce it. What",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:06:59",
+    "startTime": "0:06:59",
+    "stopTime": "0:07:03",
+    "speaker": "Speaker 2",
+    "line": "do you mean? Have we said it right once? What do you mean? Because I... Hummus. Hugh Moose",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:07:03",
+    "startTime": "0:07:03",
+    "stopTime": "0:07:14",
+    "speaker": "Speaker 5",
+    "line": "hummus. You're saying it more like a group. Yes. Hummus. It's hard when you separate it up. Hugh Moose. Hummus. Well, hummus. Hummus. No, see, that's wrong. Hummus. Hummus. Hummus.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:07:15",
+    "startTime": "0:07:15",
+    "stopTime": "0:07:17",
+    "speaker": "Speaker 0",
+    "line": "The phone lines are open. Let us know your pronunciation",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:07:17",
+    "startTime": "0:07:17",
+    "stopTime": "0:07:26",
+    "speaker": "Speaker 2",
+    "line": "of the word. H -U -M -M -U -S or H -U -M -U -S, depending on the menu you are reading. Phone lines are open. And they are reading off the hook.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:07:27",
+    "startTime": "0:07:27",
+    "stopTime": "0:07:34",
+    "speaker": "Speaker 0",
+    "line": "Yes, line one. Hummus. Thank you. Line two. Whom. Thank you very much. Line",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:07:34",
+    "startTime": "0:07:34",
+    "stopTime": "0:07:35",
+    "speaker": "Speaker 6",
+    "line": "three. Kimmy.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:07:36",
+    "startTime": "0:07:36",
+    "stopTime": "0:07:40",
+    "speaker": "Speaker 0",
+    "line": "Very interesting. Line four. Hummus. Line five.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:07:41",
+    "startTime": "0:07:41",
+    "stopTime": "0:07:41",
+    "speaker": "Speaker 1",
+    "line": "Feta.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:07:42",
+    "startTime": "0:07:42",
+    "stopTime": "0:07:46",
+    "speaker": "Speaker 0",
+    "line": "That's our later segment. Thank you. Come back. Line two again.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:07:47",
+    "startTime": "0:07:47",
+    "stopTime": "0:07:52",
+    "speaker": "Speaker 1",
+    "line": "Hummus. Hummus. No, hummus. Okay, looks like we've got a couple arguing here.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:07:52",
+    "startTime": "0:07:52",
+    "stopTime": "0:07:57",
+    "speaker": "Speaker 3",
+    "line": "It's Hugh Moose. It's Hugh Moose. Yeah, that's me. Hi, how are you?",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:07:57",
+    "startTime": "0:07:57",
+    "stopTime": "0:08:00",
+    "speaker": "Speaker 0",
+    "line": "We've got a call for Hugh Moose. Yes, do you have a question for Hugh Moose?",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:00",
+    "startTime": "0:08:00",
+    "stopTime": "0:08:01",
+    "speaker": "Speaker 4",
+    "line": "Hey, Hugh, how you doing, brother?",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:01",
+    "startTime": "0:08:01",
+    "stopTime": "0:08:04",
+    "speaker": "Speaker 3",
+    "line": "Really good, man. Is this, who is this?",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:04",
+    "startTime": "0:08:04",
+    "stopTime": "0:08:07",
+    "speaker": "Speaker 4",
+    "line": "You know who it is, man. Is this you, Carl? Yeah, it",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:07",
+    "startTime": "0:08:07",
+    "stopTime": "0:08:13",
+    "speaker": "Speaker 3",
+    "line": "is. Okay, buddy. I heard you were on today. Congrats. Yeah, congrats to you by surpassing me with your business, buddy.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:13",
+    "startTime": "0:08:13",
+    "stopTime": "0:08:14",
+    "speaker": "Speaker 4",
+    "line": "No, congrats to",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:14",
+    "startTime": "0:08:14",
+    "stopTime": "0:08:16",
+    "speaker": "Speaker 3",
+    "line": "you. No, congrats to you, Carl. I'm proud of you.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:16",
+    "startTime": "0:08:16",
+    "stopTime": "0:08:16",
+    "speaker": "Speaker 4",
+    "line": "I'm",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:16",
+    "startTime": "0:08:16",
+    "stopTime": "0:08:19",
+    "speaker": "Speaker 2",
+    "line": "proud of you. Congrats, office. No, congrats to you, Carl.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:20",
+    "startTime": "0:08:20",
+    "stopTime": "0:08:21",
+    "speaker": "Speaker 4",
+    "line": "Congratulations to you,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:21",
+    "startTime": "0:08:21",
+    "stopTime": "0:08:23",
+    "speaker": "Speaker 3",
+    "line": "my friend. I think it's actually congrats to you, Carl.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:23",
+    "startTime": "0:08:23",
+    "stopTime": "0:08:25",
+    "speaker": "Speaker 0",
+    "line": "Okay, but you're on television. Gentlemen and",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:25",
+    "startTime": "0:08:25",
+    "stopTime": "0:08:26",
+    "speaker": "Speaker 4",
+    "line": "gentlemen",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:26",
+    "startTime": "0:08:26",
+    "stopTime": "0:08:30",
+    "speaker": "Speaker 3",
+    "line": "and gentlemen. Congrats, Carl. Keep it in your natural register. Keep it in your natural",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:30",
+    "startTime": "0:08:30",
+    "stopTime": "0:08:33",
+    "speaker": "Speaker 5",
+    "line": "register. Congrats to you, sir. Thank you.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:34",
+    "startTime": "0:08:34",
+    "stopTime": "0:08:36",
+    "speaker": "Speaker 4",
+    "line": "No, congrats to you, Carl. A very big congratulations to",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:36",
+    "startTime": "0:08:36",
+    "stopTime": "0:08:36",
+    "speaker": "Speaker 0",
+    "line": "you",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:36",
+    "startTime": "0:08:36",
+    "stopTime": "0:08:37",
+    "speaker": "Speaker 5",
+    "line": "all the",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:37",
+    "startTime": "0:08:37",
+    "stopTime": "0:08:37",
+    "speaker": "Speaker 0",
+    "line": "way. No, congrats",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:37",
+    "startTime": "0:08:37",
+    "stopTime": "0:08:38",
+    "speaker": "Speaker 4",
+    "line": "to",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:08:38",
+    "startTime": "0:08:38",
+    "stopTime": "0:09:02",
+    "speaker": "Speaker 0",
+    "line": "you. How do you get away from me? I'm congratulating Hugh Moose. Line nine. Hummus. Hummus. Very good. The next topic of the day. The Hamilton basketball team has now gone 0 -73. A lot of calls coming in to fire their coach, to get a new team, or to practice more. Well,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:09:02",
+    "startTime": "0:09:02",
+    "stopTime": "0:09:13",
+    "speaker": "Speaker 3",
+    "line": "I want to get out ahead of this. I want to get out ahead of this. A lot of people are blaming. I, of course, am the supplier for the Hamilton basketball team's equipment. My son is also the equipment manager.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:09:14",
+    "startTime": "0:09:14",
+    "stopTime": "0:09:16",
+    "speaker": "Speaker 2",
+    "line": "Not much equipment, really, for basketball teams.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:09:17",
+    "startTime": "0:09:17",
+    "stopTime": "0:09:17",
+    "speaker": "Speaker 3",
+    "line": "Well, the",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:09:17",
+    "startTime": "0:09:17",
+    "stopTime": "0:09:27",
+    "speaker": "Speaker 2",
+    "line": "ball. You sell jock straps, right? Balls, jock straps, and, well, yeah, that's pretty much it. That's all you do. The uniforms are done by that company.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:09:28",
+    "startTime": "0:09:28",
+    "stopTime": "0:09:39",
+    "speaker": "Speaker 0",
+    "line": "Yeah, Jostin's. Jostin's Welding. Jostin's Welding. Many people are saying that your son doing the management job is a Nepo role. Your son is probably the least qualified to be a basketball team manager.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:09:39",
+    "startTime": "0:09:39",
+    "stopTime": "0:09:55",
+    "speaker": "Speaker 3",
+    "line": "Yeah. He's easily flustered. He's scared of towels. Incredibly short. Well, a lot of managers are really short. It means they never want to be on the team, you know. He slips easily. He does not wear non -stick shoes. And I will say, one of the conditions of the contract that I said, I would",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:09:55",
+    "startTime": "0:09:55",
+    "stopTime": "0:09:57",
+    "speaker": "Speaker 0",
+    "line": "give them a good deal on... Non -stick shoes?",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:09:58",
+    "startTime": "0:09:58",
+    "stopTime": "0:10:07",
+    "speaker": "Speaker 3",
+    "line": "I would give them a good deal if they did do that thing where they let my son play for one play every game. And I told him to really make it count, make him feel like he was part of the team.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:10:08",
+    "startTime": "0:10:08",
+    "stopTime": "0:10:10",
+    "speaker": "Speaker 5",
+    "line": "He gets a shot clock violation every time.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:10:11",
+    "startTime": "0:10:11",
+    "stopTime": "0:10:19",
+    "speaker": "Speaker 3",
+    "line": "He actually cost him a game. He's cost him a couple of games because he had an own goal in one. And then he did have a few shot clock violations. Too bad.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:10:19",
+    "startTime": "0:10:19",
+    "stopTime": "0:10:28",
+    "speaker": "Speaker 0",
+    "line": "He did step out of bounds with the ball because he was going to grab a towel to dry it off. A local make -a -wish kid wished that they did not let your son play for one game. Yep.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:10:29",
+    "startTime": "0:10:29",
+    "stopTime": "0:10:30",
+    "speaker": "Speaker 3",
+    "line": "He died, unfortunately, right",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:10:30",
+    "startTime": "0:10:30",
+    "stopTime": "0:10:32",
+    "speaker": "Speaker 5",
+    "line": "before. He died right before. So your son",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:10:32",
+    "startTime": "0:10:32",
+    "stopTime": "0:10:33",
+    "speaker": "Speaker 2",
+    "line": "did get to play. Yeah.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:10:33",
+    "startTime": "0:10:33",
+    "stopTime": "0:10:34",
+    "speaker": "Speaker 5",
+    "line": "That's what they don't",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:10:34",
+    "startTime": "0:10:34",
+    "stopTime": "0:10:39",
+    "speaker": "Speaker 2",
+    "line": "always make good of the wish. If your wish doesn't come true, if you pass away right before",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:10:39",
+    "startTime": "0:10:39",
+    "stopTime": "0:10:41",
+    "speaker": "Speaker 5",
+    "line": "you get to do it. It takes a lot to make these wishes happen.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:10:41",
+    "startTime": "0:10:41",
+    "stopTime": "0:10:45",
+    "speaker": "Speaker 2",
+    "line": "Right. So they don't like to just go willy -nilly if... Yeah. You know what I mean? No offense.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:10:45",
+    "startTime": "0:10:45",
+    "stopTime": "0:10:52",
+    "speaker": "Speaker 0",
+    "line": "But yes, Hugh, a lot of heat coming in on you. Obviously, Carl helped the team and",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:10:52",
+    "startTime": "0:10:52",
+    "stopTime": "0:11:02",
+    "speaker": "Speaker 5",
+    "line": "ended up giving them a few round balls that are a normal size. I think your son is getting a really, really raw deal on this. I think it is the uniforms. This welding company has made these uniforms",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:11:02",
+    "startTime": "0:11:02",
+    "stopTime": "0:11:02",
+    "speaker": "Speaker 0",
+    "line": "heavy.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:11:03",
+    "startTime": "0:11:03",
+    "stopTime": "0:11:30",
+    "speaker": "Speaker 3",
+    "line": "Yeah. They're like 50 -pound uniforms. I see why these teams are tired. Yeah. Yeah. That's what I told the coach. I said, I think there's a lot of other things that you could be sort of inspecting. You could be thinking about. It feels like you immediately went to the size and shape of the balls that I was supplying for the team. I think there's plenty of other things that could be at fault here. It could be the heavy metal uniforms that the welding company is making. It could be the court. It could be the finish on the court. Yeah. It was",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:11:30",
+    "startTime": "0:11:30",
+    "stopTime": "0:11:42",
+    "speaker": "Speaker 0",
+    "line": "refinished. Yeah. It was refinished by the ice company. It sounds to me as I'm hearing it that we did everything wrong. As a town, we have not served our boys properly",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:11:42",
+    "startTime": "0:11:42",
+    "stopTime": "0:12:04",
+    "speaker": "Speaker 5",
+    "line": "here. It's true. It's true. And we need to step up our game. I think in this town, we need to start having accountability. If someone says the guys are going to wear basically armor to the games, someone's got to say that's too heavy. It's too sweaty. It's illegal. It'll make them worse. It's illegal. Well, I think part of the reason that not only are they losing, which stinks, but no one's coming to see them.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:04",
+    "startTime": "0:12:04",
+    "stopTime": "0:12:04",
+    "speaker": "Speaker 0",
+    "line": "So the",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:04",
+    "startTime": "0:12:04",
+    "stopTime": "0:12:05",
+    "speaker": "Speaker 6",
+    "line": "revenue is way",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:05",
+    "startTime": "0:12:05",
+    "stopTime": "0:12:05",
+    "speaker": "Speaker 0",
+    "line": "down.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:05",
+    "startTime": "0:12:05",
+    "stopTime": "0:12:17",
+    "speaker": "Speaker 2",
+    "line": "Yes. And I think some of that is parking. I think some of that is food. The food freaking stinks. No. They're not hungry when they arrive. They've already been fed full. Right. Because the food stinks. No, because there is false",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:17",
+    "startTime": "0:12:17",
+    "stopTime": "0:12:19",
+    "speaker": "Speaker 5",
+    "line": "advertising on the way to",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:19",
+    "startTime": "0:12:19",
+    "stopTime": "0:12:20",
+    "speaker": "Speaker 2",
+    "line": "the rec",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:20",
+    "startTime": "0:12:20",
+    "stopTime": "0:12:25",
+    "speaker": "Speaker 5",
+    "line": "department. Where everyone comes licking their chops saying, God, that was good. Ew, this new stuff looks horrible.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:26",
+    "startTime": "0:12:26",
+    "stopTime": "0:12:30",
+    "speaker": "Speaker 2",
+    "line": "No. That's just because they're full. When you're full, everything looks gross.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:30",
+    "startTime": "0:12:30",
+    "stopTime": "0:12:40",
+    "speaker": "Speaker 5",
+    "line": "Yeah, I agree. Everything looks gross. I don't. If I go to the grocery store full, I don't buy anything. All I'm saying is every time I go to the basketball game, I look at the snack bar once and I barf my pants off. It's disgusting.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:41",
+    "startTime": "0:12:41",
+    "stopTime": "0:12:46",
+    "speaker": "Speaker 2",
+    "line": "I know. And you have that written on your sign quoted to you, which I don't know why people would believe that",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:46",
+    "startTime": "0:12:46",
+    "stopTime": "0:12:49",
+    "speaker": "Speaker 5",
+    "line": "because it's clearly a little bit",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:49",
+    "startTime": "0:12:49",
+    "stopTime": "0:12:52",
+    "speaker": "Speaker 2",
+    "line": "cook in the kitchen type of thing.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:52",
+    "startTime": "0:12:52",
+    "stopTime": "0:12:56",
+    "speaker": "Speaker 5",
+    "line": "People trust a business owner. You at home, you're watching us. You're watching us. You trust us.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:12:57",
+    "startTime": "0:12:57",
+    "stopTime": "0:13:05",
+    "speaker": "Speaker 2",
+    "line": "He's lying. He's lying and he's putting up signs and he's assuring you that there's no food at the rec department, but there's",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:13:05",
+    "startTime": "0:13:05",
+    "stopTime": "0:13:18",
+    "speaker": "Speaker 5",
+    "line": "plenty of food. There's so much food. Do you serve calamari at your snack shack? Yes. My last name is for the table. Yes, I do. So I have a particularly soft spot in my heart for calamari",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:13:18",
+    "startTime": "0:13:18",
+    "stopTime": "0:13:27",
+    "speaker": "Speaker 2",
+    "line": "because I hear it almost every time I go to, when I go to Frides. I love Frides.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:13:27",
+    "startTime": "0:13:27",
+    "stopTime": "0:13:28",
+    "speaker": "Speaker 0",
+    "line": "Well, we love Frides. I",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:13:28",
+    "startTime": "0:13:28",
+    "stopTime": "0:13:32",
+    "speaker": "Speaker 2",
+    "line": "sponsor the show. Sponsor the show. Yes, right. Come on, baby. Give it up for Frides.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:13:32",
+    "startTime": "0:13:32",
+    "stopTime": "0:13:34",
+    "speaker": "Speaker 0",
+    "line": "This is a good time. Nothing on the menu that's baked.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:13:35",
+    "startTime": "0:13:35",
+    "stopTime": "0:13:41",
+    "speaker": "Speaker 2",
+    "line": "It's all fried to a crisp, heavy, and with peanut oil. Thank you.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:13:41",
+    "startTime": "0:13:41",
+    "stopTime": "0:13:43",
+    "speaker": "Speaker 0",
+    "line": "Thank you. Thank you.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:13:43",
+    "startTime": "0:13:43",
+    "stopTime": "0:13:45",
+    "speaker": "Speaker 2",
+    "line": "Allergy's not welcome at Frides.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:13:45",
+    "startTime": "0:13:45",
+    "stopTime": "0:13:48",
+    "speaker": "Speaker 5",
+    "line": "Again, one place we agree. You must use peanut oil.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:13:49",
+    "startTime": "0:13:49",
+    "stopTime": "0:13:52",
+    "speaker": "Speaker 2",
+    "line": "Everybody agrees. Stop serving calamari, okay?",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:13:52",
+    "startTime": "0:13:52",
+    "stopTime": "0:13:56",
+    "speaker": "Speaker 0",
+    "line": "On the way to the rec department. Thank you for keeping it civil,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:13:56",
+    "startTime": "0:13:56",
+    "stopTime": "0:14:00",
+    "speaker": "Speaker 2",
+    "line": "fellows. Stop. Line five. Thomas. Thank you.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:14:04",
+    "startTime": "0:14:04",
+    "stopTime": "0:14:28",
+    "speaker": "Speaker 0",
+    "line": "Next on the docket, Hamilton has started using AI to run the town's stoplights. Good, bad, sensible, scary gentlemen. We did an audience poll. 90 % of people said, great idea. Traffic has never been better going one direction, but they are still trying to figure out the cross streets.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:14:28",
+    "startTime": "0:14:28",
+    "stopTime": "0:14:28",
+    "speaker": "Speaker 2",
+    "line": "Here's",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:14:28",
+    "startTime": "0:14:28",
+    "stopTime": "0:14:28",
+    "speaker": "Speaker 0",
+    "line": "the",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:14:28",
+    "startTime": "0:14:28",
+    "stopTime": "0:14:44",
+    "speaker": "Speaker 2",
+    "line": "hard part. I wish it would have stuck to green, yellow, and red lights. Unfortunately, now it's just like Stephen Hawking doing a half pipe on a little screen next to the red lights. Yes. Or Michael Jackson dancing with Sting or",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:14:44",
+    "startTime": "0:14:44",
+    "stopTime": "0:14:59",
+    "speaker": "Speaker 0",
+    "line": "somebody. They've been using AI -style videos that we have to understand what means stop, go. I'm going to be honest. I got T -boned at a Helen Keller during a slap fight with Abraham Lincoln. That's tough. That's really tough. Yes, I misunderstood that.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:00",
+    "startTime": "0:15:00",
+    "stopTime": "0:15:06",
+    "speaker": "Speaker 5",
+    "line": "I've had to leave my car completely. I'm doing only bike lanes now because I'm too confused by the AI system.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:06",
+    "startTime": "0:15:06",
+    "stopTime": "0:15:13",
+    "speaker": "Speaker 0",
+    "line": "I can't do it. Okay, so that's a big no for AI, but a big yes for biking, which has been great for our city's CO2 cloud.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:13",
+    "startTime": "0:15:13",
+    "stopTime": "0:15:20",
+    "speaker": "Speaker 5",
+    "line": "Yes. Well, and I put in that requisition six to eight months ago about those bike lanes. Now we have a one -foot bike lane",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:20",
+    "startTime": "0:15:20",
+    "stopTime": "0:15:28",
+    "speaker": "Speaker 0",
+    "line": "on every road in town, which is almost enough to actually ride your bike in. It certainly won't accommodate the large bikes being sold at Moose's.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:30",
+    "startTime": "0:15:30",
+    "stopTime": "0:15:34",
+    "speaker": "Speaker 3",
+    "line": "Well, large to some, small to others. You know, they are",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:34",
+    "startTime": "0:15:34",
+    "stopTime": "0:15:35",
+    "speaker": "Speaker 2",
+    "line": "large to",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:35",
+    "startTime": "0:15:35",
+    "stopTime": "0:15:35",
+    "speaker": "Speaker 3",
+    "line": "most,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:36",
+    "startTime": "0:15:36",
+    "stopTime": "0:15:36",
+    "speaker": "Speaker 5",
+    "line": "if",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:36",
+    "startTime": "0:15:36",
+    "stopTime": "0:15:38",
+    "speaker": "Speaker 3",
+    "line": "not everyone. Small to Andre the Giant.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:38",
+    "startTime": "0:15:38",
+    "stopTime": "0:15:41",
+    "speaker": "Speaker 5",
+    "line": "Yes. These bikes are 20 by 20 by 20.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:43",
+    "startTime": "0:15:43",
+    "stopTime": "0:15:46",
+    "speaker": "Speaker 2",
+    "line": "They're so wide. That's not a bike.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:46",
+    "startTime": "0:15:46",
+    "stopTime": "0:15:46",
+    "speaker": "Speaker 5",
+    "line": "Well,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:46",
+    "startTime": "0:15:46",
+    "stopTime": "0:15:53",
+    "speaker": "Speaker 3",
+    "line": "I need you all to know. That's a wider than a tank. And it's the safest bike on the road. Try to get hit by a car. If it",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:53",
+    "startTime": "0:15:53",
+    "stopTime": "0:15:54",
+    "speaker": "Speaker 2",
+    "line": "was 20 by",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:54",
+    "startTime": "0:15:54",
+    "stopTime": "0:15:54",
+    "speaker": "Speaker 3",
+    "line": "20 by",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:54",
+    "startTime": "0:15:54",
+    "stopTime": "0:15:56",
+    "speaker": "Speaker 2",
+    "line": "30, I'd be",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:56",
+    "startTime": "0:15:56",
+    "stopTime": "0:15:56",
+    "speaker": "Speaker 3",
+    "line": "like, that's",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:56",
+    "startTime": "0:15:56",
+    "stopTime": "0:15:58",
+    "speaker": "Speaker 2",
+    "line": "a circus bike. No,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:15:58",
+    "startTime": "0:15:58",
+    "stopTime": "0:16:00",
+    "speaker": "Speaker 0",
+    "line": "try to get hit by a car. 20 by 20 is accused.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:00",
+    "startTime": "0:16:00",
+    "stopTime": "0:16:03",
+    "speaker": "Speaker 2",
+    "line": "Just so I get the proper image, and maybe we'll throw one up on the screen here.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:04",
+    "startTime": "0:16:04",
+    "stopTime": "0:16:05",
+    "speaker": "Speaker 0",
+    "line": "No,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:05",
+    "startTime": "0:16:05",
+    "stopTime": "0:16:07",
+    "speaker": "Speaker 1",
+    "line": "we didn't get it. Line two.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:08",
+    "startTime": "0:16:08",
+    "stopTime": "0:16:08",
+    "speaker": "Speaker 2",
+    "line": "Calamari.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:13",
+    "startTime": "0:16:13",
+    "stopTime": "0:16:17",
+    "speaker": "Speaker 0",
+    "line": "But just to get an idea, so that's 20 feet from front",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:17",
+    "startTime": "0:16:17",
+    "stopTime": "0:16:17",
+    "speaker": "Speaker 3",
+    "line": "wheel to back wheel.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:17",
+    "startTime": "0:16:17",
+    "stopTime": "0:16:20",
+    "speaker": "Speaker 2",
+    "line": "Front wheel to back wheel. 20 feet from top to bottom.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:21",
+    "startTime": "0:16:21",
+    "stopTime": "0:16:21",
+    "speaker": "Speaker 5",
+    "line": "From top to bottom.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:21",
+    "startTime": "0:16:21",
+    "stopTime": "0:16:22",
+    "speaker": "Speaker 2",
+    "line": "The problem",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:22",
+    "startTime": "0:16:22",
+    "stopTime": "0:16:23",
+    "speaker": "Speaker 5",
+    "line": "is the width. The width is",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:23",
+    "startTime": "0:16:23",
+    "stopTime": "0:16:27",
+    "speaker": "Speaker 2",
+    "line": "where we're really so well. It's basically two lanes by two lanes by two",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:27",
+    "startTime": "0:16:27",
+    "stopTime": "0:16:32",
+    "speaker": "Speaker 3",
+    "line": "lanes. I got to ask you guys, when's the last time somebody died in a biking accident in our town? It's a great question.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:33",
+    "startTime": "0:16:33",
+    "stopTime": "0:16:33",
+    "speaker": "Speaker 5",
+    "line": "I think this",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:33",
+    "startTime": "0:16:33",
+    "stopTime": "0:16:34",
+    "speaker": "Speaker 3",
+    "line": "morning, right? That was on",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:34",
+    "startTime": "0:16:34",
+    "stopTime": "0:16:35",
+    "speaker": "Speaker 0",
+    "line": "the news this morning.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:35",
+    "startTime": "0:16:35",
+    "stopTime": "0:16:40",
+    "speaker": "Speaker 5",
+    "line": "Well, let's check in with the hospital feed. Yeah, we lost him.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:40",
+    "startTime": "0:16:40",
+    "stopTime": "0:16:43",
+    "speaker": "Speaker 2",
+    "line": "Did he make a wish in time? Oh, didn't get",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:43",
+    "startTime": "0:16:43",
+    "stopTime": "0:16:47",
+    "speaker": "Speaker 0",
+    "line": "to go. Dang, back in the bank. Is make -a -wish just doing bike accidents now?",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:47",
+    "startTime": "0:16:47",
+    "stopTime": "0:16:50",
+    "speaker": "Speaker 2",
+    "line": "That's supposed to be sick. That's a quick turnaround.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:16:50",
+    "startTime": "0:16:50",
+    "stopTime": "0:17:07",
+    "speaker": "Speaker 5",
+    "line": "Unfortunately, his wish was to meet Dinklage. I don't want to tell make -a -wish who they can and can't make wishes for, but an immediate bike accident does seem wrong. We're adjusting the topic. Should we be allowed to tell make -a -wish who they can and can't have wishes for? There's something about being on camera that makes you real powerful. I'm saying a lot of stuff",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:17:07",
+    "startTime": "0:17:07",
+    "stopTime": "0:17:08",
+    "speaker": "Speaker 0",
+    "line": "that I shouldn't be saying. I'm just a local",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:17:08",
+    "startTime": "0:17:08",
+    "stopTime": "0:17:11",
+    "speaker": "Speaker 2",
+    "line": "business owner. No, no, no. Rapid fire round. How devastating is",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:17:11",
+    "startTime": "0:17:11",
+    "stopTime": "0:17:20",
+    "speaker": "Speaker 0",
+    "line": "the illness? And what does it get? That's a great question. I'm not going to weigh in, but we want to hear what you have to say. Balding at a young age, yes or no? Make",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:17:20",
+    "startTime": "0:17:20",
+    "stopTime": "0:17:28",
+    "speaker": "Speaker 2",
+    "line": "-a -wish? Free California adventure? For balding? That's a good deal. Me, John Cena?",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:17:29",
+    "startTime": "0:17:29",
+    "stopTime": "0:17:31",
+    "speaker": "Speaker 0",
+    "line": "Bad circumcision, yes or no, on a make -a -wish?",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:17:32",
+    "startTime": "0:17:32",
+    "stopTime": "0:17:35",
+    "speaker": "Speaker 5",
+    "line": "Call in. Call in. For the doctor? For",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:17:35",
+    "startTime": "0:17:35",
+    "stopTime": "0:17:36",
+    "speaker": "Speaker 0",
+    "line": "the doctor.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:17:36",
+    "startTime": "0:17:36",
+    "stopTime": "0:17:41",
+    "speaker": "Speaker 5",
+    "line": "I know from experience, if the doctor does a bad circumcision, that ruins their life.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:17:41",
+    "startTime": "0:17:41",
+    "stopTime": "0:17:51",
+    "speaker": "Speaker 2",
+    "line": "Yes. Yes, that's a long time of dread you have to hold on to. Yeah, absolutely. Seven days in Hawaii for a couple of cavities. What do we think, folks? Call",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:17:51",
+    "startTime": "0:17:51",
+    "stopTime": "0:18:03",
+    "speaker": "Speaker 0",
+    "line": "in. Not to make light of this, but when kids make a wish, do they ask for seven days? They're always in Hawaii a lot. They want a vacation with their wife? I just got to get",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:18:03",
+    "startTime": "0:18:03",
+    "stopTime": "0:18:06",
+    "speaker": "Speaker 5",
+    "line": "away for a little. I just want to go to the Berkshires one last time.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:18:06",
+    "startTime": "0:18:06",
+    "stopTime": "0:18:07",
+    "speaker": "Speaker 0",
+    "line": "Not to make light of it,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:18:07",
+    "startTime": "0:18:07",
+    "stopTime": "0:18:09",
+    "speaker": "Speaker 2",
+    "line": "folks. No, of course not. We're not.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:18:09",
+    "startTime": "0:18:09",
+    "stopTime": "0:18:10",
+    "speaker": "Speaker 5",
+    "line": "We never would. We're not.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:18:10",
+    "startTime": "0:18:10",
+    "stopTime": "0:18:15",
+    "speaker": "Speaker 2",
+    "line": "Just for five minutes. We're not making light of anything. We're just talking about it.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:18:15",
+    "startTime": "0:18:15",
+    "stopTime": "0:18:27",
+    "speaker": "Speaker 0",
+    "line": "Well, to close out today's episode, we get to decide with our viewer call -ins and the opinions of our hosts and guests, if we have any opinions, what movie should we be showing in the one theater this month? Oh,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:18:27",
+    "startTime": "0:18:27",
+    "stopTime": "0:18:39",
+    "speaker": "Speaker 5",
+    "line": "great question. This is big. Yes, this is big. We've had a lot of suggestions for - And we've had some very controversial movies come to town before. So we don't necessarily want the controversy. We want this one to be an audience pleaser, right?",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:18:39",
+    "startTime": "0:18:39",
+    "stopTime": "0:18:55",
+    "speaker": "Speaker 0",
+    "line": "Yes. I think so. And I want to please ask, we do have to honor whatever the votes are. Could we not vote on pornos anymore? I want to please ask. We have to honor that. But there's been a lot of controversy over the past three months showing only pornos, which is getting the wrong type of",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:18:55",
+    "startTime": "0:18:55",
+    "stopTime": "0:19:00",
+    "speaker": "Speaker 5",
+    "line": "guy at the theaters. Well, it feels weird to write that down, to ask people. So we have to just keep saying",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:00",
+    "startTime": "0:19:00",
+    "stopTime": "0:19:01",
+    "speaker": "Speaker 0",
+    "line": "it. Just have to say it out loud.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:01",
+    "startTime": "0:19:01",
+    "stopTime": "0:19:01",
+    "speaker": "Speaker 5",
+    "line": "You know,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:01",
+    "startTime": "0:19:01",
+    "stopTime": "0:19:04",
+    "speaker": "Speaker 0",
+    "line": "hear it, please. So my vote, Avatar, Fire, and Ash.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:05",
+    "startTime": "0:19:05",
+    "stopTime": "0:19:05",
+    "speaker": "Speaker 1",
+    "line": "James",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:05",
+    "startTime": "0:19:05",
+    "stopTime": "0:19:07",
+    "speaker": "Speaker 5",
+    "line": "Cameron's third installment of the Avatar",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:07",
+    "startTime": "0:19:07",
+    "stopTime": "0:19:07",
+    "speaker": "Speaker 1",
+    "line": "series. Is",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:07",
+    "startTime": "0:19:07",
+    "stopTime": "0:19:09",
+    "speaker": "Speaker 2",
+    "line": "that out yet? It's coming.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:09",
+    "startTime": "0:19:09",
+    "stopTime": "0:19:11",
+    "speaker": "Speaker 1",
+    "line": "It will be for December, yes.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:11",
+    "startTime": "0:19:11",
+    "stopTime": "0:19:11",
+    "speaker": "Speaker 2",
+    "line": "Awesome. That'll be our",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:11",
+    "startTime": "0:19:11",
+    "stopTime": "0:19:11",
+    "speaker": "Speaker 1",
+    "line": "December",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:11",
+    "startTime": "0:19:11",
+    "stopTime": "0:19:12",
+    "speaker": "Speaker 2",
+    "line": "movie.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:12",
+    "startTime": "0:19:12",
+    "stopTime": "0:19:19",
+    "speaker": "Speaker 1",
+    "line": "We will get the 3D projector working, or if not, we'll have onstage actors to perform the 3D scenes.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:19",
+    "startTime": "0:19:19",
+    "stopTime": "0:19:22",
+    "speaker": "Speaker 3",
+    "line": "We're partnering. I've heard they're partnering with a local high school.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:23",
+    "startTime": "0:19:23",
+    "stopTime": "0:19:25",
+    "speaker": "Speaker 0",
+    "line": "Yes. The local high school will be doing the blowing in your face,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:25",
+    "startTime": "0:19:25",
+    "stopTime": "0:19:25",
+    "speaker": "Speaker 2",
+    "line": "all",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:25",
+    "startTime": "0:19:25",
+    "stopTime": "0:19:26",
+    "speaker": "Speaker 3",
+    "line": "that",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:26",
+    "startTime": "0:19:26",
+    "stopTime": "0:19:27",
+    "speaker": "Speaker 2",
+    "line": "stuff. 4D, 5D.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:27",
+    "startTime": "0:19:27",
+    "stopTime": "0:19:27",
+    "speaker": "Speaker 3",
+    "line": "Shows and",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:27",
+    "startTime": "0:19:27",
+    "stopTime": "0:19:36",
+    "speaker": "Speaker 2",
+    "line": "chairs. I love characters that are blue. I don't like Avatar, so I'm voting Blue Man Group.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:36",
+    "startTime": "0:19:36",
+    "stopTime": "0:19:41",
+    "speaker": "Speaker 0",
+    "line": "Okay. The Blue Man Group movie. Straight to video.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:41",
+    "startTime": "0:19:41",
+    "stopTime": "0:19:43",
+    "speaker": "Speaker 2",
+    "line": "Blue Man goes to prison.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:44",
+    "startTime": "0:19:44",
+    "stopTime": "0:19:48",
+    "speaker": "Speaker 0",
+    "line": "Yes. The Blue Man Group took, they ripped off Ernest, as we all know.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:48",
+    "startTime": "0:19:48",
+    "stopTime": "0:19:49",
+    "speaker": "Speaker 2",
+    "line": "They've done the whole Ernest",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:19:49",
+    "startTime": "0:19:49",
+    "stopTime": "0:20:00",
+    "speaker": "Speaker 5",
+    "line": "series. Blue Man goes to prison. Blue Man's scared stupid. I had just seen, I thought it was, I think it's Avatar, but it's slightly different. It was called Avatar Farts and Ass. I'm not sure if",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:00",
+    "startTime": "0:20:00",
+    "stopTime": "0:20:02",
+    "speaker": "Speaker 3",
+    "line": "that's a little bit. Again, that",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:02",
+    "startTime": "0:20:02",
+    "stopTime": "0:20:03",
+    "speaker": "Speaker 5",
+    "line": "goes back to the... Yeah,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:03",
+    "startTime": "0:20:03",
+    "stopTime": "0:20:03",
+    "speaker": "Speaker 2",
+    "line": "that",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:03",
+    "startTime": "0:20:03",
+    "stopTime": "0:20:03",
+    "speaker": "Speaker 3",
+    "line": "goes",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:03",
+    "startTime": "0:20:03",
+    "stopTime": "0:20:07",
+    "speaker": "Speaker 2",
+    "line": "back to the... Or is that just like, yeah, that's a porno.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:07",
+    "startTime": "0:20:07",
+    "stopTime": "0:20:12",
+    "speaker": "Speaker 5",
+    "line": "Yeah. That's a porno. I guess I thought they were all pornos. The first two Avatars are not pornos.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:12",
+    "startTime": "0:20:12",
+    "stopTime": "0:20:18",
+    "speaker": "Speaker 2",
+    "line": "One, seven. Hummus. I think",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:18",
+    "startTime": "0:20:18",
+    "stopTime": "0:20:25",
+    "speaker": "Speaker 5",
+    "line": "everybody's like getting it right at this point. So these people are just sitting here for 10 minutes waiting to say hummus? People are sitting on the phone just waiting to say hummus, not being",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:25",
+    "startTime": "0:20:25",
+    "stopTime": "0:20:31",
+    "speaker": "Speaker 2",
+    "line": "talked to? Yeah, and nobody's... Hummus ended. People are supposed to be calling in about Make -A -Wish. Right. And calamari, I",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:31",
+    "startTime": "0:20:31",
+    "stopTime": "0:20:38",
+    "speaker": "Speaker 5",
+    "line": "believe. Yeah. Somebody just said calamari. I don't know, but they just... They heard calamari, and I think they just called in to say",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:38",
+    "startTime": "0:20:38",
+    "stopTime": "0:20:45",
+    "speaker": "Speaker 0",
+    "line": "it. Well, whatever we're going to be doing, we are excited to try the new snack bar just a half a mile away from the movie",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:45",
+    "startTime": "0:20:45",
+    "stopTime": "0:20:57",
+    "speaker": "Speaker 3",
+    "line": "theater. No! No! That's right. I just opened a brand new business, a new snack bar that is about 300 yards away from the movie theater. You",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:57",
+    "startTime": "0:20:57",
+    "stopTime": "0:20:58",
+    "speaker": "Speaker 2",
+    "line": "can't bring that stuff in.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:20:58",
+    "startTime": "0:20:58",
+    "stopTime": "0:21:01",
+    "speaker": "Speaker 3",
+    "line": "Yeah. You can get all your favorite stuff. You can",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:01",
+    "startTime": "0:21:01",
+    "stopTime": "0:21:02",
+    "speaker": "Speaker 5",
+    "line": "get... You guys are doing Tex",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:02",
+    "startTime": "0:21:02",
+    "stopTime": "0:21:07",
+    "speaker": "Speaker 3",
+    "line": "-Mex, right? Tex -Mex. Yes, that's right. Queso dips, nacho cheese. Uh,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:08",
+    "startTime": "0:21:08",
+    "stopTime": "0:21:10",
+    "speaker": "Speaker 5",
+    "line": "tortillas. Can I get a boot of queso at your place?",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:10",
+    "startTime": "0:21:10",
+    "stopTime": "0:21:11",
+    "speaker": "Speaker 3",
+    "line": "You can absolutely get a boot of",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:11",
+    "startTime": "0:21:11",
+    "stopTime": "0:21:22",
+    "speaker": "Speaker 5",
+    "line": "queso at my place. You heard it here first. Uh, we're also... We're also going to start a pilot sort of program for some new stuff. We're thinking about calamari. We're thinking about... Yeah. Uh, hot dogs. Rings or strips?",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:23",
+    "startTime": "0:21:23",
+    "stopTime": "0:21:32",
+    "speaker": "Speaker 3",
+    "line": "Uh, we're thinking about mostly going to be rings, but we'll probably have a few of the little tentacle crowns, you know, when you get the piece of calamari that has all the tentacles. Yeah. Did you guys see that",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:32",
+    "startTime": "0:21:32",
+    "stopTime": "0:21:33",
+    "speaker": "Speaker 2",
+    "line": "porno",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:33",
+    "startTime": "0:21:33",
+    "stopTime": "0:21:33",
+    "speaker": "Speaker 3",
+    "line": "Tex",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:33",
+    "startTime": "0:21:33",
+    "stopTime": "0:21:34",
+    "speaker": "Speaker 2",
+    "line": "-Sex",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:34",
+    "startTime": "0:21:34",
+    "stopTime": "0:21:41",
+    "speaker": "Speaker 5",
+    "line": "that they played at the theater? Uh -uh. That was disgusting. Oh, it sounds good. Just a bunch of people fucking in some cheese",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:41",
+    "startTime": "0:21:41",
+    "stopTime": "0:21:45",
+    "speaker": "Speaker 0",
+    "line": "dip. I saw it four times because it's my first date move is a movie.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:45",
+    "startTime": "0:21:45",
+    "stopTime": "0:21:46",
+    "speaker": "Speaker 2",
+    "line": "So it's",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:46",
+    "startTime": "0:21:46",
+    "stopTime": "0:21:50",
+    "speaker": "Speaker 5",
+    "line": "like go to the theater and see what's there. Yeah. So I've seen it several times. Yeah, you've been dating a lot",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:50",
+    "startTime": "0:21:50",
+    "stopTime": "0:21:51",
+    "speaker": "Speaker 0",
+    "line": "lately. Thank you. Yes,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:51",
+    "startTime": "0:21:51",
+    "stopTime": "0:21:59",
+    "speaker": "Speaker 2",
+    "line": "yes. I've been getting back out on the field. There's not that many people in town and you are on a date almost every night. Sometimes multiple dates. That's a fact,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:59",
+    "startTime": "0:21:59",
+    "stopTime": "0:21:59",
+    "speaker": "Speaker 5",
+    "line": "yeah. So",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:21:59",
+    "startTime": "0:21:59",
+    "stopTime": "0:22:05",
+    "speaker": "Speaker 0",
+    "line": "you've taken a ton of women in town to the local porno? The local movie theater, which happened to be a porno, yes. That's correct.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:06",
+    "startTime": "0:22:06",
+    "stopTime": "0:22:06",
+    "speaker": "Speaker 5",
+    "line": "I'm sorry,",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:06",
+    "startTime": "0:22:06",
+    "stopTime": "0:22:07",
+    "speaker": "Speaker 0",
+    "line": "but we got to cut. No wonder you",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:07",
+    "startTime": "0:22:07",
+    "stopTime": "0:22:09",
+    "speaker": "Speaker 2",
+    "line": "just keep going on dates.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:10",
+    "startTime": "0:22:10",
+    "stopTime": "0:22:12",
+    "speaker": "Speaker 5",
+    "line": "Yeah, right. Don't take somebody to the local",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:12",
+    "startTime": "0:22:12",
+    "stopTime": "0:22:15",
+    "speaker": "Speaker 0",
+    "line": "porno. Well, I would like to be Avatar, Fire, and Ash to be in the theaters for",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:15",
+    "startTime": "0:22:15",
+    "stopTime": "0:22:19",
+    "speaker": "Speaker 2",
+    "line": "my next dates that I have lined up. We need that for you. Thank you. Yeah, we need you to take somebody to an actual",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:19",
+    "startTime": "0:22:19",
+    "stopTime": "0:22:24",
+    "speaker": "Speaker 0",
+    "line": "movie. All right. So go ahead and give us a call if you'd like to go on a date with me to a movie that's hopefully not a porno line, too.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:26",
+    "startTime": "0:22:26",
+    "stopTime": "0:22:28",
+    "speaker": "Speaker 2",
+    "line": "Hello. Hummus. Thank you. Thank you.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:29",
+    "startTime": "0:22:29",
+    "stopTime": "0:22:30",
+    "speaker": "Speaker 0",
+    "line": "That was my regular",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:30",
+    "startTime": "0:22:30",
+    "stopTime": "0:22:42",
+    "speaker": "Speaker 2",
+    "line": "phone. Guys, we are moving on from hummus. We're moving on from the pronunciation of hummus. You got to listen to the questions before you call in. Hold on. There's a light right there. Here coming up. All right. Line seven. Umu. One",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:42",
+    "startTime": "0:22:42",
+    "stopTime": "0:22:45",
+    "speaker": "Speaker 0",
+    "line": "more time. Umu. And one more time for us, please.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:45",
+    "startTime": "0:22:45",
+    "stopTime": "0:22:46",
+    "speaker": "Speaker 2",
+    "line": "Hummus.",
+    "episode": "mainstreet-7",
+    "edited": false
+  },
+  {
+    "time": "0:22:46",
+    "startTime": "0:22:46",
+    "stopTime": "0:22:46",
+    "speaker": "Speaker 0",
+    "line": "Hummus.",
+    "episode": "mainstreet-7",
+    "edited": false
+  }
+]
