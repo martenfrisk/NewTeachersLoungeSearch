@@ -5,7 +5,6 @@
 	import TranscriptQualityBanner from '$lib/components/episode/TranscriptQualityBanner.svelte';
 	import EpisodeHeader from '$lib/components/episode/EpisodeHeader.svelte';
 	import EpisodeSearch from '$lib/components/episode/EpisodeSearch.svelte';
-	import VirtualTranscriptList from '$lib/components/episode/VirtualTranscriptList.svelte';
 	import TranscriptLine from '$lib/components/episode/TranscriptLine.svelte';
 	import ReturnToActiveButton from '$lib/components/audio/ReturnToActiveButton.svelte';
 	import EpisodeHistoryPanel from '$lib/components/episode/EpisodeHistoryPanel.svelte';
@@ -44,7 +43,6 @@
 	);
 
 	let highlightedTime = $state<string | undefined>(undefined);
-	let virtualListRef = $state<VirtualTranscriptList>();
 	let isLoading = $state(false);
 	let error = $state<string | null>(null);
 	let showReturnButton = $state(false);
@@ -105,11 +103,18 @@
 		showHistoryPanel = false;
 	}
 
+	// Scroll a transcript line into view. Used for search result navigation
+	// and as a fallback for hash-based deep links, in case content is still
+	// settling when the browser's native anchor scroll fires. scroll-mt on
+	// TranscriptLine keeps the target clear of the sticky header either way.
+	function scrollToTranscriptLine(id: string) {
+		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
+
 	// Handle hash-based navigation
 	$effect(() => {
-		if (targetHash && virtualListRef) {
-			const timeString = targetHash.replace('t-', '').replace(/(\d{2})(\d{2})(\d{2})/, '$1:$2:$3');
-			virtualListRef.scrollToTime(timeString);
+		if (targetHash) {
+			scrollToTranscriptLine(targetHash);
 		}
 	});
 
@@ -137,9 +142,7 @@
 	// Handle search results navigation
 	function handleSearchNavigation(time: string) {
 		highlightedTime = time;
-		if (virtualListRef) {
-			virtualListRef.scrollToTime(time);
-		}
+		scrollToTranscriptLine(`t-${time.replaceAll(':', '')}`);
 		// Disable sync when user manually navigates
 		if (syncMode) {
 			audioStore.setSyncEnabled(false);

@@ -6,11 +6,19 @@
 		season: SeasonData;
 		isExpanded?: boolean;
 		showStats?: boolean;
+		isHighlighted?: boolean;
 		id?: string;
 		children?: import('svelte').Snippet<[Episode[]]>;
 	}
 
-	let { season, isExpanded = false, showStats = true, id, children }: Props = $props();
+	let {
+		season,
+		isExpanded = false,
+		showStats = true,
+		isHighlighted = false,
+		id,
+		children
+	}: Props = $props();
 
 	// Seed local toggle state from the initial prop once, then let it diverge -
 	// Expand All/Collapse All (SeasonNavigation) toggle sections via simulated
@@ -70,7 +78,9 @@
 	bind:this={sectionElement}
 	class="mb-6 rounded-lg border-2 {getSeasonColor(
 		season.id
-	)} overflow-hidden transition-all duration-200 hover:shadow-md"
+	)} overflow-hidden transition-all duration-300 hover:shadow-md {isHighlighted
+		? 'ring-4 ring-blue-400 ring-offset-2 shadow-lg'
+		: ''}"
 	{id}
 >
 	<header

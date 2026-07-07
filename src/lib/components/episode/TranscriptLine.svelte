@@ -72,7 +72,7 @@
 <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 <article
 	bind:this={element}
-	class={`group relative rounded-lg border transition-all duration-200 ${
+	class={`group relative rounded-lg border scroll-mt-[126px] md:scroll-mt-20 transition-all duration-200 ${
 		hit.edited
 			? 'bg-green-50/30 border-green-200 hover:bg-green-50/50 hover:border-green-300'
 			: 'bg-gray-50/30 border-gray-200 hover:bg-gray-50/50 hover:border-gray-300'

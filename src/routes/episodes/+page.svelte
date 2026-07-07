@@ -15,9 +15,20 @@
 
 	let showStats = $state(true);
 	let hasSearchQuery = $state(false);
+	let highlightedSeasonId = $state<string | null>(null);
 
 	const handleSearchChange = (hasQuery: boolean) => {
 		hasSearchQuery = hasQuery;
+	};
+
+	// Briefly highlight the season section a nav button scrolled to, so it's
+	// clear where the page landed - mirrors the transcript line highlight on
+	// /ep/[id] for hash-anchor and search navigation.
+	const handleSeasonNavigate = (seasonId: string) => {
+		highlightedSeasonId = seasonId;
+		setTimeout(() => {
+			if (highlightedSeasonId === seasonId) highlightedSeasonId = null;
+		}, 1500);
 	};
 </script>
 
@@ -60,7 +71,11 @@
 
 	{#if !hasSearchQuery}
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<SeasonNavigation seasons={navigationSeasons} sticky={true} />
+			<SeasonNavigation
+				seasons={navigationSeasons}
+				sticky={true}
+				onSeasonNavigate={handleSeasonNavigate}
+			/>
 
 			<div class="py-6">
 				{#if showStats}
@@ -71,7 +86,12 @@
 
 				<div class="space-y-6">
 					{#each seasonsData as season (season.id)}
-						<SeasonSection {season} isExpanded={false} id="season-{season.id}">
+						<SeasonSection
+							{season}
+							isExpanded={false}
+							isHighlighted={highlightedSeasonId === season.id}
+							id="season-{season.id}"
+						>
 							{#snippet children(episodes)}
 								<div class="p-4 grid grid-cols-1 lg:grid-cols-2 gap-4 mobile-single-col">
 									{#each episodes as episode (episode.ep)}
