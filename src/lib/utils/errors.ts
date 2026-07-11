@@ -30,12 +30,6 @@ export class NetworkError extends AppError {
 	}
 }
 
-export class CacheError extends AppError {
-	constructor(message: string = 'Cache operation failed') {
-		super(message, 'CACHE_ERROR', 500);
-	}
-}
-
 export function handleError(error: unknown): AppError {
 	if (error instanceof AppError) {
 		return error;
