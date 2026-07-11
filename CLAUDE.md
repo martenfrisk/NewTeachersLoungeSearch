@@ -57,10 +57,9 @@ The app uses **Svelte 5 runes** for reactive state management:
 
 ### Service Layer Architecture
 
-- **SearchService** - Core search with caching, validation, and query parsing
+- **SearchService** - Core search with validation and query parsing
 - **AudioService** - Audio playback with waveform synchronization
 - **EditorService** - Transcript editing with version control
-- **SearchProviderFactory** - Factory pattern for search backend switching
 - **ModeratorService** - Content moderation and approval workflows
 
 ### Data Layer
@@ -76,7 +75,7 @@ The app uses **Svelte 5 runes** for reactive state management:
 **Search Implementation:**
 
 - PostgreSQL full-text search with pg_trgm for fuzzy matching
-- Multi-layered caching (static cache + Edge Config + runtime cache)
+- Cached at the HTTP layer via a 3-day CDN `Cache-Control` header on `/api/search` — no in-process cache
 - Query parsing supports advanced syntax (quotes, boolean operators)
 
 ### Component Architecture

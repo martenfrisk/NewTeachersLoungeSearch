@@ -35,10 +35,8 @@ export async function GET({ url, setHeaders }) {
 			JSON.stringify({
 				event: 'search_api_request',
 				query: query.substring(0, 50), // Truncate long queries for logs
-				cacheHit: result.stats.cacheHit || false,
-				cacheSource: result.stats.cacheSource || 'none',
 				totalResponseTime,
-				searchResponseTime: result.stats.cacheResponseTime || result.stats.processingTime,
+				searchResponseTime: result.stats.processingTime,
 				hits: result.items.length,
 				hasFilters: filterParam.length > 0,
 				isPageLoad: offset === 0,

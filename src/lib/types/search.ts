@@ -29,10 +29,6 @@ export interface SearchStats {
 	estimatedTotalHits: number;
 	processingTime: number;
 	facets: SearchFacet[];
-	// Cache metadata (optional)
-	cacheHit?: boolean;
-	cacheResponseTime?: number;
-	cacheSource?: 'static' | 'edge' | 'none';
 }
 
 export interface SearchFacet {
