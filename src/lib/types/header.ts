@@ -33,26 +33,6 @@ export interface HeaderUserMenuPropsType {
 	class?: string;
 }
 
-/** Header mobile menu component props */
-export interface HeaderMobileMenuPropsType {
-	showMenu: boolean;
-	onToggleMenu: () => void;
-	class?: string;
-}
-
-/** Header info dropdown component props */
-export interface HeaderInfoDropdownPropsType {
-	showDropdown: boolean;
-	onToggleDropdown: () => void;
-	class?: string;
-}
-
-/** Header mobile navigation component props */
-export interface HeaderMobileNavigationPropsType {
-	currentPath?: string;
-	class?: string;
-}
-
 /** Main header component props */
 export interface HeaderPropsType {
 	class?: string;

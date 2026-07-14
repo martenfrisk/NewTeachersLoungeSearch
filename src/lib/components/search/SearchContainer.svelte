@@ -154,7 +154,7 @@
 	});
 </script>
 
-<div class="w-full px-4 mb-24 max-w-6xl mx-auto space-y-6">
+<div class="w-full px-4 mb-16 max-w-6xl mx-auto space-y-4">
 	<SearchInput
 		bind:query={inputValue}
 		placeholder="Search podcast transcripts..."

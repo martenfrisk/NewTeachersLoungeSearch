@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Icon from '$lib/components/ui/Icon.svelte';
 	import type { HeaderUserMenuPropsType } from '$lib/types/header';
-	import { componentPatterns } from '$lib/design/tokens';
 	import { fly } from 'svelte/transition';
 	import { ariaAttributes } from '$lib/utils/accessibility';
 	import { resolve } from '$app/paths';
@@ -107,11 +106,11 @@
 	{:else}
 		<button
 			onclick={onAuthModal}
-			class="{componentPatterns.button.base} {componentPatterns.button.sizes.sm} {componentPatterns
-				.button.variants.outline}"
+			class="flex h-9 w-9 items-center justify-center rounded-full text-white/90 hover:bg-white/15 hover:text-white transition-colors"
 			aria-label="Sign in to your account"
+			title="Sign in"
 		>
-			Sign In
+			<Icon name="user" size={22} aria-hidden={true} />
 		</button>
 	{/if}
 </div>

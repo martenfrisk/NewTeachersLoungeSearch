@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { filtersState } from '../../states/FiltersState.svelte';
+	import Icon from '../ui/Icon.svelte';
 	import type { SearchFacet } from '../../types/search';
 
 	interface Props {
@@ -33,26 +34,28 @@
 	<!-- Compact Filter Controls -->
 	<div class="flex items-center justify-between">
 		<button
-			class="flex items-center gap-1 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+			class="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium shadow-sm transition-colors {showFilters ||
+			hasActiveFilters
+				? 'border-blue-200 bg-blue-50 text-blue-700'
+				: 'border-gray-300 bg-surface text-gray-700 hover:bg-surface-hover'}"
 			onclick={() => (showFilters = !showFilters)}
+			aria-expanded={showFilters}
 		>
+			<Icon name="filter" size={16} aria-hidden={true} />
+			<span>Filters</span>
+			{#if hasActiveFilters}
+				<span class="rounded-full bg-blue-600 px-1.5 py-0.5 text-xs font-semibold text-white">
+					{filtersState.activeFiltersCount}
+				</span>
+			{/if}
 			<svg
-				class="w-3 h-3 transition-transform duration-200"
-				class:rotate-180={showFilters}
+				class="h-3 w-3 transition-transform duration-200 {showFilters ? 'rotate-180' : ''}"
 				fill="none"
 				stroke="currentColor"
 				viewBox="0 0 24 24"
 			>
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
 			</svg>
-			<span class="font-medium">
-				Filters
-				{#if hasActiveFilters}
-					<span class="ml-1 bg-blue-600 text-white text-xs px-1.5 py-0.5 rounded">
-						{filtersState.activeFiltersCount}
-					</span>
-				{/if}
-			</span>
 		</button>
 
 		{#if hasActiveFilters}

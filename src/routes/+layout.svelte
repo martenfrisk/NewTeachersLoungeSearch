@@ -74,7 +74,7 @@
 	<main
 		class:container={!$page.route.id?.startsWith('/editor')}
 		class:mx-auto={!$page.route.id?.startsWith('/editor')}
-		class="py-6"
+		class="pt-3 pb-6 md:py-6"
 	>
 		{@render children?.()}
 		{#if isButtonVisible}

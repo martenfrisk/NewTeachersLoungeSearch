@@ -136,54 +136,40 @@
 		return cards;
 	});
 
-	const getColorClasses = (color: string) => {
-		const colors: Record<string, { bg: string; text: string; border: string }> = {
-			blue: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200' },
-			green: { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-200' },
-			purple: { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-200' },
-			amber: { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border-amber-200' },
-			yellow: { bg: 'bg-yellow-50', text: 'text-yellow-700', border: 'border-yellow-200' }
-		};
-		return colors[color] || colors.blue;
-	};
-
 	const seasonDisplayName = $derived.by(() => {
 		if (!selectedSeason) return 'All Episodes';
 		return getSeasonDisplayName(selectedSeason);
 	});
 </script>
 
-<div class="bg-white border border-gray-200 rounded-lg p-6 {className}">
+<div class="rounded-lg border border-gray-200 bg-surface p-6 {className}">
 	<div class="mb-4">
-		<h3 class="text-lg font-semibold text-gray-900">
+		<h3 class="text-lg font-semibold text-ink">
 			{seasonDisplayName} Statistics
 		</h3>
-		<p class="text-sm text-gray-600 mt-1">Overview of episode data and metrics</p>
+		<p class="mt-1 text-sm text-ink-muted">Overview of episode data and metrics</p>
 	</div>
 
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+	<div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
 		{#each stats as card (card.title)}
-			<div
-				class="relative overflow-hidden rounded-lg border {getColorClasses(card.color)
-					.border} {getColorClasses(card.color).bg} p-4"
-			>
+			<div class="relative overflow-hidden rounded-lg border border-gray-200 bg-paper p-4">
 				<div class="flex items-center justify-between">
-					<div class="flex-1 min-w-0">
-						<p class="text-sm font-medium text-gray-600 truncate">
+					<div class="min-w-0 flex-1">
+						<p class="truncate text-xs font-medium tracking-wide text-ink-muted uppercase">
 							{card.title}
 						</p>
-						<p class="text-2xl font-bold {getColorClasses(card.color).text} mt-1">
+						<p class="mt-1 font-mono text-2xl font-bold text-ink">
 							{card.value}
 						</p>
 						{#if card.subtitle}
-							<p class="text-xs text-gray-500 mt-1 truncate">
+							<p class="mt-1 truncate text-xs text-ink-muted">
 								{card.subtitle}
 							</p>
 						{/if}
 					</div>
 
-					<div class="flex-shrink-0 ml-3">
-						<card.icon class="w-8 h-8 {getColorClasses(card.color).text} opacity-60" />
+					<div class="ml-3 flex-shrink-0">
+						<card.icon class="h-8 w-8 text-blue-600 opacity-70" />
 					</div>
 				</div>
 

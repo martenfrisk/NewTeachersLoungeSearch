@@ -61,8 +61,8 @@
 </svelte:head>
 
 <div class="min-h-screen">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-		<h1 class="text-2xl text-center mb-4 md:mb-8 font-bold text-gray-900 sm:text-4xl">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-1 pb-3 md:py-4">
+		<h1 class="text-xl text-center mb-3 md:mb-6 font-bold text-ink sm:text-3xl">
 			Teachers' Lounge Episode Guide
 		</h1>
 
@@ -77,14 +77,8 @@
 				onSeasonNavigate={handleSeasonNavigate}
 			/>
 
-			<div class="py-6">
-				{#if showStats}
-					<div class="mb-8">
-						<EpisodeStats {episodes} />
-					</div>
-				{/if}
-
-				<div class="space-y-6">
+			<div class="py-4 md:py-6">
+				<div class="space-y-4">
 					{#each seasonsData as season (season.id)}
 						<SeasonSection
 							{season}
@@ -102,6 +96,13 @@
 						</SeasonSection>
 					{/each}
 				</div>
+
+				<!-- Reference material, not navigation - lives below the episodes -->
+				{#if showStats}
+					<div class="mt-8">
+						<EpisodeStats {episodes} />
+					</div>
+				{/if}
 			</div>
 		</div>
 

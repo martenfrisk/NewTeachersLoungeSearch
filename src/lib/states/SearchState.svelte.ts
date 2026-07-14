@@ -34,14 +34,19 @@ function createSearchState() {
 				filters.episodes.forEach((episode) => filterStrings.push(`episode = "${episode}"`));
 			}
 
+			// Time the real round-trip: the service layer reports processingTime: 0
+			// (it's never wired up), and server timing is meaningless on the 3-day
+			// CDN cache anyway. What's honest and useful is what the user waited.
+			const startedAt = performance.now();
 			const result = await searchService.search(query, {
 				filter: filterStrings,
 				editedOnly: filters?.editedOnly || false,
 				offset: 0
 			});
+			const elapsedMs = Math.max(1, Math.round(performance.now() - startedAt));
 
 			hits = result.items;
-			stats = result.stats;
+			stats = { ...result.stats, processingTime: elapsedMs };
 			hasMore = result.hasMore;
 		} catch (err) {
 			error = err instanceof Error ? err.message : 'Search failed';
@@ -59,10 +64,12 @@ function createSearchState() {
 		loading = true;
 
 		try {
+			const startedAt = performance.now();
 			const result = await searchService.searchMore(query, hits);
+			const elapsedMs = Math.max(1, Math.round(performance.now() - startedAt));
 			hits = result.hits;
 			hasMore = result.hasMore;
-			stats = result.stats;
+			stats = { ...result.stats, processingTime: elapsedMs };
 		} catch (err) {
 			error = err instanceof Error ? err.message : 'Failed to load more results';
 		} finally {

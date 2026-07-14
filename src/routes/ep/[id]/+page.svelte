@@ -2,8 +2,9 @@
 	import type { PageData } from './$types';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
-	import TranscriptQualityBanner from '$lib/components/episode/TranscriptQualityBanner.svelte';
 	import EpisodeHeader from '$lib/components/episode/EpisodeHeader.svelte';
+	import EpisodeBreadcrumb from '$lib/components/episode/EpisodeBreadcrumb.svelte';
+	import EpisodeFooterNav from '$lib/components/episode/EpisodeFooterNav.svelte';
 	import EpisodeSearch from '$lib/components/episode/EpisodeSearch.svelte';
 	import TranscriptLine from '$lib/components/episode/TranscriptLine.svelte';
 	import ReturnToActiveButton from '$lib/components/audio/ReturnToActiveButton.svelte';
@@ -26,7 +27,17 @@
 	// Ensure we have the correct data structure - derived (not plain const)
 	// since SvelteKit reuses this component instance when navigating between
 	// two /ep/[id] routes, so `data` changes without a remount.
-	const { hits, transcriptStats, episodeInfo, historyStats } = $derived(data);
+	const {
+		hits,
+		transcriptStats,
+		episodeInfo,
+		historyStats,
+		prevEpisode,
+		nextEpisode,
+		seasonId,
+		seasonName,
+		seasonEpisodes
+	} = $derived(data);
 	const transcript = $derived(hits.default);
 
 	// SEO-optimized title and description
@@ -269,19 +280,11 @@
 			<span class="ml-3 text-gray-600">Loading transcript...</span>
 		</div>
 	{:else}
-		<header class="mb-8">
-			<TranscriptQualityBanner {transcriptStats} />
-			<EpisodeHeader
-				{episodeInfo}
-				{handlePlayEpisode}
-				{historyStats}
-				onHistoryClick={handleHistoryClick}
-			/>
-		</header>
+		<EpisodeBreadcrumb {seasonId} {seasonName} />
 
 		<!-- History Panel -->
 		{#if showHistoryPanel && historyData}
-			<div class="mb-6">
+			<div class="mb-4">
 				<EpisodeHistoryPanel
 					{historyData}
 					isOpen={showHistoryPanel}
@@ -290,20 +293,30 @@
 			</div>
 		{/if}
 
+		<!-- Search is a tool for the document; it sits above it -->
 		<EpisodeSearch
 			transcriptLines={transcript}
 			bind:highlightedTime
 			onNavigateToResult={handleSearchNavigation}
 		/>
 
-		<main class="mt-6">
-			<!-- Regular rendering for all transcripts -->
-			<div class="space-y-3">
-				{#each transcript as hit (hit.id || hit.time)}
+		<!-- The episode as one document: letterhead, a rule, then the dialogue -->
+		<main class="overflow-hidden rounded-2xl bg-surface shadow-card">
+			<EpisodeHeader
+				{episodeInfo}
+				{transcriptStats}
+				{handlePlayEpisode}
+				{historyStats}
+				onHistoryClick={handleHistoryClick}
+			/>
+
+			<div class="px-1 pt-5 pb-3 sm:px-2 sm:pt-7 sm:pb-4">
+				{#each transcript as hit, i (hit.id || hit.time)}
 					<TranscriptLine
 						{hit}
 						isActive={targetHash === `t-${hit.time.replaceAll(':', '')}`}
 						isHighlighted={highlightedTime === hit.time}
+						showSpeaker={i === 0 || transcript[i - 1].displaySpeaker !== hit.displaySpeaker}
 						syncEnabled={syncMode && !!audioState.currentTimestamp}
 						onLineClick={handleLineClick}
 						{episodeInfo}
@@ -311,6 +324,8 @@
 				{/each}
 			</div>
 		</main>
+
+		<EpisodeFooterNav {prevEpisode} {nextEpisode} {seasonName} {seasonEpisodes} />
 	{/if}
 </div>
 

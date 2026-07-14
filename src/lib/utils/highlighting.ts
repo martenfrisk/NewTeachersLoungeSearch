@@ -60,6 +60,12 @@ export function highlightSearchTerms(text: string, searchQuery: string): string 
 		highlightedText = highlightedText.replace(regex, '<em>$1</em>');
 	});
 
+	// Merge consecutive highlighted words into one run so the highlighter
+	// stroke is continuous across a matched phrase instead of restarting
+	// (and leaving a gap) at every space. The whitespace moves inside the
+	// <em> so it gets highlighted too: `<em>see</em> <em>you</em>` → `<em>see you</em>`.
+	highlightedText = highlightedText.replace(/<\/em>(\s+)<em>/g, '$1');
+
 	return highlightedText;
 }
 

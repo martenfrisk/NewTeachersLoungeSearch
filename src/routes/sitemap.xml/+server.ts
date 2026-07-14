@@ -46,6 +46,12 @@ export const GET: RequestHandler = async () => {
 	
 	<!-- Static Pages -->
 	<url>
+		<loc>${baseUrl}/about</loc>
+		<lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+		<changefreq>yearly</changefreq>
+		<priority>0.5</priority>
+	</url>
+	<url>
 		<loc>${baseUrl}/login</loc>
 		<lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
 		<changefreq>yearly</changefreq>
