@@ -7,12 +7,10 @@
 	import type { HeaderPropsType } from '$lib/types/header';
 
 	// Header sub-components
+	import Icon from '$lib/components/ui/Icon.svelte';
 	import HeaderLogo from '$lib/components/ui/header/HeaderLogo.svelte';
 	import HeaderNavigation from '$lib/components/ui/header/HeaderNavigation.svelte';
 	import HeaderUserMenu from '$lib/components/ui/header/HeaderUserMenu.svelte';
-	import HeaderMobileMenu from '$lib/components/ui/header/HeaderMobileMenu.svelte';
-	import HeaderInfoDropdown from '$lib/components/ui/header/HeaderInfoDropdown.svelte';
-	import HeaderMobileNavigation from '$lib/components/ui/header/HeaderMobileNavigation.svelte';
 
 	/**
 	 * Main header component with sticky positioning and responsive design
@@ -20,9 +18,6 @@
 
 	let { class: className = '' }: HeaderPropsType = $props();
 
-	// State management for dropdowns and mobile menu
-	let showMobileMenu = $state(false);
-	let showInfoDropdown = $state(false);
 	let showUserDropdown = $state(false);
 
 	// Get current path for navigation highlighting
@@ -33,20 +28,8 @@
 		appStore.openAuthModal();
 	};
 
-	const toggleInfoDropdown = () => {
-		showInfoDropdown = !showInfoDropdown;
-		// Close other dropdowns
-		showUserDropdown = false;
-	};
-
 	const toggleUserDropdown = () => {
 		showUserDropdown = !showUserDropdown;
-		// Close other dropdowns
-		showInfoDropdown = false;
-	};
-
-	const toggleMobileMenu = () => {
-		showMobileMenu = !showMobileMenu;
 	};
 
 	const handleSignOut = async () => {
@@ -65,7 +48,6 @@
 			const target = event.target as Element;
 			if (!target.closest('[data-dropdown]')) {
 				showUserDropdown = false;
-				showInfoDropdown = false;
 			}
 		};
 
@@ -77,9 +59,7 @@
 </script>
 
 <!-- Sticky Header -->
-<header
-	class="sticky top-0 z-40 w-full bg-gradient-to-r from-blue-500 to-blue-600 shadow-md {className}"
->
+<header class="sticky top-0 z-40 w-full bg-board-600 shadow-md {className}">
 	<!-- Main header bar -->
 	<div class="px-4 mx-auto max-w-7xl">
 		<div class="flex items-center justify-between h-16">
@@ -87,15 +67,39 @@
 			<HeaderLogo />
 
 			<!-- Center: Desktop Navigation -->
-			<HeaderNavigation
-				{currentPath}
-				bind:showInfoDropdown
-				onToggleInfoDropdown={toggleInfoDropdown}
-			/>
+			<HeaderNavigation {currentPath} />
 
-			<!-- Right: User menu and mobile menu -->
-			<div class="flex items-center space-x-2">
-				<!-- User Menu -->
+			<!-- Right: mobile About + Episodes links + account -->
+			<div class="flex items-center gap-1">
+				<!-- Mobile-only About link (desktop nav has its own) -->
+				<a
+					href={resolve('/about')}
+					class="flex items-center justify-center rounded-md p-2 text-white/90 transition-colors hover:bg-board-500 hover:text-white md:hidden {currentPath ===
+					'/about'
+						? 'bg-board-700'
+						: ''}"
+					aria-label="About Seekers' Lounge"
+					title="About"
+					aria-current={currentPath === '/about' ? 'page' : undefined}
+				>
+					<Icon name="info" size={22} aria-hidden={true} />
+				</a>
+
+				<!-- Mobile-only Episodes link, icon-only to preserve space (desktop nav lives in HeaderNavigation) -->
+				<a
+					href={resolve('/episodes')}
+					class="flex items-center justify-center rounded-md p-2 text-white/90 transition-colors hover:bg-board-500 hover:text-white md:hidden {currentPath ===
+					'/episodes'
+						? 'bg-board-700'
+						: ''}"
+					aria-label="Episode guide"
+					title="Episode guide"
+					aria-current={currentPath === '/episodes' ? 'page' : undefined}
+				>
+					<Icon name="episodes" size={22} aria-hidden={true} />
+				</a>
+
+				<!-- User Menu / account -->
 				<HeaderUserMenu
 					user={$user}
 					bind:showDropdown={showUserDropdown}
@@ -103,16 +107,7 @@
 					onSignOut={handleSignOut}
 					onAuthModal={handleAuthModal}
 				/>
-
-				<!-- Mobile Menu Button -->
-				<HeaderMobileMenu bind:showMenu={showMobileMenu} onToggleMenu={toggleMobileMenu} />
 			</div>
 		</div>
 	</div>
-
-	<!-- Mobile Secondary Navigation -->
-	<HeaderMobileNavigation {currentPath} />
-
-	<!-- Info Dropdown -->
-	<HeaderInfoDropdown bind:showDropdown={showInfoDropdown} onToggleDropdown={toggleInfoDropdown} />
 </header>

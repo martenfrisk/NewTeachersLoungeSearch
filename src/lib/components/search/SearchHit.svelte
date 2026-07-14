@@ -37,11 +37,11 @@
 </script>
 
 <article
-	class="w-full border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 bg-white hover:bg-blue-50/20 relative"
+	class="w-full rounded-xl shadow-card hover:shadow-card-hover transition-all duration-200 bg-surface relative"
 	aria-labelledby="hit-episode-{hit.episode.replace('.json', '')}-{hit.time}"
 >
-	<!-- Main Content -->
-	<SearchHitContent {hit} {context} {showContext} />
+	<!-- Meta (where) → quote (what) → actions (do) -->
 	<SearchHitHeader {hit} />
+	<SearchHitContent {hit} {context} {showContext} />
 	<SearchHitActions {hit} {showContext} {loadingContext} onToggleContext={toggleContext} />
 </article>

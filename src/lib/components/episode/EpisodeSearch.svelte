@@ -82,27 +82,40 @@
 	}
 </script>
 
-<div class="mb-6">
-	<label for="episode-search" class="block text-sm font-medium text-gray-700 mb-2">
-		Search this episode
+<div class="mb-4">
+	<label for="episode-search" class="mb-1.5 block text-sm font-medium text-ink-muted">
+		Search this transcript
 	</label>
 
 	<div class="relative">
+		<svg
+			class="pointer-events-none absolute top-1/2 left-3.5 h-5 w-5 -translate-y-1/2 text-gray-400"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke="currentColor"
+			aria-hidden="true"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width={2}
+				d="M21 21l-4.35-4.35M11 18a7 7 0 100-14 7 7 0 000 14z"
+			/>
+		</svg>
 		<input
 			id="episode-search"
 			bind:this={inputElement}
 			type="text"
-			placeholder="Search through transcript lines..."
+			placeholder="Find a line or speaker…"
 			value={query}
 			oninput={handleInput}
 			onkeydown={handleKeydown}
-			class="block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-			class:pr-10={hasQuery}
+			class="block w-full rounded-xl border border-blue-200 bg-surface py-2.5 pr-10 pl-11 text-base text-ink shadow-card placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/40 focus:outline-none"
 		/>
 
 		{#if hasQuery}
 			<button
-				class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+				class="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 transition-colors hover:text-gray-600"
 				onclick={handleClear}
 				aria-label="Clear search"
 			>
@@ -119,23 +132,28 @@
 	</div>
 
 	{#if hasQuery}
-		<div class="mt-1 text-sm text-gray-500">
+		<div class="mt-1.5 text-sm text-ink-muted">
 			{#if isLoading}
-				Loading search...
+				Searching…
 			{:else if hasResults}
-				{searchResults.length} result{searchResults.length === 1 ? '' : 's'} found
+				<span class="font-mono text-xs">{searchResults.length}</span>
+				line{searchResults.length === 1 ? '' : 's'} match
 			{:else}
-				No results found for "{query}"
+				No lines match “{query}”
 			{/if}
 		</div>
 	{/if}
 </div>
 
 {#if showResults}
-	<div class="mt-4 space-y-2" transition:slide={{ duration: 200 }}>
-		<h3 class="text-sm font-medium text-gray-700 border-b border-gray-200 pb-2">Search Results</h3>
+	<div class="mt-3 space-y-2" transition:slide={{ duration: 200 }}>
+		<h3
+			class="border-b border-gray-200 pb-2 text-xs font-semibold tracking-wide text-ink-muted uppercase"
+		>
+			Matches — tap to jump
+		</h3>
 
-		<div class="space-y-2 max-h-96 overflow-y-auto">
+		<div class="max-h-96 space-y-2 overflow-y-auto">
 			{#each searchResults as result (result.item.time)}
 				<EpisodeSearchResult
 					{result}

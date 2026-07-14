@@ -18,10 +18,7 @@
 		onSeasonNavigate
 	}: Props = $props();
 
-	let showMobileNav = $state(false);
 	let navEl = $state<HTMLElement>();
-
-	const getSeasonDisplayName = getSeasonShortName;
 
 	// scrollIntoView({block: 'start'}) puts the target flush with the top of
 	// the viewport, but the site header and (when sticky) this nav itself
@@ -43,201 +40,81 @@
 	};
 
 	const handleSeasonClick = (seasonId: string) => {
-		// Only scroll to season, don't filter
 		if (seasonId !== '') {
 			setTimeout(() => scrollToSeason(seasonId), 100);
 		} else {
-			// Scroll to top for "Show All"
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		}
 	};
 
-	const handleShowAll = () => {
-		handleSeasonClick('');
-	};
-
-	const handleKeydown = (event: KeyboardEvent, seasonId: string) => {
-		if (event.key === 'Enter' || event.key === ' ') {
-			event.preventDefault();
-			handleSeasonClick(seasonId);
-		}
+	const setAllExpanded = (expand: boolean) => {
+		seasons.forEach((season) => {
+			const element = document.getElementById(`season-${season.id}`);
+			const sectionHeader = element?.querySelector('header');
+			const isExpanded = !!element?.querySelector('[aria-expanded="true"]');
+			if (sectionHeader && isExpanded !== expand) {
+				sectionHeader.click();
+			}
+		});
 	};
 
 	const totalEpisodes = $derived(seasons.reduce((sum, season) => sum + season.episodeCount, 0));
 </script>
 
+<!-- One compact strip: horizontally scrollable chips on mobile, wrapping on
+     desktop. Sticks below the site header (h-16) so it stays reachable while
+     scrolling long season lists. -->
 <nav
 	bind:this={navEl}
-	class="bg-white border-b border-gray-200 {sticky
-		? 'sticky top-0 z-10 shadow-sm'
+	class="border-b border-gray-200 bg-surface {sticky
+		? 'sticky top-16 z-10 shadow-sm'
 		: ''} {className}"
 	aria-label="Season navigation"
 >
-	<div class="px-4 py-3">
-		<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
-			<h2 class="text-lg font-semibold text-gray-900">Episodes by Season</h2>
-			{#if showEpisodeCounts}
-				<div class="text-sm text-gray-600">
-					{totalEpisodes} total episodes
-				</div>
-			{/if}
-		</div>
-
-		<!-- Mobile: Collapsible dropdown -->
-		<div class="sm:hidden">
+	<div class="py-2">
+		<div
+			class="scrollbar-thin flex items-center gap-1.5 overflow-x-auto px-4 pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0"
+		>
 			<button
-				class="w-full flex items-center justify-between px-4 py-3 bg-white border border-gray-300 rounded-lg text-left font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-				onclick={() => (showMobileNav = !showMobileNav)}
-				aria-expanded={showMobileNav}
+				class="shrink-0 rounded-full bg-blue-700 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+				onclick={() => handleSeasonClick('')}
+				aria-label="Scroll to top, all seasons"
 			>
-				<span class="flex items-center">
-					<svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M4 6h16M4 10h16M4 14h16M4 18h16"
-						/>
-					</svg>
-					Jump to Season
-				</span>
-				<svg
-					class="w-5 h-5 transform transition-transform {showMobileNav ? 'rotate-180' : ''}"
-					fill="none"
-					stroke="currentColor"
-					viewBox="0 0 24 24"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M19 9l-7 7-7-7"
-					/>
-				</svg>
+				All
+				{#if showEpisodeCounts}
+					<span class="ml-1 font-mono text-[10px] opacity-75">{totalEpisodes}</span>
+				{/if}
 			</button>
 
-			{#if showMobileNav}
-				<div
-					class="mt-2 bg-white border border-gray-200 rounded-lg shadow-lg max-h-80 overflow-y-auto"
-				>
-					<button
-						class="flex items-center justify-between w-full px-4 py-3 text-left hover:bg-gray-50 focus:outline-none focus:bg-gray-50 text-gray-700"
-						onclick={() => {
-							handleShowAll();
-							showMobileNav = false;
-						}}
-					>
-						<span class="flex items-center">
-							<svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M4 6h16M4 10h16M4 14h16M4 18h16"
-								/>
-							</svg>
-							All Seasons
-						</span>
-						<span class="text-xs px-2 py-1 bg-gray-100 rounded-full text-gray-600"
-							>{totalEpisodes}</span
-						>
-					</button>
-					{#each seasons as season (season.id)}
-						<button
-							class="flex items-center justify-between w-full px-4 py-3 text-left hover:bg-gray-50 focus:outline-none focus:bg-gray-50 text-gray-700 border-t border-gray-100"
-							onclick={() => {
-								handleSeasonClick(season.id);
-								showMobileNav = false;
-							}}
-						>
-							<span>{season.name}</span>
-							<span class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded-full"
-								>{season.episodeCount}</span
-							>
-						</button>
-					{/each}
-				</div>
-			{/if}
-		</div>
-
-		<!-- Desktop: Horizontal button layout -->
-		<div class="hidden sm:block">
-			<div class="flex flex-wrap gap-2 mb-3">
+			{#each seasons as season (season.id)}
 				<button
-					class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
-					onclick={handleShowAll}
-					onkeydown={(e) => handleKeydown(e, '')}
+					class="shrink-0 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 {season.isSpecial
+						? 'border-blue-200 bg-blue-50 text-blue-800 hover:bg-blue-100'
+						: 'border-gray-300 bg-surface text-gray-700 hover:bg-surface-hover'}"
+					onclick={() => handleSeasonClick(season.id)}
+					aria-label="Jump to {season.name}"
 				>
-					<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M4 6h16M4 10h16M4 14h16M4 18h16"
-						/>
-					</svg>
-					Show All
+					{getSeasonShortName(season.id)}
 					{#if showEpisodeCounts}
-						<span class="ml-2 px-2 py-1 text-xs rounded-full bg-gray-200 text-gray-600">
-							{totalEpisodes}
-						</span>
+						<span class="ml-1 font-mono text-[10px] text-ink-muted">{season.episodeCount}</span>
 					{/if}
 				</button>
-			</div>
-
-			<div class="flex flex-wrap gap-2">
-				{#each seasons as season (season.id)}
-					<button
-						class="inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 whitespace-nowrap {season.isSpecial
-							? 'bg-purple-100 text-purple-800 hover:bg-purple-200 focus:ring-purple-500 border border-purple-200'
-							: 'bg-gray-100 text-gray-700 hover:bg-gray-200 focus:ring-blue-500 border border-gray-200'}"
-						onclick={() => handleSeasonClick(season.id)}
-						onkeydown={(e) => handleKeydown(e, season.id)}
-						aria-label="Jump to {season.name}"
-					>
-						{getSeasonDisplayName(season.id)}
-						{#if showEpisodeCounts}
-							<span class="ml-2 px-2 py-1 text-xs rounded-full bg-gray-200 text-gray-600">
-								{season.episodeCount}
-							</span>
-						{/if}
-					</button>
-				{/each}
-			</div>
+			{/each}
 		</div>
 
-		<div class="mt-3 flex flex-col sm:flex-row gap-2 text-xs">
-			<div class="flex flex-wrap gap-2">
-				<button
-					class="text-blue-600 hover:text-blue-800 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 py-1 min-h-[32px]"
-					onclick={() => {
-						seasons.forEach((season) => {
-							const element = document.getElementById(`season-${season.id}`);
-							const sectionHeader = element?.querySelector('header');
-							if (sectionHeader && !element?.querySelector('[aria-expanded="true"]')) {
-								sectionHeader.click();
-							}
-						});
-					}}
-				>
-					Expand All
-				</button>
-
-				<button
-					class="text-gray-600 hover:text-gray-800 hover:underline focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded px-2 py-1 min-h-[32px]"
-					onclick={() => {
-						seasons.forEach((season) => {
-							const element = document.getElementById(`season-${season.id}`);
-							const sectionHeader = element?.querySelector('header');
-							if (sectionHeader && element?.querySelector('[aria-expanded="true"]')) {
-								sectionHeader.click();
-							}
-						});
-					}}
-				>
-					Collapse All
-				</button>
-			</div>
+		<div class="mt-1 flex gap-4 px-4 text-xs">
+			<button
+				class="rounded px-1 py-0.5 text-blue-700 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500"
+				onclick={() => setAllExpanded(true)}
+			>
+				Expand all
+			</button>
+			<button
+				class="rounded px-1 py-0.5 text-ink-muted hover:underline focus:outline-none focus:ring-2 focus:ring-gray-500"
+				onclick={() => setAllExpanded(false)}
+			>
+				Collapse all
+			</button>
 		</div>
 	</div>
 </nav>

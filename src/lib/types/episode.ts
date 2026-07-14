@@ -34,6 +34,12 @@ export interface EpisodeInfo {
 	totalLines?: number;
 }
 
+/** Minimal shape for adjacent-episode navigation links */
+export interface EpisodeNavLink {
+	ep: string;
+	title: string;
+}
+
 export interface EpisodePageData {
 	episode: string;
 	hits: {
@@ -44,6 +50,12 @@ export interface EpisodePageData {
 	// Streamed rather than awaited in the load function - it's a small,
 	// non-critical badge, not worth blocking the transcript on.
 	historyStats?: Promise<import('./history').EpisodeHistoryStatsType | null>;
+	prevEpisode?: EpisodeNavLink;
+	nextEpisode?: EpisodeNavLink;
+	seasonId?: string;
+	seasonName?: string;
+	/** Sibling episodes in the same season, current episode excluded. */
+	seasonEpisodes?: EpisodeNavLink[];
 }
 
 export interface SpeakerProcessingOptions {

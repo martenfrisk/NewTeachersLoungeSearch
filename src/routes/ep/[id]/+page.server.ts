@@ -3,8 +3,13 @@ import episodesPageData from '../../../assets/generated/episodes-page-data.json'
 import { EpisodeDataProcessor } from '$lib/services/EpisodeDataProcessor';
 import { SupabaseEditorRepository } from '$lib/repositories/EditorRepository';
 import { historyService } from '$lib/services/HistoryService';
-import type { EpisodePageData, EpisodeInfo } from '$lib/types/episode';
+import type { EpisodePageData, EpisodeInfo, EpisodeNavLink } from '$lib/types/episode';
 import type { Config } from '@sveltejs/adapter-vercel';
+
+const toNavLink = (e: { ep: string; title: string }): EpisodeNavLink => ({
+	ep: e.ep,
+	title: e.title
+});
 
 // Episode transcripts are edited rarely and traffic is low, so an hour of
 // staleness is an easy trade for skipping a live Supabase round-trip on
@@ -53,20 +58,42 @@ export async function load({ params, fetch }): Promise<EpisodePageData> {
 		const validatedTranscript = processor.validateTranscript(rawTranscript);
 		const processedTranscript = processor.processTranscript(id, validatedTranscript);
 
+		const epId = id.replace('.json', '');
+
 		// Get episode metadata
 		const episodeInfo: EpisodeInfo | undefined = episodesPageData.episodes.find(
-			(x) => x.ep === id.replace('.json', '')
+			(x) => x.ep === epId
 		);
 
 		// Calculate transcript stats from live data
 		const transcriptStats = processor.calculateTranscriptStats(id, validatedTranscript);
+
+		// Prev/next walk the flat episode list, which generate:static already
+		// orders chronologically (matches season/episode numbering).
+		const allEpisodes = episodesPageData.episodes;
+		const currentIndex = allEpisodes.findIndex((x) => x.ep === epId);
+		const prevEpisode = currentIndex > 0 ? toNavLink(allEpisodes[currentIndex - 1]) : undefined;
+		const nextEpisode =
+			currentIndex >= 0 && currentIndex < allEpisodes.length - 1
+				? toNavLink(allEpisodes[currentIndex + 1])
+				: undefined;
+
+		// Season siblings come from the precomputed season grouping so this
+		// doesn't need to re-derive "which season is this episode in".
+		const season = episodesPageData.seasonsData.find((s) => s.episodes.some((e) => e.ep === epId));
+		const seasonEpisodes = season?.episodes.filter((e) => e.ep !== epId).map(toNavLink);
 
 		return {
 			episode: id,
 			hits: { default: processedTranscript },
 			transcriptStats,
 			episodeInfo,
-			historyStats: historyStatsPromise
+			historyStats: historyStatsPromise,
+			prevEpisode,
+			nextEpisode,
+			seasonId: season?.id,
+			seasonName: season?.name,
+			seasonEpisodes
 		};
 	} catch (err) {
 		console.error(`Failed to load episode ${id}:`, err);

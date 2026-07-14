@@ -1,16 +1,84 @@
 @import 'tailwindcss';
 
 @theme {
-	--color-blue-50: #eff6ff;
-	--color-blue-100: #dbeafe;
-	--color-blue-200: #bfdbfe;
-	--color-blue-500: #3b82f6;
-	--color-blue-600: #2563eb;
-	--color-blue-700: #1d4ed8;
+	/* Clear Skies brand — bright, cheerful sky blue ("the old loud-blue
+	   spirit, modernized"). Joy comes from light and saturation, not extra
+	   ornament: white cards float on a pale blue wash with soft blue shadows.
+	   Contrast notes (WCAG AA): white text needs blue-600+ as a background
+	   (blue-500 is 3.7:1 — large text / graphics only); blue text on white
+	   needs blue-600+ (4.9:1); blue-700 is 6.6:1.
+	   The `blue-*` scale is transitionally remapped so every existing brand
+	   usage (~330 across the app) recolors at once. New code should use the
+	   semantic `board-*` aliases below; migrating `blue-` → `board-` per
+	   component is the follow-up that lets us retire this remap. */
+	--color-blue-50: #eef5ff;
+	--color-blue-100: #dcebff;
+	--color-blue-200: #b9d7fd;
+	--color-blue-300: #8ec2fb;
+	--color-blue-400: #57a1f8;
+	--color-blue-500: #2e83f2;
+	--color-blue-600: #1d6ae5;
+	--color-blue-700: #1a56c4;
+	--color-blue-800: #17449b;
+	--color-blue-900: #143366;
+
+	/* Semantic brand aliases (same values) for new, self-documenting code */
+	--color-board-50: #eef5ff;
+	--color-board-100: #dcebff;
+	--color-board-200: #b9d7fd;
+	--color-board-300: #8ec2fb;
+	--color-board-400: #57a1f8;
+	--color-board-500: #2e83f2;
+	--color-board-600: #1d6ae5;
+	--color-board-700: #1a56c4;
+	--color-board-800: #17449b;
+	--color-board-900: #143366;
+
+	/* Surfaces, ink, and accents.
+	   Elevation rule: paper (page) < surface (card, true white — brighter
+	   than paper so it reads as raised) < surface-hover (brand tint that
+	   separates by hue, never a fill that darkens back toward paper). */
+	--color-surface: #ffffff; /* card / raised surface */
+	--color-surface-hover: #e4efff; /* brand-tinted hover lift, between blue-50 and blue-100 */
+	--color-paper: #eef5ff; /* pale sky wash — the page the white cards float on */
+	--color-ink: #1b2430; /* blue-black body text */
+	--color-ink-muted: #5a6472; /* secondary text (6:1 on white, 5.6:1 on paper) */
+	--color-marker: #fade4b; /* highlighter yellow — search matches, playful accents */
+	--color-coffee: #6b3a12; /* walnut — brand reserve (the ☕ logo's color), currently unused in components */
+
 	--color-gray-500: #6b7280;
 	--color-gray-600: #4b5563;
 	--color-gray-800: #1f2937;
 	--color-amber-50: #fffbeb;
+
+	/* Type system: friendly rounded display over a neutral, readable body.
+	   The wordmark keeps its own slab face so the logo doesn't change. */
+	--font-display: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+	--font-wordmark: 'Zilla Slab', ui-serif, Georgia, serif;
+	--font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+	/* Soft blue-tinted elevation — Clear Skies' signature shadow */
+	--shadow-card: 0 2px 12px rgb(46 131 242 / 0.09);
+	--shadow-card-hover: 0 6px 18px rgb(46 131 242 / 0.15);
+}
+
+/* Base surface + typography. Kept inside @layer base so these act as
+   defaults: headings are display by default, but a `font-sans` / `font-mono`
+   utility can still override them. (Unlayered rules would beat every utility
+   regardless of specificity, which silently breaks per-element overrides.) */
+@layer base {
+	body {
+		background-color: var(--color-paper);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+	}
+
+	h1,
+	h2,
+	h3 {
+		font-family: var(--font-display);
+	}
 }
 
 /* .tooltip {
@@ -21,9 +89,30 @@
 	@apply z-50 visible;
 } */
 
+/* Search-match highlight — the "highlighter marker" signature.
+   Search results wrap matched phrases in <em> (see hit.highlightedLine).
+   A skewed gradient plus uneven corners makes each match read as a
+   hand-swiped highlighter stroke: ink pools where the pen lands and lifts,
+   thins in the middle, and the stroke spills a little past the letters.
+   box-decoration-break keeps the swipe intact when a match wraps lines. */
 em {
-	color: rgb(29, 78, 216);
 	font-style: normal;
+	font-weight: 600;
+	color: var(--color-ink);
+	background: linear-gradient(
+		100deg,
+		transparent 0.8%,
+		color-mix(in srgb, var(--color-marker) 88%, transparent) 3%,
+		color-mix(in srgb, var(--color-marker) 52%, transparent) 10%,
+		color-mix(in srgb, var(--color-marker) 60%, transparent) 90%,
+		color-mix(in srgb, var(--color-marker) 92%, transparent) 96.5%,
+		transparent 99.2%
+	);
+	border-radius: 0.4em 0.2em 0.5em 0.15em;
+	padding: 0.08em 0.28em;
+	margin: 0 -0.18em;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
 }
 
 button {

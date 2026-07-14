@@ -30,7 +30,6 @@ export { default as SeasonNavigation } from './episode/SeasonNavigation.svelte';
 export { default as SeasonScrollTracker } from './episode/SeasonScrollTracker.svelte';
 export { default as SeasonSection } from './episode/SeasonSection.svelte';
 export { default as TranscriptLine } from './episode/TranscriptLine.svelte';
-export { default as TranscriptQualityBanner } from './episode/TranscriptQualityBanner.svelte';
 export { default as VirtualTranscriptList } from './episode/VirtualTranscriptList.svelte';
 export { default as EpisodeHistoryPanel } from './episode/EpisodeHistoryPanel.svelte';
 export { default as EpisodeHistoryBadge } from './episode/EpisodeHistoryBadge.svelte';

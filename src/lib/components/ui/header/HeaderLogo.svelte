@@ -15,11 +15,13 @@
 	<div class="flex flex-col">
 		<a
 			href={resolve('/')}
-			class="text-white font-bold text-lg hover:text-blue-100 active:underline transition-colors"
+			class="font-wordmark text-white font-bold text-xl tracking-tight whitespace-nowrap hover:text-blue-100 active:underline transition-colors"
 		>
 			Seekers&apos; Lounge
 		</a>
-		<div class="hidden sm:block text-xs text-blue-100">
+		<!-- Pure white: the tagline is tiny, so it needs the full 4.9:1 the
+		     bright blue header allows — tinted blues fall below AA here. -->
+		<div class="hidden sm:block text-xs text-white/95">
 			Unofficial Teachers Lounge search engine
 		</div>
 	</div>
