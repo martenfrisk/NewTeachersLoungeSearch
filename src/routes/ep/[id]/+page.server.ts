@@ -17,15 +17,7 @@ const toNavLink = (e: { ep: string; title: string }): EpisodeNavLink => ({
 // background for up to a day after that.
 export const config: Config = {
 	isr: {
-		// TODO(human): pick the expiration that matches how fresh transcripts
-		// need to be. This is the ceiling on ISR writes: one per episode per
-		// expiration window (doubled, since __data.json caches separately).
-		expiration: 3600,
-		// Without this, adapter-vercel caches *every unique query string*
-		// separately, so `?utm_source=...` and `?fbclid=...` each miss the
-		// cache and burn a fresh ISR write. Nothing here reads query params
-		// (deep links use the URL hash, which never reaches the server), so
-		// an empty list collapses all variants onto one entry per episode.
+		expiration: 86400,
 		allowQuery: []
 	}
 };
