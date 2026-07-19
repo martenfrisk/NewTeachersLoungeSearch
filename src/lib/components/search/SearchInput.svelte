@@ -197,7 +197,10 @@
 				>
 					<span class="-mt-2 transition-transform duration-200 group-hover:rotate-[18deg]">🎲</span>
 				</button>
-				<span class="mt-0.5 text-[10px] absolute bottom-0 font-medium text-gray-400">random</span>
+				<span
+					class="mt-0.5 text-[10px] pointer-events-none absolute bottom-0 font-medium text-gray-400"
+					>random</span
+				>
 			</div>
 		</div>
 	</form>

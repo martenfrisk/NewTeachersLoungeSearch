@@ -17,7 +17,8 @@ const toNavLink = (e: { ep: string; title: string }): EpisodeNavLink => ({
 // background for up to a day after that.
 export const config: Config = {
 	isr: {
-		expiration: 3600
+		expiration: 86400,
+		allowQuery: []
 	}
 };
 
