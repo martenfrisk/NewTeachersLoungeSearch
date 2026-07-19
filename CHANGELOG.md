@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-07-19
+
+### Fixed
+
+- **Vercel ISR write blowup**: Searching updated the URL with `goto()`, which re-ran the homepage server `load` on every debounced keystroke. Each unique `?s=` value was a distinct cache key and therefore a guaranteed miss + write, so typing one word cost ~12 ISR writes (and a redundant second Supabase query, since the client had already fetched results). Switched to `replaceState()` shallow routing: the URL stays shareable, but no server round-trip occurs. Verified typing now issues zero `/__data.json` requests.
+- **Episode page ISR cache keys**: `/ep/[id]` omitted `allowQuery`, so adapter-vercel cached every unique query string separately and tracking params (`?utm_source=`, `?fbclid=`) each forced a fresh write. Set `allowQuery: []` (nothing in the route reads query params) and raised `expiration` to 24h.
+
 ## 2026-07-14
 
 ### Changed
