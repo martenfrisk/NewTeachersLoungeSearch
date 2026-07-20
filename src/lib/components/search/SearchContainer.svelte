@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	import { replaceState } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { searchState } from '$lib/states/SearchState.svelte';
 	import { filtersState } from '$lib/states/FiltersState.svelte';
@@ -94,12 +94,16 @@
 		if (filtersState.editedOnly) params.set('edited', 'true');
 
 		const newUrl = `${window.location.pathname}?${params.toString()}`;
+		// Shallow routing, deliberately: results are already in hand from the
+		// client-side search above, so this call only needs to make the URL
+		// shareable. goto() would additionally re-run the server load, which
+		// re-queries Supabase *and* writes a per-query entry to Vercel's ISR
+		// cache - and since every `?s=` value is a unique key, every keystroke
+		// was a guaranteed cache miss. replaceState updates the address bar
+		// without touching the server. It also needs no keepFocus/noScroll,
+		// because it isn't a navigation and so never moves focus or scroll.
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		goto(resolve(newUrl as any), {
-			keepFocus: true,
-			noScroll: true,
-			replaceState: true
-		});
+		replaceState(resolve(newUrl as any), {});
 	}
 
 	let searchTimeoutId: ReturnType<typeof setTimeout> | undefined;
