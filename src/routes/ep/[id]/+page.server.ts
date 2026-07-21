@@ -2,7 +2,6 @@ import { error } from '@sveltejs/kit';
 import episodesPageData from '../../../assets/generated/episodes-page-data.json';
 import { EpisodeDataProcessor } from '$lib/services/EpisodeDataProcessor';
 import { SupabaseEditorRepository } from '$lib/repositories/EditorRepository';
-import { historyService } from '$lib/services/HistoryService';
 import type { EpisodePageData, EpisodeInfo, EpisodeNavLink } from '$lib/types/episode';
 import type { Config } from '@sveltejs/adapter-vercel';
 
@@ -11,30 +10,26 @@ const toNavLink = (e: { ep: string; title: string }): EpisodeNavLink => ({
 	title: e.title
 });
 
-// Episode transcripts are edited rarely and traffic is low, so an hour of
-// staleness is an easy trade for skipping a live Supabase round-trip on
-// every view - Vercel serves the cached response and revalidates in the
-// background for up to a day after that.
+// This output MUST stay deterministic: Vercel only bills write units when a
+// revalidation differs from the cached copy, so anything varying per render
+// (a `new Date()`, an unstable sort) rebills the whole ~868KB page.
 export const config: Config = {
 	isr: {
 		expiration: 86400,
+		// Without this, every `?utm_source=`-style variant is its own cache entry.
 		allowQuery: []
 	}
 };
 
-export async function load({ params, fetch }): Promise<EpisodePageData> {
+export async function load({ params }): Promise<EpisodePageData> {
 	const { id } = params;
 
 	if (!id || typeof id !== 'string') {
 		error(400, 'Invalid episode ID');
 	}
 
-	// Kick this off immediately but don't await it - it's a small, non-
-	// critical "X edits" badge, not worth blocking the transcript render on.
-	// Streamed to the client as a promise instead (getEpisodeHistoryStats
-	// never throws, it catches internally and resolves to null).
-	const historyStatsPromise = historyService.getEpisodeHistoryStats(id, fetch);
-
+	// History stats load client-side instead: their badge renders a relative
+	// time ("3h ago"), which changed the cached HTML every hour.
 	try {
 		// Always fetch live data from Supabase for server-side rendering.
 		const repository = new SupabaseEditorRepository();
@@ -89,7 +84,6 @@ export async function load({ params, fetch }): Promise<EpisodePageData> {
 			hits: { default: processedTranscript },
 			transcriptStats,
 			episodeInfo,
-			historyStats: historyStatsPromise,
 			prevEpisode,
 			nextEpisode,
 			seasonId: season?.id,

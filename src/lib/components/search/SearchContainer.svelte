@@ -94,14 +94,8 @@
 		if (filtersState.editedOnly) params.set('edited', 'true');
 
 		const newUrl = `${window.location.pathname}?${params.toString()}`;
-		// Shallow routing, deliberately: results are already in hand from the
-		// client-side search above, so this call only needs to make the URL
-		// shareable. goto() would additionally re-run the server load, which
-		// re-queries Supabase *and* writes a per-query entry to Vercel's ISR
-		// cache - and since every `?s=` value is a unique key, every keystroke
-		// was a guaranteed cache miss. replaceState updates the address bar
-		// without touching the server. It also needs no keepFocus/noScroll,
-		// because it isn't a navigation and so never moves focus or scroll.
+		// Shallow routing, deliberately: results are already in hand, so this only
+		// makes the URL shareable. goto() would re-run the server load per keystroke.
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		replaceState(resolve(newUrl as any), {});
 	}
