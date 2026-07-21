@@ -44,9 +44,62 @@ export interface IEditorRepository {
 	fetchArchivedTranscriptLines(versionId: string): Promise<ArchivedTranscriptLineType[]>;
 }
 
+// PostgREST caps a single response at 1000 rows by default and reports no
+// error when it truncates, so any query that can exceed that has to page.
+const PAGE_SIZE = 1000;
+
+// Guards against an unbounded loop if a page ever comes back full but the
+// range stops advancing. 100 pages is ~100k rows - far beyond the longest
+// transcript (~1200 lines), so hitting this means something is wrong.
+const MAX_PAGES = 100;
+
+type PagedQueryResultType<T> = {
+	data: T[] | null;
+	error: { message: string } | null;
+};
+
 export class SupabaseEditorRepository implements IEditorRepository {
 	private supabase: SupabaseClient | null = null;
 	private readonly handleError = createErrorHandler('SupabaseEditorRepository');
+
+	/**
+	 * Runs `buildPage` repeatedly with successive `.range()` bounds and
+	 * concatenates the results, working around PostgREST's silent 1000-row cap.
+	 *
+	 * The caller's query MUST impose a total order (i.e. end with a unique
+	 * tiebreaker such as `id`). Paging a non-deterministic order lets rows
+	 * shift between requests, which silently duplicates and skips them.
+	 */
+	private async fetchAllPages<T>(
+		buildPage: (from: number, to: number) => PromiseLike<PagedQueryResultType<T>>,
+		describeFailure: (message: string) => string
+	): Promise<T[]> {
+		const rows: T[] = [];
+
+		for (let page = 0; page < MAX_PAGES; page++) {
+			const from = page * PAGE_SIZE;
+			const { data, error } = await buildPage(from, from + PAGE_SIZE - 1);
+
+			if (error) {
+				throw new Error(describeFailure(error.message));
+			}
+
+			const batch = data ?? [];
+			rows.push(...batch);
+
+			// A short page means the end of the result set. An exactly-full
+			// final page costs one extra empty request to confirm, which is a
+			// better trade than guessing and truncating again.
+			if (batch.length < PAGE_SIZE) {
+				return rows;
+			}
+		}
+
+		// Never expected in practice - the longest transcript is ~1200 lines.
+		// Throwing beats returning a truncated array, which is the failure mode
+		// this helper exists to eliminate.
+		throw new Error(describeFailure(`exceeded ${MAX_PAGES} pages of ${PAGE_SIZE} rows`));
+	}
 
 	constructor() {
 		this.initializeSupabase();
@@ -63,9 +116,23 @@ export class SupabaseEditorRepository implements IEditorRepository {
 		try {
 			await this.initializeSupabase();
 
-			const { data, error } = await this.supabase!.from('transcript_lines')
-				.select(
-					`
+			type TranscriptRowType = {
+				id: string;
+				timestamp_str: string;
+				speaker: string;
+				line: string;
+				edited: boolean;
+				episode: { ep: string; title: string; season: string }[];
+			};
+
+			// timestamp_str only has second granularity, so it is not unique -
+			// the id tiebreaker is what makes the ordering total, and paging is
+			// only correct over a total order.
+			const data = await this.fetchAllPages<TranscriptRowType>(
+				(from, to) =>
+					this.supabase!.from('transcript_lines')
+						.select(
+							`
 					id,
 					timestamp_str,
 					speaker,
@@ -73,44 +140,35 @@ export class SupabaseEditorRepository implements IEditorRepository {
 					edited,
 					episode:episodes!inner(ep, title, season)
 				`
-				)
-				.eq('episodes.ep', episodeId)
-				.order('timestamp_str');
-
-			if (error) {
-				throw new Error(`Failed to fetch transcript: ${error.message}`);
-			}
+						)
+						.eq('episodes.ep', episodeId)
+						.order('timestamp_str')
+						.order('id')
+						.range(from, to),
+				(message) => `Failed to fetch transcript: ${message}`
+			);
 
 			if (!data || data.length === 0) {
 				throw new Error(`No transcript found for episode: ${episodeId}`);
 			}
 
 			// Convert to EditableTranscriptLineType format
-			const transcriptLines: EditableTranscriptLineType[] = data.map(
-				(item: {
-					id: string;
-					timestamp_str: string;
-					speaker: string;
-					line: string;
-					edited: boolean;
-					episode: { ep: string; title: string; season: string }[];
-				}) => ({
-					id: item.id,
-					time: item.timestamp_str,
-					speaker: item.speaker,
-					line: item.line,
-					edited: item.edited,
-					isEditing: false,
-					isHighlighted: false,
-					isPlaying: false,
-					editState: item.edited ? ('edited' as const) : ('unedited' as const),
-					originalText: item.line,
-					originalSpeaker: item.speaker,
-					originalTime: item.timestamp_str,
-					// Include episode data for audio matching - take first episode if array
-					episode: Array.isArray(item.episode) ? item.episode[0] : item.episode
-				})
-			);
+			const transcriptLines: EditableTranscriptLineType[] = data.map((item: TranscriptRowType) => ({
+				id: item.id,
+				time: item.timestamp_str,
+				speaker: item.speaker,
+				line: item.line,
+				edited: item.edited,
+				isEditing: false,
+				isHighlighted: false,
+				isPlaying: false,
+				editState: item.edited ? ('edited' as const) : ('unedited' as const),
+				originalText: item.line,
+				originalSpeaker: item.speaker,
+				originalTime: item.timestamp_str,
+				// Include episode data for audio matching - take first episode if array
+				episode: Array.isArray(item.episode) ? item.episode[0] : item.episode
+			}));
 
 			return transcriptLines;
 		} catch (error) {
@@ -723,43 +781,46 @@ export class SupabaseEditorRepository implements IEditorRepository {
 			await this.initializeSupabase();
 			if (!this.supabase) throw new Error('Supabase client not initialized');
 
-			const { data, error } = await this.supabase
-				.from('transcript_lines_archive')
-				.select('*')
-				.eq('version_id', versionId)
-				.order('timestamp_str');
+			type ArchivedRowType = {
+				id: string;
+				episode_id: string;
+				season: string;
+				timestamp_str: string;
+				speaker: string;
+				line: string;
+				edited: boolean;
+				created_at: string;
+				updated_at: string;
+				version_id: string;
+				archived_at: string;
+			};
 
-			if (error) {
-				throw new Error(`Failed to fetch archived transcript lines: ${error.message}`);
-			}
-
-			return (data || []).map(
-				(line: {
-					id: string;
-					episode_id: string;
-					season: string;
-					timestamp_str: string;
-					speaker: string;
-					line: string;
-					edited: boolean;
-					created_at: string;
-					updated_at: string;
-					version_id: string;
-					archived_at: string;
-				}) => ({
-					id: line.id,
-					episodeId: line.episode_id,
-					season: line.season,
-					timestampStr: line.timestamp_str,
-					speaker: line.speaker,
-					line: line.line,
-					edited: line.edited,
-					createdAt: line.created_at,
-					updatedAt: line.updated_at,
-					versionId: line.version_id,
-					archivedAt: line.archived_at
-				})
+			// Same 1000-row cap as fetchEpisodeTranscript - an archived version of
+			// a long episode would otherwise restore/diff with its tail missing.
+			const data = await this.fetchAllPages<ArchivedRowType>(
+				(from, to) =>
+					this.supabase!.from('transcript_lines_archive')
+						.select('*')
+						.eq('version_id', versionId)
+						.order('timestamp_str')
+						.order('id')
+						.range(from, to),
+				(message) => `Failed to fetch archived transcript lines: ${message}`
 			);
+
+			return (data || []).map((line: ArchivedRowType) => ({
+				id: line.id,
+				episodeId: line.episode_id,
+				season: line.season,
+				timestampStr: line.timestamp_str,
+				speaker: line.speaker,
+				line: line.line,
+				edited: line.edited,
+				createdAt: line.created_at,
+				updatedAt: line.updated_at,
+				versionId: line.version_id,
+				archivedAt: line.archived_at
+			}));
 		} catch (error) {
 			throw this.handleError(error);
 		}
