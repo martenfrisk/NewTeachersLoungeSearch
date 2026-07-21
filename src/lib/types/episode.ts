@@ -47,9 +47,6 @@ export interface EpisodePageData {
 	};
 	transcriptStats: TranscriptStats;
 	episodeInfo?: EpisodeInfo;
-	// Streamed rather than awaited in the load function - it's a small,
-	// non-critical badge, not worth blocking the transcript on.
-	historyStats?: Promise<import('./history').EpisodeHistoryStatsType | null>;
 	prevEpisode?: EpisodeNavLink;
 	nextEpisode?: EpisodeNavLink;
 	seasonId?: string;

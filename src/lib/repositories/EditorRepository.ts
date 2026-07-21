@@ -75,7 +75,10 @@ export class SupabaseEditorRepository implements IEditorRepository {
 				`
 				)
 				.eq('episodes.ep', episodeId)
-				.order('timestamp_str');
+				// `id` breaks ties - thousands of lines share a timestamp_str, and
+				// an unstable order changes the ISR-cached page on every query.
+				.order('timestamp_str')
+				.order('id');
 
 			if (error) {
 				throw new Error(`Failed to fetch transcript: ${error.message}`);

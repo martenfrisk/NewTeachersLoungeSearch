@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-07-21
+
+### Fixed
+
+- **ISR writes billed on every revalidation** (13,000 write units/day against a 200,000/month budget). Vercel only charges when a revalidation produces content that _differs_ from the cached copy, so unchanged pages are free to re-serve — but `/ep/[id]` was rendering differently every time, for two independent reasons:
+  - The edit-count badge rendered a **relative** time (`"3h ago"`) via `new Date()` during SSR, so the cached HTML changed at every hour boundary and rebilled the whole ~868 KB page. History stats now load after hydration instead (`browser`-guarded `$derived` in `ep/[id]/+page.svelte`); they were never really streamed anyway, since the adapter builds this route with `experimentalResponseStreaming` disabled. Also removes a Supabase round-trip from every cold render.
+  - `fetchEpisodeTranscript` sorted by `timestamp_str` with **no tiebreaker**. 5,443 lines across the corpus share a timestamp (s12e02: 1,203 lines, 1,021 distinct timestamps), and Postgres guarantees no stable order among equal keys, so lines could reshuffle between queries. Added `.order('id')`.
+
+  Verified: three consecutive production renders of `s12e02` are byte-identical (1,482,633 bytes each), as are repeat renders of `s01e02` — an episode _with_ edits, whose badge now appears in the browser but leaves no trace in the cached HTML.
+
 ## 2026-07-19
 
 ### Fixed

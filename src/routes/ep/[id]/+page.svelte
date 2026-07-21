@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { page } from '$app/state';
+	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import EpisodeHeader from '$lib/components/episode/EpisodeHeader.svelte';
 	import EpisodeBreadcrumb from '$lib/components/episode/EpisodeBreadcrumb.svelte';
@@ -12,6 +13,7 @@
 	import { audioStore, currentPlaybackTime, syncEnabled, isPlaying } from '$lib/stores/audio';
 	import type { EpisodeHistoryDataType } from '$lib/types/history';
 	import { audioService } from '$lib/services/AudioService';
+	import { historyService } from '$lib/services/HistoryService';
 	import {
 		findCurrentTranscriptLine,
 		throttle,
@@ -31,7 +33,6 @@
 		hits,
 		transcriptStats,
 		episodeInfo,
-		historyStats,
 		prevEpisode,
 		nextEpisode,
 		seasonId,
@@ -60,6 +61,12 @@
 	let currentActiveElement: HTMLElement | null = $state(null);
 	let historyData = $state<EpisodeHistoryDataType | null>(null);
 	let showHistoryPanel = $state(false);
+
+	// The `browser` guard is load-bearing: this badge renders a relative time,
+	// and evaluating it during SSR bakes it into the ISR cache (see +page.server.ts).
+	const historyStats = $derived(
+		browser ? historyService.getEpisodeHistoryStats(data.episode, fetch) : undefined
+	);
 
 	const audioState = $derived($audioStore);
 	const currentTime = $derived($currentPlaybackTime);
