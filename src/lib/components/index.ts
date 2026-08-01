@@ -51,7 +51,7 @@ export { default as EditorKeyboardHandler } from './editor/EditorKeyboardHandler
 export { default as EditorMouseControls } from './editor/EditorMouseControls.svelte';
 export { default as EpisodeSelector } from './editor/EpisodeSelector.svelte';
 export { default as MassActions } from './editor/MassActions.svelte';
-export { default as SpeakerManager } from './editor/SpeakerManager.svelte';
+export { default as SpeakerRoster } from './editor/SpeakerRoster.svelte';
 export { default as SubmitControls } from './editor/SubmitControls.svelte';
 export { default as ContributorForm } from './editor/ContributorForm.svelte';
 

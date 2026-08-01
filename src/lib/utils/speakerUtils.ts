@@ -42,8 +42,29 @@ export function getSpeakerColor(speaker: string): string {
 	return color;
 }
 
+// Diarization leaves a machine-assigned label rather than a name. Three shapes
+// exist in the corpus (counts as of 2026-08-01, 126,301 transcript_lines rows):
+//
+//   spk_0 … spk_N     84,551   scripts/whisply-to-transcript.js
+//   Speaker 0 … N     26,732   scripts/transform-script.js
+//   bare digits        10,966   raw whisper output, migrated as-is
+//
+// The `Speaker N` form was previously unmatched, so 26,732 lines rendered their
+// raw label on the public episode pages instead of "Unknown Speaker #n".
+//
+// Separators are permissive (`spk_1`, `Speaker 1`, `SPEAKER-01`) but the prefix
+// is not: the pattern must stay anchored to `speaker`/`spk`. Real speakers in the
+// corpus include `Customer 1`, `Waiter 2`, `Demon Voice 1` and `Delivery Man 1`,
+// so anything as loose as /^\w+ \d+$/ would swallow named characters.
+const MACHINE_SPEAKER_PATTERNS = [
+	/^\d+$/, // "4"
+	/^spk[\s._-]*\d+$/i, // "spk_0"
+	/^speaker[\s._-]*\d+$/i // "Speaker 10", "SPEAKER-01"
+];
+
 export function isUnknownSpeaker(speaker: string): boolean {
-	return /^\d+$/.test(speaker) || /^spk_\d+$/.test(speaker);
+	const trimmed = speaker.trim();
+	return MACHINE_SPEAKER_PATTERNS.some((pattern) => pattern.test(trimmed));
 }
 
 export function createUnknownSpeakerMap(speakers: string[]): Map<string, number> {
