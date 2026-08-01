@@ -1,5 +1,4 @@
-import { fail } from '@sveltejs/kit';
-import type { Actions, PageServerLoad } from './$types';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url }) => {
 	// Extract episode parameter from URL if provided
@@ -15,44 +14,16 @@ export const load: PageServerLoad = async ({ url }) => {
 	};
 };
 
-export const actions: Actions = {
-	submitContribution: async ({ request }) => {
-		const data = await request.formData();
-		const name = data.get('name')?.toString()?.trim();
-		const email = data.get('email')?.toString()?.trim();
-		const notes = data.get('notes')?.toString()?.trim();
-		const transcriptData = data.get('transcript_data')?.toString();
-
-		// Validate required fields
-		if (!transcriptData) {
-			return fail(400, {
-				error: 'No transcript changes provided',
-				name,
-				email,
-				notes
-			});
-		}
-
-		try {
-			// Parse transcript data to validate it
-			JSON.parse(transcriptData);
-
-			// Here you would typically call your EditorService or API
-			// For now, we'll simulate success
-
-			return {
-				success: true,
-				message: 'Changes submitted successfully for review',
-				editIds: [] // Would come from actual service
-			};
-		} catch (error) {
-			console.error('Failed to submit contribution:', error);
-			return fail(500, {
-				error: 'Failed to submit changes. Please try again.',
-				name,
-				email,
-				notes
-			});
-		}
-	}
-};
+// There is deliberately no `submitContribution` action here.
+//
+// ContributorForm used to POST to one, and it returned `{ success: true }` after
+// parsing the payload without writing anything - so anonymous contributors saw a
+// success message while their work was dropped. It also only ever received the
+// *changed* lines, while the submission is recorded as a `full_replacement`, so
+// honouring it would have truncated the episode down to those lines.
+//
+// Submissions now go straight from the browser to `episode_submissions` via
+// EditorService.submitEpisodeTranscript, which sends the whole transcript. There
+// is no server-side Supabase client to route them through: hooks.server.ts is
+// empty, @supabase/ssr is not a dependency, and the table's RLS already permits
+// this insert from the anon key. Revisit if /editor ever gets an auth gate.
