@@ -73,6 +73,12 @@
 	}
 
 	function handleKeyboardAction(action: string) {
+		const assign = action.match(/^assign-speaker-(\d+)$/);
+		if (assign) {
+			handleAssignSpeaker(Number(assign[1]));
+			return;
+		}
+
 		switch (action) {
 			case 'toggle-play':
 				// Toggle play/pause in global audio player
@@ -110,16 +116,6 @@
 				editorStore.goToNextLine();
 				scrollToCurrentLine();
 				break;
-			case 'next-speaker':
-				if (currentLineIndex >= 0) {
-					editorStore.cycleToNextSpeaker(currentLineIndex);
-				}
-				break;
-			case 'previous-speaker':
-				if (currentLineIndex >= 0) {
-					editorStore.cycleToPreviousSpeaker(currentLineIndex);
-				}
-				break;
 			case 'new-line-after':
 				if (currentLineIndex >= 0) {
 					editorStore.addNewLineAfter(currentLineIndex);
@@ -147,11 +143,6 @@
 					editorStore.stopEditingLine(currentLineIndex);
 				}
 				break;
-			case 'save-line':
-				if (currentLineIndex >= 0) {
-					editorStore.saveLine(currentLineIndex);
-				}
-				break;
 			case 'commit-line':
 				if (currentLineIndex >= 0) {
 					editorStore.commitLine(currentLineIndex);
@@ -162,6 +153,17 @@
 					editorStore.setTimestampToPreviousPlusOne(currentLineIndex);
 				}
 				break;
+			case 'merge-line':
+				if (currentLineIndex >= 0) {
+					editorStore.mergeLine(currentLineIndex);
+				}
+				break;
+			case 'playback-slower':
+				audioService.stepPlaybackRate(-1);
+				break;
+			case 'playback-faster':
+				audioService.stepPlaybackRate(1);
+				break;
 			case 'show-help':
 				showKeyboardHelp = !showKeyboardHelp;
 				break;
@@ -170,6 +172,14 @@
 					editorStore.resetLineEditedState(currentLineIndex);
 				}
 				break;
+		}
+	}
+
+	function handleAssignSpeaker(position: number) {
+		if (currentLineIndex < 0) return;
+		const speaker = speakers[position - 1];
+		if (speaker) {
+			editorStore.updateLineSpeaker(currentLineIndex, speaker.name);
 		}
 	}
 
@@ -187,10 +197,6 @@
 			}
 			editorStore.setSelectedEpisode(null);
 		}
-	}
-
-	function handleSpeakersChange(newSpeakers: typeof speakers) {
-		editorStore.setSpeakers(newSpeakers);
 	}
 
 	function handleAddSpeaker(name: string) {
@@ -246,10 +252,6 @@
 
 	function handleShiftAllLines(shiftSeconds: number) {
 		editorStore.shiftAllLinesTime(shiftSeconds);
-	}
-
-	function handleSaveAllChanges() {
-		editorStore.saveAllChanges();
 	}
 
 	function handleSelectionChange(index: number, selected: boolean, shiftKey?: boolean) {
@@ -325,7 +327,9 @@
 
 	// Submission handlers
 	function handleSubmitSuccess(submissionId: string) {
-		submissionToastMessage = `Successfully submitted episode transcript for review! (ID: ${submissionId})`;
+		// "submitted for review", not "saved": approval is a separate moderator step,
+		// and until it happens the live transcript is unchanged.
+		submissionToastMessage = `Submitted for review — a moderator will look at your changes. (ID: ${submissionId})`;
 		submissionToastType = 'success';
 		showSubmissionToast = true;
 
@@ -369,7 +373,7 @@
 				originalText: line.line,
 				originalSpeaker: line.speaker,
 				originalTime: line.time,
-				editState: 'unedited' as const
+				originalEdited: line.edited
 			}));
 
 			editorStore.setSelectedEpisode(initialEpisode);
@@ -481,10 +485,8 @@
 					onToggleShiftControls={handleToggleShiftControls}
 					onToggleMouseControls={handleToggleMouseControls}
 					onEpisodeSelect={handleEpisodeSelect}
-					onSpeakersChange={handleSpeakersChange}
 					onAddSpeaker={handleAddSpeaker}
 					onShiftAllLines={handleShiftAllLines}
-					onSaveAllChanges={handleSaveAllChanges}
 					onKeyboardAction={handleKeyboardAction}
 					{changedLinesCount}
 					{currentLineIndex}

@@ -48,11 +48,8 @@
 				return currentLineIndex >= transcriptLinesLength - 1;
 			case 'delete-line':
 				return transcriptLinesLength <= 1 || currentLineIndex < 0;
-			case 'next-speaker':
-			case 'previous-speaker':
 			case 'new-line-after':
 			case 'new-line-before':
-			case 'save-line':
 			case 'commit-line':
 			case 'set-timestamp-previous-plus-one':
 			case 'cancel-edit':
@@ -150,14 +147,6 @@
 						title="Go to next line"
 					>
 						↓ Next
-					</button>
-					<button
-						onclick={() => handleAction('save-line')}
-						disabled={isActionDisabled('save-line')}
-						class="text-[10px] px-1.5 py-0.5 bg-green-100 border border-green-200 rounded hover:bg-green-200 disabled:opacity-50 disabled:cursor-not-allowed text-green-700 font-medium"
-						title="Save current line"
-					>
-						💾 Save
 					</button>
 				</div>
 			</div>

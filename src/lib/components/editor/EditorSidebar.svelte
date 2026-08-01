@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { SpeakerType } from '$lib/types/editor';
-	import SpeakerManager from './SpeakerManager.svelte';
+	import SpeakerRoster from './SpeakerRoster.svelte';
+	import { editorStore } from '../../stores/editor.svelte';
 	import EditorMouseControls from './EditorMouseControls.svelte';
 	import MassActions from './MassActions.svelte';
 	import Button from '../ui/Button.svelte';
@@ -13,10 +14,8 @@
 		onToggleShiftControls: () => void;
 		onToggleMouseControls?: () => void;
 		onEpisodeSelect: (episodeId: string) => void;
-		onSpeakersChange: (speakers: SpeakerType[]) => void;
 		onAddSpeaker: (name: string) => void;
 		onShiftAllLines: (shiftSeconds: number) => void;
-		onSaveAllChanges: () => void;
 		onKeyboardAction: (action: string) => void;
 		changedLinesCount: number;
 		currentLineIndex?: number;
@@ -32,10 +31,8 @@
 		onToggleShiftControls,
 		onToggleMouseControls,
 		onEpisodeSelect,
-		onSpeakersChange,
 		onAddSpeaker,
 		onShiftAllLines,
-		onSaveAllChanges,
 		onKeyboardAction,
 		changedLinesCount,
 		currentLineIndex = -1,
@@ -79,19 +76,16 @@
 			</Button>
 		</div>
 
-		<!-- Save All Changes -->
+		<!--
+			There is no explicit save: every edit is written to local storage as you
+			make it, and "Submit" is what sends the transcript for review.
+		-->
 		{#if changedLinesCount > 0}
 			<div class="bg-white rounded-lg border border-gray-200 shadow-lg p-4">
-				<h3 class="font-medium text-gray-900 mb-2">Save Changes</h3>
-				<p class="text-sm text-gray-600 mb-3">
-					{changedLinesCount} line{changedLinesCount === 1 ? '' : 's'} with unsaved changes
+				<h3 class="font-medium text-gray-900 mb-1">Pending changes</h3>
+				<p class="text-sm text-gray-600">
+					{changedLinesCount} line{changedLinesCount === 1 ? '' : 's'} will be included when you submit.
 				</p>
-				<Button variant="primary" size="sm" onclick={onSaveAllChanges} class="w-full">
-					<svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-						<path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
-					</svg>
-					Save All Changes
-				</Button>
 			</div>
 		{/if}
 
@@ -159,7 +153,17 @@
 
 		<!-- Speaker Manager -->
 		<div class="bg-white rounded-lg border border-gray-200 shadow-lg">
-			<SpeakerManager {speakers} {onSpeakersChange} {onAddSpeaker} />
+			<SpeakerRoster
+				{speakers}
+				{onAddSpeaker}
+				counts={editorStore.speakerLineCounts}
+				onRename={(from, to) => editorStore.renameSpeaker(from, to)}
+				onRemoveSpeaker={(id) =>
+					editorStore.setSpeakers(speakers.filter((speaker) => speaker.id !== id))}
+				onSelectSpeaker={(name) => editorStore.selectLinesBySpeaker(name)}
+				pendingUndo={editorStore.lastRename}
+				onUndoRename={() => editorStore.undoLastRename()}
+			/>
 		</div>
 	</div>
 </div>
