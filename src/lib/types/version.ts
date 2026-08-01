@@ -35,6 +35,8 @@ export interface ArchivedTranscriptLineType {
 	speaker: string;
 	line: string;
 	edited: boolean;
+	/** Dense 1..N ordinal within the archived version; ties-breaks equal timestamps. */
+	lineNumber: number;
 	createdAt: string;
 	updatedAt: string;
 	versionId: string;

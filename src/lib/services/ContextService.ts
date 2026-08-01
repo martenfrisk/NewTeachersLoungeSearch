@@ -39,7 +39,11 @@ const loadTranscript = async (episode: string): Promise<ContextLine[]> => {
 			`
 			)
 			.eq('episodes.ep', episode)
-			.order('timestamp_str');
+			// Without the line_number tiebreak this ordering is not total, and the
+			// before/after lines picked out of it are arbitrary wherever two lines
+			// share a timestamp.
+			.order('timestamp_str')
+			.order('line_number');
 
 		if (error) {
 			throw new Error(`Failed to load transcript for ${episode}: ${error.message}`);

@@ -126,10 +126,16 @@ export class SupabaseEditorRepository implements IEditorRepository {
 			};
 
 			// timestamp_str only has second granularity, so it is not unique -
-			// the id tiebreaker is what makes the ordering total. It is
+			// the line_number tiebreaker is what makes the ordering total. It is
 			// load-bearing twice over: paging is only correct over a total
 			// order, and an unstable order changes the ISR-cached page on every
 			// query, which rebills the whole render (see +page.server.ts).
+			//
+			// This used to tiebreak on id, which is not stable across saves:
+			// apply_episode_submission deletes and re-inserts every line with a
+			// fresh uuid, so lines sharing a timestamp were reshuffled on each
+			// approval. line_number is reassigned from the submission's array
+			// order instead (see sql/migrations/0{1..4}-transcript-line-ordering-*.sql).
 			const data = await this.fetchAllPages<TranscriptRowType>(
 				(from, to) =>
 					this.supabase!.from('transcript_lines')
@@ -145,7 +151,7 @@ export class SupabaseEditorRepository implements IEditorRepository {
 						)
 						.eq('episodes.ep', episodeId)
 						.order('timestamp_str')
-						.order('id')
+						.order('line_number')
 						.range(from, to),
 				(message) => `Failed to fetch transcript: ${message}`
 			);
@@ -791,6 +797,7 @@ export class SupabaseEditorRepository implements IEditorRepository {
 				speaker: string;
 				line: string;
 				edited: boolean;
+				line_number: number;
 				created_at: string;
 				updated_at: string;
 				version_id: string;
@@ -799,13 +806,16 @@ export class SupabaseEditorRepository implements IEditorRepository {
 
 			// Same 1000-row cap as fetchEpisodeTranscript - an archived version of
 			// a long episode would otherwise restore/diff with its tail missing.
+			// Same line_number tiebreak too: an archived version has to read back
+			// in the order it was archived in, or restoring it would reorder the
+			// transcript it is meant to reproduce.
 			const data = await this.fetchAllPages<ArchivedRowType>(
 				(from, to) =>
 					this.supabase!.from('transcript_lines_archive')
 						.select('*')
 						.eq('version_id', versionId)
 						.order('timestamp_str')
-						.order('id')
+						.order('line_number')
 						.range(from, to),
 				(message) => `Failed to fetch archived transcript lines: ${message}`
 			);
@@ -818,6 +828,7 @@ export class SupabaseEditorRepository implements IEditorRepository {
 				speaker: line.speaker,
 				line: line.line,
 				edited: line.edited,
+				lineNumber: line.line_number,
 				createdAt: line.created_at,
 				updatedAt: line.updated_at,
 				versionId: line.version_id,
