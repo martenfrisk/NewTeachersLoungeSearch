@@ -90,7 +90,7 @@ export class EditorService {
 				...line,
 				line: newText,
 				editState: hasActualChanges ? 'unsaved' : 'unedited',
-				edited: hasActualChanges ? false : false
+				edited: this.resolveEditedFlag(line)
 			};
 		}
 
@@ -111,7 +111,7 @@ export class EditorService {
 				...line,
 				speaker: newSpeaker,
 				editState: hasActualChanges ? 'unsaved' : 'unedited',
-				edited: hasActualChanges ? false : false
+				edited: this.resolveEditedFlag(line)
 			};
 		}
 
@@ -438,7 +438,7 @@ export class EditorService {
 			updatedLines[lineIndex] = {
 				...line,
 				editState: hasActualChanges ? 'saved' : 'unedited',
-				edited: hasActualChanges ? false : false
+				edited: this.resolveEditedFlag(line)
 			};
 		}
 
@@ -454,7 +454,7 @@ export class EditorService {
 				return {
 					...line,
 					editState: hasActualChanges ? 'saved' : 'unedited',
-					edited: hasActualChanges ? false : false
+					edited: this.resolveEditedFlag(line)
 				};
 			}
 			return line;
@@ -505,6 +505,25 @@ export class EditorService {
 			line.speaker !== line.originalSpeaker ||
 			line.time !== line.originalTime
 		);
+	}
+
+	// Decide whether a line keeps its human-reviewed badge (`edited`) after its
+	// content is edited or saved. Called by updateLineText, updateLineSpeaker,
+	// saveLine, saveAllChanges and the bulk 'save' action - every path that
+	// changes a line's content without the user explicitly reviewing or
+	// un-reviewing it. commitLine() and 'reset-edited' set the flag directly and
+	// do not go through here.
+	//
+	// Editing content never revokes the badge. The tempting alternative - clear it
+	// whenever hasActualChanges is true, on the grounds that a review vouches for
+	// specific text - cannot be expressed with the state available here:
+	// hasActualChanges compares against originalText/Speaker/Time, which is the
+	// line as *loaded*, not as reviewed. A line the user edited and then committed
+	// stays hasActualChanges === true for the rest of the session, so that rule
+	// would let a later bulk save silently un-review it. Only commitLine() and
+	// 'reset-edited' move this flag.
+	resolveEditedFlag(line: EditableTranscriptLineType): boolean {
+		return line.edited;
 	}
 
 	// Get change types for a line
@@ -662,7 +681,7 @@ export class EditorService {
 							updatedLines[index] = {
 								...line,
 								editState: hasActualChanges ? 'saved' : 'unedited',
-								edited: hasActualChanges ? false : false
+								edited: this.resolveEditedFlag(line)
 							};
 						}
 					}
@@ -693,7 +712,9 @@ export class EditorService {
 							updatedLines[index] = {
 								...line,
 								editState: hasActualChanges ? 'saved' : 'unedited',
-								edited: hasActualChanges ? false : false
+								// Explicitly un-reviewing a line, so the badge always clears -
+								// this does not go through resolveEditedFlag.
+								edited: false
 							};
 						}
 					}

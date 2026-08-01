@@ -210,6 +210,59 @@ describe('EditorService - State Management', () => {
 		});
 	});
 
+	// `edited` is the human-reviewed badge shown in search results, and
+	// apply_episode_submission now persists it per line instead of forcing every
+	// line to true. That makes these paths load-bearing: anything that silently
+	// clears the flag now silently un-reviews a line in the database.
+	describe('resolveEditedFlag() - Review Badge Preservation', () => {
+		it('should keep the badge when a reviewed line is retyped', () => {
+			const lines = [createMockLine('1', 'Reviewed text', 'Howard', '0:01', { edited: true })];
+			const updatedLines = editorService.updateLineText(lines, 0, 'Corrected text');
+
+			expect(updatedLines[0].edited).toBe(true);
+			expect(updatedLines[0].editState).toBe('unsaved');
+		});
+
+		it('should keep the badge when a reviewed line changes speaker', () => {
+			const lines = [createMockLine('1', 'Reviewed text', 'Howard', '0:01', { edited: true })];
+			const updatedLines = editorService.updateLineSpeaker(lines, 0, 'Todd');
+
+			expect(updatedLines[0].edited).toBe(true);
+		});
+
+		it('should not grant the badge to an unreviewed line that is merely edited', () => {
+			const lines = createTestTranscript();
+			const updatedLines = editorService.updateLineText(lines, 0, 'Updated text');
+
+			expect(updatedLines[0].edited).toBe(false);
+		});
+
+		it('should survive the edit-commit-save sequence without losing the badge', () => {
+			// The case that ruled out clearing the badge on content change:
+			// hasLineChanged() stays true after the commit, so a later save must not
+			// read that as "never reviewed".
+			let lines = createTestTranscript();
+			lines = editorService.updateLineText(lines, 0, 'Corrected text');
+			lines = editorService.commitLine(lines, 0);
+			expect(lines[0].edited).toBe(true);
+
+			lines = editorService.saveLine(lines, 0);
+			expect(lines[0].edited).toBe(true);
+
+			lines = editorService.massAction(lines, [0], 'save');
+			expect(lines[0].edited).toBe(true);
+		});
+
+		it('should still clear the badge on an explicit reset-edited', () => {
+			let lines = createTestTranscript();
+			lines = editorService.commitLine(lines, 0);
+			expect(lines[0].edited).toBe(true);
+
+			lines = editorService.massAction(lines, [0], 'reset-edited');
+			expect(lines[0].edited).toBe(false);
+		});
+	});
+
 	describe('updateLineTimestamp() - Timestamp Change State Transitions', () => {
 		it('should set editState to unsaved when timestamp changes', () => {
 			const lines = createTestTranscript();

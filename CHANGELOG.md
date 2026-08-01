@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-08-01
+
+### Fixed
+
+- **Transcript lines reordered on save, and whole episodes flagged as edited**: both came out of `apply_episode_submission`, which deletes every line for an episode and re-inserts it from the submission JSON.
+  - Re-inserted rows got fresh `gen_random_uuid()`s, and the read path tiebroke on `id`. That made the order among lines sharing a timestamp a coin flip on every approval — resolving the "Known issues" entry from 2026-07-21, which called for exactly this ordinal column plus a backfill. `EditorService.addNewLineBefore()` and `splitLine()` both hand the new line its neighbour's exact timestamp, so they produced the affected pairs routinely. Added `line_number` to `transcript_lines` and `transcript_lines_archive`, assigned from the submission array's position via `jsonb_array_elements ... WITH ORDINALITY` (dense 1..N, reassigned on every apply, never sent by the client — so adding, deleting, splitting and merging lines in the editor stay ordinary array splices with no ordinal bookkeeping). Read paths order `(timestamp_str, line_number)`, keeping the timestamp authoritative so retiming a line still moves it. Backfilled with `row_number() OVER (PARTITION BY episode_id ORDER BY timestamp_str, id)`, reproducing the order the app was already reading, and added a unique constraint on `(episode_id, line_number)`. `archive_current_transcript_lines` and `restore_episode_version` carry the ordinal through, so restoring a version no longer reorders the transcript it is meant to reproduce.
+  - The same INSERT hardcoded `edited = true` per line. `edited` is the human-reviewed badge set only by `EditorService.commitLine()`, so editing a few lines of s03e06 came back with all of them flagged. Now reads `COALESCE((transcript_line->>'edited')::BOOLEAN, false)` from the submission.
+  - Fixing the SQL exposed a client bug it had been masking: `updateLineText`, `updateLineSpeaker`, `saveLine`, `saveAllChanges` and the bulk `save` action all contained `edited: hasActualChanges ? false : false`, unconditionally clearing the badge. Harmless while the database overwrote it, but it would now un-review lines on approval. All five route through `EditorService.resolveEditedFlag()`, which preserves the flag; only `commitLine()` grants it and `reset-edited` revokes it. Clearing on content change was rejected because `hasActualChanges` compares against the line as _loaded_, not as reviewed, so a line edited and then committed stays `true` for the session and a later bulk save would silently revoke a real review.
+  - `ContextService.loadTranscript` ordered by `timestamp_str` with no tiebreak at all, making the before/after context lines in search results arbitrary wherever timestamps collided. Now tiebreaks on `line_number` too.
+
+  Migration split across `sql/migrations/01..04-transcript-line-ordering-*.sql`, applied in numeric order — columns, backfill, functions, then constraints. The function swap deliberately precedes the `NOT NULL` enforcement so that writes are already populating `line_number` before it becomes mandatory. Read-only checks in `sql/queries/verify-transcript-line-ordering.sql`, including one proving the backfill leaves every currently-displayed transcript byte-identical.
+
+  Verified against a scratch Postgres instance reproducing this schema: on the pre-migration functions, 32 of 40 approvals read back in the wrong order (75% expected from two independent duplicate-timestamp pairs) and every line came back flagged; post-migration, 0 of 40 and flags exactly as submitted. A submission that simultaneously adds a line into a duplicate-timestamp group, deletes another and splits a third (6→7 lines) reads back correctly with dense ordinals, and restoring the prior version reproduces its original order. Not yet applied to production.
+
 ## 2026-07-21
 
 ### Fixed
