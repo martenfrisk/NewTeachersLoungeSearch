@@ -2,6 +2,7 @@
 	import type { SpeakerType } from '$lib/types/editor';
 	import SpeakerRoster from './SpeakerRoster.svelte';
 	import { editorStore } from '../../stores/editor.svelte';
+	import { audioStore } from '../../stores/audio';
 	import EditorMouseControls from './EditorMouseControls.svelte';
 	import MassActions from './MassActions.svelte';
 	import Button from '../ui/Button.svelte';
@@ -40,6 +41,9 @@
 		isLoading = false
 	}: Props = $props();
 
+	// Mirrors the condition +layout.svelte uses to mount the player.
+	let playerVisible = $derived($audioStore.currentTimestamp !== null);
+
 	function handleShiftInputKeydown(e: KeyboardEvent) {
 		if (e.key === 'Enter' && e.target instanceof HTMLInputElement) {
 			const value = parseFloat(e.target.value);
@@ -52,8 +56,17 @@
 </script>
 
 <!-- Editor Sidebar Frame - Now integrated into grid layout -->
-<div class="w-80 h-full overflow-y-auto p-4 bg-gray-50 border-l border-gray-200">
-	<div class="space-y-4">
+<!--
+	The audio player is fixed to the bottom of the viewport, and this column
+	scrolls independently - so without clearance its last cards sit underneath the
+	player and cannot be scrolled into view. Noticeable on a 13" laptop, where the
+	player takes a large share of the height.
+
+	Padding is applied to the scrolling content rather than the container so the
+	last card can actually scroll clear, and only while the player is open.
+-->
+<div class="w-80 h-full min-h-0 overflow-y-auto p-4 bg-gray-50 border-l border-gray-200">
+	<div class={`space-y-4 ${playerVisible ? 'pb-56' : 'pb-4'}`}>
 		<!-- Mouse Controls -->
 		<EditorMouseControls
 			{onKeyboardAction}

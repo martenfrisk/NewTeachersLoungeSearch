@@ -266,3 +266,35 @@ export const KEYBOARD_SHORTCUTS: KeyboardShortcutType[] = KEYBOARD_SHORTCUTS_BY_
 
 /** How many roster entries the number keys can reach. */
 export const SPEAKER_HOTKEY_COUNT = 9;
+
+/** Human-readable key names. Arrows and Escape read badly as raw event.key. */
+const KEY_LABELS: Record<string, string> = {
+	ArrowLeft: '←',
+	ArrowRight: '→',
+	ArrowUp: '↑',
+	ArrowDown: '↓',
+	Escape: 'Esc',
+	Delete: 'Del',
+	Enter: '⏎'
+};
+
+/**
+ * Render a shortcut for display.
+ *
+ * Anywhere the UI shows a key hint it should call this rather than hardcode the
+ * text - the audio player's hints still read "F1 Play/Pause" long after the
+ * binding moved to Esc, which is exactly the drift this prevents.
+ */
+export function formatShortcut(shortcut: KeyboardShortcutType, isMac = false): string {
+	const parts: string[] = [];
+	if (shortcut.ctrlKey) parts.push(isMac ? '⌘' : 'Ctrl');
+	if (shortcut.altKey) parts.push(isMac ? '⌥' : 'Alt');
+	if (shortcut.shiftKey) parts.push('Shift');
+	parts.push(KEY_LABELS[shortcut.key] ?? shortcut.key.toUpperCase());
+	return parts.join(isMac ? '' : '+');
+}
+
+/** Look up a binding by its action name. */
+export function shortcutFor(action: string): KeyboardShortcutType | undefined {
+	return KEYBOARD_SHORTCUTS.find((shortcut) => shortcut.action === action);
+}

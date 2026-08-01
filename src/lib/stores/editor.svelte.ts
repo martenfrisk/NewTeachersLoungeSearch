@@ -8,6 +8,7 @@ import type { EpisodeInfo } from '../types/episode';
 import { editorService } from '../services/EditorService';
 import { browser } from '$app/environment';
 import { normalizeTimestamp } from '../utils/audioSync';
+import { moveBoundary, type BoundaryDirectionType } from '../utils/transcriptSegments';
 
 // Create initial state
 const initialState: EditorStateType = {
@@ -180,6 +181,20 @@ class EditorStore {
 		);
 		this.saveToLocalStorage();
 		return last.indices.length;
+	}
+
+	/**
+	 * Resolve a suspect boundary by moving text across it, verbatim.
+	 *
+	 * Which direction is right depends on who is speaking, so the editor chooses;
+	 * see findSuspectBoundaries for why this is not automated.
+	 */
+	moveBoundary(index: number, direction: BoundaryDirectionType) {
+		const next = moveBoundary(this.#state.transcriptLines, index, direction);
+		if (next === this.#state.transcriptLines) return;
+
+		this.#state.transcriptLines = next;
+		this.saveToLocalStorage();
 	}
 
 	setSpeakers(speakers: SpeakerType[]) {

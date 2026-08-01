@@ -203,6 +203,10 @@
 		editorStore.addSpeaker(name);
 	}
 
+	function handleMoveBoundary(index: number, direction: 'up' | 'down') {
+		editorStore.moveBoundary(index, direction);
+	}
+
 	function handleLineClick(index: number) {
 		editorStore.setCurrentLineIndex(index);
 	}
@@ -405,10 +409,10 @@
 	<div class="min-h-screen mb-20 bg-gray-50">
 		<!-- Grid Container for Two-Frame Layout (Content + Sidebar) -->
 		<div
-			class="h-[calc(100vh-theme(spacing.16))] max-w-none grid lg:grid-cols-[1fr_320px] grid-cols-1 pb-32"
+			class="h-[calc(100vh-theme(spacing.16))] max-w-none grid lg:grid-cols-[1fr_320px] grid-cols-1 grid-rows-[minmax(0,1fr)]"
 		>
 			<!-- Main Content Frame -->
-			<div class="overflow-y-auto px-4 py-6 relative max-w-none">
+			<div class="min-h-0 overflow-y-auto px-4 py-6 relative max-w-none">
 				<!-- Header -->
 				<EditorHeader
 					{episodeInfo}
@@ -467,6 +471,7 @@
 							onStopEditing={handleStopEditing}
 							onNavigateAndEdit={handleNavigateAndEdit}
 							onKeyboardAction={handleKeyboardAction}
+							onMoveBoundary={handleMoveBoundary}
 							{selectedLineIndices}
 							onSelectionChange={handleSelectionChange}
 						/>
