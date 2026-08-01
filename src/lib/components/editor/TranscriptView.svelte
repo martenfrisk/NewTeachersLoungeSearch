@@ -46,7 +46,29 @@
 		selectedLineIndices = [],
 		onSelectionChange
 	}: Props = $props();
+
+	// Built once per roster change rather than per row. Keyed lowercased so a line
+	// reading `howard` finds the roster's `Howard`.
+	let speakerLookup = $derived(
+		new Map(speakers.map((speaker) => [speaker.name.trim().toLowerCase(), speaker]))
+	);
+
+	const SPEAKER_DATALIST_ID = 'editor-speaker-names';
 </script>
+
+<!--
+	One datalist for the whole transcript. Every line's speaker input references it
+	by id, so the roster is rendered once rather than once per line.
+
+	`value` is the string written to the database; `label` is what the browser
+	shows alongside it, so a machine label reads "Unknown Speaker #2" in the
+	dropdown while still storing `spk_0`.
+-->
+<datalist id={SPEAKER_DATALIST_ID}>
+	{#each speakers as speaker (speaker.id)}
+		<option value={speaker.name} label={speaker.displayName}></option>
+	{/each}
+</datalist>
 
 <!-- Main Content - Full Width Transcript -->
 <div class={controlsCollapsed ? 'pr-4' : 'pr-0'}>
@@ -102,7 +124,8 @@
 						<div data-line-index={lineIndex}>
 							<EditableTranscriptLine
 								{line}
-								{speakers}
+								{speakerLookup}
+								speakerDatalistId={SPEAKER_DATALIST_ID}
 								isActive={lineIndex === currentLineIndex}
 								{lineIndex}
 								{onTextEdit}

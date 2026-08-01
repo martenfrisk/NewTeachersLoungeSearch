@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { EditableTranscriptLineType, SpeakerType } from '$lib/types/editor';
+	import { getSpeakerColor } from '$lib/utils/speakerUtils';
+	import { editorService } from '$lib/services/EditorService';
 
 	// Focus management action to replace autofocus
 	function focusOnMount(element: HTMLElement) {
@@ -11,7 +13,14 @@
 
 	interface Props {
 		line: EditableTranscriptLineType;
-		speakers: SpeakerType[];
+		/**
+		 * Roster keyed by lowercased speaker name, built once by TranscriptView.
+		 * Passed in rather than derived per row: at 732 rows a `speakers.find()`
+		 * inside each component is O(rows x roster) on every roster change.
+		 */
+		speakerLookup?: Map<string, SpeakerType>;
+		/** id of the shared <datalist> rendered once by TranscriptView. */
+		speakerDatalistId?: string;
 		isActive: boolean;
 		lineIndex: number;
 		onTextEdit: (index: number, text: string) => void;
@@ -37,7 +46,8 @@
 
 	let {
 		line,
-		speakers,
+		speakerLookup,
+		speakerDatalistId = 'editor-speaker-names',
 		isActive,
 		lineIndex,
 		onTextEdit,
@@ -91,10 +101,25 @@
 		}
 	});
 
-	// Get speaker styling
+	// How this line's speaker is labelled and coloured.
+	//
+	// Falls back to the line's own value rather than the roster's "Unknown" entry.
+	// The old fallback was a non-null assertion on `speakers.find(s => s.id ===
+	// 'unknown')`, which had two problems: removing "Unknown" from the roster threw
+	// and unmounted the whole transcript, and every unmatched speaker rendered as
+	// "Unknown Speaker" - which, before the roster was derived from the transcript,
+	// meant every line of an unedited episode.
+	// Status is derived, never stored. `modified` compares against the line as
+	// loaded; `reviewed` is the persisted human-vouched flag. They are
+	// independent - a line can be both.
+	let isModified = $derived(editorService.hasLineChanged(line));
+	let isReviewed = $derived(line.edited);
+
 	let speakerInfo = $derived(
-		speakers.find((s) => s.name.toLowerCase() === line.speaker.toLowerCase()) ||
-			speakers.find((s) => s.id === 'unknown')!
+		speakerLookup?.get(line.speaker.trim().toLowerCase()) ?? {
+			displayName: line.speaker,
+			color: getSpeakerColor(line.speaker)
+		}
 	);
 
 	// Auto-resize textarea
@@ -120,6 +145,26 @@
 		}, 0);
 	}
 
+	/**
+	 * Commit on blur.
+	 *
+	 * The textarea previously had no blur handler at all, unlike the speaker and
+	 * timestamp fields, so clicking away from a text edit silently discarded it -
+	 * committing required Enter, Cmd+S or Cmd+Arrow. Text is the field users edit
+	 * most, and "click elsewhere" is the most natural way to finish.
+	 *
+	 * Blank input cancels rather than writing an empty line, matching what Enter
+	 * already did.
+	 */
+	function saveTextEditOnBlur() {
+		if (!isEditingText) return;
+		if (editedText.trim()) {
+			saveTextEdit();
+		} else {
+			cancelTextEdit();
+		}
+	}
+
 	function saveTextEdit() {
 		onTextEdit(lineIndex, editedText);
 		isEditingText = false;
@@ -139,8 +184,24 @@
 	}
 
 	function saveSpeakerEdit() {
-		onSpeakerEdit(lineIndex, editedSpeaker);
+		const trimmed = editedSpeaker.trim();
+		// Free text means an empty field is reachable; treat it as a cancel rather
+		// than writing a blank speaker into the transcript.
+		if (!trimmed) {
+			cancelSpeakerEdit();
+			return;
+		}
+		if (trimmed !== line.speaker) {
+			onSpeakerEdit(lineIndex, trimmed);
+		}
 		isEditingSpeaker = false;
+	}
+
+	function handleSpeakerKeydown(event: KeyboardEvent) {
+		// Arrow keys navigate the datalist suggestions, so they must not reach the
+		// document-level handler that moves between transcript lines.
+		event.stopPropagation();
+		handleSelectKeydown(event);
 	}
 
 	function cancelSpeakerEdit() {
@@ -230,19 +291,23 @@
 			onNavigateAndEdit?.(lineIndex - 1);
 		} else if (event.key === 'o' && !event.ctrlKey && !event.metaKey) {
 			event.preventDefault();
+			event.stopPropagation();
 			onAddNewLineAfter(lineIndex);
 		} else if (event.key === 'O' && event.shiftKey && !event.ctrlKey && !event.metaKey) {
 			event.preventDefault();
+			event.stopPropagation();
 			onAddNewLineBefore(lineIndex);
-		} else if (event.key === 'u' && !event.ctrlKey && !event.metaKey) {
-			event.preventDefault();
-			// This will be handled by the global keyboard handler
 		} else if (event.key === 'r' && !event.ctrlKey && !event.metaKey) {
 			event.preventDefault();
-			if (line.editState === 'edited') {
+			event.stopPropagation();
+			if (line.edited) {
 				onKeyboardAction?.('reset-edited');
 			}
 		}
+		// `u` is deliberately absent: it belongs to the document handler alone.
+		// It used to be caught here too, with an empty body and a preventDefault
+		// that stopped nothing - the global handler still fired, so the only effect
+		// was to make the duplication non-obvious.
 	}
 
 	// Handle keyboard events in textarea
@@ -359,9 +424,6 @@
 			case 'auto-timestamp':
 				if (onKeyboardAction) onKeyboardAction('set-timestamp-previous-plus-one');
 				break;
-			case 'save-line':
-				if (onKeyboardAction) onKeyboardAction('save-line');
-				break;
 			case 'commit-line':
 				if (onKeyboardAction) onKeyboardAction('commit-line');
 				break;
@@ -389,11 +451,11 @@
 <!-- Document-like line with minimal styling -->
 <div
 	class={`group relative transition-all duration-200 cursor-pointer border-l-4 pl-8 py-3 ${
-		line.editState === 'unsaved'
-			? 'border-l-yellow-400 bg-yellow-50/20 hover:bg-yellow-50/40'
-			: line.editState === 'saved'
-				? 'border-l-orange-400 bg-orange-50/20 hover:bg-orange-50/40'
-				: line.editState === 'edited'
+		isModified && isReviewed
+			? 'border-l-green-400 bg-amber-50/20 hover:bg-amber-50/40'
+			: isModified
+				? 'border-l-amber-400 bg-amber-50/20 hover:bg-amber-50/40'
+				: isReviewed
 					? 'border-l-green-400 bg-green-50/20 hover:bg-green-50/40'
 					: 'border-l-transparent hover:border-l-gray-300 hover:bg-gray-50/30'
 	} ${
@@ -446,17 +508,27 @@
 
 			<!-- Speaker -->
 			{#if isEditingSpeaker}
-				<select
+				<!--
+					A <select> here could only ever offer roster names, so a line whose
+					speaker was not in the roster rendered blank and could not be restored.
+					An <input list> keeps the roster as suggestions while accepting any
+					string, which the data requires: the corpus contains one-off names like
+					`Klaus`, `Fake Manager` and `Harriet Splooge`.
+
+					The datalist itself lives in TranscriptView and is referenced by id -
+					rendering one per line would mean 732 copies of the roster.
+				-->
+				<input
+					type="text"
+					list={speakerDatalistId}
 					bind:value={editedSpeaker}
 					class="text-xs sm:text-sm font-medium border rounded-full px-3 py-1 focus:ring-1 focus:ring-blue-500 focus:outline-none"
 					onblur={saveSpeakerEdit}
-					onkeydown={handleSelectKeydown}
+					onkeydown={handleSpeakerKeydown}
+					placeholder="Speaker name"
+					aria-label="Speaker"
 					use:focusOnMount
-				>
-					{#each speakers as speaker (speaker.name)}
-						<option value={speaker.name}>{speaker.displayName}</option>
-					{/each}
-				</select>
+				/>
 			{:else}
 				<button
 					class={`inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium border transition-colors hover:opacity-80 ${speakerInfo.color}`}
@@ -469,59 +541,26 @@
 		</div>
 
 		<div class="flex items-center gap-2 ml-auto flex-shrink-0">
-			<!-- Status indicators -->
-			<span class="text-xs">{line.editState} | edited: {line.edited}</span>
-			{#if line.editState === 'unsaved'}
+			<!--
+				Two independent indicators rather than one exclusive chain: a line can be
+				both modified and reviewed, and the old {:else if} order hid the former as
+				soon as the latter was true. A raw debug span printing the internal
+				state field used to sit here, visible to users.
+			-->
+			{#if isModified}
 				<span
-					class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700 border border-yellow-200"
-					title="Has unsaved changes"
+					class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200"
+					title="Differs from the stored transcript and will be included in the submission"
 				>
-					<svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-						<path
-							fill-rule="evenodd"
-							d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-							clip-rule="evenodd"
-						/>
-					</svg>
-					Unsaved
+					Modified
 				</span>
-			{:else if line.editState === 'saved'}
-				<span
-					class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-700 border border-orange-200"
-					title="Changes saved but not marked as done"
-				>
-					<svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-						<path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
-					</svg>
-					Saved
-				</span>
-			{:else if line.editState === 'edited' || line.edited}
+			{/if}
+			{#if isReviewed}
 				<span
 					class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 border border-green-200"
-					title="This line has been marked as edited/done"
+					title="Marked as reviewed"
 				>
-					<svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-						<path
-							fill-rule="evenodd"
-							d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-							clip-rule="evenodd"
-						/>
-					</svg>
-					Edited
-				</span>
-			{:else}
-				<span
-					class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200"
-					title="Original auto-transcribed line"
-				>
-					<svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-						<path
-							fill-rule="evenodd"
-							d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-							clip-rule="evenodd"
-						/>
-					</svg>
-					<span class="hidden sm:inline">Auto</span>
+					Reviewed
 				</span>
 			{/if}
 
@@ -548,6 +587,7 @@
 				style="min-height: 2rem;"
 				oninput={adjustTextareaHeight}
 				onkeydown={handleTextareaKeydown}
+				onblur={saveTextEditOnBlur}
 				placeholder="Enter text..."></textarea>
 		{:else}
 			<div
@@ -623,20 +663,13 @@
 						🔄
 					</button>
 					<button
-						onclick={(e) => handleActionButton('save-line', e)}
-						class="action-button-mini action-button-mini-green"
-						title="Save changes (W)"
-					>
-						💾
-					</button>
-					<button
 						onclick={(e) => handleActionButton('commit-line', e)}
 						class="action-button-mini action-button-mini-yellow"
 						title="Mark as done (C)"
 					>
 						✅
 					</button>
-					{#if line.editState === 'edited'}
+					{#if isReviewed}
 						<button
 							onclick={(e) => handleActionButton('reset-edited', e)}
 							class="action-button-mini action-button-mini-gray"
@@ -692,7 +725,7 @@
 						<kbd class="shortcut-key-mini">C</kbd>
 						<span>Mark done</span>
 					</div>
-					{#if line.editState === 'edited'}
+					{#if isReviewed}
 						<div class="flex items-center gap-1">
 							<kbd class="shortcut-key-mini">R</kbd>
 							<span>Reset edited</span>

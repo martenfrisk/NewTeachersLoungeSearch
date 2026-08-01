@@ -170,10 +170,10 @@ export class SupabaseEditorRepository implements IEditorRepository {
 				isEditing: false,
 				isHighlighted: false,
 				isPlaying: false,
-				editState: item.edited ? ('edited' as const) : ('unedited' as const),
 				originalText: item.line,
 				originalSpeaker: item.speaker,
 				originalTime: item.timestamp_str,
+				originalEdited: item.edited,
 				// Include episode data for audio matching - take first episode if array
 				episode: Array.isArray(item.episode) ? item.episode[0] : item.episode
 			}));

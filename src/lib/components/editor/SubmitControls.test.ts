@@ -11,7 +11,6 @@ function createTestLines(): EditableTranscriptLineType[] {
 			line: 'Original text',
 			speaker: 'Howard',
 			time: '0:01',
-			editState: 'unedited',
 			originalText: 'Original text',
 			originalSpeaker: 'Howard',
 			originalTime: '0:01',
@@ -26,7 +25,6 @@ function createTestLines(): EditableTranscriptLineType[] {
 			line: 'Changed text',
 			speaker: 'Todd',
 			time: '0:03',
-			editState: 'unsaved',
 			originalText: 'Original text 2',
 			originalSpeaker: 'Todd',
 			originalTime: '0:03',
@@ -41,7 +39,6 @@ function createTestLines(): EditableTranscriptLineType[] {
 			line: 'Same text',
 			speaker: 'Bill',
 			time: '0:10',
-			editState: 'unsaved',
 			originalText: 'Same text',
 			originalSpeaker: 'Bill',
 			originalTime: '0:05',
@@ -72,7 +69,6 @@ describe('SubmitControls Logic - Integration Tests', () => {
 		const linesWithoutChanges = createTestLines();
 		// Reset all lines to unedited state
 		linesWithoutChanges.forEach((line) => {
-			line.editState = 'unedited';
 			line.line = line.originalText || line.line;
 			line.speaker = line.originalSpeaker || line.speaker;
 			line.time = line.originalTime || line.time;
@@ -91,7 +87,6 @@ describe('SubmitControls Logic - Integration Tests', () => {
 				line: 'Same text',
 				speaker: 'Howard',
 				time: '0:01',
-				editState: 'unedited',
 				originalText: 'Same text',
 				originalSpeaker: 'Howard',
 				originalTime: '0:01',
@@ -106,7 +101,6 @@ describe('SubmitControls Logic - Integration Tests', () => {
 				line: 'Same text 2',
 				speaker: 'Todd',
 				time: '0:10',
-				editState: 'unedited', // This should be detected as changed due to time difference
 				originalText: 'Same text 2',
 				originalSpeaker: 'Todd',
 				originalTime: '0:03',
@@ -130,7 +124,6 @@ describe('SubmitControls Logic - Integration Tests', () => {
 				line: 'Line 1',
 				speaker: 'Howard',
 				time: '0:01',
-				editState: 'unedited',
 				originalText: 'Line 1',
 				originalSpeaker: 'Howard',
 				originalTime: '0:01',
@@ -144,7 +137,6 @@ describe('SubmitControls Logic - Integration Tests', () => {
 				line: 'Line 2',
 				speaker: 'Todd',
 				time: '0:03',
-				editState: 'unedited',
 				originalText: 'Line 2',
 				originalSpeaker: 'Todd',
 				originalTime: '0:03',
@@ -190,7 +182,6 @@ describe('SubmitControls Logic - Integration Tests', () => {
 				line: 'Changed text',
 				speaker: 'Howard',
 				time: '0:01',
-				editState: 'unedited',
 				originalText: 'Original text',
 				originalSpeaker: 'Howard',
 				originalTime: '0:01',
@@ -205,7 +196,6 @@ describe('SubmitControls Logic - Integration Tests', () => {
 				line: 'Same text',
 				speaker: 'Sam',
 				time: '0:03',
-				editState: 'unedited',
 				originalText: 'Same text',
 				originalSpeaker: 'Todd',
 				originalTime: '0:03',
@@ -220,7 +210,6 @@ describe('SubmitControls Logic - Integration Tests', () => {
 				line: 'Same text',
 				speaker: 'Bill',
 				time: '0:10',
-				editState: 'unedited',
 				originalText: 'Same text',
 				originalSpeaker: 'Bill',
 				originalTime: '0:05',
@@ -235,7 +224,6 @@ describe('SubmitControls Logic - Integration Tests', () => {
 				line: 'New text',
 				speaker: 'Guest',
 				time: '0:15',
-				editState: 'unedited',
 				originalText: 'Old text',
 				originalSpeaker: 'Howard',
 				originalTime: '0:07',

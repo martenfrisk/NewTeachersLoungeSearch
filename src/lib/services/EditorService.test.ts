@@ -105,7 +105,6 @@ function createMockLine(
 		line,
 		speaker,
 		time,
-		editState: 'unedited',
 		originalText: line,
 		originalSpeaker: speaker,
 		originalTime: time,
@@ -190,16 +189,17 @@ describe('EditorService - State Management', () => {
 			const lines = createTestTranscript();
 			const updatedLines = editorService.updateLineText(lines, 0, 'Updated text');
 
-			expect(updatedLines[0].editState).toBe('unsaved');
 			expect(updatedLines[0].line).toBe('Updated text');
 		});
 
-		it('should set editState to unedited when reverting to original', () => {
+		it('should stop reporting a change once the text is typed back to the original', () => {
 			const lines = createTestTranscript();
 			const changedLines = editorService.updateLineText(lines, 0, 'Updated text');
-			const revertedLines = editorService.updateLineText(changedLines, 0, 'Welcome to the show');
+			expect(editorService.hasLineChanged(changedLines[0])).toBe(true);
 
-			expect(revertedLines[0].editState).toBe('unedited');
+			const revertedLines = editorService.updateLineText(changedLines, 0, 'Welcome to the show');
+			expect(editorService.hasLineChanged(revertedLines[0])).toBe(false);
+			expect(editorService.getChangedLines(revertedLines)).toHaveLength(0);
 		});
 
 		it('should maintain edited flag consistency', () => {
@@ -220,7 +220,6 @@ describe('EditorService - State Management', () => {
 			const updatedLines = editorService.updateLineText(lines, 0, 'Corrected text');
 
 			expect(updatedLines[0].edited).toBe(true);
-			expect(updatedLines[0].editState).toBe('unsaved');
 		});
 
 		it('should keep the badge when a reviewed line changes speaker', () => {
@@ -237,19 +236,23 @@ describe('EditorService - State Management', () => {
 			expect(updatedLines[0].edited).toBe(false);
 		});
 
-		it('should survive the edit-commit-save sequence without losing the badge', () => {
+		it('should survive further edits after a commit without losing the badge', () => {
 			// The case that ruled out clearing the badge on content change:
-			// hasLineChanged() stays true after the commit, so a later save must not
-			// read that as "never reviewed".
+			// hasLineChanged() stays true after the commit, so a subsequent edit must
+			// not read that as "never reviewed".
+			//
+			// This used to also exercise saveLine() and massAction('save'), both of
+			// which are gone - they only moved a line between 'unsaved' and 'saved',
+			// a distinction that never persisted anything.
 			let lines = createTestTranscript();
 			lines = editorService.updateLineText(lines, 0, 'Corrected text');
 			lines = editorService.commitLine(lines, 0);
 			expect(lines[0].edited).toBe(true);
 
-			lines = editorService.saveLine(lines, 0);
+			lines = editorService.updateLineText(lines, 0, 'Corrected text, again');
 			expect(lines[0].edited).toBe(true);
 
-			lines = editorService.massAction(lines, [0], 'save');
+			lines = editorService.updateLineSpeaker(lines, 0, 'Todd');
 			expect(lines[0].edited).toBe(true);
 		});
 
@@ -271,7 +274,6 @@ describe('EditorService - State Management', () => {
 
 			// Find the line that was changed (it may have moved due to sorting)
 			const changedLine = updatedLines.find((line) => line.id === originalLineId);
-			expect(changedLine?.editState).toBe('unsaved');
 			expect(changedLine?.time).toBe('0:10');
 		});
 
@@ -292,9 +294,11 @@ describe('EditorService - State Management', () => {
 				'0:01'
 			);
 
-			// Find the line again after reverting
+			// Find the line again after reverting - updateLineTimestamp re-sorts, so
+			// the index is not stable but the id is.
 			const revertedLine = revertedLines.find((line) => line.id === originalLineId);
-			expect(revertedLine?.editState).toBe('unedited');
+			expect(revertedLine).toBeDefined();
+			expect(editorService.hasLineChanged(revertedLine!)).toBe(false);
 		});
 
 		it('should sort lines after timestamp updates', () => {
@@ -331,10 +335,11 @@ describe('EditorService - State Management', () => {
 			const lines = createTestTranscript();
 			const shiftedLines = editorService.shiftAllLinesTime(lines, 10);
 
-			// All lines should be marked as unsaved since timestamps changed
+			// Every line moved, so every line is now a pending change.
 			shiftedLines.forEach((line) => {
-				expect(line.editState).toBe('unsaved');
+				expect(editorService.hasLineChanged(line)).toBe(true);
 			});
+			expect(editorService.getChangedLines(shiftedLines)).toHaveLength(lines.length);
 		});
 
 		it('should keep lines as unedited when shifted back to original', () => {
@@ -342,10 +347,12 @@ describe('EditorService - State Management', () => {
 			const shiftedLines = editorService.shiftAllLinesTime(lines, 10);
 			const revertedLines = editorService.shiftAllLinesTime(shiftedLines, -10);
 
-			// All lines should be back to unedited since they match original
+			// Shifting back by the same amount restores the original timestamps, so
+			// nothing should remain to submit.
 			revertedLines.forEach((line) => {
-				expect(line.editState).toBe('unedited');
+				expect(editorService.hasLineChanged(line)).toBe(false);
 			});
+			expect(editorService.getChangedLines(revertedLines)).toHaveLength(0);
 		});
 
 		it('should not allow negative timestamps', () => {
@@ -382,17 +389,30 @@ describe('EditorService - State Management', () => {
 			expect(changedLines.map((l) => l.id)).toEqual(['1', '2', '3']);
 		});
 
-		it('should return lines marked as edited even without content changes', () => {
+		it('should return lines reviewed this session even without content changes', () => {
 			const lines = createTestTranscript();
 
-			// Mark lines as edited without changing content
-			lines[0].editState = 'edited';
-			lines[1].editState = 'edited';
+			// Marking a line reviewed is itself a change worth submitting - `edited`
+			// is a persisted column, so flipping it has to reach the database.
+			lines[0].edited = true;
+			lines[1].edited = true;
 
 			const changedLines = editorService.getChangedLines(lines);
 
 			expect(changedLines).toHaveLength(2);
 			expect(changedLines.map((l) => l.id)).toEqual(['1', '2']);
+		});
+
+		it('should not return lines that arrived already reviewed and were not touched', () => {
+			const lines = createTestTranscript();
+
+			// Seven episodes carry edited=true on every row from the pre-migration
+			// apply function. Re-submitting them is a no-op, and counting them made
+			// s04e02 open reporting 629 pending changes on an untouched transcript.
+			lines[0].edited = true;
+			lines[0].originalEdited = true;
+
+			expect(editorService.getChangedLines(lines)).toHaveLength(0);
 		});
 
 		it('should not return unedited lines without edited flag', () => {
@@ -402,159 +422,6 @@ describe('EditorService - State Management', () => {
 			const changedLines = editorService.getChangedLines(lines);
 
 			expect(changedLines).toHaveLength(0);
-		});
-	});
-
-	describe('Line State Transitions', () => {
-		it('should transition from unedited -> unsaved -> saved -> edited correctly', () => {
-			const lines = createTestTranscript();
-
-			// unedited -> unsaved (make a change)
-			const unsavedLines = editorService.updateLineText(lines, 0, 'Changed text');
-			expect(unsavedLines[0].editState).toBe('unsaved');
-
-			// unsaved -> saved (save the change)
-			const savedLines = editorService.saveLine(unsavedLines, 0);
-			expect(savedLines[0].editState).toBe('saved');
-
-			// saved -> edited (commit the change)
-			const editedLines = editorService.commitLine(savedLines, 0);
-			expect(editedLines[0].editState).toBe('edited');
-			expect(editedLines[0].edited).toBe(true);
-		});
-
-		it('should handle revert operations correctly', () => {
-			const lines = createTestTranscript();
-
-			// Make change and commit
-			const changedLines = editorService.updateLineText(lines, 0, 'Changed text');
-			const editedLines = editorService.commitLine(changedLines, 0);
-			expect(editedLines[0].editState).toBe('edited');
-
-			// Reset edited state
-			const resetLines = editorService.resetLineEditedState(editedLines, 0);
-			expect(resetLines[0].editState).toBe('saved'); // Should go to saved since content changed
-			expect(resetLines[0].edited).toBe(false);
-		});
-	});
-
-	describe('State Transition Edge Cases', () => {
-		it('should detect changes after transitioning edited lines to unedited state', () => {
-			const lines = createTestTranscript();
-
-			// Simulate lines that have been edited and committed
-			lines[0].line = 'Changed text';
-			lines[0].editState = 'edited';
-			lines[0].edited = true;
-			lines[1].speaker = 'Sam';
-			lines[1].editState = 'edited';
-			lines[1].edited = true;
-
-			// User selects all lines and changes state to "unedited"
-			const updatedLines = editorService.changeLineStates(lines, [0, 1], 'unedited', false);
-
-			// Lines should transition to 'saved' because they still have content changes
-			expect(updatedLines[0].editState).toBe('saved');
-			expect(updatedLines[1].editState).toBe('saved');
-
-			// These lines should still be detected as changed for submission
-			const changedLines = editorService.getChangedLines(updatedLines);
-			const changedLinesCount = editorService.getChangedLinesCount(updatedLines);
-
-			expect(changedLines).toHaveLength(2);
-			expect(changedLinesCount).toBe(2);
-			expect(editorService.hasAnyChanges(updatedLines)).toBe(true);
-		});
-
-		it('should not detect changes when truly reverting to original content', () => {
-			const lines = createTestTranscript();
-
-			// Simulate lines that have been edited but then reverted to original
-			lines[0].line = 'Welcome to the show'; // Same as original
-			lines[0].editState = 'edited';
-			lines[0].edited = true;
-
-			// User changes state to "unedited" - should go to truly unedited since no content changes
-			const updatedLines = editorService.changeLineStates(lines, [0], 'unedited', false);
-
-			expect(updatedLines[0].editState).toBe('unedited');
-			expect(updatedLines[0].edited).toBe(false);
-
-			// Should not be detected as changed
-			const changedLines = editorService.getChangedLines(updatedLines);
-			expect(changedLines).toHaveLength(0);
-		});
-
-		it('should reproduce the exact user issue: edited lines -> set to unedited -> no submit button', () => {
-			// Create lines that simulate the exact user scenario
-			const lines = createTestTranscript();
-
-			// Simulate that these lines have been previously edited and are marked as 'edited'
-			// but the content differs from original (like after making actual edits)
-			lines[0].line = 'Modified welcome message';
-			lines[0].editState = 'edited';
-			lines[0].edited = true;
-			lines[1].speaker = 'Sam';
-			lines[1].editState = 'edited';
-			lines[1].edited = true;
-			lines[2].time = '0:10';
-			lines[2].editState = 'edited';
-			lines[2].edited = true;
-
-			console.log('Before changing state:');
-			console.log('Line 0:', {
-				line: lines[0].line,
-				originalText: lines[0].originalText,
-				editState: lines[0].editState
-			});
-			console.log('Line 1:', {
-				speaker: lines[1].speaker,
-				originalSpeaker: lines[1].originalSpeaker,
-				editState: lines[1].editState
-			});
-			console.log('Line 2:', {
-				time: lines[2].time,
-				originalTime: lines[2].originalTime,
-				editState: lines[2].editState
-			});
-
-			// User selects all lines and changes state to "unedited"
-			const allIndices = lines.map((_, index) => index);
-			const updatedLines = editorService.changeLineStates(lines, allIndices, 'unedited', false);
-
-			console.log('After changing state:');
-			console.log('Line 0:', {
-				line: updatedLines[0].line,
-				originalText: updatedLines[0].originalText,
-				editState: updatedLines[0].editState
-			});
-			console.log('Line 1:', {
-				speaker: updatedLines[1].speaker,
-				originalSpeaker: updatedLines[1].originalSpeaker,
-				editState: updatedLines[1].editState
-			});
-			console.log('Line 2:', {
-				time: updatedLines[2].time,
-				originalTime: updatedLines[2].originalTime,
-				editState: updatedLines[2].editState
-			});
-
-			// Check if lines are detected as changed (this should determine if Submit button appears)
-			const changedLines = editorService.getChangedLines(updatedLines);
-			const changedLinesCount = editorService.getChangedLinesCount(updatedLines);
-			const hasChanges = editorService.hasAnyChanges(updatedLines);
-
-			console.log('Detection results:');
-			console.log('changedLinesCount:', changedLinesCount);
-			console.log('hasChanges:', hasChanges);
-			console.log(
-				'changedLines:',
-				changedLines.map((l) => ({ id: l.id, editState: l.editState }))
-			);
-
-			// The Submit button should appear because lines still have content changes
-			expect(changedLinesCount).toBeGreaterThan(0);
-			expect(hasChanges).toBe(true);
 		});
 	});
 
@@ -597,7 +464,6 @@ describe('EditorService - State Management', () => {
 			// Verify changed lines have the expected properties for submission
 			changedLines.forEach((line) => {
 				expect(line.id).toBeDefined();
-				expect(line.editState).not.toBe('unedited');
 			});
 		});
 	});

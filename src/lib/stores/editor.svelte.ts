@@ -2,7 +2,7 @@ import type {
 	EditorStateType,
 	EditableTranscriptLineType,
 	SpeakerType,
-	LineEditState
+	MassActionType
 } from '../types/editor';
 import type { EpisodeInfo } from '../types/episode';
 import { editorService } from '../services/EditorService';
@@ -14,7 +14,7 @@ const initialState: EditorStateType = {
 	selectedEpisode: null,
 	episodeInfo: null,
 	transcriptLines: [],
-	speakers: editorService.initializeSpeakers(),
+	speakers: editorService.deriveSpeakers([]),
 	currentLineIndex: -1,
 	isLoading: false,
 	error: null,
@@ -100,6 +100,86 @@ class EditorStore {
 
 		this.#state.transcriptLines = normalizedLines;
 		this.#state.currentLineIndex = normalizedLines.length > 0 ? 0 : -1;
+
+		// Rebuild the roster from the episode just loaded, carrying over any guests
+		// the user added by hand. Without this the roster stays the fixed cast list
+		// and every diarization label falls through to a single "Unknown" entry.
+		this.#state.speakers = editorService.deriveSpeakers(normalizedLines, this.#customSpeakerNames);
+
+		// Undo indices refer to the transcript that produced them.
+		this.#lastRename = null;
+	}
+
+	/**
+	 * Guests added for this episode. Held separately from the roster so that
+	 * rebuilding it - on load, or after a batch rename - does not drop them.
+	 */
+	#customSpeakerNames = $state<string[]>([]);
+
+	/** Lines per speaker for the loaded transcript, memoized. */
+	get speakerLineCounts(): Map<string, number> {
+		return this.#speakerLineCounts;
+	}
+	#speakerLineCounts = $derived.by(() =>
+		editorService.countLinesBySpeaker(this.#state.transcriptLines)
+	);
+
+	/**
+	 * The last batch rename, so it can be undone.
+	 *
+	 * Snapshot rather than inverse: renaming `spk_0` to `Todd` when `Todd` already
+	 * has lines is lossy, so applying the reverse rename would drag those other
+	 * lines along too. Storing the exact indices avoids that, and they stay valid
+	 * because renaming never reorders (unlike a timestamp edit, which re-sorts).
+	 */
+	#lastRename = $state<{ from: string; to: string; indices: number[] } | null>(null);
+
+	get lastRename() {
+		return this.#lastRename;
+	}
+
+	/**
+	 * Rename every line belonging to one speaker.
+	 *
+	 * Returns how many lines changed so the caller can report it. Renamed lines
+	 * become modified but not reviewed - the point is a good first pass, not a
+	 * claim that anyone has checked them.
+	 */
+	renameSpeaker(from: string, to: string): number {
+		const result = editorService.renameSpeaker(this.#state.transcriptLines, from, to);
+		if (result.changedCount === 0) return 0;
+
+		this.#state.transcriptLines = result.lines;
+		this.#lastRename = { from, to: to.trim(), indices: result.indices };
+
+		// The rename may have introduced a name the roster does not know yet, and
+		// may have emptied a label entirely.
+		this.#state.speakers = editorService.deriveSpeakers(result.lines, [
+			...this.#customSpeakerNames,
+			to.trim()
+		]);
+
+		this.saveToLocalStorage();
+		return result.changedCount;
+	}
+
+	/** Put the last batch rename back. */
+	undoLastRename(): number {
+		const last = this.#lastRename;
+		if (!last) return 0;
+
+		const restore = new Set(last.indices);
+		this.#state.transcriptLines = this.#state.transcriptLines.map((line, index) =>
+			restore.has(index) ? { ...line, speaker: last.from } : line
+		);
+
+		this.#lastRename = null;
+		this.#state.speakers = editorService.deriveSpeakers(
+			this.#state.transcriptLines,
+			this.#customSpeakerNames
+		);
+		this.saveToLocalStorage();
+		return last.indices.length;
 	}
 
 	setSpeakers(speakers: SpeakerType[]) {
@@ -107,7 +187,14 @@ class EditorStore {
 	}
 
 	addSpeaker(name: string) {
-		this.#state.speakers = editorService.addCustomSpeaker(this.#state.speakers, name);
+		const trimmed = name.trim();
+		if (!trimmed) return;
+
+		const next = editorService.addCustomSpeaker(this.#state.speakers, trimmed);
+		if (next === this.#state.speakers) return; // already present
+
+		this.#customSpeakerNames = [...this.#customSpeakerNames, trimmed];
+		this.#state.speakers = next;
 	}
 
 	setCurrentLineIndex(index: number) {
@@ -281,21 +368,18 @@ class EditorStore {
 	// Speaker cycling
 	cycleToNextSpeaker(lineIndex: number) {
 		const currentLine = this.#state.transcriptLines[lineIndex];
-		if (currentLine) {
-			const nextSpeaker = editorService.getNextSpeaker(this.#state.speakers, currentLine.speaker);
-			this.updateLineSpeaker(lineIndex, nextSpeaker.name);
-		}
+		if (!currentLine) return;
+
+		const nextSpeaker = editorService.getNextSpeaker(this.#state.speakers, currentLine.speaker);
+		if (nextSpeaker) this.updateLineSpeaker(lineIndex, nextSpeaker.name);
 	}
 
 	cycleToPreviousSpeaker(lineIndex: number) {
 		const currentLine = this.#state.transcriptLines[lineIndex];
-		if (currentLine) {
-			const prevSpeaker = editorService.getPreviousSpeaker(
-				this.#state.speakers,
-				currentLine.speaker
-			);
-			this.updateLineSpeaker(lineIndex, prevSpeaker.name);
-		}
+		if (!currentLine) return;
+
+		const prevSpeaker = editorService.getPreviousSpeaker(this.#state.speakers, currentLine.speaker);
+		if (prevSpeaker) this.updateLineSpeaker(lineIndex, prevSpeaker.name);
 	}
 
 	// Shift all line timestamps by a given number of seconds
@@ -313,18 +397,6 @@ class EditorStore {
 			this.#state.transcriptLines,
 			lineIndex
 		);
-		this.saveToLocalStorage();
-	}
-
-	// Save a line (persist changes without marking as done)
-	saveLine(lineIndex: number) {
-		this.#state.transcriptLines = editorService.saveLine(this.#state.transcriptLines, lineIndex);
-		this.saveToLocalStorage();
-	}
-
-	// Save all changed lines (without marking as done)
-	saveAllChanges() {
-		this.#state.transcriptLines = editorService.saveAllChanges(this.#state.transcriptLines);
 		this.saveToLocalStorage();
 	}
 
@@ -394,7 +466,8 @@ class EditorStore {
 				originalText: line.originalText,
 				originalSpeaker: line.originalSpeaker,
 				originalTime: line.originalTime,
-				editState: line.editState
+				edited: line.edited,
+				originalEdited: line.originalEdited
 			}))
 		};
 
@@ -427,7 +500,11 @@ class EditorStore {
 				originalText: string;
 				originalSpeaker: string;
 				originalTime: string;
-				editState: string;
+				/** v2 payload. Absent in drafts written before the state model changed. */
+				edited?: boolean;
+				originalEdited?: boolean;
+				/** v1 payload only, kept so in-flight drafts survive the upgrade. */
+				editState?: string;
 			}
 
 			const changedLines = new Map<string, SavedLineDataType>(
@@ -442,10 +519,15 @@ class EditorStore {
 						line: savedLine.line,
 						speaker: savedLine.speaker,
 						time: savedLine.time,
-						editState: savedLine.editState as LineEditState,
 						originalText: savedLine.originalText,
 						originalSpeaker: savedLine.originalSpeaker,
-						originalTime: savedLine.originalTime
+						originalTime: savedLine.originalTime,
+						// v2 stores the review flags directly. v1 stored only `editState`,
+						// and did not persist `edited` at all - so reloading mid-session
+						// silently lost every commitLine(). Mapping the old 'edited' state
+						// across recovers those drafts.
+						edited: savedLine.edited ?? savedLine.editState === 'edited',
+						originalEdited: savedLine.originalEdited ?? transcriptLine.originalEdited
 					};
 				}
 				return transcriptLine;
@@ -487,7 +569,11 @@ class EditorStore {
 	}
 
 	reset() {
-		this.#state = { ...initialState, speakers: editorService.initializeSpeakers() };
+		// Guests belong to the episode being left, so they go too - the next
+		// setTranscriptLines() rebuilds the roster from whatever loads next.
+		this.#customSpeakerNames = [];
+		this.#lastRename = null;
+		this.#state = { ...initialState, speakers: editorService.deriveSpeakers([]) };
 	}
 
 	// Load episode data
@@ -536,21 +622,14 @@ class EditorStore {
 	// Mass actions - perform operations on multiple lines
 	performMassAction(
 		lineIndices: number[] | null,
-		action:
-			| 'save'
-			| 'commit'
-			| 'reset-edited'
-			| 'delete'
-			| 'set-unedited'
-			| 'set-unsaved'
-			| 'set-saved'
-			| 'set-edited'
-			| 'revert-to-original',
+		action: MassActionType,
 		options?: { confirmDelete?: boolean }
 	) {
 		// Use selected lines if no specific indices provided
 		const indicesToUse = lineIndices || this.#state.selectedLineIndices;
 		if (indicesToUse.length === 0) return;
+
+		this.#lastRename = null;
 
 		try {
 			this.#state.transcriptLines = editorService.massAction(
@@ -587,28 +666,18 @@ class EditorStore {
 		this.saveToLocalStorage();
 	}
 
-	// Helper methods to get lines for mass actions
-	getLinesByState(states: ('unedited' | 'unsaved' | 'saved' | 'edited')[]): number[] {
-		return editorService.getLinesByState(this.#state.transcriptLines, states);
-	}
-
 	getLinesBySpeaker(speakerName: string): number[] {
 		return editorService.getLinesBySpeaker(this.#state.transcriptLines, speakerName);
 	}
 
-	// Get all edited lines
-	getEditedLines(): number[] {
-		return this.getLinesByState(['edited']);
+	/** Indices of lines differing from what was loaded. */
+	getModifiedLines(): number[] {
+		return editorService.getModifiedLines(this.#state.transcriptLines);
 	}
 
-	// Get all unsaved lines
-	getUnsavedLines(): number[] {
-		return this.getLinesByState(['unsaved']);
-	}
-
-	// Get all saved lines
-	getSavedLines(): number[] {
-		return this.getLinesByState(['saved']);
+	/** Indices of lines a human has marked reviewed. */
+	getReviewedLines(): number[] {
+		return editorService.getReviewedLines(this.#state.transcriptLines);
 	}
 
 	// Line selection methods
@@ -666,9 +735,14 @@ class EditorStore {
 		this.#state.selectedLineIndices = allIndices;
 	}
 
-	selectLinesByState(states: ('unedited' | 'unsaved' | 'saved' | 'edited')[]) {
-		const indices = this.getLinesByState(states);
-		this.#state.selectedLineIndices = indices;
+	/** Select every line differing from what was loaded. */
+	selectModifiedLines() {
+		this.#state.selectedLineIndices = this.getModifiedLines();
+	}
+
+	/** Select every line marked reviewed. */
+	selectReviewedLines() {
+		this.#state.selectedLineIndices = this.getReviewedLines();
 	}
 
 	selectLinesBySpeaker(speakerName: string) {
