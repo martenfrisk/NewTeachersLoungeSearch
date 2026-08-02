@@ -2,7 +2,7 @@ import type { AudioTimestamp } from '../types/audio';
 import { audioStore } from '../stores/audio';
 import epList from '../../assets/episodes6.json';
 import { DEFAULT_EPISODE_START_TIME } from '../constants';
-import { titlesMatch } from '../utils/titleNormalization';
+import { findBestTitleMatch } from '../utils/titleNormalization';
 import { userPreferencesStore } from '../stores/userPreferences.svelte';
 
 interface RSSEpisode {
@@ -328,9 +328,7 @@ export class AudioService {
 	private async findEpisode(episodeTitle: string): Promise<RSSEpisode | undefined> {
 		try {
 			const episodes = await this.fetchRSSFeed();
-			const rssEpisode = episodes.find((ep) => {
-				return titlesMatch(ep.title, episodeTitle);
-			});
+			const rssEpisode = findBestTitleMatch(episodes, (ep) => ep.title, episodeTitle);
 			if (rssEpisode) {
 				return rssEpisode;
 			}

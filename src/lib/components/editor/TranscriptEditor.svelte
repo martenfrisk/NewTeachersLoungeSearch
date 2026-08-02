@@ -89,7 +89,7 @@
 					if (!$audioStore.currentTimestamp && currentLine && episodeInfo) {
 						audioService.playTimestamp({
 							timestamp: currentLine.time,
-							episode: episodeInfo.title
+							episode: episodeInfo.feedTitle ?? episodeInfo.title
 						});
 					} else {
 						audioService.play();
@@ -389,7 +389,7 @@
 				setTimeout(() => {
 					audioService.playTimestamp({
 						timestamp: editableLines[0].time,
-						episode: initialEpisodeInfo.title
+						episode: initialEpisodeInfo.feedTitle ?? initialEpisodeInfo.title
 					});
 					// Don't auto-play, just load the audio
 					audioService.pause();

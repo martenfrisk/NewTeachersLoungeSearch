@@ -206,7 +206,8 @@
 
 		try {
 			await audioService.playTimestamp({
-				episode: episodeInfo.title,
+				// feedTitle is the RSS-side title; see EpisodeInfo.feedTitle.
+				episode: episodeInfo.feedTitle ?? episodeInfo.title,
 				timestamp: '0:00:00'
 			});
 		} catch (error) {

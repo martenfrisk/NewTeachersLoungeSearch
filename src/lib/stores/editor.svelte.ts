@@ -611,12 +611,15 @@ class EditorStore {
 				}
 				const firstLine = lines[0] as LineWithEpisodeDataType;
 				if (firstLine.episode) {
-					// Get the feedTitle from episodes6.json for audio matching
+					// feedTitle is carried alongside the display title rather than
+					// overwriting it, so the editor shows the real episode name while
+					// audio lookup still gets the RSS-side title.
 					const episodeInfo = await editorService.getEpisodeAudioInfo(episodeId);
 
 					this.setEpisodeInfo({
 						ep: firstLine.episode.ep,
-						title: episodeInfo?.feedTitle || episodeInfo?.title || firstLine.episode.title,
+						title: episodeInfo?.title || firstLine.episode.title,
+						feedTitle: episodeInfo?.feedTitle,
 						season: firstLine.episode.season
 					});
 				}

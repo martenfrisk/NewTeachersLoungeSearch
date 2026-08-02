@@ -4,6 +4,16 @@
 
 ### Fixed
 
+- **The audio player could not find an episode's mp3 in the RSS feed.** Nine of the 158 episodes with audio were affected: seven failed outright with "Audio unavailable", and two — S4E5 "The Preacher's Lounge" and S6E4 "The Bleachers Lounge" — played a *different* episode.
+
+  The feed was never at fault; it returns 161 items, each with a valid `<enclosure url>`, and permits cross-origin reads. The break was that `EpisodeInfo` never declared `feedTitle`, the episode's title as it appears in the Art19 feed and the only reliable key for locating its mp3. The data had always been present in `episodes-page-data.json`, and `EditorService.getEpisodeAudioInfo` already reached for it, but with no field on the type the episode page and `TranscriptLine` fell back to the site's cleaned-up display `title`. That title drops the `S4E5:` prefix, rewrites `’` as `'`, and sometimes abbreviates guest names (`Alana J` for `Alana Johnston`), so it does not match. The editor had been working around the gap by writing `feedTitle` into the `title` slot, which hid the missing field rather than fixing it.
+
+  The wrong-episode half is the part that got worse over time. `titlesMatch` ranks exact above substring, but only within a single pair, so `feed.find(titlesMatch)` still took whichever entry it reached first — and the feed is newest-first with segment names that recur across seasons. "The Preacher's Lounge" is contained in "S5E4: The Preacher's Lounge - Moses's Ark with Reverend Samuel Ezekiel (Echo Kellum)", so the newer entry won. Every episode reusing a segment name could silently steal an older one's audio.
+
+  Ranking now happens across the whole candidate list in `findBestTitleMatch`: exact, then exact-after-prefix-strip, then containment restricted to entries that only *append* to the target, broken by least surplus text rather than feed position. Ties are refused rather than guessed — "audio unavailable" is recoverable, whereas the wrong episode under the right title reads as the transcript being out of sync. `normalizeTitle` also folds typographic quotes and dashes and collapses whitespace runs.
+
+  Checked against the live feed: 158/158 episodes now resolve to the correct mp3, up from 149. With `feedTitle` withheld entirely so the containment tier carries the load, 152 resolve correctly, 6 refuse, and none resolve to the wrong episode.
+
 - **`?` never opened the shortcut panel.** The key arrives with `shiftKey: true` on any layout where it is the shifted character, and the matcher demanded that agree with the binding, which declared no modifier. Matching moved out of the component into `matchesShortcut()`, which skips the Shift comparison for punctuation keys.
 - **The line's shortcut panel advertised `W` for "Save"**, a key deleted with the four-state model, while `E`, `S`, `T`, `J` and `K` were live bindings documented nowhere. Shortcut categories now carry a `scope` (`global` / `line` / `text-field`); only `global` reaches the document handler, and every panel derives its labels from the registry.
 - **Speaker names no longer truncate in the sidebar.** `Unknown Spea…` was indistinguishable between entries; names wrap and the line count moves beneath.

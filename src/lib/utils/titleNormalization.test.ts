@@ -3,7 +3,8 @@ import {
 	normalizeTitle,
 	stripEpisodePrefix,
 	createTitleVariations,
-	titlesMatch
+	titlesMatch,
+	findBestTitleMatch
 } from './titleNormalization';
 
 describe('titleNormalization', () => {
@@ -83,6 +84,82 @@ describe('titleNormalization', () => {
 
 		it('returns false for unrelated titles', () => {
 			expect(titlesMatch('Completely Different', 'Totally Unrelated')).toBe(false);
+		});
+	});
+
+	describe('findBestTitleMatch', () => {
+		const byTitle = (t: string) => t;
+
+		// The Art19 feed is newest-first, so an older episode's title is reached
+		// after the newer one that merely contains it.
+		const feed = [
+			'S8E04: The Bleachers Lounge - The Lawn Ranger with Mom Carrol Jerreau (Tami Sagher)',
+			"S5E4: The Preacher's Lounge - Moses's Ark with Reverend Samuel Ezekiel (Echo Kellum)",
+			'S6E4: The Bleachers Lounge',
+			"S4E5: The Preacher's Lounge"
+		];
+
+		it('prefers an exact match over an earlier substring match', () => {
+			expect(findBestTitleMatch(feed, byTitle, "S4E5: The Preacher's Lounge")).toBe(
+				"S4E5: The Preacher's Lounge"
+			);
+		});
+
+		it('matches once episode prefixes are stripped from both sides', () => {
+			expect(findBestTitleMatch(feed, byTitle, "Mini 01: The Preacher's Lounge")).toBe(
+				"S4E5: The Preacher's Lounge"
+			);
+		});
+
+		// Regression: a recurring segment name used to resolve to whichever season
+		// the feed listed first, so newer episodes stole older ones' audio.
+		it('does not let a newer episode hijack a recurring segment name', () => {
+			expect(findBestTitleMatch(feed, byTitle, "The Preacher's Lounge")).toBe(
+				"S4E5: The Preacher's Lounge"
+			);
+			expect(findBestTitleMatch(feed, byTitle, 'The Bleachers Lounge')).toBe(
+				'S6E4: The Bleachers Lounge'
+			);
+		});
+
+		it('is independent of feed ordering', () => {
+			const reversed = [...feed].reverse();
+			expect(findBestTitleMatch(reversed, byTitle, "The Preacher's Lounge")).toBe(
+				"S4E5: The Preacher's Lounge"
+			);
+		});
+
+		it('folds typographic punctuation the feed uses but local titles do not', () => {
+			expect(
+				findBestTitleMatch(
+					['S2E1: We’re All Just Trying to Not Be Our Dad'],
+					byTitle,
+					"We're All Just Trying to Not Be Our Dad"
+				)
+			).toBe('S2E1: We’re All Just Trying to Not Be Our Dad');
+		});
+
+		it('collapses runs of whitespace', () => {
+			expect(
+				findBestTitleMatch(
+					['Mini 19: Hamilton In The Park: A Good Play Experience'],
+					byTitle,
+					'Hamilton In The Park:  A Good Play Experience'
+				)
+			).toBe('Mini 19: Hamilton In The Park: A Good Play Experience');
+		});
+
+		it('refuses rather than guessing when candidates are indistinguishable', () => {
+			const ambiguous = ['S1E1: Assembly - Part A', 'S2E1: Assembly - Part B'];
+			expect(findBestTitleMatch(ambiguous, byTitle, 'Assembly')).toBeUndefined();
+		});
+
+		it('returns undefined when nothing matches', () => {
+			expect(findBestTitleMatch(feed, byTitle, 'An Episode That Does Not Exist')).toBeUndefined();
+		});
+
+		it('handles an empty candidate list', () => {
+			expect(findBestTitleMatch([], byTitle, 'Anything')).toBeUndefined();
 		});
 	});
 });
