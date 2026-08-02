@@ -62,8 +62,10 @@
 
 	const handlePlayAudio = async (e: MouseEvent) => {
 		e.stopPropagation();
-		if (episodeInfo?.title) {
-			await audioService.playTimestamp({ timestamp: hit.time, episode: episodeInfo.title });
+		// feedTitle is the RSS-side title; see EpisodeInfo.feedTitle.
+		const episode = episodeInfo?.feedTitle ?? episodeInfo?.title;
+		if (episode) {
+			await audioService.playTimestamp({ timestamp: hit.time, episode });
 			audioService.play();
 		}
 	};
