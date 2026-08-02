@@ -2,7 +2,15 @@
 
 ## Unreleased
 
+### Fixed
+
+- **`?` never opened the shortcut panel.** The key arrives with `shiftKey: true` on any layout where it is the shifted character, and the matcher demanded that agree with the binding, which declared no modifier. Matching moved out of the component into `matchesShortcut()`, which skips the Shift comparison for punctuation keys.
+- **The line's shortcut panel advertised `W` for "Save"**, a key deleted with the four-state model, while `E`, `S`, `T`, `J` and `K` were live bindings documented nowhere. Shortcut categories now carry a `scope` (`global` / `line` / `text-field`); only `global` reaches the document handler, and every panel derives its labels from the registry.
+- **Speaker names no longer truncate in the sidebar.** `Unknown Spea…` was indistinguishable between entries; names wrap and the line count moves beneath.
+
 ### Changed
+
+- **`EditableTranscriptLine.svelte` split into `editor/line/`** — 1,009 lines down to 349, with the speaker, timestamp, text, badge and quick-action pieces as controlled leaves that take no line index. Includes deleting ~107 lines of dead `.action-button` CSS and the last private copy of `focusOnMount`.
 
 - **Keyboard shortcuts follow transcription-tool conventions instead of function keys.** The editor bound play/pause to `F1` and seeking to `F2`/`F3` — F1 opens browser help, and on a Mac laptop the function row needs Fn, which is the wrong place for the key pressed most often in a session. No dedicated transcription tool uses them.
 

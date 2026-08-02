@@ -1,6 +1,18 @@
 <script lang="ts">
 	import { KEYBOARD_SHORTCUTS_BY_CATEGORY } from '$lib/types/editor';
 
+	/**
+	 * Global-scope categories only.
+	 *
+	 * Every shortcut here is rendered as a button that dispatches its action
+	 * through the same path as the document key handler. Line- and field-scoped
+	 * actions are handled by whichever component owns the focus and have no
+	 * dispatcher, so listing them would add buttons that silently do nothing.
+	 */
+	const clickableCategories = KEYBOARD_SHORTCUTS_BY_CATEGORY.filter(
+		(category) => (category.scope ?? 'global') === 'global'
+	);
+
 	interface Props {
 		onKeyboardAction: (action: string) => void;
 		currentLineIndex?: number;
@@ -99,7 +111,7 @@
 	<!-- Controls -->
 	{#if !collapsed}
 		<div class="p-3 space-y-4">
-			{#each KEYBOARD_SHORTCUTS_BY_CATEGORY as category (category.name)}
+			{#each clickableCategories as category (category.name)}
 				<div class="space-y-2">
 					<h4 class="text-xs font-medium text-gray-700 flex items-center gap-1">
 						<span>{category.icon}</span>

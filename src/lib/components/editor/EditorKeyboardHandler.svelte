@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { KEYBOARD_SHORTCUTS } from '$lib/types/editor';
+	import { KEYBOARD_SHORTCUTS, matchesShortcut } from '$lib/types/editor';
 
 	interface Props {
 		onKeyboardAction: (action: string) => void;
@@ -38,12 +38,7 @@
 		}
 
 		for (const shortcut of KEYBOARD_SHORTCUTS) {
-			if (
-				event.key === shortcut.key &&
-				!!modifierKey === !!shortcut.ctrlKey &&
-				!!event.shiftKey === !!shortcut.shiftKey &&
-				!!event.altKey === !!shortcut.altKey
-			) {
+			if (matchesShortcut(event, shortcut, modifierKey)) {
 				event.preventDefault();
 				onKeyboardAction(shortcut.action);
 				return;

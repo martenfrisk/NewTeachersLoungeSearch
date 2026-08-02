@@ -159,9 +159,27 @@ export const CAST_SPEAKERS: readonly { id: string; name: string; displayName: st
 // hand-maintained lists - KEYBOARD_SHORTCUTS and KEYBOARD_SHORTCUTS_BY_CATEGORY -
 // and they had already drifted: `w`, `c`, `r`, Escape and `?` were missing from
 // one or the other, so the help panel and the actual bindings disagreed.
+/**
+ * Which handler owns a binding.
+ *
+ * - `global`     the document listener in EditorKeyboardHandler.
+ * - `line`       the focused transcript row, when no field is open.
+ * - `text-field` the open text textarea.
+ *
+ * Only `global` is flat-mapped into KEYBOARD_SHORTCUTS, so only `global` gets
+ * `preventDefault` at the document level - adding `s` there would swallow the
+ * letter everywhere. The other two scopes exist so the help panels can show
+ * bindings that really are implemented: `e`, `s`, `t`, `j`, `k` and the whole
+ * textarea keymap were live but documented nowhere, while the line's own hint
+ * panel still advertised `W`, deleted with the four-state model.
+ */
+export type ShortcutScopeType = 'global' | 'line' | 'text-field';
+
 export interface KeyboardShortcutCategory {
 	name: string;
 	icon?: string;
+	/** Defaults to `global`. */
+	scope?: ShortcutScopeType;
 	shortcuts: KeyboardShortcutType[];
 }
 
@@ -256,13 +274,85 @@ export const KEYBOARD_SHORTCUTS_BY_CATEGORY: KeyboardShortcutCategory[] = [
 		name: 'General',
 		icon: '⚡',
 		shortcuts: [{ key: '?', action: 'show-help', description: 'Show shortcuts' }]
+	},
+	{
+		name: 'On the focused line',
+		icon: '📝',
+		scope: 'line',
+		shortcuts: [
+			// `E` is a synonym rather than a second entry: two rows both reading
+			// "Edit text" is noise in the help panel, and it collided with the keyed
+			// each block that renders it.
+			{ key: 'Enter', action: 'line-edit-text', description: 'Edit text (or E)' },
+			{ key: 's', action: 'line-edit-speaker', description: 'Edit speaker' },
+			{ key: 't', action: 'line-edit-timestamp', description: 'Edit timestamp' },
+			{ key: 'j', action: 'line-next-and-edit', description: 'Next line, editing' },
+			{ key: 'k', action: 'line-previous-and-edit', description: 'Previous line, editing' }
+		]
+	},
+	{
+		name: 'While editing text',
+		icon: '⌨️',
+		scope: 'text-field',
+		shortcuts: [
+			{ key: 'Enter', action: 'text-save-next', description: 'Save and go to next' },
+			{ key: 's', ctrlKey: true, action: 'text-save', description: 'Save, stay here' },
+			{ key: 'Escape', action: 'text-cancel', description: 'Cancel' },
+			{ key: 'Enter', ctrlKey: true, action: 'text-split', description: 'Split at cursor' },
+			{
+				key: 'ArrowUp',
+				ctrlKey: true,
+				action: 'text-save-previous',
+				description: 'Save, previous'
+			},
+			{ key: 'ArrowDown', ctrlKey: true, action: 'text-save-down', description: 'Save, next' }
+		]
 	}
 ];
 
-/** Flat view for the key handler. Derived, so it cannot drift from the panel. */
-export const KEYBOARD_SHORTCUTS: KeyboardShortcutType[] = KEYBOARD_SHORTCUTS_BY_CATEGORY.flatMap(
-	(category) => category.shortcuts
-);
+/**
+ * Flat view for the document key handler - `global` scope only.
+ *
+ * Line- and field-scoped bindings are handled by the component that owns the
+ * focus, so listing them here would make the document handler preventDefault
+ * plain letters across the whole page.
+ */
+export const KEYBOARD_SHORTCUTS: KeyboardShortcutType[] = KEYBOARD_SHORTCUTS_BY_CATEGORY.filter(
+	(category) => (category.scope ?? 'global') === 'global'
+).flatMap((category) => category.shortcuts);
+
+/** Every binding in one scope, for the panel that documents that scope. */
+export function shortcutsInScope(scope: ShortcutScopeType): KeyboardShortcutType[] {
+	return KEYBOARD_SHORTCUTS_BY_CATEGORY.filter(
+		(category) => (category.scope ?? 'global') === scope
+	).flatMap((category) => category.shortcuts);
+}
+
+/**
+ * Does this keydown fire this binding?
+ *
+ * Pure, and outside the component, so the matching rules can be tested directly
+ * rather than through a document listener.
+ *
+ * Shift is compared for letters, digits and named keys, but not for punctuation:
+ * on most layouts the punctuation *is* the shifted form, so `?` arrives with
+ * `shiftKey: true` while the binding declares no modifier. Demanding they agree
+ * is why `?` - the key that opens the shortcut panel - had never once worked.
+ */
+export function matchesShortcut(
+	event: Pick<KeyboardEvent, 'key' | 'shiftKey' | 'altKey'>,
+	shortcut: KeyboardShortcutType,
+	modifierPressed: boolean
+): boolean {
+	const shiftIsPartOfTheCharacter = shortcut.key.length === 1 && !/[a-zA-Z0-9]/.test(shortcut.key);
+
+	return (
+		event.key === shortcut.key &&
+		modifierPressed === !!shortcut.ctrlKey &&
+		(shiftIsPartOfTheCharacter || event.shiftKey === !!shortcut.shiftKey) &&
+		event.altKey === !!shortcut.altKey
+	);
+}
 
 /** How many roster entries the number keys can reach. */
 export const SPEAKER_HOTKEY_COUNT = 9;
@@ -289,12 +379,18 @@ export function formatShortcut(shortcut: KeyboardShortcutType, isMac = false): s
 	const parts: string[] = [];
 	if (shortcut.ctrlKey) parts.push(isMac ? '⌘' : 'Ctrl');
 	if (shortcut.altKey) parts.push(isMac ? '⌥' : 'Alt');
-	if (shortcut.shiftKey) parts.push('Shift');
+	// Mac mode joins with no separator, so "Shift" has to become a symbol too or
+	// it renders as "ShiftO".
+	if (shortcut.shiftKey) parts.push(isMac ? '⇧' : 'Shift');
 	parts.push(KEY_LABELS[shortcut.key] ?? shortcut.key.toUpperCase());
 	return parts.join(isMac ? '' : '+');
 }
 
-/** Look up a binding by its action name. */
+/** Look up a binding by its action name, in any scope. */
 export function shortcutFor(action: string): KeyboardShortcutType | undefined {
-	return KEYBOARD_SHORTCUTS.find((shortcut) => shortcut.action === action);
+	for (const category of KEYBOARD_SHORTCUTS_BY_CATEGORY) {
+		const match = category.shortcuts.find((shortcut) => shortcut.action === action);
+		if (match) return match;
+	}
+	return undefined;
 }

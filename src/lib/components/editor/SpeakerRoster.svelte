@@ -127,24 +127,37 @@
 		{#each speakers as speaker (speaker.id)}
 			{@const count = lineCount(speaker)}
 			<li class="rounded px-2 py-1.5 hover:bg-gray-50">
-				<div class="flex items-center gap-2">
+				<!--
+					Names wrap rather than truncate. The sidebar is 320px and the roster
+					holds free text - "Unknown Speaker #1" and "Harriet Splooge" both exist
+					in the data - so a single row could only ever show "Unknown Spea…",
+					which is indistinguishable between entries. The count moves onto its own
+					line beneath, which is where the width for wrapping comes from.
+				-->
+				<div class="flex items-start gap-2">
 					<button
-						class="flex min-w-0 flex-1 items-center gap-2 text-left"
+						class="flex min-w-0 flex-1 items-start gap-2 text-left"
 						onclick={() => count > 0 && onSelectSpeaker(speaker.name)}
 						disabled={count === 0}
 						title={count > 0 ? `Select all ${count} lines` : 'Not in this episode'}
 					>
-						<span class={`inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full ${speaker.color}`}
+						<!-- Nudged down to sit on the first line's optical centre. -->
+						<span
+							class={`mt-[5px] inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full ${speaker.color}`}
 						></span>
-						<span class="truncate text-sm text-gray-900">{speaker.displayName}</span>
-						<span class="ml-auto flex-shrink-0 text-xs text-gray-500">
-							{count === 0 ? '—' : `${count} line${count === 1 ? '' : 's'}`}
+						<span class="min-w-0">
+							<span class="block text-sm leading-5 break-words text-gray-900">
+								{speaker.displayName}
+							</span>
+							<span class="block text-xs text-gray-500">
+								{count === 0 ? 'Not in this episode' : `${count} line${count === 1 ? '' : 's'}`}
+							</span>
 						</span>
 					</button>
 
 					<button
 						onclick={() => startRename(speaker)}
-						class="flex-shrink-0 text-xs text-blue-600 hover:text-blue-800"
+						class="mt-px flex-shrink-0 text-xs text-blue-600 hover:text-blue-800"
 						title="Rename every line by this speaker"
 					>
 						Rename
@@ -153,7 +166,7 @@
 					{#if canRemove(speaker)}
 						<button
 							onclick={() => onRemoveSpeaker(speaker.id)}
-							class="flex-shrink-0 text-xs text-gray-400 hover:text-red-600"
+							class="mt-px flex-shrink-0 text-xs text-gray-400 hover:text-red-600"
 							aria-label={`Remove ${speaker.displayName}`}
 						>
 							×
