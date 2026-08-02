@@ -1,6 +1,18 @@
 <script lang="ts">
 	import { KEYBOARD_SHORTCUTS_BY_CATEGORY } from '$lib/types/editor';
 
+	/**
+	 * Global-scope categories only.
+	 *
+	 * Every shortcut here is rendered as a button that dispatches its action
+	 * through the same path as the document key handler. Line- and field-scoped
+	 * actions are handled by whichever component owns the focus and have no
+	 * dispatcher, so listing them would add buttons that silently do nothing.
+	 */
+	const clickableCategories = KEYBOARD_SHORTCUTS_BY_CATEGORY.filter(
+		(category) => (category.scope ?? 'global') === 'global'
+	);
+
 	interface Props {
 		onKeyboardAction: (action: string) => void;
 		currentLineIndex?: number;
@@ -48,11 +60,8 @@
 				return currentLineIndex >= transcriptLinesLength - 1;
 			case 'delete-line':
 				return transcriptLinesLength <= 1 || currentLineIndex < 0;
-			case 'next-speaker':
-			case 'previous-speaker':
 			case 'new-line-after':
 			case 'new-line-before':
-			case 'save-line':
 			case 'commit-line':
 			case 'set-timestamp-previous-plus-one':
 			case 'cancel-edit':
@@ -102,7 +111,7 @@
 	<!-- Controls -->
 	{#if !collapsed}
 		<div class="p-3 space-y-4">
-			{#each KEYBOARD_SHORTCUTS_BY_CATEGORY as category (category.name)}
+			{#each clickableCategories as category (category.name)}
 				<div class="space-y-2">
 					<h4 class="text-xs font-medium text-gray-700 flex items-center gap-1">
 						<span>{category.icon}</span>
@@ -150,14 +159,6 @@
 						title="Go to next line"
 					>
 						↓ Next
-					</button>
-					<button
-						onclick={() => handleAction('save-line')}
-						disabled={isActionDisabled('save-line')}
-						class="text-[10px] px-1.5 py-0.5 bg-green-100 border border-green-200 rounded hover:bg-green-200 disabled:opacity-50 disabled:cursor-not-allowed text-green-700 font-medium"
-						title="Save current line"
-					>
-						💾 Save
 					</button>
 				</div>
 			</div>

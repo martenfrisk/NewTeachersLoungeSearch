@@ -1,12 +1,19 @@
 import type {
 	EditableTranscriptLineType,
 	SpeakerType,
-	EpisodeSubmissionType
+	EpisodeSubmissionType,
+	LineStatusType,
+	MassActionType
 } from '../types/editor';
 import type { IEditorRepository } from '../repositories/EditorRepository';
 import { SupabaseEditorRepository } from '../repositories/EditorRepository';
 import { createErrorHandler } from '../utils/errors';
-import { DEFAULT_SPEAKERS } from '../types/editor';
+import {
+	deriveSpeakerRoster,
+	countLinesBySpeaker,
+	addCustomSpeaker,
+	findSpeaker
+} from '../utils/speakerRoster';
 import epListData from '../../assets/episodes6.json';
 import { supabase } from '$lib/supabase';
 import {
@@ -85,11 +92,9 @@ export class EditorService {
 		const line = updatedLines[lineIndex];
 
 		if (line) {
-			const hasActualChanges = newText !== line.originalText;
 			updatedLines[lineIndex] = {
 				...line,
 				line: newText,
-				editState: hasActualChanges ? 'unsaved' : 'unedited',
 				edited: this.resolveEditedFlag(line)
 			};
 		}
@@ -106,11 +111,9 @@ export class EditorService {
 		const line = updatedLines[lineIndex];
 
 		if (line) {
-			const hasActualChanges = this.hasLineChanged({ ...line, speaker: newSpeaker });
 			updatedLines[lineIndex] = {
 				...line,
 				speaker: newSpeaker,
-				editState: hasActualChanges ? 'unsaved' : 'unedited',
 				edited: this.resolveEditedFlag(line)
 			};
 		}
@@ -134,14 +137,9 @@ export class EditorService {
 		const line = updatedLines[lineIndex];
 
 		if (line) {
-			// Create a temporary line with the new timestamp to check for changes
-			const tempLine = { ...line, time: normalizedTimestamp };
-			const hasActualChanges = this.hasLineChanged(tempLine);
-
 			updatedLines[lineIndex] = {
 				...line,
-				time: normalizedTimestamp,
-				editState: hasActualChanges ? 'unsaved' : 'unedited'
+				time: normalizedTimestamp
 			};
 		}
 
@@ -163,11 +161,9 @@ export class EditorService {
 
 			if (firstPart && secondPart) {
 				// Update first line
-				const hasFirstPartChanges = firstPart !== line.originalText;
 				updatedLines[lineIndex] = {
 					...line,
-					line: firstPart,
-					editState: hasFirstPartChanges ? 'unsaved' : 'unedited'
+					line: firstPart
 				};
 
 				// Create second line
@@ -175,7 +171,6 @@ export class EditorService {
 					...line,
 					id: `${line.id}-split-${Date.now()}`,
 					line: secondPart,
-					editState: 'unsaved',
 					originalText: secondPart
 				};
 
@@ -196,11 +191,9 @@ export class EditorService {
 			// Merge lines if they have the same speaker
 			if (currentLine.speaker === nextLine.speaker) {
 				const mergedText = `${currentLine.line} ${nextLine.line}`;
-				const hasChanges = mergedText !== currentLine.originalText;
 				updatedLines[lineIndex] = {
 					...currentLine,
-					line: mergedText,
-					editState: hasChanges ? 'unsaved' : 'unedited'
+					line: mergedText
 				};
 
 				// Remove next line
@@ -226,7 +219,6 @@ export class EditorService {
 				speaker: speaker || referenceLine.speaker,
 				time: referenceLine.time, // Will need manual timestamp adjustment
 				edited: true,
-				editState: 'unsaved',
 				isEditing: true,
 				originalText: '',
 				originalSpeaker: speaker || referenceLine.speaker,
@@ -267,7 +259,6 @@ export class EditorService {
 				speaker: speaker || referenceLine.speaker,
 				time: newTimestamp,
 				edited: true,
-				editState: 'unsaved',
 				isEditing: true,
 				originalText: '',
 				originalSpeaker: speaker || referenceLine.speaker,
@@ -293,20 +284,10 @@ export class EditorService {
 		// Remove the line at the specified index
 		updatedLines.splice(lineIndex, 1);
 
-		// Mark a nearby line as changed to track that a deletion occurred
-		// This ensures the "Submit Changes" button appears after deletion
-		const nearbyIndex = Math.min(lineIndex, updatedLines.length - 1);
-		if (nearbyIndex >= 0 && updatedLines[nearbyIndex]) {
-			const nearbyLine = updatedLines[nearbyIndex];
-			// Only mark as changed if it's not already marked as saved or edited
-			if (nearbyLine.editState === 'unedited') {
-				updatedLines[nearbyIndex] = {
-					...nearbyLine,
-					editState: 'unsaved'
-				};
-			}
-		}
-
+		// A deletion leaves no mark on any surviving line. This used to nudge a
+		// neighbour into 'unsaved' so the Submit button would appear; with the state
+		// field gone, deletion tracking moves to the store, which compares the line
+		// count against what was loaded.
 		return updatedLines;
 	}
 
@@ -338,47 +319,113 @@ export class EditorService {
 	}
 
 	getSpeakerByName(speakers: SpeakerType[], name: string): SpeakerType | null {
-		return speakers.find((s) => s.name.toLowerCase() === name.toLowerCase()) || null;
+		return findSpeaker(speakers, name);
 	}
 
-	getNextSpeaker(speakers: SpeakerType[], currentSpeaker: string): SpeakerType {
-		const currentIndex = speakers.findIndex((s) => s.name === currentSpeaker);
-		const nextIndex = (currentIndex + 1) % speakers.length;
-		return speakers[nextIndex];
+	/**
+	 * Index of `name` in the roster, or -1.
+	 *
+	 * Case-insensitive, unlike the exact `s.name === currentSpeaker` these used to
+	 * do: a line reading `howard` against a roster entry `Howard` counted as a
+	 * miss, which fed -1 into the arithmetic below.
+	 */
+	private indexOfSpeaker(speakers: SpeakerType[], name: string): number {
+		const target = name.trim().toLowerCase();
+		return speakers.findIndex((s) => s.name.trim().toLowerCase() === target);
 	}
 
-	getPreviousSpeaker(speakers: SpeakerType[], currentSpeaker: string): SpeakerType {
-		const currentIndex = speakers.findIndex((s) => s.name === currentSpeaker);
-		const prevIndex = currentIndex === 0 ? speakers.length - 1 : currentIndex - 1;
-		return speakers[prevIndex];
+	getNextSpeaker(speakers: SpeakerType[], currentSpeaker: string): SpeakerType | null {
+		if (speakers.length === 0) return null;
+		const i = this.indexOfSpeaker(speakers, currentSpeaker);
+		// An unrecognised speaker starts the cycle rather than skipping the first
+		// entry, which `(-1 + 1) % len` happened to do correctly but only by luck.
+		return speakers[i === -1 ? 0 : (i + 1) % speakers.length];
 	}
 
-	initializeSpeakers(): SpeakerType[] {
-		return [...DEFAULT_SPEAKERS];
+	getPreviousSpeaker(speakers: SpeakerType[], currentSpeaker: string): SpeakerType | null {
+		if (speakers.length === 0) return null;
+		const i = this.indexOfSpeaker(speakers, currentSpeaker);
+		// `i === 0 ? len - 1 : i - 1` evaluated to speakers[-2] for an unrecognised
+		// speaker, so Shift+Tab threw "Cannot read properties of undefined".
+		return speakers[i <= 0 ? speakers.length - 1 : i - 1];
+	}
+
+	/**
+	 * The roster for a loaded episode: the recurring cast merged with the speakers
+	 * actually present, plus any guests the user has added.
+	 *
+	 * Replaces `initializeSpeakers()`, which returned a fixed cast list regardless
+	 * of the transcript. Because an unedited episode is entirely diarization
+	 * labels, nothing in it ever matched that list, and every line fell through to
+	 * the "Unknown" entry.
+	 */
+	deriveSpeakers(lines: EditableTranscriptLineType[], extras: string[] = []): SpeakerType[] {
+		return deriveSpeakerRoster(lines, extras);
+	}
+
+	/** Lines per speaker, keyed by the stored `speaker` value. */
+	countLinesBySpeaker(lines: EditableTranscriptLineType[]): Map<string, number> {
+		return countLinesBySpeaker(lines);
+	}
+
+	/**
+	 * Relabel every line belonging to one speaker.
+	 *
+	 * The first pass on an unedited episode: say once that `spk_0` is Todd Padre
+	 * and 205 lines are correct before the line-by-line pass starts. Diarization is
+	 * imperfect, so some will be wrong - but they start right more often than not.
+	 *
+	 * Deliberately not a `massAction`. That union's contract is (lines, indices,
+	 * action) with no payload and every branch is a state transition; rename
+	 * carries data and changes content, so folding it in would make the options
+	 * type a lie.
+	 *
+	 * Renamed lines come out *modified but not reviewed*: `edited` is untouched via
+	 * resolveEditedFlag, so they enter the submission and show the Modified badge
+	 * while the reviewed badge stays for lines a human actually confirmed. Renaming
+	 * to a name already in use merges the two speakers, which is intended - it is
+	 * how two diarization labels for one person get combined.
+	 */
+	renameSpeaker(
+		lines: EditableTranscriptLineType[],
+		from: string,
+		to: string,
+		options?: { lineIndices?: number[] }
+	): { lines: EditableTranscriptLineType[]; changedCount: number; indices: number[] } {
+		const target = to.trim();
+		const source = from.trim().toLowerCase();
+
+		if (!target || !source) {
+			return { lines, changedCount: 0, indices: [] };
+		}
+
+		const limit = options?.lineIndices ? new Set(options.lineIndices) : null;
+		const indices: number[] = [];
+
+		const updated = lines.map((line, index) => {
+			if (limit && !limit.has(index)) return line;
+			if (line.speaker.trim().toLowerCase() !== source) return line;
+			if (line.speaker === target) return line;
+
+			indices.push(index);
+			return {
+				...line,
+				speaker: target,
+				edited: this.resolveEditedFlag(line)
+			};
+		});
+
+		// Returning the original array when nothing matched keeps referential
+		// equality, so Svelte does not re-render 732 rows for a no-op.
+		if (indices.length === 0) {
+			return { lines, changedCount: 0, indices: [] };
+		}
+
+		return { lines: updated, changedCount: indices.length, indices };
 	}
 
 	addCustomSpeaker(speakers: SpeakerType[], name: string): SpeakerType[] {
-		const existingSpeaker = this.getSpeakerByName(speakers, name);
-		if (existingSpeaker) {
-			return speakers;
-		}
-
-		const colors = [
-			'bg-red-100 text-red-800 border-red-200',
-			'bg-yellow-100 text-yellow-800 border-yellow-200',
-			'bg-indigo-100 text-indigo-800 border-indigo-200',
-			'bg-pink-100 text-pink-800 border-pink-200',
-			'bg-teal-100 text-teal-800 border-teal-200'
-		];
-
-		const newSpeaker: SpeakerType = {
-			id: name.toLowerCase().replace(/\s+/g, '-'),
-			name,
-			displayName: name,
-			color: colors[speakers.length % colors.length]
-		};
-
-		return [...speakers, newSpeaker];
+		return addCustomSpeaker(speakers, name);
 	}
 
 	// Shift all line timestamps by a given number of seconds
@@ -393,11 +440,9 @@ export class EditorService {
 			const newSeconds = Math.max(0, currentSeconds + shiftSeconds); // Don't allow negative timestamps
 			const newTimestamp = this.secondsToTimestamp(newSeconds);
 
-			const hasChanges = this.hasLineChanged({ ...line, time: newTimestamp });
 			return {
 				...line,
-				time: newTimestamp,
-				editState: hasChanges ? 'unsaved' : 'unedited'
+				time: newTimestamp
 			};
 		});
 	}
@@ -417,49 +462,20 @@ export class EditorService {
 			const previousSeconds = this.timestampToSeconds(previousLine.time);
 			const newTimestamp = this.secondsToTimestamp(previousSeconds + 1);
 
-			const hasChanges = this.hasLineChanged({ ...currentLine, time: newTimestamp });
 			updatedLines[lineIndex] = {
 				...currentLine,
-				time: newTimestamp,
-				editState: hasChanges ? 'unsaved' : 'unedited'
+				time: newTimestamp
 			};
 		}
 
 		return updatedLines;
 	}
 
-	// Save a line (persist changes without marking as done)
-	saveLine(lines: EditableTranscriptLineType[], lineIndex: number): EditableTranscriptLineType[] {
-		const updatedLines = [...lines];
-		const line = updatedLines[lineIndex];
-
-		if (line) {
-			const hasActualChanges = this.hasLineChanged(line);
-			updatedLines[lineIndex] = {
-				...line,
-				editState: hasActualChanges ? 'saved' : 'unedited',
-				edited: this.resolveEditedFlag(line)
-			};
-		}
-
-		return updatedLines;
-	}
-
-	// Save all lines that have changes (preserving their edited status)
-	saveAllChanges(lines: EditableTranscriptLineType[]): EditableTranscriptLineType[] {
-		return lines.map((line) => {
-			// Only process lines that are unsaved
-			if (line.editState === 'unsaved') {
-				const hasActualChanges = this.hasLineChanged(line);
-				return {
-					...line,
-					editState: hasActualChanges ? 'saved' : 'unedited',
-					edited: this.resolveEditedFlag(line)
-				};
-			}
-			return line;
-		});
-	}
+	// `saveLine` and `saveAllChanges` are gone along with the 'unsaved'/'saved'
+	// distinction they maintained. Every store mutation already calls
+	// saveToLocalStorage(), so pressing `w` persisted nothing - it only moved a
+	// badge colour. What a line looks like is now derived from whether it differs
+	// from what was loaded, which needs no separate save step.
 
 	// Commit a line (mark as edited/done)
 	commitLine(lines: EditableTranscriptLineType[], lineIndex: number): EditableTranscriptLineType[] {
@@ -471,7 +487,6 @@ export class EditorService {
 			// This allows users to mark lines as reviewed/verified even if content is correct
 			updatedLines[lineIndex] = {
 				...line,
-				editState: 'edited',
 				edited: true
 			};
 		}
@@ -543,24 +558,61 @@ export class EditorService {
 		return changes;
 	}
 
-	// Get all changed lines from transcript - single source of truth for change detection
+	/**
+	 * How a line should be presented. Derived, never stored.
+	 *
+	 * The old `editState` field conflated three separate things: whether a line
+	 * differs from what was loaded (derivable), whether a human has vouched for it
+	 * (`edited`, which is persisted), and an 'unsaved'/'saved' distinction that did
+	 * nothing. Storing the first is what let `updateLineText` silently downgrade a
+	 * reviewed line to 'unedited' and drop it from the submission while it still
+	 * painted the reviewed badge.
+	 */
+	lineStatus(line: EditableTranscriptLineType): LineStatusType {
+		const modified = this.hasLineChanged(line);
+		if (modified && line.edited) return 'modified-reviewed';
+		if (modified) return 'modified';
+		if (line.edited) return 'reviewed';
+		return 'unchanged';
+	}
+
+	/**
+	 * Everything that goes to moderation: content that differs from what was
+	 * loaded, plus anything a human explicitly marked reviewed.
+	 *
+	 * Equivalent to the old four-way predicate on every reachable line state - see
+	 * the exhaustive comparison in EditorService.changeDetection.test.ts. It is
+	 * deliberately broader in one case (a reviewed line with no content change now
+	 * stays in the submission instead of being dropped while still showing the
+	 * badge) and narrower only for lines forced into 'unsaved'/'saved' without a
+	 * content change, which was reachable solely through the mass actions removed
+	 * alongside this.
+	 */
 	getChangedLines(lines: EditableTranscriptLineType[]): EditableTranscriptLineType[] {
-		const changedLines = lines.filter((line) => {
-			// Use hasLineChanged as the authoritative method for detecting changes
-			// This handles all edge cases with timestamp normalization, whitespace, etc.
-			const hasContentChanges = this.hasLineChanged(line);
-			const isMarkedEdited = line.editState === 'edited';
+		return lines.filter((line) => this.hasLineChanged(line) || this.hasReviewChanged(line));
+	}
 
-			// IMPORTANT: Also consider lines in workflow states that indicate changes in current session
-			// 'unsaved' = modified but not saved, 'saved' = saved but not committed
-			const hasWorkflowChanges = line.editState === 'unsaved' || line.editState === 'saved';
+	/**
+	 * Whether the review badge differs from how the line was loaded.
+	 *
+	 * Not simply `line.edited`: seven episodes arrive with every row already
+	 * flagged, and re-submitting a line that is already stored that way is a no-op
+	 * that would show the user hundreds of phantom pending changes.
+	 */
+	hasReviewChanged(line: EditableTranscriptLineType): boolean {
+		return line.edited !== (line.originalEdited ?? false);
+	}
 
-			const isChanged = hasContentChanges || isMarkedEdited || hasWorkflowChanges;
+	/** Indices of lines differing from what was loaded. */
+	getModifiedLines(lines: EditableTranscriptLineType[]): number[] {
+		return lines
+			.map((line, index) => (this.hasLineChanged(line) ? index : -1))
+			.filter((index) => index !== -1);
+	}
 
-			return isChanged;
-		});
-
-		return changedLines;
+	/** Indices of lines a human has marked reviewed. */
+	getReviewedLines(lines: EditableTranscriptLineType[]): number[] {
+		return lines.map((line, index) => (line.edited ? index : -1)).filter((index) => index !== -1);
 	}
 
 	// Helper method to check if any lines have changes - used by stores and components
@@ -646,48 +698,31 @@ export class EditorService {
 		return lines.map((line) => ({
 			...line,
 			// Preserve 'edited' state, only reset 'unsaved' and 'saved' to 'unedited'
-			editState: line.editState === 'edited' ? ('edited' as const) : ('unedited' as const),
 			originalText: line.line,
 			originalSpeaker: line.speaker,
 			originalTime: line.time
 		}));
 	}
 
-	// Mass actions - perform operations on multiple lines
+	/**
+	 * Bulk operations on selected lines.
+	 *
+	 * Down from nine actions to four. `save` became a no-op once the
+	 * 'unsaved'/'saved' distinction went; `set-edited` duplicated `commit`; and
+	 * `set-unedited`/`set-unsaved`/`set-saved` went through `changeLineStates`,
+	 * which assigned `edited: newState === 'edited'` and so silently revoked
+	 * review badges - exactly what `resolveEditedFlag` documents must only ever
+	 * happen through `reset-edited`.
+	 */
 	massAction(
 		lines: EditableTranscriptLineType[],
 		lineIndices: number[],
-		action:
-			| 'save'
-			| 'commit'
-			| 'reset-edited'
-			| 'delete'
-			| 'set-unedited'
-			| 'set-unsaved'
-			| 'set-saved'
-			| 'set-edited'
-			| 'revert-to-original',
+		action: MassActionType,
 		options?: { confirmDelete?: boolean }
 	): EditableTranscriptLineType[] {
 		let updatedLines = [...lines];
 
 		switch (action) {
-			case 'save':
-				lineIndices.forEach((index) => {
-					if (index >= 0 && index < updatedLines.length) {
-						const line = updatedLines[index];
-						if (line) {
-							const hasActualChanges = this.hasLineChanged(line);
-							updatedLines[index] = {
-								...line,
-								editState: hasActualChanges ? 'saved' : 'unedited',
-								edited: this.resolveEditedFlag(line)
-							};
-						}
-					}
-				});
-				break;
-
 			case 'commit':
 				lineIndices.forEach((index) => {
 					if (index >= 0 && index < updatedLines.length) {
@@ -695,7 +730,6 @@ export class EditorService {
 						if (line) {
 							updatedLines[index] = {
 								...line,
-								editState: 'edited',
 								edited: true
 							};
 						}
@@ -707,11 +741,9 @@ export class EditorService {
 				lineIndices.forEach((index) => {
 					if (index >= 0 && index < updatedLines.length) {
 						const line = updatedLines[index];
-						if (line && line.editState === 'edited') {
-							const hasActualChanges = this.hasLineChanged(line);
+						if (line?.edited) {
 							updatedLines[index] = {
 								...line,
-								editState: hasActualChanges ? 'saved' : 'unedited',
 								// Explicitly un-reviewing a line, so the badge always clears -
 								// this does not go through resolveEditedFlag.
 								edited: false
@@ -725,50 +757,24 @@ export class EditorService {
 				if (!options?.confirmDelete) {
 					throw new Error('Delete action requires confirmation');
 				}
-				// Sort indices in descending order to avoid index shifting issues
-				const sortedIndices = lineIndices.sort((a, b) => b - a);
+				// Sort indices in descending order to avoid index shifting issues.
+				// Copy first - callers pass editorStore.selectedLineIndices straight
+				// through, and sorting in place would reorder their reactive state.
+				const sortedIndices = [...lineIndices].sort((a, b) => b - a);
 				sortedIndices.forEach((index) => {
 					if (index >= 0 && index < updatedLines.length && updatedLines.length > 1) {
 						updatedLines.splice(index, 1);
 					}
 				});
 
-				// Mark a nearby line as changed to track that deletions occurred
-				if (sortedIndices.length > 0 && updatedLines.length > 0) {
-					const nearbyIndex = Math.min(
-						sortedIndices[sortedIndices.length - 1],
-						updatedLines.length - 1
-					);
-					if (nearbyIndex >= 0 && updatedLines[nearbyIndex]) {
-						const nearbyLine = updatedLines[nearbyIndex];
-						if (nearbyLine.editState === 'unedited') {
-							updatedLines[nearbyIndex] = {
-								...nearbyLine,
-								editState: 'unsaved'
-							};
-						}
-					}
-				}
+				// A deletion leaves no trace on any surviving line, so the transcript
+				// would otherwise look unchanged and never be submitted. Previously a
+				// neighbouring line was nudged into 'unsaved' to force that; with the
+				// state field gone there is nothing to nudge. Deletions are picked up
+				// because the submission sends the whole transcript and the moderator
+				// diff compares line counts.
 				break;
 			}
-
-			case 'set-unedited':
-				// IMPORTANT: Use forceExactState: false to allow business logic
-				// This ensures lines with actual changes get set to 'saved' instead of 'unedited'
-				updatedLines = this.changeLineStates(updatedLines, lineIndices, 'unedited', false);
-				break;
-
-			case 'set-unsaved':
-				updatedLines = this.changeLineStates(updatedLines, lineIndices, 'unsaved', true);
-				break;
-
-			case 'set-saved':
-				updatedLines = this.changeLineStates(updatedLines, lineIndices, 'saved', true);
-				break;
-
-			case 'set-edited':
-				updatedLines = this.changeLineStates(updatedLines, lineIndices, 'edited', true);
-				break;
 
 			case 'revert-to-original':
 				updatedLines = this.revertLinesToOriginal(updatedLines, lineIndices);
@@ -781,7 +787,7 @@ export class EditorService {
 		return updatedLines;
 	}
 
-	// Reset a specific line's edited state back to false
+	/** Clear a single line's review badge. */
 	resetLineEditedState(
 		lines: EditableTranscriptLineType[],
 		lineIndex: number
@@ -789,26 +795,11 @@ export class EditorService {
 		const updatedLines = [...lines];
 		const line = updatedLines[lineIndex];
 
-		if (line && (line.editState === 'edited' || (line.editState === 'unedited' && line.edited))) {
-			const hasActualChanges = this.hasLineChanged(line);
-			updatedLines[lineIndex] = {
-				...line,
-				editState: hasActualChanges ? 'saved' : 'unedited',
-				edited: false
-			};
+		if (line?.edited) {
+			updatedLines[lineIndex] = { ...line, edited: false };
 		}
 
 		return updatedLines;
-	}
-
-	// Get lines that match certain criteria for mass actions
-	getLinesByState(
-		lines: EditableTranscriptLineType[],
-		states: ('unedited' | 'unsaved' | 'saved' | 'edited')[]
-	): number[] {
-		return lines
-			.map((line, index) => (states.includes(line.editState) ? index : -1))
-			.filter((index) => index !== -1);
 	}
 
 	// Get lines by speaker for mass actions
@@ -816,54 +807,6 @@ export class EditorService {
 		return lines
 			.map((line, index) => (line.speaker.toLowerCase() === speakerName.toLowerCase() ? index : -1))
 			.filter((index) => index !== -1);
-	}
-
-	// Change state of multiple lines to a target state
-	changeLineStates(
-		lines: EditableTranscriptLineType[],
-		lineIndices: number[],
-		targetState: 'unedited' | 'unsaved' | 'saved' | 'edited',
-		forceExactState: boolean = false
-	): EditableTranscriptLineType[] {
-		// eslint-disable-next-line prefer-const
-		let updatedLines = [...lines];
-
-		lineIndices.forEach((index) => {
-			if (index >= 0 && index < updatedLines.length) {
-				const line = updatedLines[index];
-				if (line) {
-					let newState = targetState;
-
-					// Apply business logic for state transitions only if not forced
-					if (!forceExactState) {
-						if (targetState === 'unedited') {
-							// When transitioning to unedited, check if line actually has changes
-							const hasActualChanges = this.hasLineChanged(line);
-							if (hasActualChanges) {
-								// If line has actual changes, it should be 'saved' instead of 'unedited'
-								newState = 'saved';
-							} else {
-								newState = 'unedited';
-							}
-						} else if (targetState === 'saved') {
-							// When transitioning to saved, check if line actually has changes
-							const hasActualChanges = this.hasLineChanged(line);
-							newState = hasActualChanges ? 'saved' : 'unedited';
-						}
-					}
-					// For 'unsaved' and 'edited' states, we can set them directly
-					// When forceExactState is true, we use targetState directly
-
-					updatedLines[index] = {
-						...line,
-						editState: newState,
-						edited: newState === 'edited'
-					};
-				}
-			}
-		});
-
-		return updatedLines;
 	}
 
 	// Revert lines to their original state (undo all changes)
@@ -883,7 +826,6 @@ export class EditorService {
 						line: line.originalText || line.line,
 						speaker: line.originalSpeaker || line.speaker,
 						time: line.originalTime || line.time,
-						editState: 'unedited',
 						edited: false
 					};
 				}

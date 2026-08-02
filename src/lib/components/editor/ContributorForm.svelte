@@ -1,91 +1,50 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-	import { browser } from '$app/environment';
-	import type { SubmitFunction } from '@sveltejs/kit';
-
 	interface Props {
 		contributorName?: string;
 		contributorEmail?: string;
 		notes?: string;
-		transcriptData?: string;
 		isVisible?: boolean;
 		onSubmit?: (data: { name?: string; email?: string; notes?: string }) => void;
 		onCancel?: () => void;
 		submitLabel?: string;
 		title?: string;
 		description?: string;
-		useFormActions?: boolean;
 	}
 
 	let {
 		contributorName = $bindable(''),
 		contributorEmail = $bindable(''),
 		notes = $bindable(''),
-		transcriptData = '',
 		isVisible = false,
 		onSubmit,
 		onCancel,
 		submitLabel = 'Submit Changes',
 		title = 'Submit Your Edits',
-		description = 'Help improve the transcripts! Your edits will be reviewed before going live.',
-		useFormActions = true
+		description = 'Help improve the transcripts! Your edits will be reviewed before going live.'
 	}: Props = $props();
 
 	let isSubmitting = $state(false);
-	let formElement = $state<HTMLFormElement>();
 
-	// Progressive enhancement: handle form submission client-side if JS is available
-	const handleFormSubmit: SubmitFunction = ({ formData, cancel }) => {
-		// If we have a client-side handler, use it instead
-		if (!useFormActions && onSubmit) {
-			cancel();
-			handleClientSideSubmit();
-			return;
-		}
-
-		// Add transcript data to form if provided
-		if (transcriptData) {
-			formData.set('transcript_data', transcriptData);
-		}
-
-		isSubmitting = true;
-
-		return async ({ result }) => {
-			isSubmitting = false;
-			if (result.type === 'success') {
-				// Clear form and close modal on success
-				contributorName = '';
-				contributorEmail = '';
-				notes = '';
-				onCancel?.();
-			} else if (result.type === 'failure') {
-				// Keep form values on failure
-				if (result.data) {
-					contributorName = result.data.name || contributorName;
-					contributorEmail = result.data.email || contributorEmail;
-					notes = result.data.notes || notes;
-				}
-			}
-		};
-	};
-
-	// Legacy client-side handler for non-form-action usage
-	function handleClientSideSubmit() {
+	// The only submission path. This form previously POSTed to a `?/submitContribution`
+	// server action, which parsed the payload and returned `{ success: true }` without
+	// writing anything - so anonymous contributors were told their work was saved when
+	// it had been discarded. That action is gone; both anonymous and authenticated
+	// submissions now run through EditorService.submitEpisodeTranscript via `onSubmit`.
+	function handleSubmit(event?: Event) {
+		event?.preventDefault();
 		if (isSubmitting) return;
 
 		isSubmitting = true;
 
-		const data = {
+		onSubmit?.({
 			name: contributorName.trim() || undefined,
 			email: contributorEmail.trim() || undefined,
 			notes: notes.trim() || undefined
-		};
+		});
 
-		onSubmit?.(data);
-
-		setTimeout(() => {
-			isSubmitting = false;
-		}, 1000);
+		// The parent closes this modal as soon as submission starts and owns the
+		// progress indicator from there, so there is no completion event to await.
+		isSubmitting = false;
 	}
 
 	function handleCancel() {
@@ -100,11 +59,7 @@
 			handleCancel();
 		} else if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
 			event.preventDefault();
-			if (useFormActions && browser && formElement) {
-				formElement.requestSubmit();
-			} else {
-				handleClientSideSubmit();
-			}
+			handleSubmit();
 		}
 	}
 </script>
@@ -153,14 +108,7 @@
 					</button>
 				</div>
 
-				<form
-					bind:this={formElement}
-					method="POST"
-					action={useFormActions ? '?/submitContribution' : undefined}
-					use:enhance={handleFormSubmit}
-					{...useFormActions ? {} : { onsubmit: handleClientSideSubmit }}
-					onkeydown={handleKeyDown}
-				>
+				<form onsubmit={handleSubmit} onkeydown={handleKeyDown}>
 					<div class="space-y-4">
 						<!-- Contributor Name (Optional) -->
 						<div>

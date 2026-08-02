@@ -44,7 +44,7 @@ export async function load({ params }): Promise<EpisodePageData> {
 			time: line.time,
 			speaker: line.speaker,
 			line: line.line,
-			edited: line.editState === 'edited'
+			edited: line.edited
 		}));
 
 		// Get episode data processor instance

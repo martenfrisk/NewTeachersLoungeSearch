@@ -98,7 +98,8 @@
 					</div>
 
 					<div class="space-y-2">
-						{#each category.shortcuts as shortcut (shortcut.description)}
+						<!-- Keyed by action: descriptions are prose and may repeat. -->
+						{#each category.shortcuts as shortcut (shortcut.action)}
 							<div class="flex items-center justify-between gap-3">
 								<span class="text-sm text-gray-700 truncate">{shortcut.description}</span>
 								<kbd class="shortcut-key">

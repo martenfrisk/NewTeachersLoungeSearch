@@ -152,8 +152,31 @@ export class AudioService {
 		setTimestamp();
 	}
 
+	/**
+	 * Seconds to rewind when playback resumes after a pause.
+	 *
+	 * Standard in every dedicated transcription tool (Express Scribe, oTranscribe,
+	 * InqScribe) and the reason they feel quicker: you pause mid-phrase to type,
+	 * and on resume you need to hear the run-up again rather than manually
+	 * scrubbing back every single time.
+	 */
+	private static readonly RESUME_REWIND_SECONDS = 2;
+
+	/** Playback rates offered by the slower/faster controls. */
+	private static readonly PLAYBACK_RATES = [0.5, 0.75, 1, 1.25, 1.5, 2] as const;
+
 	play(): void {
 		if (!this.audioElement) return;
+
+		// Only rewind on a genuine resume - not when starting from the very top, and
+		// not when playback is already running.
+		if (this.audioElement.paused && this.audioElement.currentTime > 0) {
+			this.audioElement.currentTime = Math.max(
+				0,
+				this.audioElement.currentTime - AudioService.RESUME_REWIND_SECONDS
+			);
+			audioStore.setCurrentTime(this.audioElement.currentTime);
+		}
 
 		this.audioElement
 			.play()
@@ -163,6 +186,30 @@ export class AudioService {
 			.catch((error) => {
 				console.error('Failed to play audio:', error);
 			});
+	}
+
+	getPlaybackRate(): number {
+		return this.audioElement?.playbackRate ?? 1;
+	}
+
+	/**
+	 * Step through the rate list. `preservesPitch` keeps voices intelligible at
+	 * 0.5x, which is the whole point of slowing down hard audio.
+	 */
+	stepPlaybackRate(direction: 1 | -1): number {
+		if (!this.audioElement) return 1;
+
+		const rates = AudioService.PLAYBACK_RATES;
+		const current = this.audioElement.playbackRate;
+		// Nearest listed rate, so an externally-set value still steps sensibly.
+		const nearest = rates.reduce((best, rate) =>
+			Math.abs(rate - current) < Math.abs(best - current) ? rate : best
+		);
+		const next = rates[Math.min(rates.length - 1, Math.max(0, rates.indexOf(nearest) + direction))];
+
+		this.audioElement.preservesPitch = true;
+		this.audioElement.playbackRate = next;
+		return next;
 	}
 
 	pause(): void {

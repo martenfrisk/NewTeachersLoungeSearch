@@ -12,6 +12,7 @@
 	import SyncIcon from 'lib/assets/icons/SyncIcon.svelte';
 	import { page } from '$app/state';
 	import { editorStore } from '$lib/stores/editor.svelte';
+	import { formatShortcut, shortcutFor } from '$lib/types/editor';
 	import AudioWaveform from './AudioWaveform.svelte';
 
 	interface Props {
@@ -24,6 +25,21 @@
 
 	let progressBar: HTMLInputElement;
 	let volumeSlider: HTMLInputElement;
+
+	// Cmd on Mac, Ctrl elsewhere - matched to what EditorKeyboardHandler actually
+	// listens for. Resolved lazily so this is safe during SSR.
+	let isMac = $derived(typeof navigator !== 'undefined' && navigator.platform.includes('Mac'));
+
+	let editorShortcutHints = $derived(
+		(['toggle-play', 'skip-backward-5', 'skip-forward-5'] as const)
+			.map((action) => {
+				const shortcut = shortcutFor(action);
+				return shortcut
+					? { action, keys: formatShortcut(shortcut, isMac), description: shortcut.description }
+					: null;
+			})
+			.filter((hint) => hint !== null)
+	);
 
 	function handlePlayPause() {
 		if (audioState.isPlaying) {
@@ -120,7 +136,7 @@
 </script>
 
 <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
-	<div class="w-full p-3 sm:p-4 relative">
+	<div class={`w-full relative ${isEditorPage ? 'px-3 py-2' : 'p-3 sm:p-4'}`}>
 		<!-- Close Button -->
 		<Button
 			variant="ghost"
@@ -165,7 +181,7 @@
 
 		<!-- Episode Info -->
 		{#if currEpTitle}
-			<div class="text-center mb-2 pr-8 flex items-center justify-center">
+			<div class="text-center mb-1 pr-8 flex items-center justify-center">
 				<h3 class="text-xs sm:text-sm font-medium text-gray-900 truncate px-2">
 					{currEpTitle}
 				</h3>
@@ -204,7 +220,7 @@
 		{/if}
 
 		<!-- Progress Bar -->
-		<div class="mb-3">
+		<div class="mb-1">
 			<input
 				bind:this={progressBar}
 				type="range"
@@ -312,46 +328,55 @@
 				</div>
 			</div>
 
-			<!-- Sync Controls Row -->
-			{#if syncEnabled}
-				<div class="flex items-center justify-center mt-2">
-					<div class="flex items-center space-x-4">
-						<label class="flex items-center space-x-2 text-xs text-gray-600 cursor-pointer">
+			<!--
+				Sync toggle, jump-to-line and the shortcut hints share one row.
+
+				They were three stacked rows, each with its own margin, which pushed
+				the fixed player to 222px - a third of the height of a 13" laptop
+				viewport, on the page where vertical space matters most.
+			-->
+			{#if syncEnabled || isEditorPage}
+				<div class="mt-1 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs">
+					{#if syncEnabled}
+						<label class="flex cursor-pointer items-center space-x-2 text-gray-600">
 							<input
 								type="checkbox"
 								checked={audioState.syncEnabled}
 								onchange={handleSyncToggle}
-								class="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+								class="h-3 w-3 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500"
 							/>
 							<span>Sync to lines</span>
 							{#if audioState.syncEnabled}
 								<SyncIcon class="w-3 h-3 text-blue-600" />
 							{/if}
 						</label>
+					{/if}
 
-						{#if isEditorPage && currentLine}
-							<Button
-								variant="ghost"
-								size="sm"
-								onclick={handleJumpToCurrentLine}
-								class="text-xs text-blue-600 hover:text-blue-800"
-								aria-label="Jump to current line"
-							>
-								→ Line {currentLine.time}
-							</Button>
-						{/if}
-					</div>
-				</div>
-			{/if}
+					{#if isEditorPage && currentLine}
+						<button
+							onclick={handleJumpToCurrentLine}
+							class="text-blue-600 hover:text-blue-800"
+							aria-label="Jump to current line"
+						>
+							&rarr; Line {currentLine.time}
+						</button>
+					{/if}
 
-			<!-- Editor shortcuts info -->
-			{#if isEditorPage}
-				<div class="flex items-center justify-center mt-1">
-					<div class="text-xs text-gray-500 flex space-x-3">
-						<span><kbd class="px-1 py-0.5 bg-gray-100 rounded text-xs">F1</kbd> Play/Pause</span>
-						<span><kbd class="px-1 py-0.5 bg-gray-100 rounded text-xs">F2</kbd> ←5s</span>
-						<span><kbd class="px-1 py-0.5 bg-gray-100 rounded text-xs">F3</kbd> 5s→</span>
-					</div>
+					{#if isEditorPage}
+						<div class="flex gap-3 text-gray-500">
+							<!--
+								Derived from the shortcut table rather than written out. These
+								hints still read "F1 Play/Pause" long after the binding moved,
+								because they were hardcoded separately from the bindings.
+							-->
+							{#each editorShortcutHints as hint (hint.action)}
+								<span>
+									<kbd class="rounded bg-gray-100 px-1 py-0.5">{hint.keys}</kbd>
+									{hint.description}
+								</span>
+							{/each}
+						</div>
+					{/if}
 				</div>
 			{/if}
 		</div>

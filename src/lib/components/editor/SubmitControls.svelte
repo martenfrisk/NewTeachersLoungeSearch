@@ -140,6 +140,4 @@
 	onCancel={handleCancel}
 	title="Submit Your Transcript Edits"
 	description={`You're about to submit ${changedLinesCount} change${changedLinesCount === 1 ? '' : 's'} for review. All fields below are optional.`}
-	transcriptData={JSON.stringify(editorService.getChangedLines(transcriptLines))}
-	useFormActions={true}
 />
